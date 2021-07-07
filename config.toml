@@ -106,6 +106,12 @@ weight = 1
 url = "https://github.com/cekrem/"
 
 [[params.social]]
+name = "Phone"
+icon = "fa fa-mobile"
+weight = 0
+url = "tel:+4745806589"
+
+[[params.social]]
 name = "LinkedIn"
 icon = "fa fa-linkedin"
 weight = 2
@@ -117,15 +123,12 @@ icon = "fa fa-building"
 weight = 2
 url = "https://vipps.io"
 
-[languages.en]
-languageName = ":us:"
-
-[[languages.en.menu.main]]
+[[menu.main]]
 name = "About"
 weight = 1
 url = "about/"
 
-[[languages.en.menu.main]]
+[[menu.main]]
 name = "Stuff"
 weight = 2
 url = "stuff/"

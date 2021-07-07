@@ -1,0 +1,143 @@
+baseURL = "https://cekrem.github.io"
+title = "Christian Ekrem"
+theme = "hugo-coder"
+languageCode = "en-us"
+defaultContentLanguage = "en"
+paginate = 20
+pygmentsStyle = "bw"
+pygmentsCodeFences = true
+pygmentsCodeFencesGuessSyntax = true
+enableEmoji = true
+# Enable Disqus comments
+# disqusShortname = "yourdiscussshortname"
+
+[params]
+author = "Christian Ekrem"
+description = "Christian Ekrem's website"
+keywords = "developer,personal"
+info = ["Senior Software Engineer", "@ vipps.io"]
+avatarURL = "images/avatar.jpg"
+#gravatar = "john.doe@example.com"
+footerContent = ""
+dateFormat = "January 2, 2006"
+hideFooter = false
+hideCredits = true
+hideCopyright = false
+since = 2021
+# Git Commit in Footer, uncomment the line below to enable it
+# commit = "https://github.com/luizdepra/hugo-coder/tree/"
+# Right To Left, shift content direction for languagues such as Arabic
+rtl = false
+# Specify light/dark colorscheme
+# Supported values:
+# "auto" (use preference set by browser)
+# "dark" (dark background, light foreground)
+# "light" (light background, dark foreground) (default)
+colorScheme = "auto"
+# Hide the toggle button, along with the associated vertical divider
+hideColorSchemeToggle = false
+# Series see also post count
+maxSeeAlsoItems = 5
+# Enable Twemoji
+enableTwemoji = false
+# Custom CSS
+customCSS = []
+# Custom SCSS
+customSCSS = []
+# Custom JS
+customJS = []
+
+# If you want to use fathom(https://usefathom.com) for analytics, add this section
+# [params.fathomAnalytics]
+# siteID = "ABCDE"
+# serverURL = "analytics.example.com" # Default value is cdn.usefathom.com, overwrite this if you are self-hosting
+
+# If you want to use plausible(https://plausible.io) for analytics, add this section
+# [params.plausibleAnalytics]
+# domain = "example.com"
+# serverURL = "analytics.example.com" # Default value is plausible.io, overwrite this if you are self-hosting or using a custom domain
+
+# If you want to use goatcounter(https://goatcounter.com) for analytics, add this section
+# [params.goatCounter]
+# code = "code"
+
+# If you want to use Cloudflare Web Analytics(https://cloudflare.com) for analytics, add this section
+# [params.cloudflare]
+# token = "token"
+
+# If you want to use Matomo(https://matomo.org) for analytics, add this section
+# [params.matomo]
+# siteID = "ABCDE" # Default value is "1", overwrite this if you are cloud-hosting
+# serverURL = "analytics.example.com" # For cloud-hosting, use provided URL, e.g. example.matomo.cloud
+
+# If you want to use Google Tag Manager(https://analytics.google.com/) for analytics, add this section
+# [params.googleTagManager]
+# id = "gid"
+
+# If you want to implement a Content-Security-Policy, add this section
+[params.csp]
+childsrc = ["'self'"]
+fontsrc = ["'self'", "https://fonts.gstatic.com", "https://cdn.jsdelivr.net/"]
+formaction = ["'self'"]
+framesrc = ["'self'"]
+imgsrc = ["'self'"]
+objectsrc = ["'none'"]
+stylesrc = [
+  "'self'",
+  "'unsafe-inline'",
+  "https://fonts.googleapis.com/",
+  "https://cdn.jsdelivr.net/"
+]
+scriptsrc = ["'self'", "'unsafe-inline'", "https://www.google-analytics.com"]
+prefetchsrc = ["'self'"]
+# connect-src directive – defines valid targets for to XMLHttpRequest (AJAX), WebSockets or EventSource
+connectsrc = ["'self'", "https://www.google-analytics.com"]
+
+[taxonomies]
+category = "categories"
+series = "series"
+tag = "tags"
+author = "authors"
+
+[[params.social]]
+name = "Github"
+icon = "fa fa-github"
+weight = 1
+url = "https://github.com/cekrem/"
+
+[[params.social]]
+name = "LinkedIn"
+icon = "fa fa-linkedin"
+weight = 2
+url = "https://www.linkedin.com/in/christian-ekrem/"
+
+[[params.social]]
+name = "Website"
+icon = "fa fa-building"
+weight = 2
+url = "https://vipps.io"
+
+[languages.en]
+languageName = ":us:"
+
+[[languages.en.menu.main]]
+name = "About"
+weight = 1
+url = "about/"
+
+[[languages.en.menu.main]]
+name = "Development plan"
+weight = 2
+url = "devplan/"
+
+#[[languages.en.menu.main]]
+#name = "Blog"
+#weight = 2
+#url = "posts/"
+
+##############################
+# [[languages.en.menu.main]] #
+# name = "Contact me"        #
+# weight = 5                 #
+# url = "contact/"           #
+##############################

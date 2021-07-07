@@ -1,0 +1,32 @@
+{{ if not .Site.Params.hideFooter | default false }}
+<footer class="footer">
+  <section class="container">
+    {{ with .Site.Params.footerContent | safeHTML }}
+    <p>{{ . }}</p>
+    {{ end }} {{ if not .Site.Params.hideCopyright }} © {{ if (and
+    (.Site.Params.since) (lt .Site.Params.since now.Year)) }} {{
+    .Site.Params.since }} - {{ end }} {{ now.Year }} {{ with .Site.Params.author
+    }} {{ . }} {{ end }} {{ end }} {{ if not .Site.Params.hideCredits }} {{ if
+    not .Site.Params.hideCopyright }} · {{ end }} {{ i18n "powered_by" }}
+    <a href="https://gohugo.io/">Hugo</a> &
+    <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>. {{ end }} {{
+    if .Site.Params.commit }} {{ if .GitInfo }} [<a
+      href="{{ .Site.Params.commit }}/{{ .GitInfo.Hash }}"
+      >{{ .GitInfo.AbbreviatedHash }}</a
+    >] {{ end }} {{ end }}
+    <script
+      data-name="BMC-Widget"
+      data-cfasync="false"
+      src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+      data-emoji="🍺"
+      data-id="cekrem"
+      data-description="Support me on Buy me a coffee!"
+      data-message=""
+      data-color="#ddd"
+      data-position="Right"
+      data-x_margin="18"
+      data-y_margin="18"
+    ></script>
+  </section>
+</footer>
+{{ end }}

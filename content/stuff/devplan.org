@@ -1,6 +1,6 @@
 #+TITLE: Development plan
 #+OPTIONS: toc:nil
-#+date:2021-07-07
+#+date: 2021-07-07
 #+tags[]: development, vipps, plan
 
 * Context

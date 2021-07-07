@@ -58,8 +58,8 @@ customJS = []
 # serverURL = "analytics.example.com" # Default value is plausible.io, overwrite this if you are self-hosting or using a custom domain
 
 # If you want to use goatcounter(https://goatcounter.com) for analytics, add this section
-# [params.goatCounter]
-# code = "code"
+[params.goatCounter]
+code = "cekrem"
 
 # If you want to use Cloudflare Web Analytics(https://cloudflare.com) for analytics, add this section
 # [params.cloudflare]
@@ -130,14 +130,9 @@ name = "Stuff"
 weight = 2
 url = "stuff/"
 
-#[[languages.en.menu.main]]
-#name = "Blog"
-#weight = 2
-#url = "posts/"
-
 ##############################
 # [[languages.en.menu.main]] #
 # name = "Contact me"        #
-# weight = 5                 #
+# weight = 3                 #
 # url = "contact/"           #
 ##############################

@@ -88,7 +88,7 @@ stylesrc = [
   "https://fonts.googleapis.com/",
   "https://cdn.jsdelivr.net/"
 ]
-scriptsrc = ["'self'", "'unsafe-inline'", "http://gc.zgo.at", "https://cdnjs.buymeacoffee.com"]
+scriptsrc = ["'self'", "'unsafe-inline'", "https//gc.zgo.at", "https://cdnjs.buymeacoffee.com"]
 prefetchsrc = ["'self'"]
 # connect-src directive – defines valid targets for to XMLHttpRequest (AJAX), WebSockets or EventSource
 connectsrc = ["'self'"]

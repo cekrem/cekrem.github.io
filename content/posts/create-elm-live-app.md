@@ -1,5 +1,6 @@
 ---
 title: "create-elm-live-app – the smallest npm package ever?"
+description: "Try out Elm without breaking a sweat!"
 tags: ["cli", "elm", "npm package"]
 date: 2021-07-08
 ---

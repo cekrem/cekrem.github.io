@@ -2,7 +2,7 @@
 title = "Development plan 2021-2023"
 description = "Level up with a plan!"
 date = "2021-07-07"
-tags = ["personal development", "career"]
+tags = ["vipps", "personal development", "career"]
 +++
 
 ## Context

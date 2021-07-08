@@ -8,7 +8,7 @@ tags = ["cli", "git", "npm package"]
 ## Have you ever...
 
 - Wanted to track your daily additions and deletions without leaving your beloved terminal?
-- Busted your back piping `git log {insert-hundred flags}` through endless hoops trying to create a somewhat human readable and useful output?
+- Busted your back piping `git log {insert-hundred-flags}` through endless hoops trying to create a somewhat human readable and useful output?
 - Wanted to use a functional node.js cli with an immoral amount of [Rambda](https://ramdajs.com/) usage? (Sorry about that, btw, I just wanted to see how far I could go. [Quite far](https://github.com/cekrem/pretty-git-report/blob/master/index.js), it turns out!)
 - Wished you would live to see a tool (any tool at all) that treverses a directory tree - :O – concurrently?
 

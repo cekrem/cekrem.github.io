@@ -13,7 +13,7 @@ enableEmoji = true
 
 [params]
 author = "Christian Ekrem"
-description = "Christian Ekrem's website"
+description = "A surprisingly delightful tech blog!"
 keywords = "developer,personal"
 info = ["Senior Software Engineer", "@ vipps.io"]
 avatarURL = "images/avatar.jpg"
@@ -129,9 +129,9 @@ weight = 1
 url = "about/"
 
 [[menu.main]]
-name = "Stuff"
+name = "Blog"
 weight = 2
-url = "stuff/"
+url = "posts/"
 
 ##############################
 # [[languages.en.menu.main]] #

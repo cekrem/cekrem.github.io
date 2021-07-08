@@ -1,7 +1,8 @@
 +++
-title = "Development plan, 2021-2023"
-description = "Level up!"
+title = "Development plan 2021-2023"
+description = "Level up with a plan!"
 date = "2021-07-07"
+tags = ["personal development", "career"]
 +++
 
 ## Context
@@ -20,9 +21,10 @@ On my previous team, I had a reputation for getting stuff done and delivering va
 
 ## Hall of Fame
 
-| Achievement                     | Notes                                                                                | Date       |
-| ------------------------------- | ------------------------------------------------------------------------------------ | ---------- |
-| Created proper development plan | I've put this off for a while, so finishing it before summer vacation feels _great_! | 2021-07-07 |
+| Achievement                                    | Notes                                                                                | Date       |
+| ---------------------------------------------- | ------------------------------------------------------------------------------------ | ---------- |
+| Created proper development plan                | I've put this off for a while, so finishing it before summer vacation feels _great_! | 2021-07-07 |
+| Created a surprisingly delightful tech blog :O | ... Initially just to host the above mentioned development plan. But hey!            | 2021-07-07 |
 
 ## Short-term goals (before parental leave '21)
 

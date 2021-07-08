@@ -1,6 +1,7 @@
 ---
-title: "elm-create-live-app – the smallest npm package ever?"
-date: 2021-07-05
+title: "create-elm-live-app – the smallest npm package ever?"
+tags: ["cli", "elm", "npm package"]
+date: 2021-07-08
 ---
 
 ## The problem

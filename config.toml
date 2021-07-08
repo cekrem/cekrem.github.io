@@ -1,5 +1,5 @@
 baseURL = "https://cekrem.github.io"
-title = "Christian Ekrem"
+title = "cekrem.github.io"
 theme = "hugo-coder"
 languageCode = "en-us"
 defaultContentLanguage = "en"

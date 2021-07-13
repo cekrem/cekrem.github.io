@@ -77,18 +77,18 @@ code = "cekrem"
 # If you want to implement a Content-Security-Policy, add this section
 [params.csp]
 childsrc = ["'self'"]
-fontsrc = ["'self'", "https://fonts.gstatic.com", "https://cdn.jsdelivr.net/", "https://bmc-cdn.nyc3.digitaloceanspaces.com"]
+fontsrc = ["'self'", "fonts.gstatic.com", "cdn.jsdelivr.net", "bmc-cdn.nyc3.digitaloceanspaces.com"]
 formaction = ["'self'"]
-framesrc = ["'self'", "https://www.buymeacoffee.com"]
-imgsrc = ["'self'", "https://cdn.buymeacoffee.com"]
+framesrc = ["'self'", "www.buymeacoffee.com"]
+imgsrc = ["'self'", "cdn.buymeacoffee.com"]
 objectsrc = ["'none'"]
 stylesrc = [
   "'self'",
   "'unsafe-inline'",
-  "https://fonts.googleapis.com/",
-  "https://cdn.jsdelivr.net/"
+  "fonts.googleapis.com/",
+  "cdn.jsdelivr.net/"
 ]
-scriptsrc = ["'self'", "'unsafe-inline'", "https//gc.zgo.at", "https://cdnjs.buymeacoffee.com"]
+scriptsrc = ["'self'", "'unsafe-inline'", "gc.zgo.at",  "cdnjs.buymeacoffee.com"]
 prefetchsrc = ["'self'"]
 # connect-src directive – defines valid targets for to XMLHttpRequest (AJAX), WebSockets or EventSource
 connectsrc = ["'self'"]

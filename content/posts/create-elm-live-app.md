@@ -11,7 +11,7 @@ I've been tinkering a bit with Elm lately. The super-enforced functional and min
 
 ## The simplest possible solution (that actually works)
 
-At Vipps we're passionate about simplification, in fact thats pretty much the headline of our company. So – being a Vipps guy – I thought: What's the most minimal, easy, no-nonsense way to solve this? Is it possible – is it _moral?!_ – to just add a `"bin"` entry to an otherwise vanilla package.json, pointing to a basic shell script? Turns out, it is! The following points to a simple (but perhaps not very pretty) [index.sh](https://github.com/cekrem/create-elm-live-app/blob/master/index.sh) – and it works like a charm\*.
+At Vipps we're passionate about simplification, in fact that's pretty much the headline of our company. So – being a Vipps guy – I thought: What's the most minimal, easy, no-nonsense way to solve this? Is it possible – is it _moral?!_ – to just add a `"bin"` entry to an otherwise vanilla package.json, pointing to a basic shell script? Turns out, it is! The following points to a simple (but perhaps not very pretty) [index.sh](https://github.com/cekrem/create-elm-live-app/blob/master/index.sh) – and it works like a charm\*.
 
 ```json
 // Inside package.json:

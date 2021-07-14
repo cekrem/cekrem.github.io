@@ -5,13 +5,15 @@ date = "2021-07-07"
 tags = ["vipps", "personal development", "career"]
 +++
 
+What follows is my own personal development plan. Some terms and expressions are a bit internal, as they will no doubt be for you as well on your own plan (should you find yourself inspired to write one), but I'll leave it as is. Enjoy!
+
 ## Context
 
 I've been at [Vipps](https://vipps.io) since 2018, mostly doing work that now belongs in the "Merchant Core" team. I created a few small backend services from scratch (a very fun QR code generator, to name one), deprecated a few others (let's not name those ever again...), helped kick off the Vipps Design System and most significantly worked on the Vipps Merchant Portal and on automating merchant signup, risk analysis and onboarding. I've hosted a Vipps Community Of Practice plainly called "Side Projects And Experiments" (SPÆ) where I've touched on quite a lot of exciting tech and tried a few non-mainstream programming languages. Still 90% of my "real" work has been with Golang and React. And lot's(!) of complex SQL. In mid 2020, I decided to expand my horizon and challenge myself by doing something completely other; I learned Kotlin during my summer holidays, and joined the Android app to learn from Norway's best app developers. So the Android team is where I'm at now; the eCom and Vipps Login sub team more specifically.
 
 ## What do I want to be doing that I'm not doing now?
 
-On my previous team, I had a reputation for getting stuff done and delivering value efficiently. I also did quite a bit of mentoring and had a few internal talks on Golang development, and did the occational "Show and Tell" on frontend stuff. I want to grow into being able to do the same on my new team, where I'm less technically experienced (Android development) and have less domain knowledge (eCom and apps in general). As an Android developer, I would like to obtain the same skill level and expertice that I currently have in Golang and React. I want to keep being an empowering mentor in the new team as well, and bring value to the company both through mentoring/sponsoring and actual code. I'd like to, in time, become the CPS – Chief Problem Solver – on all tings Android/eCom specific, and provide meaningful insight from my combined backend and app development experience.
+On my previous team, I had a reputation for getting stuff done and delivering value efficiently. I also did quite a bit of mentoring and had a few internal talks on Golang development, and did the occasional "Show and Tell" on frontend stuff. I want to grow into being able to do the same on my new team, where I'm less technically experienced (Android development) and have less domain knowledge (eCom and apps in general). As an Android developer, I would like to obtain the same skill level and expertise that I currently have in Golang and React. I want to keep being an empowering mentor in the new team as well, and bring value to the company both through mentoring/sponsoring and actual code. I'd like to, in time, become the CPS – Chief Problem Solver – on all tings Android/eCom specific, and provide meaningful insight from my combined backend and app development experience.
 
 <!--## Growth areas-->
 

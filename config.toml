@@ -9,7 +9,7 @@ pygmentsCodeFences = true
 pygmentsCodeFencesGuessSyntax = true
 enableEmoji = true
 # Enable Disqus comments
-disqusShortname = "cekrem"
+# disqusShortname = "cekrem"
 
 [params]
 author = "Christian Ekrem"

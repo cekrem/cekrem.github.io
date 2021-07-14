@@ -5,7 +5,9 @@ date = "2021-07-07"
 tags = ["vipps", "personal development", "career"]
 +++
 
-What follows is my own personal development plan. Some terms and expressions are a bit internal, as they will no doubt be for you as well on your own plan (should you find yourself inspired to write one), but I'll leave it as is. Enjoy!
+What follows is my own personal development plan as a software engineer at [Vipps](https://vipps.io). Some terms and expressions are a bit internal, as they will no doubt be for you as well on your own plan (should you find yourself inspired to write one), but I'll leave it as is. Enjoy!
+
+---
 
 ## Context
 

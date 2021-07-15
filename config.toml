@@ -118,9 +118,15 @@ weight = 2
 url = "https://www.linkedin.com/in/christian-ekrem/"
 
 [[params.social]]
+name = "Instagram"
+icon = "fa fa-instagram"
+weight = 3
+url = "https://www.linkedin.com/in/christian-ekrem/"
+
+[[params.social]]
 name = "Website"
 icon = "fa fa-building"
-weight = 2
+weight = 4
 url = "https://vipps.io"
 
 [[menu.main]]

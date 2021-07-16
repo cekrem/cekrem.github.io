@@ -15,6 +15,8 @@ date = "2021-07-07"
 - Music! Particularly playing drums or the guitar <3
 - Winning. Especially in Chess.
 
-## Not too fond of, though
+## Top three values as a software engineer
 
-- Long "about" pages
+- Integrity
+- Creativity
+- Excellence

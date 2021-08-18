@@ -37,7 +37,7 @@ On my previous team, I had a reputation for getting stuff done and delivering va
 | Create a habit of intentionally practicing hard deep-focus programming tasks | Do August challenge on Codility after summer vacation                                           | Complete all monthly challenges on Codility starting August '21, earn "Gold" on at least one out of three                | A predictable schedule is needed for this and other deep work tasks (i.e. same day meetings kept to a minimum) |
 | Become the go-to person for all things "Vipps Login" on Android              | Do a thorough refactoring and cleanup (together with Max) after v2 login endpoints are in place | When something needs fixing related to Vipps Login, "ask @cekrem" is a viable response (and I'm actually able to fix it) | Time to actually dig into the login code and do (sorely needed) refactoring                                    |
 
-# Mid-term goals (before summer '22)
+## Mid-term goals (before summer '22)
 
 | Goal                                                                                             | Next steps                                              | Success measures                                                                                                  | Support needed                                             |
 | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
@@ -45,7 +45,7 @@ On my previous team, I had a reputation for getting stuff done and delivering va
 | Become the go-to person for all things eCom on Android                                           | TBA                                                     | When something needs fixing related to eCom, "ask @cekrem" is a viable response (and I'm actually able to fix it) | Time and help understanding the various eCom payment flows |
 | Become a regular Open Source contributor                                                         | Decide which project(s) to contribute to                | Contribute monthly to at least one open source project with 100+ stars                                            |                                                            |
 
-# Long-term goals (Christmas '23)
+## Long-term goals (Christmas '23)
 
 | Goal                                                  | Next steps                                  | Success measures            | Support needed                                            |
 | ----------------------------------------------------- | ------------------------------------------- | --------------------------- | --------------------------------------------------------- |

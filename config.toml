@@ -135,8 +135,13 @@ weight = 1
 url = "about/"
 
 [[menu.main]]
-name = "Blog"
+name = "Development Plan"
 weight = 2
+url = "posts/devplan/"
+
+[[menu.main]]
+name = "Blog"
+weight = 3
 url = "posts/"
 
 ##############################

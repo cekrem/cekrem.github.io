@@ -13,7 +13,7 @@ date = "2021-07-07"
 
 - Telling stories in a creative way (AKA working in tech)
 - Music! Particularly playing drums or the guitar <3
-- Winning. Especially in Chess.
+- Super Smash Bros
 
 ## Top three values as a software engineer
 

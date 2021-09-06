@@ -17,6 +17,7 @@ description = "A surprisingly delightful dev blog!"
 keywords = "developer,personal"
 info = ["Senior Software Engineer", "@ vipps.io"]
 avatarURL = "images/avatar.jpg"
+images = ["images/featured.jpg"]
 #gravatar = "john.doe@example.com"
 footerContent = ""
 dateFormat = "January 2, 2006"

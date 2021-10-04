@@ -25,11 +25,13 @@ On my previous team, I had a reputation for getting stuff done and delivering va
 
 ## Hall of Fame
 
-| Achievement                                                                                                 | Notes                                                                                | Date       |
-| ----------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ | ---------- |
-| Created proper development plan                                                                             | I've put this off for a while, so finishing it before summer vacation feels _great_! | 2021-07-07 |
-| Created a surprisingly delightful tech blog :O                                                              | ... Initially just to host the above mentioned development plan. But hey!            | 2021-07-07 |
-| Codility August Challenge: [Golden award](https://app.codility.com/cert/view/certHZPW7W-29SSPZM7YGG6S5C9/)! | This one took a few tries, but it was generally a lot of fun!                        | 2021-08-18 |
+| Achievement                                                                                                 | Notes                                                                                                            | Date       |
+| ----------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------- |
+| Created proper development plan                                                                             | I've put this off for a while, so finishing it before summer vacation feels _great_!                             | 2021-07-07 |
+| Created a surprisingly delightful tech blog :O                                                              | ... Initially just to host the above mentioned development plan. But hey!                                        | 2021-07-07 |
+| Codility August Challenge: [Golden award](https://app.codility.com/cert/view/certHZPW7W-29SSPZM7YGG6S5C9/)! | This one took a few tries, but it was generally a lot of fun!                                                    | 2021-08-18 |
+| Released the first version of the Vipps app (2.94) featuring JetPack Compose!                               | On ConfirmVippsLoginFragment, to be specific. Part of the thorough refactoring planned before my parental leave. | 2021-09-06 |
+| Finished cleanup and refactoring of the Vipps Login module (including more Compose)!                        | Tech debt, begone!                                                                                               | 2021-09-30 |
 
 ## Short-term goals (before parental leave '21)
 

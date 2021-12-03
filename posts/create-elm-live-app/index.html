@@ -28,7 +28,7 @@ create-elm-live-app – the smallest npm package ever? · cekrem.github.io
 <link rel=icon type=image/png href=/images/favicon-16x16.png sizes=16x16>
 <link rel=apple-touch-icon href=/images/apple-touch-icon.png>
 <link rel=apple-touch-icon sizes=180x180 href=/images/apple-touch-icon.png>
-<meta name=generator content="Hugo 0.88.1">
+<meta name=generator content="Hugo 0.89.4">
 </head>
 <body class="preload-transitions colorscheme-auto">
 <div class=float-container>
@@ -113,8 +113,8 @@ The simplest possible solution (that actually works)
 </a>
 </h2>
 <p>At Vipps we&rsquo;re passionate about simplification, in fact &ldquo;world class simplification&rdquo; is pretty much the headline of our company. So – being a Vipps guy – I thought: What&rsquo;s the most minimal, easy, no-nonsense way to solve this? Is it possible – is it <em>moral?!</em> – to just add a <code>"bin"</code> entry to an otherwise vanilla package.json, pointing to a basic shell script? Turns out, it is! The following points to a simple (but perhaps not very pretty) <a href=https://github.com/cekrem/create-elm-live-app/blob/master/index.sh>index.sh</a> – and it works like a charm*.</p>
-<div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json><span>//</span> <span>Inside</span> <span>package.json:</span>
-<span style=font-style:italic>&#34;bin&#34;</span><span>:</span> {
+<div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json><span style=font-style:italic>// Inside package.json:
+</span><span style=font-style:italic></span><span style=font-style:italic>&#34;bin&#34;</span><span>:</span> {
     <span style=font-weight:700>&#34;create-elm-live-app&#34;</span>: <span style=font-style:italic>&#34;index.sh&#34;</span>
 }<span>,</span>
 </code></pre></div><p>It&rsquo;s <a href=https://www.npmjs.com/package/create-elm-live-app>published</a>. You&rsquo;re welcome :)</p>

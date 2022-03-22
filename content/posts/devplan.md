@@ -1,7 +1,7 @@
 +++
 title = "Development plan 2021-2023"
 description = "Level up with a plan!"
-date = "2021-07-07"
+date = "2022-03-22"
 tags = ["vipps", "personal development", "career"]
 +++
 
@@ -35,6 +35,7 @@ On my previous team, I had a reputation for getting stuff done and delivering va
 | Became the main Android contact person for Vipps Login                                                         | And contributed to assigning contact persons for other areas as well to minimize context switching and improve efficiency                                                                       | 2021-09-23 |
 | Codility September Challenge: [Golden award](https://app.codility.com/cert/view/certYKAH4G-WBU8JZU38KNHW964/)! | Brute force > elegance on this one. But it works :D                                                                                                                                             | 2021-10-04 |
 | Codility October Challenge: [Golden award](https://app.codility.com/cert/view/certA2U46J-NJ2WZX68FWEC8DQN/)!   | Brute force yet again. I did get silver with some nice fold'n'reduce in Kotlin, but apparently it was too slow: [Silver award](https://app.codility.com/cert/view/cert7BVS9Q-X9N2NRDY6DUYMJY5/) | 2021-10-12 |
+| Codility February Challenge: [Golden award](https://app.codility.com/cert/view/certN5JKFV-Q4F6SC3RUQGVTE9Z/)! | Golden award on first try! Good to be back after parental leave :D                                                                                                                                            | 2022-03-22 |
 
 ## Short-term goals (before parental leave '21)
 

@@ -1,7 +1,7 @@
 +++
 title = "Development plan 2021-2023"
 description = "Level up with a plan!"
-date = "2022-03-22"
+date = "2022-03-08"
 tags = ["vipps", "personal development", "career"]
 +++
 
@@ -26,7 +26,7 @@ On my previous team, I had a reputation for getting stuff done and delivering va
 ## Hall of Fame
 
 | Achievement                                                                                                    | Notes                                                                                                                                                                                           | Date       |
-| -------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
+|----------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|
 | Created proper development plan                                                                                | I've put this off for a while, so finishing it before summer vacation feels _great_!                                                                                                            | 2021-07-07 |
 | Created a surprisingly delightful tech blog :O                                                                 | ... Initially just to host the above mentioned development plan. But hey!                                                                                                                       | 2021-07-07 |
 | Codility August Challenge: [Golden award](https://app.codility.com/cert/view/certHZPW7W-29SSPZM7YGG6S5C9/)!    | This one took a few tries, but it was generally a lot of fun!                                                                                                                                   | 2021-08-18 |
@@ -35,19 +35,20 @@ On my previous team, I had a reputation for getting stuff done and delivering va
 | Became the main Android contact person for Vipps Login                                                         | And contributed to assigning contact persons for other areas as well to minimize context switching and improve efficiency                                                                       | 2021-09-23 |
 | Codility September Challenge: [Golden award](https://app.codility.com/cert/view/certYKAH4G-WBU8JZU38KNHW964/)! | Brute force > elegance on this one. But it works :D                                                                                                                                             | 2021-10-04 |
 | Codility October Challenge: [Golden award](https://app.codility.com/cert/view/certA2U46J-NJ2WZX68FWEC8DQN/)!   | Brute force yet again. I did get silver with some nice fold'n'reduce in Kotlin, but apparently it was too slow: [Silver award](https://app.codility.com/cert/view/cert7BVS9Q-X9N2NRDY6DUYMJY5/) | 2021-10-12 |
-| Codility February Challenge: [Golden award](https://app.codility.com/cert/view/certN5JKFV-Q4F6SC3RUQGVTE9Z/)! | Golden award on first try! Good to be back after parental leave :D                                                                                                                                            | 2022-03-22 |
+| Codility February Challenge: [Golden award](https://app.codility.com/cert/view/certN5JKFV-Q4F6SC3RUQGVTE9Z/)!  | Golden award on first try! Good to be back after parental leave :D                                                                                                                              | 2022-03-22 |
+| Reduced android build times on Azure by 80%!                                                                   | [Read about it](/posts/reducing-android-build-times-on-azure-by-80/)                                                                                                                            | 2022-04-08 |
 
 ## Short-term goals (before parental leave '21)
 
 | Goal                                                                         | Next steps                                                                                      | Success measures                                                                                                         | Support needed                                                                                                 |
-| ---------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------- |
+|------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------|
 | Create a habit of intentionally practicing hard deep-focus programming tasks | Do August challenge on Codility after summer vacation                                           | Complete all monthly challenges on Codility starting August '21, earn "Gold" on at least one out of three                | A predictable schedule is needed for this and other deep work tasks (i.e. same day meetings kept to a minimum) |
 | Become the go-to person for all things "Vipps Login" on Android              | Do a thorough refactoring and cleanup (together with Max) after v2 login endpoints are in place | When something needs fixing related to Vipps Login, "ask @cekrem" is a viable response (and I'm actually able to fix it) | Time to actually dig into the login code and do (sorely needed) refactoring                                    |
 
 ## Mid-term goals (before summer '22)
 
 | Goal                                                                                             | Next steps                                              | Success measures                                                                                             | Support needed                                             |
-| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------- |
+|--------------------------------------------------------------------------------------------------|---------------------------------------------------------|--------------------------------------------------------------------------------------------------------------|------------------------------------------------------------|
 | Make sure everyone on my team is familiar and confident with all things "Vipps Login" on Android | Schedule knowledge sharing session after v2 refactoring | Everyone in the team feels confident working on the "Vipps Login" part of our code base                      |                                                            |
 | Become a/the significant Android resource for all things eCom on Android                         | TBA                                                     | Become an empowering mentor and problem solver who enables the team to do amazing work across all eCom areas | Time and help understanding the various eCom payment flows |
 | Become a regular Open Source contributor                                                         | Decide which project(s) to contribute to                | Contribute monthly to at least one open source project with 100+ stars                                       |                                                            |
@@ -55,6 +56,6 @@ On my previous team, I had a reputation for getting stuff done and delivering va
 ## Long-term goals (Christmas '23)
 
 | Goal                                                  | Next steps                                  | Success measures            | Support needed                                            |
-| ----------------------------------------------------- | ------------------------------------------- | --------------------------- | --------------------------------------------------------- |
+|-------------------------------------------------------|---------------------------------------------|-----------------------------|-----------------------------------------------------------|
 | Become a Level 4 Engineer at Vipps ("staff engineer") | Start writing regularly for Vipps @ Medium? | "My manager says so"?       | I need help defining more concrete goals and growth areas |
 | Become the go-to guy for all things JetPack Compose   | TBA                                         | Hosting a Compose workshop? |                                                           |

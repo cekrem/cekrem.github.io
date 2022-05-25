@@ -5,17 +5,34 @@ date = "2022-03-08"
 tags = ["vipps", "personal development", "career"]
 +++
 
-What follows is my own personal development plan as a software engineer at [Vipps](https://vipps.io). Some terms and expressions are a bit internal, as they will no doubt be for you as well on your own plan (should you find yourself inspired to write one), but I'll leave it as is. Enjoy!
+What follows is my own personal development plan as a software engineer at [Vipps](https://vipps.io). Some terms and
+expressions are a bit internal, as they will no doubt be for you as well on your own plan (should you find yourself
+inspired to write one), but I'll leave it as is. Enjoy!
 
 ---
 
 ## Context
 
-I've been at [Vipps](https://vipps.io) since 2018, mostly doing work that now belongs in the "Merchant Core" team. I created a few small backend services from scratch (a very fun QR code generator, to name one), deprecated a few others (let's not name those ever again...), helped kick off the Vipps Design System and most significantly worked on the Vipps Merchant Portal and on automating merchant signup, risk analysis and onboarding. I've hosted a Vipps Community Of Practice plainly called "Side Projects And Experiments" (SPÆ) where I've touched on quite a lot of exciting tech and tried a few non-mainstream programming languages. Still 90% of my "real" work has been with Golang and React. And lot's(!) of complex SQL. In mid 2020, I decided to expand my horizon and challenge myself by doing something completely other; I learned Kotlin during my summer holidays, and joined the Android app to learn from Norway's best app developers. So the Android team is where I'm at now; the eCom and Vipps Login sub team more specifically.
+I've been at [Vipps](https://vipps.io) since 2018, mostly doing work that now belongs in the "Merchant Core" team. I
+created a few small backend services from scratch (a very fun QR code generator, to name one), deprecated a few others (
+let's not name those ever again...), helped kick off the Vipps Design System and most significantly worked on the Vipps
+Merchant Portal and on automating merchant signup, risk analysis and onboarding. I've hosted a Vipps Community Of
+Practice plainly called "Side Projects And Experiments" (SPÆ) where I've touched on quite a lot of exciting tech and
+tried a few non-mainstream programming languages. Still 90% of my "real" work has been with Golang and React. And
+lot's(!) of complex SQL. In mid 2020, I decided to expand my horizon and challenge myself by doing something completely
+other; I learned Kotlin during my summer holidays, and joined the Android app to learn from Norway's best app
+developers. So the Android team is where I'm at now; the eCom and Vipps Login sub team more specifically.
 
 ## What do I want to be doing that I'm not doing now?
 
-On my previous team, I had a reputation for getting stuff done and delivering value efficiently. I also did quite a bit of mentoring and had a few internal talks on Golang development, and did the occasional "Show and Tell" on frontend stuff. I want to grow into being able to do the same on my new team, where I'm less technically experienced (Android development) and have less domain knowledge (eCom and apps in general). As an Android developer, I would like to obtain the same skill level and expertise that I currently have in Golang and React. I want to keep being an empowering mentor in the new team as well, and bring value to the company both through mentoring/sponsoring and actual code. I'd like to, in time, become the CPS – Chief Problem Solver – on all tings Android/eCom specific, and provide meaningful insight from my combined backend and app development experience.
+On my previous team, I had a reputation for getting stuff done and delivering value efficiently. I also did quite a bit
+of mentoring and had a few internal talks on Golang development, and did the occasional "Show and Tell" on frontend
+stuff. I want to grow into being able to do the same on my new team, where I'm less technically experienced (Android
+development) and have less domain knowledge (eCom and apps in general). As an Android developer, I would like to obtain
+the same skill level and expertise that I currently have in Golang and React. I want to keep being an empowering mentor
+in the new team as well, and bring value to the company both through mentoring/sponsoring and actual code. I'd like to,
+in time, become the CPS – Chief Problem Solver – on all tings Android/eCom specific, and provide meaningful insight from
+my combined backend and app development experience.
 
 <!--## Growth areas-->
 
@@ -27,12 +44,14 @@ On my previous team, I had a reputation for getting stuff done and delivering va
 
 | Achievement                                                                                                    | Notes                                                                                                                                                                                           | Date       |
 |----------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|
-| Created proper development plan                                                                                | I've put this off for a while, so finishing it before summer vacation feels _great_!                                                                                                            | 2021-07-07 |
+| Created proper development plan                                                                                | I've put this off for a while, so finishing it before summer vacation feels _                                                                                                                   |            |
+| great_!                                                                                                        | 2021-07-07                                                                                                                                                                                      |            |
 | Created a surprisingly delightful tech blog :O                                                                 | ... Initially just to host the above mentioned development plan. But hey!                                                                                                                       | 2021-07-07 |
 | Codility August Challenge: [Golden award](https://app.codility.com/cert/view/certHZPW7W-29SSPZM7YGG6S5C9/)!    | This one took a few tries, but it was generally a lot of fun!                                                                                                                                   | 2021-08-18 |
 | Released the first version of the Vipps app (2.94) featuring JetPack Compose!                                  | On ConfirmVippsLoginFragment, to be specific. Part of the thorough refactoring planned before my parental leave.                                                                                | 2021-09-06 |
 | Finished cleanup and refactoring of the Vipps Login module (including more Compose)!                           | Tech debt, begone!                                                                                                                                                                              | 2021-09-30 |
 | Became the main Android contact person for Vipps Login                                                         | And contributed to assigning contact persons for other areas as well to minimize context switching and improve efficiency                                                                       | 2021-09-23 |
+| Hosted Jetpack Compose Workshop                                                                                | Showcasing compose tests and hybrid tests (composables/views)                                                                                                                                   | 2021-09-25 |
 | Codility September Challenge: [Golden award](https://app.codility.com/cert/view/certYKAH4G-WBU8JZU38KNHW964/)! | Brute force > elegance on this one. But it works :D                                                                                                                                             | 2021-10-04 |
 | Codility October Challenge: [Golden award](https://app.codility.com/cert/view/certA2U46J-NJ2WZX68FWEC8DQN/)!   | Brute force yet again. I did get silver with some nice fold'n'reduce in Kotlin, but apparently it was too slow: [Silver award](https://app.codility.com/cert/view/cert7BVS9Q-X9N2NRDY6DUYMJY5/) | 2021-10-12 |
 | Codility February Challenge: [Golden award](https://app.codility.com/cert/view/certN5JKFV-Q4F6SC3RUQGVTE9Z/)!  | Golden award on first try! Good to be back after parental leave :D                                                                                                                              | 2022-03-22 |

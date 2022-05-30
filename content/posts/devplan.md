@@ -74,7 +74,7 @@ my combined backend and app development experience.
 
 ## Long-term goals (Christmas '23)
 
-| Goal                                                  | Next steps                                             | Success measures            | Support needed                                            |
-|-------------------------------------------------------|--------------------------------------------------------|-----------------------------|-----------------------------------------------------------|
-| Become a Level 4 Engineer at Vipps ("staff engineer") | Start blogging semi-regularly and have a larger impact | "My manager says so"?       | I need help defining more concrete goals and growth areas |
-| Become the go-to guy for all things JetPack Compose   | TBA                                                    | Hosting a Compose workshop? |                                                           |
+| Goal                                                  | Next steps                                             | Success measures          | Support needed                                            |
+|-------------------------------------------------------|--------------------------------------------------------|---------------------------|-----------------------------------------------------------|
+| Become a go-to guy for all things JetPack Compose     | Rewrite most of "Vipps Login" using Compose            | Host a Compose workshop √ |                                                           |
+| Become a Level 4 Engineer at Vipps ("staff engineer") | Start blogging semi-regularly and have a larger impact | "My manager says so"?     | I need help defining more concrete goals and growth areas |

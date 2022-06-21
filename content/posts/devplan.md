@@ -19,9 +19,9 @@ let's not name those ever again...), helped kick off the Vipps Design System and
 Merchant Portal and on automating merchant signup, risk analysis and onboarding. I've hosted a Vipps Community Of
 Practice plainly called "Side Projects And Experiments" (SPÆ) where I've touched on quite a lot of exciting tech and
 tried a few non-mainstream programming languages. Still 90% of my "real" work has been with Golang and React. And
-lot's(!) of complex SQL. In mid 2020, I decided to expand my horizon and challenge myself by doing something completely
-other; I learned Kotlin during my summer holidays, and joined the Android app to learn from Norway's best app
-developers. So the Android team is where I'm at now; the eCom and Vipps Login sub team more specifically.
+lot's(!) of complex SQL. [In mid 2020, I decided to expand my horizon and challenge myself by doing something completely
+other](/posts/changing-jobs-without-leaving-your-company); I learned Kotlin during my summer holidays, and joined the Android app to learn from Norway's best app
+developers. So the Android team is where I'm at now; the ~eCom~ Recurring Payments and Vipps Login subteams more specifically.
 
 ## What do I want to be doing that I'm not doing now?
 
@@ -72,9 +72,9 @@ my combined backend and app development experience.
 | Become a/the significant Android resource for all things eCom on Android                         | TBA                                                     | Become an empowering mentor and problem solver who enables the team to do amazing work across all eCom areas | Time and help understanding the various eCom payment flows |
 | Become a regular Open Source contributor                                                         | Decide which project(s) to contribute to                | Contribute monthly to at least one open source project with 100+ stars                                       |                                                            |
 
-## Long-term goals (Christmas '23)
+## Long-term goals
 
 | Goal                                                  | Next steps                                             | Success measures          | Support needed                                            |
 |-------------------------------------------------------|--------------------------------------------------------|---------------------------|-----------------------------------------------------------|
-| Become a go-to guy for all things JetPack Compose     | Rewrite most of "Vipps Login" using Compose            | Host a Compose workshop √ |                                                           |
+| Become a go-to guy for all things JetPack Compose     | Rewrite most of "Vipps Login" using Compose √          | Host a Compose workshop √ |                                                           |
 | Become a Level 4 Engineer at Vipps ("staff engineer") | Start blogging semi-regularly and have a larger impact | "My manager says so"?     | I need help defining more concrete goals and growth areas |

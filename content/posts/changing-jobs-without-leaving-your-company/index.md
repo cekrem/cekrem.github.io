@@ -1,7 +1,6 @@
 ---
 title: "Changing Jobs Without Leaving Your Company"
-date: 2022-06-20T12:00:21+02:00
-draft: true
+date: 2022-06-21T07:00:15+02:00
 tags: ["vipps", "career", "programming", "app development", "golang", "react", "kotlin", "android"]
 ---
 
@@ -33,7 +32,7 @@ Before I knew it, I had applied for a position as an Android Developer. Where? @
 friends were still nearby, as well as some of Norway's finest Android guys. I got to know new people, but we didn't
 start completely from scratch. I got to do something _other_ and learn something completely new, but – and this is a
 quite interesting part – I was still treated like a senior developer. I had a track record at the company that gave me a
-head start I would have completely missed out on if I left the company. True, I could have taken on a position more
+head start I would have completely missed out on if I left. True, I could have taken on a position more
 similar to the one I had, but that would sort of defeat the purpose of changing jobs in the first place. When
 transferring within the company, it turned out, I could make an even _bigger_ change. Trust was established, and we
 shared both history and values.
@@ -51,16 +50,25 @@ domain-specific things that one needs to learn from scratch, but at the end of t
 architects, problem solvers, code reviewers and team players – regardless of platform and language. Not everything you
 learn will be directly transferable to other areas, but your overall understanding of tech, product and problem-solving
 will improve nonetheless. And, to be a bit technical it turns out my timing was awesome. Jetpack Compose is the new big
-thing in Android, and it's basically kind of React ¯\\_(ツ)_/¯. So long, RecyclerView and XML, I hope we never meet
-again!
+thing in Android, and it's basically kind of React ¯\\_(ツ)_/¯. So long, RecyclerView and XML; our brief encounter was
+more than enough! Bonus perk: When I get bored and fed up with doing Android all day, I have quite a few opportunities
+to help out on projects that require skills from my pre app developer era at Vipps, which I enjoy a lot more now than
+when that was all I did. Win-win!
 
 # What if my boss says no?
 
-Tell him/her to read this post and reconsider. Ask "what would this switch have to look like in two months to be
-considered a success?", and commit to reaching those goals. Chances are they're more reasonable than you're afraid of.
-Willingly submit yourself to be coached and evaluated regularly. What if you actually nail this? Although this shouldn't
-be your opening line, the fact is: If push comes to shove it might boil down to whether or not you make the switch
-within the company or leave the company.
+- Tell him/her to read this post and reconsider.
+- Ask "what would this switch have to look like in two months time to be
+  considered a success?", and commit to reaching those goals. Chances are they're more reasonable than you're afraid of.
+- Willingly submit yourself to be coached and evaluated regularly. What if you actually nail this?
+- Agree on a mutual escape clause. What if the grass wasn't greener on the other side after all? Or what if you didn't
+  quite have what it takes to succeed in that other area (yet)? If so you should have a
+  plan on how to celebrate finding it out in the safe context of a healthy experiment. (I assure you, this is still
+  cheaper than replacing you!)
+- Although this shouldn't be your opening line, the fact is: When push comes to shove it might boil down to whether or
+  not you make the switch within the company or leave the company.
 
 ---
 ![Nope.](nope.gif)
+
+️Notice the helmet ☝️

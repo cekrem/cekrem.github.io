@@ -29,6 +29,7 @@ $ npm install -g ripnote
 ```
 
 And then:
+---
 ![ripnote](https://github.com/cekrem/ripnote/raw/main/screenshot.gif)
 
 

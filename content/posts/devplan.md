@@ -5,7 +5,7 @@ date = "2023-01-16"
 tags = ["vipps", "personal development", "career"]
 +++
 
-What follows is my own personal development plan as a software engineer at [Vipps](https://vipps.io). Some terms and
+What follows is my own personal development plan as a software engineer at ~~[Vipps](https://vipps.io)~~ [Vipps MobilePay](https://vippsmobilepay.com). Some terms and
 expressions are a bit internal, as they will no doubt be for you as well on your own plan (should you find yourself
 inspired to write one), but I'll leave it as is. Enjoy!
 
@@ -13,7 +13,7 @@ inspired to write one), but I'll leave it as is. Enjoy!
 
 ## Context
 
-I've been at [Vipps](https://vipps.io) since 2018, mostly doing work that now belongs in the "Merchant Core" team. I
+I've been at [Vipps MobilePay](https://vippsmobilepay.com) since 2018, mostly doing work that now belongs in the "Merchant Core" team. I
 created a few small backend services from scratch (a very fun QR code generator, to name one), deprecated a few others (
 let's not name those ever again...), helped kick off the Vipps Design System and most significantly worked on the Vipps
 Merchant Portal and on automating merchant signup, risk analysis and onboarding. I've hosted a Vipps Community Of
@@ -60,7 +60,7 @@ my combined backend and app development experience.
 | Got the Android build times article published on [The Vipps blog](https://medium.com/vipps)                                                                                                               | ...Which was actually one of my L4 goals :D                                                                                                                                                     | 2022-06-21 |
 | Got the Android build times article published on [Kode24.no](https://www.kode24.no/artikkel/christian-byttet-jobb-internt-jeg-tror-dette-byttet-har-gjort-meg-til-en-bedre-utvikler/76546486) (Norwegian) | #larger-community-impact                                                                                                                                                                        | 2022-06-30 |
 | Finished a complete rewrite of Vipps Login                                                                                                                                                                | Compose navigation, no fragments, proper view state and view effects                                                                                                                            | 2022-10-06 |
-| Rewrote the payment handler for recurring payments(!)                                                                                                                                                     | AKA "confronting the Vipps Payments dragon without wetting my pants"                                                                                                                            | 2023-01-13 |
+| Rewrote the payment handler for recurring payments (kind of a big deal!)                                                                                                                                  | AKA "confronting the Vipps Payments dragon without wetting my pants"                                                                                                                            | 2023-01-13 |
 
 ## Short-term goals (before parental leave '21)
 

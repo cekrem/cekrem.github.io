@@ -91,4 +91,4 @@ my combined backend and app development experience.
 |-------------------------------------------------------------------------------------------|-----------------------------|
 | Become a JetPack Compose mentor for new (and old) app developers                          | √                           |
 | Take point on the technical part of recruitment/interviews, and make a new technical task | √                           |
-| Understand the all in-app business logic regarding payments, aka "Slay The Vipps Dragon"  | WIP, but it's getting close |
+| Understand all the in-app business logic regarding payments, aka "Slay The Vipps Dragon"  | WIP, but it's getting close |

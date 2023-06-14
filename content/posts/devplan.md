@@ -1,11 +1,14 @@
 +++
 title = "Development plan 2021-2023"
 description = "Level up with a plan!"
-date = "2023-01-16"
+date = "2023-06-13"
 tags = ["vipps", "personal development", "career"]
 +++
 
-What follows is my own personal development plan as a software engineer at ~~[Vipps](https://vipps.io)~~ [Vipps MobilePay](https://vippsmobilepay.com). Some terms and
+**Update: This plan is now archived. See [The End of an Era](/posts/the-end-of-an-era) for details.**
+
+What follows is my own personal development plan as a software engineer at
+~~[Vipps](https://vipps.io)~~ [Vipps MobilePay](https://vippsmobilepay.com). Some terms and
 expressions are a bit internal, as they will no doubt be for you as well on your own plan (should you find yourself
 inspired to write one), but I'll leave it as is. Enjoy!
 
@@ -22,7 +25,8 @@ tried a few non-mainstream programming languages. Still 90% of my "real" work ha
 lot's(!) of complex SQL. [In mid 2020, I decided to expand my horizon and challenge myself by doing something completely
 other](/posts/changing-jobs-without-leaving-your-company); I learned Kotlin during my summer holidays, and joined the
 Android app to learn from Norway's best app
-developers. So the Android team is where I'm at now; the ~~eCom~~ Recurring Payments and Vipps Login subteams more
+developers. So the Android team is where I'm at now; the ~~
+eCom~~ Recurring Payments and Vipps Login subteams more
 specifically.
 
 ## What do I want to be doing that I'm not doing now?
@@ -45,7 +49,7 @@ my combined backend and app development experience.
 ## Hall of Fame
 
 | Achievement                                                                                                                                                              | Notes                                                                                                                                                                                           | Date       |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
+|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------|
 | Created proper development plan                                                                                                                                          | I've put this off for a while, so finishing it before summer vacation feels _ great_!                                                                                                           | 2021-07-07 |
 | Created a surprisingly delightful tech blog :O                                                                                                                           | ... Initially just to host the above mentioned development plan. But hey!                                                                                                                       | 2021-07-07 |
 | Codility August Challenge: [Golden award](https://app.codility.com/cert/view/certHZPW7W-29SSPZM7YGG6S5C9/)!                                                              | This one took a few tries, but it was generally a lot of fun!                                                                                                                                   | 2021-08-18 |
@@ -65,30 +69,30 @@ my combined backend and app development experience.
 ## Short-term goals (before parental leave '21)
 
 | Goal                                                                         | Next steps                                                                                      | Success measures                                                                                                         | Support needed                                                                                                 |
-| ---------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------- |
+|------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------|
 | Create a habit of intentionally practicing hard deep-focus programming tasks | Do August challenge on Codility after summer vacation                                           | Complete all monthly challenges on Codility starting August '21, earn "Gold" on at least one out of three                | A predictable schedule is needed for this and other deep work tasks (i.e. same day meetings kept to a minimum) |
 | Become the go-to person for all things "Vipps Login" on Android              | Do a thorough refactoring and cleanup (together with Max) after v2 login endpoints are in place | When something needs fixing related to Vipps Login, "ask @cekrem" is a viable response (and I'm actually able to fix it) | Time to actually dig into the login code and do (sorely needed) refactoring                                    |
 
 ## Mid-term goals (before summer '22)
 
 | Goal                                                                                             | Next steps                                              | Success measures                                                                                             | Support needed                                             |
-| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------- |
+|--------------------------------------------------------------------------------------------------|---------------------------------------------------------|--------------------------------------------------------------------------------------------------------------|------------------------------------------------------------|
 | Make sure everyone on my team is familiar and confident with all things "Vipps Login" on Android | Schedule knowledge sharing session after v2 refactoring | Everyone in the team feels confident working on the "Vipps Login" part of our code base                      |                                                            |
 | Become a/the significant Android resource for all things eCom on Android                         | TBA                                                     | Become an empowering mentor and problem solver who enables the team to do amazing work across all eCom areas | Time and help understanding the various eCom payment flows |
 | Become a regular Open Source contributor                                                         | Decide which project(s) to contribute to                | Contribute monthly to at least one open source project with 100+ stars                                       |                                                            |
 
 ## Long-term goals
 
-| Goal                                                  | Next steps                                                                                                      | Success measures                                                                                                              | Support needed                                   |
-| ----------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------ |
-| Become a go-to guy for all things JetPack Compose     | Rewrite most of "Vipps Login" using Compose √                                                                   | Host a Compose workshop √                                                                                                     |                                                  |
-| Become a Level 4 Engineer at Vipps ("staff engineer") | Start blogging semi-regularly and have a larger impact ([The Vipps blog @ Medium?](https://medium.com/vipps)) √ | Be officially recognized as a Software Engineer L4 (aka "Software Architect”, “Computer Scientist”, "Staff Engineer") @ Vipps | Define milestones with my manager (√), see below |
-| Make a new dev plan for the road ahead beyond Level 4 | Some time off, and potentially some coaching?                                                                   | To be more passionate and inspired than ever when approaching the next couple of years                                        |                                                  |
+| Goal                                                  | Next steps                                                                                                      | Success measures                                                                                                                 | Support needed                                   |
+|-------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------|
+| Become a go-to guy for all things JetPack Compose     | Rewrite most of "Vipps Login" using Compose √                                                                   | Host a Compose workshop √                                                                                                        |                                                  |
+| Become a Level 4 Engineer at Vipps ("staff engineer") | Start blogging semi-regularly and have a larger impact ([The Vipps blog @ Medium?](https://medium.com/vipps)) √ | Be officially recognized as a Software Engineer L4 (aka "Software Architect”, “Computer Scientist”, "Staff Engineer") @ Vipps √! | Define milestones with my manager (√), see below |
+| Make a new dev plan for the road ahead beyond Level 4 | Some time off, and potentially some coaching?                                                                   | To be more passionate and inspired than ever when approaching the next couple of years                                           |                                                  |
 
 ## "Level 4" TODO-list from previous annual appraisal interview
 
-| Task                                                                                      | Status                      |
-| ----------------------------------------------------------------------------------------- | --------------------------- |
-| Become a JetPack Compose mentor for new (and old) app developers                          | √                           |
-| Take point on the technical part of recruitment/interviews, and make a new technical task | √                           |
-| Understand all the in-app business logic regarding payments, aka "Slay The Vipps Dragon"  | WIP, but it's getting close |
+| Task                                                                                                                                    | Status |
+|-----------------------------------------------------------------------------------------------------------------------------------------|--------|
+| Become a JetPack Compose mentor for new (and old) app developers                                                                        | √      |
+| Take point on the technical part of recruitment/interviews, and make a new technical task                                               | √      |
+| Understand the in-app business logic regarding payments and rewrite most of the payment confirmation stuff, aka "Slay The Vipps Dragon" | √      |

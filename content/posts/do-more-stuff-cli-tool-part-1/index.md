@@ -7,7 +7,7 @@ tags = ["cli", "ui", "npm package", "react", "ink"]
 
 ## Where do UIs belong?
 
-Most of consider ReactJS a tool for rendering UI components on the web (or the DOM, specifically), and if by "React" we mean "ReactDOM" then we're right. But as we've seen with React Native, React is not confined to the DOM at all, and can render to any number of environments. After all, like it says on the box, React is a "JavaScript library for building user interfaces". We've seen the same with [Compose Multiplatform](https://www.jetbrains.com/lp/compose-multiplatform/): what used to be a framework for creating Android UI can actually be used for so much more.
+Most of us consider ReactJS a tool for rendering UI components on the web (or the DOM, specifically), and if by "React" we mean "ReactDOM" then we're right. But as we've seen with React Native, React is not confined to the DOM at all, and can render to any number of environments. After all, like it says on the box, React is a "JavaScript library for building user interfaces". We've seen the same with [Compose Multiplatform](https://www.jetbrains.com/lp/compose-multiplatform/): what used to be a framework for creating Android UI can actually be used for so much more.
 
 Personally I think the actual _rendering_ part of both React and Compose is super interesting! But it feels a bit overwhelming to dive in to all that's going on when interacting with the DOM, let alone the mobile targets with all their domain specific weirdness. If only there was an even simpler environment where a UI could live. Something a lot more constrained and minimalistic than web/mobile, and ideally something I'm already familiar with...
 

@@ -1,7 +1,7 @@
 +++ 
 date = 2023-08-29
 title = "Exploring UIs in the terminal part 1: React/Ink"
-description = ""
+description = "Creating a React app!"
 tags = ["cli", "ui", "npm package", "react", "ink"]
 +++
 

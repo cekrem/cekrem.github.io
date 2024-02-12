@@ -2,7 +2,7 @@
 draft = false
 date = 2024-02-12T08:45:30+01:00
 title = "Going back(end) to the old gym!"
-description = "There and back(end) again: a developer's tale yet to be concluded."
+description = "There and back(end) again: a developer's tale by a follower of Jesus."
 slug = ""
 authors = []
 tags = ["vipps mobilepay", "career", "programming", "app development", "kotlin", "android", "life", "jesus"]
@@ -20,7 +20,7 @@ Speaking of Jesus, he said that he came that we would have _life abundantly_ (Jo
 
 Civilized in 2024, I propose, isn't laziness or reluctance to commit or not trying hard enough. Rather, it often looks like working at least full time, outsourcing your parenting and dividing your precious time on chasing the wind - all to win treasure, while not really treasuring anything. Not _quite_ present neither here nor there, least of all to what really matters. Being connected in all the wrong ways, and few of the right ones. So **I've decided not to be civilized**, because quite frankly I can't. Not while raising three giant killers, and not while being present with my wife, those important to me and my surroundings in general. Not while following a man, The Man, whose walking pace is often provocatively slow. There are far too many moving parts, and too much divided attention. To hell with the hustle: I need time and space for my soul to breathe and my heart to slow down, and I've learned that both how much I work and _how_ I work matter in this regard. If civilized means giving up on that "life abundantly", then I'm officially out.
 
-## What to do?
+## Getting my life back
 
 So I'm ruthlessly eliminating things that sabotage the abundant life I was given, and when dealing with how I work it looks like this: instead of switching context all too often, being in a constant high gear moving between teams, I'll broaden my toolbox and confine myself to one team. More specifically I'll do both Android and backend (Spring/Kotlin) in the Benefits team of Vipps MobilePay. Hopefully I can learn how to slow down a bit as well, watching the scenery and enjoying the process, being mindful of who I'm becoming (more than how much I can get done - keep reading). And I'm setting aside one extra day per week to make sure I don't get lost; a day without work, Slack, email, coding or any of that. As a radical means to stay healthy, happy and to enjoy life abundantly, and as a safe-guard against slipping into Civilized. Having some margin in my life is a good thing, if ever there was one, so I want to be intentional about it.
 

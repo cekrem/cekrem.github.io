@@ -16,7 +16,7 @@ author = "Christian Ekrem"
 description = "A surprisingly delightful dev blog!"
 keywords = "developer,personal"
 info = ["Staff Engineer", "@ Vipps MobilePay"]
-avatarURL = "images/avatar.jpg"
+avatarURL = "images/avatar.png"
 images = ["images/featured-with-margins.png"]
 #gravatar = "john.doe@example.com"
 footerContent = ""
@@ -84,10 +84,10 @@ code = "cekrem"
 #imgsrc = ["'self'", "cdn.buymeacoffee.com"]
 #objectsrc = ["'none'"]
 #stylesrc = [
-  #"'self'",
-  #"'unsafe-inline'",
-  #"fonts.googleapis.com/",
-  #"cdn.jsdelivr.net/"
+#"'self'",
+#"'unsafe-inline'",
+#"fonts.googleapis.com/",
+#"cdn.jsdelivr.net/"
 #]
 #scriptsrc = ["'self'", "'unsafe-inline'", "gc.zgo.at",  "cdnjs.buymeacoffee.com"]
 #prefetchsrc = ["'self'"]

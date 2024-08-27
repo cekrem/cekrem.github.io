@@ -15,7 +15,7 @@ enableEmoji = true
 author = "Christian Ekrem"
 description = "A surprisingly delightful dev blog!"
 keywords = "developer,personal"
-info = ["Staff Engineer", "@ Vipps MobilePay"]
+info = ["Staff Engineer"]
 avatarURL = "images/avatar.png"
 images = ["images/featured-with-margins.png"]
 #gravatar = "john.doe@example.com"
@@ -124,11 +124,11 @@ icon = "fa fa-instagram"
 weight = 3
 url = "https://www.instagram.com/christian_ekrem/"
 
-[[params.social]]
-name = "Website"
-icon = "fa fa-building"
-weight = 4
-url = "https://vippsmobilepay.com"
+#[[params.social]]
+#name = "Website"
+#icon = "fa fa-building"
+#weight = 4
+#url = "https://vippsmobilepay.com"
 
 [[menu.main]]
 name = "About"

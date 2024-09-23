@@ -1,1 +1,14 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Git on cekrem.github.io</title><link>https://cekrem.github.io/tags/git/</link><description>Recent content in Git on cekrem.github.io</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Wed, 07 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://cekrem.github.io/tags/git/index.xml" rel="self" type="application/rss+xml"/><item><title>pretty-git-report – a CLI to give you daily commit metrics</title><link>https://cekrem.github.io/posts/git-report/</link><pubDate>Wed, 07 Jul 2021 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/git-report/</guid><description>Have you ever&amp;hellip; Link to heading Wanted to track your daily additions and deletions without leaving your beloved terminal? Busted your back piping git log {insert-hundred-flags} through endless hoops trying to create a somewhat human readable and useful output? Wanted to use a functional node.js cli with an immoral amount of Rambda usage? (Sorry about that, btw, I just wanted to see how far I could go. Quite far, it turns out!</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Git on cekrem.github.io</title><link>https://cekrem.github.io/tags/git/</link><description>Recent content in Git on cekrem.github.io</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Wed, 07 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://cekrem.github.io/tags/git/index.xml" rel="self" type="application/rss+xml"/><item><title>pretty-git-report – a CLI to give you daily commit metrics</title><link>https://cekrem.github.io/posts/git-report/</link><pubDate>Wed, 07 Jul 2021 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/git-report/</guid><description>&lt;h2 id="have-you-ever">
+ Have you ever&amp;hellip;
+ &lt;a class="heading-link" href="#have-you-ever">
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
+ &lt;span class="sr-only">Link to heading&lt;/span>
+ &lt;/a>
+&lt;/h2>
+&lt;ul>
+&lt;li>Wanted to track your daily additions and deletions without leaving your beloved terminal?&lt;/li>
+&lt;li>Busted your back piping &lt;code>git log {insert-hundred-flags}&lt;/code> through endless hoops trying to create a somewhat human readable and useful output?&lt;/li>
+&lt;li>Wanted to use a functional node.js cli with an immoral amount of &lt;a href="https://ramdajs.com/" class="external-link" target="_blank" rel="noopener">Rambda&lt;/a> usage? (Sorry about that, btw, I just wanted to see how far I could go. &lt;a href="https://github.com/cekrem/pretty-git-report/blob/master/index.js" class="external-link" target="_blank" rel="noopener">Quite far&lt;/a>, it turns out!)&lt;/li>
+&lt;li>Wished you would live to see a tool (any tool at all) that treverses a directory tree - :O – concurrently?&lt;/li>
+&lt;/ul>
+&lt;p>Then look no further. Lo and behold:&lt;/p></description></item></channel></rss>

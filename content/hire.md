@@ -7,12 +7,16 @@ date = "2021-10-10"
 
 I'm a seasoned tech professional with over a decade of experience in crafting efficient, performant, and elegant code. My passion lies in deep work, empowering leadership, and solving complex and challenging problems.
 
-### Core Skills (excerpt, see [full CV](/cv.pdf))
+My favorite part of my professional tech career (so far) has been my time with [Vipps Mobile Pay](https://vippsmobilepay.com). The CEO had the following to say when [I left the company after six exciting years](https://www.linkedin.com/feed/update/urn:li:activity:7233757597424615424?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7233757597424615424%2C7234097920667435012%29&dashCommentUrn=urn%3Ali%3Afsd_comment%3A%287234097920667435012%2Curn%3Ali%3Aactivity%3A7233757597424615424%29):
+
+> Thank you so much for all your contributions in Vipps. We had the privilege to have you as colleague from the very beginning of our history as a separate company. You have truly been a crucial resource in many different areas in Vipps from merchant experience to loyalty and a lot more. Thank you so much for being an important part of where Vipps is today
+
+### Core Skills (a small excerpt, see [CV](/cv.pdf) for a more comprehensive list)
 
 - **Languages**: Golang, Kotlin, Python, React
 - **Additional Experience**: Java, C#/.net, PHP
 - **Exploring**: Common Lisp, Elm, Haskell, Rust
-- **Cloud platform**: Azure, GCP, AWS – you name it
+- **Cloud platforms**: Azure, GCP, AWS – you name it
 
 ## What Sets Me Apart
 

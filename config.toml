@@ -18,8 +18,8 @@ keywords = "developer,personal"
 info = ["Staff Engineer"]
 avatarURL = "images/avatar.png"
 images = ["images/featured-with-margins.png"]
-#gravatar = "john.doe@example.com"
 footerContent = ""
+#gravatar = "john.doe@example.com"
 dateFormat = "January 2, 2006"
 hideFooter = false
 hideCredits = true
@@ -129,20 +129,26 @@ url = "https://www.instagram.com/christian_ekrem/"
 #icon = "fa fa-building"
 #weight = 4
 #url = "https://vippsmobilepay.com"
+#
+#
+[[menu.main]]
+name = "Hire me?"
+weight = 1
+url = "hire/"
 
 [[menu.main]]
 name = "About"
-weight = 1
+weight = 2
 url = "about/"
 
 [[menu.main]]
 name = "Development Plan"
-weight = 2
+weight = 3
 url = "posts/devplan/"
 
 [[menu.main]]
 name = "Blog"
-weight = 3
+weight = 4
 url = "posts/"
 
 ##############################

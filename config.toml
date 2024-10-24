@@ -151,6 +151,9 @@ name = "Blog"
 weight = 4
 url = "posts/"
 
+[markup.goldmark.renderer]
+unsafe = true
+
 ##############################
 # [[languages.en.menu.main]] #
 # name = "Contact me"        #

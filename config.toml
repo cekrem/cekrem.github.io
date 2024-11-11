@@ -124,6 +124,12 @@ icon = "fa fa-instagram"
 weight = 3
 url = "https://www.instagram.com/christian_ekrem/"
 
+[[params.social]]
+name = "CV"
+icon = "fa fa-file"
+weight = 4
+url = "/cv.pdf"
+
 #[[params.social]]
 #name = "Website"
 #icon = "fa fa-building"

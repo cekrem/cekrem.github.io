@@ -22,25 +22,27 @@ My favorite part of my professional tech career (so far) has been my time with [
 
 1. **Technical Versatility**: My experience spans a wide range of technologies and programming paradigms. I'm equally comfortable diving into complex code architectures, optimizing system performance, or architecting scalable solutions.
 
-2. **Effective Communicator**: Beyond my technical skills, I excel at translating complex concepts for diverse audiences. This skill enhances collaboration within cross-functional teams and ensures clear communication with stakeholders at all levels.
+2. **Effective Communicator**: I excel at translating complex concepts for diverse audiences. This skill enhances collaboration within cross-functional teams and ensures clear communication with stakeholders at all levels.
 
 3. **Adaptability**: I thrive on new challenges and rapidly adapt to emerging technologies and methodologies. My diverse background has honed my ability to quickly grasp new concepts and apply them effectively.
 
-4. **Problem Solver**: I excel at tackling "impossible" tasks and finding innovative solutions, approaching problems from multiple angles to deliver optimal results.
+4. **Problem Solver**: I genuinely enjoy tackling "impossible" tasks and finding innovative solutions, approaching problems from multiple angles to deliver optimal results.
 
 5. **Reliability**: Whether you need a quick deployment or long-term, maintainable code, I consistently deliver high-quality results on time.
+
+Beyond my tech background, I've worked as a film and television professional, serving as both director and cinematographer. I've also taught at a specialized facility for at-risk high school students and led a youth club focused on music and multimedia education. This diverse experience has honed my skills in teamwork, communication, and collaboration.
 
 ## My Ideal Workplace
 
 I'm seeking a tech environment that:
 
 - Offers competitive compensation and benefits
-- Supports flexible work arrangements, including part-time positions
-- Respects work-life balance
-- Encourages and supports professional growth
 - Values creativity and innovation in technology
 - Prioritizes a positive work environment and employee satisfaction
 - Makes a meaningful impact through technology
+- Supports flexible work arrangements – I'm also open to discussing part-time positions
+- Respects work-life balance
+- Encourages and supports professional growth
 
 ## Let's Connect
 

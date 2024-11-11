@@ -1,4 +1,47 @@
-{{ if not .Site.Params.hideFooter | default false }}
+{{ if not .Site.Params.hideFooter | default false }} {{ if not
+.Site.Params.hideTestemonials | default false }}
+<script
+  type="text/javascript"
+  src="https://testimonial.to/js/iframeResizer.min.js"
+></script>
+<div
+  id="testemonials"
+  class="container"
+  style="
+    clip-path: inset(0px 0px 70px 0px);
+    opacity: 0;
+    max-height: 0px;
+    transition:
+      opacity 1s,
+      max-height 1s;
+  "
+>
+  <iframe
+    id="testimonialto-carousel-christian-ekrem-tag-all-light"
+    src="https://embed-v2.testimonial.to/carousel/all/christian-ekrem?theme=light&autoplay=on&showmore=on&one-row=on&hideDate=off&same-height=off&tag=all&arrowColor=9BA9B4"
+    frameborder="0"
+    scrolling="no"
+    width="100%"
+  ></iframe>
+</div>
+<script type="text/javascript">
+  if (
+    location.pathname in { "": true, "/": true, "/hire/": true, "/hire": true }
+  ) {
+    setTimeout(() => {
+      iFrameResize(
+        { log: false, checkOrigin: false },
+        "#testimonialto-carousel-christian-ekrem-tag-all-light",
+      );
+      const el = document.getElementById("testemonials");
+      el.style.display = "block";
+      el.style.opacity = 1;
+      el.style.maxHeight = "600px";
+    }, 1000);
+  }
+</script>
+{{ end }}
+
 <footer class="footer">
   <section class="container">
     {{ with .Site.Params.footerContent | safeHTML }}

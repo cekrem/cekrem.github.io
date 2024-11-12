@@ -8,11 +8,13 @@ authors = []
 tags = ["vipps mobilepay", "career", "programming", "app development", "kotlin", "android", "life", "jesus"]
 +++
 
-###### Timeline: [From backend to Android](/posts/changing-jobs-without-leaving-your-company/) -> [Dev plan 2021-2023](/posts/devplan/) -> [Nailing it!](/posts/the-end-of-an-era/) -> [Back to the old gym!](#)
+**Update: After some heavy lifting at the old gym, I actually left Vipps and started on a Sabbatical. See [Goodbye Vipps!](https://www.linkedin.com/feed/update/urn:li:activity:7233757597424615424/) for details (LinkedIn post).** I'm also [open for new opportunities](/hire).
+
+###### Timeline: [From backend to Android](/posts/changing-jobs-without-leaving-your-company/) -> [Dev plan 2021-2023](/posts/devplan/) -> [Nailing it and getting promoted!](/posts/the-end-of-an-era/) -> [Back to the old gym!](#) -> [Sabbatical!](https://www.linkedin.com/feed/update/urn:li:activity:7233757597424615424/) -> [My next adventure?](/hire)
 
 It's official! I'm transitioning back from [my pilgrimage as an Android developer](/posts/changing-jobs-without-leaving-your-company), going back to my backend roots. Ah, the glorious smell of rusty metal, engine oil and buzzing CRT monitors running nothing but `vim`. The bonus is I still get to do Android! **More importantly, though, I'm back to working 80%**. Sweet, glorious Jesus, YES! And there's actually deeper stuff going on beneath the surface as well. Paradigm shift: √
 
-## Context switching, begone!
+## Context switching, begone
 
 Speaking of Jesus, he said that he came that we would have _life abundantly_ (John 10, 10). I want that, for real, in every possible way. And for the time being, A) ~~working full weeks~~, and B) ~~being at the beck and call of numerous different teams doing this and that~~ just isn't sustainable. Turns out I'm not quite wired to cope with all that. Don't get me wrong: I can "pull it off", I can be efficient, ruthless and just Get Stuff Done™. If I turn my notch to "overdrive" I can squeeze through all my tasks and obligations (and then some!) with time to spare. But I end up feeling "[...]thin, like butter scraped over too much bread," as Bilbo Baggins aptly put it. To be clear: Android isn't what's pulling me down, the way I've been working is. And I want it to stop.
 

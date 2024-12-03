@@ -13,7 +13,7 @@ My favorite part of my professional tech career (so far) has been my time with [
 
 ### Core Skills (a small excerpt, see [CV](/cv.pdf) for a more comprehensive list)
 
-- **Languages**: Golang, Kotlin, Python, React
+- **Languages**: Golang, Kotlin (including Android), Python, React
 - **Additional Experience**: Java, C#/.net, PHP
 - **Exploring**: Common Lisp, Elm, Haskell, Rust
 - **Cloud platforms**: Azure, GCP, AWS – you name it

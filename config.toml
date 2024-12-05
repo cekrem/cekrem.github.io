@@ -15,7 +15,7 @@ enableEmoji = true
 author = "Christian Ekrem"
 description = "A surprisingly delightful dev blog!"
 keywords = "developer,personal"
-info = ["Staff Engineer For Hire"]
+info = ["Staff Engineer && Senior Consultant @ Ensō"]
 avatarURL = "images/avatar.png"
 images = ["images/featured-with-margins.png"]
 footerContent = ""
@@ -130,17 +130,17 @@ icon = "fa fa-file"
 weight = 4
 url = "/cv.pdf"
 
-#[[params.social]]
-#name = "Website"
-#icon = "fa fa-building"
-#weight = 4
-#url = "https://vippsmobilepay.com"
-#
-#
+[[params.social]]
+name = "Website"
+icon = "fa fa-building"
+weight = 5
+url = "https://enso.no"
+
+
 [[menu.main]]
-name = "Hire me?"
-weight = 1
-url = "hire/"
+#name = "Hire me?"
+#weight = 1
+#url = "hire/"
 
 [[menu.main]]
 name = "About"

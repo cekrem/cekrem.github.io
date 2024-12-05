@@ -3,6 +3,8 @@ title = "Hire me: Your Chief Problem Solver"
 date = "2021-10-10"
 +++
 
+Update: [I've signed with Ensō](/posts/im-joining-enso), and will only take on assignments through them going forward.
+
 ## Who I Am
 
 I'm a seasoned tech professional with over a decade of experience in crafting efficient, performant, and elegant code. My passion lies in deep work, empowering leadership, and solving complex and challenging problems.
@@ -47,6 +49,8 @@ I'm seeking a tech environment that:
 ## Let's Connect
 
 If you're looking for a solid tech professional who can be your go-to problem solver and effective team player, let's talk. I'm excited about the possibility of contributing to your team's success, whether in a full-time capacity or in a more focused part-time role. My technical expertise, combined with strong collaborative skills, allows me to add significant value to your tech projects and team dynamics.
+
+Disclaimer: After joining Ensō I'm exclusively taking assignments through them.
 
 ## Contact Information
 

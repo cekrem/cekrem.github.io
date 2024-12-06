@@ -13,6 +13,8 @@ There's not much more to add, except that it feels fantastic to have signed and 
 
 I wish I could show you the stuff I made for their tech interview, but I guess I can't. Suffice to say it was quite a lot of ~~work~~ fun!
 
+![enso-empty-chair](enso.png)
+
 ## Sabbatical vol 2
 
 I'm also thrilled that I'm not starting right away. The last part of my sabbatical, I suspect, will be even better than the first. Now that all is signed and settled, I can detach even more, and be as offline as I want. Oh, joy!

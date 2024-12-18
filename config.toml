@@ -138,9 +138,9 @@ url = "https://enso.no"
 
 
 [[menu.main]]
-#name = "Hire me?"
-#weight = 1
-#url = "hire/"
+name = "Hire me?"
+weight = 1
+url = "hire/"
 
 [[menu.main]]
 name = "About"
@@ -153,8 +153,13 @@ weight = 3
 url = "posts/devplan/"
 
 [[menu.main]]
-name = "Blog"
+name = "Recommended Books"
 weight = 4
+url = "/posts/books-i-think-software-engineers-should-read"
+
+[[menu.main]]
+name = "Blog"
+weight = 9
 url = "posts/"
 
 [markup.goldmark.renderer]

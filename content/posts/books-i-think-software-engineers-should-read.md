@@ -46,4 +46,9 @@ Disclaimer: I have not read all of these from cover to cover. I've read most, bu
 
 - [Advanced React: Deep dives, investigations, performance patterns and techniques](https://amzn.to/4iFXVWq) — I've actually read (or at least skimmed) quite a few books on React — I even started writing one, way back — but this is the only one I think is worth recommending. If you're a complete beginner there are probably other/better options, but given that you're at least semi-familiar with thinking in React, this is The One.
 
+## Rust
+
+- [The Rust Programming Language](https://amzn.to/4gFp7D3) — "The Book", as official as it gets, and quite good at that.
+- [Programming Rust](https://amzn.to/400rtXM) — Less official, but a fine resource regardless. The two complement each other (and of course overlap a bit as well).
+
 Warning: I might add more later.

@@ -11,6 +11,8 @@ I've lately enjoyed revisiting the [SOLID Design Principles](//en.wikipedia.org/
 
 The complete code for this article can be found at [github.com/cekrem/go-transform](https://github.com/cekrem/go-transform).
 
+Also, kudos to Uncle Bob for reminding me about the importance of good **software architecture** in his classic [Clean Architecture](https://amzn.to/4iAc8o1)! Without it, we'll all be building firmware (my paraphrase).
+
 ## Understanding the Landscape
 
 While many languages implement modularity through external dependencies (like DLLs in C# or JARs in Java), Go takes pride in its ability to compile into a single, self-contained executable. This approach brings several advantages:

@@ -7,11 +7,18 @@ date: 2025-01-07
 
 ## Introduction
 
-I've lately enjoyed revisiting the [SOLID Design Principles](//en.wikipedia.org/wiki/SOLID). In the world of software architecture, few principles have stood the test of time like these. I find the "Dependency Inversion Principle" particularly interesting, as it's one of the few that are either forgotten in modern applications, or drowned in so much over-engineering that the cost/benefit equation is offset anyways. Today, let's explore how Go's plugin system enables these principles.
+I've lately enjoyed revisiting the [SOLID Design Principles](//en.wikipedia.org/wiki/SOLID). In the world of software architecture, few principles have stood the test of time like these. I find the "Dependency Inversion Principle" particularly interesting, as it's one of the few that are either forgotten in modern applications, or drowned in so much over-engineering that the cost/benefit equation is offset anyways.
+
+> The Dependency Inversion Principle states:
+>
+> 1. High-level modules should not import anything from low-level modules. Both should depend on abstractions (e.g., interfaces).
+> 2. Abstractions should not depend on details. Details (concrete implementations) should depend on abstractions.
+
+Today, let's explore how Go's plugin system enables these principles.
 
 The complete code for this article can be found at [github.com/cekrem/go-transform](https://github.com/cekrem/go-transform).
 
-Also, kudos to Uncle Bob for reminding me about the importance of good **software architecture** in his classic [Clean Architecture](https://amzn.to/4iAc8o1)! Without it, we'll all be building firmware (my paraphrase).
+Also, kudos to Uncle Bob for reminding me about the importance of good **software architecture** in his classic [Clean Architecture](https://amzn.to/4iAc8o1)! Without it, we'll all be building firmware (my paraphrased summary).
 
 ## Understanding the Landscape
 

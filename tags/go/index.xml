@@ -5,4 +5,6 @@
  &lt;span class="sr-only">Link to heading&lt;/span>
  &lt;/a>
 &lt;/h2>
-&lt;p>I&amp;rsquo;ve lately enjoyed revisiting the &lt;a href="//en.wikipedia.org/wiki/SOLID" class="external-link" target="_blank" rel="noopener">SOLID Design Principles&lt;/a>. In the world of software architecture, few principles have stood the test of time like these. I find the &amp;ldquo;Dependency Inversion Principle&amp;rdquo; particularly interesting, as it&amp;rsquo;s one of the few that are either forgotten in modern applications, or drowned in so much over-engineering that the cost/benefit equation is offset anyways. Today, let&amp;rsquo;s explore how Go&amp;rsquo;s plugin system enables these principles.&lt;/p></description></item></channel></rss>
+&lt;p>I&amp;rsquo;ve lately enjoyed revisiting the &lt;a href="//en.wikipedia.org/wiki/SOLID" class="external-link" target="_blank" rel="noopener">SOLID Design Principles&lt;/a>. In the world of software architecture, few principles have stood the test of time like these. I find the &amp;ldquo;Dependency Inversion Principle&amp;rdquo; particularly interesting, as it&amp;rsquo;s one of the few that are either forgotten in modern applications, or drowned in so much over-engineering that the cost/benefit equation is offset anyways.&lt;/p>
+&lt;blockquote>
+&lt;p>The Dependency Inversion Principle states:&lt;/p></description></item></channel></rss>

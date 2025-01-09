@@ -1,13 +1,16 @@
 ---
 title: "Interface Segregation: Why Your Interfaces Should Be Small and Focused"
 description: "Part 2 of our Clean Architecture series, exploring the 'I' in SOLID"
-tags: ["architecture", "SOLID", "clean architecture", "go", "golang", "interfaces"]
+tags:
+  ["architecture", "SOLID", "clean architecture", "go", "golang", "interfaces"]
 date: 2025-01-14
 ---
 
 ## Introduction
 
 In our [previous post](/posts/clean-architecture-and-plugins-in-go), we explored the Dependency Inversion Principle and how it enables clean, modular architectures. Today, let's dive into another crucial SOLID principle: Interface Segregation.
+
+Again, kudos to Uncle Bob for reminding me about the importance of good **software architecture** in his classic [Clean Architecture](https://amzn.to/4iAc8o1)! That book is my primary inspiration for this series. Without clean architecture, we'll all be building firmware (my paraphrased summary).
 
 > The Interface Segregation Principle (ISP) states that clients should not be forced to depend on interfaces they don't use.
 
@@ -123,12 +126,12 @@ func (h *UserHandler) CreateUser(w http.ResponseWriter, r *http.Request) {
         http.Error(w, err.Error(), http.StatusBadRequest)
         return
     }
-    
+
     if err := h.writer.CreateUser(user); err != nil {
         http.Error(w, err.Error(), http.StatusInternalServerError)
         return
     }
-    
+
     w.WriteHeader(http.StatusCreated)
 }
 ```
@@ -155,7 +158,7 @@ func TestGetUser(t *testing.T) {
             "123": {ID: "123", Name: "Test User"},
         },
     }
-    
+
     handler := &UserHandler{reader: mock}
     // Test your handler with a simple mock
 }
@@ -174,4 +177,4 @@ Interface Segregation might seem like extra work initially, but it pays dividend
 
 Stay tuned for our next post in the series, where we'll explore the Liskov Substitution Principle!
 
-> **Pro tip**: When in doubt about interface size, err on the side of making them too small. It's easier to compose small interfaces than to break apart large ones. 
+> **Pro tip**: When in doubt about interface size, err on the side of making them too small. It's easier to compose small interfaces than to break apart large ones.

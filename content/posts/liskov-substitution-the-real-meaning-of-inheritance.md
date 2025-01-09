@@ -9,6 +9,8 @@ date: 2025-01-21
 
 After exploring [Dependency Inversion](/posts/clean-architecture-and-plugins-in-go) and [Interface Segregation](/posts/interface-segregation-in-practice), let's tackle perhaps the most misunderstood principle of SOLID: The Liskov Substitution Principle (LSP).
 
+Again, kudos to Uncle Bob for reminding me about the importance of good **software architecture** in his classic [Clean Architecture](https://amzn.to/4iAc8o1)! That book is my primary inspiration for this series. Without clean architecture, we'll all be building firmware (my paraphrased summary).
+
 > The Liskov Substitution Principle states that if S is a subtype of T, then objects of type T may be replaced with objects of type S without altering any of the desirable properties of the program.
 
 In simpler terms: subtypes must be substitutable for their base types. Let's see what this really means in practice.
@@ -21,7 +23,7 @@ This is the canonical example of LSP violation:
 open class Rectangle {
     open var width: Int = 0
     open var height: Int = 0
-    
+
     fun area() = width * height
 }
 
@@ -32,7 +34,7 @@ class Square : Rectangle() {
             field = value
             height = value
         }
-    
+
     override var height: Int = 0
         set(value) {
             field = value
@@ -103,7 +105,7 @@ class CheckoutService(
     fun checkout(cart: ShoppingCart) {
         val amount = cart.total()
         paymentProcessor.processPayment(amount)
-            .onSuccess { transaction -> 
+            .onSuccess { transaction ->
                 // Handle success
             }
             .onFailure { error ->
@@ -157,14 +159,14 @@ class RemoteDataFetcher : DataFetcher {
 ```kotlin
 abstract class PaymentProcessorTest {
     abstract fun createProcessor(): PaymentProcessor
-    
+
     @Test
     fun `should process valid payment`() {
         val processor = createProcessor()
         val result = processor.processPayment(Money(100))
         assert(result.isSuccess)
     }
-    
+
     @Test
     fun `should handle zero amount`() {
         val processor = createProcessor()
@@ -188,12 +190,12 @@ class DebitCardProcessorTest : PaymentProcessorTest() {
 interface AccountService {
     /**
      * Withdraws money from account
-     * 
+     *
      * Preconditions:
      * - Amount must be positive
      * - Account must exist
      * - Account must have sufficient balance
-     * 
+     *
      * Postconditions:
      * - Account balance is reduced by amount
      * - Returns success with transaction details
@@ -217,4 +219,4 @@ Liskov Substitution Principle is about more than just inheritance - it's about b
 
 Stay tuned for our next post in the series, where we'll explore the Open-Closed Principle!
 
-> **Pro tip**: If you find yourself writing comments like "don't use X in Y way" or "this override behaves differently", you might be violating LSP. 
+> **Pro tip**: If you find yourself writing comments like "don't use X in Y way" or "this override behaves differently", you might be violating LSP.

@@ -147,10 +147,10 @@ name = "About"
 weight = 2
 url = "about/"
 
-[[menu.main]]
-name = "Development Plan"
-weight = 3
-url = "posts/devplan/"
+#[[menu.main]]
+#name = "Development Plan"
+#weight = 3
+#url = "posts/devplan/"
 
 [[menu.main]]
 name = "Recommended Books"

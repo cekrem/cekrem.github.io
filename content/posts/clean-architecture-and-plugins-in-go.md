@@ -9,7 +9,7 @@ date: 2025-01-07
 
 I've lately enjoyed revisiting the [SOLID Design Principles](//en.wikipedia.org/wiki/SOLID). In the world of software architecture, few principles have stood the test of time like these. I find the "Dependency Inversion Principle" particularly interesting, as it's one of the few that are either forgotten in modern applications, or drowned in so much over-engineering that the cost/benefit equation is offset anyways.
 
-> **Note:** Clean Architecture encompasses _far more_ than individual SOLID principles - including concentric dependency circles, strict boundary rules, and comprehensive architectural patterns - but we need to start somewhere. This article kicks off a series exploring some of these principles, starting with DIP, which I've found to be particularly neglected on projects that I've contributed to lately.
+**Note:** Clean Architecture encompasses _far more_ than individual SOLID principles - including concentric dependency circles, strict boundary rules, and comprehensive architectural patterns - but we need to start somewhere. This article kicks off a series exploring some of these principles, starting with DIP, which I've found to be particularly neglected on projects that I've contributed to lately.
 
 > The Dependency Inversion Principle states:
 >

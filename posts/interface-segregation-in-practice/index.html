@@ -33,7 +33,7 @@
 </span></span><span style=display:flex><span>}
 </span></span></code></pre></div><p>This interface violates ISP because:</p><ol><li>Most clients only need a subset of these methods</li><li>Changes to any method affect all implementations</li><li>Testing becomes unnecessarily complex</li></ol><h2 id=better-small-focused-interfaces>Better: Small, Focused Interfaces
 <a class=heading-link href=#better-small-focused-interfaces><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><p>Instead, we should break this down into cohesive interfaces:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=font-weight:700>type</span> UserReader <span style=font-weight:700>interface</span> {
+<span class=sr-only>Link to heading</span></a></h2><p>Instead, we should break this down into role-specific interfaces that each serve a single responsibility:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=font-weight:700>type</span> UserReader <span style=font-weight:700>interface</span> {
 </span></span><span style=display:flex><span>    GetUser(id <span>string</span>) (User, <span>error</span>)
 </span></span><span style=display:flex><span>}
 </span></span><span style=display:flex><span>

@@ -43,7 +43,7 @@ This interface violates ISP because:
 
 ## Better: Small, Focused Interfaces
 
-Instead, we should break this down into cohesive interfaces:
+Instead, we should break this down into role-specific interfaces that each serve a single responsibility:
 
 ```go
 type UserReader interface {

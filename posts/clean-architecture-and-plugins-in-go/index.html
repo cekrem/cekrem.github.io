@@ -21,46 +21,46 @@
 <a class=heading-link href=#clean-architecture-in-practice><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
 <span class=sr-only>Link to heading</span></a></h2><p>Let&rsquo;s examine a proof-of-concept project that demonstrates some of these principles. The project implements a simple transformation pipeline where plugins can modify input data. Let&rsquo;s make the Dependency Inversion Principle (DIP) the centerpiece of our system.</p><h3 id=the-core-domain>The Core Domain
 <a class=heading-link href=#the-core-domain><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h3><p>At the heart of our system lies the transformer interface:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=font-style:italic>// Transformer defines the interface for data transformation operations.
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span><span style=font-weight:700>type</span> Transformer <span style=font-weight:700>interface</span> {
-</span></span><span style=display:flex><span>    <span style=font-style:italic>// Transform processes the input bytes and returns transformed bytes or an error.
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>    Transform(input []<span>byte</span>) ([]<span>byte</span>, <span>error</span>)
+<span class=sr-only>Link to heading</span></a></h3><p>At the heart of our system lies the transformer interface:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=font-style:italic>// Transformer defines the interface for data transformation operations.</span>
+</span></span><span style=display:flex><span><span style=font-weight:700>type</span> Transformer <span style=font-weight:700>interface</span> {
+</span></span><span style=display:flex><span>    <span style=font-style:italic>// Transform processes the input bytes and returns transformed bytes or an error.</span>
+</span></span><span style=display:flex><span>    Transform(input []<span>byte</span>) ([]<span>byte</span>, <span>error</span>)
 </span></span><span style=display:flex><span>}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-style:italic>// Plugin defines the interface for plugin implementations.
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span><span style=font-weight:700>type</span> Plugin <span style=font-weight:700>interface</span> {
-</span></span><span style=display:flex><span>    <span style=font-style:italic>// NewTransformer creates and returns a new Transformer instance.
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>    NewTransformer() Transformer
+</span></span><span style=display:flex><span><span style=font-style:italic>// Plugin defines the interface for plugin implementations.</span>
+</span></span><span style=display:flex><span><span style=font-weight:700>type</span> Plugin <span style=font-weight:700>interface</span> {
+</span></span><span style=display:flex><span>    <span style=font-style:italic>// NewTransformer creates and returns a new Transformer instance.</span>
+</span></span><span style=display:flex><span>    NewTransformer() Transformer
 </span></span><span style=display:flex><span>}
 </span></span></code></pre></div><p>This interface represents our core business rules. Notice how it&rsquo;s simple and stable - it doesn&rsquo;t depend on any implementation details.</p><h3 id=plugin-implementation>Plugin Implementation
 <a class=heading-link href=#plugin-implementation><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h3><p>Here&rsquo;s how a simple passthrough plugin implements this interface:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=font-style:italic>// passthroughPlugin implements transformer.Plugin without requiring any state.
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span><span style=font-weight:700>type</span> passthroughPlugin <span style=font-weight:700>struct</span>{}
+<span class=sr-only>Link to heading</span></a></h3><p>Here&rsquo;s how a simple passthrough plugin implements this interface:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=font-style:italic>// passthroughPlugin implements transformer.Plugin without requiring any state.</span>
+</span></span><span style=display:flex><span><span style=font-weight:700>type</span> passthroughPlugin <span style=font-weight:700>struct</span>{}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-style:italic>// NewTransformer returns a new passthrough transformer instance.
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span><span style=font-weight:700>func</span> (passthroughPlugin) NewTransformer() transformer.Transformer {
+</span></span><span style=display:flex><span><span style=font-style:italic>// NewTransformer returns a new passthrough transformer instance.</span>
+</span></span><span style=display:flex><span><span style=font-weight:700>func</span> (passthroughPlugin) NewTransformer() transformer.Transformer {
 </span></span><span style=display:flex><span>    <span style=font-weight:700>return</span> &amp;passthroughTransformer{}
 </span></span><span style=display:flex><span>}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-style:italic>// passthroughTransformer implements transformer.Transformer without requiring any state.
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span><span style=font-weight:700>type</span> passthroughTransformer <span style=font-weight:700>struct</span>{}
+</span></span><span style=display:flex><span><span style=font-style:italic>// passthroughTransformer implements transformer.Transformer without requiring any state.</span>
+</span></span><span style=display:flex><span><span style=font-weight:700>type</span> passthroughTransformer <span style=font-weight:700>struct</span>{}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-style:italic>// Transform implements transformer.Transformer by returning the input bytes unmodified.
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span><span style=font-weight:700>func</span> (pt passthroughTransformer) Transform(input []<span>byte</span>) ([]<span>byte</span>, <span>error</span>) {
+</span></span><span style=display:flex><span><span style=font-style:italic>// Transform implements transformer.Transformer by returning the input bytes unmodified.</span>
+</span></span><span style=display:flex><span><span style=font-weight:700>func</span> (pt passthroughTransformer) Transform(input []<span>byte</span>) ([]<span>byte</span>, <span>error</span>) {
 </span></span><span style=display:flex><span>    <span style=font-weight:700>return</span> input, <span style=font-weight:700>nil</span>
 </span></span><span style=display:flex><span>}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-style:italic>// Plugin exports the passthrough transformer plugin for dynamic loading.
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span><span style=font-weight:700>var</span> Plugin transformer.Plugin = &amp;passthroughPlugin{}
+</span></span><span style=display:flex><span><span style=font-style:italic>// Plugin exports the passthrough transformer plugin for dynamic loading.</span>
+</span></span><span style=display:flex><span><span style=font-weight:700>var</span> Plugin transformer.Plugin = &amp;passthroughPlugin{}
 </span></span></code></pre></div><p>The beauty of this approach is that plugins are completely isolated from each other and only depend on the core interfaces.</p><h2 id=dependency-inversion-in-action>Dependency Inversion in Action
 <a class=heading-link href=#dependency-inversion-in-action><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><p>Our processor component demonstrates DIP perfectly:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=font-style:italic>// Processor manages the loading and execution of transformation plugins.
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span><span style=font-weight:700>type</span> Processor <span style=font-weight:700>struct</span> {
+<span class=sr-only>Link to heading</span></a></h2><p>Our processor component demonstrates DIP perfectly:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=font-style:italic>// Processor manages the loading and execution of transformation plugins.</span>
+</span></span><span style=display:flex><span><span style=font-weight:700>type</span> Processor <span style=font-weight:700>struct</span> {
 </span></span><span style=display:flex><span>    plugins <span style=font-weight:700>map</span>[<span>string</span>]transformer.Plugin
 </span></span><span style=display:flex><span>}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-style:italic>// NewProcessor creates and initializes a new Processor instance.
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span><span style=font-weight:700>func</span> NewProcessor() Processor {
+</span></span><span style=display:flex><span><span style=font-style:italic>// NewProcessor creates and initializes a new Processor instance.</span>
+</span></span><span style=display:flex><span><span style=font-weight:700>func</span> NewProcessor() Processor {
 </span></span><span style=display:flex><span>    <span style=font-weight:700>return</span> &amp;Processor{
 </span></span><span style=display:flex><span>        plugins: make(<span style=font-weight:700>map</span>[<span>string</span>]transformer.Plugin),
 </span></span><span style=display:flex><span>    }
@@ -69,8 +69,8 @@
 <a class=heading-link href=#the-plugin-system-at-work><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
 <span class=sr-only>Link to heading</span></a></h2><p>The main application loads plugins dynamically:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>proc := processor.NewProcessor()
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-style:italic>// Load plugins from the plugins directory relative to the executable.
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>pluginsDir := filepath.Join(execDir, <span style=font-style:italic>&#34;plugins&#34;</span>)
+</span></span><span style=display:flex><span><span style=font-style:italic>// Load plugins from the plugins directory relative to the executable.</span>
+</span></span><span style=display:flex><span>pluginsDir := filepath.Join(execDir, <span style=font-style:italic>&#34;plugins&#34;</span>)
 </span></span><span style=display:flex><span>plugins, err := filepath.Glob(filepath.Join(pluginsDir, <span style=font-style:italic>&#34;*.so&#34;</span>))
 </span></span><span style=display:flex><span><span style=font-weight:700>if</span> err != <span style=font-weight:700>nil</span> || len(plugins) == 0 {
 </span></span><span style=display:flex><span>    log.Printf(<span style=font-style:italic>&#34;Failed to list plugins: %v\n&#34;</span>, err)

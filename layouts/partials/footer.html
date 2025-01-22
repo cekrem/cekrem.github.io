@@ -4,6 +4,27 @@
   type="text/javascript"
   src="https://testimonial.to/js/iframeResizer.min.js"
 ></script>
+
+<style>
+  form {
+    display: flex;
+    justify-content: center;
+  }
+</style>
+<form
+  action="https://api.follow.it/subscription-form/SDRVMUk2VmsySENBNk94RDNKNDFnS3NmWlQ5a3gxejNIeUlJWHl3QjdqNnRHdENkaXp5aXZhZlFvcGtzcEZ3K0o5TFVRdSt2WWM5RWRsWmZwWVhNUS9PZjJqMWZ3aHBwZUhjT1ZpWXBGRkdZOWtIcGhYQkJkSkE4QTQ1eHl5YkF8RTZHTExQOWFrN1pFY1F0RzZ5c3pVN2I1QTI1YXNtMjZiYllLU25zQkJ3bz0=/8"
+  method="post"
+>
+  <input
+    type="email"
+    name="email"
+    required=""
+    placeholder="Email"
+    spellcheck="false"
+  />
+  <button type="submit">Subscribe</button>
+</form>
+
 <div
   id="testemonials"
   class="container"
@@ -14,9 +35,7 @@
     border-radius: 24px;
     opacity: 0;
     max-height: 0px;
-    transition:
-      opacity 1s,
-      max-height 1s;
+    transition: opacity 1s, max-height 1s;
   "
 >
   <iframe
@@ -34,7 +53,7 @@
     setTimeout(() => {
       iFrameResize(
         { log: false, checkOrigin: false },
-        "#testimonialto-carousel-christian-ekrem-tag-all-light",
+        "#testimonialto-carousel-christian-ekrem-tag-all-light"
       );
       const el = document.getElementById("testemonials");
       el.style.display = "block";

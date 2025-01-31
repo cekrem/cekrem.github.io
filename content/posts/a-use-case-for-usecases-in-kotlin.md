@@ -6,13 +6,13 @@ tags = ["vipps", "vipps mobilepay", "android", "kotlin", "clean architecture", "
 draft = false
 +++
 
-## My First Impression
+## My First Encounter with a Kotlin `UseCase`
 
-One of my responsibilities as an Android Developer in Vipps (Mobilepay) was to do tech interviews. After a while, I also made the tech assignments and changed the recruitment process a bit. But in the earlier days, we used a standard "build X using Y", where "Y" was modern Android tools (preferably Compose), and "X" was some non-descript hello world-ish app that did something I can't for the life of me remember. During one of the tech task evaluations we did prior to an interview, I encountered a strange animal completely unknown to me. A UseCase class, with an `operator fun invoke()` method.
+One of my responsibilities as an Android Developer in Vipps (Mobilepay) was to do tech interviews. After a while, I also made the tech assignments and changed the recruitment process a bit. But in the earlier days, we used a standard "build X using Y", where "Y" was modern Android tools (preferably Compose), and "X" was some non-descript hello world-ish app that did something I can't for the life of me remember. During one of the tech task evaluations we did prior to an interview, I encountered a strange animal completely unknown to me. A `UseCase` class, with an `operator fun invoke()` method.
 
 It looked something like this:
 
-```
+```kotlin
 class GetProfileUseCase(private val profileRepository: ProfileRepository) {
     suspend operator fun invoke(userId: String): Profile? {
         val profile = profileRepository.get(userId)
@@ -27,11 +27,11 @@ class GetProfileUseCase(private val profileRepository: ProfileRepository) {
 }
 ```
 
-Never had I ever (remember, I started my Kotlin/Java days @ Vipps, and they simply don't do that).
+Never had I ever (remember, I started my Kotlin/Java days @ Vipps, and they simply don't do that; it's also a no Go – pun intended).
 
 This `UseCase` was then used like this:
 
-```
+```kotlin
 val getProfile = GetProfileUseCase(someInjectedProfileRepo)
 
 getProfile(userId)
@@ -39,7 +39,7 @@ getProfile(userId)
 
 ## What my betters told me
 
-...was that this whole UseCase layer (and especially the way the operator function was used!) was overengineering at its worst, and that the consept in general reeked of ye old Java from back when people didn't know any better. I was curious, but sadly not curious enough to do my own research. I made a mental note to check if the candidate was the over-engineering type in the actual interview (which, oddly, he really wasn't, and he got the job), and thought very little of it.
+...was that this whole UseCase layer (and especially the way the operator function was used!) was overengineering at its worst, and that the consept in general reeked of ye old Java from back when people didn't know any better. I was curious, but sadly not curious enough to do my own research back then. I made a mental note to check if the candidate was the over-engineering type in the actual interview (which, to my pleasant surprise, he really wasn't, and he got the job), and thought very little of it.
 
 ## But wait!
 
@@ -111,3 +111,5 @@ While UseCases might seem like unnecessary abstraction at first glance, they ser
 The next time you encounter a UseCase in a codebase (or consider writing one), remember that it's not just Java baggage - it's a powerful tool for encapsulating business logic and maintaining architectural boundaries. Used judiciously, UseCases can make your codebase more maintainable, testable, and clearer in its intentions.
 
 Just don't forget the golden rule of software architecture: everything comes with tradeoffs. UseCases add a layer of abstraction that might be overkill for very simple CRUD operations. As with all architectural decisions, consider your specific needs and context before applying them.
+
+Bonus advice: if what your betters tell you seems off, make sure to do your own research and thinking as well; at the end of the day no-one shares your `git blame`.

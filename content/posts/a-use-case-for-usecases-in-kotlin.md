@@ -113,3 +113,72 @@ The next time you encounter a UseCase in a codebase (or consider writing one), r
 Just don't forget the golden rule of software architecture: everything comes with tradeoffs. UseCases add a layer of abstraction that might be overkill for very simple CRUD operations. As with all architectural decisions, consider your specific needs and context before applying them.
 
 Bonus advice: if what your betters tell you seems off, make sure to do your own research and thinking as well; at the end of the day no-one shares your `git blame`.
+
+## Just kidding, I wasn't done!
+
+One might claim that simply using a service class is more convenient (KISS and all that). And I agree, it might be. However, there are reasons why use cases in the application layer is superior to just using a service class. Here are some key architectural benefits of the UseCase pattern:
+
+## 1. Single Responsibility Principle
+
+- A UseCase represents a single business use case/user story
+- A service class typically groups related operations, potentially violating SRP
+- When you have `MyService.getProfile()`, `MyService.updateProfile()`, `MyService.deleteProfile()`, you're bundling multiple responsibilities
+
+## 2. Clean Architecture Boundaries
+
+- UseCases explicitly represent application-specific business rules as a distinct architectural layer
+- Services tend to become "catch-all" classes that blur the lines between use cases, domain logic, and infrastructure concerns
+- This distinction is crucial for maintaining the Dependency Rule in Clean Architecture
+
+## 3. Business Intent
+
+```kotlin
+// UseCase approach - clear business intent
+class GetUserProfileUseCase(private val repository: ProfileRepository)
+class UpdateUserProfileUseCase(private val repository: ProfileRepository)
+class ValidateUserProfileUseCase(private val repository: ProfileRepository)
+
+// Service approach - less clear business organization
+class UserService(private val repository: ProfileRepository) {
+    fun getProfile(id: String): Profile
+    fun updateProfile(profile: Profile)
+    fun validateProfile(profile: Profile)
+}
+```
+
+## 4. Composition Over Inheritance
+
+- UseCases are highly composable - you can combine them to create more complex use cases
+
+```kotlin
+class GetValidatedProfileUseCase(
+    private val getProfile: GetUserProfileUseCase,
+    private val validateProfile: ValidateUserProfileUseCase
+)
+```
+
+## 5. Testing and Mocking
+
+- While both approaches are testable, UseCases provide a more focused testing surface
+- Each use case test covers exactly one business scenario
+- Service tests often need more complex setup due to shared dependencies
+
+## 6. The `invoke` Operator
+
+- Again, it's not just syntactic sugar - it makes the UseCase behave like a first-class function
+- This enables functional composition and makes the code more expressive:
+
+```kotlin
+val getProfile = GetProfileUseCase(repo)
+val validateProfile = ValidateProfileUseCase(validator)
+val profiles = userIds.map(getProfile).filter(validateProfile)
+```
+
+## 7. Package by Component?
+
+- UseCases naturally support packaging by component as they represent discrete business capabilities
+- Services often end up as cross-cutting concerns that make clean component boundaries harder to maintain
+
+The service class approach isn't wrong - it's just solving a different problem. If you're building a simple CRUD application, services might be sufficient. But if you're building a complex domain with distinct business rules, UseCases provide better architectural boundaries, clearer business intent, and more maintainable code organization.
+
+Architecture is about making it clear what the application does by looking at the structure of the code. A well-named UseCase like `GetValidatedProfileUseCase` immediately tells you what business capability it provides, while `UserService.getValidatedProfile()` hides this intent inside a more generic container.

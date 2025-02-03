@@ -25,14 +25,14 @@ const UserProfile = () => {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
-  
+
   useEffect(() => {
     fetchUser();
   }, []);
-  
+
   const fetchUser = async () => {
     try {
-      const response = await fetch('/api/user');
+      const response = await fetch("/api/user");
       const data = await response.json();
       setUser(data);
     } catch (e) {
@@ -41,29 +41,27 @@ const UserProfile = () => {
       setLoading(false);
     }
   };
-  
+
   const handleUpdateProfile = async (data: Partial<User>) => {
     try {
-      await fetch('/api/user', {
-        method: 'PUT',
-        body: JSON.stringify(data)
+      await fetch("/api/user", {
+        method: "PUT",
+        body: JSON.stringify(data),
       });
       fetchUser(); // Refresh data
     } catch (e) {
       setError(e as Error);
     }
   };
-  
+
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
   if (!user) return <div>No user found</div>;
-  
+
   return (
     <div>
       <h1>{user.name}</h1>
-      <form onSubmit={/* form logic */}>
-        {/* Complex form fields */}
-      </form>
+      <form onSubmit={/* form logic */}>{/* Complex form fields */}</form>
       <UserStats userId={user.id} />
       <UserPosts userId={user.id} />
     </div>
@@ -72,6 +70,7 @@ const UserProfile = () => {
 ```
 
 This component violates SRP because it's responsible for:
+
 1. Data fetching and state management
 2. Error handling
 3. Loading states
@@ -109,11 +108,11 @@ const useUser = (userId: string) => {
 };
 
 // Presentation component
-const UserProfileView = ({ 
-  user, 
-  onUpdate 
-}: { 
-  user: User; 
+const UserProfileView = ({
+  user,
+  onUpdate,
+}: {
+  user: User;
   onUpdate: (data: Partial<User>) => void;
 }) => (
   <div>
@@ -125,11 +124,11 @@ const UserProfileView = ({
 );
 
 // Form component
-const UserProfileForm = ({ 
-  user, 
-  onSubmit 
-}: { 
-  user: User; 
+const UserProfileForm = ({
+  user,
+  onSubmit,
+}: {
+  user: User;
   onSubmit: (data: Partial<User>) => void;
 }) => {
   const handleSubmit = (e: React.FormEvent) => {
@@ -138,33 +137,29 @@ const UserProfileForm = ({
     onSubmit(formData);
   };
 
-  return (
-    <form onSubmit={handleSubmit}>
-      {/* Form fields */}
-    </form>
-  );
+  return <form onSubmit={handleSubmit}>{/* Form fields */}</form>;
 };
 
 // Container component
 const UserProfileContainer = ({ userId }: { userId: string }) => {
   const { user, loading, error, refetch } = useUser(userId);
-  
+
   const handleUpdate = async (data: Partial<User>) => {
     try {
       await fetch(`/api/user/${userId}`, {
-        method: 'PUT',
-        body: JSON.stringify(data)
+        method: "PUT",
+        body: JSON.stringify(data),
       });
       refetch();
     } catch (e) {
       // Error handling
     }
   };
-  
+
   if (loading) return <LoadingSpinner />;
   if (error) return <ErrorMessage error={error} />;
   if (!user) return <NotFound message="User not found" />;
-  
+
   return <UserProfileView user={user} onUpdate={handleUpdate} />;
 };
 ```
@@ -214,11 +209,11 @@ const PageLayout = ({ children }: { children: React.ReactNode }) => (
   </div>
 );
 
-const TwoColumnLayout = ({ 
-  left, 
-  right 
-}: { 
-  left: React.ReactNode; 
+const TwoColumnLayout = ({
+  left,
+  right,
+}: {
+  left: React.ReactNode;
   right: React.ReactNode;
 }) => (
   <div className="two-column-layout">
@@ -233,28 +228,23 @@ const TwoColumnLayout = ({
 SRP makes testing much more focused:
 
 ```tsx
-describe('UserProfileView', () => {
+describe("UserProfileView", () => {
   const mockUser = {
-    id: '123',
-    name: 'Test User'
+    id: "123",
+    name: "Test User",
   };
-  
-  it('renders user name', () => {
-    render(
-      <UserProfileView 
-        user={mockUser} 
-        onUpdate={() => {}} 
-      />
-    );
-    
-    expect(screen.getByText('Test User')).toBeInTheDocument();
+
+  it("renders user name", () => {
+    render(<UserProfileView user={mockUser} onUpdate={() => {}} />);
+
+    expect(screen.getByText("Test User")).toBeInTheDocument();
   });
 });
 
-describe('useUser', () => {
-  it('fetches user data', async () => {
-    const { result } = renderHook(() => useUser('123'));
-    
+describe("useUser", () => {
+  it("fetches user data", async () => {
+    const { result } = renderHook(() => useUser("123"));
+
     expect(result.current.loading).toBe(true);
     await waitFor(() => {
       expect(result.current.user).toBeDefined();
@@ -275,12 +265,13 @@ describe('useUser', () => {
 
 When each component has a single, well-defined responsibility, your entire application becomes more maintainable, testable, and flexible.
 
-It's important to note that "single responsibility" doesn't always mean "does only one thing" in a literal sense. As Uncle Bob emphasizes in [Clean Architecture](https://amzn.to/4iAc8o1), it's about having a single *reason to change*. This subtle distinction is crucial:
+It's important to note that "single responsibility" doesn't always mean "does only one thing" in a literal sense. As Uncle Bob emphasizes in [Clean Architecture](https://amzn.to/4iAc8o1), it's about having a single _reason to change_. This subtle distinction is crucial:
 
 - A component might do several related things, but if they all change for the same reason (like updating the user profile UI), they probably belong together
 - Conversely, two seemingly simple operations might need to be separated if they change for different reasons (like user preferences vs. authentication logic)
 
-The key is identifying the right boundaries based on the *actors* who request changes. For example:
+The key is identifying the right boundaries based on the _actors_ who request changes. For example:
+
 - UI changes requested by UX team
 - Business rule changes requested by domain experts
 - Infrastructure changes requested by DevOps
@@ -289,4 +280,12 @@ This "actor-based" approach to responsibilities helps create more stable and mai
 
 This concludes our SOLID series! We've covered all five principles and seen how they apply to modern React development, as well as backend and system design in Kotlin and Go. Remember, these principles aren't rules to be followed blindly, but guidelines to help you write better, more maintainable code.
 
-> **Pro tip**: When you find yourself using the word "and" to describe what a component does, it might be violating SRP. Split it up! But also consider *why* those parts might need to change, and who would request those changes. 
+> **Pro tip**: When you find yourself using the word "and" to describe what a component does, it might be violating SRP. Split it up! But also consider _why_ those parts might need to change, and who would request those changes.
+
+## Update: Friendly Disclaimer and Reminder
+
+If you're looking for a comprehensive guide to software architecture, this is not it. The purpose of my recent posts about software architecture is to explore some some principles in a practical way, principles I've previously been too quick to dismiss or too lazy to apply. I'm neither claiming mastery of these concepts, nor am I suggesting that these principles should be rigidly applied in every situation. I'm not even proposing that my brief examples are the best way to implement or even explain these principles. Rather, I'm documenting my attempts to bridge classical software engineering principles with contemporary development practices. In fact, I have yet to decide for my self how close to "Clean Architecture" I want to get in the end vs how pragmatic I want to be. But for now I'm (mostly) enjoying the learning and exploration. Keep that in mind before you harass me, Uncle Bob or anyone else on Reddit about it 😅
+
+And to all of you who have disagreed with me in a meaningful and respectful way, thank you. It's been a great learning experience for me.
+
+Thanks :)

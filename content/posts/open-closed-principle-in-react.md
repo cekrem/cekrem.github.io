@@ -23,7 +23,7 @@ Here's a common anti-pattern:
 // DON'T DO THIS
 const Button = ({ label, onClick, variant }: ButtonProps) => {
   let className = "button";
-  
+
   // Direct modification for each variant
   if (variant === "primary") {
     className += " button-primary";
@@ -32,7 +32,7 @@ const Button = ({ label, onClick, variant }: ButtonProps) => {
   } else if (variant === "danger") {
     className += " button-danger";
   }
-  
+
   return (
     <button className={className} onClick={onClick}>
       {label}
@@ -42,6 +42,7 @@ const Button = ({ label, onClick, variant }: ButtonProps) => {
 ```
 
 This violates OCP because:
+
 1. Adding a new variant requires modifying the component
 2. The component needs to know about all possible variants
 3. Testing becomes more complex with each addition
@@ -58,16 +59,13 @@ type ButtonBaseProps = {
   children?: React.ReactNode;
 };
 
-const ButtonBase = ({ 
-  label, 
-  onClick, 
-  className = "", 
-  children 
+const ButtonBase = ({
+  label,
+  onClick,
+  className = "",
+  children,
 }: ButtonBaseProps) => (
-  <button 
-    className={`button ${className}`.trim()} 
-    onClick={onClick}
-  >
+  <button className={`button ${className}`.trim()} onClick={onClick}>
     {children || label}
   </button>
 );
@@ -108,12 +106,12 @@ type CardProps = {
   className?: string;
 };
 
-const Card = ({ 
-  title, 
-  children, 
-  renderHeader, 
+const Card = ({
+  title,
+  children,
+  renderHeader,
   renderFooter,
-  className = "" 
+  className = "",
 }: CardProps) => (
   <div className={`card ${className}`.trim()}>
     {renderHeader ? (
@@ -121,14 +119,10 @@ const Card = ({
     ) : (
       <div className="card-header">{title}</div>
     )}
-    
-    <div className="card-content">
-      {children}
-    </div>
-    
-    {renderFooter && (
-      renderFooter()
-    )}
+
+    <div className="card-content">{children}</div>
+
+    {renderFooter && renderFooter()}
   </div>
 );
 
@@ -137,9 +131,7 @@ const ProductCard = ({ product, onAddToCart, ...props }: ProductCardProps) => (
   <Card
     {...props}
     renderFooter={() => (
-      <button onClick={onAddToCart}>
-        Add to Cart - ${product.price}
-      </button>
+      <button onClick={onAddToCart}>Add to Cart - ${product.price}</button>
     )}
   />
 );
@@ -161,8 +153,8 @@ const withLoading = <P extends object>(
     if (isLoading) {
       return <div className="loader">Loading...</div>;
     }
-    
-    return <WrappedComponent {...props as P} />;
+
+    return <WrappedComponent {...(props as P)} />;
   };
 };
 
@@ -202,12 +194,12 @@ const useDataFetching = <T,>(url: string) => {
 // Extended without modification
 const useUserData = (userId: string) => {
   const result = useDataFetching<User>(`/api/users/${userId}`);
-  
+
   // Add user-specific functionality
   const updateUser = async (data: Partial<User>) => {
     // Update logic
   };
-  
+
   return { ...result, updateUser };
 };
 ```
@@ -217,33 +209,20 @@ const useUserData = (userId: string) => {
 OCP makes testing much more straightforward:
 
 ```tsx
-describe('ButtonBase', () => {
-  it('renders with custom className', () => {
-    render(
-      <ButtonBase 
-        label="Test" 
-        onClick={() => {}} 
-        className="custom"
-      />
-    );
-    
-    expect(screen.getByRole('button'))
-      .toHaveClass('button custom');
+describe("ButtonBase", () => {
+  it("renders with custom className", () => {
+    render(<ButtonBase label="Test" onClick={() => {}} className="custom" />);
+
+    expect(screen.getByRole("button")).toHaveClass("button custom");
   });
 });
 
 // New variants can have their own tests
-describe('PrimaryButton', () => {
-  it('includes primary styling', () => {
-    render(
-      <PrimaryButton 
-        label="Test" 
-        onClick={() => {}} 
-      />
-    );
-    
-    expect(screen.getByRole('button'))
-      .toHaveClass('button button-primary');
+describe("PrimaryButton", () => {
+  it("includes primary styling", () => {
+    render(<PrimaryButton label="Test" onClick={() => {}} />);
+
+    expect(screen.getByRole("button")).toHaveClass("button button-primary");
   });
 });
 ```
@@ -274,12 +253,12 @@ class Button extends BaseButton {
 }
 
 // Composition-based approach (more flexible, follows OCP)
-const Button = ({ 
-  label, 
-  icon, 
-  renderPrefix, 
+const Button = ({
+  label,
+  icon,
+  renderPrefix,
   renderSuffix,
-  ...props 
+  ...props
 }: ButtonProps) => (
   <ButtonBase {...props}>
     {renderPrefix?.()}
@@ -291,7 +270,7 @@ const Button = ({
 
 // Now we can extend behavior without modification
 const DropdownButton = ({ items, ...props }: DropdownButtonProps) => (
-  <Button 
+  <Button
     {...props}
     renderSuffix={() => <DropdownIcon />}
     onClick={() => setIsOpen(true)}
@@ -299,7 +278,7 @@ const DropdownButton = ({ items, ...props }: DropdownButtonProps) => (
 );
 
 const LoadingButton = ({ isLoading, ...props }: LoadingButtonProps) => (
-  <Button 
+  <Button
     {...props}
     renderPrefix={() => isLoading && <Spinner />}
     disabled={isLoading}
@@ -308,6 +287,7 @@ const LoadingButton = ({ isLoading, ...props }: LoadingButtonProps) => (
 ```
 
 This composition-based approach:
+
 1. Makes components open for extension (through props and render functions)
 2. Keeps base components closed for modification
 3. Allows for unlimited combinations of behaviors
@@ -321,4 +301,12 @@ The Open-Closed Principle might seem abstract, but in React it translates to pra
 
 Stay tuned for our final post in the series, where we'll explore the Single Responsibility Principle!
 
-> **Pro tip**: If you find yourself using lots of if/else statements for different variants or behaviors, you're probably violating OCP. Consider using composition instead. 
+> **Pro tip**: If you find yourself using lots of if/else statements for different variants or behaviors, you're probably violating OCP. Consider using composition instead.
+
+## Update: Friendly Disclaimer and Reminder
+
+If you're looking for a comprehensive guide to software architecture, this is not it. The purpose of my recent posts about software architecture is to explore some some principles in a practical way, principles I've previously been too quick to dismiss or too lazy to apply. I'm neither claiming mastery of these concepts, nor am I suggesting that these principles should be rigidly applied in every situation. I'm not even proposing that my brief examples are the best way to implement or even explain these principles. Rather, I'm documenting my attempts to bridge classical software engineering principles with contemporary development practices. In fact, I have yet to decide for my self how close to "Clean Architecture" I want to get in the end vs how pragmatic I want to be. But for now I'm (mostly) enjoying the learning and exploration. Keep that in mind before you harass me, Uncle Bob or anyone else on Reddit about it 😅
+
+And to all of you who have disagreed with me in a meaningful and respectful way, thank you. It's been a great learning experience for me.
+
+Thanks :)

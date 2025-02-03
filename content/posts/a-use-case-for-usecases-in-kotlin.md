@@ -182,3 +182,11 @@ val profiles = userIds.map(getProfile).filter(validateProfile)
 The service class approach isn't wrong - it's just solving a different problem. If you're building a simple CRUD application, services might be sufficient. But if you're building a complex domain with distinct business rules, UseCases provide better architectural boundaries, clearer business intent, and more maintainable code organization.
 
 Architecture is about making it clear what the application does by looking at the structure of the code. A well-named UseCase like `GetValidatedProfileUseCase` immediately tells you what business capability it provides, while `UserService.getValidatedProfile()` hides this intent inside a more generic container.
+
+## Update: Friendly Disclaimer and Reminder
+
+If you're looking for a comprehensive guide to software architecture, this is not it. The purpose of my recent posts about software architecture is to explore some some principles in a practical way, principles I've previously been too quick to dismiss or too lazy to apply. I'm neither claiming mastery of these concepts, nor am I suggesting that these principles should be rigidly applied in every situation. I'm not even proposing that my brief examples are the best way to implement or even explain these principles. Rather, I'm documenting my attempts to bridge classical software engineering principles with contemporary development practices. In fact, I have yet to decide for my self how close to "Clean Architecture" I want to get in the end vs how pragmatic I want to be. But for now I'm (mostly) enjoying the learning and exploration. Keep that in mind before you harass me, Uncle Bob or anyone else on Reddit about it 😅
+
+And to all of you who have disagreed with me in a meaningful and respectful way, thank you. It's been a great learning experience for me.
+
+Thanks :)

@@ -220,3 +220,11 @@ Liskov Substitution Principle is about more than just inheritance - it's about b
 Stay tuned for our next post in the series, where we'll explore the Open-Closed Principle!
 
 > **Pro tip**: If you find yourself writing comments like "don't use X in Y way" or "this override behaves differently", you might be violating LSP.
+
+## Update: Friendly Disclaimer and Reminder
+
+If you're looking for a comprehensive guide to software architecture, this is not it. The purpose of my recent posts about software architecture is to explore some some principles in a practical way, principles I've previously been too quick to dismiss or too lazy to apply. I'm neither claiming mastery of these concepts, nor am I suggesting that these principles should be rigidly applied in every situation. I'm not even proposing that my brief examples are the best way to implement or even explain these principles. Rather, I'm documenting my attempts to bridge classical software engineering principles with contemporary development practices. In fact, I have yet to decide for my self how close to "Clean Architecture" I want to get in the end vs how pragmatic I want to be. But for now I'm (mostly) enjoying the learning and exploration. Keep that in mind before you harass me, Uncle Bob or anyone else on Reddit about it 😅
+
+And to all of you who have disagreed with me in a meaningful and respectful way, thank you. It's been a great learning experience for me.
+
+Thanks :)

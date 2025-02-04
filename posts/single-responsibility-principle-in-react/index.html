@@ -1,0 +1,140 @@
+<!doctype html><html lang=en><head><title>Single Responsibility Principle in React: The Art of Component Focus · cekrem.github.io
+</title><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=color-scheme content="light dark"><meta name=author content="Christian Ekrem"><meta name=description content="The final part of our Clean Architecture series, exploring the 'S' in SOLID"><meta name=keywords content="developer,personal"><meta name=fediverse:creator content><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://cekrem.github.io/images/featured-with-margins.png"><meta name=twitter:title content="Single Responsibility Principle in React: The Art of Component Focus"><meta name=twitter:description content="The final part of our Clean Architecture series, exploring the 'S' in SOLID"><meta property="og:url" content="https://cekrem.github.io/posts/single-responsibility-principle-in-react/"><meta property="og:site_name" content="cekrem.github.io"><meta property="og:title" content="Single Responsibility Principle in React: The Art of Component Focus"><meta property="og:description" content="The final part of our Clean Architecture series, exploring the 'S' in SOLID"><meta property="og:locale" content="en_us"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2025-02-04T00:00:00+00:00"><meta property="article:modified_time" content="2025-02-04T00:00:00+00:00"><meta property="article:tag" content="Architecture"><meta property="article:tag" content="SOLID"><meta property="article:tag" content="Clean Architecture"><meta property="article:tag" content="React"><meta property="article:tag" content="Typescript"><meta property="og:image" content="https://cekrem.github.io/images/featured-with-margins.png"><link rel=canonical href=https://cekrem.github.io/posts/single-responsibility-principle-in-react/><link rel=preload href=/fonts/fa-brands-400.woff2 as=font type=font/woff2 crossorigin><link rel=preload href=/fonts/fa-regular-400.woff2 as=font type=font/woff2 crossorigin><link rel=preload href=/fonts/fa-solid-900.woff2 as=font type=font/woff2 crossorigin><link rel=stylesheet href=/css/coder.min.07092c1350ffd254998dc43a44ae96e617d14af4df4602626878df89189c5e1a.css integrity="sha256-BwksE1D/0lSZjcQ6RK6W5hfRSvTfRgJiaHjfiRicXho=" crossorigin=anonymous media=screen><link rel=icon type=image/svg+xml href=/images/favicon.svg sizes=any><link rel=icon type=image/png href=/images/favicon-32x32.png sizes=32x32><link rel=icon type=image/png href=/images/favicon-16x16.png sizes=16x16><link rel=apple-touch-icon href=/images/apple-touch-icon.png><link rel=apple-touch-icon sizes=180x180 href=/images/apple-touch-icon.png><link rel=manifest href=/site.webmanifest><link rel=mask-icon href=/images/safari-pinned-tab.svg color=#5bbad5></head><body class="preload-transitions colorscheme-light"><main class=wrapper><nav class=navigation><section class=container><a class=navigation-title href=https://cekrem.github.io/>cekrem.github.io
+</a><input type=checkbox id=menu-toggle>
+<label class="menu-button float-right" for=menu-toggle><i class="fa-solid fa-bars fa-fw" aria-hidden=true></i></label><ul class=navigation-list><li class=navigation-item><a class=navigation-link href=/hire/>Hire me?</a></li><li class=navigation-item><a class=navigation-link href=/about/>About</a></li><li class=navigation-item><a class=navigation-link href=/posts/books-i-think-software-engineers-should-read>Recommended Books</a></li><li class=navigation-item><a class=navigation-link href=/posts/>Blog</a></li></ul></section></nav><div class=content><section class="container post"><article><header><div class=post-title><h1 class=title><a class=title-link href=https://cekrem.github.io/posts/single-responsibility-principle-in-react/>Single Responsibility Principle in React: The Art of Component Focus</a></h1></div><div class=post-meta><div class=date><span class=posted-on><i class="fa-solid fa-calendar" aria-hidden=true></i>
+<time datetime=2025-02-04T00:00:00Z>February 4, 2025
+</time></span><span class=reading-time><i class="fa-solid fa-clock" aria-hidden=true></i>
+4-minute read</span></div><div class=tags><i class="fa-solid fa-tag" aria-hidden=true></i>
+<span class=tag><a href=/tags/architecture/>Architecture</a>
+</span><span class=separator>•</span>
+<span class=tag><a href=/tags/solid/>SOLID</a>
+</span><span class=separator>•</span>
+<span class=tag><a href=/tags/clean-architecture/>Clean Architecture</a>
+</span><span class=separator>•</span>
+<span class=tag><a href=/tags/react/>React</a>
+</span><span class=separator>•</span>
+<span class=tag><a href=/tags/typescript/>Typescript</a></span></div></div></header><div class=post-content><h2 id=introduction>Introduction
+<a class=heading-link href=#introduction><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h2><p>We&rsquo;ve covered <a href=/posts/clean-architecture-and-plugins-in-go>Dependency Inversion</a>, <a href=/posts/interface-segregation-in-practice>Interface Segregation</a>, <a href=/posts/liskov-substitution-the-real-meaning-of-inheritance>Liskov Substitution</a>, and <a href=/posts/open-closed-principle-in-react>Open-Closed</a>. Now it&rsquo;s time for the foundation of SOLID: the Single Responsibility Principle (SRP).</p><p>Again, kudos to Uncle Bob for reminding me about the importance of good <strong>software architecture</strong> in his classic <a href=https://amzn.to/4iAc8o1 class=external-link target=_blank rel=noopener>Clean Architecture</a>! That book is my primary inspiration for this series.</p><blockquote><p>The Single Responsibility Principle states that a class should have only one reason to change.</p></blockquote><h2 id=the-problem-with-multiple-responsibilities>The Problem with Multiple Responsibilities
+<a class=heading-link href=#the-problem-with-multiple-responsibilities><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h2><p>Here&rsquo;s a common anti-pattern:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=font-style:italic>// DON&#39;T DO THIS
+</span></span></span><span style=display:flex><span><span style=font-style:italic></span><span style=font-weight:700>const</span> UserProfile = () =&gt; {
+</span></span><span style=display:flex><span>  <span style=font-weight:700>const</span> [user, setUser] = useState&lt;<span style=font-weight:700>User</span> <span>|</span> null&gt;(<span style=font-weight:700>null</span>);
+</span></span><span style=display:flex><span>  <span style=font-weight:700>const</span> [loading, setLoading] = useState(<span style=font-weight:700>true</span>);
+</span></span><span style=display:flex><span>  <span style=font-weight:700>const</span> [error, setError] = useState&lt;<span style=font-weight:700>Error</span> <span>|</span> null&gt;(<span style=font-weight:700>null</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  useEffect(() =&gt; {
+</span></span><span style=display:flex><span>    fetchUser();
+</span></span><span style=display:flex><span>  }, []);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=font-weight:700>const</span> fetchUser = <span style=font-weight:700>async</span> () =&gt; {
+</span></span><span style=display:flex><span>    <span style=font-weight:700>try</span> {
+</span></span><span style=display:flex><span>      <span style=font-weight:700>const</span> response = <span style=font-weight:700>await</span> fetch(<span style=font-style:italic>&#34;/api/user&#34;</span>);
+</span></span><span style=display:flex><span>      <span style=font-weight:700>const</span> data = <span style=font-weight:700>await</span> response.json();
+</span></span><span style=display:flex><span>      setUser(data);
+</span></span><span style=display:flex><span>    } <span style=font-weight:700>catch</span> (e) {
+</span></span><span style=display:flex><span>      setError(e <span style=font-weight:700>as</span> Error);
+</span></span><span style=display:flex><span>    } <span style=font-weight:700>finally</span> {
+</span></span><span style=display:flex><span>      setLoading(<span style=font-weight:700>false</span>);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>  };
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=font-weight:700>const</span> handleUpdateProfile = <span style=font-weight:700>async</span> (data: <span>Partial</span>&lt;<span style=font-weight:700>User</span>&gt;) =&gt; {
+</span></span><span style=display:flex><span>    <span style=font-weight:700>try</span> {
+</span></span><span style=display:flex><span>      <span style=font-weight:700>await</span> fetch(<span style=font-style:italic>&#34;/api/user&#34;</span>, {
+</span></span><span style=display:flex><span>        method: <span style=font-style:italic>&#34;PUT&#34;</span>,
+</span></span><span style=display:flex><span>        body: <span>JSON.stringify</span>(data),
+</span></span><span style=display:flex><span>      });
+</span></span><span style=display:flex><span>      fetchUser(); <span style=font-style:italic>// Refresh data
+</span></span></span><span style=display:flex><span><span style=font-style:italic></span>    } <span style=font-weight:700>catch</span> (e) {
+</span></span><span style=display:flex><span>      setError(e <span style=font-weight:700>as</span> Error);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>  };
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=font-weight:700>if</span> (loading) <span style=font-weight:700>return</span> &lt;<span style=font-weight:700>div</span>&gt;Loading...&lt;/<span style=font-weight:700>div</span>&gt;;
+</span></span><span style=display:flex><span>  <span style=font-weight:700>if</span> (error) <span style=font-weight:700>return</span> &lt;<span style=font-weight:700>div</span>&gt;Error: {error.message}&lt;/<span style=font-weight:700>div</span>&gt;;
+</span></span><span style=display:flex><span>  <span style=font-weight:700>if</span> (!user) <span style=font-weight:700>return</span> &lt;<span style=font-weight:700>div</span>&gt;No user found&lt;/<span style=font-weight:700>div</span>&gt;;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=font-weight:700>return</span> (
+</span></span><span style=display:flex><span>    &lt;<span style=font-weight:700>div</span>&gt;
+</span></span><span style=display:flex><span>      &lt;<span style=font-weight:700>h1</span>&gt;{user.name}&lt;/<span style=font-weight:700>h1</span>&gt;
+</span></span><span style=display:flex><span>      &lt;<span style=font-weight:700>form</span> onSubmit={<span style=font-style:italic>/* form logic */</span>}&gt;{<span style=font-style:italic>/* Complex form fields */</span>}&lt;/<span style=font-weight:700>form</span>&gt;
+</span></span><span style=display:flex><span>      &lt;<span style=font-weight:700>UserStats</span> userId={user.id} /&gt;
+</span></span><span style=display:flex><span>      &lt;<span style=font-weight:700>UserPosts</span> userId={user.id} /&gt;
+</span></span><span style=display:flex><span>    &lt;/<span style=font-weight:700>div</span>&gt;
+</span></span><span style=display:flex><span>  );
+</span></span><span style=display:flex><span>};
+</span></span></code></pre></div><p>This component violates SRP because it&rsquo;s responsible for:</p><ol><li>Data fetching</li><li>Error handling</li><li>Loading states</li><li>Form handling</li><li>Layout and presentation</li></ol><h2 id=a-better-way-separation-of-concerns>A Better Way: Separation of Concerns
+<a class=heading-link href=#a-better-way-separation-of-concerns><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h2><p>Let&rsquo;s break it down into focused components:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=font-style:italic>// Data fetching hook
+</span></span></span><span style=display:flex><span><span style=font-style:italic></span><span style=font-weight:700>const</span> useUser = (userId: <span>string</span>) =&gt; {
+</span></span><span style=display:flex><span>  <span style=font-weight:700>const</span> [user, setUser] = useState&lt;<span style=font-weight:700>User</span> <span>|</span> null&gt;(<span style=font-weight:700>null</span>);
+</span></span><span style=display:flex><span>  <span style=font-weight:700>const</span> [loading, setLoading] = useState(<span style=font-weight:700>true</span>);
+</span></span><span style=display:flex><span>  <span style=font-weight:700>const</span> [error, setError] = useState&lt;<span style=font-weight:700>Error</span> <span>|</span> null&gt;(<span style=font-weight:700>null</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  useEffect(() =&gt; {
+</span></span><span style=display:flex><span>    fetchUser();
+</span></span><span style=display:flex><span>  }, [userId]);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=font-weight:700>const</span> fetchUser = <span style=font-weight:700>async</span> () =&gt; {
+</span></span><span style=display:flex><span>    <span style=font-weight:700>try</span> {
+</span></span><span style=display:flex><span>      <span style=font-weight:700>const</span> response = <span style=font-weight:700>await</span> fetch(<span style=font-style:italic>`/api/user/</span><span style=font-weight:700;font-style:italic>${</span>userId<span style=font-weight:700;font-style:italic>}</span><span style=font-style:italic>`</span>);
+</span></span><span style=display:flex><span>      <span style=font-weight:700>const</span> data = <span style=font-weight:700>await</span> response.json();
+</span></span><span style=display:flex><span>      setUser(data);
+</span></span><span style=display:flex><span>    } <span style=font-weight:700>catch</span> (e) {
+</span></span><span style=display:flex><span>      setError(e <span style=font-weight:700>as</span> Error);
+</span></span><span style=display:flex><span>    } <span style=font-weight:700>finally</span> {
+</span></span><span style=display:flex><span>      setLoading(<span style=font-weight:700>false</span>);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>  };
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=font-weight:700>return</span> { user, loading, error, refetch: <span>fetchUser</span> };
+</span></span><span style=display:flex><span>};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=font-style:italic>// Presentation component
+</span></span></span><span style=display:flex><span><span style=font-style:italic></span><span style=font-weight:700>const</span> UserProfileView = ({
+</span></span><span style=display:flex><span>  user,
+</span></span><span style=display:flex><span>  onUpdate,
+</span></span><span style=display:flex><span>}: {
+</span></span><span style=display:flex><span>  user: <span>User</span>;
+</span></span><span style=display:flex><span>  onUpdate: (data: <span>Partial</span>&lt;<span style=font-weight:700>User</span>&gt;) =&gt; <span style=font-weight:700>void</span>;
+</span></span><span style=display:flex><span>}) =&gt; (
+</span></span><span style=display:flex><span>  &lt;<span style=font-weight:700>div</span>&gt;
+</span></span><span style=display:flex><span>    &lt;<span style=font-weight:700>h1</span>&gt;{user.name}&lt;/<span style=font-weight:700>h1</span>&gt;
+</span></span><span style=display:flex><span>    &lt;<span style=font-weight:700>UserProfileForm</span> user={user} onSubmit={onUpdate} /&gt;
+</span></span><span style=display:flex><span>    &lt;<span style=font-weight:700>UserStats</span> userId={user.id} /&gt;
+</span></span><span style=display:flex><span>    &lt;<span style=font-weight:700>UserPosts</span> userId={user.id} /&gt;
+</span></span><span style=display:flex><span>  &lt;/<span style=font-weight:700>div</span>&gt;
+</span></span><span style=display:flex><span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=font-style:italic>// Container component
+</span></span></span><span style=display:flex><span><span style=font-style:italic></span><span style=font-weight:700>const</span> UserProfileContainer = ({ userId }: { userId: <span>string</span> }) =&gt; {
+</span></span><span style=display:flex><span>  <span style=font-weight:700>const</span> { user, loading, error, refetch } = useUser(userId);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=font-weight:700>const</span> handleUpdate = <span style=font-weight:700>async</span> (data: <span>Partial</span>&lt;<span style=font-weight:700>User</span>&gt;) =&gt; {
+</span></span><span style=display:flex><span>    <span style=font-weight:700>try</span> {
+</span></span><span style=display:flex><span>      <span style=font-weight:700>await</span> fetch(<span style=font-style:italic>`/api/user/</span><span style=font-weight:700;font-style:italic>${</span>userId<span style=font-weight:700;font-style:italic>}</span><span style=font-style:italic>`</span>, {
+</span></span><span style=display:flex><span>        method: <span style=font-style:italic>&#34;PUT&#34;</span>,
+</span></span><span style=display:flex><span>        body: <span>JSON.stringify</span>(data),
+</span></span><span style=display:flex><span>      });
+</span></span><span style=display:flex><span>      refetch();
+</span></span><span style=display:flex><span>    } <span style=font-weight:700>catch</span> (e) {
+</span></span><span style=display:flex><span>      <span style=font-style:italic>// Error handling
+</span></span></span><span style=display:flex><span><span style=font-style:italic></span>    }
+</span></span><span style=display:flex><span>  };
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=font-weight:700>if</span> (loading) <span style=font-weight:700>return</span> &lt;<span style=font-weight:700>LoadingSpinner</span> /&gt;;
+</span></span><span style=display:flex><span>  <span style=font-weight:700>if</span> (error) <span style=font-weight:700>return</span> &lt;<span style=font-weight:700>ErrorMessage</span> error={error} /&gt;;
+</span></span><span style=display:flex><span>  <span style=font-weight:700>if</span> (!user) <span style=font-weight:700>return</span> &lt;<span style=font-weight:700>NotFound</span> message=<span style=font-style:italic>&#34;User not found&#34;</span> /&gt;;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=font-weight:700>return</span> &lt;<span style=font-weight:700>UserProfileView</span> user={user} onUpdate={handleUpdate} /&gt;;
+</span></span><span style=display:flex><span>};
+</span></span></code></pre></div><h2 id=key-takeaways>Key Takeaways
+<a class=heading-link href=#key-takeaways><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h2><ol><li><strong>Separate data and presentation</strong> - use hooks for data, components for UI</li><li><strong>Create focused components</strong> - each component should do one thing well</li><li><strong>Use composition</strong> to build complex features from simple parts</li><li><strong>Extract reusable logic</strong> into custom hooks</li><li><strong>Think in layers</strong> - data, business logic, presentation</li></ol><h2 id=conclusion>Conclusion
+<a class=heading-link href=#conclusion><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h2><p>When each component has a single, well-defined responsibility, your entire application becomes more maintainable, testable, and flexible.</p><p>As Uncle Bob emphasizes in <a href=https://amzn.to/4iAc8o1 class=external-link target=_blank rel=noopener>Clean Architecture</a>, it&rsquo;s about having a single <em>reason to change</em>. This subtle distinction is crucial:</p><ul><li>A component might do several related things, but if they all change for the same reason (like updating the user profile UI), they probably belong together</li><li>Conversely, two seemingly simple operations might need to be separated if they change for different reasons (like user preferences vs. authentication logic)</li></ul><blockquote><p><strong>Pro tip</strong>: When you find yourself using the word &ldquo;and&rdquo; to describe what a component does, it might be violating SRP. Split it up! But also consider <em>why</em> those parts might need to change, and who would request those changes.</p></blockquote><h2 id=update-friendly-disclaimer-and-reminder>Update: Friendly Disclaimer and Reminder
+<a class=heading-link href=#update-friendly-disclaimer-and-reminder><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h2><p>If you&rsquo;re looking for a comprehensive guide to software architecture, this is not it. The purpose of my recent posts about software architecture is to explore some some principles in a practical way, principles I&rsquo;ve previously been too quick to dismiss or too lazy to apply. I&rsquo;m neither claiming mastery of these concepts, nor am I suggesting that these principles should be rigidly applied in every situation. I&rsquo;m not even proposing that my brief examples are the best way to implement or even explain these principles. Rather, I&rsquo;m documenting my attempts to bridge classical software engineering principles with contemporary development practices. In fact, I have yet to decide for my self how close to &ldquo;Clean Architecture&rdquo; I want to get in the end vs how pragmatic I want to be. But for now I&rsquo;m (mostly) enjoying the learning and exploration. Keep that in mind before you harass me, Uncle Bob or anyone else on Reddit about it 😅</p><p>And to all of you who have disagreed with me in a meaningful and respectful way, thank you. It&rsquo;s been a great learning experience for me.</p><p>Thanks :)</p></div><footer></footer></article></section></div><script type=text/javascript src=https://testimonial.to/js/iframeResizer.min.js></script><style>form{display:flex;justify-content:center}</style><form action="https://api.follow.it/subscription-form/SDRVMUk2VmsySENBNk94RDNKNDFnS3NmWlQ5a3gxejNIeUlJWHl3QjdqNnRHdENkaXp5aXZhZlFvcGtzcEZ3K0o5TFVRdSt2WWM5RWRsWmZwWVhNUS9PZjJqMWZ3aHBwZUhjT1ZpWXBGRkdZOWtIcGhYQkJkSkE4QTQ1eHl5YkF8RTZHTExQOWFrN1pFY1F0RzZ5c3pVN2I1QTI1YXNtMjZiYllLU25zQkJ3bz0=/8" method=post><input type=email name=email required placeholder=Email spellcheck=false>
+<button type=submit>Subscribe</button></form><div id=testemonials class=container style="background:#fff!important;clip-path:inset(0 0 90px 0);padding:24px;border-radius:24px;opacity:0;max-height:0;transition:opacity 1s,max-height 1s"><iframe id=testimonialto-carousel-christian-ekrem-tag-all-light src="https://embed-v2.testimonial.to/carousel/all/christian-ekrem?theme=light&autoplay=off&showmore=on&one-row=on&hideDate=off&same-height=off&tag=all&arrowColor=9BA9B4" frameborder=0 scrolling=no width=100%></iframe></div><script type=text/javascript>location.pathname in{"":!0,"/":!0,"/hire/":!0,"/hire":!0}&&setTimeout(()=>{iFrameResize({log:!1,checkOrigin:!1},"#testimonialto-carousel-christian-ekrem-tag-all-light");const e=document.getElementById("testemonials");e.style.display="block",e.style.opacity=1,e.style.maxHeight="600px"},1e3)</script><footer class=footer><section class=container>© 2021 - 2025 Christian Ekrem
+<script data-name=BMC-Widget data-cfasync=false src=https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js data-emoji=🍺 data-id=cekrem data-description="Support me on Buy me a coffee!" data-message data-color=#ddd data-position=Right data-x_margin=18 data-y_margin=18></script></section><script src=https://formspree.io/js/formbutton-v1.min.js defer></script></footer></main><script src=/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script><script data-goatcounter=https://cekrem.goatcounter.com/count async src=//gc.zgo.at/count.js></script></body></html>

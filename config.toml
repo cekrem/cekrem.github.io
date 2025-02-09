@@ -158,6 +158,11 @@ weight = 4
 url = "/posts/books-i-think-software-engineers-should-read"
 
 [[menu.main]]
+name = "Podcast (🇳🇴)"
+weight = 5
+url = "https://creators.spotify.com/pod/show/disippel"
+
+[[menu.main]]
 name = "Blog"
 weight = 9
 url = "posts/"

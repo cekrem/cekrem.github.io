@@ -138,7 +138,7 @@ I'll be documenting this journey as I go. The next post will likely focus on imp
 
 Check out Uncle Bob's [Clean Architecture](https://amzn.to/4gjf4Ud) book if you haven't already. It's a great read and a good reminder of what we're trying to achieve.
 
-The code is available on [GitHub](https://github.com/cekrem/clean-blog) if you want to follow along or contribute. Just remember - this is very much a work in progress!
+The code is available on [GitHub](https://github.com/cekrem/clean-blog/tree/v0.1) if you want to follow along or contribute. Just remember - this is very much a work in progress!
 
 ## Disclaimer
 

@@ -1,38 +1,43 @@
 +++
 title = "Replacing Hugo with a Custom Kotlin Blog Engine"
-description = "A Clean Architecture adventure in over-engineering"
+description = "A Clean Architecture adventure in potential over-engineering"
 date = "2025-02-11"
 tags = ["kotlin", "clean architecture", "blog", "ktor", "TDD"]
-draft = true
+draft = false
 +++
 
-## The Problem with Static Site Generators
+## Let's make a blog engine, ey?
 
-Don't get me wrong - [Hugo](https://gohugo.io/) is great. It's blazing fast, feature-rich, and battle-tested. But as a developer who's been diving deep into Clean Architecture lately (as you might have noticed from my [recent](/posts/clean-architecture-and-plugins-in-go) [posts](/posts/interface-segregation-in-practice)), I've been itching to apply these principles to a real project. And what better way to learn than by potentially over-engineering my own blog engine?
+Don't get me wrong - [Hugo](https://gohugo.io/) (the stuff that I'm currently using to drive this site) is great. It's blazing fast, feature-rich, and battle-tested. But as a developer who's been diving deep into Clean Architecture lately (as you might have noticed from my [recent](/posts/clean-architecture-and-plugins-in-go) [posts](/posts/interface-segregation-in-practice)), I've been itching to apply these principles to a real project. And what better way to learn than by potentially over-engineering my own blog engine?
 
 ## The Plan
 
 Rather than just throwing together another quick web app, I'm attempting to build this the "right" way:
 
-1. Following Clean Architecture principles
+1. Following Clean Architecture principles to the letter
 2. Using Test-Driven Development (TDD)
 3. Keeping the codebase screaming its intent
-4. Making it easy to change (ETC principle from The Pragmatic Programmer)
 
 ## The Architecture
 
 Following Uncle Bob's Clean Architecture principles, I've structured the project into clear layers:
 
 ```
-src/main/kotlin/
-├── domain/
-│   └── model/           # Core business entities
-├── application/
-│   ├── gateway/         # Port interfaces
-│   └── usecase/         # Application-specific business rules
-└── infrastructure/
-    ├── factory/         # DI setup
-    └── web/            # Ktor web framework integration
+src/main/kotlin/io/github/cekrem/
+├── domain/                     # Core business entities and rules
+│   └── model/                  # Content, ContentBlock, ContentType, etc.
+├── application/               # Application-specific business rules
+│   ├── config/               # Blog configuration (title, description, url, menu items etc)
+│   ├── gateway/              # Port interfaces (ContentSource)
+│   ├── parser/              # Content parsing interfaces
+│   └── usecase/             # Application use cases
+├── adapter/                  # Interface adapters
+│   └── presenter/           # Presentation interfaces
+└── infrastructure/          # External frameworks and tools
+    ├── contentsource/       # File, Mock, and RSS implementations
+    ├── factory/             # Dependency injection
+    ├── parser/              # Markdown parsing implementation
+    └── web/                 # Ktor setup, routes, and templates
 ```
 
 ### Domain Layer
@@ -69,6 +74,20 @@ class GetContentUseCase(
 }
 ```
 
+### Interface Adapters Layer
+
+The adapters layer converts data between the formats most convenient for the use cases and external agencies. For this blog engine, the main adapter is the content presenter:
+
+```kotlin
+interface ContentPresenter {
+    fun presentContent(content: Content): Any
+
+    fun presentContentList(contents: List<ContentSummary>): Any
+}
+```
+
+This layer ensures that our domain and application layers remain clean and independent of any presentation concerns. The `Any` return type provides maximum flexibility - implementations can return HTML strings, view models, or any other format needed by the infrastructure layer. This approach perfectly aligns with the Clean Architecture's dependency rule while keeping our options open for different presentation formats.
+
 ### Infrastructure Layer
 
 The infrastructure layer handles the technical details of web serving (using Ktor), content storage, and template rendering:
@@ -99,15 +118,15 @@ fun startServer(
 
 So far I've only got the basic scaffolding in place. The next steps are:
 
+0. Add failing tests for everything; TDD for the win!
 1. Implement the markdown parser
-2. Add template rendering
-3. Set up content caching
-4. Add RSS feed generation
-5. Implement tag support
+2. Add proper template rendering
+3. Add RSS feed generation
+4. (Implement beyond MVP features as needed)
 
 ## Is This Over-Engineering?
 
-Probably! But that's not necessarily a bad thing when the goal is learning. As [The Pragmatic Programmer](https://amzn.to/4gjf4Ud) reminds us, sometimes you need to go too far to find out where "too far" actually is.
+Probably! But that's not necessarily a bad thing when the goal is learning. As [The Pragmatic Programmer](https://amzn.to/4gjf4Ud) reminds us, sometimes you need to go too far to find out where "too far" actually is. I'd rather go to far now and learn from it.
 
 The real test will be whether this ends up being more maintainable and adaptable than Hugo for my specific needs. At worst, I'll have learned a lot about Clean Architecture in practice. At best, I'll have a blog engine that perfectly fits my needs and is a joy to extend.
 
@@ -120,3 +139,7 @@ I'll be documenting this journey as I go. The next post will likely focus on imp
 Check out Uncle Bob's [Clean Architecture](https://amzn.to/4gjf4Ud) book if you haven't already. It's a great read and a good reminder of what we're trying to achieve.
 
 The code is available on [GitHub](https://github.com/cekrem/clean-blog) if you want to follow along or contribute. Just remember - this is very much a work in progress!
+
+## Disclaimer
+
+I can't promise I'll add to this project weekly, there are other things I'd like to write about as well. Stay tuned in any case!

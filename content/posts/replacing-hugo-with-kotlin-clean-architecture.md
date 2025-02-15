@@ -1,6 +1,6 @@
 +++
-title = "Replacing Hugo with a Custom Kotlin Blog Engine"
-description = "A Clean Architecture adventure in potential over-engineering"
+title = "Making a Clean Architecture Blog Engine From Scratch pt 1"
+description = "A SOLID adventure in potential over-engineering"
 date = "2025-02-11"
 tags = ["kotlin", "clean architecture", "blog", "ktor", "TDD"]
 draft = false

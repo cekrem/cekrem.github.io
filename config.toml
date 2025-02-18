@@ -3,13 +3,16 @@ title = "cekrem.github.io"
 theme = "hugo-coder"
 languageCode = "en-us"
 defaultContentLanguage = "en"
-paginate = 20
+#paginate = 20
 pygmentsStyle = "bw"
 pygmentsCodeFences = true
 pygmentsCodeFencesGuessSyntax = true
 enableEmoji = true
 # Enable Disqus comments
 # disqusShortname = "cekrem"
+#
+[pagination]
+pagerSize = 20
 
 [params]
 author = "Christian Ekrem"

@@ -19,6 +19,10 @@ In my [previous post](/posts/replacing-hugo-with-kotlin-clean-architecture), emb
 
 The key idea is to write an acceptance test first, watch it fail, then use unit tests to drive the implementation that makes the acceptance test pass. The unit tests will traverse the layers of the clean architecture, starting from the domain layer and working their way down to the nitty-gritty infrastructure layer, until they all - along with the acceptance test - pass. When done, you'll ideally have a system that is both robust and easy to maintain (or that's the plan, at least). With 100% test coverage, of course.
 
+!["Double Loop TDD Illustration"](https://khalilstemmler.com/img/blog/tdd/intro/double-loop-tdd.svg)
+
+> Image borrowed from [khalilstemmler.com](https://khalilstemmler.com/), in return I guess it's only fair I recommend his [Solid Book](https://solidbook.io/)
+
 ## The Current State of the Blog Engine
 
 The source code for this project can be found [here](https://github.com/cekrem/clean-blog/tree/v0.2). Please note that I'm right in the middle of development as I'm writing this, so this project is by no means finished. Here's where I'm at in the development process:

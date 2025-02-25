@@ -1,5 +1,5 @@
 +++
-title = "Refactoring Towards Cleaner Boundaries: Lessons from Building a Markdown Blog Engine"
+title = "Refactoring Towards Cleaner Boundaries: Lessons from Building a Markdown Blog Engine (Part 3)"
 description = "How the architecture of a Kotlin blog engine evolved"
 tags = ["kotlin", "clean architecture", "refactoring", "tdd", "blog engine"]
 date = "2025-02-25"
@@ -74,7 +74,7 @@ sealed class ContentBlockDto(
 **Benefits:**
 
 1. **Clear Boundaries**: DTOs prevent domain models from leaking into the infrastructure layer (the presenter now gets a DTO, not a domain model)
-2. **Flexibility**: We can change the presentation format without affecting the domain, and we can craft a DTO that's perfect for the specific output format we need rather than a generic domain model
+2. **Flexibility**: We can change the presentation format without affecting the domain, and we can craft a DTO that's perfect for the specific output format we need rather than a generic domain model (the domain model had sealed class content blocks with a bunch of subclasses, which is very tricky for template engines to render)
 3. **Testability**: DTOs are simple data structures that are easy to test
 
 ## The Testing Evolution
@@ -86,6 +86,7 @@ class ServeMarkdownBlogPostFeatureTest : FeatureAcceptanceTest() {
     @Test
     fun `should convert and serve markdown blog posts as properly formatted HTML pages`() =
         runTest {
+            // Iterate over all the blog posts in the test fixtures (real blog posts like the one you're reading right now)
             TestFixtures.blogPosts.forEach { (slug, post) ->
                 // Given
                 testApplication.givenBlogPost(slug = slug, content = post.markdownInput)
@@ -114,6 +115,6 @@ class ServeMarkdownBlogPostFeatureTest : FeatureAcceptanceTest() {
 
 ## Next Steps
 
-In part 4, we'll explore how to handle **cross-cutting concerns** like caching and logging while maintaining our clean architecture. We should probably implement more Markdown rendering features as well. Stay tuned!
+In part 4, we'll explore how to handle **cross-cutting concerns** like caching and logging, and not least proper error handling, while maintaining our clean architecture. I should probably implement more Markdown rendering features as well. And we need to handle the index file with menu items and all that. Stay tuned!
 
 > **Pro Tip**: When refactoring, focus on one architectural boundary at a time. It's tempting to fix everything at once, but incremental improvements lead to better results.

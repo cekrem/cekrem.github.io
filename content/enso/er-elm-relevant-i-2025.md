@@ -52,7 +52,7 @@ Før 1960-tallet skrev utviklere ofte kode i en **rent imperativ stil**, hvor pr
 
 ## 📏 Strukturert programmering – _"Ingen flere vilkårlige hopp!"_
 
-Dijkstra og andre datavitere på 1960-70-tallet argumenterte for at all programlogikk burde kunne uttrykkes gjennom **sekvenser, valg (if/while/switch) og løkker**. Dette gjorde programmer mer forutsigbare.
+[Edsger W. Dijkstra](https://en.wikipedia.org/wiki/Edsger_W._Dijkstra) og andre datavitere på 1960-70-tallet argumenterte for at all programlogikk burde kunne uttrykkes gjennom **sekvenser, valg (if/while/switch) og løkker**. Dette gjorde programmer mer forutsigbare. Dijkstras berømte artikkel ["Go To Statement Considered Harmful"](https://homepages.cwi.nl/~storm/teaching/reader/Dijkstra68.pdf) (1968) var et vendepunkt.
 
 ✂ **Fjernet:** GOTO
 ✅ **Resultat:** Klarere kontrollflyt, lettere å debugge
@@ -66,21 +66,21 @@ OOP oppsto på 1980-90-tallet som en respons på behovet for mer fleksible og ut
 ✂ **Fjernet:** Utrygge "pointers to functions" og hardkodede avhengigheter
 ✅ **Resultat:**
 
-- **Dependency Inversion** – Høynivåmoduler kan nå avhenge av abstraksjoner, ikke konkrete implementasjoner
+- **[Dependency Inversion](https://en.wikipedia.org/wiki/Dependency_inversion_principle)** – Høynivåmoduler kan nå avhenge av abstraksjoner, ikke konkrete implementasjoner
 - **Plugin-arkitektur** – Systemer kan utvides uten å endre eksisterende kode
 - **Testbarhet** – Avhengigheter kan enkelt byttes ut med mock-objekter
 
-Før OOP måtte utviklere bruke farlige "pointers to functions" for å oppnå polymorfisme. OOP gjorde dette trygt og forutsigbart gjennom virtuelle funksjoner og grensesnitt.
+Før OOP måtte utviklere bruke farlige "pointers to functions" for å oppnå polymorfisme. OOP gjorde dette trygt og forutsigbart gjennom virtuelle funksjoner og grensesnitt. Som [Robert C. Martin ("Uncle Bob")](https://blog.cleancoder.com/uncle-bob/2016/01/04/ALittleArchitecture.html) påpeker, var dette et stort fremskritt for arkitektonisk fleksibilitet.
 
 ---
 
 ## 🧩 Funksjonell programmering (FP) – _"Fjern mutabilitet og bivirkninger!"_
 
-FP har riktignok røtter tilbake til 1950-tallet (Lisp), men fikk økt popularitet med språk som Haskell, Elm og moderne bruk i TypeScript og React. Målet er å eliminere **uventede bivirkninger**, sikre at funksjoner alltid gir samme output for samme input, og unngå delt tilstand. Jeg har valgt å se på det som neste (og siste) iterasjon på stigen mot å fjerne kaos.
+FP har riktignok røtter tilbake til 1950-tallet ([Lisp](<https://en.wikipedia.org/wiki/Lisp_(programming_language)>)), men fikk økt popularitet med språk som [Haskell](https://www.haskell.org/), Elm og moderne bruk i TypeScript og React. Målet er å eliminere **uventede bivirkninger**, sikre at funksjoner alltid gir samme output for samme input, og unngå delt state. Jeg har valgt å se på det som neste (og siste) iterasjon på stigen mot å fjerne kaos.
 
 ✂ **Fjernet:**
 
-- Mutabel tilstand
+- Mutabel state
 - Skjulte side effects
 - Objektorientert kompleksitet
 
@@ -88,7 +88,7 @@ FP har riktignok røtter tilbake til 1950-tallet (Lisp), men fikk økt popularit
 
 ---
 
-## 🔄 Fellesnevner: Hver epoke har handlet om å fjerne feilbarlige friheter
+## 🔄 Fellesnevner: Hver epoke har handlet om å fjerne feilbarlige friheter (ikke legge til nye fancy features)
 
 1. **Strukturert programmering:** Fjernet vilkårlige hopp (GOTO)
 2. **OOP:** Fjernet ukontrollert deling av state
@@ -112,7 +112,7 @@ update model =
 -- model.count = 5  ← Kompileringsfeil!
 ```
 
-Dette minner om Rich Hickeys påstand om enkelthet gjennom begrensninger, og Bret Victors observasjon: "The most important property of a program is whether it is correct. The second most important is whether it can be changed without breaking its correctness."
+Dette minner om [Rich Hickeys](https://github.com/matthiasn/talk-transcripts/blob/master/Hickey_Rich/SimpleMadeEasy.md) påstand om enkelthet gjennom begrensninger i hans berømte foredrag ["Simple Made Easy"](https://www.youtube.com/watch?v=SxdOUGdseq4), og [Bret Victors](http://worrydream.com/) observasjon fra ["Inventing on Principle"](https://www.youtube.com/watch?v=PUv66718DII): "The most important property of a program is whether it is correct. The second most important is whether it can be changed without breaking its correctness."
 
 ### Når begrensninger gir frihet
 
@@ -120,19 +120,45 @@ Ironisk nok gir Elms strenge begrensninger oss flere fordeler:
 
 - **Enklere feilsøking**: Når data aldri endres, slipper du å lure på "hvem eller hva endret denne verdien?"
 
+  ```javascript
+  // I JavaScript kan dette skje:
+  let user = { name: "Ada" };
+  someFunction(user); // user kan bli endret her
+  console.log(user.name); // Hva er navnet nå? Umulig å vite uten å lese someFunction
+
+  // Du kan også re-assigne `let`
+  user = "user is now a string, not an object!";
+  console.log(user.name); // Nå er user.name `undefined`
+  ```
+
+  I Elm er dette umulig - du får compile-time error hvis du prøver å mutere:
+
   ```elm
-  -- Elm's tilstandshåndtering
-  initModel = { count = 0 }
-  model1 = update initModel  -- { count = 1 }
-  model2 = update model1     -- { count = 2 }
-  -- initModel forblir uendret
+  -- I Elm:
+  user = { name = "Ada" }
+
+  -- Dette kompilerer ikke:
+  user.name = "Grace"  -- FEIL: Elm har ikke variabel-mutasjon.
+
+  -- Dette kompilerer heller ikke:
+  user = { name = "Grace" }  -- FEIL: Elm kan ikke re-assigne variabler
+
+  -- Riktig måte i Elm:
+  updatedUser = { user | name = "Grace" }  -- Lager en ny kopi med endret navn
+
+  -- Eller i en funksjon med let-in:
+  updateName name user =
+      let
+          updatedUser = { user | name = name }
+      in
+      updatedUser
   ```
 
 - **Forutsigbar kode**: Rene funksjoner + uforanderlige data = samme input gir alltid samme output
 
   ```elm
-  -- Elm-funksjoner er alltid rene
-  sum : List Int -> Int  -- Gitt samme liste, alltid samme sum
+  -- Elm-funksjoner er alltid rene, og har ikke side effects
+  sum : List Int -> Int  -- Gitt samme liste, alltid samme sum; og listen som sendes inn vil (igjen) ikke kunne muteres
   ```
 
 - **Tryggere refaktorering**: Kompilatoren finner alle steder som må oppdateres
@@ -147,33 +173,69 @@ Ironisk nok gir Elms strenge begrensninger oss flere fordeler:
 
 - **Mindre mental belastning**: Du trenger ikke holde hele tilstandshistorikken i hodet
   ```elm
-  view : Model -> Html Msg  -- Kun gjeldende tilstand er relevant
+  view : Model -> Html Msg  -- Kun gjeldende state er relevant
   ```
+
+Mye av dette ligner unektelig på hvordan React kan se ut i beste fall. Men Elm tvinger deg inn i "beste fall"!
 
 ### Moderne fordeler i praksis
 
-Elm gjør funksjonell programmering praktisk for webutvikling gjennom:
+I 2025 gir Elm flere konkrete fordeler for moderne webapplikasjoner:
 
-1. **Typeinferens** som reduserer boilerplate:
+1. **Null runtime exceptions** – Når koden kompilerer, krasjer den ikke:
 
    ```elm
-   -- Kompilatoren forstår at 1 og 2 er Int
-   sum = 1 + 2  -- Ingen typeannotasjon nødvendig
+   -- Dette kompilerer ikke:
+   text 5  -- Type error: Expected String, got Int
+
+   -- Dette kompilerer:
+   text (String.fromInt 5)  -- Trygt og forutsigbart
    ```
 
-2. **JavaScript-integrasjon** via ports:
+2. **Automatisk refaktorering** – Kompilatoren finner alle steder som må endres:
 
    ```elm
-   port module Main exposing (..)
-   port toJS : String -> Cmd msg  -- Send data til JavaScript
-   port fromJS : (String -> msg) -> Sub msg  -- Motta data
+   -- Endre en datamodell:
+   type alias User = { name : String }
+   ↓
+   type alias User = { name : String, email : String }
+
+   -- Kompilatoren markerer alle funksjoner som må oppdateres
    ```
 
-3. **Vennlige feilmeldinger** som lærer deg språket:
+3. **Garantert håndtering av alle tilstander** – Ingen "undefined is not a function":
+
    ```elm
-   -- Hvis du glemmer en case i pattern matching:
-   "This `case` does not have branches for all possibilities:
-   Missing possibilities include: DataReceived (Err _)
+   -- Må håndtere både Just og Nothing:
+   case maybeUser of
+       Just user ->
+           viewUser user
+
+       Nothing ->
+           text "Ingen bruker funnet"
+   ```
+
+4. **Optimalisert rendering** – Virtual DOM med automatisk diffing:
+
+   ```elm
+   -- Elm oppdaterer bare DOM-elementer som faktisk endres
+   view : Model -> Html Msg
+   view model =
+       div []
+           [ header [] [ text model.title ]
+           , content [] [ text model.content ]
+           ]
+   ```
+
+5. **Forutsigbar state management** – Én kilde til sannhet:
+
+   ```elm
+   -- All state er samlet i én modell
+   type alias Model =
+       { users : List User
+       , currentPage : Page
+       , isLoading : Bool
+       }
    ```
 
 ## SOLID by default
@@ -212,12 +274,89 @@ update msg model =
             )
 ```
 
-Dette mønsteret, kjent som The Elm Architecture, implementerer mange av prinsippene fra Clean Architecture:
+Dette mønsteret, kjent som [The Elm Architecture](https://guide.elm-lang.org/architecture/), er et prakteksempel på hvordan Elm tvinger frem [SOLID-prinsippene](https://en.wikipedia.org/wiki/SOLID) – enten du vil eller ikke:
 
-1. **Tydelig separasjon av ansvar** – View, Update og Model er helt separate
-2. **Dependency Inversion** – All kommunikasjon går gjennom meldinger (Msg)
-3. **Single Responsibility** – Hver funksjon har én jobb
-4. **Open/Closed** – Ny funksjonalitet legges til ved å utvide, ikke modifisere
+1. **[Single Responsibility](https://en.wikipedia.org/wiki/Single-responsibility_principle)** – Elm tvinger deg til å separere View, Update og Model. Hver funksjon har én jobb, og én "reson to change", og kompilatoren klager hvis du prøver å blande ansvarsområder.
+
+2. **[Open/Closed](https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle)** – Ny funksjonalitet legges til ved å utvide Msg-typen med nye varianter, ikke ved å modifisere eksisterende kode. Elm-arkitekturen er designet for utvidelse!
+
+3. **[Liskov Substitution](https://en.wikipedia.org/wiki/Liskov_substitution_principle)** – Automatisk oppfylt gjennom Elms typesystem og union types:
+
+   ```elm
+   -- I Elm er LSP umulig å bryte - kompilatoren tillater det ikke
+   type Shape
+       = Circle Float
+       | Rectangle Float Float
+
+   area : Shape -> Float
+   area shape =
+       case shape of
+           Circle radius ->
+               pi * radius * radius
+
+           Rectangle width height ->
+               width * height
+
+   -- Prøv å legge til Triangle uten å oppdatere area-funksjonen
+   -- Kompilatoren: "Niks, niks!"
+   ```
+
+4. **[Interface Segregation](https://en.wikipedia.org/wiki/Interface_segregation_principle)** – Elm oppmuntrer til små, fokuserte moduler og typer. Ingen "mega-interfaces" som tvinger implementasjoner til å støtte unødvendige metoder.
+
+5. **[Dependency Inversion](https://en.wikipedia.org/wiki/Dependency_inversion_principle)** – All kommunikasjon går gjennom meldinger (Msg) og abstraksjoner. Høynivåmoduler avhenger aldri av lavnivådetaljer.
+
+Det geniale med Elm er at du ikke kan velge bort disse prinsippene. Der andre språk tilbyr SOLID som "best practices" du kan følge hvis du er disiplinert, er de en obligatorisk del av Elms DNA. Kompilatoren er din ubarmhjertige arkitektur-mentor.
+
+(Og så har du C#, som selv bryter LSP i innebygde typer:
+
+```csharp
+ArrayList list = new List<int>(); // Skal fungere i teorien, men gjør ikke det
+list.Add("Hello"); // Dette er lov i ArrayList, men ikke i List<int>
+int num = (int)list[0]; // Kaster runtime-feil hvis string er lagt til
+
+```
+
+, men det er en annen artikkel.)
+
+## TEA vs. Clean Architecture
+
+Clean Architecture (CA) handler om å organisere kode slik at forretningslogikken er uavhengig av rammeverk og UI. Hvordan passer TEA inn her?
+
+### 1. Separerer UI fra logikk
+
+- Akkurat som CA, har TEA en klar separasjon mellom presentasjonslaget (**View**) og domenelogikken (**Model + Update**).
+- Dette betyr at man kan endre UI uten å endre domenelogikken.
+
+### 2. Strukturering av forretningslogikk
+
+- TEA har ikke et eksplisitt "use case-lag" slik CA anbefaler.
+- Men **Update-funksjonen** kan sees på som en _interactor_ i CA, hvor den tar inn en hendelse og bestemmer en tilstandsendring.
+
+### 3. Uavhengighet fra eksterne systemer
+
+- I Clean Architecture skal forretningslogikken være **uavhengig** av databaser, UI eller tredjeparts API-er.
+- TEA sikrer dette ved å bruke **Cmd** for sideeffekter, slik at API-kall og lignende ligger utenfor kjernearkitekturen.
+
+### 4. Enkel testing
+
+- Begge arkitekturer fremmer **testbar kode**.
+- TEA sin rene funksjonelle tilnærming gjør det lett å enhetsteste **Update-funksjonen** uten å tenke på eksterne avhengigheter.
+
+---
+
+### Oppsummering
+
+| **Kriterium**           | **The Elm Architecture**                                  | **Clean Architecture**              |
+| ----------------------- | --------------------------------------------------------- | ----------------------------------- |
+| **Separasjonsprinsipp** | God separasjon av UI, logikk og tilstand                  | Fremmer separasjon av lag           |
+| **Utvidbarhet**         | Enkel å utvide med nye meldinger, men Update kan bli stor | Fremmer fleksibilitet               |
+| **Testbarhet**          | Lett å teste pga. rene funksjoner                         | Fremmer testbarhet                  |
+| **Uavhengighet av UI**  | Ja, via Model og Update                                   | Hovedmål i Clean Architecture       |
+| **Sideeffekter**        | Håndteres via "Cmd"                                       | Anbefaler isolasjon av sideeffekter |
+
+---
+
+TEA samsvarer overraskende godt også med Clean Architecture, selv om det er tilpasset en funksjonell kontekst. Spesielt **separasjon av UI og logikk**, testbarhet og håndtering av sideeffekter er sterke sider ved TEA. Hvis man vil bruke TEA i større systemer, kan det være nyttig å strukturere **Update-funksjonen** mer modulært, slik at den ikke blir en _God-funksjon_.
 
 ## Moderne frontend-utvikling trenger dette
 
@@ -250,17 +389,17 @@ La oss være ærlige om utfordringene også:
 
 Elms relevans i 2025 ligger ikke i markedsandeler, men som arkitektonisk kompass. Mange av dens prinsipper finner vi igjen i:
 
-- React Server Components' isolering av effekter
+- [React Server Components](https://react.dev/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023#react-server-components)' isolering av effekter
 - TypeScripts stadig strengere type-system
-- Veksten av compile-time-verktøy som tRPC og Zod
+- Veksten av compile-time-verktøy som [tRPC](https://trpc.io/) og [Zod](https://zod.dev/)
 
-Altså: det diverse "best-practices" oppfordrer den drevne utvikler til å legge vinn på, er en obligatorisk del av Elm. Visst kan (og bør!) du skrive funksjonell React med god arkitektur, sterke typer og isolerte side effects; med Elm får du ikke lov til noe annet.
+Altså: det diverse "best-practices" oppfordrer den drevne utvikler til å legge vinn på, er en obligatorisk del av Elm. Visst kan (og bør!) du skrive funksjonell React med god arkitektur, sterke typer og isolerte side effects; med Elm får du rett og slett ikke lov til noe annet.
 
 ## Ressurser for å komme i gang
 
 - [Elm Guide](https://guide.elm-lang.org/) – Den offisielle guiden
 - [Elm in Action](https://amzn.to/41z14kq) – En utmerket bok for å lære hvordan Elm fungerer i større applikasjoner
-- [Elm Slack](https://elm-lang.org/community) – Et uvanlig hjelpsomt og åpent community
+- [Elm Community](https://elm-lang.org/community) – Et uvanlig hjelpsomt og åpent community, inkludert Slack, Discourse osv
 - [elm-spa](https://www.elm-spa.dev/) – For å bygge Single Page Applications
   - (Evt. mitt [hjemmesnekrede opplegg](https://github.com/cekrem/create-elm-live-app) fra gamledager, som gjør mye av det samme)
 - [Elm Land](https://elm.land/) – Nytt meta-rammeverk (2024)

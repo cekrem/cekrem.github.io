@@ -8,15 +8,45 @@ draft: true
 
 ## Hvorfor snakke om Elm i 2025?
 
-I en verden dominert av React, Vue og Svelte kan det virke merkelig å løfte frem Elm – et nisje-språk som har eksistert siden 2012, men som nesten har færre releases siden da enn React har på et år. Men nettopp nå, når frontend-utviklingen blir stadig mer kompleks, er det verdt å se nærmere på hva Elm gjør riktig.
+I en verden dominert av React, Vue og Svelte kan det virke merkelig å løfte frem Elm – et nisje-språk som har eksistert siden 2012, men som nesten har færre releases siden da enn React har på et år. Men nettopp nå, når frontend-utviklingen blir stadig mer kompleks, og hvor klientene gjør tunge løft som før hørte hjemme på andre siden av et API-kall, er det verdt å se nærmere på hva Elm gjør riktig.
+
+## Hva er Elm?
+
+Elm er et funksjonelt programmeringsspråk spesielt designet for webapplikasjoner. Her er nøkkelforskjellene fra moderne JavaScript-rammeverk:
+
+- **Ingen runtime-feil** – Når koden kompilerer, kan den kjøre uten uventede krasj
+- **Fullstendig håndtering av all mulig state** – Kompilatoren hjelper deg med alle grensetilfeller
+- **Forutsigbar arkitektur** – [The Elm Architecture](https://guide.elm-lang.org/architecture/) (TEA) gir en klar struktur som skalerer godt
+- **Automatisk versjonshåndtering** – Kompilatoren oppdager breaking changes
+
+### React vs. Elm: Samme retning, ulik tilnærming
+
+Det er fascinerende å se hvordan React har utviklet seg de siste årene:
+
+- React introduserte hooks for å håndtere state mer funksjonelt
+- Redux (inspirert av Elm) ble standard for kompleks håndtering av state
+- TypeScript (sterk typing) ble nesten obligatorisk for seriøse prosjekter
+- React Server Components isolerer sideeffekter på serversiden
+
+**Men det er en viktig forskjell:** React _anbefaler_ funksjonell programmering og immutabilitet, mens Elm _krever_ det. I React kan du fortsatt mutere variabler og state, blande paradigmer, og skape runtime-feil. I Elm er det rett og slett umulig. For ikke å snakke om hvor historieløs og uansvarlig tilnærming til arkitektur man finner i både store og små React-prosjekter.
+
+Som en senior React-utvikler sa til meg nylig: "God React-kode i 2025 ligner mistenkelig på Elm-kode fra 2015."
+
+Hva gjør Elm annerledes?
+
+### En kjapp historietime før vi går videre
+
+For å forstå hvorfor Elm er bygget som det er, og hvorfor det fortsatt er relevant, må vi ta et skritt tilbake og se på den større historien om programmeringsparadigmer. Denne utviklingen handler om noe fundamentalt: **Hvordan vi gradvis har fjernet farlige friheter for å skape mer pålitelig kode.**
+
+**Merk**: Nå skal det sies at funksjonell programmering strengt tatt er eldre enn de andre paradigmene. Men jeg velger likevel å plassere det på slutten av en rekke iterasjoner som utvikler seg fra kaos til kontroll.
 
 ### Paradigmeutvikling: Å ta vekk muligheter for å få mer kontroll
 
 ## 🏗 Før strukturert programmering – _"Full frihet, full kaos"_
 
-Før 1960-tallet skrev utviklere ofte kode i en **rent imperativ stil**, hvor programmer besto av sekvenser av kommandoer med **GOTO-setninger** for hopp mellom ulike deler av programmet.
+Før 1960-tallet skrev utviklere ofte kode i en **rent imperativ stil**, hvor programmer besto av sekvenser av kommandoer med **GOTO-setninger** for å hoppe mellom ulike deler av programmet.
 
-🔴 **Problem:** Koden ble vanskelig å forstå og vedlikeholde («spaghetti-kode»). Ingen garantier for at en sekvens av operasjoner var fornuftig, og feil ble uforutsigbare. "Undefined behaviour" ble en del av hverdagen, for å si det mildt.
+🔴 **Problem:** Koden ble vanskelig å forstå og vedlikeholde («spaghetti-kode»). Ingen garantier for at en sekvens av operasjoner var fornuftig, og feil ble uforutsigbare. "Undefined behaviour" ble en slags obligatorisk blindpassasjer.
 
 ---
 
@@ -31,7 +61,7 @@ Dijkstra og andre datavitere på 1960-70-tallet argumenterte for at all programl
 
 ## 🏛 Objektorientert programmering (OOP) – _"Trygg polymorfisme!"_
 
-OOP oppsto på 1980-90-tallet som en respons på behovet for mer fleksible og utvidbare systemer. Den største innovasjonen var kanskje ikke innkapsling av tilstand, men **trygg polymorfisme** gjennom grensesnitt og arv.
+OOP oppsto på 1980-90-tallet som en respons på behovet for mer fleksible og utvidbare systemer. Den største innovasjonen var – etter min mening – kanskje ikke innkapsling av tilstand, men **trygg polymorfisme** gjennom grensesnitt og arv.
 
 ✂ **Fjernet:** Utrygge "pointers to functions" og hardkodede avhengigheter
 ✅ **Resultat:**
@@ -51,7 +81,7 @@ FP har riktignok røtter tilbake til 1950-tallet (Lisp), men fikk økt popularit
 ✂ **Fjernet:**
 
 - Mutabel tilstand
-- Skjulte bivirkninger
+- Skjulte side effects
 - Objektorientert kompleksitet
 
 ✅ **Resultat:** Mer forutsigbar og testbar kode, men ofte brattere læringskurve.
@@ -61,7 +91,7 @@ FP har riktignok røtter tilbake til 1950-tallet (Lisp), men fikk økt popularit
 ## 🔄 Fellesnevner: Hver epoke har handlet om å fjerne feilbarlige friheter
 
 1. **Strukturert programmering:** Fjernet vilkårlige hopp (GOTO)
-2. **OOP:** Fjernet ukontrollert deling av tilstand
+2. **OOP:** Fjernet ukontrollert deling av state
 3. **FP:** Fjernet mutabilitet og skjulte side effects
 
 Målet har alltid vært det samme: **Mindre kaos, mer kontroll**. 🔥
@@ -119,15 +149,6 @@ Ironisk nok gir Elms strenge begrensninger oss flere fordeler:
   ```elm
   view : Model -> Html Msg  -- Kun gjeldende tilstand er relevant
   ```
-
-## Hva er Elm?
-
-Elm er et funksjonelt programmeringsspråk spesielt designet for webapplikasjoner. Her er nøkkelforskjellene fra moderne JavaScript-rammeverk:
-
-- **Ingen runtime-feil** – Når koden kompilerer, kan den kjøre uten uventede krasj
-- **Fullstendig tilstandshåndtering** – Kompilatoren hjelper deg med alle grensetilfeller
-- **Forutsigbar arkitektur** – The Elm Architecture (TEA) gir en klar struktur som skalerer godt
-- **Automatisk versjonshåndtering** – Kompilatoren oppdager breaking changes
 
 ### Moderne fordeler i praksis
 

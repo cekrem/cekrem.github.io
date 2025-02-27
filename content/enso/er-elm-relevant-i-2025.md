@@ -1,6 +1,6 @@
 ---
 title: "Er Elm relevant i 2025?"
-description: "En dypdykk i det funksjonelle programmeringsspråket som fortsatt har noe å lære oss"
+description: "Et dypdykk i det funksjonelle programmeringsspråket som fortsatt har noe å lære oss"
 tags: ["elm", "frontend", "funksjonell programmering", "arkitektur"]
 date: 2025-03-XX
 draft: true
@@ -240,43 +240,25 @@ I 2025 gir Elm flere konkrete fordeler for moderne webapplikasjoner:
 
 ## SOLID by default
 
-Det som fascinerer meg mest med Elm er hvordan det tvinger frem god arkitektur. Se på dette eksempelet:
+Elm-arkitekturen (The Elm Architecture, eller bare TEA) er en enkel, men kraftfull modell for å bygge webapplikasjoner. Den består av tre hoveddeler:
 
-```elm
-type Msg
-    = FetchData
-    | DataReceived (Result Http.Error Data)
-    | UserClicked Int
+1. **Model** - Applikasjonens tilstand
+2. **Update** - Hvordan tilstanden endres som respons på hendelser
+3. **View** - Hvordan tilstanden vises i brukergrensesnittet
 
-update : Msg -> Model -> ( Model, Cmd Msg )
-update msg model =
-    case msg of
-        FetchData ->
-            ( { model | loading = True }
-            , fetchDataCmd
-            )
+![The Elm Architecture Diagram](https://guide.elm-lang.org/architecture/buttons.svg)
+_Bildekilde: [Elm Guide](https://guide.elm-lang.org/architecture/)_
 
-        DataReceived result ->
-            case result of
-                Ok data ->
-                    ( { model | data = data, loading = False }
-                    , Cmd.none
-                    )
+### Hvordan det fungerer
 
-                Err _ ->
-                    ( { model | error = True, loading = False }
-                    , Cmd.none
-                    )
+1. **Brukerinteraksjon** trigger en `Msg` (melding)
+2. `Update`-funksjonen tar imot meldingen og returnerer en ny `Model`
+3. Den nye `Model`-en sendes til `View`-funksjonen
+4. `View`-funksjonen genererer ny HTML som vises til brukeren
 
-        UserClicked id ->
-            ( { model | selectedId = Just id }
-            , Cmd.none
-            )
-```
+Dette mønsteret tvinger frem [SOLID-prinsippene](https://en.wikipedia.org/wiki/SOLID) – enten du vil eller ikke:
 
-Dette mønsteret, kjent som [The Elm Architecture](https://guide.elm-lang.org/architecture/), er et prakteksempel på hvordan Elm tvinger frem [SOLID-prinsippene](https://en.wikipedia.org/wiki/SOLID) – enten du vil eller ikke:
-
-1. **[Single Responsibility](https://en.wikipedia.org/wiki/Single-responsibility_principle)** – Elm tvinger deg til å separere View, Update og Model. Hver funksjon har én jobb, og én "reson to change", og kompilatoren klager hvis du prøver å blande ansvarsområder.
+1. **[Single Responsibility](https://en.wikipedia.org/wiki/Single-responsibility_principle)** – Elm tvinger deg til å separere View, Update og Model. Hver funksjon har én jobb, og én "reason to change", og kompilatoren klager hvis du prøver å blande ansvarsområder.
 
 2. **[Open/Closed](https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle)** – Ny funksjonalitet legges til ved å utvide Msg-typen med nye varianter, ikke ved å modifisere eksisterende kode. Elm-arkitekturen er designet for utvidelse!
 
@@ -298,14 +280,14 @@ Dette mønsteret, kjent som [The Elm Architecture](https://guide.elm-lang.org/ar
                width * height
 
    -- Prøv å legge til Triangle uten å oppdatere area-funksjonen
-   -- Kompilatoren: "Niks, niks!"
+   -- Kompilatoren: "Godt forsøk, prøv igjen."
    ```
 
 4. **[Interface Segregation](https://en.wikipedia.org/wiki/Interface_segregation_principle)** – Elm oppmuntrer til små, fokuserte moduler og typer. Ingen "mega-interfaces" som tvinger implementasjoner til å støtte unødvendige metoder.
 
 5. **[Dependency Inversion](https://en.wikipedia.org/wiki/Dependency_inversion_principle)** – All kommunikasjon går gjennom meldinger (Msg) og abstraksjoner. Høynivåmoduler avhenger aldri av lavnivådetaljer.
 
-Det geniale med Elm er at du ikke kan velge bort disse prinsippene. Der andre språk tilbyr SOLID som "best practices" du kan følge hvis du er disiplinert, er de en obligatorisk del av Elms DNA. Kompilatoren er din ubarmhjertige arkitektur-mentor.
+Der andre språk tilbyr SOLID som "best practices" du kan følge hvis du er disiplinert, er de en obligatorisk del av Elms DNA. Kompilatoren er din ubarmhjertige arkitektur-mentor.
 
 (Og så har du C#, som selv bryter LSP i innebygde typer:
 
@@ -318,7 +300,7 @@ int num = (int)list[0]; // Kaster runtime-feil hvis string er lagt til
 
 , men det er en annen artikkel.)
 
-## TEA vs. Clean Architecture
+## The Elm Architecture vs. Clean Architecture
 
 Clean Architecture (CA) handler om å organisere kode slik at forretningslogikken er uavhengig av rammeverk og UI. Hvordan passer TEA inn her?
 
@@ -393,7 +375,7 @@ Elms relevans i 2025 ligger ikke i markedsandeler, men som arkitektonisk kompass
 - TypeScripts stadig strengere type-system
 - Veksten av compile-time-verktøy som [tRPC](https://trpc.io/) og [Zod](https://zod.dev/)
 
-Altså: det diverse "best-practices" oppfordrer den drevne utvikler til å legge vinn på, er en obligatorisk del av Elm. Visst kan (og bør!) du skrive funksjonell React med god arkitektur, sterke typer og isolerte side effects; med Elm får du rett og slett ikke lov til noe annet.
+Igjen: det diverse "best-practices" oppfordrer den drevne utvikler til å legge vinn på, er en obligatorisk del av Elm. Visst kan (og bør!) du skrive funksjonell React med god arkitektur, sterke typer og isolerte side effects; med Elm får du rett og slett ikke lov til noe annet.
 
 ## Ressurser for å komme i gang
 

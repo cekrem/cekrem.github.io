@@ -38,7 +38,7 @@ Ironically, Elm's strict constraints give us several advantages:
 
   ```javascript
   // In JavaScript, this can happen:
-  let user = { name: "Ada" };
+  const user = { name: "Ada", age: 29 };
   someFunction(user); // user can be changed here
   console.log(user.name); // What's the name now? Impossible to know without reading someFunction
   ```
@@ -47,7 +47,7 @@ Ironically, Elm's strict constraints give us several advantages:
 
   ```elm
   -- In Elm:
-  user = { name = "Ada" }
+  user = { name = "Ada", age = 29 }
 
   -- This doesn't compile:
   user.name = "Grace"  -- ERROR: Elm doesn't have variable mutation.
@@ -59,6 +59,8 @@ Ironically, Elm's strict constraints give us several advantages:
 - **Predictable code**: Pure functions + immutable data = same input always gives same output
 - **Safer refactoring**: The compiler finds all places that need to be updated
 - **Less mental load**: You don't need to keep the entire state history in your head
+
+(And, as we know: JavaScript not only allows mutating, but also re-assigning variables that are not `const`s.)
 
 ## SOLID by Default
 
@@ -121,7 +123,7 @@ Let's be honest about the challenges too:
 - Steep learning curve for developers used to imperative programming
 - Smaller ecosystem than React/Vue
 - Fewer developers available
-- Can be difficult to "sell" to decision-makers
+- Can be difficult to "sell" to decision-makers and stake-holders
 
 ## Conclusion
 

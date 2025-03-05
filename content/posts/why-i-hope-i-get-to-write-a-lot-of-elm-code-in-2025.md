@@ -140,5 +140,4 @@ Again: what various "best practices" encourage the driven developer to strive fo
 - [Elm Guide](https://guide.elm-lang.org/) – The official guide
 - [Elm in Action](https://amzn.to/41z14kq) – An excellent book for learning how Elm works in larger applications (I'm reading this right now, and I love it!)
 - [Elm Community](https://elm-lang.org/community) – An unusually helpful and open community
-- [elm-spa](https://www.elm-spa.dev/) – For building Single Page Applications
-- [Elm Land](https://elm.land/) – New meta-framework
+- [Elm Land](https://elm.land/) – New meta-framework for Single Page Applications

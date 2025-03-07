@@ -19,7 +19,9 @@ Elm er et funksjonelt programmeringsspråk spesielt designet for webapplikasjone
 - **Forutsigbar arkitektur** – [The Elm Architecture](https://guide.elm-lang.org/architecture/) (TEA) gir en klar struktur som skalerer godt
 - **Automatisk versjonshåndtering** – Kompilatoren oppdager breaking changes
 
-### React vs. Elm: Samme retning, ulik tilnærming
+---
+
+## React vs. Elm: Samme retning, ulik tilnærming
 
 Det er fascinerende å se hvordan React har utviklet seg de siste årene:
 
@@ -34,15 +36,17 @@ Som en senior React-utvikler sa til meg nylig: "God React-kode i 2025 ligner mis
 
 Hva gjør Elm annerledes?
 
-### En kjapp historietime før vi går videre
+---
+
+## En kjapp historietime før vi går videre
 
 For å forstå hvorfor Elm er bygget som det er, og hvorfor det fortsatt er relevant, må vi ta et skritt tilbake og se på den større historien om programmeringsparadigmer. Denne utviklingen handler om noe fundamentalt: **Hvordan vi gradvis har fjernet farlige friheter for å skape mer pålitelig kode.**
 
 **Merk**: Nå skal det sies at funksjonell programmering strengt tatt er eldre enn de andre paradigmene. Men jeg velger likevel å plassere det på slutten av en rekke iterasjoner som utvikler seg fra kaos til kontroll.
 
-### Paradigmeutvikling: Å ta vekk muligheter for å få mer kontroll
+## Paradigmeutvikling: Å ta vekk muligheter for å få mer kontroll
 
-## 🏗 Før strukturert programmering – _"Full frihet, full kaos"_
+#### 🏗 Før strukturert programmering – _"Full frihet, full kaos"_
 
 Før 1960-tallet skrev utviklere ofte kode i en **rent imperativ stil**, hvor programmer besto av sekvenser av kommandoer med **GOTO-setninger** for å hoppe mellom ulike deler av programmet.
 
@@ -50,7 +54,7 @@ Før 1960-tallet skrev utviklere ofte kode i en **rent imperativ stil**, hvor pr
 
 ---
 
-## 📏 Strukturert programmering – _"Ingen flere vilkårlige hopp!"_
+#### 📏 Strukturert programmering – _"Ingen flere vilkårlige hopp!"_
 
 [Edsger W. Dijkstra](https://en.wikipedia.org/wiki/Edsger_W._Dijkstra) og andre datavitere på 1960-70-tallet argumenterte for at all programlogikk burde kunne uttrykkes gjennom **sekvenser, valg (if/while/switch) og løkker**. Dette gjorde programmer mer forutsigbare. Dijkstras berømte artikkel ["Go To Statement Considered Harmful"](https://homepages.cwi.nl/~storm/teaching/reader/Dijkstra68.pdf) (1968) var et vendepunkt.
 
@@ -59,7 +63,7 @@ Før 1960-tallet skrev utviklere ofte kode i en **rent imperativ stil**, hvor pr
 
 ---
 
-## 🏛 Objektorientert programmering (OOP) – _"Trygg polymorfisme!"_
+#### 🏛 Objektorientert programmering (OOP) – _"Trygg polymorfisme!"_
 
 OOP oppsto på 1980-90-tallet som en respons på behovet for mer fleksible og utvidbare systemer. Den største innovasjonen var – etter min mening – kanskje ikke innkapsling av tilstand, men **trygg polymorfisme** gjennom grensesnitt og arv.
 
@@ -74,7 +78,7 @@ Før OOP måtte utviklere bruke farlige "pointers to functions" for å oppnå po
 
 ---
 
-## 🧩 Funksjonell programmering (FP) – _"Fjern mutabilitet og bivirkninger!"_
+#### 🧩 Funksjonell programmering (FP) – _"Fjern mutabilitet og bivirkninger!"_
 
 FP har riktignok røtter tilbake til 1950-tallet ([Lisp](<https://en.wikipedia.org/wiki/Lisp_(programming_language)>)), men fikk økt popularitet med språk som [Haskell](https://www.haskell.org/), Elm og moderne bruk i TypeScript og React. Målet er å eliminere **uventede bivirkninger**, sikre at funksjoner alltid gir samme output for samme input, og unngå delt state. Jeg har valgt å se på det som neste (og siste) iterasjon på stigen mot å fjerne kaos.
 
@@ -88,7 +92,7 @@ FP har riktignok røtter tilbake til 1950-tallet ([Lisp](<https://en.wikipedia.o
 
 ---
 
-## 🔄 Fellesnevner: Hver epoke har handlet om å fjerne feilbarlige friheter (ikke legge til nye fancy features)
+#### 🔄 Fellesnevner: Hver epoke har handlet om å fjerne feilbarlige friheter (ikke legge til nye fancy features)
 
 1. **Strukturert programmering:** Fjernet vilkårlige hopp (GOTO)
 2. **OOP:** Fjernet ukontrollert deling av state
@@ -98,7 +102,7 @@ Målet har alltid vært det samme: **Mindre kaos, mer kontroll**. 🔥
 
 Dette er selvsagt en forenklet fremstilling av programmeringshistorien, men essensen er klar: **God kode handler ikke om maksimal frihet, men om velvalgte begrensninger.** De beste verktøyene hjelper oss å unngå feil, ikke bare å rette dem.
 
-### Elm: Radikalt funksjonelt
+## Elm: Radikalt funksjonelt
 
 Elm tar dette siste skrittet radikalt ved å gjøre immutabilitet obligatorisk:
 
@@ -114,7 +118,9 @@ update model =
 
 Dette minner om [Rich Hickeys](https://github.com/matthiasn/talk-transcripts/blob/master/Hickey_Rich/SimpleMadeEasy.md) påstand om enkelthet gjennom begrensninger i hans berømte foredrag ["Simple Made Easy"](https://www.youtube.com/watch?v=SxdOUGdseq4), og [Bret Victors](http://worrydream.com/) observasjon fra ["Inventing on Principle"](https://www.youtube.com/watch?v=PUv66718DII): "The most important property of a program is whether it is correct. The second most important is whether it can be changed without breaking its correctness."
 
-### Når begrensninger gir frihet
+---
+
+## Når begrensninger gir frihet
 
 Ironisk nok gir Elms strenge begrensninger oss flere fordeler:
 
@@ -172,13 +178,14 @@ Ironisk nok gir Elms strenge begrensninger oss flere fordeler:
   ```
 
 - **Mindre mental belastning**: Du trenger ikke holde hele tilstandshistorikken i hodet
+
   ```elm
   view : Model -> Html Msg  -- Kun gjeldende state er relevant
   ```
 
 Mye av dette ligner unektelig på hvordan React kan se ut i beste fall. Men Elm tvinger deg inn i "beste fall"!
 
-### Moderne fordeler i praksis
+## Moderne fordeler i praksis
 
 I 2025 gir Elm flere konkrete fordeler for moderne webapplikasjoner:
 
@@ -249,7 +256,7 @@ Elm-arkitekturen (The Elm Architecture, eller bare TEA) er en enkel, men kraftfu
 ![The Elm Architecture Diagram](https://guide.elm-lang.org/architecture/buttons.svg)
 _Bildekilde: [Elm Guide](https://guide.elm-lang.org/architecture/)_
 
-### Hvordan det fungerer
+## Hvordan det fungerer
 
 1. **Brukerinteraksjon** trigger en `Msg` (melding)
 2. `Update`-funksjonen tar imot meldingen og returnerer en ny `Model`
@@ -289,44 +296,33 @@ Dette mønsteret tvinger frem [SOLID-prinsippene](https://en.wikipedia.org/wiki/
 
 Der andre språk tilbyr SOLID som "best practices" du kan følge hvis du er disiplinert, er de en obligatorisk del av Elms DNA. Kompilatoren er din ubarmhjertige arkitektur-mentor.
 
-(Og så har du C#, som selv bryter LSP i innebygde typer:
-
-```csharp
-ArrayList list = new List<int>(); // Skal fungere i teorien, men gjør ikke det
-list.Add("Hello"); // Dette er lov i ArrayList, men ikke i List<int>
-int num = (int)list[0]; // Kaster runtime-feil hvis string er lagt til
-
-```
-
-, men det er en annen artikkel.)
-
 ## The Elm Architecture vs. Clean Architecture
 
 Clean Architecture (CA) handler om å organisere kode slik at forretningslogikken er uavhengig av rammeverk og UI. Hvordan passer TEA inn her?
 
-### 1. Separerer UI fra logikk
+#### 1. Separerer UI fra logikk
 
 - Akkurat som CA, har TEA en klar separasjon mellom presentasjonslaget (**View**) og domenelogikken (**Model + Update**).
 - Dette betyr at man kan endre UI uten å endre domenelogikken.
 
-### 2. Strukturering av forretningslogikk
+#### 2. Strukturering av forretningslogikk
 
 - TEA har ikke et eksplisitt "use case-lag" slik CA anbefaler.
 - Men **Update-funksjonen** kan sees på som en _interactor_ i CA, hvor den tar inn en hendelse og bestemmer en tilstandsendring.
 
-### 3. Uavhengighet fra eksterne systemer
+#### 3. Uavhengighet fra eksterne systemer
 
 - I Clean Architecture skal forretningslogikken være **uavhengig** av databaser, UI eller tredjeparts API-er.
 - TEA sikrer dette ved å bruke **Cmd** for sideeffekter, slik at API-kall og lignende ligger utenfor kjernearkitekturen.
 
-### 4. Enkel testing
+#### 4. Enkel testing
 
 - Begge arkitekturer fremmer **testbar kode**.
 - TEA sin rene funksjonelle tilnærming gjør det lett å enhetsteste **Update-funksjonen** uten å tenke på eksterne avhengigheter.
 
 ---
 
-### Oppsummering
+#### Oppsummering
 
 | **Kriterium**           | **The Elm Architecture**                                  | **Clean Architecture**              |
 | ----------------------- | --------------------------------------------------------- | ----------------------------------- |
@@ -339,6 +335,8 @@ Clean Architecture (CA) handler om å organisere kode slik at forretningslogikke
 ---
 
 TEA samsvarer overraskende godt også med Clean Architecture, selv om det er tilpasset en funksjonell kontekst. Spesielt **separasjon av UI og logikk**, testbarhet og håndtering av sideeffekter er sterke sider ved TEA. Hvis man vil bruke TEA i større systemer, kan det være nyttig å strukturere **Update-funksjonen** mer modulært, slik at den ikke blir en _God-funksjon_.
+
+--
 
 ## Moderne frontend-utvikling trenger dette
 

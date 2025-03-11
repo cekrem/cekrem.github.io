@@ -324,6 +324,8 @@ Clean Architecture (CA) handler om å organisere kode slik at forretningslogikke
 
 #### Oppsummering
 
+```
+
 | **Kriterium**           | **The Elm Architecture**                                  | **Clean Architecture**              |
 | ----------------------- | --------------------------------------------------------- | ----------------------------------- |
 | **Separasjonsprinsipp** | God separasjon av UI, logikk og tilstand                  | Fremmer separasjon av lag           |
@@ -332,11 +334,13 @@ Clean Architecture (CA) handler om å organisere kode slik at forretningslogikke
 | **Uavhengighet av UI**  | Ja, via Model og Update                                   | Hovedmål i Clean Architecture       |
 | **Sideeffekter**        | Håndteres via "Cmd"                                       | Anbefaler isolasjon av sideeffekter |
 
+```
+
 ---
 
 TEA samsvarer overraskende godt også med Clean Architecture, selv om det er tilpasset en funksjonell kontekst. Spesielt **separasjon av UI og logikk**, testbarhet og håndtering av sideeffekter er sterke sider ved TEA. Hvis man vil bruke TEA i større systemer, kan det være nyttig å strukturere **Update-funksjonen** mer modulært, slik at den ikke blir en _God-funksjon_.
 
---
+---
 
 ## Moderne frontend-utvikling trenger dette
 

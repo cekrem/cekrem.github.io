@@ -1,0 +1,158 @@
+<!doctype html><html lang=en><head><title>Beyond React.memo: Smarter Ways to Optimize Performance · cekrem.github.io
+</title><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=color-scheme content="light dark"><meta name=author content="Christian Ekrem"><meta name=description content="Why composition patterns might be better than memoization for React performance"><meta name=keywords content="developer,personal"><meta name=fediverse:creator content><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://cekrem.github.io/images/featured-with-margins.png"><meta name=twitter:title content="Beyond React.memo: Smarter Ways to Optimize Performance"><meta name=twitter:description content="Why composition patterns might be better than memoization for React performance"><meta property="og:url" content="https://cekrem.github.io/posts/beyond-react-memo-smarter-performance-optimization/"><meta property="og:site_name" content="cekrem.github.io"><meta property="og:title" content="Beyond React.memo: Smarter Ways to Optimize Performance"><meta property="og:description" content="Why composition patterns might be better than memoization for React performance"><meta property="og:locale" content="en_us"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2024-03-11T00:00:00+00:00"><meta property="article:modified_time" content="2024-03-11T00:00:00+00:00"><meta property="article:tag" content="React"><meta property="article:tag" content="Performance"><meta property="article:tag" content="Architecture"><meta property="article:tag" content="Clean Architecture"><meta property="article:tag" content="Typescript"><meta property="og:image" content="https://cekrem.github.io/images/featured-with-margins.png"><link rel=canonical href=https://cekrem.github.io/posts/beyond-react-memo-smarter-performance-optimization/><link rel=preload href=/fonts/fa-brands-400.woff2 as=font type=font/woff2 crossorigin><link rel=preload href=/fonts/fa-regular-400.woff2 as=font type=font/woff2 crossorigin><link rel=preload href=/fonts/fa-solid-900.woff2 as=font type=font/woff2 crossorigin><link rel=stylesheet href=/css/coder.min.07092c1350ffd254998dc43a44ae96e617d14af4df4602626878df89189c5e1a.css integrity="sha256-BwksE1D/0lSZjcQ6RK6W5hfRSvTfRgJiaHjfiRicXho=" crossorigin=anonymous media=screen><link rel=icon type=image/svg+xml href=/images/favicon.svg sizes=any><link rel=icon type=image/png href=/images/favicon-32x32.png sizes=32x32><link rel=icon type=image/png href=/images/favicon-16x16.png sizes=16x16><link rel=apple-touch-icon href=/images/apple-touch-icon.png><link rel=apple-touch-icon sizes=180x180 href=/images/apple-touch-icon.png><link rel=manifest href=/site.webmanifest><link rel=mask-icon href=/images/safari-pinned-tab.svg color=#5bbad5></head><body class="preload-transitions colorscheme-light"><main class=wrapper><nav class=navigation><section class=container><a class=navigation-title href=https://cekrem.github.io/>cekrem.github.io
+</a><input type=checkbox id=menu-toggle>
+<label class="menu-button float-right" for=menu-toggle><i class="fa-solid fa-bars fa-fw" aria-hidden=true></i></label><ul class=navigation-list><li class=navigation-item><a class=navigation-link href=/hire/>Hire me?</a></li><li class=navigation-item><a class=navigation-link href=/about/>About</a></li><li class=navigation-item><a class=navigation-link href=/posts/books-i-think-software-engineers-should-read>Recommended Books</a></li><li class=navigation-item><a class=navigation-link href=https://creators.spotify.com/pod/show/disippel>Podcast (🇳🇴)</a></li><li class=navigation-item><a class=navigation-link href=/posts/>Blog</a></li></ul></section></nav><div class=content><section class="container post"><article><header><div class=post-title><h1 class=title><a class=title-link href=https://cekrem.github.io/posts/beyond-react-memo-smarter-performance-optimization/>Beyond React.memo: Smarter Ways to Optimize Performance</a></h1></div><div class=post-meta><div class=date><span class=posted-on><i class="fa-solid fa-calendar" aria-hidden=true></i>
+<time datetime=2024-03-11T00:00:00Z>March 11, 2024
+</time></span><span class=reading-time><i class="fa-solid fa-clock" aria-hidden=true></i>
+6-minute read</span></div><div class=tags><i class="fa-solid fa-tag" aria-hidden=true></i>
+<span class=tag><a href=/tags/react/>React</a>
+</span><span class=separator>•</span>
+<span class=tag><a href=/tags/performance/>Performance</a>
+</span><span class=separator>•</span>
+<span class=tag><a href=/tags/architecture/>Architecture</a>
+</span><span class=separator>•</span>
+<span class=tag><a href=/tags/clean-architecture/>Clean Architecture</a>
+</span><span class=separator>•</span>
+<span class=tag><a href=/tags/typescript/>Typescript</a></span></div></div></header><div class=post-content><h2 id=introduction>Introduction
+<a class=heading-link href=#introduction><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h2><p>When it comes to React performance optimization, <code>React.memo</code> is often the first tool developers reach for. It&rsquo;s the hammer we grab when we notice re-render issues, and suddenly everything looks like a nail. But what if I told you that in many cases, there are simpler, more elegant solutions that align better with React&rsquo;s compositional nature?</p><p>Today, I want to explore some fundamental concepts about how React renders components and share composition patterns that can dramatically improve performance without the complexity and gotchas of memoization.</p><h2 id=the-re-render-mystery>The Re-render Mystery
+<a class=heading-link href=#the-re-render-mystery><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h2><p>Let&rsquo;s start with a common scenario: You&rsquo;ve added a simple feature to a React app - perhaps a modal dialog triggered by a button - and suddenly everything feels sluggish. The UI freezes momentarily when the dialog opens. What&rsquo;s happening?</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=font-weight:700>const</span> App = () =&gt; {
+</span></span><span style=display:flex><span>  <span style=font-weight:700>const</span> [isOpen, setIsOpen] = useState(<span style=font-weight:700>false</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=font-weight:700>return</span> (
+</span></span><span style=display:flex><span>    &lt;<span style=font-weight:700>div</span> className=<span style=font-style:italic>&#34;layout&#34;</span>&gt;
+</span></span><span style=display:flex><span>      &lt;<span style=font-weight:700>Button</span> onClick={() =&gt; setIsOpen(<span style=font-weight:700>true</span>)}&gt;Open dialog&lt;/<span style=font-weight:700>Button</span>&gt;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      {isOpen &amp;&amp; &lt;<span style=font-weight:700>ModalDialog</span> onClose={() =&gt; setIsOpen(<span style=font-weight:700>false</span>)} /&gt;}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      &lt;<span style=font-weight:700>VerySlowComponent</span> /&gt;
+</span></span><span style=display:flex><span>      &lt;<span style=font-weight:700>BunchOfStuff</span> /&gt;
+</span></span><span style=display:flex><span>      &lt;<span style=font-weight:700>OtherComplexComponents</span> /&gt;
+</span></span><span style=display:flex><span>    &lt;/<span style=font-weight:700>div</span>&gt;
+</span></span><span style=display:flex><span>  );
+</span></span><span style=display:flex><span>};
+</span></span></code></pre></div><p>The problem is clear once you understand how React&rsquo;s rendering works: when <code>setIsOpen</code> is called, React re-renders the entire <code>App</code> component and everything inside it - including all those slow components that have nothing to do with our dialog.</p><h2 id=the-memoization-reflex>The Memoization Reflex
+<a class=heading-link href=#the-memoization-reflex><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h2><p>The typical response might be to reach for <code>React.memo</code>:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=font-weight:700>const</span> VerySlowComponent = React.memo(() =&gt; {
+</span></span><span style=display:flex><span>  <span style=font-style:italic>// Complex rendering logic
+</span></span></span><span style=display:flex><span><span style=font-style:italic></span>});
+</span></span></code></pre></div><p>While this works, it introduces complexity. You&rsquo;ll need to carefully manage dependencies, possibly add <code>useCallback</code> for event handlers, and deal with potential bugs when you forget to memoize something. It&rsquo;s a solution, but not always the most elegant one.</p><h2 id=understanding-reacts-rendering-model>Understanding React&rsquo;s Rendering Model
+<a class=heading-link href=#understanding-reacts-rendering-model><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h2><p>Before diving into better solutions, let&rsquo;s clarify some fundamental concepts:</p><ol><li><p><strong>Components vs Elements</strong>: A component is a function that returns React elements. An element is an object describing what should appear on screen.</p></li><li><p><strong>Re-renders</strong>: When state changes, React calls your component function again and compares the returned elements to decide what DOM updates are needed.</p></li><li><p><strong>The Big Myth</strong>: Many developers believe &ldquo;components re-render when their props change.&rdquo; This isn&rsquo;t quite right. Components also re-render when their parent re-renders, regardless of whether their props changed - unless they&rsquo;re wrapped in <code>React.memo</code>.</p></li></ol><h2 id=moving-state-down-the-composition-solution>Moving State Down: The Composition Solution
+<a class=heading-link href=#moving-state-down-the-composition-solution><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h2><p>Instead of memoizing everything, consider this elegant pattern:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=font-weight:700>const</span> ButtonWithModalDialog = () =&gt; {
+</span></span><span style=display:flex><span>  <span style=font-weight:700>const</span> [isOpen, setIsOpen] = useState(<span style=font-weight:700>false</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=font-weight:700>return</span> (
+</span></span><span style=display:flex><span>    &lt;&gt;
+</span></span><span style=display:flex><span>      &lt;<span style=font-weight:700>Button</span> onClick={() =&gt; setIsOpen(<span style=font-weight:700>true</span>)}&gt;Open dialog&lt;/<span style=font-weight:700>Button</span>&gt;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>      {isOpen &amp;&amp; &lt;<span style=font-weight:700>ModalDialog</span> onClose={() =&gt; setIsOpen(<span style=font-weight:700>false</span>)} /&gt;}
+</span></span><span style=display:flex><span>    &lt;/&gt;
+</span></span><span style=display:flex><span>  );
+</span></span><span style=display:flex><span>};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=font-weight:700>const</span> App = () =&gt; {
+</span></span><span style=display:flex><span>  <span style=font-weight:700>return</span> (
+</span></span><span style=display:flex><span>    &lt;<span style=font-weight:700>div</span> className=<span style=font-style:italic>&#34;layout&#34;</span>&gt;
+</span></span><span style=display:flex><span>      &lt;<span style=font-weight:700>ButtonWithModalDialog</span> /&gt;
+</span></span><span style=display:flex><span>      &lt;<span style=font-weight:700>VerySlowComponent</span> /&gt;
+</span></span><span style=display:flex><span>      &lt;<span style=font-weight:700>BunchOfStuff</span> /&gt;
+</span></span><span style=display:flex><span>      &lt;<span style=font-weight:700>OtherComplexComponents</span> /&gt;
+</span></span><span style=display:flex><span>    &lt;/<span style=font-weight:700>div</span>&gt;
+</span></span><span style=display:flex><span>  );
+</span></span><span style=display:flex><span>};
+</span></span></code></pre></div><p>This simple refactoring isolates the state and its effects to a smaller component. When the dialog opens, only <code>ButtonWithModalDialog</code> re-renders - the slow components remain untouched. No memoization required!</p><p>This pattern aligns perfectly with the principles from Uncle Bob&rsquo;s &ldquo;Clean Architecture&rdquo; - specifically the Single Responsibility Principle. Each component now has a clearer, more focused responsibility.</p><h2 id=children-as-props-the-power-of-composition>Children as Props: The Power of Composition
+<a class=heading-link href=#children-as-props-the-power-of-composition><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h2><p>Let&rsquo;s look at another scenario: a scrollable container that needs to update its position based on scroll events without re-rendering its entire contents:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=font-style:italic>// Problematic implementation
+</span></span></span><span style=display:flex><span><span style=font-style:italic></span><span style=font-weight:700>const</span> ScrollableArea = () =&gt; {
+</span></span><span style=display:flex><span>  <span style=font-weight:700>const</span> [scrollPosition, setScrollPosition] = useState(0);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=font-weight:700>const</span> handleScroll = (e) =&gt; {
+</span></span><span style=display:flex><span>    setScrollPosition(e.target.scrollTop);
+</span></span><span style=display:flex><span>  };
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=font-weight:700>return</span> (
+</span></span><span style=display:flex><span>    &lt;<span style=font-weight:700>div</span> className=<span style=font-style:italic>&#34;scrollable&#34;</span> onScroll={handleScroll}&gt;
+</span></span><span style=display:flex><span>      &lt;<span style=font-weight:700>FloatingNavigation</span> position={scrollPosition} /&gt;
+</span></span><span style=display:flex><span>      &lt;<span style=font-weight:700>VerySlowComponent</span> /&gt;
+</span></span><span style=display:flex><span>      &lt;<span style=font-weight:700>MoreComplexContent</span> /&gt;
+</span></span><span style=display:flex><span>    &lt;/<span style=font-weight:700>div</span>&gt;
+</span></span><span style=display:flex><span>  );
+</span></span><span style=display:flex><span>};
+</span></span></code></pre></div><p>Every scroll event would trigger re-renders of all the content. Instead of reaching for <code>React.memo</code>, we can use React&rsquo;s composition model:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=font-weight:700>const</span> ScrollableWithFloatingNav = ({ children }) =&gt; {
+</span></span><span style=display:flex><span>  <span style=font-weight:700>const</span> [scrollPosition, setScrollPosition] = useState(0);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=font-weight:700>const</span> handleScroll = (e) =&gt; {
+</span></span><span style=display:flex><span>    setScrollPosition(e.target.scrollTop);
+</span></span><span style=display:flex><span>  };
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=font-weight:700>return</span> (
+</span></span><span style=display:flex><span>    &lt;<span style=font-weight:700>div</span> className=<span style=font-style:italic>&#34;scrollable&#34;</span> onScroll={handleScroll}&gt;
+</span></span><span style=display:flex><span>      &lt;<span style=font-weight:700>FloatingNavigation</span> position={scrollPosition} /&gt;
+</span></span><span style=display:flex><span>      {children}
+</span></span><span style=display:flex><span>    &lt;/<span style=font-weight:700>div</span>&gt;
+</span></span><span style=display:flex><span>  );
+</span></span><span style=display:flex><span>};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=font-weight:700>const</span> App = () =&gt; {
+</span></span><span style=display:flex><span>  <span style=font-weight:700>return</span> (
+</span></span><span style=display:flex><span>    &lt;<span style=font-weight:700>ScrollableWithFloatingNav</span>&gt;
+</span></span><span style=display:flex><span>      &lt;<span style=font-weight:700>VerySlowComponent</span> /&gt;
+</span></span><span style=display:flex><span>      &lt;<span style=font-weight:700>MoreComplexContent</span> /&gt;
+</span></span><span style=display:flex><span>    &lt;/<span style=font-weight:700>ScrollableWithFloatingNav</span>&gt;
+</span></span><span style=display:flex><span>  );
+</span></span><span style=display:flex><span>};
+</span></span></code></pre></div><p>The magic here is that <code>children</code> is just a prop - but one that React treats specially. When <code>ScrollableWithFloatingNav</code> re-renders due to scroll events, the <code>children</code> elements don&rsquo;t re-render because they&rsquo;re defined outside this component&rsquo;s render function.</p><p>This works because React elements passed as props (including <code>children</code>) are created in the parent component and simply referenced in the child. When the child re-renders, it&rsquo;s using the same element references, so React knows it doesn&rsquo;t need to re-render them.</p><h2 id=why-this-works-elements-reconciliation-and-props>Why This Works: Elements, Reconciliation and Props
+<a class=heading-link href=#why-this-works-elements-reconciliation-and-props><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h2><p>To understand why this pattern is so effective, we need to look at how React&rsquo;s reconciliation works:</p><ol><li>When a component re-renders, React calls your component function and gets back a tree of elements.</li><li>React compares this new tree with the previous one using <code>Object.is()</code> comparison.</li><li>If an element reference is the same before and after, React can skip re-rendering that branch of the tree.</li></ol><p>When we pass components as <code>children</code> or other props, those elements are created in the parent component&rsquo;s scope. The child component just receives references to these already-created elements. When the child re-renders, these references don&rsquo;t change, so React can skip re-rendering them.</p><h2 id=the-hidden-danger-of-custom-hooks>The Hidden Danger of Custom Hooks
+<a class=heading-link href=#the-hidden-danger-of-custom-hooks><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h2><p>While we&rsquo;re discussing performance, it&rsquo;s worth mentioning a common pitfall with custom hooks:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=font-style:italic>// This can cause performance issues
+</span></span></span><span style=display:flex><span><span style=font-style:italic></span><span style=font-weight:700>const</span> useModalDialog = () =&gt; {
+</span></span><span style=display:flex><span>  <span style=font-weight:700>const</span> [isOpen, setIsOpen] = useState(<span style=font-weight:700>false</span>);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=font-weight:700>return</span> {
+</span></span><span style=display:flex><span>    isOpen,
+</span></span><span style=display:flex><span>    open: () =&gt; setIsOpen(<span style=font-weight:700>true</span>),
+</span></span><span style=display:flex><span>    close: () =&gt; setIsOpen(<span style=font-weight:700>false</span>),
+</span></span><span style=display:flex><span>  };
+</span></span><span style=display:flex><span>};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=font-weight:700>const</span> App = () =&gt; {
+</span></span><span style=display:flex><span>  <span style=font-weight:700>const</span> { isOpen, open, close } = useModalDialog();
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=font-weight:700>return</span> (
+</span></span><span style=display:flex><span>    &lt;<span style=font-weight:700>div</span>&gt;
+</span></span><span style=display:flex><span>      &lt;<span style=font-weight:700>Button</span> onClick={open}&gt;Open&lt;/<span style=font-weight:700>Button</span>&gt;
+</span></span><span style=display:flex><span>      {isOpen &amp;&amp; &lt;<span style=font-weight:700>ModalDialog</span> onClose={close} /&gt;}
+</span></span><span style=display:flex><span>      &lt;<span style=font-weight:700>VerySlowComponent</span> /&gt;
+</span></span><span style=display:flex><span>    &lt;/<span style=font-weight:700>div</span>&gt;
+</span></span><span style=display:flex><span>  );
+</span></span><span style=display:flex><span>};
+</span></span></code></pre></div><p>This pattern looks clean, but it hides the fact that state changes in the hook will cause the entire <code>App</code> to re-render. Hooks don&rsquo;t magically isolate state effects - they just abstract them.</p><p>The solution? The same composition pattern we&rsquo;ve been discussing:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=font-weight:700>const</span> ModalDialogController = () =&gt; {
+</span></span><span style=display:flex><span>  <span style=font-weight:700>const</span> { isOpen, open, close } = useModalDialog();
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=font-weight:700>return</span> (
+</span></span><span style=display:flex><span>    &lt;&gt;
+</span></span><span style=display:flex><span>      &lt;<span style=font-weight:700>Button</span> onClick={open}&gt;Open&lt;/<span style=font-weight:700>Button</span>&gt;
+</span></span><span style=display:flex><span>      {isOpen &amp;&amp; &lt;<span style=font-weight:700>ModalDialog</span> onClose={close} /&gt;}
+</span></span><span style=display:flex><span>    &lt;/&gt;
+</span></span><span style=display:flex><span>  );
+</span></span><span style=display:flex><span>};
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=font-weight:700>const</span> App = () =&gt; {
+</span></span><span style=display:flex><span>  <span style=font-weight:700>return</span> (
+</span></span><span style=display:flex><span>    &lt;<span style=font-weight:700>div</span>&gt;
+</span></span><span style=display:flex><span>      &lt;<span style=font-weight:700>ModalDialogController</span> /&gt;
+</span></span><span style=display:flex><span>      &lt;<span style=font-weight:700>VerySlowComponent</span> /&gt;
+</span></span><span style=display:flex><span>    &lt;/<span style=font-weight:700>div</span>&gt;
+</span></span><span style=display:flex><span>  );
+</span></span><span style=display:flex><span>};
+</span></span></code></pre></div><h2 id=key-takeaways>Key Takeaways
+<a class=heading-link href=#key-takeaways><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h2><ol><li><p><strong>Understand the render tree</strong>: React re-renders flow downward from where state changes occur.</p></li><li><p><strong>Move state down</strong>: Place state as close as possible to the components that actually need it.</p></li><li><p><strong>Use composition patterns</strong>: Pass components as props or children to prevent unnecessary re-renders.</p></li><li><p><strong>Be careful with hooks</strong>: They don&rsquo;t isolate re-renders; they just abstract state management.</p></li><li><p><strong>Consider memoization last</strong>: Use <code>React.memo</code>, <code>useMemo</code>, and <code>useCallback</code> only after you&rsquo;ve optimized your component structure.</p></li></ol><p>These patterns align perfectly with React&rsquo;s compositional nature and the principles of Clean Architecture. They lead to components with clearer responsibilities, better separation of concerns, and naturally optimized performance.</p><h2 id=conclusion>Conclusion
+<a class=heading-link href=#conclusion><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h2><p>While <code>React.memo</code> and other memoization tools have their place, they should rarely be your first solution to performance problems. By understanding React&rsquo;s rendering model and embracing composition patterns, you can build applications that are both performant and maintainable.</p><p>The next time you encounter a performance issue in React, before reaching for memoization, ask yourself: &ldquo;Can I restructure my components to isolate the effects of state changes?&rdquo; The answer might lead you to a simpler, more elegant solution.</p><p>What performance optimization patterns have you found most effective in your React applications? I&rsquo;d love to hear your experiences in the comments!</p></div><footer></footer></article></section></div><script type=text/javascript src=https://testimonial.to/js/iframeResizer.min.js></script><style>form{display:flex;justify-content:center}</style><form action="https://api.follow.it/subscription-form/SDRVMUk2VmsySENBNk94RDNKNDFnS3NmWlQ5a3gxejNIeUlJWHl3QjdqNnRHdENkaXp5aXZhZlFvcGtzcEZ3K0o5TFVRdSt2WWM5RWRsWmZwWVhNUS9PZjJqMWZ3aHBwZUhjT1ZpWXBGRkdZOWtIcGhYQkJkSkE4QTQ1eHl5YkF8RTZHTExQOWFrN1pFY1F0RzZ5c3pVN2I1QTI1YXNtMjZiYllLU25zQkJ3bz0=/8" method=post><input type=email name=email required placeholder=Email spellcheck=false>
+<button type=submit>Subscribe</button></form><div id=testemonials class=container style="background:#fff!important;clip-path:inset(0 0 90px 0);padding:24px;border-radius:24px;opacity:0;max-height:0;transition:opacity 1s,max-height 1s"><iframe id=testimonialto-carousel-christian-ekrem-tag-all-light src="https://embed-v2.testimonial.to/carousel/all/christian-ekrem?theme=light&autoplay=off&showmore=on&one-row=on&hideDate=off&same-height=off&tag=all&arrowColor=9BA9B4" frameborder=0 scrolling=no width=100%></iframe></div><script type=text/javascript>location.pathname in{"":!0,"/":!0,"/hire/":!0,"/hire":!0}&&setTimeout(()=>{iFrameResize({log:!1,checkOrigin:!1},"#testimonialto-carousel-christian-ekrem-tag-all-light");const e=document.getElementById("testemonials");e.style.display="block",e.style.opacity=1,e.style.maxHeight="600px"},1e3)</script><footer class=footer><section class=container>© 2021 - 2025 Christian Ekrem
+<script data-name=BMC-Widget data-cfasync=false src=https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js data-emoji=🍺 data-id=cekrem data-description="Support me on Buy me a coffee!" data-message data-color=#ddd data-position=Right data-x_margin=18 data-y_margin=18></script></section><script src=https://formspree.io/js/formbutton-v1.min.js defer></script></footer></main><script src=/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script><script data-goatcounter=https://cekrem.goatcounter.com/count async src=//gc.zgo.at/count.js></script></body></html>

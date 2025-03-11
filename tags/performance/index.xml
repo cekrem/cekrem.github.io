@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Performance on cekrem.github.io</title><link>https://cekrem.github.io/tags/performance/</link><description>Recent content in Performance on cekrem.github.io</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 11 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://cekrem.github.io/tags/performance/index.xml" rel="self" type="application/rss+xml"/><item><title>Beyond React.memo: Smarter Ways to Optimize Performance</title><link>https://cekrem.github.io/posts/beyond-react-memo-smarter-performance-optimization/</link><pubDate>Mon, 11 Mar 2024 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/beyond-react-memo-smarter-performance-optimization/</guid><description>&lt;h2 id="introduction">
+ Introduction
+ &lt;a class="heading-link" href="#introduction">
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
+ &lt;span class="sr-only">Link to heading&lt;/span>
+ &lt;/a>
+&lt;/h2>
+&lt;p>When it comes to React performance optimization, &lt;code>React.memo&lt;/code> is often the first tool developers reach for. It&amp;rsquo;s the hammer we grab when we notice re-render issues, and suddenly everything looks like a nail. But what if I told you that in many cases, there are simpler, more elegant solutions that align better with React&amp;rsquo;s compositional nature?&lt;/p>
+&lt;p>Today, I want to explore some fundamental concepts about how React renders components and share composition patterns that can dramatically improve performance without the complexity and gotchas of memoization.&lt;/p></description></item></channel></rss>

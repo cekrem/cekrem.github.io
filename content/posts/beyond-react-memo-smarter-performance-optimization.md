@@ -144,9 +144,9 @@ const App = () => {
 };
 ```
 
-The magic here is that `children` is just a prop - but one that React treats specially. When `ScrollableWithFloatingNav` re-renders due to scroll events, the `children` elements don't re-render because they're defined outside this component's render function.
+The magic here is that `children` is just a regular prop - React doesn't give it special treatment during rendering. The syntactic sugar of nesting content between opening and closing tags (`<Component>Content</Component>`) is equivalent to passing it explicitly as `<Component children={Content} />`.
 
-This works because React elements passed as props (including `children`) are created in the parent component and simply referenced in the child. When the child re-renders, it's using the same element references, so React knows it doesn't need to re-render them.
+This works because React elements passed as props (including `children`) are created in the parent component and simply referenced in the child. When the child re-renders, it's using the same element references, so React knows it doesn't need to re-render them unless the references passed in (`children` or others) have changed.
 
 ## Why This Works: Elements, Reconciliation and Props
 

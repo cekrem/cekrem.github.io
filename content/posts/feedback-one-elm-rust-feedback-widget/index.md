@@ -2,7 +2,7 @@
 title = "Feedback.one: A Refreshing Take on User Feedback Built with Elm and Rust"
 description = "Exploring a lightweight, elegant feedback widget that demonstrates the power of functional programming in production"
 tags = ["elm", "rust", "web development", "tools", "functional programming"]
-date = "2025-03-14"
+date = "2025-03-13"
 draft = false
 +++
 

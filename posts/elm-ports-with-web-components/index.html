@@ -107,6 +107,9 @@
 <a class=heading-link href=#step-2-the-javascript-glue><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
 <span class=sr-only>Link to heading</span></a></h2><p>Next, we need to initialize Elm and wire up our ports:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=display:flex><span><span style=font-style:italic>// index.js
 </span></span></span><span style=display:flex><span><span style=font-style:italic></span>
+</span></span><span style=display:flex><span><span style=font-style:italic>// Init Elm app
+</span></span></span><span style=display:flex><span><span style=font-style:italic></span><span style=font-weight:700>const</span> app = Elm.Main.init({ node: document.querySelector(<span style=font-style:italic>&#34;main&#34;</span>) });
+</span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span><span style=font-style:italic>// Define our color-picker Web Component
 </span></span></span><span style=display:flex><span><span style=font-style:italic></span><span style=font-weight:700>class</span> ColorPicker <span style=font-weight:700>extends</span> HTMLElement {
 </span></span><span style=display:flex><span>  constructor() {
@@ -216,28 +219,20 @@
 </span></span><span style=display:flex><span><span style=font-style:italic>// Register the Web Component
 </span></span></span><span style=display:flex><span><span style=font-style:italic></span>customElements.define(<span style=font-style:italic>&#34;color-picker&#34;</span>, ColorPicker);
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-style:italic>// Initialize when the DOM is ready
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>document.addEventListener(<span style=font-style:italic>&#34;DOMContentLoaded&#34;</span>, () =&gt; {
-</span></span><span style=display:flex><span>  <span style=font-style:italic>// Initialize Elm application
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>  <span style=font-weight:700>const</span> app = Elm.Main.init({
-</span></span><span style=display:flex><span>    node: document.getElementById(<span style=font-style:italic>&#34;elm-app&#34;</span>),
-</span></span><span style=display:flex><span>  });
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=font-style:italic>// Set up communication from Elm to the Web Component
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>  app.ports.sendColor.subscribe((color) =&gt; {
-</span></span><span style=display:flex><span>    <span style=font-style:italic>// Find our color picker element
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>    <span style=font-weight:700>const</span> picker = document.querySelector(<span style=font-style:italic>&#34;color-picker&#34;</span>);
-</span></span><span style=display:flex><span>    <span style=font-weight:700>if</span> (picker) {
-</span></span><span style=display:flex><span>      <span style=font-style:italic>// Give the Web Component a reference to the Elm app
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>      <span style=font-weight:700>if</span> (!picker._app) {
-</span></span><span style=display:flex><span>        picker.setApp(app);
-</span></span><span style=display:flex><span>      }
-</span></span><span style=display:flex><span>      <span style=font-style:italic>// Update the color
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>      picker.setAttribute(<span style=font-style:italic>&#34;current-color&#34;</span>, color);
+</span></span><span style=display:flex><span><span style=font-style:italic>// Set up communication from Elm to the Web Component
+</span></span></span><span style=display:flex><span><span style=font-style:italic></span>app.ports.sendColor.subscribe((color) =&gt; {
+</span></span><span style=display:flex><span>  <span style=font-style:italic>// Find our color picker element
+</span></span></span><span style=display:flex><span><span style=font-style:italic></span>  <span style=font-weight:700>const</span> picker = document.querySelector(<span style=font-style:italic>&#34;color-picker&#34;</span>);
+</span></span><span style=display:flex><span>  <span style=font-weight:700>if</span> (picker) {
+</span></span><span style=display:flex><span>    <span style=font-style:italic>// Give the Web Component a reference to the Elm app
+</span></span></span><span style=display:flex><span><span style=font-style:italic></span>    <span style=font-weight:700>if</span> (!picker._app) {
+</span></span><span style=display:flex><span>      picker.setApp(app);
 </span></span><span style=display:flex><span>    }
-</span></span><span style=display:flex><span>  });
+</span></span><span style=display:flex><span>    <span style=font-style:italic>// Update the color
+</span></span></span><span style=display:flex><span><span style=font-style:italic></span>    picker.setAttribute(<span style=font-style:italic>&#34;current-color&#34;</span>, color);
+</span></span><span style=display:flex><span>  }
 </span></span><span style=display:flex><span>});
-</span></span></code></pre></div><p>This JavaScript code:</p><ol><li>Defines a <code>ColorPicker</code> Web Component with proper event handling</li><li>Registers the component so browsers can recognize it</li><li>Initializes our Elm application</li><li>Sets up the port subscriptions to handle communication between Elm and the component</li></ol><h2 id=step-3-html-setup>Step 3: HTML Setup
+</span></span></code></pre></div><p>This update ensures that the JavaScript code in the blog post matches exactly with the code from <code>foo.html</code>.</p><h2 id=step-3-html-setup>Step 3: HTML Setup
 <a class=heading-link href=#step-3-html-setup><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
 <span class=sr-only>Link to heading</span></a></h2><p>Finally, we need a simple HTML file to bring it all together:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-html data-lang=html><span style=display:flex><span><span>&lt;!DOCTYPE html&gt;</span>
 </span></span><span style=display:flex><span>&lt;<span style=font-weight:700>html</span> lang=<span style=font-style:italic>&#34;en&#34;</span>&gt;

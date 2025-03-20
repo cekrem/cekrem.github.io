@@ -35,7 +35,9 @@
     border-radius: 24px;
     opacity: 0;
     max-height: 0px;
-    transition: opacity 1s, max-height 1s;
+    transition:
+      opacity 1s,
+      max-height 1s;
   "
 >
   <iframe
@@ -53,7 +55,7 @@
     setTimeout(() => {
       iFrameResize(
         { log: false, checkOrigin: false },
-        "#testimonialto-carousel-christian-ekrem-tag-all-light"
+        "#testimonialto-carousel-christian-ekrem-tag-all-light",
       );
       const el = document.getElementById("testemonials");
       el.style.display = "block";
@@ -96,10 +98,6 @@
   <script src="https://formspree.io/js/formbutton-v1.min.js" defer></script>
 </footer>
 
-<script>
-  document.head.innerHTML += `<meta http-equiv="Content-Security-Policy" content="script-src-elem 'self' https://sdk.feedback.one http://gc.zgo.at; connect-src 'self' https://api.feedback.one ws://localhost:1313; frame-ancestors 'self' http://cekrem.github.io https://cekrem.github.io https://form.feedback.one;">
-`;
-</script>
 <script
   src="https://sdk.feedback.one/v0/core.min.js"
   data-project-id="019589e0-c6fb-7b80-b6ae-dffbfbb11f72"

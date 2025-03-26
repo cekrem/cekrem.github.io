@@ -1,4 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on cekrem.github.io</title><link>https://cekrem.github.io/posts/</link><description>Recent content in Posts on cekrem.github.io</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Wed, 19 Mar 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://cekrem.github.io/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Building Better UI Components: Elm Ports with Web Components</title><link>https://cekrem.github.io/posts/elm-ports-with-web-components/</link><pubDate>Wed, 19 Mar 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/elm-ports-with-web-components/</guid><description>&lt;p>One of the most common questions I get about Elm is: &amp;ldquo;How do I integrate it with existing JavaScript ecosystems?&amp;rdquo; While Elm&amp;rsquo;s isolation is a strength, real-world projects often require working with external libraries, APIs, or UI components. Doing incremental migration is also the recommended way to introduce Elm, and luckily there are may ways to accomplish this.&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on cekrem.github.io</title><link>https://cekrem.github.io/posts/</link><description>Recent content in Posts on cekrem.github.io</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Wed, 26 Mar 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://cekrem.github.io/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Introducing `content-visibility: auto` - A Hidden Performance Gem</title><link>https://cekrem.github.io/posts/content-visibility-auto-performance/</link><pubDate>Wed, 26 Mar 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/content-visibility-auto-performance/</guid><description>&lt;h2 id="introduction">
+ Introduction
+ &lt;a class="heading-link" href="#introduction">
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
+ &lt;span class="sr-only">Link to heading&lt;/span>
+ &lt;/a>
+&lt;/h2>
+&lt;p>When dealing with large lists or complex DOM structures, performance optimization often feels like a complex puzzle. But sometimes, the simplest solutions are the most effective. Enter &lt;code>content-visibility: auto&lt;/code> - a CSS property that can dramatically improve rendering performance with minimal effort.&lt;/p>
+&lt;h2 id="the-magic-of-content-visibility-auto">
+ The Magic of content-visibility: auto
+ &lt;a class="heading-link" href="#the-magic-of-content-visibility-auto">
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
+ &lt;span class="sr-only">Link to heading&lt;/span>
+ &lt;/a>
+&lt;/h2>
+&lt;p>&lt;code>content-visibility: auto&lt;/code> tells the browser to skip rendering elements that are not currently visible in the viewport. It&amp;rsquo;s like having a virtual scroll implementation, but without the complexity of managing scroll positions or item heights manually.&lt;/p></description></item><item><title>Building Better UI Components: Elm Ports with Web Components</title><link>https://cekrem.github.io/posts/elm-ports-with-web-components/</link><pubDate>Wed, 19 Mar 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/elm-ports-with-web-components/</guid><description>&lt;p>One of the most common questions I get about Elm is: &amp;ldquo;How do I integrate it with existing JavaScript ecosystems?&amp;rdquo; While Elm&amp;rsquo;s isolation is a strength, real-world projects often require working with external libraries, APIs, or UI components. Doing incremental migration is also the recommended way to introduce Elm, and luckily there are may ways to accomplish this.&lt;/p>
 &lt;p>Today, I&amp;rsquo;ll show you how to combine two powerful technologies:&lt;/p>
 &lt;ol>
 &lt;li>&lt;strong>Elm Ports&lt;/strong>: The official way to communicate between Elm and JavaScript&lt;/li>

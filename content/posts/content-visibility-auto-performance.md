@@ -9,6 +9,8 @@ date: 2025-03-26
 
 When dealing with large lists or complex DOM structures, performance optimization often feels like a complex puzzle. But sometimes, the simplest solutions are the most effective. Enter `content-visibility: auto` - a CSS property that can dramatically improve rendering performance with minimal effort.
 
+You can (and IMHO should) read all about it [here](https://developer.mozilla.org/en-US/docs/Web/CSS/content-visibility)! 🤓
+
 ## The Magic of content-visibility: auto
 
 `content-visibility: auto` tells the browser to skip rendering elements that are not currently visible in the viewport. It's like having a virtual scroll implementation, but without the complexity of managing scroll positions or item heights manually.

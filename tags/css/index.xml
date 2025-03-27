@@ -6,6 +6,7 @@
  &lt;/a>
 &lt;/h2>
 &lt;p>When dealing with large lists or complex DOM structures, performance optimization often feels like a complex puzzle. But sometimes, the simplest solutions are the most effective. Enter &lt;code>content-visibility: auto&lt;/code> - a CSS property that can dramatically improve rendering performance with minimal effort.&lt;/p>
+&lt;p>You can (and IMHO should) read all about it &lt;a href="https://developer.mozilla.org/en-US/docs/Web/CSS/content-visibility" class="external-link" target="_blank" rel="noopener">here&lt;/a>! 🤓&lt;/p>
 &lt;h2 id="the-magic-of-content-visibility-auto">
  The Magic of content-visibility: auto
  &lt;a class="heading-link" href="#the-magic-of-content-visibility-auto">

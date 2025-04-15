@@ -6,11 +6,11 @@ tags:
 date: 2025-04-08
 ---
 
-##### Disclaimer: I've been made aware of some issues with some of the code examples in this article. First of all, sorry about any confusion as a result! I'll re-test them all manually and figure out where I went wrong in my simplification of these concepts first thing after my Easter holiday. I still think the text holds true and the general principles explained are sound. Thanks for your patience, and again, sorry
+##### Update: The "Using Keys for Advanced State Preservation" section has been corrected. The original example incorrectly suggested that using the same key across different component types would preserve state between them. This error occurred when simplifying a more complex example shortly before publishing. Thanks to reader feedback for pointing this out, I'm very grateful! I also messed up an internal link, but that's fixed as well. Thanks!
 
 ## The Reconciliation Engine
 
-In my previous articles ([1](//posts/beyond-react-memo-smarter-performance-optimization/), [2](/posts/react-memo-when-it-helps-when-it-hurts/)), I explored how `React.memo` works and smarter ways to optimize performance through composition. But to truly master React performance, we need to understand the engine that powers it all: React's reconciliation algorithm.
+In my previous articles ([1](/posts/beyond-react-memo-smarter-performance-optimization/), [2](/posts/react-memo-when-it-helps-when-it-hurts/)), I explored how `React.memo` works and smarter ways to optimize performance through composition. But to truly master React performance, we need to understand the engine that powers it all: React's reconciliation algorithm.
 
 Reconciliation is the process by which React updates the DOM to match your component tree. It's what makes React's declarative programming model possible - you describe what you want, and React figures out how to make it happen efficiently.
 
@@ -281,6 +281,71 @@ Here's how React actually represents this internally:
 
 Even if you add or remove items from the list, the `StaticElement` will remain at position 2 in the parent array. This means it won't re-mount when the list changes. This is a clever optimization that ensures static elements don't get unnecessarily re-mounted due to changes in adjacent dynamic lists.
 
+### 3. Keys for Strategic DOM Control
+
+Keys aren't just for lists - they're a powerful tool for controlling component and DOM element identity in React. Here are some practical ways to use keys beyond maintaining list order:
+
+```tsx
+const Component = () => {
+  const [isReverse, setIsReverse] = useState(false);
+
+  return (
+    <>
+      <Input key={isReverse ? "some-key" : null} />
+      <Input key={!isReverse ? "some-key" : null} />
+    </>
+  );
+};
+```
+
+When `isReverse` toggles, the key `'some-key'` moves from one input to the other, causing React to "move" the component's state between the two positions.
+
+This technique is especially useful with uncontrolled inputs:
+
+```tsx
+const UserForm = ({ userId }) => {
+  // No React state here - using uncontrolled inputs
+
+  return (
+    <form>
+      <input
+        key={userId}
+        name="username"
+        // Uncontrolled input with defaultValue instead of value
+        defaultValue=""
+      />
+      {/* Other form inputs */}
+    </form>
+  );
+};
+```
+
+By giving the uncontrolled input a key based on userId, we ensure that React creates a completely new DOM element whenever the userId changes. Since the uncontrolled input's state lives in the DOM itself rather than in React state, this effectively resets the input when switching between different users.
+
+For React component state preservation across different views, remember that key and component type work together - components with the same key but different types will still unmount and remount. In these cases, lifting state up is typically the better approach:
+
+```tsx
+// State lifting approach for preserving state across different views
+const TabContent = ({ activeTab }) => {
+  // State that needs to be preserved across tab changes
+  const [sharedState, setSharedState] = useState({
+    /* initial state */
+  });
+
+  return (
+    <div>
+      {activeTab === "profile" && (
+        <ProfileTab state={sharedState} onStateChange={setSharedState} />
+      )}
+      {activeTab === "settings" && (
+        <SettingsTab state={sharedState} onStateChange={setSharedState} />
+      )}
+      {/* Other tabs */}
+    </div>
+  );
+};
+```
+
 ## Component Identity and Performance
 
 Understanding these reconciliation details explains several React performance patterns:
@@ -324,14 +389,14 @@ When `count` changes, only the `CounterButton` tree needs reconciliation. React 
 
 ### 3. Using Keys for Advanced State Preservation
 
-Based on our understanding of keys, we can implement advanced patterns:
+Based on our understanding of keys, we can implement advanced patterns, but with some important caveats:
 
 ```tsx
 const TabContent = ({ activeTab }) => {
-  // All tab contents have the same key, so React preserves state
-  // when switching between tabs
+  // This approach is INCORRECT and won't preserve state between different component types
   return (
     <div>
+      // using the same key won't help you here:
       {activeTab === "profile" && <ProfileTab key="tab-content" />}
       {activeTab === "settings" && <SettingsTab key="tab-content" />}
       {activeTab === "activity" && <ActivityTab key="tab-content" />}
@@ -340,16 +405,65 @@ const TabContent = ({ activeTab }) => {
 };
 ```
 
-Why does this work? When the `activeTab` changes, React sees:
+The above example wouldn't work as one might expect. When the `activeTab` changes from "profile" to "settings", React will:
 
-1. Before: An element with type `ProfileTab` and key `"tab-content"`
-2. After: An element with type `SettingsTab` and key `"tab-content"`
+1. See that the key "tab-content" exists in both renders
+2. Notice that the component type changed from `ProfileTab` to `SettingsTab`
+3. Unmount the `ProfileTab` and mount the `SettingsTab` as a new component
 
-React identifies components first by key, then by type. Since the key remains the same, React treats this as "the same component changed its type" rather than "one component was unmounted and another mounted."
+React identifies components by both key AND type. When the key matches but the type differs, React will still unmount and remount.
 
-This effectively transfers the internal state from one component to another! If `ProfileTab` had form inputs with user-entered values, those values would persist when switching to `SettingsTab`, even though they're completely different components.
+To correctly preserve state across different UI representations, you obviously need to lift the state up:
 
-This pattern can be useful for preserving form input state between tabs or wizard steps, or for transition effects where you want to maintain some state while changing the visual representation.
+```tsx
+// Correct approach: Lift state to a parent component
+const TabContent = ({ activeTab }) => {
+  // State that needs to be preserved across tab changes
+  const [sharedState, setSharedState] = useState({
+    /* initial state */
+  });
+
+  return (
+    <div>
+      {activeTab === "profile" && (
+        <ProfileTab state={sharedState} onStateChange={setSharedState} />
+      )}
+      {activeTab === "settings" && (
+        <SettingsTab state={sharedState} onStateChange={setSharedState} />
+      )}
+      {activeTab === "activity" && (
+        <ActivityTab state={sharedState} onStateChange={setSharedState} />
+      )}
+    </div>
+  );
+};
+```
+
+Preserving the key woundn't be enough in this case since the type (and reference) is different between tabs.
+
+But take a look at this example, however, using keys and uncontrolled components:
+
+```tsx
+const UserForm = ({ userId }) => {
+  // No React state here - using uncontrolled inputs
+
+  return (
+    <form>
+      <input
+        key={userId}
+        name="username"
+        // Uncontrolled input with defaultValue instead of value
+        defaultValue=""
+      />
+      {/* Other form inputs */}
+    </form>
+  );
+};
+```
+
+By giving the uncontrolled input a key based on userId, we ensure that React creates a completely new DOM element whenever the userId changes. Since the uncontrolled input's state lives in the DOM itself rather than in React state, this effectively resets the input when switching between different users. In this case `key` is all you need.
+
+Quite something, huh?
 
 ## State Colocation: A Powerful Performance Pattern
 

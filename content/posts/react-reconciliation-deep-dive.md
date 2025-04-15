@@ -6,11 +6,11 @@ tags:
 date: 2025-04-08
 ---
 
-##### Disclaimer: I've been made aware of some issues with some of the code examples in this article. First of all, sorry about any confusion as a result! I'll re-test them all manually and figure out where I went wrong in my simplification of these concepts first thing after my Easter holiday. I still think the text holds true and the general principles explained are sound. Thanks for your patience, and again, sorry
+##### Update: The "Using Keys for Advanced State Preservation" section has been corrected. The original example incorrectly suggested that using the same key across different component types would preserve state between them. This error occurred when simplifying a more complex example shortly before publishing. Thanks to reader feedback for pointing this out, I'm very grateful! I also messed up an internal link, but that's fixed as well. Thanks
 
 ## The Reconciliation Engine
 
-In my previous articles ([1](//posts/beyond-react-memo-smarter-performance-optimization/), [2](/posts/react-memo-when-it-helps-when-it-hurts/)), I explored how `React.memo` works and smarter ways to optimize performance through composition. But to truly master React performance, we need to understand the engine that powers it all: React's reconciliation algorithm.
+In my previous articles ([1](/posts/beyond-react-memo-smarter-performance-optimization/), [2](/posts/react-memo-when-it-helps-when-it-hurts/)), I explored how `React.memo` works and smarter ways to optimize performance through composition. But to truly master React performance, we need to understand the engine that powers it all: React's reconciliation algorithm.
 
 Reconciliation is the process by which React updates the DOM to match your component tree. It's what makes React's declarative programming model possible - you describe what you want, and React figures out how to make it happen efficiently.
 
@@ -153,23 +153,23 @@ Since `div` changed to `span`, React destroys the entire old tree (including `Co
 
 ### 2. Position in the Tree Matters
 
-React compares elements at the same position in the tree:
+React's reconciliation algorithm relies heavily on component position within the tree structure. Position serves as a primary identity indicator during the diffing process.
 
 ```tsx
-// Before
+// Let's pretend showDetails is true: Render UserProfile
 <>
   {showDetails ? <UserProfile userId={123} /> : <LoginPrompt />}
 </>
 
-// After (when showDetails changes)
+// Let's pretend showDetails is false: Render LoginPrompt instead
 <>
   {showDetails ? <UserProfile userId={123} /> : <LoginPrompt />}
 </>
 ```
 
-In this conditional example, when `showDetails` is `true`, there's a `UserProfile` element at position 1. When it's `false`, there's a `LoginPrompt` at position 1. React sees different component types at the same position, so it unmounts one and mounts the other.
+In this conditional example, React treats the first child position of the fragment as a single "slot." When `showDetails` changes from `true` to `false`, React compares what's in that position across renders and sees different component types (`UserProfile` vs `LoginPrompt`). Since the component type at position 1 has changed, React unmounts the previous component entirely (including its state) and mounts the new one.
 
-But if we had two components of the same type:
+This position-based identity also explains why components preserve their state in simpler cases:
 
 ```tsx
 // Before
@@ -182,23 +182,48 @@ But if we had two components of the same type:
 </>
 ```
 
-React sees the same component type (`UserProfile`) at position 1 before and after, so it just updates its props rather than destroying and recreating the component.
+Here, regardless of the `isPrimary` value, React sees the same component type (`UserProfile`) at the same position. It will preserve the component instance, simply updating its props rather than remounting it.
+
+This position-based approach works well for most scenarios, but becomes problematic when:
+
+1. Component positions shift dynamically (like in sorted lists)
+2. You need to preserve state when components move between different positions
+3. You want to control exactly when components should be remounted
+
+This is where React's key system comes in.
 
 ### 3. Keys Override Position-Based Comparison
 
-The `key` attribute lets you override the position-based identity:
+The `key` attribute gives developers explicit control over component identity, overriding React's default position-based identification:
 
 ```tsx
-<>
-  {isPrimary ? (
-    <UserProfile key="active-profile" userId={123} role="primary" />
-  ) : (
-    <UserProfile key="active-profile" userId={456} role="secondary" />
-  )}
-</>
+const TabContent = ({ activeTab, tabs }) => {
+  return (
+    <div className="tab-container">
+      {tabs.map((tab) => (
+        // Key overrides position-based comparison
+        <div key={tab.id} className="tab-content">
+          {activeTab === tab.id ? (
+            <UserProfile
+              key="active-profile"
+              userId={tab.userId}
+              role={tab.role}
+            />
+          ) : (
+            <div key="placeholder" className="placeholder">
+              Select this tab to view {tab.userId}'s profile
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  );
+};
 ```
 
-Even if the components appear in different branches of the conditional, React will treat them as the same component because they have the same key, preserving state when switching between them.
+Even if the `UserProfile` component appears in different positions across conditional renders, React will treat components with the same key as the same component. When a tab becomes active, React preserves the component's state because the key "active-profile" remains consistent, allowing for smoother transitions between tabs.
+
+This illustrates how keys provide a way to maintain component identity regardless of structural position in the render tree - a powerful tool for controlling how React reconciles your component hierarchy.
 
 ## The Magic of Keys
 
@@ -281,75 +306,57 @@ Here's how React actually represents this internally:
 
 Even if you add or remove items from the list, the `StaticElement` will remain at position 2 in the parent array. This means it won't re-mount when the list changes. This is a clever optimization that ensures static elements don't get unnecessarily re-mounted due to changes in adjacent dynamic lists.
 
-## Component Identity and Performance
+### 3. Keys for Strategic DOM Control
 
-Understanding these reconciliation details explains several React performance patterns:
-
-### 1. Why Inline Component Definitions Are Bad
-
-Defining components inside other components creates new function references on every render:
+Keys aren't just for lists - they're a powerful tool for controlling component and DOM element identity in React. For React component state preservation across different views, remember that key and component type work together - components with the same key but different types will still unmount and remount. In these cases, lifting state up is typically the better approach:
 
 ```tsx
-const Parent = () => {
-  // Bad practice: InnerComponent recreated on every render
-  const InnerComponent = () => <div>Inner content</div>;
-
-  return <InnerComponent />;
-};
-```
-
-Since the component's "type" (function reference) changes on every render, React treats it as a completely different component, unmounting and remounting it every time.
-
-### 2. Why Composition Patterns Work
-
-The composition pattern from our previous article leverages React's reconciliation algorithm:
-
-```tsx
-const CounterButton = () => {
-  const [count, setCount] = useState(0);
-  return <button onClick={() => setCount(count + 1)}>Count: {count}</button>;
-};
-
-const Parent = () => {
-  return (
-    <div>
-      <CounterButton />
-      <ExpensiveComponent />
-    </div>
-  );
-};
-```
-
-When `count` changes, only the `CounterButton` tree needs reconciliation. React doesn't even touch the `ExpensiveComponent` tree since it's in a separate branch.
-
-### 3. Using Keys for Advanced State Preservation
-
-Based on our understanding of keys, we can implement advanced patterns:
-
-```tsx
+// State lifting approach for preserving state across different views (keys are no good here...)
 const TabContent = ({ activeTab }) => {
-  // All tab contents have the same key, so React preserves state
-  // when switching between tabs
+  // State that needs to be preserved across tab changes
+  const [sharedState, setSharedState] = useState({
+    /* initial state */
+  });
+
   return (
     <div>
-      {activeTab === "profile" && <ProfileTab key="tab-content" />}
-      {activeTab === "settings" && <SettingsTab key="tab-content" />}
-      {activeTab === "activity" && <ActivityTab key="tab-content" />}
+      {activeTab === "profile" && (
+        <ProfileTab state={sharedState} onStateChange={setSharedState} />
+      )}
+      {activeTab === "settings" && (
+        <SettingsTab state={sharedState} onStateChange={setSharedState} />
+      )}
+      {/* Other tabs */}
     </div>
   );
 };
 ```
 
-Why does this work? When the `activeTab` changes, React sees:
+Preserving the key woundn't be enough in this case since the type (and reference) is different between tabs.
 
-1. Before: An element with type `ProfileTab` and key `"tab-content"`
-2. After: An element with type `SettingsTab` and key `"tab-content"`
+But take a look at this example, however, using keys and uncontrolled components:
 
-React identifies components first by key, then by type. Since the key remains the same, React treats this as "the same component changed its type" rather than "one component was unmounted and another mounted."
+```tsx
+const UserForm = ({ userId }) => {
+  // No React state here - using uncontrolled inputs
 
-This effectively transfers the internal state from one component to another! If `ProfileTab` had form inputs with user-entered values, those values would persist when switching to `SettingsTab`, even though they're completely different components.
+  return (
+    <form>
+      <input
+        key={userId}
+        name="username"
+        // Uncontrolled input with defaultValue instead of value
+        defaultValue=""
+      />
+      {/* Other form inputs */}
+    </form>
+  );
+};
+```
 
-This pattern can be useful for preserving form input state between tabs or wizard steps, or for transition effects where you want to maintain some state while changing the visual representation.
+By giving the uncontrolled input a key based on userId, we ensure that React creates a completely new DOM element whenever the userId changes. Since the uncontrolled input's state lives in the DOM itself rather than in React state, this effectively resets the input when switching between different users. In this case `key` is all you need.
+
+Quite something, huh?
 
 ## State Colocation: A Powerful Performance Pattern
 

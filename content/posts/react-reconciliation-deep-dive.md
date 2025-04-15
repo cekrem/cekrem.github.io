@@ -6,6 +6,8 @@ tags:
 date: 2025-04-08
 ---
 
+##### Disclaimer: I've been made aware of some issues with some of the code examples in this article. First of all, sorry about any confusion as a result! I'll re-test them all manually and figure out where I went wrong in my simplification of these concepts first thing after my Easter holiday. I still think the text holds true and the general principles explained are sound. Thanks for your patience, and again, sorry
+
 ## The Reconciliation Engine
 
 In my previous articles ([1](//posts/beyond-react-memo-smarter-performance-optimization/), [2](/posts/react-memo-when-it-helps-when-it-hurts/)), I explored how `React.memo` works and smarter ways to optimize performance through composition. But to truly master React performance, we need to understand the engine that powers it all: React's reconciliation algorithm.

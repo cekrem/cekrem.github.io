@@ -4,7 +4,7 @@
 <label class="menu-button float-right" for=menu-toggle><i class="fa-solid fa-bars fa-fw" aria-hidden=true></i></label><ul class=navigation-list><li class=navigation-item><a class=navigation-link href=/hire/>Hire me?</a></li><li class=navigation-item><a class=navigation-link href=/about/>About</a></li><li class=navigation-item><a class=navigation-link href=/posts/books-i-think-software-engineers-should-read>Recommended Books</a></li><li class=navigation-item><a class=navigation-link href=https://creators.spotify.com/pod/show/disippel>Podcast (🇳🇴)</a></li><li class=navigation-item><a class=navigation-link href=/posts/>Blog</a></li></ul></section></nav><div class=content><section class="container post"><article><header><div class=post-title><h1 class=title><a class=title-link href=https://cekrem.github.io/posts/react-reconciliation-deep-dive/>React Reconciliation: The Hidden Engine Behind Your Components</a></h1></div><div class=post-meta><div class=date><span class=posted-on><i class="fa-solid fa-calendar" aria-hidden=true></i>
 <time datetime=2025-04-08T00:00:00Z>April 8, 2025
 </time></span><span class=reading-time><i class="fa-solid fa-clock" aria-hidden=true></i>
-14-minute read</span></div><div class=tags><i class="fa-solid fa-tag" aria-hidden=true></i>
+13-minute read</span></div><div class=tags><i class="fa-solid fa-tag" aria-hidden=true></i>
 <span class=tag><a href=/tags/react/>React</a>
 </span><span class=separator>•</span>
 <span class=tag><a href=/tags/performance/>Performance</a>
@@ -122,17 +122,29 @@
 </span></span><span style=display:flex><span>&lt;/&gt;
 </span></span></code></pre></div><p>React sees the same component type (<code>UserProfile</code>) at position 1 before and after, so it just updates its props rather than destroying and recreating the component.</p><h3 id=3-keys-override-position-based-comparison>3. Keys Override Position-Based Comparison
 <a class=heading-link href=#3-keys-override-position-based-comparison><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h3><p>The <code>key</code> attribute lets you override the position-based identity:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span>&lt;&gt;
-</span></span><span style=display:flex><span>  {isPrimary ? (
-</span></span><span style=display:flex><span>    &lt;<span style=font-weight:700>UserProfile</span> key=<span style=font-style:italic>&#34;active-profile&#34;</span> userId={123} role=<span style=font-style:italic>&#34;primary&#34;</span> /&gt;
-</span></span><span style=display:flex><span>    &lt;<span style=font-weight:700>SomeComponent</span> /&gt;
-</span></span><span style=display:flex><span>  ) : (
-</span></span><span style=display:flex><span>    &lt;<span style=font-weight:700>SomeComponent</span> /&gt;
-</span></span><span style=display:flex><span>    &lt;<span style=font-weight:700>OtherComponent</span> /&gt;
-</span></span><span style=display:flex><span>    &lt;<span style=font-weight:700>UserProfile</span> key=<span style=font-style:italic>&#34;active-profile&#34;</span> userId={456} role=<span style=font-style:italic>&#34;secondary&#34;</span> /&gt;
-</span></span><span style=display:flex><span>  )}
-</span></span><span style=display:flex><span>&lt;/&gt;
-</span></span></code></pre></div><p>Even if the components appear in different branches of the conditional, React will treat them as the same component because they have the same key, preserving state when switching between them.</p><h2 id=the-magic-of-keys>The Magic of Keys
+<span class=sr-only>Link to heading</span></a></h3><p>The <code>key</code> attribute lets you override the position-based identity:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=font-weight:700>const</span> TabContent = ({ activeTab, tabs }) =&gt; {
+</span></span><span style=display:flex><span>  <span style=font-weight:700>return</span> (
+</span></span><span style=display:flex><span>    &lt;<span style=font-weight:700>div</span> className=<span style=font-style:italic>&#34;tab-container&#34;</span>&gt;
+</span></span><span style=display:flex><span>      {tabs.map((tab) =&gt; (
+</span></span><span style=display:flex><span>        <span style=font-style:italic>// Key overrides position-based comparison
+</span></span></span><span style=display:flex><span><span style=font-style:italic></span>        &lt;<span style=font-weight:700>div</span> key={tab.id} className=<span style=font-style:italic>&#34;tab-content&#34;</span>&gt;
+</span></span><span style=display:flex><span>          {activeTab === tab.id ? (
+</span></span><span style=display:flex><span>            &lt;<span style=font-weight:700>UserProfile</span>
+</span></span><span style=display:flex><span>              key=<span style=font-style:italic>&#34;active-profile&#34;</span>
+</span></span><span style=display:flex><span>              userId={tab.userId}
+</span></span><span style=display:flex><span>              role={tab.role}
+</span></span><span style=display:flex><span>            /&gt;
+</span></span><span style=display:flex><span>          ) : (
+</span></span><span style=display:flex><span>            &lt;<span style=font-weight:700>div</span> key=<span style=font-style:italic>&#34;placeholder&#34;</span> className=<span style=font-style:italic>&#34;placeholder&#34;</span>&gt;
+</span></span><span style=display:flex><span>              Select <span style=font-weight:700>this</span> tab to view profile
+</span></span><span style=display:flex><span>            &lt;/<span style=font-weight:700>div</span>&gt;
+</span></span><span style=display:flex><span>          )}
+</span></span><span style=display:flex><span>        &lt;/<span style=font-weight:700>div</span>&gt;
+</span></span><span style=display:flex><span>      ))}
+</span></span><span style=display:flex><span>    &lt;/<span style=font-weight:700>div</span>&gt;
+</span></span><span style=display:flex><span>  );
+</span></span><span style=display:flex><span>};
+</span></span></code></pre></div><p>Even if the <code>UserProfile</code> component appears in different positions across conditional renders, React will treat components with the same key as the same component. When a tab becomes active, React preserves the component&rsquo;s state because the key &ldquo;active-profile&rdquo; remains consistent, allowing for smoother transitions between tabs.</p><p>This illustrates how keys provide a way to maintain component identity regardless of structural position in the render tree - a powerful tool for controlling how React reconciles your component hierarchy.</p><h2 id=the-magic-of-keys>The Magic of Keys
 <a class=heading-link href=#the-magic-of-keys><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
 <span class=sr-only>Link to heading</span></a></h2><p>Keys are primarily known for their role in lists, but they have deeper implications for React&rsquo;s reconciliation process.</p><h3 id=why-keys-are-required-for-lists>Why Keys Are Required for Lists
 <a class=heading-link href=#why-keys-are-required-for-lists><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
@@ -217,65 +229,6 @@
 </span></span><span style=display:flex><span>        &lt;<span style=font-weight:700>SettingsTab</span> state={sharedState} onStateChange={setSharedState} /&gt;
 </span></span><span style=display:flex><span>      )}
 </span></span><span style=display:flex><span>      {<span style=font-style:italic>/* Other tabs */</span>}
-</span></span><span style=display:flex><span>    &lt;/<span style=font-weight:700>div</span>&gt;
-</span></span><span style=display:flex><span>  );
-</span></span><span style=display:flex><span>};
-</span></span></code></pre></div><h2 id=component-identity-and-performance>Component Identity and Performance
-<a class=heading-link href=#component-identity-and-performance><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><p>Understanding these reconciliation details explains several React performance patterns:</p><h3 id=1-why-inline-component-definitions-are-bad>1. Why Inline Component Definitions Are Bad
-<a class=heading-link href=#1-why-inline-component-definitions-are-bad><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h3><p>Defining components inside other components creates new function references on every render:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=font-weight:700>const</span> Parent = () =&gt; {
-</span></span><span style=display:flex><span>  <span style=font-style:italic>// Bad practice: InnerComponent recreated on every render
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>  <span style=font-weight:700>const</span> InnerComponent = () =&gt; &lt;<span style=font-weight:700>div</span>&gt;Inner content&lt;/<span style=font-weight:700>div</span>&gt;;
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=font-weight:700>return</span> &lt;<span style=font-weight:700>InnerComponent</span> /&gt;;
-</span></span><span style=display:flex><span>};
-</span></span></code></pre></div><p>Since the component&rsquo;s &ldquo;type&rdquo; (function reference) changes on every render, React treats it as a completely different component, unmounting and remounting it every time.</p><h3 id=2-why-composition-patterns-work>2. Why Composition Patterns Work
-<a class=heading-link href=#2-why-composition-patterns-work><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h3><p>The composition pattern from our previous article leverages React&rsquo;s reconciliation algorithm:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=font-weight:700>const</span> CounterButton = () =&gt; {
-</span></span><span style=display:flex><span>  <span style=font-weight:700>const</span> [count, setCount] = useState(0);
-</span></span><span style=display:flex><span>  <span style=font-weight:700>return</span> &lt;<span style=font-weight:700>button</span> onClick={() =&gt; setCount(count + 1)}&gt;Count: {count}&lt;/<span style=font-weight:700>button</span>&gt;;
-</span></span><span style=display:flex><span>};
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-weight:700>const</span> Parent = () =&gt; {
-</span></span><span style=display:flex><span>  <span style=font-weight:700>return</span> (
-</span></span><span style=display:flex><span>    &lt;<span style=font-weight:700>div</span>&gt;
-</span></span><span style=display:flex><span>      &lt;<span style=font-weight:700>CounterButton</span> /&gt;
-</span></span><span style=display:flex><span>      &lt;<span style=font-weight:700>ExpensiveComponent</span> /&gt;
-</span></span><span style=display:flex><span>    &lt;/<span style=font-weight:700>div</span>&gt;
-</span></span><span style=display:flex><span>  );
-</span></span><span style=display:flex><span>};
-</span></span></code></pre></div><p>When <code>count</code> changes, only the <code>CounterButton</code> tree needs reconciliation. React doesn&rsquo;t even touch the <code>ExpensiveComponent</code> tree since it&rsquo;s in a separate branch.</p><h3 id=3-using-keys-for-advanced-state-preservation>3. Using Keys for Advanced State Preservation
-<a class=heading-link href=#3-using-keys-for-advanced-state-preservation><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h3><p>Based on our understanding of keys, we can implement advanced patterns, but with some important caveats:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=font-weight:700>const</span> TabContent = ({ activeTab }) =&gt; {
-</span></span><span style=display:flex><span>  <span style=font-style:italic>// This approach is INCORRECT and won&#39;t preserve state between different component types
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>  <span style=font-weight:700>return</span> (
-</span></span><span style=display:flex><span>    &lt;<span style=font-weight:700>div</span>&gt;
-</span></span><span style=display:flex><span>      <span style=font-style:italic>// using the same key won&#39;t help you here:
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>      {activeTab === <span style=font-style:italic>&#34;profile&#34;</span> &amp;&amp; &lt;<span style=font-weight:700>ProfileTab</span> key=<span style=font-style:italic>&#34;tab-content&#34;</span> /&gt;}
-</span></span><span style=display:flex><span>      {activeTab === <span style=font-style:italic>&#34;settings&#34;</span> &amp;&amp; &lt;<span style=font-weight:700>SettingsTab</span> key=<span style=font-style:italic>&#34;tab-content&#34;</span> /&gt;}
-</span></span><span style=display:flex><span>      {activeTab === <span style=font-style:italic>&#34;activity&#34;</span> &amp;&amp; &lt;<span style=font-weight:700>ActivityTab</span> key=<span style=font-style:italic>&#34;tab-content&#34;</span> /&gt;}
-</span></span><span style=display:flex><span>    &lt;/<span style=font-weight:700>div</span>&gt;
-</span></span><span style=display:flex><span>  );
-</span></span><span style=display:flex><span>};
-</span></span></code></pre></div><p>The above example wouldn&rsquo;t work as one might expect. When the <code>activeTab</code> changes from &ldquo;profile&rdquo; to &ldquo;settings&rdquo;, React will:</p><ol><li>See that the key &ldquo;tab-content&rdquo; exists in both renders</li><li>Notice that the component type changed from <code>ProfileTab</code> to <code>SettingsTab</code></li><li>Unmount the <code>ProfileTab</code> and mount the <code>SettingsTab</code> as a new component</li></ol><p>React identifies components by both key AND type. When the key matches but the type differs, React will still unmount and remount.</p><p>To correctly preserve state across different UI representations, you obviously need to lift the state up:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=font-style:italic>// Correct approach: Lift state to a parent component
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span><span style=font-weight:700>const</span> TabContent = ({ activeTab }) =&gt; {
-</span></span><span style=display:flex><span>  <span style=font-style:italic>// State that needs to be preserved across tab changes
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>  <span style=font-weight:700>const</span> [sharedState, setSharedState] = useState({
-</span></span><span style=display:flex><span>    <span style=font-style:italic>/* initial state */</span>
-</span></span><span style=display:flex><span>  });
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=font-weight:700>return</span> (
-</span></span><span style=display:flex><span>    &lt;<span style=font-weight:700>div</span>&gt;
-</span></span><span style=display:flex><span>      {activeTab === <span style=font-style:italic>&#34;profile&#34;</span> &amp;&amp; (
-</span></span><span style=display:flex><span>        &lt;<span style=font-weight:700>ProfileTab</span> state={sharedState} onStateChange={setSharedState} /&gt;
-</span></span><span style=display:flex><span>      )}
-</span></span><span style=display:flex><span>      {activeTab === <span style=font-style:italic>&#34;settings&#34;</span> &amp;&amp; (
-</span></span><span style=display:flex><span>        &lt;<span style=font-weight:700>SettingsTab</span> state={sharedState} onStateChange={setSharedState} /&gt;
-</span></span><span style=display:flex><span>      )}
-</span></span><span style=display:flex><span>      {activeTab === <span style=font-style:italic>&#34;activity&#34;</span> &amp;&amp; (
-</span></span><span style=display:flex><span>        &lt;<span style=font-weight:700>ActivityTab</span> state={sharedState} onStateChange={setSharedState} /&gt;
-</span></span><span style=display:flex><span>      )}
 </span></span><span style=display:flex><span>    &lt;/<span style=font-weight:700>div</span>&gt;
 </span></span><span style=display:flex><span>  );
 </span></span><span style=display:flex><span>};

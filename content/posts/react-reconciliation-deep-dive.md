@@ -6,7 +6,7 @@ tags:
 date: 2025-04-08
 ---
 
-##### Update: The "Using Keys for Advanced State Preservation" section has been corrected. The original example incorrectly suggested that using the same key across different component types would preserve state between them. This error occurred when simplifying a more complex example shortly before publishing. Thanks to reader feedback for pointing this out, I'm very grateful! I also messed up an internal link, but that's fixed as well. Thanks
+##### Update: While simplifying a complex code example shortly before publishing, I messed up some details. Thanks to reader feedback for pointing this out, I'm very grateful! I also messed up an internal link, but that's fixed as well. Thanks again
 
 ## The Reconciliation Engine
 

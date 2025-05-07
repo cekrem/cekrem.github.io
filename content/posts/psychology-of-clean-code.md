@@ -3,7 +3,6 @@ title: "The Psychology of Clean Code: Why We Write Messy React Components"
 date: 2025-05-07
 description: "Explore the psychological barriers that prevent us from writing clean code, and learn practical strategies to overcome them. A deep dive into the human side of software development."
 tags: ["react", "clean-code", "psychology", "software-engineering"]
-draft: true
 ---
 
 We all know we should write clean code. We've read the books, attended the talks, and nodded along to the principles. Yet, somehow, we still find ourselves writing messy React components. Why is that? The answer lies not in our technical skills, but in our psychology.
@@ -198,6 +197,12 @@ Consider:
 - Will Future Me be able to modify this easily?
 - Will Future Me thank Past Me for writing this?
 
+Also:
+
+- Could I explain this component's responsibility in one sentence?
+- Would adding a new feature require touching more than 3 files?
+- Are there any 'what was I thinking here?' code patterns?
+
 ## Conclusion
 
 Writing clean code isn't just about technical skills - it's about understanding our psychological biases and working to overcome them. By recognizing these patterns and implementing these strategies, we can write better code and create more maintainable applications.
@@ -214,15 +219,10 @@ Remember: Clean code isn't about perfection. It's about making small, consistent
 - [Cognitive Load](https://en.wikipedia.org/wiki/Cognitive_load) (Wikipedia overview)
 - [The Science of Developer Productivity](https://queue.acm.org/detail.cfm?id=3595878) (ACM Queue)
 
-### Academic Studies (WIP)
+### Academic Studies
 
 - [Ego Depletion: Is the Active Self a Limited Resource?](https://psycnet.apa.org/doiLanding?doi=10.1037/0022-3514.74.5.1252) by Baumeister et al. (1998). Journal of Personality and Social Psychology.
 - [Task Switching](https://www.sciencedirect.com/science/article/pii/S1364661303000287) by Monsell (2003). Trends in Cognitive Sciences.
 - [Cognitive Architecture and Instructional Design](https://link.springer.com/article/10.1023/A%3A1022193728205) by Sweller et al. (1998). Educational Psychology Review.
-
-_Studies adapted to software development context._
-
-\*Studies adapted to software development context. These references are freely accessible without paywalls.
-
-\*Studies adapted to software development context
-\*Decision fatigue research based on multi-attribute choice experiments adapted to software development context
+- [Cognitive Load Theory](https://onlinelibrary.wiley.com/doi/10.1207/s15516709cog1202_4) by Sweller (1988). Educational Psychology Review.
+- Multi-attribute Choice Experiments by Diederich and Trueblood (2018). Journal of Mathematical Psychology. (Didn't find an online link for this one, sorry!)

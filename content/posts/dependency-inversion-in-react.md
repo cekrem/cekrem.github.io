@@ -1,12 +1,14 @@
 ---
 title: "Dependency Inversion in React: Building Truly Testable Components"
-date: 2025-05-13
+date: 2025-05-09
 description: "Learn how to apply the Dependency Inversion Principle in React to create more testable, maintainable, and flexible components. A practical guide to writing better React code."
 tags: ["react", "clean-architecture", "testing", "solid-principles"]
-draft: true
+draft: false
 ---
 
-In the world of React development, we often find ourselves writing components that are tightly coupled to their dependencies. This makes testing difficult, maintenance a challenge, and change nearly impossible. The Dependency Inversion Principle (DIP) offers a way out of this mess, but how do we apply it effectively in React?
+In the world of React development, we often find ourselves writing components that are tightly coupled to their dependencies. This makes testing difficult, maintenance a challenge, and change nearly impossible. The Dependency Inversion Principle (DIP) offers a way out of this mess, but how do we apply it effectively **in React**?
+
+**Note:** For a more backend-oriented take on Dependency Inversion, check out my previous post on [Dependency Inversion in Go Using Plugins](https://cekrem.github.io/posts/clean-architecture-and-plugins-in-go/).
 
 ## The Problem: Tight Coupling in React
 
@@ -37,6 +39,8 @@ This component has several problems:
 - It's difficult to test because of the direct API call
 - It's hard to change the data source
 - It's impossible to test loading states easily
+
+![Michael Scott sad](https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExejNkMWJuengyMnJ4MGw2eHkwNTJyNjhrZXJndTZxcjExNXBuMDltciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ZHnKJsXLI6ZClYFwzH/giphy.gif)
 
 ## The Solution: Dependency Inversion
 
@@ -69,6 +73,8 @@ const UserProfile = ({
 };
 ```
 
+(You could of course consider extracting all this state + useEffect stuff into a custom hook, but that's beside the point at this point.)
+
 ## Implementing the Repository
 
 Now we can create concrete implementations of our repository:
@@ -82,12 +88,24 @@ class ApiUserRepository implements UserRepository {
 }
 
 class MockUserRepository implements UserRepository {
-  async getUser(): Promise<User> {
-    return {
-      id: 1,
-      name: "Test User",
-      email: "test@example.com",
-    };
+  private resolveUser: (user: User) => void = () => {};
+  private rejectUserPromise: (error: Error) => void = () => {};
+
+  getUser(): Promise<User> {
+    return new Promise((resolve, reject) => {
+      this.resolveUser = resolve;
+      this.rejectUserPromise = reject;
+    });
+  }
+
+  // Helper method to resolve the promise
+  resolveWithUser(user: User) {
+    this.resolveUser(user);
+  }
+
+  // Helper method to reject the promise
+  rejectUser(error: Error) {
+    this.rejectUserPromise(error);
   }
 }
 ```
@@ -107,50 +125,27 @@ describe("UserProfile", () => {
   it("displays user data when loaded", async () => {
     const mockRepo = new MockUserRepository();
     render(<UserProfile userRepository={mockRepo} />);
+
+    // Simulate data fetching
+    mockRepo.resolveWithUser({
+      id: 1,
+      name: "Test User",
+      email: "test@example.com",
+    });
+
     const userData = await screen.findByText("Test User");
     expect(userData).toBeInTheDocument();
   });
+
+  // Testing exceptions would be equally stragihtforward, but excluded for brevity
 });
 ```
 
 ## Best Practices
 
 1. **Define Clear Interfaces**: Create interfaces that represent your dependencies
-2. **Inject Dependencies**: Pass dependencies as props or through context
-3. **Use Composition**: Combine smaller, focused components
-4. **Keep Components Pure**: Components should be pure functions of their props
-5. **Test in Isolation**: Each component should be testable without its dependencies
-
-## Real-World Example: A Data Table Component
-
-Let's look at a more complex example - a data table component that needs to fetch, sort, and filter data:
-
-```tsx
-interface DataTableProps<T> {
-  dataSource: DataSource<T>;
-  columns: Column<T>[];
-  onRowClick?: (row: T) => void;
-}
-
-interface DataSource<T> {
-  getData: (params: DataParams) => Promise<DataResult<T>>;
-}
-
-const DataTable = <T extends object>({
-  dataSource,
-  columns,
-  onRowClick,
-}: DataTableProps<T>) => {
-  // Implementation
-};
-```
-
-This structure allows us to:
-
-- Test the table with mock data
-- Switch between different data sources
-- Implement caching or offline support
-- Add new features without changing the component
+2. **Inject Dependencies**: Pass dependencies as props or through context, or better yet using [TSyringe](#note-on-dependency-injection)
+3. **Test in Isolation**: Each component should be testable without its dependencies
 
 ## Conclusion
 
@@ -163,8 +158,14 @@ Applying the Dependency Inversion Principle in React leads to:
 
 Remember: The goal isn't to add complexity, but to make your code more maintainable and testable. Start small, and apply these principles where they make the most sense.
 
+![Michael Scott happy](https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExcjRvMndpZnp5dnZldGZ5am8xc3E3dzk2aGd5dnEyN3E1aHZ6MXMybyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xMGh0bajSyNdC/giphy.gif)
+
 ## Further Reading
 
-- [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) by Robert C. Martin
-- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
-- [SOLID Principles in React](https://cekrem.github.io/posts/single-responsibility-principle-in-react)
+- [Clean Architecture](https://amzn.to/4jOTM2M) by Robert C. Martin
+- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) (official docs)
+- [Single Responsibility Principle in React](/posts/single-responsibility-principle-in-react) (a previous post)
+
+## Note on Dependency _Injection_
+
+While this guide focuses on applying the Dependency Inversion Principle in React, we won't delve into the specifics of implementing dependency injection in a clean and scalable manner. However, if you're interested in exploring this further, libraries like [TSyringe](https://github.com/microsoft/tsyringe) provide a good starting point for managing dependencies effectively in your React applications.

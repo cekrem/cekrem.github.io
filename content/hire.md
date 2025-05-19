@@ -3,7 +3,7 @@ title = "Hire me: Your Chief Problem Solver"
 date = "2021-10-10"
 +++
 
-Update: [I've signed with Ensō](/posts/im-joining-enso), and will only take on assignments through them going forward.
+Update: [I've signed with Ensō](/posts/im-joining-enso), and will only take on assignments through them going forward. At the time being, I'm on a full-time contract @ [Lovdata](https://en.wikipedia.org/wiki/Lovdata), doing Elm and Kotlin.
 
 ## Who I Am
 

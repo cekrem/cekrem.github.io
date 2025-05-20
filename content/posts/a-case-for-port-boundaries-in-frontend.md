@@ -80,7 +80,7 @@ _— Source: [Clean Architecture](https://amzn.to/4iAc8o1), Robert C. Martin (20
 
 ## Ports Are More Than Just Interop
 
-Elm uses the word _port_ to describe any bridge between core logic and the outside world. That linguistic choice matters.
+Elm uses the word _port_ to describe the bridge between core logic and the wild and dangerous outside world that is JS (and manual DOM interaction). That linguistic choice matters.
 
 If we start treating the DOM, browser APIs, and even JavaScript runtimes as _ports_—not as our app—we’re more careful about where side effects live. We build a clean kernel of logic and wrap it in infrastructure.
 

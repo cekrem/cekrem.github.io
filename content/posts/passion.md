@@ -10,6 +10,31 @@ It's Friday, and I'm up at 4am, wide awake, head filled with thoughts on recursi
 
 Suffice it to say I'm passionate about my job! Sure, there's a deadline coming up when we'll release our new application, and there's lots of work to be done before that. But that's not why I'm up early. I'm up because I want to make this great, and I love doing so – so much that I can't wait for the night to be over before starting! Making great things is a far greater motivation than meeting deadlines.
 
+```elm
+-- It works, I promise!
+flattenRecursiveMessage : RecursiveAIMessage -> List LinearAIMessage
+flattenRecursiveMessage recursiveMessage =
+    case recursiveMessage of
+        None ->
+            []
+
+        Leaf message ->
+            [ message ]
+
+        WithSingleResponse ( message, response ) ->
+            message :: flattenRecursiveMessage response
+
+        WithMultiResponse ( message, selectedId, responseDict ) ->
+            responseDict
+                |> Dict.get selectedId
+                |> Maybe.map
+                    (\selectedResponse ->
+                        message :: flattenRecursiveMessage selectedResponse
+                    )
+                |> Maybe.withDefault [ message ]
+
+```
+
 If you're reading this, I hope you get to experience doing something you're passionate about. Sure, there's a time and a place to simply do what needs doing. But there's something close to magic that happens when a human being does what he/she was made for, and it's quite something.
 
 I'm enjoying this early morning, with an extra big cup of coffee (decaff, for sure, in case I suddenly slay this recursive tree dragon and want to go to sleep again!), down in the basement next to my drum kit. But there's something I'm far more passionate about, and I thought you should know.
@@ -35,13 +60,16 @@ So beyond all else I write about on this blog, I thought you should know, that I
 > is to live in the house of the Lord all the days of my life,
 > delighting in the Lord’s perfections
 > and meditating in his Temple.
+>
 > For he will conceal me there when troubles come;
 > he will hide me in his sanctuary.
 > He will place me out of reach on a high rock.
+>
 > Then I will hold my head high
 > above my enemies who surround me.
 > At his sanctuary I will offer sacrifices with shouts of joy,
 > singing and praising the Lord with music.
+>
 > Hear me as I pray, O Lord.
 > Be merciful and answer me!
 > My heart has heard you say, “Come and talk with me.”

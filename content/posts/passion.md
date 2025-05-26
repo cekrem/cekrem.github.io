@@ -11,28 +11,30 @@ It's Friday, and I'm up at 4am, wide awake, head filled with thoughts on recursi
 Suffice it to say I'm passionate about my job! Sure, there's a deadline coming up when we'll release our new application, and there's lots of work to be done before that. But that's not why I'm up early. I'm up because I want to make this great, and I love doing so – so much that I can't wait for the night to be over before starting! Making great things is a far greater motivation than meeting deadlines.
 
 ```elm
--- It works, I promise!
+-- It works, I promise! And it's tail call optimized 🤤
 flattenRecursiveMessage : RecursiveAIMessage -> List LinearAIMessage
 flattenRecursiveMessage recursiveMessage =
-    case recursiveMessage of
-        None ->
-            []
+    let
+        flattenWithAcc acc msg =
+            case msg of
+                None ->
+                    acc
 
-        Leaf message ->
-            [ message ]
+                Leaf message ->
+                    message :: acc
 
-        WithSingleResponse ( message, response ) ->
-            message :: flattenRecursiveMessage response
+                WithSingleResponse ( message, response ) ->
+                    flattenWithAcc (message :: acc) response
 
-        WithMultiResponse ( message, selectedId, responseDict ) ->
-            responseDict
-                |> Dict.get selectedId
-                |> Maybe.map
-                    (\selectedResponse ->
-                        message :: flattenRecursiveMessage selectedResponse
-                    )
-                |> Maybe.withDefault [ message ]
+                WithMultiResponse ( message, selectedId, responseDict ) ->
+                    case Dict.get selectedId responseDict of
+                        Just selectedResponse ->
+                            flattenWithAcc (message :: acc) selectedResponse
 
+                        Nothing ->
+                            message :: acc
+    in
+    flattenWithAcc [] recursiveMessage |> List.reverse
 ```
 
 If you're reading this, I hope you get to experience doing something you're passionate about. Sure, there's a time and a place to simply do what needs doing. But there's something close to magic that happens when a human being does what he/she was made for, and it's quite something.

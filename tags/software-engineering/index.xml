@@ -76,6 +76,17 @@
 &lt;li>&lt;a href="https://amzn.to/41GYOrQ" class="external-link" target="_blank" rel="noopener">Staff Engineer: Leadership beyond the management track&lt;/a> — This one I find a tiny bit boring, to be perfectly honest, but still very helpful. Lot&amp;rsquo;s of insight about &amp;ldquo;all the other stuff&amp;rdquo; (not coding).&lt;/li>
 &lt;li>&lt;a href="https://amzn.to/4gjc9ex" class="external-link" target="_blank" rel="noopener">The Effective Engineer: How to Leverage Your Efforts In Software Engineering to Make a Disproportionate and Meaningful Impact&lt;/a> — I haven&amp;rsquo;t read this one yet, but it&amp;rsquo;s been highly recommended to me by trustworthy people. And how about that killer subtitle, ey?&lt;/li>
 &lt;/ul>
+&lt;h2 id="elm">
+ Elm
+ &lt;a class="heading-link" href="#elm">
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
+ &lt;span class="sr-only">Link to heading&lt;/span>
+ &lt;/a>
+&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a href="https://amzn.to/4kBLTxA" class="external-link" target="_blank" rel="noopener">Elm in Action&lt;/a> – This is The Book™ on Elm, by Richard Feldman (author of &lt;a href="https://www.roc-lang.org" class="external-link" target="_blank" rel="noopener">the Roc Programming language&lt;/a>). It&amp;rsquo;s simply great. The last few chapters are a tiny bit overwhelming if you&amp;rsquo;re new to Elm, but thankfully &lt;a href="https://elm.land" class="external-link" target="_blank" rel="noopener">Elm Land&lt;/a> solves much of that stuff for you.&lt;/li>
+&lt;li>&lt;a href="https://elm-lang.org/community" class="external-link" target="_blank" rel="noopener">The Elm Community&lt;/a> –Not a book at all, I know, but since this is my all time favorite programming community I can&amp;rsquo;t help but mention it anyways. The Slack, the Discourse, Subreddit – it&amp;rsquo;s all great.&lt;/li>
+&lt;/ul>
 &lt;h2 id="golang">
  Golang
  &lt;a class="heading-link" href="#golang">

@@ -18,6 +18,11 @@ Disclaimer: I have not read all of these from cover to cover. I've read most, bu
 - [Staff Engineer: Leadership beyond the management track](https://amzn.to/41GYOrQ) — This one I find a tiny bit boring, to be perfectly honest, but still very helpful. Lot's of insight about "all the other stuff" (not coding).
 - [The Effective Engineer: How to Leverage Your Efforts In Software Engineering to Make a Disproportionate and Meaningful Impact](https://amzn.to/4gjc9ex) — I haven't read this one yet, but it's been highly recommended to me by trustworthy people. And how about that killer subtitle, ey?
 
+## Elm
+
+- [Elm in Action](https://amzn.to/4kBLTxA) – This is The Book™ on Elm, by Richard Feldman (author of [the Roc Programming language](https://www.roc-lang.org)). It's simply great. The last few chapters are a tiny bit overwhelming if you're new to Elm, but thankfully [Elm Land](https://elm.land) solves much of that stuff for you.
+- [The Elm Community](https://elm-lang.org/community) –Not a book at all, I know, but since this is my all time favorite programming community I can't help but mention it anyways. The Slack, the Discourse, Subreddit – it's all great.
+
 ## Golang
 
 - [The Go Programming Language](https://amzn.to/4fruZyJ) —

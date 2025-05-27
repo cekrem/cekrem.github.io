@@ -15,9 +15,9 @@ My favorite part of my professional tech career (so far) has been my time with [
 
 ### Core Skills (a small excerpt, see [CV](/cv.pdf) for a more comprehensive list)
 
-- **Languages**: Golang, Kotlin (including Android), Python, React
+- **Languages**: Golang, Kotlin (including Android), Elm, React, Python
 - **Additional Experience**: Java, C#/.net, PHP
-- **Exploring**: Common Lisp, Elm, Haskell, Rust
+- **Exploring**: Common Lisp, Haskell, Rust
 - **Cloud platforms**: Azure, GCP, AWS – you name it
 
 ## What Sets Me Apart
@@ -38,7 +38,6 @@ Beyond my tech background, I've worked as a film and television professional, se
 
 I'm seeking a tech environment that:
 
-- Offers competitive compensation and benefits
 - Values creativity and innovation in technology
 - Prioritizes a positive work environment and employee satisfaction
 - Makes a meaningful impact through technology

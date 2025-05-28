@@ -1,5 +1,14 @@
+.DS_Store
 .idea
 public/
 resources/
 themes/
-.DS_Store
+
+.vite/
+static/widget.js
+elm-stuff
+node_modules
+repl-temp-*
+elm.js
+index.html
+

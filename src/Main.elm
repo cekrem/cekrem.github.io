@@ -2,37 +2,44 @@ module Main exposing (..)
 
 import Browser
 import Html exposing (..)
+import Html.Attributes as Attributes
 import Html.Events exposing (..)
-import Random
+import Testemonials
 
 
 
 -- MAIN
 
 
+main : Program String Model Msg
 main =
-  Browser.element
-    { init = init
-    , update = update
-    , subscriptions = subscriptions
-    , view = view
-    }
+    Browser.element
+        { init = init
+        , update = update
+        , subscriptions = subscriptions
+        , view = view
+        }
 
 
 
 -- MODEL
 
 
-type alias Model =
-  { dieFace : Int
-  }
+type Model
+    = Testemonials Testemonials.Model
+    | None
 
 
-init : () -> (Model, Cmd Msg)
-init _ =
-  ( Model 1
-  , Cmd.none
-  )
+init : String -> ( Model, Cmd Msg )
+init path =
+    if Testemonials.showForPath path then
+        Testemonials.init ()
+            |> Tuple.mapBoth Testemonials (Cmd.map TestemonialsMsg)
+
+    else
+        ( None
+        , Cmd.none
+        )
 
 
 
@@ -40,22 +47,19 @@ init _ =
 
 
 type Msg
-  = Roll
-  | NewFace Int
+    = NoOp
+    | TestemonialsMsg Testemonials.Msg
 
 
-update : Msg -> Model -> (Model, Cmd Msg)
+update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
-  case msg of
-    Roll ->
-      ( model
-      , Random.generate NewFace (Random.int 1 6)
-      )
+    case ( model, msg ) of
+        ( Testemonials testemonialsModel, TestemonialsMsg testemonialsMsg ) ->
+            Testemonials.update testemonialsMsg testemonialsModel
+                |> Tuple.mapBoth Testemonials (Cmd.map TestemonialsMsg)
 
-    NewFace newFace ->
-      ( Model newFace
-      , Cmd.none
-      )
+        _ ->
+            ( model, Cmd.none )
 
 
 
@@ -63,8 +67,8 @@ update msg model =
 
 
 subscriptions : Model -> Sub Msg
-subscriptions model =
-  Sub.none
+subscriptions _ =
+    Sub.none
 
 
 
@@ -73,8 +77,12 @@ subscriptions model =
 
 view : Model -> Html Msg
 view model =
-  div []
-    [ h1 [] [ text (String.fromInt model.dieFace) ]
-    , button [ onClick Roll ] [ text "Roll" ]
-    ]
+    div [ Attributes.class "container" ]
+        [ case model of
+            Testemonials testemonialsModel ->
+                Testemonials.view testemonialsModel
+                    |> Html.map TestemonialsMsg
 
+            None ->
+                Html.text ""
+        ]

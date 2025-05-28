@@ -1,0 +1,8 @@
+{
+  "targets": {
+    "My target name": {
+      "inputs": ["src/Main.elm"],
+      "output": "public/widget.js"
+    }
+  }
+}

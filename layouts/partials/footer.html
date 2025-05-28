@@ -31,6 +31,15 @@
   </button>
 </form>
 
+<div id="elm-widget"></div>
+<script src="/widget.js"></script>
+<script>
+  Elm.Main.init({
+    node: document.getElementById("elm-widget"),
+    flags: window.location.pathname,
+  });
+</script>
+
 <div
   id="testemonials"
   class="container"

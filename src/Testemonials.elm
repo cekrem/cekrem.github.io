@@ -82,12 +82,78 @@ view model =
 
         Success testemonials ->
             Html.div
-                [ Attributes.style "padding" "24px"
-                , Attributes.style "border-radius" "24px"
+                [ Attributes.style "padding" "2rem 3rem"
+                , Attributes.style "border-radius" "1rem"
                 , Attributes.style "background" "white"
+                , Attributes.style "display" "flex"
+                , Attributes.style "gap" "1rem"
                 ]
-                [ Html.text "testemonials here"
+                (testemonials
+                    |> List.take 2
+                    |> List.map testemonialEntry
+                )
+
+
+testemonialEntry : Testemonial -> Html Msg
+testemonialEntry testemonial =
+    Html.div
+        [ Attributes.style "border" "thin solid black"
+        , Attributes.style "padding" "2rem"
+        , Attributes.style "width" "50%"
+        , Attributes.style "display" "flex"
+        , Attributes.style "flex-direction" "column"
+        , Attributes.style "gap" "1rem"
+        ]
+        [ flexRow
+            [ Html.img
+                [ Attributes.src testemonial.image
+                , Attributes.style "width" "50px"
+                , Attributes.style "border-radius" "50%"
                 ]
+                []
+            , Html.div []
+                [ clickableTitle testemonial.link testemonial.name
+                , paragraph testemonial.title
+                ]
+            ]
+        , flexRow
+            [ Html.text "⭐⭐⭐⭐⭐"
+            ]
+        , flexRow
+            [ paragraph testemonial.text ]
+        , flexRow
+            [ paragraph testemonial.date ]
+        ]
+
+
+flexRow : List (Html msg) -> Html msg
+flexRow content =
+    Html.div
+        [ Attributes.style "display" "flex"
+        , Attributes.style "align-items" "center"
+        , Attributes.style "gap" "1rem"
+        ]
+        content
+
+
+title : String -> Html msg
+title text =
+    Html.h6 [ Attributes.style "margin" "0" ] [ Html.text text ]
+
+
+clickableTitle : String -> String -> Html msg
+clickableTitle url text =
+    Html.a [ Attributes.href url ] [ title text ]
+
+
+paragraph : String -> Html msg
+paragraph text =
+    Html.p
+        [ Attributes.style "margin" "0"
+        , Attributes.style "font-size" "1.4rem"
+        , Attributes.style "line-height" "1.4"
+        ]
+        [ Html.text text ]
 
 
 
@@ -110,9 +176,9 @@ testemonialsDecoder =
 testemonialDecoder : Json.Decode.Decoder Testemonial
 testemonialDecoder =
     Json.Decode.map6 Testemonial
-        (Json.Decode.field "date" Json.Decode.string)
-        (Json.Decode.field "image" Json.Decode.string)
-        (Json.Decode.field "link" Json.Decode.string)
         (Json.Decode.field "name" Json.Decode.string)
-        (Json.Decode.field "text" Json.Decode.string)
         (Json.Decode.field "title" Json.Decode.string)
+        (Json.Decode.field "text" Json.Decode.string)
+        (Json.Decode.field "date" Json.Decode.string)
+        (Json.Decode.field "link" Json.Decode.string)
+        (Json.Decode.field "image" Json.Decode.string)

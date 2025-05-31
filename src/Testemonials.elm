@@ -15,7 +15,7 @@ import Set
 type Model
     = Failure
     | Loading
-    | Success (List Testemonial)
+    | Success (List Testemonial) Int
 
 
 init : () -> ( Model, Cmd Msg )
@@ -48,21 +48,28 @@ type alias Testemonial =
 
 
 type Msg
-    = NoOp
+    = Right
+    | Left
     | GotTestemonials (Result Http.Error (List Testemonial))
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
-    case msg of
-        NoOp ->
-            ( model, Cmd.none )
+    case ( model, msg ) of
+        ( Success testemonials index, Right ) ->
+            ( Success testemonials (modBy (List.length testemonials) (index + 1)), Cmd.none )
 
-        GotTestemonials (Ok testemonilals) ->
-            ( Success testemonilals, Cmd.none )
+        ( Success testemonials index, Left ) ->
+            ( Success testemonials (modBy (List.length testemonials) (index - 1)), Cmd.none )
 
-        GotTestemonials (Err error) ->
+        ( _, GotTestemonials (Ok testemonials) ) ->
+            ( Success testemonials 0, Cmd.none )
+
+        ( _, GotTestemonials (Err _) ) ->
             ( Failure, Cmd.none )
+
+        _ ->
+            ( model, Cmd.none )
 
 
 
@@ -76,53 +83,114 @@ view model =
             Html.text "..."
 
         Failure ->
-            Html.div [ Events.onClick NoOp ]
-                [ Html.text "something went wrong while fetching testemonials"
+            Html.div []
+                [ Html.text "something went wrong while fetching testemonials :("
                 ]
 
-        Success testemonials ->
+        Success testemonials index ->
             Html.div
-                [ Attributes.style "padding" "2rem 3rem"
+                [ Attributes.style "position" "relative"
+                , Attributes.style "width" "100%"
+                , Attributes.style "padding" "2rem 3rem"
+                , Attributes.style "margin" "1rem"
                 , Attributes.style "border-radius" "1rem"
                 , Attributes.style "background" "white"
                 , Attributes.style "display" "flex"
                 , Attributes.style "gap" "1rem"
                 ]
-                (testemonials
-                    |> List.take 2
-                    |> List.map testemonialEntry
+                ((if index > 0 then
+                    leftButton
+
+                  else
+                    Html.text ""
+                 )
+                    :: (if index < List.length testemonials - 2 then
+                            rightButton
+
+                        else
+                            Html.text ""
+                       )
+                    :: (testemonials
+                            |> List.indexedMap
+                                (\i t ->
+                                    testemonialEntry (i == index || i == index + 1) t
+                                )
+                       )
                 )
 
 
-testemonialEntry : Testemonial -> Html Msg
-testemonialEntry testemonial =
+leftButton : Html Msg
+leftButton =
+    button True
+
+
+rightButton : Html Msg
+rightButton =
+    button False
+
+
+button : Bool -> Html Msg
+button isLeft =
+    let
+        ( side, content, msg ) =
+            if isLeft then
+                ( "left", "◂", Left )
+
+            else
+                ( "right", "▸", Right )
+    in
     Html.div
-        [ Attributes.style "border" "thin solid black"
-        , Attributes.style "padding" "2rem"
-        , Attributes.style "width" "50%"
+        [ Attributes.style "position" "absolute"
+        , Attributes.style "align-self" "center"
+        , Attributes.style side "0"
+        , Attributes.style "margin" "1rem"
+        , Attributes.style "font-size" "5rem"
+        , Attributes.style "cursor" "pointer"
+        , Attributes.style "user-select" "none"
+        , Events.onClick msg
+        ]
+        [ Html.text content ]
+
+
+testemonialEntry : Bool -> Testemonial -> Html Msg
+testemonialEntry visible testemonial =
+    let
+        ( width, height, padding ) =
+            if visible then
+                ( "50%", "40rem", "2rem" )
+
+            else
+                ( "0%", "0", "0" )
+    in
+    Html.div
+        [ Attributes.style "transition" "all .5s linear"
+        , Attributes.style "padding" padding
+        , Attributes.style "width" width
+        , Attributes.style "max-height" height
+        , Attributes.style "overflow-x" "hidden"
         , Attributes.style "display" "flex"
+        , Attributes.style "white-space" "nowrap"
         , Attributes.style "flex-direction" "column"
         , Attributes.style "gap" "1rem"
         ]
         [ flexRow
             [ Html.img
                 [ Attributes.src testemonial.image
-                , Attributes.style "width" "50px"
+                , Attributes.style "width" "75px"
                 , Attributes.style "border-radius" "50%"
                 ]
                 []
             , Html.div []
                 [ clickableTitle testemonial.link testemonial.name
-                , paragraph testemonial.title
+                , subtitle testemonial.title
                 ]
             ]
         , flexRow
-            [ Html.text "⭐⭐⭐⭐⭐"
-            ]
+            [ stars ]
         , flexRow
             [ paragraph testemonial.text ]
         , flexRow
-            [ paragraph testemonial.date ]
+            [ subtitle testemonial.date ]
         ]
 
 
@@ -141,6 +209,15 @@ title text =
     Html.h6 [ Attributes.style "margin" "0" ] [ Html.text text ]
 
 
+stars : Html msg
+stars =
+    Html.span
+        [ Attributes.style "color" "gold"
+        ]
+        [ Html.text "★ ★ ★ ★ ★"
+        ]
+
+
 clickableTitle : String -> String -> Html msg
 clickableTitle url text =
     Html.a [ Attributes.href url ] [ title text ]
@@ -150,8 +227,20 @@ paragraph : String -> Html msg
 paragraph text =
     Html.p
         [ Attributes.style "margin" "0"
-        , Attributes.style "font-size" "1.4rem"
+        , Attributes.style "font-size" "1.6rem"
         , Attributes.style "line-height" "1.4"
+        ]
+        [ Html.text text ]
+
+
+subtitle : String -> Html msg
+subtitle text =
+    Html.p
+        [ Attributes.style "margin" "0"
+        , Attributes.style "font-size" "1.6rem"
+        , Attributes.style "line-height" "1.4"
+        , Attributes.style "font-weight" "200"
+        , Attributes.style "opacity" "0.8"
         ]
         [ Html.text text ]
 

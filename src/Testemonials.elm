@@ -96,7 +96,9 @@ view model =
                 , Attributes.style "border-radius" "1rem"
                 , Attributes.style "background" "white"
                 , Attributes.style "display" "flex"
-                , Attributes.style "gap" "1rem"
+                , Attributes.style "align-items" "start"
+                , Attributes.style "justify-content" "center"
+                , Attributes.style "flex-wrap" "wrap"
                 ]
                 ((if index > 0 then
                     leftButton
@@ -141,9 +143,9 @@ button isLeft =
     in
     Html.div
         [ Attributes.style "position" "absolute"
-        , Attributes.style "align-self" "center"
+        , Attributes.style "align-self" "start"
         , Attributes.style side "0"
-        , Attributes.style "margin" "1rem"
+        , Attributes.style "margin" "20rem 1rem"
         , Attributes.style "font-size" "5rem"
         , Attributes.style "cursor" "pointer"
         , Attributes.style "user-select" "none"
@@ -157,13 +159,13 @@ testemonialEntry visible testemonial =
     let
         ( width, height, padding ) =
             if visible then
-                ( "50%", "40rem", "2rem" )
+                ( "40rem", "50rem", "2rem" )
 
             else
                 ( "0%", "0", "0" )
     in
     Html.div
-        [ Attributes.style "transition" "all .5s linear"
+        [ Attributes.style "transition" "all .5s ease"
         , Attributes.style "padding" padding
         , Attributes.style "width" width
         , Attributes.style "max-height" height
@@ -198,6 +200,7 @@ flexRow : List (Html msg) -> Html msg
 flexRow content =
     Html.div
         [ Attributes.style "display" "flex"
+        , Attributes.style "flex-wrap" "wrap"
         , Attributes.style "align-items" "center"
         , Attributes.style "gap" "1rem"
         ]
@@ -239,10 +242,11 @@ subtitle text =
         [ Attributes.style "margin" "0"
         , Attributes.style "font-size" "1.6rem"
         , Attributes.style "line-height" "1.4"
+        , Attributes.style "white-space" "pre"
         , Attributes.style "font-weight" "200"
         , Attributes.style "opacity" "0.8"
         ]
-        [ Html.text text ]
+        [ Html.text (text |> String.replace "@ " "@\n") ]
 
 
 

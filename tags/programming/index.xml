@@ -1,106 +1,52 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Programming on cekrem.github.io</title><link>https://cekrem.github.io/tags/programming/</link><description>Recent content in Programming on cekrem.github.io</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Tue, 22 Apr 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://cekrem.github.io/tags/programming/index.xml" rel="self" type="application/rss+xml"/><item><title>Coding as Craft: Going Back to the Old Gym</title><link>https://cekrem.github.io/posts/coding-as-craft-going-back-to-the-old-gym/</link><pubDate>Tue, 22 Apr 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/coding-as-craft-going-back-to-the-old-gym/</guid><description>&lt;p>Recently, &lt;a href="https://x.com/tobi/status/1909231499448401946" class="external-link" target="_blank" rel="noopener">Shopify&amp;rsquo;s CEO Tobi Lütke shared his thoughts on AI&amp;rsquo;s role in coding&lt;/a>, stating that &amp;ldquo;reflexive AI usage is now a baseline expectation at Shopify.&amp;rdquo; The gist of his message was that AI is revolutionizing how we work, and everybody should jump on board this train or risk being left behind. I&amp;rsquo;m paraphrasing a bit, but not much – check out the post for complete context and content.&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Programming on cekrem.github.io</title><link>https://cekrem.github.io/tags/programming/</link><description>Recent content in Programming on cekrem.github.io</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Tue, 22 Apr 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://cekrem.github.io/tags/programming/index.xml" rel="self" type="application/rss+xml"/><item><title>Coding as Craft: Going Back to the Old Gym</title><link>https://cekrem.github.io/posts/coding-as-craft-going-back-to-the-old-gym/</link><pubDate>Tue, 22 Apr 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/coding-as-craft-going-back-to-the-old-gym/</guid><description>&lt;p>Recently, &lt;a href="https://x.com/tobi/status/1909231499448401946">Shopify&amp;rsquo;s CEO Tobi Lütke shared his thoughts on AI&amp;rsquo;s role in coding&lt;/a>, stating that &amp;ldquo;reflexive AI usage is now a baseline expectation at Shopify.&amp;rdquo; The gist of his message was that AI is revolutionizing how we work, and everybody should jump on board this train or risk being left behind. I&amp;rsquo;m paraphrasing a bit, but not much – check out the post for complete context and content.&lt;/p>
 &lt;p>This struck a chord with me, but not in the way he intended. In a Slack conversation with fellow Elm engineers, I found myself typing:&lt;/p></description></item><item><title>Books I Think Software Engineers Should Read</title><link>https://cekrem.github.io/posts/books-i-think-software-engineers-should-read/</link><pubDate>Wed, 18 Dec 2024 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/books-i-think-software-engineers-should-read/</guid><description>&lt;p>What follows is a non-ordered &amp;amp; non-exhaustive list of great programming books that I&amp;rsquo;d recommend every ambitious software engineer. The language specific ones are obviously not for everyone.&lt;/p>
 &lt;p>Disclaimer: I have not read all of these from cover to cover. I&amp;rsquo;ve read most, but some are on my list of books to read next based on suggestions and/or reviews from people I trust.&lt;/p>
-&lt;h2 id="general">
- General
- &lt;a class="heading-link" href="#general">
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
- &lt;span class="sr-only">Link to heading&lt;/span>
- &lt;/a>
-&lt;/h2>
+&lt;h2 id="general">General&lt;/h2>
 &lt;ul>
-&lt;li>&lt;a href="https://amzn.to/4gAOaHa" class="external-link" target="_blank" rel="noopener">Deep Work: Rules for Focused Success in a Distracted World&lt;/a> – Not a programming / software engineering book at all per say, but a &lt;em>highly&lt;/em> recommended read regardless. If you read one book on this list, go for this one, for real.&lt;/li>
-&lt;li>&lt;a href="https://amzn.to/3VIleoE" class="external-link" target="_blank" rel="noopener">Clean Code&lt;/a>, &lt;a href="https://amzn.to/3ZZu3Ny" class="external-link" target="_blank" rel="noopener">Clean Code&lt;em>r&lt;/em>&lt;/a> and &lt;a href="https://amzn.to/4iAc8o1" class="external-link" target="_blank" rel="noopener">Clean Architecture&lt;/a> — These Uncle Bob classics are great. I&amp;rsquo;m currently enjoying the architecture one &lt;em>on audible&lt;/em>, that&amp;rsquo;s a first for me with a software engineering book. Simply great, and truly a pleasant read/listen.&lt;/li>
-&lt;li>&lt;a href="https://amzn.to/4gjf4Ud" class="external-link" target="_blank" rel="noopener">The Pragmatic Programmer: Your Journey To Mastery&lt;/a> — A classic, and a good one at that!&lt;/li>
-&lt;li>&lt;a href="https://amzn.to/41GYOrQ" class="external-link" target="_blank" rel="noopener">Staff Engineer: Leadership beyond the management track&lt;/a> — This one I find a tiny bit boring, to be perfectly honest, but still very helpful. Lot&amp;rsquo;s of insight about &amp;ldquo;all the other stuff&amp;rdquo; (not coding).&lt;/li>
-&lt;li>&lt;a href="https://amzn.to/4gjc9ex" class="external-link" target="_blank" rel="noopener">The Effective Engineer: How to Leverage Your Efforts In Software Engineering to Make a Disproportionate and Meaningful Impact&lt;/a> — I haven&amp;rsquo;t read this one yet, but it&amp;rsquo;s been highly recommended to me by trustworthy people. And how about that killer subtitle, ey?&lt;/li>
+&lt;li>&lt;a href="https://amzn.to/4gAOaHa">Deep Work: Rules for Focused Success in a Distracted World&lt;/a> – Not a programming / software engineering book at all per say, but a &lt;em>highly&lt;/em> recommended read regardless. If you read one book on this list, go for this one, for real.&lt;/li>
+&lt;li>&lt;a href="https://amzn.to/3VIleoE">Clean Code&lt;/a>, &lt;a href="https://amzn.to/3ZZu3Ny">Clean Code&lt;em>r&lt;/em>&lt;/a> and &lt;a href="https://amzn.to/4iAc8o1">Clean Architecture&lt;/a> — These Uncle Bob classics are great. I&amp;rsquo;m currently enjoying the architecture one &lt;em>on audible&lt;/em>, that&amp;rsquo;s a first for me with a software engineering book. Simply great, and truly a pleasant read/listen.&lt;/li>
+&lt;li>&lt;a href="https://amzn.to/4gjf4Ud">The Pragmatic Programmer: Your Journey To Mastery&lt;/a> — A classic, and a good one at that!&lt;/li>
+&lt;li>&lt;a href="https://amzn.to/41GYOrQ">Staff Engineer: Leadership beyond the management track&lt;/a> — This one I find a tiny bit boring, to be perfectly honest, but still very helpful. Lot&amp;rsquo;s of insight about &amp;ldquo;all the other stuff&amp;rdquo; (not coding).&lt;/li>
+&lt;li>&lt;a href="https://amzn.to/4gjc9ex">The Effective Engineer: How to Leverage Your Efforts In Software Engineering to Make a Disproportionate and Meaningful Impact&lt;/a> — I haven&amp;rsquo;t read this one yet, but it&amp;rsquo;s been highly recommended to me by trustworthy people. And how about that killer subtitle, ey?&lt;/li>
 &lt;/ul>
-&lt;h2 id="elm">
- Elm
- &lt;a class="heading-link" href="#elm">
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
- &lt;span class="sr-only">Link to heading&lt;/span>
- &lt;/a>
-&lt;/h2>
+&lt;h2 id="elm">Elm&lt;/h2>
 &lt;ul>
-&lt;li>&lt;a href="https://amzn.to/4kBLTxA" class="external-link" target="_blank" rel="noopener">Elm in Action&lt;/a> – This is The Book™ on Elm, by Richard Feldman (author of &lt;a href="https://www.roc-lang.org" class="external-link" target="_blank" rel="noopener">the Roc Programming language&lt;/a>). It&amp;rsquo;s simply great. The last few chapters are a tiny bit overwhelming if you&amp;rsquo;re new to Elm, but thankfully &lt;a href="https://elm.land" class="external-link" target="_blank" rel="noopener">Elm Land&lt;/a> solves much of that stuff for you.&lt;/li>
-&lt;li>&lt;a href="https://elm-lang.org/community" class="external-link" target="_blank" rel="noopener">The Elm Community&lt;/a> –Not a book at all, I know, but since this is my all time favorite programming community I can&amp;rsquo;t help but mention it anyways. The Slack, the Discourse, Subreddit – it&amp;rsquo;s all great.&lt;/li>
+&lt;li>&lt;a href="https://amzn.to/4kBLTxA">Elm in Action&lt;/a> – This is The Book™ on Elm, by Richard Feldman (author of &lt;a href="https://www.roc-lang.org">the Roc Programming language&lt;/a>). It&amp;rsquo;s simply great. The last few chapters are a tiny bit overwhelming if you&amp;rsquo;re new to Elm, but thankfully &lt;a href="https://elm.land">Elm Land&lt;/a> solves much of that stuff for you.&lt;/li>
+&lt;li>&lt;a href="https://elm-lang.org/community">The Elm Community&lt;/a> –Not a book at all, I know, but since this is my all time favorite programming community I can&amp;rsquo;t help but mention it anyways. The Slack, the Discourse, Subreddit – it&amp;rsquo;s all great.&lt;/li>
 &lt;/ul>
-&lt;h2 id="golang">
- Golang
- &lt;a class="heading-link" href="#golang">
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
- &lt;span class="sr-only">Link to heading&lt;/span>
- &lt;/a>
-&lt;/h2>
+&lt;h2 id="golang">Golang&lt;/h2>
 &lt;ul>
-&lt;li>&lt;a href="https://amzn.to/4fruZyJ" class="external-link" target="_blank" rel="noopener">The Go Programming Language&lt;/a> —
+&lt;li>&lt;a href="https://amzn.to/4fruZyJ">The Go Programming Language&lt;/a> —
 Kind of obvious, this one. But a great classic! I remember enjoying the chapter about UTF-8 a lot, as well as the generally thorough explanations of how and &lt;em>why&lt;/em> Golang behaves.&lt;/li>
-&lt;li>&lt;a href="https://amzn.to/3Bpf4TL" class="external-link" target="_blank" rel="noopener">Concurrency in Go: Tools and Techniques for Developers&lt;/a> — This is a truly great programming book! Even though Golang is made for concurrency, it&amp;rsquo;s still very possible to mess up. This book shows you how it&amp;rsquo;s done. What&amp;rsquo;s a bit cool (🤓) is that it predates the &lt;code>context.Context&lt;/code> interface, and as such suggests using a manual &amp;ldquo;done channel&amp;rdquo; to enable canceling of coroutines. It shows the author&amp;rsquo;s insight that an exact pattern like that was introduced with the &lt;code>Context.Done()&lt;/code> method introduced later in the language. For more on that, check out &lt;a href="https://github.com/cekrem/goutils/commit/0a511038efd9186cf204d503f7ff37c83b5c5838" class="external-link" target="_blank" rel="noopener">this git diff&lt;/a>, on a small golang utility library I started on way back.&lt;/li>
-&lt;li>Feel free to skip this one, though: &lt;a href="https://amzn.to/3P1uq3R" class="external-link" target="_blank" rel="noopener">Learning Functional Programming in Go&lt;/a> — This book should, IMHO, rather have been a tweet. Something like this: &amp;ldquo;Go is not really suited for functional programming, I&amp;rsquo;d advice you not to do it at scale.&amp;rdquo; Fun fact: this book is actually what got me into &lt;a href="#kotlin" >Kotlin&lt;/a>. All that talk about &lt;a href="https://stackoverflow.com/questions/310974/what-is-tail-call-optimization" class="external-link" target="_blank" rel="noopener">tail call optimization&lt;/a> (and how Golang is &lt;em>not&lt;/em> doing that&amp;hellip;) got me searching for more functional fun outside of Elm, Haskell and Lisp.&lt;/li>
+&lt;li>&lt;a href="https://amzn.to/3Bpf4TL">Concurrency in Go: Tools and Techniques for Developers&lt;/a> — This is a truly great programming book! Even though Golang is made for concurrency, it&amp;rsquo;s still very possible to mess up. This book shows you how it&amp;rsquo;s done. What&amp;rsquo;s a bit cool (🤓) is that it predates the &lt;code>context.Context&lt;/code> interface, and as such suggests using a manual &amp;ldquo;done channel&amp;rdquo; to enable canceling of coroutines. It shows the author&amp;rsquo;s insight that an exact pattern like that was introduced with the &lt;code>Context.Done()&lt;/code> method introduced later in the language. For more on that, check out &lt;a href="https://github.com/cekrem/goutils/commit/0a511038efd9186cf204d503f7ff37c83b5c5838">this git diff&lt;/a>, on a small golang utility library I started on way back.&lt;/li>
+&lt;li>Feel free to skip this one, though: &lt;a href="https://amzn.to/3P1uq3R">Learning Functional Programming in Go&lt;/a> — This book should, IMHO, rather have been a tweet. Something like this: &amp;ldquo;Go is not really suited for functional programming, I&amp;rsquo;d advice you not to do it at scale.&amp;rdquo; Fun fact: this book is actually what got me into &lt;a href="#kotlin">Kotlin&lt;/a>. All that talk about &lt;a href="https://stackoverflow.com/questions/310974/what-is-tail-call-optimization">tail call optimization&lt;/a> (and how Golang is &lt;em>not&lt;/em> doing that&amp;hellip;) got me searching for more functional fun outside of Elm, Haskell and Lisp.&lt;/li>
 &lt;/ul>
-&lt;h2 id="python">
- Python
- &lt;a class="heading-link" href="#python">
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
- &lt;span class="sr-only">Link to heading&lt;/span>
- &lt;/a>
-&lt;/h2>
+&lt;h2 id="python">Python&lt;/h2>
 &lt;ul>
-&lt;li>&lt;a href="https://amzn.to/3Dyiyni" class="external-link" target="_blank" rel="noopener">Fluent Python: Clear, Concise, and Effective Programming&lt;/a> — I read this one on my Kindle, actually, before I learned that Kindle&amp;rsquo;s not where programming books really shine. That aside, I have nothing but fond memories from the first edition, and I&amp;rsquo;ve heard the updates on the second edition are really worthwhile. If you want to read &lt;em>one&lt;/em> Python book, this is it.&lt;/li>
-&lt;li>&lt;a href="https://amzn.to/4gx5tt2" class="external-link" target="_blank" rel="noopener">Automate the Boring Stuff with Python, 2nd Edition: Practical Programming for Total Beginners&lt;/a> — This one is also cool! While mainly targeting &amp;ldquo;total beginners&amp;rdquo;, it&amp;rsquo;s also suitable for seasoned programmers who don&amp;rsquo;t usually work in Python, but want to leverage its super fast scripting capabilities to automate stuff.&lt;/li>
+&lt;li>&lt;a href="https://amzn.to/3Dyiyni">Fluent Python: Clear, Concise, and Effective Programming&lt;/a> — I read this one on my Kindle, actually, before I learned that Kindle&amp;rsquo;s not where programming books really shine. That aside, I have nothing but fond memories from the first edition, and I&amp;rsquo;ve heard the updates on the second edition are really worthwhile. If you want to read &lt;em>one&lt;/em> Python book, this is it.&lt;/li>
+&lt;li>&lt;a href="https://amzn.to/4gx5tt2">Automate the Boring Stuff with Python, 2nd Edition: Practical Programming for Total Beginners&lt;/a> — This one is also cool! While mainly targeting &amp;ldquo;total beginners&amp;rdquo;, it&amp;rsquo;s also suitable for seasoned programmers who don&amp;rsquo;t usually work in Python, but want to leverage its super fast scripting capabilities to automate stuff.&lt;/li>
 &lt;/ul>
-&lt;h2 id="kotlin">
- Kotlin
- &lt;a class="heading-link" href="#kotlin">
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
- &lt;span class="sr-only">Link to heading&lt;/span>
- &lt;/a>
-&lt;/h2>
+&lt;h2 id="kotlin">Kotlin&lt;/h2>
 &lt;ul>
-&lt;li>&lt;a href="https://amzn.to/4gjT1wU" class="external-link" target="_blank" rel="noopener">Functional Programming in Kotlin&lt;/a> — Functional Programming &lt;em>and&lt;/em> Kotlin in the same book title?! No-brainer. This one is great!&lt;/li>
-&lt;li>&lt;a href="https://amzn.to/402VYev" class="external-link" target="_blank" rel="noopener">Kotlin in Action&lt;/a> — One of two &amp;ldquo;general Kotlin books&amp;rdquo; I&amp;rsquo;d recommend.&lt;/li>
-&lt;li>&lt;a href="https://amzn.to/3ZYEdxN" class="external-link" target="_blank" rel="noopener">Mastering Kotlin&lt;/a> — The other one :)&lt;/li>
+&lt;li>&lt;a href="https://amzn.to/4gjT1wU">Functional Programming in Kotlin&lt;/a> — Functional Programming &lt;em>and&lt;/em> Kotlin in the same book title?! No-brainer. This one is great!&lt;/li>
+&lt;li>&lt;a href="https://amzn.to/402VYev">Kotlin in Action&lt;/a> — One of two &amp;ldquo;general Kotlin books&amp;rdquo; I&amp;rsquo;d recommend.&lt;/li>
+&lt;li>&lt;a href="https://amzn.to/3ZYEdxN">Mastering Kotlin&lt;/a> — The other one :)&lt;/li>
 &lt;/ul>
-&lt;h2 id="lisp">
- Lisp
- &lt;a class="heading-link" href="#lisp">
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
- &lt;span class="sr-only">Link to heading&lt;/span>
- &lt;/a>
-&lt;/h2>
+&lt;h2 id="lisp">Lisp&lt;/h2>
 &lt;ul>
-&lt;li>&lt;a href="https://amzn.to/4izuO7c" class="external-link" target="_blank" rel="noopener">Land of Lisp: Learn to Program in Lisp, One Game at a Time!&lt;/a> — A bit whimsical, but then again Lisp is &lt;em>not&lt;/em>, so in sum a semi-serious book. I liked it ¯\&lt;em>(ツ)&lt;/em>/¯&lt;/li>
-&lt;li>&lt;a href="https://amzn.to/4gf8sq2" class="external-link" target="_blank" rel="noopener">On Lisp: Advanced Techniques for Common Lisp&lt;/a> — &lt;em>The&lt;/em> Lisp book, by mr. Paul Graham himself. Hats off, hands down.&lt;/li>
-&lt;li>&lt;a href="https://amzn.to/3ZVWUSW" class="external-link" target="_blank" rel="noopener">Practical Common Lisp&lt;/a> — The other Lisp book, I guess? Great.&lt;/li>
+&lt;li>&lt;a href="https://amzn.to/4izuO7c">Land of Lisp: Learn to Program in Lisp, One Game at a Time!&lt;/a> — A bit whimsical, but then again Lisp is &lt;em>not&lt;/em>, so in sum a semi-serious book. I liked it ¯\&lt;em>(ツ)&lt;/em>/¯&lt;/li>
+&lt;li>&lt;a href="https://amzn.to/4gf8sq2">On Lisp: Advanced Techniques for Common Lisp&lt;/a> — &lt;em>The&lt;/em> Lisp book, by mr. Paul Graham himself. Hats off, hands down.&lt;/li>
+&lt;li>&lt;a href="https://amzn.to/3ZVWUSW">Practical Common Lisp&lt;/a> — The other Lisp book, I guess? Great.&lt;/li>
 &lt;/ul>
-&lt;h2 id="react">
- React
- &lt;a class="heading-link" href="#react">
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
- &lt;span class="sr-only">Link to heading&lt;/span>
- &lt;/a>
-&lt;/h2>
+&lt;h2 id="react">React&lt;/h2>
 &lt;ul>
-&lt;li>&lt;a href="https://amzn.to/4iFXVWq" class="external-link" target="_blank" rel="noopener">Advanced React: Deep dives, investigations, performance patterns and techniques&lt;/a> — I&amp;rsquo;ve actually read (or at least skimmed) quite a few books on React — I even started writing one, way back — but this is the only one I think is worth recommending. If you&amp;rsquo;re a complete beginner there are probably other/better options, but given that you&amp;rsquo;re at least semi-familiar with thinking in React, this is The One.&lt;/li>
+&lt;li>&lt;a href="https://amzn.to/4iFXVWq">Advanced React: Deep dives, investigations, performance patterns and techniques&lt;/a> — I&amp;rsquo;ve actually read (or at least skimmed) quite a few books on React — I even started writing one, way back — but this is the only one I think is worth recommending. If you&amp;rsquo;re a complete beginner there are probably other/better options, but given that you&amp;rsquo;re at least semi-familiar with thinking in React, this is The One.&lt;/li>
 &lt;/ul>
-&lt;h2 id="rust">
- Rust
- &lt;a class="heading-link" href="#rust">
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
- &lt;span class="sr-only">Link to heading&lt;/span>
- &lt;/a>
-&lt;/h2>
+&lt;h2 id="rust">Rust&lt;/h2>
 &lt;ul>
-&lt;li>&lt;a href="https://amzn.to/4gFp7D3" class="external-link" target="_blank" rel="noopener">The Rust Programming Language&lt;/a> — &amp;ldquo;The Book&amp;rdquo;, as official as it gets, and quite good at that.&lt;/li>
-&lt;li>&lt;a href="https://amzn.to/400rtXM" class="external-link" target="_blank" rel="noopener">Programming Rust&lt;/a> — Less official, but a fine resource regardless. The two complement each other (and of course overlap a bit as well).&lt;/li>
+&lt;li>&lt;a href="https://amzn.to/4gFp7D3">The Rust Programming Language&lt;/a> — &amp;ldquo;The Book&amp;rdquo;, as official as it gets, and quite good at that.&lt;/li>
+&lt;li>&lt;a href="https://amzn.to/400rtXM">Programming Rust&lt;/a> — Less official, but a fine resource regardless. The two complement each other (and of course overlap a bit as well).&lt;/li>
 &lt;/ul>
-&lt;p>Warning: I might add more later.&lt;/p></description></item><item><title>Going back(end) to the old gym!</title><link>https://cekrem.github.io/posts/back-to-the-old-gym/</link><pubDate>Mon, 12 Feb 2024 08:45:30 +0100</pubDate><guid>https://cekrem.github.io/posts/back-to-the-old-gym/</guid><description>&lt;p>&lt;strong>Update: After some heavy lifting at the old gym, I actually left Vipps and started on a Sabbatical. See &lt;a href="https://www.linkedin.com/feed/update/urn:li:activity:7233757597424615424/" class="external-link" target="_blank" rel="noopener">Goodbye Vipps!&lt;/a> for details (LinkedIn post).&lt;/strong> I&amp;rsquo;m also &lt;a href="https://cekrem.github.io/hire" >open for new opportunities&lt;/a>.&lt;/p>
-&lt;h6 id="timeline-from-backend-to-android---dev-plan-2021-2023---nailing-it-and-getting-promoted---back-to-the-old-gym---sabbatical---my-next-adventure">
- Timeline: &lt;a href="https://cekrem.github.io/posts/changing-jobs-without-leaving-your-company/" >From backend to Android&lt;/a> -&amp;gt; &lt;a href="https://cekrem.github.io/posts/devplan/" >Dev plan 2021-2023&lt;/a> -&amp;gt; &lt;a href="https://cekrem.github.io/posts/the-end-of-an-era/" >Nailing it and getting promoted!&lt;/a> -&amp;gt; &lt;a href="#" >Back to the old gym!&lt;/a> -&amp;gt; &lt;a href="https://www.linkedin.com/feed/update/urn:li:activity:7233757597424615424/" class="external-link" target="_blank" rel="noopener">Sabbatical!&lt;/a> -&amp;gt; &lt;a href="https://cekrem.github.io/hire" >My next adventure?&lt;/a>
- &lt;a class="heading-link" href="#timeline-from-backend-to-android---dev-plan-2021-2023---nailing-it-and-getting-promoted---back-to-the-old-gym---sabbatical---my-next-adventure">
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
- &lt;span class="sr-only">Link to heading&lt;/span>
- &lt;/a>
-&lt;/h6>
-&lt;p>It&amp;rsquo;s official! I&amp;rsquo;m transitioning back from &lt;a href="https://cekrem.github.io/posts/changing-jobs-without-leaving-your-company" >my pilgrimage as an Android developer&lt;/a>, going back to my backend roots. Ah, the glorious smell of rusty metal, engine oil and buzzing CRT monitors running nothing but &lt;code>vim&lt;/code>. The bonus is I still get to do Android! &lt;strong>More importantly, though, I&amp;rsquo;m back to working 80%&lt;/strong>. Sweet, glorious Jesus, YES! And there&amp;rsquo;s actually deeper stuff going on beneath the surface as well. Paradigm shift: √&lt;/p></description></item><item><title>Changing Jobs Without Leaving Your Company</title><link>https://cekrem.github.io/posts/changing-jobs-without-leaving-your-company/</link><pubDate>Tue, 21 Jun 2022 07:00:15 +0200</pubDate><guid>https://cekrem.github.io/posts/changing-jobs-without-leaving-your-company/</guid><description>&lt;p>So you&amp;rsquo;ve been at your company for a couple of years. Your parents tell you to stick around for another five, but other people in tech - and your adventurous self - tell you it&amp;rsquo;s about time to learn something new. What if you could do both? The most common path to take in order to learn something new, advance your career, increase your salary or simply Change Things Up A Bit involves leaving your company for something else. This is especially true in tech. (Sadly, the salary part is &lt;em>especially&lt;/em> true in tech; to the point where just about the only way to get a raise is to &lt;em>say&lt;/em> that you&amp;rsquo;re leaving for a better deal, and either take the deal or the inevitable counter-offer from your current workplace. Not cool.)&lt;/p></description></item></channel></rss>
+&lt;p>Warning: I might add more later.&lt;/p></description></item><item><title>Going back(end) to the old gym!</title><link>https://cekrem.github.io/posts/back-to-the-old-gym/</link><pubDate>Mon, 12 Feb 2024 08:45:30 +0100</pubDate><guid>https://cekrem.github.io/posts/back-to-the-old-gym/</guid><description>&lt;p>&lt;strong>Update: After some heavy lifting at the old gym, I actually left Vipps and started on a Sabbatical. See &lt;a href="https://www.linkedin.com/feed/update/urn:li:activity:7233757597424615424/">Goodbye Vipps!&lt;/a> for details (LinkedIn post).&lt;/strong> I&amp;rsquo;m also &lt;a href="https://cekrem.github.io/hire">open for new opportunities&lt;/a>.&lt;/p>
+&lt;h6 id="timeline-from-backend-to-android---dev-plan-2021-2023---nailing-it-and-getting-promoted---back-to-the-old-gym---sabbatical---my-next-adventure">Timeline: &lt;a href="https://cekrem.github.io/posts/changing-jobs-without-leaving-your-company/">From backend to Android&lt;/a> -&amp;gt; &lt;a href="https://cekrem.github.io/posts/devplan/">Dev plan 2021-2023&lt;/a> -&amp;gt; &lt;a href="https://cekrem.github.io/posts/the-end-of-an-era/">Nailing it and getting promoted!&lt;/a> -&amp;gt; &lt;a href="#">Back to the old gym!&lt;/a> -&amp;gt; &lt;a href="https://www.linkedin.com/feed/update/urn:li:activity:7233757597424615424/">Sabbatical!&lt;/a> -&amp;gt; &lt;a href="https://cekrem.github.io/hire">My next adventure?&lt;/a>&lt;/h6>
+&lt;p>It&amp;rsquo;s official! I&amp;rsquo;m transitioning back from &lt;a href="https://cekrem.github.io/posts/changing-jobs-without-leaving-your-company">my pilgrimage as an Android developer&lt;/a>, going back to my backend roots. Ah, the glorious smell of rusty metal, engine oil and buzzing CRT monitors running nothing but &lt;code>vim&lt;/code>. The bonus is I still get to do Android! &lt;strong>More importantly, though, I&amp;rsquo;m back to working 80%&lt;/strong>. Sweet, glorious Jesus, YES! And there&amp;rsquo;s actually deeper stuff going on beneath the surface as well. Paradigm shift: √&lt;/p></description></item><item><title>Changing Jobs Without Leaving Your Company</title><link>https://cekrem.github.io/posts/changing-jobs-without-leaving-your-company/</link><pubDate>Tue, 21 Jun 2022 07:00:15 +0200</pubDate><guid>https://cekrem.github.io/posts/changing-jobs-without-leaving-your-company/</guid><description>&lt;p>So you&amp;rsquo;ve been at your company for a couple of years. Your parents tell you to stick around for another five, but other people in tech - and your adventurous self - tell you it&amp;rsquo;s about time to learn something new. What if you could do both? The most common path to take in order to learn something new, advance your career, increase your salary or simply Change Things Up A Bit involves leaving your company for something else. This is especially true in tech. (Sadly, the salary part is &lt;em>especially&lt;/em> true in tech; to the point where just about the only way to get a raise is to &lt;em>say&lt;/em> that you&amp;rsquo;re leaving for a better deal, and either take the deal or the inevitable counter-offer from your current workplace. Not cool.)&lt;/p></description></item></channel></rss>

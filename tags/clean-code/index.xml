@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Clean-Code on cekrem.github.io</title><link>https://cekrem.github.io/tags/clean-code/</link><description>Recent content in Clean-Code on cekrem.github.io</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Wed, 07 May 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://cekrem.github.io/tags/clean-code/index.xml" rel="self" type="application/rss+xml"/><item><title>The Psychology of Clean Code: Why We Write Messy React Components</title><link>https://cekrem.github.io/posts/psychology-of-clean-code/</link><pubDate>Wed, 07 May 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/psychology-of-clean-code/</guid><description>&lt;p>We all know we should write clean code. We&amp;rsquo;ve read the books, attended the talks, and nodded along to the principles. Yet, somehow, we still find ourselves writing messy React components. Why is that? The answer lies not in our technical skills, but in our psychology.&lt;/p>
-&lt;h2 id="the-cognitive-load-trap">
- The Cognitive Load Trap
- &lt;a class="heading-link" href="#the-cognitive-load-trap">
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
- &lt;span class="sr-only">Link to heading&lt;/span>
- &lt;/a>
-&lt;/h2>
+&lt;h2 id="the-cognitive-load-trap">The Cognitive Load Trap&lt;/h2>
 &lt;p>Consider this common scenario:&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-tsx" data-lang="tsx">&lt;span style="display:flex;">&lt;span>&lt;span style="font-weight:bold">const&lt;/span> UserDashboard = () =&amp;gt; {
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="font-weight:bold">const&lt;/span> [users, setUsers] = useState([]);

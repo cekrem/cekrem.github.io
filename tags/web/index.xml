@@ -1,17 +1,5 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Web on cekrem.github.io</title><link>https://cekrem.github.io/tags/web/</link><description>Recent content in Web on cekrem.github.io</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Wed, 26 Mar 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://cekrem.github.io/tags/web/index.xml" rel="self" type="application/rss+xml"/><item><title>Introducing `content-visibility: auto` - A Hidden Performance Gem</title><link>https://cekrem.github.io/posts/content-visibility-auto-performance/</link><pubDate>Wed, 26 Mar 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/content-visibility-auto-performance/</guid><description>&lt;h2 id="introduction">
- Introduction
- &lt;a class="heading-link" href="#introduction">
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
- &lt;span class="sr-only">Link to heading&lt;/span>
- &lt;/a>
-&lt;/h2>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Web on cekrem.github.io</title><link>https://cekrem.github.io/tags/web/</link><description>Recent content in Web on cekrem.github.io</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Wed, 26 Mar 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://cekrem.github.io/tags/web/index.xml" rel="self" type="application/rss+xml"/><item><title>Introducing `content-visibility: auto` - A Hidden Performance Gem</title><link>https://cekrem.github.io/posts/content-visibility-auto-performance/</link><pubDate>Wed, 26 Mar 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/content-visibility-auto-performance/</guid><description>&lt;h2 id="introduction">Introduction&lt;/h2>
 &lt;p>When dealing with large lists or complex DOM structures, performance optimization often feels like a complex puzzle. But sometimes, the simplest solutions are the most effective. Enter &lt;code>content-visibility: auto&lt;/code> - a CSS property that can dramatically improve rendering performance with minimal effort.&lt;/p>
-&lt;p>You can (and IMHO should) read all about it &lt;a href="https://developer.mozilla.org/en-US/docs/Web/CSS/content-visibility" class="external-link" target="_blank" rel="noopener">here&lt;/a>! 🤓&lt;/p>
-&lt;h2 id="the-magic-of-content-visibility-auto">
- The Magic of content-visibility: auto
- &lt;a class="heading-link" href="#the-magic-of-content-visibility-auto">
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
- &lt;span class="sr-only">Link to heading&lt;/span>
- &lt;/a>
-&lt;/h2>
+&lt;p>You can (and IMHO should) read all about it &lt;a href="https://developer.mozilla.org/en-US/docs/Web/CSS/content-visibility">here&lt;/a>! 🤓&lt;/p>
+&lt;h2 id="the-magic-of-content-visibility-auto">The Magic of content-visibility: auto&lt;/h2>
 &lt;p>&lt;code>content-visibility: auto&lt;/code> tells the browser to skip rendering elements that are not currently visible in the viewport. It&amp;rsquo;s like having a virtual scroll implementation, but without the complexity of managing scroll positions or item heights manually.&lt;/p></description></item></channel></rss>

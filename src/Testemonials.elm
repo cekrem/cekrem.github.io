@@ -57,10 +57,10 @@ update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case ( model, msg ) of
         ( Success testemonials index, Right ) ->
-            ( Success testemonials (modBy (List.length testemonials) (index + 1)), Cmd.none )
+            ( Success testemonials (incrementOrRollover testemonials index), Cmd.none )
 
         ( Success testemonials index, Left ) ->
-            ( Success testemonials (modBy (List.length testemonials) (index - 1)), Cmd.none )
+            ( Success testemonials (decrementOrRollover testemonials index), Cmd.none )
 
         ( _, GotTestemonials (Ok testemonials) ) ->
             ( Success testemonials 0, Cmd.none )
@@ -70,6 +70,16 @@ update msg model =
 
         _ ->
             ( model, Cmd.none )
+
+
+incrementOrRollover : List a -> Int -> Int
+incrementOrRollover list index =
+    modBy (List.length list) (index + 1)
+
+
+decrementOrRollover : List a -> Int -> Int
+decrementOrRollover list index =
+    modBy (List.length list) (index - 1)
 
 
 
@@ -98,7 +108,6 @@ view model =
                 , Attributes.style "display" "flex"
                 , Attributes.style "align-items" "start"
                 , Attributes.style "justify-content" "center"
-                , Attributes.style "flex-wrap" "wrap"
                 ]
                 ((if index > 0 then
                     leftButton
@@ -119,6 +128,23 @@ view model =
                                 )
                        )
                 )
+                |> hideOnBreakpoint "600px"
+
+
+{-| This hacky wrapper essentialy sets max-height and -width to 0px at a given breakpoint
+-}
+hideOnBreakpoint : String -> Html msg -> Html msg
+hideOnBreakpoint breakpoint content =
+    let
+        clampStyle =
+            "clamp(10px, calc((100vw - " ++ breakpoint ++ ") * 1000), 1000px)"
+    in
+    Html.div
+        [ Attributes.style "max-width" clampStyle
+        , Attributes.style "max-height" clampStyle
+        , Attributes.style "overflow" "hidden"
+        ]
+        [ content ]
 
 
 leftButton : Html Msg
@@ -146,7 +172,7 @@ button isLeft =
         , Attributes.style "align-self" "start"
         , Attributes.style side "0"
         , Attributes.style "margin" "20rem 1rem"
-        , Attributes.style "font-size" "5rem"
+        , Attributes.style "font-size" "3em"
         , Attributes.style "cursor" "pointer"
         , Attributes.style "user-select" "none"
         , Events.onClick msg
@@ -157,28 +183,38 @@ button isLeft =
 testemonialEntry : Bool -> Testemonial -> Html Msg
 testemonialEntry visible testemonial =
     let
-        ( width, height, padding ) =
+        conditionalStyles =
             if visible then
-                ( "40rem", "50rem", "2rem" )
+                [ Attributes.style "width" "40rem"
+                , Attributes.style "max-height" "55rem"
+                , Attributes.style "padding" "2rem"
+                ]
 
             else
-                ( "0%", "0", "0" )
+                [ Attributes.style "width" "0"
+                , Attributes.style "max-height" "0"
+                , Attributes.style "overflow-y" "hidden"
+                , Attributes.style "padding" "0"
+                , Attributes.style "opacity" "0"
+                , Attributes.style "font-size" "0"
+                ]
     in
     Html.div
-        [ Attributes.style "transition" "all .5s ease"
-        , Attributes.style "padding" padding
-        , Attributes.style "width" width
-        , Attributes.style "max-height" height
-        , Attributes.style "overflow-x" "hidden"
-        , Attributes.style "display" "flex"
-        , Attributes.style "white-space" "nowrap"
-        , Attributes.style "flex-direction" "column"
-        , Attributes.style "gap" "1rem"
-        ]
+        ([ Attributes.style "transition-property" "all"
+         , Attributes.style "transition-timing-function" "ease-out"
+         , Attributes.style "transition-duration" "0.4s"
+         , Attributes.style "overflow-x" "hidden"
+         , Attributes.style "display" "flex"
+         , Attributes.style "white-space" "nowrap"
+         , Attributes.style "flex-direction" "column"
+         , Attributes.style "gap" "1rem"
+         ]
+            ++ conditionalStyles
+        )
         [ flexRow
             [ Html.img
                 [ Attributes.src testemonial.image
-                , Attributes.style "width" "75px"
+                , Attributes.style "width" "4em"
                 , Attributes.style "border-radius" "50%"
                 ]
                 []
@@ -200,7 +236,7 @@ flexRow : List (Html msg) -> Html msg
 flexRow content =
     Html.div
         [ Attributes.style "display" "flex"
-        , Attributes.style "flex-wrap" "wrap"
+        , Attributes.style "flex-wrap" "nowrap"
         , Attributes.style "align-items" "center"
         , Attributes.style "gap" "1rem"
         ]
@@ -209,7 +245,10 @@ flexRow content =
 
 title : String -> Html msg
 title text =
-    Html.h6 [ Attributes.style "margin" "0" ] [ Html.text text ]
+    Html.h6
+        [ Attributes.style "margin" "0"
+        ]
+        [ Html.text text ]
 
 
 stars : Html msg
@@ -230,7 +269,7 @@ paragraph : String -> Html msg
 paragraph text =
     Html.p
         [ Attributes.style "margin" "0"
-        , Attributes.style "font-size" "1.6rem"
+        , Attributes.style "font-size" "1em"
         , Attributes.style "line-height" "1.4"
         ]
         [ Html.text text ]
@@ -240,7 +279,7 @@ subtitle : String -> Html msg
 subtitle text =
     Html.p
         [ Attributes.style "margin" "0"
-        , Attributes.style "font-size" "1.6rem"
+        , Attributes.style "font-size" "1em"
         , Attributes.style "line-height" "1.4"
         , Attributes.style "white-space" "pre"
         , Attributes.style "font-weight" "200"

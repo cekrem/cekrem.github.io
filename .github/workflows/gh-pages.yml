@@ -11,6 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/setup-node@v4
         with:
           submodules: true # Fetch Hugo themes (true OR recursive)
           fetch-depth: 0 # Fetch all history for .GitInfo and .Lastmod
@@ -21,8 +22,11 @@ jobs:
           hugo-version: "latest"
           extended: true
 
-      - name: Build
+      - name: Build static site
         run: hugo --minify
+
+      - name: Build Elm widget
+        run: npm ci && node_modules/.bin/elm make src/Main.elm --optimize --output public/widget.js
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3

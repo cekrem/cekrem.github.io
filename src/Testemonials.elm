@@ -8,6 +8,16 @@ import Json.Decode
 import Set
 
 
+{-| This view renders a testemonials carousel (only on wide screens, for now).
+
+Also (again, for now) it relies only on inline styling, as the stylesheet of the mother app
+this widget is rendered in is subject to complete replacement.
+
+Testemonials are found in /static/testemonials.json (which hugo moves to root `/` on deploy).
+
+-}
+
+
 
 -- MODEL
 
@@ -57,10 +67,10 @@ update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case ( model, msg ) of
         ( Success testemonials index, Right ) ->
-            ( Success testemonials (incrementOrRollover testemonials index), Cmd.none )
+            ( Success testemonials (changeOrRollover testemonials (index + 1)), Cmd.none )
 
         ( Success testemonials index, Left ) ->
-            ( Success testemonials (decrementOrRollover testemonials index), Cmd.none )
+            ( Success testemonials (changeOrRollover testemonials (index - 1)), Cmd.none )
 
         ( _, GotTestemonials (Ok testemonials) ) ->
             ( Success testemonials 0, Cmd.none )
@@ -72,14 +82,17 @@ update msg model =
             ( model, Cmd.none )
 
 
-incrementOrRollover : List a -> Int -> Int
-incrementOrRollover list index =
-    modBy (List.length list) (index + 1)
-
-
-decrementOrRollover : List a -> Int -> Int
-decrementOrRollover list index =
-    modBy (List.length list) (index - 1)
+{-| either set to targetIndex, or rollover if it's out of bounds.
+Also: make sure never to set last index on odd numbered testemonials (ie always show two in slider!)
+-}
+changeOrRollover : List a -> Int -> Int
+changeOrRollover list targetIndex =
+    let
+        threshold =
+            List.length list
+                |> (\length -> length - modBy 2 length)
+    in
+    modBy threshold targetIndex
 
 
 
@@ -101,26 +114,14 @@ view model =
             Html.div
                 [ Attributes.style "position" "relative"
                 , Attributes.style "width" "100%"
+                , Attributes.style "min-height" "60rem"
                 , Attributes.style "padding" "2rem 3rem"
-                , Attributes.style "margin" "1rem"
-                , Attributes.style "border-radius" "1rem"
-                , Attributes.style "background" "white"
                 , Attributes.style "display" "flex"
-                , Attributes.style "align-items" "start"
+                , Attributes.style "align-items" "center"
                 , Attributes.style "justify-content" "center"
                 ]
-                ((if index > 0 then
-                    leftButton
-
-                  else
-                    Html.text ""
-                 )
-                    :: (if index < List.length testemonials - 2 then
-                            rightButton
-
-                        else
-                            Html.text ""
-                       )
+                (leftButton
+                    :: rightButton
                     :: (testemonials
                             |> List.indexedMap
                                 (\i t ->
@@ -137,7 +138,7 @@ hideOnBreakpoint : String -> Html msg -> Html msg
 hideOnBreakpoint breakpoint content =
     let
         clampStyle =
-            "clamp(10px, calc((100vw - " ++ breakpoint ++ ") * 1000), 1000px)"
+            "clamp(10px, calc((100vw - " ++ breakpoint ++ ") * 1000), 10000px)"
     in
     Html.div
         [ Attributes.style "max-width" clampStyle
@@ -169,9 +170,8 @@ button isLeft =
     in
     Html.div
         [ Attributes.style "position" "absolute"
-        , Attributes.style "align-self" "start"
+        , Attributes.style "align-self" "center"
         , Attributes.style side "0"
-        , Attributes.style "margin" "20rem 1rem"
         , Attributes.style "font-size" "3em"
         , Attributes.style "cursor" "pointer"
         , Attributes.style "user-select" "none"
@@ -182,12 +182,15 @@ button isLeft =
 
 testemonialEntry : Bool -> Testemonial -> Html Msg
 testemonialEntry visible testemonial =
+    -- Most of this could and should have been ish a one-liner of tailwind, but tailwind breaks the mother app
     let
         conditionalStyles =
             if visible then
-                [ Attributes.style "width" "40rem"
+                [ Attributes.style "width" "50rem"
                 , Attributes.style "max-height" "55rem"
                 , Attributes.style "padding" "2rem"
+                , Attributes.style "margin" "0.5rem"
+                , Attributes.style "flex" "1"
                 ]
 
             else
@@ -197,12 +200,17 @@ testemonialEntry visible testemonial =
                 , Attributes.style "padding" "0"
                 , Attributes.style "opacity" "0"
                 , Attributes.style "font-size" "0"
+                , Attributes.style "margin" "0rem"
+                , Attributes.style "flex" "0"
                 ]
     in
     Html.div
         ([ Attributes.style "transition-property" "all"
          , Attributes.style "transition-timing-function" "ease-out"
          , Attributes.style "transition-duration" "0.4s"
+         , Attributes.style "margin" "0.5rem"
+         , Attributes.style "border-radius" "2rem"
+         , Attributes.style "background" "rgba(255,255,255,0.8)"
          , Attributes.style "overflow-x" "hidden"
          , Attributes.style "display" "flex"
          , Attributes.style "white-space" "nowrap"

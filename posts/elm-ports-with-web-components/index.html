@@ -1,0 +1,299 @@
+<!doctype html><html lang=en><head><title>Building Better UI Components: Elm Ports with Web Components · cekrem.github.io</title><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=color-scheme content="light dark"><meta name=author content="Christian Ekrem"><meta name=description content="How to combine Elm's type safety with the reusability of Web Components"><meta name=keywords content="developer,personal"><meta name=fediverse:creator content><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://cekrem.github.io/images/featured-with-margins.png"><meta name=twitter:title content="Building Better UI Components: Elm Ports with Web Components"><meta name=twitter:description content="How to combine Elm's type safety with the reusability of Web Components"><meta property="og:url" content="https://cekrem.github.io/posts/elm-ports-with-web-components/"><meta property="og:site_name" content="cekrem.github.io"><meta property="og:title" content="Building Better UI Components: Elm Ports with Web Components"><meta property="og:description" content="How to combine Elm's type safety with the reusability of Web Components"><meta property="og:locale" content="en_us"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2025-03-19T00:00:00+00:00"><meta property="article:modified_time" content="2025-03-19T00:00:00+00:00"><meta property="article:tag" content="Elm"><meta property="article:tag" content="Web Components"><meta property="article:tag" content="Frontend"><meta property="article:tag" content="Functional Programming"><meta property="article:tag" content="Architecture"><meta property="og:image" content="https://cekrem.github.io/images/featured-with-margins.png"><link rel=canonical href=https://cekrem.github.io/posts/elm-ports-with-web-components/><link rel=preload href=/fonts/fa-brands-400.woff2 as=font type=font/woff2 crossorigin><link rel=preload href=/fonts/fa-regular-400.woff2 as=font type=font/woff2 crossorigin><link rel=preload href=/fonts/fa-solid-900.woff2 as=font type=font/woff2 crossorigin><link rel=stylesheet href=/css/coder.min.657562d88d5611df09220fe951c36c8ea0364be9e779347674af6bdb539505a9.css integrity="sha256-ZXVi2I1WEd8JIg/pUcNsjqA2S+nneTR2dK9r21OVBak=" crossorigin=anonymous media=screen><link rel=icon type=image/svg+xml href=/images/favicon.svg sizes=any><link rel=icon type=image/png href=/images/favicon-32x32.png sizes=32x32><link rel=icon type=image/png href=/images/favicon-16x16.png sizes=16x16><link rel=apple-touch-icon href=/images/apple-touch-icon.png><link rel=apple-touch-icon sizes=180x180 href=/images/apple-touch-icon.png><link rel=manifest href=/site.webmanifest><link rel=mask-icon href=/images/safari-pinned-tab.svg color=#5bbad5></head><body class="preload-transitions colorscheme-light"><main class=wrapper><nav class=navigation><section class=container><a class=navigation-title href=https://cekrem.github.io/>cekrem.github.io
+</a><input type=checkbox id=menu-toggle>
+<label class="menu-button float-right" for=menu-toggle><i class="fa-solid fa-bars fa-fw" aria-hidden=true></i></label><ul class=navigation-list><li class=navigation-item><a class=navigation-link href=/hire/>Hire me?</a></li><li class=navigation-item><a class=navigation-link href=/about/>About</a></li><li class=navigation-item><a class=navigation-link href=/posts/books-i-think-software-engineers-should-read>Recommended Books</a></li><li class=navigation-item><a class=navigation-link href=https://creators.spotify.com/pod/show/disippel>Podcast (🇳🇴)</a></li><li class=navigation-item><a class=navigation-link href=/posts/>Blog</a></li></ul></section></nav><div class=content><section class="container post"><article><header><div class=post-title><h1 class=title><a class=title-link href=https://cekrem.github.io/posts/elm-ports-with-web-components/>Building Better UI Components: Elm Ports with Web Components</a></h1></div><div class=post-meta><div class=date><span class=posted-on><i class="fa-solid fa-calendar" aria-hidden=true></i>
+<time datetime=2025-03-19T00:00:00Z>March 19, 2025
+</time></span><span class=reading-time><i class="fa-solid fa-clock" aria-hidden=true></i>
+8-minute read</span></div><div class=tags><i class="fa-solid fa-tag" aria-hidden=true></i>
+<span class=tag><a href=/tags/elm/>Elm</a>
+</span><span class=separator>•</span>
+<span class=tag><a href=/tags/web-components/>Web Components</a>
+</span><span class=separator>•</span>
+<span class=tag><a href=/tags/frontend/>Frontend</a>
+</span><span class=separator>•</span>
+<span class=tag><a href=/tags/functional-programming/>Functional Programming</a>
+</span><span class=separator>•</span>
+<span class=tag><a href=/tags/architecture/>Architecture</a></span></div></div></header><div class=post-content><p>One of the most common questions I get about Elm is: &ldquo;How do I integrate it with existing JavaScript ecosystems?&rdquo; While Elm&rsquo;s isolation is a strength, real-world projects often require working with external libraries, APIs, or UI components. Doing incremental migration is also the recommended way to introduce Elm, and luckily there are may ways to accomplish this.</p><p>Today, I&rsquo;ll show you how to combine two powerful technologies:</p><ol><li><strong>Elm Ports</strong>: The official way to communicate between Elm and JavaScript</li><li><strong>Web Components</strong>: Standard, framework-agnostic UI components</li></ol><p>This combination gives us the best of both worlds: Elm&rsquo;s type safety and predictable architecture alongside the reusability and interoperability of Web Components. Let&rsquo;s dive in!</p><h2 id=what-were-building>What we&rsquo;re building
+<a class=heading-link href=#what-were-building><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h2><p>You know what? Let&rsquo;s embed it:</p><iframe src=https://ellie-app.com/embed/tW9VkcFxnMCa1 style=width:100%;height:400px;border:0;overflow:hidden sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe><h2 id=what-are-elm-ports>What Are Elm Ports?
+<a class=heading-link href=#what-are-elm-ports><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h2><p>Ports are Elm&rsquo;s sanctioned escape hatch to JavaScript. Or put another way: They facilitate treating JavaScript as mere IO device. Specifically they allow your Elm application to:</p><ol><li>Send data out to JavaScript (outgoing port)</li><li>Receive data from JavaScript (incoming port)</li></ol><p>Think of ports as message channels between Elm&rsquo;s pure world and JavaScript&rsquo;s wild west.</p><h2 id=what-are-web-components>What Are Web Components?
+<a class=heading-link href=#what-are-web-components><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h2><p>Web Components are a set of standardized browser APIs that allow you to create reusable, encapsulated components using plain JavaScript, HTML, and CSS. The key technologies include:</p><ul><li><strong>Custom Elements</strong>: Create your own HTML tags</li><li><strong>Shadow DOM</strong>: Encapsulated DOM and styles</li><li><strong>HTML Templates</strong>: Reusable markup structures</li></ul><p>Once defined, Web Components work in any framework (or no framework) - making them ideal for sharing UI elements across different projects.</p><h2 id=why-combine-them>Why Combine Them?
+<a class=heading-link href=#why-combine-them><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h2><ol><li><strong>Use specialized UI libraries</strong> not available in Elm</li><li><strong>Share components</strong> across projects using different frameworks</li><li><strong>Gradually migrate</strong> existing applications to Elm</li><li><strong>Integrate third-party tools</strong> (maps, charts, rich text editors)</li></ol><h2 id=the-example-project-a-color-picker>The Example Project: A Color Picker
+<a class=heading-link href=#the-example-project-a-color-picker><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h2><p>Let&rsquo;s build a simple example: an Elm application that uses a Web Component color picker. We&rsquo;ll:</p><ol><li>Create a simple Elm app that displays the selected color</li><li>Integrate a color-picker Web Component</li><li>Use ports to communicate between them</li></ol><h2 id=step-1-setting-up-the-elm-application>Step 1: Setting Up the Elm Application
+<a class=heading-link href=#step-1-setting-up-the-elm-application><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h2><p>First, let&rsquo;s create our core Elm application:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-elm data-lang=elm><span style=display:flex><span><span style=font-weight:700>port</span> <span style=font-weight:700>module</span> <span>Main</span> exposing (main)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=font-weight:700>import </span><span style=font-weight:700>Browser</span>
+</span></span><span style=display:flex><span><span style=font-weight:700>import </span><span style=font-weight:700>Html</span> exposing (..)
+</span></span><span style=display:flex><span><span style=font-weight:700>import </span><span style=font-weight:700>Html.Attributes</span> exposing (..)
+</span></span><span style=display:flex><span><span style=font-weight:700>import </span><span style=font-weight:700>Json.Decode</span> <span style=font-weight:700>as</span> <span>Decode</span>
+</span></span><span style=display:flex><span><span style=font-weight:700>import </span><span style=font-weight:700>Json.Encode</span> <span style=font-weight:700>as</span> <span>Encode</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=font-style:italic>-- PORTS</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=font-weight:700>port</span> sendColor : <span>String</span> -&gt; <span>Cmd</span> msg
+</span></span><span style=display:flex><span><span style=font-weight:700>port</span> receiveColor : (<span>String</span> -&gt; msg) -&gt; <span>Sub</span> msg
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=font-style:italic>-- MODEL</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=font-weight:700>type</span> <span style=font-weight:700>alias</span> <span>Model</span> =
+</span></span><span style=display:flex><span>    { currentColor : <span>String</span>
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>init : () -&gt; ( <span>Model</span>, <span>Cmd</span> <span>Msg</span> )
+</span></span><span style=display:flex><span>init _ =
+</span></span><span style=display:flex><span>    ( { currentColor = <span style=font-style:italic>&#34;#3366ff&#34;</span> }
+</span></span><span style=display:flex><span>    , sendColor <span style=font-style:italic>&#34;#3366ff&#34;</span>  <span style=font-style:italic>-- Initialize the color picker with our default</span>
+</span></span><span style=display:flex><span>    )
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=font-style:italic>-- UPDATE</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=font-weight:700>type</span> <span>Msg</span>
+</span></span><span style=display:flex><span>    = <span>ColorChanged</span> <span>String</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>update : <span>Msg</span> -&gt; <span>Model</span> -&gt; ( <span>Model</span>, <span>Cmd</span> <span>Msg</span> )
+</span></span><span style=display:flex><span>update msg model =
+</span></span><span style=display:flex><span>    <span style=font-weight:700>case</span> msg <span style=font-weight:700>of</span>
+</span></span><span style=display:flex><span>        <span>ColorChanged</span> newColor -&gt;
+</span></span><span style=display:flex><span>            ( { model | currentColor = newColor }
+</span></span><span style=display:flex><span>            , <span>Cmd</span>.none
+</span></span><span style=display:flex><span>            )
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=font-style:italic>-- SUBSCRIPTIONS</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>subscriptions : <span>Model</span> -&gt; <span>Sub</span> <span>Msg</span>
+</span></span><span style=display:flex><span>subscriptions _ =
+</span></span><span style=display:flex><span>    receiveColor <span>ColorChanged</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=font-style:italic>-- VIEW</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>view : <span>Model</span> -&gt; <span>Html</span> <span>Msg</span>
+</span></span><span style=display:flex><span>view model =
+</span></span><span style=display:flex><span>    div [ style <span style=font-style:italic>&#34;padding&#34;</span> <span style=font-style:italic>&#34;2rem&#34;</span>, style <span style=font-style:italic>&#34;font-family&#34;</span> <span style=font-style:italic>&#34;system-ui, sans-serif&#34;</span> ]
+</span></span><span style=display:flex><span>        [ h1 [] [ text <span style=font-style:italic>&#34;Elm + Web Components&#34;</span> ]
+</span></span><span style=display:flex><span>        , div []
+</span></span><span style=display:flex><span>            [ p [] [ text <span style=font-style:italic>&#34;Selected color: &#34;</span>, strong [] [ text model.currentColor ] ]
+</span></span><span style=display:flex><span>            , div
+</span></span><span style=display:flex><span>                [ style <span style=font-style:italic>&#34;width&#34;</span> <span style=font-style:italic>&#34;100px&#34;</span>
+</span></span><span style=display:flex><span>                , style <span style=font-style:italic>&#34;height&#34;</span> <span style=font-style:italic>&#34;100px&#34;</span>
+</span></span><span style=display:flex><span>                , style <span style=font-style:italic>&#34;background-color&#34;</span> model.currentColor
+</span></span><span style=display:flex><span>                , style <span style=font-style:italic>&#34;margin&#34;</span> <span style=font-style:italic>&#34;1rem 0&#34;</span>
+</span></span><span style=display:flex><span>                , style <span style=font-style:italic>&#34;border-radius&#34;</span> <span style=font-style:italic>&#34;4px&#34;</span>
+</span></span><span style=display:flex><span>                ]
+</span></span><span style=display:flex><span>                []
+</span></span><span style=display:flex><span>            , div []
+</span></span><span style=display:flex><span>                [ <span style=font-style:italic>-- Our Web Component will be placed here</span>
+</span></span><span style=display:flex><span>                  node <span style=font-style:italic>&#34;color-picker&#34;</span>
+</span></span><span style=display:flex><span>                    [ attribute <span style=font-style:italic>&#34;current-color&#34;</span> model.currentColor
+</span></span><span style=display:flex><span>                    ]
+</span></span><span style=display:flex><span>                    []
+</span></span><span style=display:flex><span>                ]
+</span></span><span style=display:flex><span>            ]
+</span></span><span style=display:flex><span>        ]
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=font-style:italic>-- MAIN</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=font-weight:700>main </span>: <span>Program</span> () <span>Model</span> <span>Msg</span>
+</span></span><span style=display:flex><span><span style=font-weight:700>main </span>=
+</span></span><span style=display:flex><span>    <span>Browser</span>.element
+</span></span><span style=display:flex><span>        { init = init
+</span></span><span style=display:flex><span>        , view = view
+</span></span><span style=display:flex><span>        , update = update
+</span></span><span style=display:flex><span>        , subscriptions = subscriptions
+</span></span><span style=display:flex><span>        }
+</span></span></code></pre></div><p>In this Elm code, we&rsquo;ve:</p><ol><li>Defined two ports: <code>sendColor</code> to send the current color to JavaScript, and <code>receiveColor</code> to receive color changes</li><li>Used <code>node</code> to insert our custom element (which we&rsquo;ll create next)</li><li>Set up the appropriate model, update, and subscription functions</li></ol><h2 id=step-2-the-javascript-glue>Step 2: The JavaScript Glue
+<a class=heading-link href=#step-2-the-javascript-glue><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h2><p>Next, we need to initialize Elm and wire up our ports:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=display:flex><span><span style=font-style:italic>// index.js
+</span></span></span><span style=display:flex><span><span style=font-style:italic></span>
+</span></span><span style=display:flex><span><span style=font-style:italic>// Init Elm app
+</span></span></span><span style=display:flex><span><span style=font-style:italic></span><span style=font-weight:700>const</span> app = Elm.Main.init({ node: document.querySelector(<span style=font-style:italic>&#34;main&#34;</span>) });
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=font-style:italic>// Define our color-picker Web Component
+</span></span></span><span style=display:flex><span><span style=font-style:italic></span><span style=font-weight:700>class</span> ColorPicker <span style=font-weight:700>extends</span> HTMLElement {
+</span></span><span style=display:flex><span>  constructor() {
+</span></span><span style=display:flex><span>    <span style=font-weight:700>super</span>();
+</span></span><span style=display:flex><span>    <span style=font-weight:700>this</span>.attachShadow({ mode: <span style=font-style:italic>&#34;open&#34;</span> });
+</span></span><span style=display:flex><span>    <span style=font-weight:700>this</span>._app = <span style=font-weight:700>null</span>; <span style=font-style:italic>// Will store reference to Elm app
+</span></span></span><span style=display:flex><span><span style=font-style:italic></span>    <span style=font-weight:700>this</span>._boundHandler = <span style=font-weight:700>this</span>._handleColorChange.bind(<span style=font-weight:700>this</span>);
+</span></span><span style=display:flex><span>    <span style=font-weight:700>this</span>.render();
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=font-style:italic>// Connect to DOM - add event listeners
+</span></span></span><span style=display:flex><span><span style=font-style:italic></span>  connectedCallback() {
+</span></span><span style=display:flex><span>    <span style=font-weight:700>this</span>._attachEventListeners();
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=font-style:italic>// Clean up when removed from DOM
+</span></span></span><span style=display:flex><span><span style=font-style:italic></span>  disconnectedCallback() {
+</span></span><span style=display:flex><span>    <span style=font-weight:700>this</span>._detachEventListeners();
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=font-style:italic>// Add event listeners to the input
+</span></span></span><span style=display:flex><span><span style=font-style:italic></span>  _attachEventListeners() {
+</span></span><span style=display:flex><span>    <span style=font-weight:700>const</span> input = <span style=font-weight:700>this</span>.shadowRoot.querySelector(<span style=font-style:italic>&#34;input&#34;</span>);
+</span></span><span style=display:flex><span>    <span style=font-weight:700>if</span> (input) {
+</span></span><span style=display:flex><span>      input.addEventListener(<span style=font-style:italic>&#34;input&#34;</span>, <span style=font-weight:700>this</span>._boundHandler);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=font-style:italic>// Remove event listeners from the input
+</span></span></span><span style=display:flex><span><span style=font-style:italic></span>  _detachEventListeners() {
+</span></span><span style=display:flex><span>    <span style=font-weight:700>const</span> input = <span style=font-weight:700>this</span>.shadowRoot.querySelector(<span style=font-style:italic>&#34;input&#34;</span>);
+</span></span><span style=display:flex><span>    <span style=font-weight:700>if</span> (input) {
+</span></span><span style=display:flex><span>      input.removeEventListener(<span style=font-style:italic>&#34;input&#34;</span>, <span style=font-weight:700>this</span>._boundHandler);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=font-style:italic>// Handle color changes from the input
+</span></span></span><span style=display:flex><span><span style=font-style:italic></span>  _handleColorChange(event) {
+</span></span><span style=display:flex><span>    <span style=font-weight:700>const</span> newColor = event.target.value;
+</span></span><span style=display:flex><span>    <span style=font-weight:700>this</span>.setAttribute(<span style=font-style:italic>&#34;current-color&#34;</span>, newColor);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=font-style:italic>// Send the color back to Elm
+</span></span></span><span style=display:flex><span><span style=font-style:italic></span>    <span style=font-weight:700>if</span> (<span style=font-weight:700>this</span>._app &amp;&amp; <span style=font-weight:700>this</span>._app.ports &amp;&amp; <span style=font-weight:700>this</span>._app.ports.receiveColor) {
+</span></span><span style=display:flex><span>      <span style=font-weight:700>this</span>._app.ports.receiveColor.send(newColor);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=font-style:italic>// Store reference to Elm app
+</span></span></span><span style=display:flex><span><span style=font-style:italic></span>  setApp(app) {
+</span></span><span style=display:flex><span>    <span style=font-weight:700>this</span>._app = app;
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=font-style:italic>// Watch for attribute changes
+</span></span></span><span style=display:flex><span><span style=font-style:italic></span>  <span style=font-weight:700>static</span> get observedAttributes() {
+</span></span><span style=display:flex><span>    <span style=font-weight:700>return</span> [<span style=font-style:italic>&#34;current-color&#34;</span>];
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  <span style=font-style:italic>// Handle attribute changes
+</span></span></span><span style=display:flex><span><span style=font-style:italic></span>  attributeChangedCallback(name, oldValue, newValue) {
+</span></span><span style=display:flex><span>    <span style=font-weight:700>if</span> (name === <span style=font-style:italic>&#34;current-color&#34;</span> &amp;&amp; oldValue !== newValue) {
+</span></span><span style=display:flex><span>      <span style=font-style:italic>// Update the input value directly if possible
+</span></span></span><span style=display:flex><span><span style=font-style:italic></span>      <span style=font-weight:700>const</span> input = <span style=font-weight:700>this</span>.shadowRoot.querySelector(<span style=font-style:italic>&#34;input&#34;</span>);
+</span></span><span style=display:flex><span>      <span style=font-weight:700>if</span> (input &amp;&amp; input.value !== newValue) {
+</span></span><span style=display:flex><span>        input.value = newValue;
+</span></span><span style=display:flex><span>      } <span style=font-weight:700>else</span> {
+</span></span><span style=display:flex><span>        <span style=font-style:italic>// Otherwise re-render
+</span></span></span><span style=display:flex><span><span style=font-style:italic></span>        <span style=font-weight:700>this</span>.render();
+</span></span><span style=display:flex><span>        <span style=font-weight:700>this</span>._attachEventListeners();
+</span></span><span style=display:flex><span>      }
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  get currentColor() {
+</span></span><span style=display:flex><span>    <span style=font-weight:700>return</span> <span style=font-weight:700>this</span>.getAttribute(<span style=font-style:italic>&#34;current-color&#34;</span>) || <span style=font-style:italic>&#34;#000000&#34;</span>;
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  render() {
+</span></span><span style=display:flex><span>    <span style=font-weight:700>this</span>.shadowRoot.innerHTML = <span style=font-style:italic>`
+</span></span></span><span style=display:flex><span><span style=font-style:italic>      &lt;style&gt;
+</span></span></span><span style=display:flex><span><span style=font-style:italic>        :host {
+</span></span></span><span style=display:flex><span><span style=font-style:italic>          display: block;
+</span></span></span><span style=display:flex><span><span style=font-style:italic>          font-family: inherit;
+</span></span></span><span style=display:flex><span><span style=font-style:italic>        }
+</span></span></span><span style=display:flex><span><span style=font-style:italic>        .picker-container {
+</span></span></span><span style=display:flex><span><span style=font-style:italic>          display: flex;
+</span></span></span><span style=display:flex><span><span style=font-style:italic>          align-items: center;
+</span></span></span><span style=display:flex><span><span style=font-style:italic>          gap: 8px;
+</span></span></span><span style=display:flex><span><span style=font-style:italic>        }
+</span></span></span><span style=display:flex><span><span style=font-style:italic>        label {
+</span></span></span><span style=display:flex><span><span style=font-style:italic>          font-weight: bold;
+</span></span></span><span style=display:flex><span><span style=font-style:italic>        }
+</span></span></span><span style=display:flex><span><span style=font-style:italic>        input[type=&#34;color&#34;] {
+</span></span></span><span style=display:flex><span><span style=font-style:italic>          width: 50px;
+</span></span></span><span style=display:flex><span><span style=font-style:italic>          height: 30px;
+</span></span></span><span style=display:flex><span><span style=font-style:italic>          border: none;
+</span></span></span><span style=display:flex><span><span style=font-style:italic>          border-radius: 4px;
+</span></span></span><span style=display:flex><span><span style=font-style:italic>        }
+</span></span></span><span style=display:flex><span><span style=font-style:italic>      &lt;/style&gt;
+</span></span></span><span style=display:flex><span><span style=font-style:italic>      &lt;div class=&#34;picker-container&#34;&gt;
+</span></span></span><span style=display:flex><span><span style=font-style:italic>        &lt;label for=&#34;color-input&#34;&gt;Pick a color:&lt;/label&gt;
+</span></span></span><span style=display:flex><span><span style=font-style:italic>        &lt;input type=&#34;color&#34; id=&#34;color-input&#34; value=&#34;</span><span style=font-weight:700;font-style:italic>${</span><span style=font-weight:700>this</span>.currentColor<span style=font-weight:700;font-style:italic>}</span><span style=font-style:italic>&#34;&gt;
+</span></span></span><span style=display:flex><span><span style=font-style:italic>      &lt;/div&gt;
+</span></span></span><span style=display:flex><span><span style=font-style:italic>    `</span>;
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=font-style:italic>// Register the Web Component
+</span></span></span><span style=display:flex><span><span style=font-style:italic></span>customElements.define(<span style=font-style:italic>&#34;color-picker&#34;</span>, ColorPicker);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=font-style:italic>// Set up communication from Elm to the Web Component
+</span></span></span><span style=display:flex><span><span style=font-style:italic></span>app.ports.sendColor.subscribe((color) =&gt; {
+</span></span><span style=display:flex><span>  <span style=font-style:italic>// Find our color picker element
+</span></span></span><span style=display:flex><span><span style=font-style:italic></span>  <span style=font-weight:700>const</span> picker = document.querySelector(<span style=font-style:italic>&#34;color-picker&#34;</span>);
+</span></span><span style=display:flex><span>  <span style=font-weight:700>if</span> (picker) {
+</span></span><span style=display:flex><span>    <span style=font-style:italic>// Give the Web Component a reference to the Elm app
+</span></span></span><span style=display:flex><span><span style=font-style:italic></span>    <span style=font-weight:700>if</span> (!picker._app) {
+</span></span><span style=display:flex><span>      picker.setApp(app);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>    <span style=font-style:italic>// Update the color
+</span></span></span><span style=display:flex><span><span style=font-style:italic></span>    picker.setAttribute(<span style=font-style:italic>&#34;current-color&#34;</span>, color);
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>});
+</span></span></code></pre></div><p>This update ensures that the JavaScript code in the blog post matches exactly with the code from <code>foo.html</code>.</p><h2 id=step-3-html-setup>Step 3: HTML Setup
+<a class=heading-link href=#step-3-html-setup><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h2><p>Finally, we need a simple HTML file to bring it all together:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-html data-lang=html><span style=display:flex><span><span>&lt;!DOCTYPE html&gt;</span>
+</span></span><span style=display:flex><span>&lt;<span style=font-weight:700>html</span> lang=<span style=font-style:italic>&#34;en&#34;</span>&gt;
+</span></span><span style=display:flex><span>  &lt;<span style=font-weight:700>head</span>&gt;
+</span></span><span style=display:flex><span>    &lt;<span style=font-weight:700>meta</span> charset=<span style=font-style:italic>&#34;UTF-8&#34;</span> /&gt;
+</span></span><span style=display:flex><span>    &lt;<span style=font-weight:700>meta</span> name=<span style=font-style:italic>&#34;viewport&#34;</span> content=<span style=font-style:italic>&#34;width=device-width, initial-scale=1.0&#34;</span> /&gt;
+</span></span><span style=display:flex><span>    &lt;<span style=font-weight:700>title</span>&gt;Elm + Web Components&lt;/<span style=font-weight:700>title</span>&gt;
+</span></span><span style=display:flex><span>    &lt;<span style=font-weight:700>script</span> src=<span style=font-style:italic>&#34;index.js&#34;</span>&gt;&lt;/<span style=font-weight:700>script</span>&gt;
+</span></span><span style=display:flex><span>    &lt;<span style=font-weight:700>script</span> src=<span style=font-style:italic>&#34;elm.js&#34;</span>&gt;&lt;/<span style=font-weight:700>script</span>&gt;
+</span></span><span style=display:flex><span>  &lt;/<span style=font-weight:700>head</span>&gt;
+</span></span><span style=display:flex><span>  &lt;<span style=font-weight:700>body</span>&gt;
+</span></span><span style=display:flex><span>    &lt;<span style=font-weight:700>div</span> id=<span style=font-style:italic>&#34;elm-app&#34;</span>&gt;&lt;/<span style=font-weight:700>div</span>&gt;
+</span></span><span style=display:flex><span>  &lt;/<span style=font-weight:700>body</span>&gt;
+</span></span><span style=display:flex><span>&lt;/<span style=font-weight:700>html</span>&gt;
+</span></span></code></pre></div><h2 id=how-it-works>How It Works
+<a class=heading-link href=#how-it-works><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h2><p>The data flow in our application follows this pattern:</p><ol><li><p><strong>Elm → JavaScript</strong>:</p><ul><li>Elm sends the current color through the <code>sendColor</code> port</li><li>JavaScript receives this value and updates the Web Component&rsquo;s attribute</li></ul></li><li><p><strong>Web Component → JavaScript → Elm</strong>:</p><ul><li>User interacts with the color picker</li><li>Web Component fires an event</li><li>The event handler sends the new color to Elm via the <code>receiveColor</code> port</li><li>Elm updates its model with the new color</li></ul></li></ol><p>This clean separation maintains Elm&rsquo;s purity while leveraging the native capabilities of the web platform.</p><h2 id=real-world-considerations>Real-World Considerations
+<a class=heading-link href=#real-world-considerations><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h2><h3 id=1-more-complex-data>1. More Complex Data
+<a class=heading-link href=#1-more-complex-data><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h3><p>For our simple example, we&rsquo;re just passing strings. For complex data, you&rsquo;ll need to encode/decode JSON:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-elm data-lang=elm><span style=display:flex><span><span style=font-style:italic>-- In Elm</span>
+</span></span><span style=display:flex><span><span style=font-weight:700>port</span> sendComplexData : <span>Encode</span>.<span>Value</span> -&gt; <span>Cmd</span> msg
+</span></span><span style=display:flex><span><span style=font-weight:700>port</span> receiveComplexData : (<span>Decode</span>.<span>Value</span> -&gt; msg) -&gt; <span>Sub</span> msg
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=font-style:italic>-- Using it</span>
+</span></span><span style=display:flex><span>sendComplexData (<span>Encode</span>.object
+</span></span><span style=display:flex><span>    [ (<span style=font-style:italic>&#34;color&#34;</span>, <span>Encode</span>.string model.color)
+</span></span><span style=display:flex><span>    , (<span style=font-style:italic>&#34;opacity&#34;</span>, <span>Encode</span>.float model.opacity)
+</span></span><span style=display:flex><span>    , (<span style=font-style:italic>&#34;name&#34;</span>, <span>Encode</span>.string model.name)
+</span></span><span style=display:flex><span>    ])
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=display:flex><span><span style=font-style:italic>// In JavaScript
+</span></span></span><span style=display:flex><span><span style=font-style:italic></span>app.ports.sendComplexData.subscribe((data) =&gt; {
+</span></span><span style=display:flex><span>  console.log(data.color, data.opacity, data.name);
+</span></span><span style=display:flex><span>});
+</span></span></code></pre></div><h3 id=2-error-handling>2. Error Handling
+<a class=heading-link href=#2-error-handling><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h3><p>When receiving data from JavaScript, always be prepared for unexpected values:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-elm data-lang=elm><span style=display:flex><span><span style=font-weight:700>type</span> <span>Msg</span>
+</span></span><span style=display:flex><span>    = <span>GotColorData</span> (<span>Result</span> <span>Decode</span>.<span>Error</span> <span>ColorData</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>subscriptions : <span>Model</span> -&gt; <span>Sub</span> <span>Msg</span>
+</span></span><span style=display:flex><span>subscriptions _ =
+</span></span><span style=display:flex><span>    receiveComplexData (decodeColorData &gt;&gt; <span>GotColorData</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>decodeColorData : <span>Decode</span>.<span>Value</span> -&gt; <span>Result</span> <span>Decode</span>.<span>Error</span> <span>ColorData</span>
+</span></span><span style=display:flex><span>decodeColorData value =
+</span></span><span style=display:flex><span>    <span>Decode</span>.decodeValue colorDataDecoder value
+</span></span></code></pre></div><h3 id=3-multiple-components>3. Multiple Components
+<a class=heading-link href=#3-multiple-components><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h3><p>With multiple Web Components, maintain a clear naming convention for your ports:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-elm data-lang=elm><span style=display:flex><span><span style=font-weight:700>port</span> sendColorPickerData : <span>Encode</span>.<span>Value</span> -&gt; <span>Cmd</span> msg
+</span></span><span style=display:flex><span><span style=font-weight:700>port</span> receiveColorPickerData : (<span>Decode</span>.<span>Value</span> -&gt; msg) -&gt; <span>Sub</span> msg
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=font-weight:700>port</span> sendMapData : <span>Encode</span>.<span>Value</span> -&gt; <span>Cmd</span> msg
+</span></span><span style=display:flex><span><span style=font-weight:700>port</span> receiveMapData : (<span>Decode</span>.<span>Value</span> -&gt; msg) -&gt; <span>Sub</span> msg
+</span></span></code></pre></div><h2 id=how-this-relates-to-clean-architecture>How This Relates to Clean Architecture
+<a class=heading-link href=#how-this-relates-to-clean-architecture><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h2><p>This ports + Web Components pattern aligns perfectly with Clean Architecture principles:</p><ol><li><p><strong>Separation of Concerns</strong>:</p><ul><li>Elm handles application logic</li><li>Web Components handle specialized UI rendering</li><li>Ports define clear boundaries between systems</li></ul></li><li><p><strong>Dependency Rule</strong>:</p><ul><li>Core business logic in Elm doesn&rsquo;t depend on the Web Component details</li><li>The outer layer (JavaScript) depends on the inner layer (Elm), not vice versa</li></ul></li><li><p><strong>Testability</strong>:</p><ul><li>Elm code can be tested without Web Components</li><li>Ports can be mocked for testing</li><li>Web Components can be tested in isolation</li></ul></li></ol><p>This approach gives us the best of both worlds:</p><ul><li><strong>Elm&rsquo;s strengths</strong>: Type safety, immutability, and predictable state management</li><li><strong>Web Components&rsquo; strengths</strong>: Standards-based, reusable UI components</li></ul><h2 id=conclusion>Conclusion
+<a class=heading-link href=#conclusion><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h2><p>The combination of Elm ports and Web Components offers a powerful way to build robust applications while still leveraging the best tools from the broader web ecosystem. This approach maintains the benefits of Elm&rsquo;s architecture while embracing the interoperability of web standards.</p><p>By keeping your core application logic in Elm and using Web Components only for specialized UI needs, you get a clean, maintainable architecture with clear boundaries.</p><p>Have you used Elm ports or Web Components in your projects? I&rsquo;d love to hear about your experiences, feel free to add feedback using my <a href=/posts/feedback-one-elm-rust-feedback-widget/>new feedback tool, Feedback.one</a>.</p><h2 id=resources>Resources
+<a class=heading-link href=#resources><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h2><ul><li><a href=https://guide.elm-lang.org/interop/ class=external-link target=_blank rel=noopener>Elm Guide: JavaScript Interop</a></li><li><a href=https://developer.mozilla.org/en-US/docs/Web/Web_Components class=external-link target=_blank rel=noopener>MDN Web Components Documentation</a></li><li><a href=https://www.webcomponents.org/ class=external-link target=_blank rel=noopener>WebComponents.org</a></li></ul><p><em>Note: This blog post is intended for developers with basic knowledge of both Elm and Web Components. If you&rsquo;re new to Elm, check out the <a href=https://guide.elm-lang.org/ class=external-link target=_blank rel=noopener>official guide</a> first.</em></p></div><footer></footer></article></section></div><script type=text/javascript src=https://testimonial.to/js/iframeResizer.min.js></script><style>form{display:flex;justify-content:center}</style><form action="https://api.follow.it/subscription-form/SDRVMUk2VmsySENBNk94RDNKNDFnS3NmWlQ5a3gxejNIeUlJWHl3QjdqNnRHdENkaXp5aXZhZlFvcGtzcEZ3K0o5TFVRdSt2WWM5RWRsWmZwWVhNUS9PZjJqMWZ3aHBwZUhjT1ZpWXBGRkdZOWtIcGhYQkJkSkE4QTQ1eHl5YkF8RTZHTExQOWFrN1pFY1F0RzZ5c3pVN2I1QTI1YXNtMjZiYllLU25zQkJ3bz0=/8" method=post><input type=email name=email required placeholder=Email spellcheck=false style=padding:1rem;border:none;outline:none>
+<button type=submit style=border:none;outline:none;background:#eee;cursor:pointer>
+Subscribe</button></form><div id=testemonials class=container style="background:#fff !important;clip-path:inset(0 0 90px 0);padding:24px;border-radius:24px;opacity:0;max-height:0;transition:opacity 1s,max-height 1s"><iframe id=testimonialto-carousel-christian-ekrem-tag-all-light src="https://embed-v2.testimonial.to/carousel/all/christian-ekrem?theme=light&autoplay=off&showmore=on&one-row=on&hideDate=off&same-height=off&tag=all&arrowColor=9BA9B4" frameborder=0 scrolling=no width=100%></iframe></div><script type=text/javascript>location.pathname in{"":!0,"/":!0,"/hire/":!0,"/hire":!0}&&setTimeout(()=>{iFrameResize({log:!1,checkOrigin:!1},"#testimonialto-carousel-christian-ekrem-tag-all-light");const e=document.getElementById("testemonials");e.style.display="block",e.style.opacity=1,e.style.maxHeight="600px"},1e3)</script><script type=text/javascript src="https://platform-api.sharethis.com/js/sharethis.js#property=6834b86198608700128c9ffa&product=sticky-share-buttons" async></script><footer class=footer><section class=container>© 2021 - 2025 Christian Ekrem
+<script data-name=BMC-Widget data-cfasync=false src=https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js data-emoji=🍺 data-id=cekrem data-description="Support me on Buy me a coffee!" data-message data-color=#ddd data-position=Right data-x_margin=18 data-y_margin=18></script></section><script src=https://formspree.io/js/formbutton-v1.min.js defer></script></footer><script src=https://sdk.feedback.one/v0/core.min.js data-project-id=019589e0-c6fb-7b80-b6ae-dffbfbb11f72 defer></script></main><script src=/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script><script data-goatcounter=https://cekrem.goatcounter.com/count async src=//gc.zgo.at/count.js></script></body></html>

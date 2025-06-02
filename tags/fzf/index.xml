@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Fzf on cekrem.github.io</title><link>https://cekrem.github.io/tags/fzf/</link><description>Recent content in Fzf on cekrem.github.io</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 15 Aug 2022 13:35:45 +0200</lastBuildDate><atom:link href="https://cekrem.github.io/tags/fzf/index.xml" rel="self" type="application/rss+xml"/><item><title>ripnote – the fastest and fuzziest way for a developer to take notes</title><link>https://cekrem.github.io/posts/ripnote/</link><pubDate>Mon, 15 Aug 2022 13:35:45 +0200</pubDate><guid>https://cekrem.github.io/posts/ripnote/</guid><description>&lt;h2 id="the-best-tool-for-note-taking">The best tool for note-taking?&lt;/h2>
-&lt;p>The one you have close at hand. ReMarkable this, vintage inherited bio-dynamic paper that – it&amp;rsquo;ll do you no good what-so-ever if it&amp;rsquo;s not readily available when you need it. I&amp;rsquo;ve spent way too much time trying to find the &amp;ldquo;ideal&amp;rdquo; solution for keeping track of notes and ideas through my workday. But all I &lt;em>really&lt;/em> need is this:&lt;/p>
-&lt;ul>
-&lt;li>To jot down new notes and ideas &lt;em>fast!&lt;/em>.&lt;/li>
-&lt;li>To search through previous notes equally fast.&lt;/li>
-&lt;/ul>
-&lt;h2 id="what-could-possibly-be-better">What could possibly be better&amp;hellip;&lt;/h2>
-&lt;p>&amp;hellip;Than to create notes from the comfort of your beloved terminal that&amp;rsquo;s already open anyway, and to do super-fast full text fuzzy searches in all you&amp;rsquo;ve ever written? Did I mention it&amp;rsquo;s fast?&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Fzf on cekrem.github.io</title><link>https://cekrem.github.io/tags/fzf/</link><description>Recent content in Fzf on cekrem.github.io</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 15 Aug 2022 13:35:45 +0200</lastBuildDate><atom:link href="https://cekrem.github.io/tags/fzf/index.xml" rel="self" type="application/rss+xml"/><item><title>ripnote – the fastest and fuzziest way for a developer to take notes</title><link>https://cekrem.github.io/posts/ripnote/</link><pubDate>Mon, 15 Aug 2022 13:35:45 +0200</pubDate><guid>https://cekrem.github.io/posts/ripnote/</guid><description>&lt;h2 id="the-best-tool-for-note-taking">
+ The best tool for note-taking?
+ &lt;a class="heading-link" href="#the-best-tool-for-note-taking">
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
+ &lt;span class="sr-only">Link to heading&lt;/span>
+ &lt;/a>
+&lt;/h2>
+&lt;p>The one you have close at hand. ReMarkable this, vintage inherited bio-dynamic paper that – it&amp;rsquo;ll do you no good what-so-ever if it&amp;rsquo;s not readily available when you need it. I&amp;rsquo;ve spent way too much time trying to find the &amp;ldquo;ideal&amp;rdquo; solution for keeping track of notes and ideas through my workday. But all I &lt;em>really&lt;/em> need is this:&lt;/p></description></item></channel></rss>

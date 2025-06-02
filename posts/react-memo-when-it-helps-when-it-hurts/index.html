@@ -16,123 +16,123 @@
 <a class=heading-link href=#the-promise-of-memoization><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
 <span class=sr-only>Link to heading</span></a></h2><p>When React applications start to slow down, <code>React.memo</code>, <code>useMemo</code>, and <code>useCallback</code> are often the first tools developers reach for. After all, preventing unnecessary re-renders seems like a straightforward path to better performance. But in the React ecosystem, memoization is far more complex than it first appears.</p><p>In this post, we&rsquo;ll look at how these tools actually work under the hood, the subtle ways they can fail, and when they&rsquo;re truly beneficial versus when they&rsquo;re just adding unnecessary complexity.</p><p>If you haven&rsquo;t already, be sure to check out <a href=/posts/beyond-react-memo-smarter-performance-optimization/>my previous posts about optimization <em>without</em> using memoization</a>.</p><h2 id=understanding-the-problem-javascript-reference-comparisons>Understanding the Problem: JavaScript Reference Comparisons
 <a class=heading-link href=#understanding-the-problem-javascript-reference-comparisons><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><p>At its core, the need for memoization in React stems from how JavaScript compares objects, arrays, and functions. While primitive values (strings, numbers, booleans) are compared by their actual value, objects are compared by reference:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=font-style:italic>// Primitives compare by value
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span><span style=font-weight:700>const</span> a = 1;
-</span></span><span style=display:flex><span><span style=font-weight:700>const</span> b = 1;
-</span></span><span style=display:flex><span>a === b; <span style=font-style:italic>// true
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>
-</span></span><span style=display:flex><span><span style=font-style:italic>// Objects compare by reference
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span><span style=font-weight:700>const</span> objA = { id: <span>1</span> };
-</span></span><span style=display:flex><span><span style=font-weight:700>const</span> objB = { id: <span>1</span> };
-</span></span><span style=display:flex><span>objA === objB; <span style=font-style:italic>// false, different references
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>
-</span></span><span style=display:flex><span><span style=font-style:italic>// To make comparison true, they need to reference the same object
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span><span style=font-weight:700>const</span> objC = objA;
-</span></span><span style=display:flex><span>objA === objC; <span style=font-style:italic>// true
+<span class=sr-only>Link to heading</span></a></h2><p>At its core, the need for memoization in React stems from how JavaScript compares objects, arrays, and functions. While primitive values (strings, numbers, booleans) are compared by their actual value, objects are compared by reference:</p><div class=highlight><pre tabindex=0 style=color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=color:#93a1a1;font-style:italic>// Primitives compare by value
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span><span style=color:#859900>const</span> <span style=color:#268bd2>a</span> = <span style=color:#2aa198;font-weight:700>1</span>;
+</span></span><span style=display:flex><span><span style=color:#859900>const</span> <span style=color:#268bd2>b</span> = <span style=color:#2aa198;font-weight:700>1</span>;
+</span></span><span style=display:flex><span><span style=color:#268bd2>a</span> === <span style=color:#268bd2>b</span>; <span style=color:#93a1a1;font-style:italic>// true
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span>
+</span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic>// Objects compare by reference
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span><span style=color:#859900>const</span> <span style=color:#268bd2>objA</span> = { <span style=color:#268bd2>id</span>: <span style=color:#859900;font-weight:700>1</span> };
+</span></span><span style=display:flex><span><span style=color:#859900>const</span> <span style=color:#268bd2>objB</span> = { <span style=color:#268bd2>id</span>: <span style=color:#859900;font-weight:700>1</span> };
+</span></span><span style=display:flex><span><span style=color:#268bd2>objA</span> === <span style=color:#268bd2>objB</span>; <span style=color:#93a1a1;font-style:italic>// false, different references
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span>
+</span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic>// To make comparison true, they need to reference the same object
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span><span style=color:#859900>const</span> <span style=color:#268bd2>objC</span> = <span style=color:#268bd2>objA</span>;
+</span></span><span style=display:flex><span><span style=color:#268bd2>objA</span> === <span style=color:#268bd2>objC</span>; <span style=color:#93a1a1;font-style:italic>// true
 </span></span></span></code></pre></div><p>This becomes a problem in React because:</p><ol><li>Components re-render when their state changes or when their parent component re-renders</li><li>When a component re-renders, all its local variables (including objects and functions) are recreated <em>with new references</em></li><li>If these new references are passed as props or used in hook dependencies, they&rsquo;ll trigger unnecessary re-renders or effect executions</li></ol><h2 id=usememo-and-usecallback-under-the-hood>useMemo and useCallback Under the Hood
 <a class=heading-link href=#usememo-and-usecallback-under-the-hood><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><p>To solve this problem, React provides memoization hooks that preserve references between renders. But how do they actually work?</p><p>Both <code>useMemo</code> and <code>useCallback</code> primarily exist to help maintain stable references across re-renders. They cache a value and only recalculate it when specified dependencies change.</p><p>Here&rsquo;s what they do behind the scenes:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=font-style:italic>// Conceptual implementation of useCallback
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span><span style=font-weight:700>let</span> cachedCallback;
-</span></span><span style=display:flex><span><span style=font-weight:700>const</span> useCallback = (callback, dependencies) =&gt; {
-</span></span><span style=display:flex><span>  <span style=font-weight:700>if</span> (dependenciesHaventChanged(dependencies)) {
-</span></span><span style=display:flex><span>    <span style=font-weight:700>return</span> cachedCallback;
+<span class=sr-only>Link to heading</span></a></h2><p>To solve this problem, React provides memoization hooks that preserve references between renders. But how do they actually work?</p><p>Both <code>useMemo</code> and <code>useCallback</code> primarily exist to help maintain stable references across re-renders. They cache a value and only recalculate it when specified dependencies change.</p><p>Here&rsquo;s what they do behind the scenes:</p><div class=highlight><pre tabindex=0 style=color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=color:#93a1a1;font-style:italic>// Conceptual implementation of useCallback
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span><span style=color:#859900>let</span> <span style=color:#268bd2>cachedCallback</span>;
+</span></span><span style=display:flex><span><span style=color:#859900>const</span> <span style=color:#268bd2>useCallback</span> = (<span style=color:#268bd2>callback</span>, <span style=color:#268bd2>dependencies</span>) =&gt; {
+</span></span><span style=display:flex><span>  <span style=color:#859900>if</span> (<span style=color:#268bd2>dependenciesHaventChanged</span>(<span style=color:#268bd2>dependencies</span>)) {
+</span></span><span style=display:flex><span>    <span style=color:#859900>return</span> <span style=color:#268bd2>cachedCallback</span>;
 </span></span><span style=display:flex><span>  }
-</span></span><span style=display:flex><span>  cachedCallback = callback;
-</span></span><span style=display:flex><span>  <span style=font-weight:700>return</span> callback;
+</span></span><span style=display:flex><span>  <span style=color:#268bd2>cachedCallback</span> = <span style=color:#268bd2>callback</span>;
+</span></span><span style=display:flex><span>  <span style=color:#859900>return</span> <span style=color:#268bd2>callback</span>;
 </span></span><span style=display:flex><span>};
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-style:italic>// Conceptual implementation of useMemo
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span><span style=font-weight:700>let</span> cachedResult;
-</span></span><span style=display:flex><span><span style=font-weight:700>const</span> useMemo = (factory, dependencies) =&gt; {
-</span></span><span style=display:flex><span>  <span style=font-weight:700>if</span> (dependenciesHaventChanged(dependencies)) {
-</span></span><span style=display:flex><span>    <span style=font-weight:700>return</span> cachedResult;
+</span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic>// Conceptual implementation of useMemo
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span><span style=color:#859900>let</span> <span style=color:#268bd2>cachedResult</span>;
+</span></span><span style=display:flex><span><span style=color:#859900>const</span> <span style=color:#268bd2>useMemo</span> = (<span style=color:#268bd2>factory</span>, <span style=color:#268bd2>dependencies</span>) =&gt; {
+</span></span><span style=display:flex><span>  <span style=color:#859900>if</span> (<span style=color:#268bd2>dependenciesHaventChanged</span>(<span style=color:#268bd2>dependencies</span>)) {
+</span></span><span style=display:flex><span>    <span style=color:#859900>return</span> <span style=color:#268bd2>cachedResult</span>;
 </span></span><span style=display:flex><span>  }
-</span></span><span style=display:flex><span>  cachedResult = factory();
-</span></span><span style=display:flex><span>  <span style=font-weight:700>return</span> cachedResult;
+</span></span><span style=display:flex><span>  <span style=color:#268bd2>cachedResult</span> = <span style=color:#268bd2>factory</span>();
+</span></span><span style=display:flex><span>  <span style=color:#859900>return</span> <span style=color:#268bd2>cachedResult</span>;
 </span></span><span style=display:flex><span>};
 </span></span></code></pre></div><p>The main difference: <code>useCallback</code> caches the function itself, while <code>useMemo</code> caches the return value of the function it receives.</p><h2 id=the-most-common-misconception-memoizing-props>The Most Common Misconception: Memoizing Props
 <a class=heading-link href=#the-most-common-misconception-memoizing-props><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><p>One of the most widespread misconceptions is that memoizing props with <code>useCallback</code> or <code>useMemo</code> prevents child components from re-rendering:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=font-weight:700>const</span> Component = () =&gt; {
-</span></span><span style=display:flex><span>  <span style=font-style:italic>// People think this prevents re-renders in child components
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>  <span style=font-weight:700>const</span> onClick = useCallback(() =&gt; {
-</span></span><span style=display:flex><span>    console.log(<span style=font-style:italic>&#34;clicked&#34;</span>);
+<span class=sr-only>Link to heading</span></a></h2><p>One of the most widespread misconceptions is that memoizing props with <code>useCallback</code> or <code>useMemo</code> prevents child components from re-rendering:</p><div class=highlight><pre tabindex=0 style=color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=color:#859900>const</span> <span style=color:#268bd2>Component</span> = () =&gt; {
+</span></span><span style=display:flex><span>  <span style=color:#93a1a1;font-style:italic>// People think this prevents re-renders in child components
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span>  <span style=color:#859900>const</span> <span style=color:#268bd2>onClick</span> = <span style=color:#268bd2>useCallback</span>(() =&gt; {
+</span></span><span style=display:flex><span>    <span style=color:#268bd2>console</span>.<span style=color:#268bd2>log</span>(<span style=color:#2aa198>&#34;clicked&#34;</span>);
 </span></span><span style=display:flex><span>  }, []);
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=font-weight:700>return</span> &lt;<span style=font-weight:700>button</span> onClick={onClick}&gt;Click me&lt;/<span style=font-weight:700>button</span>&gt;;
+</span></span><span style=display:flex><span>  <span style=color:#859900>return</span> &lt;<span style=color:#268bd2;font-weight:700>button</span> <span style=color:#268bd2>onClick</span>={<span style=color:#268bd2>onClick</span>}&gt;<span style=color:#268bd2>Click</span> <span style=color:#268bd2>me</span>&lt;/<span style=color:#268bd2;font-weight:700>button</span>&gt;;
 </span></span><span style=display:flex><span>};
 </span></span></code></pre></div><p>This is simply not true. If a parent component re-renders, all of its children will re-render by default, regardless of whether their props changed or not. Memoizing props only helps in two specific scenarios:</p><ol><li>When the prop is used as a dependency in a hook in the child component</li><li>When the child component is wrapped in <code>React.memo</code></li></ol><h2 id=what-reactmemo-actually-does>What React.memo Actually Does
 <a class=heading-link href=#what-reactmemo-actually-does><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><p><code>React.memo</code> is a higher-order component that memoizes the result of a component render. It performs a shallow comparison of props to determine if a re-render is necessary:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=font-weight:700>const</span> ChildComponent = ({ data, onClick }) =&gt; {
-</span></span><span style=display:flex><span>  <span style=font-style:italic>// Component implementation
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>};
+<span class=sr-only>Link to heading</span></a></h2><p><code>React.memo</code> is a higher-order component that memoizes the result of a component render. It performs a shallow comparison of props to determine if a re-render is necessary:</p><div class=highlight><pre tabindex=0 style=color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=color:#859900>const</span> <span style=color:#268bd2>ChildComponent</span> = ({ <span style=color:#268bd2>data</span>, <span style=color:#268bd2>onClick</span> }) =&gt; {
+</span></span><span style=display:flex><span>  <span style=color:#93a1a1;font-style:italic>// Component implementation
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span>};
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-weight:700>const</span> MemoizedChild = React.memo(ChildComponent);
+</span></span><span style=display:flex><span><span style=color:#859900>const</span> <span style=color:#268bd2>MemoizedChild</span> = <span style=color:#268bd2>React</span>.<span style=color:#268bd2>memo</span>(<span style=color:#268bd2>ChildComponent</span>);
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-weight:700>const</span> ParentComponent = () =&gt; {
-</span></span><span style=display:flex><span>  <span style=font-style:italic>// Without memoization, these get new references on every render
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>  <span style=font-weight:700>const</span> data = { value: <span>42</span> };
-</span></span><span style=display:flex><span>  <span style=font-weight:700>const</span> onClick = () =&gt; console.log(<span style=font-style:italic>&#34;clicked&#34;</span>);
+</span></span><span style=display:flex><span><span style=color:#859900>const</span> <span style=color:#268bd2>ParentComponent</span> = () =&gt; {
+</span></span><span style=display:flex><span>  <span style=color:#93a1a1;font-style:italic>// Without memoization, these get new references on every render
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span>  <span style=color:#859900>const</span> <span style=color:#268bd2>data</span> = { <span style=color:#268bd2>value</span>: <span style=color:#859900;font-weight:700>42</span> };
+</span></span><span style=display:flex><span>  <span style=color:#859900>const</span> <span style=color:#268bd2>onClick</span> = () =&gt; <span style=color:#268bd2>console</span>.<span style=color:#268bd2>log</span>(<span style=color:#2aa198>&#34;clicked&#34;</span>);
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=font-style:italic>// MemoizedChild will re-render on every ParentComponent render
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>  <span style=font-style:italic>// despite React.memo, because props keep changing
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>  <span style=font-weight:700>return</span> &lt;<span style=font-weight:700>MemoizedChild</span> data={data} onClick={onClick} /&gt;;
+</span></span><span style=display:flex><span>  <span style=color:#93a1a1;font-style:italic>// MemoizedChild will re-render on every ParentComponent render
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span>  <span style=color:#93a1a1;font-style:italic>// despite React.memo, because props keep changing
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span>  <span style=color:#859900>return</span> &lt;<span style=color:#268bd2;font-weight:700>MemoizedChild</span> <span style=color:#268bd2>data</span>={<span style=color:#268bd2>data</span>} <span style=color:#268bd2>onClick</span>={<span style=color:#268bd2>onClick</span>} /&gt;;
 </span></span><span style=display:flex><span>};
-</span></span></code></pre></div><p>In this example, <code>React.memo</code> doesn&rsquo;t prevent re-renders because the props keep changing references. This is where <code>useMemo</code> and <code>useCallback</code> become useful:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=font-weight:700>const</span> ParentComponent = () =&gt; {
-</span></span><span style=display:flex><span>  <span style=font-style:italic>// Stable references across renders
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>  <span style=font-weight:700>const</span> data = useMemo(() =&gt; ({ value: <span>42</span> }), []);
-</span></span><span style=display:flex><span>  <span style=font-weight:700>const</span> onClick = useCallback(() =&gt; console.log(<span style=font-style:italic>&#34;clicked&#34;</span>), []);
+</span></span></code></pre></div><p>In this example, <code>React.memo</code> doesn&rsquo;t prevent re-renders because the props keep changing references. This is where <code>useMemo</code> and <code>useCallback</code> become useful:</p><div class=highlight><pre tabindex=0 style=color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=color:#859900>const</span> <span style=color:#268bd2>ParentComponent</span> = () =&gt; {
+</span></span><span style=display:flex><span>  <span style=color:#93a1a1;font-style:italic>// Stable references across renders
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span>  <span style=color:#859900>const</span> <span style=color:#268bd2>data</span> = <span style=color:#268bd2>useMemo</span>(() =&gt; ({ <span style=color:#268bd2>value</span>: <span style=color:#859900;font-weight:700>42</span> }), []);
+</span></span><span style=display:flex><span>  <span style=color:#859900>const</span> <span style=color:#268bd2>onClick</span> = <span style=color:#268bd2>useCallback</span>(() =&gt; <span style=color:#268bd2>console</span>.<span style=color:#268bd2>log</span>(<span style=color:#2aa198>&#34;clicked&#34;</span>), []);
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=font-style:italic>// Now MemoizedChild will only re-render when its props actually change
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>  <span style=font-weight:700>return</span> &lt;<span style=font-weight:700>MemoizedChild</span> data={data} onClick={onClick} /&gt;;
+</span></span><span style=display:flex><span>  <span style=color:#93a1a1;font-style:italic>// Now MemoizedChild will only re-render when its props actually change
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span>  <span style=color:#859900>return</span> &lt;<span style=color:#268bd2;font-weight:700>MemoizedChild</span> <span style=color:#268bd2>data</span>={<span style=color:#268bd2>data</span>} <span style=color:#268bd2>onClick</span>={<span style=color:#268bd2>onClick</span>} /&gt;;
 </span></span><span style=display:flex><span>};
 </span></span></code></pre></div><h2 id=the-hidden-pitfalls-of-reactmemo>The Hidden Pitfalls of React.memo
 <a class=heading-link href=#the-hidden-pitfalls-of-reactmemo><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
 <span class=sr-only>Link to heading</span></a></h2><p>Using <code>React.memo</code> effectively is surprisingly difficult. Let&rsquo;s explore some common pitfalls that can silently break your memoization:</p><h3 id=1-the-props-spreading-problem>1. The Props Spreading Problem
 <a class=heading-link href=#1-the-props-spreading-problem><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h3><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=font-weight:700>const</span> Child = React.memo(({ data }) =&gt; {
-</span></span><span style=display:flex><span>  <span style=font-style:italic>// Component implementation
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>});
+<span class=sr-only>Link to heading</span></a></h3><div class=highlight><pre tabindex=0 style=color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=color:#859900>const</span> <span style=color:#268bd2>Child</span> = <span style=color:#268bd2>React</span>.<span style=color:#268bd2>memo</span>(({ <span style=color:#268bd2>data</span> }) =&gt; {
+</span></span><span style=display:flex><span>  <span style=color:#93a1a1;font-style:italic>// Component implementation
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span>});
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-style:italic>// This breaks memoization because props might change
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span><span style=font-weight:700>const</span> Parent = (props) =&gt; {
-</span></span><span style=display:flex><span>  <span style=font-weight:700>return</span> &lt;<span style=font-weight:700>Child</span> {...props} /&gt;;
+</span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic>// This breaks memoization because props might change
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span><span style=color:#859900>const</span> <span style=color:#268bd2>Parent</span> = (<span style=color:#268bd2>props</span>) =&gt; {
+</span></span><span style=display:flex><span>  <span style=color:#859900>return</span> &lt;<span style=color:#268bd2;font-weight:700>Child</span> {<span style=color:#268bd2>...props</span>} /&gt;;
 </span></span><span style=display:flex><span>};
 </span></span></code></pre></div><p>When you spread props like this, you have no control over whether the properties that <code>Child</code> receives maintain stable references. Someone using your <code>Parent</code> component could unwittingly break the memoization.</p><h3 id=2-the-children-prop-problem>2. The Children Prop Problem
 <a class=heading-link href=#2-the-children-prop-problem><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h3><p>Perhaps the most surprising pitfall is that JSX children are just another prop, and they need to be memoized too:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=font-weight:700>const</span> MemoComponent = React.memo(({ children }) =&gt; {
-</span></span><span style=display:flex><span>  <span style=font-style:italic>// Implementation
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>});
+<span class=sr-only>Link to heading</span></a></h3><p>Perhaps the most surprising pitfall is that JSX children are just another prop, and they need to be memoized too:</p><div class=highlight><pre tabindex=0 style=color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=color:#859900>const</span> <span style=color:#268bd2>MemoComponent</span> = <span style=color:#268bd2>React</span>.<span style=color:#268bd2>memo</span>(({ <span style=color:#268bd2>children</span> }) =&gt; {
+</span></span><span style=display:flex><span>  <span style=color:#93a1a1;font-style:italic>// Implementation
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span>});
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-weight:700>const</span> Parent = () =&gt; {
-</span></span><span style=display:flex><span>  <span style=font-style:italic>// This breaks memoization! Children is recreated each render
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>  <span style=font-weight:700>return</span> (
-</span></span><span style=display:flex><span>    &lt;<span style=font-weight:700>MemoComponent</span>&gt;
-</span></span><span style=display:flex><span>      &lt;<span style=font-weight:700>div</span>&gt;Some content&lt;/<span style=font-weight:700>div</span>&gt;
-</span></span><span style=display:flex><span>    &lt;/<span style=font-weight:700>MemoComponent</span>&gt;
+</span></span><span style=display:flex><span><span style=color:#859900>const</span> <span style=color:#268bd2>Parent</span> = () =&gt; {
+</span></span><span style=display:flex><span>  <span style=color:#93a1a1;font-style:italic>// This breaks memoization! Children is recreated each render
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span>  <span style=color:#859900>return</span> (
+</span></span><span style=display:flex><span>    &lt;<span style=color:#268bd2;font-weight:700>MemoComponent</span>&gt;
+</span></span><span style=display:flex><span>      &lt;<span style=color:#268bd2;font-weight:700>div</span>&gt;<span style=color:#268bd2>Some</span> <span style=color:#268bd2>content</span>&lt;/<span style=color:#268bd2;font-weight:700>div</span>&gt;
+</span></span><span style=display:flex><span>    &lt;/<span style=color:#268bd2;font-weight:700>MemoComponent</span>&gt;
 </span></span><span style=display:flex><span>  );
 </span></span><span style=display:flex><span>};
-</span></span></code></pre></div><p>To fix this, you need to memoize the children:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=font-weight:700>const</span> Parent = () =&gt; {
-</span></span><span style=display:flex><span>  <span style=font-weight:700>const</span> content = useMemo(() =&gt; &lt;<span style=font-weight:700>div</span>&gt;Some content&lt;/<span style=font-weight:700>div</span>&gt;, []);
+</span></span></code></pre></div><p>To fix this, you need to memoize the children:</p><div class=highlight><pre tabindex=0 style=color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=color:#859900>const</span> <span style=color:#268bd2>Parent</span> = () =&gt; {
+</span></span><span style=display:flex><span>  <span style=color:#859900>const</span> <span style=color:#268bd2>content</span> = <span style=color:#268bd2>useMemo</span>(() =&gt; &lt;<span style=color:#268bd2;font-weight:700>div</span>&gt;<span style=color:#268bd2>Some</span> <span style=color:#268bd2>content</span>&lt;/<span style=color:#268bd2;font-weight:700>div</span>&gt;, []);
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=font-weight:700>return</span> &lt;<span style=font-weight:700>MemoComponent</span>&gt;{content}&lt;/<span style=font-weight:700>MemoComponent</span>&gt;;
+</span></span><span style=display:flex><span>  <span style=color:#859900>return</span> &lt;<span style=color:#268bd2;font-weight:700>MemoComponent</span>&gt;{<span style=color:#268bd2>content</span>}&lt;/<span style=color:#268bd2;font-weight:700>MemoComponent</span>&gt;;
 </span></span><span style=display:flex><span>};
 </span></span></code></pre></div><h3 id=3-the-nested-memo-component-problem>3. The Nested Memo Component Problem
 <a class=heading-link href=#3-the-nested-memo-component-problem><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h3><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=font-weight:700>const</span> InnerChild = React.memo(() =&gt; &lt;<span style=font-weight:700>div</span>&gt;Inner&lt;/<span style=font-weight:700>div</span>&gt;);
-</span></span><span style=display:flex><span><span style=font-weight:700>const</span> OuterChild = React.memo(({ children }) =&gt; &lt;<span style=font-weight:700>div</span>&gt;{children}&lt;/<span style=font-weight:700>div</span>&gt;);
+<span class=sr-only>Link to heading</span></a></h3><div class=highlight><pre tabindex=0 style=color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=color:#859900>const</span> <span style=color:#268bd2>InnerChild</span> = <span style=color:#268bd2>React</span>.<span style=color:#268bd2>memo</span>(() =&gt; &lt;<span style=color:#268bd2;font-weight:700>div</span>&gt;<span style=color:#268bd2>Inner</span>&lt;/<span style=color:#268bd2;font-weight:700>div</span>&gt;);
+</span></span><span style=display:flex><span><span style=color:#859900>const</span> <span style=color:#268bd2>OuterChild</span> = <span style=color:#268bd2>React</span>.<span style=color:#268bd2>memo</span>(({ <span style=color:#268bd2>children</span> }) =&gt; &lt;<span style=color:#268bd2;font-weight:700>div</span>&gt;{<span style=color:#268bd2>children</span>}&lt;/<span style=color:#268bd2;font-weight:700>div</span>&gt;);
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-weight:700>const</span> Parent = () =&gt; {
-</span></span><span style=display:flex><span>  <span style=font-style:italic>// Memoization of OuterChild is broken!
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>  <span style=font-weight:700>return</span> (
-</span></span><span style=display:flex><span>    &lt;<span style=font-weight:700>OuterChild</span>&gt;
-</span></span><span style=display:flex><span>      &lt;<span style=font-weight:700>InnerChild</span> /&gt;
-</span></span><span style=display:flex><span>    &lt;/<span style=font-weight:700>OuterChild</span>&gt;
+</span></span><span style=display:flex><span><span style=color:#859900>const</span> <span style=color:#268bd2>Parent</span> = () =&gt; {
+</span></span><span style=display:flex><span>  <span style=color:#93a1a1;font-style:italic>// Memoization of OuterChild is broken!
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span>  <span style=color:#859900>return</span> (
+</span></span><span style=display:flex><span>    &lt;<span style=color:#268bd2;font-weight:700>OuterChild</span>&gt;
+</span></span><span style=display:flex><span>      &lt;<span style=color:#268bd2;font-weight:700>InnerChild</span> /&gt;
+</span></span><span style=display:flex><span>    &lt;/<span style=color:#268bd2;font-weight:700>OuterChild</span>&gt;
 </span></span><span style=display:flex><span>  );
 </span></span><span style=display:flex><span>};
-</span></span></code></pre></div><p>Even though both components are memoized, <code>OuterChild</code> will still re-render because the <code>InnerChild</code> JSX element creates a new object reference on each render. The solution? Memoize the child element:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=font-weight:700>const</span> Parent = () =&gt; {
-</span></span><span style=display:flex><span>  <span style=font-weight:700>const</span> innerChild = useMemo(() =&gt; &lt;<span style=font-weight:700>InnerChild</span> /&gt;, []);
+</span></span></code></pre></div><p>Even though both components are memoized, <code>OuterChild</code> will still re-render because the <code>InnerChild</code> JSX element creates a new object reference on each render. The solution? Memoize the child element:</p><div class=highlight><pre tabindex=0 style=color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=color:#859900>const</span> <span style=color:#268bd2>Parent</span> = () =&gt; {
+</span></span><span style=display:flex><span>  <span style=color:#859900>const</span> <span style=color:#268bd2>innerChild</span> = <span style=color:#268bd2>useMemo</span>(() =&gt; &lt;<span style=color:#268bd2;font-weight:700>InnerChild</span> /&gt;, []);
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=font-weight:700>return</span> &lt;<span style=font-weight:700>OuterChild</span>&gt;{innerChild}&lt;/<span style=font-weight:700>OuterChild</span>&gt;;
+</span></span><span style=display:flex><span>  <span style=color:#859900>return</span> &lt;<span style=color:#268bd2;font-weight:700>OuterChild</span>&gt;{<span style=color:#268bd2>innerChild</span>}&lt;/<span style=color:#268bd2;font-weight:700>OuterChild</span>&gt;;
 </span></span><span style=display:flex><span>};
 </span></span></code></pre></div><h2 id=when-should-you-actually-use-memoization>When Should You Actually Use Memoization?
 <a class=heading-link href=#when-should-you-actually-use-memoization><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
@@ -144,28 +144,28 @@
 <a class=heading-link href=#use-usecallback-when><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
 <span class=sr-only>Link to heading</span></a></h3><ol><li>You&rsquo;re passing callbacks to optimized child components that rely on reference equality</li><li>The callback is a dependency in a useEffect hook</li><li>You need to maintain a stable function reference for event handlers in memoized components</li></ol><h2 id=the-composition-alternative>The Composition Alternative
 <a class=heading-link href=#the-composition-alternative><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><p>Before reaching for memoization, consider if your component structure could be improved through composition. Component composition often addresses performance issues more elegantly than memoization.</p><p>For example, instead of memoizing an expensive component:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=font-weight:700>const</span> ParentWithState = () =&gt; {
-</span></span><span style=display:flex><span>  <span style=font-weight:700>const</span> [count, setCount] = useState(0);
+<span class=sr-only>Link to heading</span></a></h2><p>Before reaching for memoization, consider if your component structure could be improved through composition. Component composition often addresses performance issues more elegantly than memoization.</p><p>For example, instead of memoizing an expensive component:</p><div class=highlight><pre tabindex=0 style=color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=color:#859900>const</span> <span style=color:#268bd2>ParentWithState</span> = () =&gt; {
+</span></span><span style=display:flex><span>  <span style=color:#859900>const</span> [<span style=color:#268bd2>count</span>, <span style=color:#268bd2>setCount</span>] = <span style=color:#268bd2>useState</span>(<span style=color:#2aa198;font-weight:700>0</span>);
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=font-weight:700>return</span> (
-</span></span><span style=display:flex><span>    &lt;<span style=font-weight:700>div</span>&gt;
-</span></span><span style=display:flex><span>      &lt;<span style=font-weight:700>button</span> onClick={() =&gt; setCount(count + 1)}&gt;Increment&lt;/<span style=font-weight:700>button</span>&gt;
-</span></span><span style=display:flex><span>      &lt;<span style=font-weight:700>ExpensiveComponent</span> /&gt; {<span style=font-style:italic>/* Re-renders on every count change */</span>}
-</span></span><span style=display:flex><span>    &lt;/<span style=font-weight:700>div</span>&gt;
+</span></span><span style=display:flex><span>  <span style=color:#859900>return</span> (
+</span></span><span style=display:flex><span>    &lt;<span style=color:#268bd2;font-weight:700>div</span>&gt;
+</span></span><span style=display:flex><span>      &lt;<span style=color:#268bd2;font-weight:700>button</span> <span style=color:#268bd2>onClick</span>={() =&gt; <span style=color:#268bd2>setCount</span>(<span style=color:#268bd2>count</span> + <span style=color:#2aa198;font-weight:700>1</span>)}&gt;<span style=color:#268bd2>Increment</span>&lt;/<span style=color:#268bd2;font-weight:700>button</span>&gt;
+</span></span><span style=display:flex><span>      &lt;<span style=color:#268bd2;font-weight:700>ExpensiveComponent</span> /&gt; {<span style=color:#93a1a1;font-style:italic>/* Re-renders on every count change */</span>}
+</span></span><span style=display:flex><span>    &lt;/<span style=color:#268bd2;font-weight:700>div</span>&gt;
 </span></span><span style=display:flex><span>  );
 </span></span><span style=display:flex><span>};
-</span></span></code></pre></div><p>Move the state to a more specific container:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=font-weight:700>const</span> CounterButton = () =&gt; {
-</span></span><span style=display:flex><span>  <span style=font-weight:700>const</span> [count, setCount] = useState(0);
+</span></span></code></pre></div><p>Move the state to a more specific container:</p><div class=highlight><pre tabindex=0 style=color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=color:#859900>const</span> <span style=color:#268bd2>CounterButton</span> = () =&gt; {
+</span></span><span style=display:flex><span>  <span style=color:#859900>const</span> [<span style=color:#268bd2>count</span>, <span style=color:#268bd2>setCount</span>] = <span style=color:#268bd2>useState</span>(<span style=color:#2aa198;font-weight:700>0</span>);
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=font-weight:700>return</span> &lt;<span style=font-weight:700>button</span> onClick={() =&gt; setCount(count + 1)}&gt;Count: {count}&lt;/<span style=font-weight:700>button</span>&gt;;
+</span></span><span style=display:flex><span>  <span style=color:#859900>return</span> &lt;<span style=color:#268bd2;font-weight:700>button</span> <span style=color:#268bd2>onClick</span>={() =&gt; <span style=color:#268bd2>setCount</span>(<span style=color:#268bd2>count</span> + <span style=color:#2aa198;font-weight:700>1</span>)}&gt;<span style=color:#268bd2>Count</span>: {<span style=color:#268bd2>count</span>}&lt;/<span style=color:#268bd2;font-weight:700>button</span>&gt;;
 </span></span><span style=display:flex><span>};
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-weight:700>const</span> Parent = () =&gt; {
-</span></span><span style=display:flex><span>  <span style=font-weight:700>return</span> (
-</span></span><span style=display:flex><span>    &lt;<span style=font-weight:700>div</span>&gt;
-</span></span><span style=display:flex><span>      &lt;<span style=font-weight:700>CounterButton</span> /&gt;
-</span></span><span style=display:flex><span>      &lt;<span style=font-weight:700>ExpensiveComponent</span> /&gt; {<span style=font-style:italic>/* No longer re-renders when count changes */</span>}
-</span></span><span style=display:flex><span>    &lt;/<span style=font-weight:700>div</span>&gt;
+</span></span><span style=display:flex><span><span style=color:#859900>const</span> <span style=color:#268bd2>Parent</span> = () =&gt; {
+</span></span><span style=display:flex><span>  <span style=color:#859900>return</span> (
+</span></span><span style=display:flex><span>    &lt;<span style=color:#268bd2;font-weight:700>div</span>&gt;
+</span></span><span style=display:flex><span>      &lt;<span style=color:#268bd2;font-weight:700>CounterButton</span> /&gt;
+</span></span><span style=display:flex><span>      &lt;<span style=color:#268bd2;font-weight:700>ExpensiveComponent</span> /&gt; {<span style=color:#93a1a1;font-style:italic>/* No longer re-renders when count changes */</span>}
+</span></span><span style=display:flex><span>    &lt;/<span style=color:#268bd2;font-weight:700>div</span>&gt;
 </span></span><span style=display:flex><span>  );
 </span></span><span style=display:flex><span>};
 </span></span></code></pre></div><h2 id=conclusion>Conclusion

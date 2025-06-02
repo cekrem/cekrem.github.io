@@ -20,107 +20,107 @@
 <a class=heading-link href=#clean-architecture-in-practice><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
 <span class=sr-only>Link to heading</span></a></h2><p>Let&rsquo;s examine a proof-of-concept project that demonstrates some of these principles. The project implements a simple transformation pipeline where plugins can modify input data. Let&rsquo;s make the Dependency Inversion Principle (DIP) the centerpiece of our system.</p><h3 id=the-core-domain>The Core Domain
 <a class=heading-link href=#the-core-domain><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h3><p>At the heart of our system lies the transformer interface:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=font-style:italic>// Transformer defines the interface for data transformation operations.</span>
-</span></span><span style=display:flex><span><span style=font-weight:700>type</span> Transformer <span style=font-weight:700>interface</span> {
-</span></span><span style=display:flex><span>    <span style=font-style:italic>// Transform processes the input bytes and returns transformed bytes or an error.</span>
-</span></span><span style=display:flex><span>    Transform(input []<span>byte</span>) ([]<span>byte</span>, <span>error</span>)
+<span class=sr-only>Link to heading</span></a></h3><p>At the heart of our system lies the transformer interface:</p><div class=highlight><pre tabindex=0 style=color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#93a1a1;font-style:italic>// Transformer defines the interface for data transformation operations.</span>
+</span></span><span style=display:flex><span><span style=color:#859900>type</span> <span style=color:#268bd2>Transformer</span> <span style=color:#859900>interface</span> {
+</span></span><span style=display:flex><span>    <span style=color:#93a1a1;font-style:italic>// Transform processes the input bytes and returns transformed bytes or an error.</span>
+</span></span><span style=display:flex><span>    <span style=color:#268bd2>Transform</span>(<span style=color:#268bd2>input</span> []<span style=color:#859900;font-weight:700>byte</span>) ([]<span style=color:#859900;font-weight:700>byte</span>, <span style=color:#859900;font-weight:700>error</span>)
 </span></span><span style=display:flex><span>}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-style:italic>// Plugin defines the interface for plugin implementations.</span>
-</span></span><span style=display:flex><span><span style=font-weight:700>type</span> Plugin <span style=font-weight:700>interface</span> {
-</span></span><span style=display:flex><span>    <span style=font-style:italic>// NewTransformer creates and returns a new Transformer instance.</span>
-</span></span><span style=display:flex><span>    NewTransformer() Transformer
+</span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic>// Plugin defines the interface for plugin implementations.</span>
+</span></span><span style=display:flex><span><span style=color:#859900>type</span> <span style=color:#268bd2>Plugin</span> <span style=color:#859900>interface</span> {
+</span></span><span style=display:flex><span>    <span style=color:#93a1a1;font-style:italic>// NewTransformer creates and returns a new Transformer instance.</span>
+</span></span><span style=display:flex><span>    <span style=color:#268bd2>NewTransformer</span>() <span style=color:#268bd2>Transformer</span>
 </span></span><span style=display:flex><span>}
 </span></span></code></pre></div><p>This interface represents our core business rules. Notice how it&rsquo;s simple and stable - it doesn&rsquo;t depend on any implementation details.</p><h3 id=plugin-implementation>Plugin Implementation
 <a class=heading-link href=#plugin-implementation><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h3><p>Here&rsquo;s how a simple passthrough plugin implements this interface:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=font-style:italic>// passthroughPlugin implements transformer.Plugin without requiring any state.</span>
-</span></span><span style=display:flex><span><span style=font-weight:700>type</span> passthroughPlugin <span style=font-weight:700>struct</span>{}
+<span class=sr-only>Link to heading</span></a></h3><p>Here&rsquo;s how a simple passthrough plugin implements this interface:</p><div class=highlight><pre tabindex=0 style=color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#93a1a1;font-style:italic>// passthroughPlugin implements transformer.Plugin without requiring any state.</span>
+</span></span><span style=display:flex><span><span style=color:#859900>type</span> <span style=color:#268bd2>passthroughPlugin</span> <span style=color:#859900>struct</span>{}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-style:italic>// NewTransformer returns a new passthrough transformer instance.</span>
-</span></span><span style=display:flex><span><span style=font-weight:700>func</span> (passthroughPlugin) NewTransformer() transformer.Transformer {
-</span></span><span style=display:flex><span>    <span style=font-weight:700>return</span> &amp;passthroughTransformer{}
+</span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic>// NewTransformer returns a new passthrough transformer instance.</span>
+</span></span><span style=display:flex><span><span style=color:#859900>func</span> (<span style=color:#268bd2>passthroughPlugin</span>) <span style=color:#268bd2>NewTransformer</span>() <span style=color:#268bd2>transformer</span>.<span style=color:#268bd2>Transformer</span> {
+</span></span><span style=display:flex><span>    <span style=color:#859900>return</span> &amp;<span style=color:#268bd2>passthroughTransformer</span>{}
 </span></span><span style=display:flex><span>}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-style:italic>// passthroughTransformer implements transformer.Transformer without requiring any state.</span>
-</span></span><span style=display:flex><span><span style=font-weight:700>type</span> passthroughTransformer <span style=font-weight:700>struct</span>{}
+</span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic>// passthroughTransformer implements transformer.Transformer without requiring any state.</span>
+</span></span><span style=display:flex><span><span style=color:#859900>type</span> <span style=color:#268bd2>passthroughTransformer</span> <span style=color:#859900>struct</span>{}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-style:italic>// Transform implements transformer.Transformer by returning the input bytes unmodified.</span>
-</span></span><span style=display:flex><span><span style=font-weight:700>func</span> (pt passthroughTransformer) Transform(input []<span>byte</span>) ([]<span>byte</span>, <span>error</span>) {
-</span></span><span style=display:flex><span>    <span style=font-weight:700>return</span> input, <span style=font-weight:700>nil</span>
+</span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic>// Transform implements transformer.Transformer by returning the input bytes unmodified.</span>
+</span></span><span style=display:flex><span><span style=color:#859900>func</span> (<span style=color:#268bd2>pt</span> <span style=color:#268bd2>passthroughTransformer</span>) <span style=color:#268bd2>Transform</span>(<span style=color:#268bd2>input</span> []<span style=color:#859900;font-weight:700>byte</span>) ([]<span style=color:#859900;font-weight:700>byte</span>, <span style=color:#859900;font-weight:700>error</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#859900>return</span> <span style=color:#268bd2>input</span>, <span style=color:#859900;font-weight:700>nil</span>
 </span></span><span style=display:flex><span>}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-style:italic>// Plugin exports the passthrough transformer plugin for dynamic loading.</span>
-</span></span><span style=display:flex><span><span style=font-weight:700>var</span> Plugin transformer.Plugin = &amp;passthroughPlugin{}
+</span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic>// Plugin exports the passthrough transformer plugin for dynamic loading.</span>
+</span></span><span style=display:flex><span><span style=color:#859900>var</span> <span style=color:#268bd2>Plugin</span> <span style=color:#268bd2>transformer</span>.<span style=color:#268bd2>Plugin</span> = &amp;<span style=color:#268bd2>passthroughPlugin</span>{}
 </span></span></code></pre></div><p>The beauty of this approach is that plugins are completely isolated from each other and only depend on the core interfaces.</p><h2 id=dependency-inversion-in-action>Dependency Inversion in Action
 <a class=heading-link href=#dependency-inversion-in-action><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><p>Our processor component demonstrates DIP perfectly:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=font-style:italic>// Processor manages the loading and execution of transformation plugins.</span>
-</span></span><span style=display:flex><span><span style=font-weight:700>type</span> Processor <span style=font-weight:700>struct</span> {
-</span></span><span style=display:flex><span>    plugins <span style=font-weight:700>map</span>[<span>string</span>]transformer.Plugin
+<span class=sr-only>Link to heading</span></a></h2><p>Our processor component demonstrates DIP perfectly:</p><div class=highlight><pre tabindex=0 style=color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#93a1a1;font-style:italic>// Processor manages the loading and execution of transformation plugins.</span>
+</span></span><span style=display:flex><span><span style=color:#859900>type</span> <span style=color:#268bd2>Processor</span> <span style=color:#859900>struct</span> {
+</span></span><span style=display:flex><span>    <span style=color:#268bd2>plugins</span> <span style=color:#859900>map</span>[<span style=color:#859900;font-weight:700>string</span>]<span style=color:#268bd2>transformer</span>.<span style=color:#268bd2>Plugin</span>
 </span></span><span style=display:flex><span>}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-style:italic>// NewProcessor creates and initializes a new Processor instance.</span>
-</span></span><span style=display:flex><span><span style=font-weight:700>func</span> NewProcessor() Processor {
-</span></span><span style=display:flex><span>    <span style=font-weight:700>return</span> &amp;Processor{
-</span></span><span style=display:flex><span>        plugins: make(<span style=font-weight:700>map</span>[<span>string</span>]transformer.Plugin),
+</span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic>// NewProcessor creates and initializes a new Processor instance.</span>
+</span></span><span style=display:flex><span><span style=color:#859900>func</span> <span style=color:#268bd2>NewProcessor</span>() <span style=color:#268bd2>Processor</span> {
+</span></span><span style=display:flex><span>    <span style=color:#859900>return</span> &amp;<span style=color:#268bd2>Processor</span>{
+</span></span><span style=display:flex><span>        <span style=color:#268bd2>plugins</span>: <span style=color:#cb4b16>make</span>(<span style=color:#859900>map</span>[<span style=color:#859900;font-weight:700>string</span>]<span style=color:#268bd2>transformer</span>.<span style=color:#268bd2>Plugin</span>),
 </span></span><span style=display:flex><span>    }
 </span></span><span style=display:flex><span>}
 </span></span></code></pre></div><p>Notice how the <code>Processor</code> depends on abstractions (<code>transformer.Plugin</code>), not concrete implementations. This is DIP in its purest form.</p><h2 id=the-plugin-system-at-work>The Plugin System at Work
 <a class=heading-link href=#the-plugin-system-at-work><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><p>The main application loads plugins dynamically:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span>proc := processor.NewProcessor()
+<span class=sr-only>Link to heading</span></a></h2><p>The main application loads plugins dynamically:</p><div class=highlight><pre tabindex=0 style=color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#268bd2>proc</span> := <span style=color:#268bd2>processor</span>.<span style=color:#268bd2>NewProcessor</span>()
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-style:italic>// Load plugins from the plugins directory relative to the executable.</span>
-</span></span><span style=display:flex><span>pluginsDir := filepath.Join(execDir, <span style=font-style:italic>&#34;plugins&#34;</span>)
-</span></span><span style=display:flex><span>plugins, err := filepath.Glob(filepath.Join(pluginsDir, <span style=font-style:italic>&#34;*.so&#34;</span>))
-</span></span><span style=display:flex><span><span style=font-weight:700>if</span> err != <span style=font-weight:700>nil</span> || len(plugins) == 0 {
-</span></span><span style=display:flex><span>    log.Printf(<span style=font-style:italic>&#34;Failed to list plugins: %v\n&#34;</span>, err)
-</span></span><span style=display:flex><span>    os.Exit(1)
+</span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic>// Load plugins from the plugins directory relative to the executable.</span>
+</span></span><span style=display:flex><span><span style=color:#268bd2>pluginsDir</span> := <span style=color:#268bd2>filepath</span>.<span style=color:#268bd2>Join</span>(<span style=color:#268bd2>execDir</span>, <span style=color:#2aa198>&#34;plugins&#34;</span>)
+</span></span><span style=display:flex><span><span style=color:#268bd2>plugins</span>, <span style=color:#268bd2>err</span> := <span style=color:#268bd2>filepath</span>.<span style=color:#268bd2>Glob</span>(<span style=color:#268bd2>filepath</span>.<span style=color:#268bd2>Join</span>(<span style=color:#268bd2>pluginsDir</span>, <span style=color:#2aa198>&#34;*.so&#34;</span>))
+</span></span><span style=display:flex><span><span style=color:#859900>if</span> <span style=color:#268bd2>err</span> != <span style=color:#859900;font-weight:700>nil</span> || <span style=color:#cb4b16>len</span>(<span style=color:#268bd2>plugins</span>) == <span style=color:#2aa198;font-weight:700>0</span> {
+</span></span><span style=display:flex><span>    <span style=color:#268bd2>log</span>.<span style=color:#268bd2>Printf</span>(<span style=color:#2aa198>&#34;Failed to list plugins: %v\n&#34;</span>, <span style=color:#268bd2>err</span>)
+</span></span><span style=display:flex><span>    <span style=color:#268bd2>os</span>.<span style=color:#268bd2>Exit</span>(<span style=color:#2aa198;font-weight:700>1</span>)
 </span></span><span style=display:flex><span>}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-weight:700>for</span> _, plugin := <span style=font-weight:700>range</span> plugins {
-</span></span><span style=display:flex><span>    <span style=font-weight:700>if</span> err := proc.LoadPlugin(plugin); err != <span style=font-weight:700>nil</span> {
-</span></span><span style=display:flex><span>        log.Printf(<span style=font-style:italic>&#34;Failed to load plugin %s: %v\n&#34;</span>, plugin, err)
-</span></span><span style=display:flex><span>        <span style=font-weight:700>continue</span>
+</span></span><span style=display:flex><span><span style=color:#859900>for</span> <span style=color:#268bd2>_</span>, <span style=color:#268bd2>plugin</span> := <span style=color:#859900>range</span> <span style=color:#268bd2>plugins</span> {
+</span></span><span style=display:flex><span>    <span style=color:#859900>if</span> <span style=color:#268bd2>err</span> := <span style=color:#268bd2>proc</span>.<span style=color:#268bd2>LoadPlugin</span>(<span style=color:#268bd2>plugin</span>); <span style=color:#268bd2>err</span> != <span style=color:#859900;font-weight:700>nil</span> {
+</span></span><span style=display:flex><span>        <span style=color:#268bd2>log</span>.<span style=color:#268bd2>Printf</span>(<span style=color:#2aa198>&#34;Failed to load plugin %s: %v\n&#34;</span>, <span style=color:#268bd2>plugin</span>, <span style=color:#268bd2>err</span>)
+</span></span><span style=display:flex><span>        <span style=color:#859900>continue</span>
 </span></span><span style=display:flex><span>    }
 </span></span><span style=display:flex><span>}
 </span></span></code></pre></div><p>This approach offers several benefits:</p><ol><li>Plugins can be developed and deployed independently</li><li>The core application remains stable</li><li>New functionality can be added without modifying existing code</li></ol><h2 id=applying-this-to-apis>Applying This to APIs
 <a class=heading-link href=#applying-this-to-apis><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><p>This pattern could be extended to API development. Imagine:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=font-weight:700>type</span> APIPlugin <span style=font-weight:700>interface</span> {
-</span></span><span style=display:flex><span>    RegisterRoutes(router Router)
-</span></span><span style=display:flex><span>    GetBasePath() <span>string</span>
+<span class=sr-only>Link to heading</span></a></h2><p>This pattern could be extended to API development. Imagine:</p><div class=highlight><pre tabindex=0 style=color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#859900>type</span> <span style=color:#268bd2>APIPlugin</span> <span style=color:#859900>interface</span> {
+</span></span><span style=display:flex><span>    <span style=color:#268bd2>RegisterRoutes</span>(<span style=color:#268bd2>router</span> <span style=color:#268bd2>Router</span>)
+</span></span><span style=display:flex><span>    <span style=color:#268bd2>GetBasePath</span>() <span style=color:#859900;font-weight:700>string</span>
 </span></span><span style=display:flex><span>}
 </span></span></code></pre></div><p>Each plugin could handle a different API domain:</p><ul><li><code>/users/*</code> routes in a users plugin</li><li><code>/products/*</code> routes in a products plugin</li><li><code>/orders/*</code> routes in an orders plugin</li></ul><h2 id=build-system-integration>Build System Integration
 <a class=heading-link href=#build-system-integration><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><p>The project uses a Makefile to manage plugin compilation:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-makefile data-lang=makefile><span style=display:flex><span><span style=font-style:italic># Go commands
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>GO := go
-</span></span><span style=display:flex><span>GOBUILD := <span style=font-weight:700>$(</span>GO<span style=font-weight:700>)</span> build
-</span></span><span style=display:flex><span>GOCLEAN := <span style=font-weight:700>$(</span>GO<span style=font-weight:700>)</span> clean
+<span class=sr-only>Link to heading</span></a></h2><p>The project uses a Makefile to manage plugin compilation:</p><div class=highlight><pre tabindex=0 style=color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-makefile data-lang=makefile><span style=display:flex><span><span style=color:#93a1a1;font-style:italic># Go commands
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span><span style=color:#268bd2>GO</span> := go
+</span></span><span style=display:flex><span><span style=color:#268bd2>GOBUILD</span> := <span style=color:#859900>$(</span>GO<span style=color:#859900>)</span> build
+</span></span><span style=display:flex><span><span style=color:#268bd2>GOCLEAN</span> := <span style=color:#859900>$(</span>GO<span style=color:#859900>)</span> clean
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-style:italic># Directories
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>BUILD_DIR := build
-</span></span><span style=display:flex><span>PLUGIN_DIR := plugins
-</span></span><span style=display:flex><span>CMD_DIR := cmd
+</span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic># Directories
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span><span style=color:#268bd2>BUILD_DIR</span> := build
+</span></span><span style=display:flex><span><span style=color:#268bd2>PLUGIN_DIR</span> := plugins
+</span></span><span style=display:flex><span><span style=color:#268bd2>CMD_DIR</span> := cmd
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>.PHONY: all
-</span></span><span style=display:flex><span>all: build plugins
+</span></span><span style=display:flex><span><span style=color:#268bd2>.PHONY</span>: <span style=color:#268bd2>all</span>
+</span></span><span style=display:flex><span><span style=color:#268bd2>all</span>: <span style=color:#268bd2>build</span> <span style=color:#268bd2>plugins</span>
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>.PHONY: build
-</span></span><span style=display:flex><span>build:
-</span></span><span style=display:flex><span>    @mkdir -p <span style=font-weight:700>$(</span>BUILD_DIR<span style=font-weight:700>)</span>
-</span></span><span style=display:flex><span>    <span style=font-weight:700>$(</span>GOBUILD<span style=font-weight:700>)</span> -o <span style=font-weight:700>$(</span>BUILD_DIR<span style=font-weight:700>)</span>/transform <span style=font-weight:700>$(</span>CMD_DIR<span style=font-weight:700>)</span>/main.go
+</span></span><span style=display:flex><span><span style=color:#268bd2>.PHONY</span>: <span style=color:#268bd2>build</span>
+</span></span><span style=display:flex><span><span style=color:#268bd2>build</span>:
+</span></span><span style=display:flex><span>    @mkdir -p <span style=color:#859900>$(</span>BUILD_DIR<span style=color:#859900>)</span>
+</span></span><span style=display:flex><span>    <span style=color:#859900>$(</span>GOBUILD<span style=color:#859900>)</span> -o <span style=color:#859900>$(</span>BUILD_DIR<span style=color:#859900>)</span>/transform <span style=color:#859900>$(</span>CMD_DIR<span style=color:#859900>)</span>/main.go
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>.PHONY: build-plugins
-</span></span><span style=display:flex><span>build-plugins:
-</span></span><span style=display:flex><span>    @mkdir -p <span style=font-weight:700>$(</span>BUILD_DIR<span style=font-weight:700>)</span>/plugins
-</span></span><span style=display:flex><span>    @echo <span style=font-style:italic>&#34;Building plugins...&#34;</span>
-</span></span><span style=display:flex><span>    @for plugin in <span style=font-weight:700>$(</span>PLUGIN_DIR<span style=font-weight:700>)</span>/*/ ; <span style=font-weight:700>do</span> <span style=font-weight:700;font-style:italic>\
-</span></span></span><span style=display:flex><span><span style=font-weight:700;font-style:italic></span>        <span style=font-weight:700>if</span> [ -f $$plugin/go.mod ]; <span style=font-weight:700>then</span> <span style=font-weight:700;font-style:italic>\
-</span></span></span><span style=display:flex><span><span style=font-weight:700;font-style:italic></span>            plugin_name=$$(basename $$plugin); <span style=font-weight:700;font-style:italic>\
-</span></span></span><span style=display:flex><span><span style=font-weight:700;font-style:italic></span>            echo <span style=font-style:italic>&#34;Building plugin: </span>$$<span style=font-style:italic>plugin_name&#34;</span>; <span style=font-weight:700;font-style:italic>\
-</span></span></span><span style=display:flex><span><span style=font-weight:700;font-style:italic></span>            cd $$plugin &amp;&amp; go mod tidy &amp;&amp; <span style=font-weight:700;font-style:italic>\
-</span></span></span><span style=display:flex><span><span style=font-weight:700;font-style:italic></span>            <span style=font-weight:700>$(</span>GOBUILD<span style=font-weight:700>)</span> -buildmode=plugin -o ../../<span style=font-weight:700>$(</span>BUILD_DIR<span style=font-weight:700>)</span>/plugins/$$plugin_name.so || exit 1; <span style=font-weight:700;font-style:italic>\
-</span></span></span><span style=display:flex><span><span style=font-weight:700;font-style:italic></span>            cd ../../; <span style=font-weight:700;font-style:italic>\
-</span></span></span><span style=display:flex><span><span style=font-weight:700;font-style:italic></span>        <span style=font-weight:700>fi</span> <span style=font-weight:700;font-style:italic>\
-</span></span></span><span style=display:flex><span><span style=font-weight:700;font-style:italic></span>    <span style=font-weight:700>done</span>
+</span></span><span style=display:flex><span><span style=color:#268bd2>.PHONY</span>: <span style=color:#268bd2>build</span>-<span style=color:#268bd2>plugins</span>
+</span></span><span style=display:flex><span><span style=color:#268bd2>build-plugins</span>:
+</span></span><span style=display:flex><span>    @mkdir -p <span style=color:#859900>$(</span>BUILD_DIR<span style=color:#859900>)</span>/plugins
+</span></span><span style=display:flex><span>    @echo <span style=color:#2aa198>&#34;Building plugins...&#34;</span>
+</span></span><span style=display:flex><span>    @for plugin in <span style=color:#859900>$(</span>PLUGIN_DIR<span style=color:#859900>)</span>/*/ ; <span style=color:#859900>do</span> <span style=color:#2aa198>\
+</span></span></span><span style=display:flex><span><span style=color:#2aa198></span>        <span style=color:#859900>if</span> [ -f <span style=color:#268bd2>$$</span>plugin/go.mod ]; <span style=color:#859900>then</span> <span style=color:#2aa198>\
+</span></span></span><span style=display:flex><span><span style=color:#2aa198></span>            <span style=color:#268bd2>plugin_name</span>=<span style=color:#268bd2>$$</span>(basename <span style=color:#268bd2>$$</span>plugin); <span style=color:#2aa198>\
+</span></span></span><span style=display:flex><span><span style=color:#2aa198></span>            <span style=color:#cb4b16>echo</span> <span style=color:#2aa198>&#34;Building plugin: </span><span style=color:#268bd2>$$</span><span style=color:#2aa198>plugin_name&#34;</span>; <span style=color:#2aa198>\
+</span></span></span><span style=display:flex><span><span style=color:#2aa198></span>            <span style=color:#cb4b16>cd</span> <span style=color:#268bd2>$$</span>plugin &amp;&amp; go mod tidy &amp;&amp; <span style=color:#2aa198>\
+</span></span></span><span style=display:flex><span><span style=color:#2aa198></span>            <span style=color:#859900>$(</span>GOBUILD<span style=color:#859900>)</span> -buildmode=plugin -o ../../<span style=color:#859900>$(</span>BUILD_DIR<span style=color:#859900>)</span>/plugins/<span style=color:#268bd2>$$</span>plugin_name.so || <span style=color:#cb4b16>exit</span> 1; <span style=color:#2aa198>\
+</span></span></span><span style=display:flex><span><span style=color:#2aa198></span>            <span style=color:#cb4b16>cd</span> ../../; <span style=color:#2aa198>\
+</span></span></span><span style=display:flex><span><span style=color:#2aa198></span>        <span style=color:#859900>fi</span> <span style=color:#2aa198>\
+</span></span></span><span style=display:flex><span><span style=color:#2aa198></span>    <span style=color:#859900>done</span>
 </span></span></code></pre></div><p>This ensures plugins are built with the correct flags and placed in the appropriate directory.</p><h2 id=key-takeaways>Key Takeaways
 <a class=heading-link href=#key-takeaways><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
 <span class=sr-only>Link to heading</span></a></h2><ol><li><strong>Clean Architecture</strong> and the <strong>SOLID</strong> design principles enforces separation of concerns and makes the system more maintainable</li><li><strong>Dependency Inversion</strong> in particular ensures our core business logic depends only on abstractions</li><li><strong>Plugin Systems</strong> provide a practical way to implement these principles</li><li>This approach scales well from simple transformations to complex API systems</li></ol><h2 id=conclusion>Conclusion

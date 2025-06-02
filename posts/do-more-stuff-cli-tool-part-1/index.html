@@ -20,48 +20,48 @@
 <a class=heading-link href=#starting-with-ink><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
 <span class=sr-only>Link to heading</span></a></h2><p>Since I&rsquo;m already somewhat familiar with how React rendering works when targeting the DOM, this is where I&rsquo;ll start my terminal UI adventure: <strong>I&rsquo;ll create a simple yet hopefully useful CLI as a case study for rendering UI in the terminal</strong>. In the next part I&rsquo;ll try and make the same tool only using Mosaic instead. If my courage doesn&rsquo;t fail me, I&rsquo;ll sum it all up with a final post exploring some differences and key takeaways from both libraries. Maybe, just maybe, I&rsquo;ll be inspired to make something similar myself with Elm or something. Exciting!</p><h2 id=what-i-made>What I made
 <a class=heading-link href=#what-i-made><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><p>Basically, I made <code>domorestuff</code>, a simple tool to run multiple shell commands in parallel, and inspect the output of each one. Since ink actually supports all React features, it felt instantly familiar. The only sort of domain specific caveat I encountered was how to keep the app from exciting after initial output. TL;DR: it seems any input listener or interval running will keep stuff alive, but there might be more to it than that.</p><p><img src=inkdomorestuff.gif alt="domorestuff, ink edition"></p><p>You can try the tool yourself, just <code>npx domorestuff</code>. I&rsquo;ve taken a few shortcuts here and there, but the <a href=https://github.com/cekrem/domorestuff class=external-link target=_blank rel=noopener>source code</a> should be fairly straight forward for those familiar with React.</p><p>In fact, let me prove that:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-JSX data-lang=JSX><span style=display:flex><span><span style=font-style:italic>// source/command.js sure looks like React to me!
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>
-</span></span><span style=display:flex><span><span style=font-weight:700>import</span> React, {useEffect, useState} from <span style=font-style:italic>&#39;react&#39;</span>;
-</span></span><span style=display:flex><span><span style=font-weight:700>import</span> {Box, Spacer, Text} from <span style=font-style:italic>&#39;ink&#39;</span>;
-</span></span><span style=display:flex><span><span style=font-weight:700>import</span> {spawn} from <span style=font-style:italic>&#39;child_process&#39;</span>;
+<span class=sr-only>Link to heading</span></a></h2><p>Basically, I made <code>domorestuff</code>, a simple tool to run multiple shell commands in parallel, and inspect the output of each one. Since ink actually supports all React features, it felt instantly familiar. The only sort of domain specific caveat I encountered was how to keep the app from exciting after initial output. TL;DR: it seems any input listener or interval running will keep stuff alive, but there might be more to it than that.</p><p><img src=inkdomorestuff.gif alt="domorestuff, ink edition"></p><p>You can try the tool yourself, just <code>npx domorestuff</code>. I&rsquo;ve taken a few shortcuts here and there, but the <a href=https://github.com/cekrem/domorestuff class=external-link target=_blank rel=noopener>source code</a> should be fairly straight forward for those familiar with React.</p><p>In fact, let me prove that:</p><div class=highlight><pre tabindex=0 style=color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-JSX data-lang=JSX><span style=display:flex><span><span style=color:#93a1a1;font-style:italic>// source/command.js sure looks like React to me!
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span>
+</span></span><span style=display:flex><span><span style=color:#859900>import</span> <span style=color:#268bd2>React</span>, {<span style=color:#268bd2>useEffect</span>, <span style=color:#268bd2>useState</span>} <span style=color:#268bd2>from</span> <span style=color:#2aa198>&#39;react&#39;</span>;
+</span></span><span style=display:flex><span><span style=color:#859900>import</span> {<span style=color:#268bd2>Box</span>, <span style=color:#268bd2>Spacer</span>, <span style=color:#268bd2>Text</span>} <span style=color:#268bd2>from</span> <span style=color:#2aa198>&#39;ink&#39;</span>;
+</span></span><span style=display:flex><span><span style=color:#859900>import</span> {<span style=color:#268bd2>spawn</span>} <span style=color:#268bd2>from</span> <span style=color:#2aa198>&#39;child_process&#39;</span>;
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-weight:700>export</span> <span style=font-weight:700>const</span> Command = ({cmd, active}) =&gt; {
-</span></span><span style=display:flex><span>	<span style=font-weight:700>const</span> [summary, setSummary] = useState(<span style=font-style:italic>&#39;&#39;</span>);
-</span></span><span style=display:flex><span>	<span style=font-weight:700>const</span> [color, setColor] = useState(COLORS.pending);
-</span></span><span style=display:flex><span>	<span style=font-weight:700>const</span> [output, setOutput] = useState(<span style=font-weight:700>null</span>);
+</span></span><span style=display:flex><span><span style=color:#859900>export</span> <span style=color:#859900>const</span> <span style=color:#268bd2>Command</span> = ({<span style=color:#268bd2>cmd</span>, <span style=color:#268bd2>active</span>}) =&gt; {
+</span></span><span style=display:flex><span>	<span style=color:#859900>const</span> [<span style=color:#268bd2>summary</span>, <span style=color:#268bd2>setSummary</span>] = <span style=color:#268bd2>useState</span>(<span style=color:#2aa198>&#39;&#39;</span>);
+</span></span><span style=display:flex><span>	<span style=color:#859900>const</span> [<span style=color:#268bd2>color</span>, <span style=color:#268bd2>setColor</span>] = <span style=color:#268bd2>useState</span>(<span style=color:#268bd2>COLORS</span>.<span style=color:#268bd2>pending</span>);
+</span></span><span style=display:flex><span>	<span style=color:#859900>const</span> [<span style=color:#268bd2>output</span>, <span style=color:#268bd2>setOutput</span>] = <span style=color:#268bd2>useState</span>(<span style=color:#859900;font-weight:700>null</span>);
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	useEffect(() =&gt; {
-</span></span><span style=display:flex><span>		<span style=font-style:italic>// {skipped for brevity, TL;DR: spawn process, handle output etc}
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>	}, [cmd]);
+</span></span><span style=display:flex><span>	<span style=color:#268bd2>useEffect</span>(() =&gt; {
+</span></span><span style=display:flex><span>		<span style=color:#93a1a1;font-style:italic>// {skipped for brevity, TL;DR: spawn process, handle output etc}
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span>	}, [<span style=color:#268bd2>cmd</span>]);
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>	<span style=font-weight:700>return</span> (
-</span></span><span style=display:flex><span>		&lt;<span style=font-weight:700>Box</span>
-</span></span><span style=display:flex><span>			overflow=<span style=font-style:italic>&#34;hidden&#34;</span>
-</span></span><span style=display:flex><span>			flexDirection=<span style=font-style:italic>&#34;column&#34;</span> <span>//</span> it even has flexbox<span>!</span>
-</span></span><span style=display:flex><span>			width=<span style=font-style:italic>&#34;100%&#34;</span>
-</span></span><span style=display:flex><span>			borderStyle=<span style=font-style:italic>&#34;bold&#34;</span>
-</span></span><span style=display:flex><span>			borderColor={color}
+</span></span><span style=display:flex><span>	<span style=color:#859900>return</span> (
+</span></span><span style=display:flex><span>		&lt;<span style=color:#268bd2;font-weight:700>Box</span>
+</span></span><span style=display:flex><span>			<span style=color:#268bd2>overflow</span>=<span style=color:#2aa198>&#34;hidden&#34;</span>
+</span></span><span style=display:flex><span>			<span style=color:#268bd2>flexDirection</span>=<span style=color:#2aa198>&#34;column&#34;</span> // <span style=color:#268bd2>it</span> <span style=color:#268bd2>even</span> <span style=color:#268bd2>has</span> <span style=color:#268bd2>flexbox</span>!
+</span></span><span style=display:flex><span>			<span style=color:#268bd2>width</span>=<span style=color:#2aa198>&#34;100%&#34;</span>
+</span></span><span style=display:flex><span>			<span style=color:#268bd2>borderStyle</span>=<span style=color:#2aa198>&#34;bold&#34;</span>
+</span></span><span style=display:flex><span>			<span style=color:#268bd2>borderColor</span>={<span style=color:#268bd2>color</span>}
 </span></span><span style=display:flex><span>		&gt;
-</span></span><span style=display:flex><span>			&lt;<span style=font-weight:700>Box</span>&gt;
-</span></span><span style=display:flex><span>				&lt;<span style=font-weight:700>Text</span> bold&gt;
-</span></span><span style=display:flex><span>					{<span style=font-style:italic>`</span><span style=font-weight:700;font-style:italic>${</span>active ? <span style=font-style:italic>&#39;* &#39;</span> : <span style=font-style:italic>&#39;&#39;</span><span style=font-weight:700;font-style:italic>}${</span>cmd<span style=font-weight:700;font-style:italic>}</span><span style=font-style:italic>`</span>}
-</span></span><span style=display:flex><span>					{!active &amp;&amp; output?.length &gt; 1 &amp;&amp; &lt;<span style=font-weight:700>Text</span> dimColor&gt; (...)&lt;/<span style=font-weight:700>Text</span>&gt;}
-</span></span><span style=display:flex><span>				&lt;/<span style=font-weight:700>Text</span>&gt;
+</span></span><span style=display:flex><span>			&lt;<span style=color:#268bd2;font-weight:700>Box</span>&gt;
+</span></span><span style=display:flex><span>				&lt;<span style=color:#268bd2;font-weight:700>Text</span> <span style=color:#268bd2>bold</span>&gt;
+</span></span><span style=display:flex><span>					{<span style=color:#2aa198>`</span><span style=color:#2aa198>${</span><span style=color:#268bd2>active</span> ? <span style=color:#2aa198>&#39;* &#39;</span> : <span style=color:#2aa198>&#39;&#39;</span><span style=color:#2aa198>}${</span><span style=color:#268bd2>cmd</span><span style=color:#2aa198>}</span><span style=color:#2aa198>`</span>}
+</span></span><span style=display:flex><span>					{!<span style=color:#268bd2>active</span> &amp;&amp; <span style=color:#268bd2>output</span>?.<span style=color:#268bd2>length</span> &gt; <span style=color:#2aa198;font-weight:700>1</span> &amp;&amp; &lt;<span style=color:#268bd2;font-weight:700>Text</span> <span style=color:#268bd2>dimColor</span>&gt; (...)&lt;/<span style=color:#268bd2;font-weight:700>Text</span>&gt;}
+</span></span><span style=display:flex><span>				&lt;/<span style=color:#268bd2;font-weight:700>Text</span>&gt;
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>				&lt;<span style=font-weight:700>Spacer</span> /&gt;
+</span></span><span style=display:flex><span>				&lt;<span style=color:#268bd2;font-weight:700>Spacer</span> /&gt;
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>				&lt;<span style=font-weight:700>Text</span> color={color}&gt;{summary}&lt;/<span style=font-weight:700>Text</span>&gt;
-</span></span><span style=display:flex><span>			&lt;/<span style=font-weight:700>Box</span>&gt;
+</span></span><span style=display:flex><span>				&lt;<span style=color:#268bd2;font-weight:700>Text</span> <span style=color:#268bd2>color</span>={<span style=color:#268bd2>color</span>}&gt;{<span style=color:#268bd2>summary</span>}&lt;/<span style=color:#268bd2;font-weight:700>Text</span>&gt;
+</span></span><span style=display:flex><span>			&lt;/<span style=color:#268bd2;font-weight:700>Box</span>&gt;
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>			{active &amp;&amp; output?.length &gt; 1 &amp;&amp; (
-</span></span><span style=display:flex><span>				&lt;<span style=font-weight:700>Box</span> marginTop=<span style=font-style:italic>&#34;1&#34;</span> overflow=<span style=font-style:italic>&#34;hidden&#34;</span>&gt;
-</span></span><span style=display:flex><span>					&lt;<span style=font-weight:700>Text</span> overflow=<span style=font-style:italic>&#34;hidden&#34;</span> wrap=<span style=font-style:italic>&#34;truncate&#34;</span>&gt;
-</span></span><span style=display:flex><span>						{output.toString().trim()}
-</span></span><span style=display:flex><span>					&lt;/<span style=font-weight:700>Text</span>&gt;
-</span></span><span style=display:flex><span>				&lt;/<span style=font-weight:700>Box</span>&gt;
+</span></span><span style=display:flex><span>			{<span style=color:#268bd2>active</span> &amp;&amp; <span style=color:#268bd2>output</span>?.<span style=color:#268bd2>length</span> &gt; <span style=color:#2aa198;font-weight:700>1</span> &amp;&amp; (
+</span></span><span style=display:flex><span>				&lt;<span style=color:#268bd2;font-weight:700>Box</span> <span style=color:#268bd2>marginTop</span>=<span style=color:#2aa198>&#34;1&#34;</span> <span style=color:#268bd2>overflow</span>=<span style=color:#2aa198>&#34;hidden&#34;</span>&gt;
+</span></span><span style=display:flex><span>					&lt;<span style=color:#268bd2;font-weight:700>Text</span> <span style=color:#268bd2>overflow</span>=<span style=color:#2aa198>&#34;hidden&#34;</span> <span style=color:#268bd2>wrap</span>=<span style=color:#2aa198>&#34;truncate&#34;</span>&gt;
+</span></span><span style=display:flex><span>						{<span style=color:#268bd2>output</span>.<span style=color:#268bd2>toString</span>().<span style=color:#268bd2>trim</span>()}
+</span></span><span style=display:flex><span>					&lt;/<span style=color:#268bd2;font-weight:700>Text</span>&gt;
+</span></span><span style=display:flex><span>				&lt;/<span style=color:#268bd2;font-weight:700>Box</span>&gt;
 </span></span><span style=display:flex><span>			)}
-</span></span><span style=display:flex><span>		&lt;/<span style=font-weight:700>Box</span>&gt;
+</span></span><span style=display:flex><span>		&lt;/<span style=color:#268bd2;font-weight:700>Box</span>&gt;
 </span></span><span style=display:flex><span>	);
 </span></span><span style=display:flex><span>};
 </span></span></code></pre></div><p>It&rsquo;s not fair make comparisons before I&rsquo;ve at least tried Mason, but I can say straight away that ink is super smooth. Also, NPM is a <em>very</em> efficient means to publish CLI tools. You&rsquo;re basically done before even starting. I might even use NPM to publish the Kotlin/Compose version of this app as well, that&rsquo;s how smooth the ecosystem is. (Yes, it&rsquo;s perfectly fine to publish non-JavaScript binaries, as demonstrated with <a href=/posts/create-elm-live-app/#the-simplest-possible-solution-that-actually-works>create-elm-live-app</a>.)</p><p>Stay tuned for part two: <code>doevenmorestuff</code>, starring Kotlin, Compose and Mason! Coming soon.</p></div><footer></footer></article></section></div><script type=text/javascript src=https://testimonial.to/js/iframeResizer.min.js></script><style>form{display:flex;justify-content:center}</style><form action="https://api.follow.it/subscription-form/SDRVMUk2VmsySENBNk94RDNKNDFnS3NmWlQ5a3gxejNIeUlJWHl3QjdqNnRHdENkaXp5aXZhZlFvcGtzcEZ3K0o5TFVRdSt2WWM5RWRsWmZwWVhNUS9PZjJqMWZ3aHBwZUhjT1ZpWXBGRkdZOWtIcGhYQkJkSkE4QTQ1eHl5YkF8RTZHTExQOWFrN1pFY1F0RzZ5c3pVN2I1QTI1YXNtMjZiYllLU25zQkJ3bz0=/8" method=post><input type=email name=email required placeholder=Email spellcheck=false style=padding:1rem;border:none;outline:none>

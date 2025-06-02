@@ -20,51 +20,51 @@
 <a class=heading-link href=#the-current-state-of-the-blog-engine><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
 <span class=sr-only>Link to heading</span></a></h2><p>The source code for this project can be found <a href=https://github.com/cekrem/clean-blog/tree/v0.2 class=external-link target=_blank rel=noopener>here</a>. Please note that I&rsquo;m right in the middle of development as I&rsquo;m writing this, so this project is by no means finished. Here&rsquo;s where I&rsquo;m at in the development process:</p><ol><li><strong>Acceptance Tests</strong>: I&rsquo;ve written the <code>ServeMarkdownBlogPostFeatureTest</code> that verifies the end-to-end behavior of serving markdown posts as HTML</li><li><strong>Domain Layer</strong>: Complete with tests</li><li><strong>Application Layer</strong>: Complete with tests</li><li><strong>Interface Adapter Layer</strong>: This layer is quite thin, abstract and empty for now, nothing really to test. I&rsquo;m thinking about moving the controller to this layer, and return a generic type rather than using the ktor-specific <code>call.respond()</code> that put it in the infrastructure layer in the first place. WIP indeed!</li><li><strong>Infrastructure Layer</strong>: Markdown parsing is working, but HTML transformation needs work, or in more general terms: the input device (markdown to domain model) is working, but the output device (domain model to HTML) is not working yet.</li></ol><p>I&rsquo;m coming to like this approach more than I&rsquo;d planned. It&rsquo;s forcing me to think about the system in a more holistic way, and to consider the interactions between the layers. Strangely it&rsquo;s also forcing me to focus more on the individual components, and testing them in isolation (which wouldn&rsquo;t even be possible without this die-hard Clean Architecture setup).</p><h2 id=the-acceptance-test-in-action>The Acceptance Test in Action
 <a class=heading-link href=#the-acceptance-test-in-action><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><p>Here&rsquo;s a snippet of the acceptance test that&rsquo;s driving the development:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-kotlin data-lang=kotlin><span style=display:flex><span><span style=font-weight:700>class</span> <span style=font-weight:700>ServeMarkdownBlogPostFeatureTest</span> : FeatureAcceptanceTest() {
-</span></span><span style=display:flex><span>    @Test
-</span></span><span style=display:flex><span>    <span style=font-weight:700>fun</span> `should convert and serve markdown blog posts as properly formatted HTML pages`() =
-</span></span><span style=display:flex><span>        runTest {
-</span></span><span style=display:flex><span>            <span style=font-weight:700>TestFixtures</span>.blogPosts.forEach { post -&gt;
-</span></span><span style=display:flex><span>                <span style=font-style:italic>// Given a blog post exists
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>                testApplication.givenBlogPost(
-</span></span><span style=display:flex><span>                    slug = post,
-</span></span><span style=display:flex><span>                    content = <span style=font-weight:700>TestFixtures</span>.readMarkdownPost(post),
+<span class=sr-only>Link to heading</span></a></h2><p>Here&rsquo;s a snippet of the acceptance test that&rsquo;s driving the development:</p><div class=highlight><pre tabindex=0 style=color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-kotlin data-lang=kotlin><span style=display:flex><span><span style=color:#859900>class</span> <span style=color:#cb4b16>ServeMarkdownBlogPostFeatureTest</span> : <span style=color:#268bd2>FeatureAcceptanceTest</span>() {
+</span></span><span style=display:flex><span>    <span style=color:#268bd2>@Test</span>
+</span></span><span style=display:flex><span>    <span style=color:#859900>fun</span> <span style=color:#268bd2>`should convert and serve markdown blog posts as properly formatted HTML pages`</span>() =
+</span></span><span style=display:flex><span>        <span style=color:#268bd2>runTest</span> {
+</span></span><span style=display:flex><span>            <span style=color:#cb4b16>TestFixtures</span>.<span style=color:#268bd2>blogPosts</span>.<span style=color:#268bd2>forEach</span> { <span style=color:#268bd2>post</span> -&gt;
+</span></span><span style=display:flex><span>                <span style=color:#93a1a1;font-style:italic>// Given a blog post exists
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span>                <span style=color:#268bd2>testApplication</span>.<span style=color:#268bd2>givenBlogPost</span>(
+</span></span><span style=display:flex><span>                    <span style=color:#268bd2>slug</span> = <span style=color:#268bd2>post</span>,
+</span></span><span style=display:flex><span>                    <span style=color:#268bd2>content</span> = <span style=color:#cb4b16>TestFixtures</span>.<span style=color:#268bd2>readMarkdownPost</span>(<span style=color:#268bd2>post</span>),
 </span></span><span style=display:flex><span>                )
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>                <span style=font-style:italic>// When requesting the blog post
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>                <span style=font-weight:700>val</span> response = testClient.<span style=font-weight:700>get</span>(<span style=font-style:italic>&#34;</span><span style=font-weight:700;font-style:italic>${testApplication.baseUrl}</span><span style=font-style:italic>/posts/</span><span style=font-weight:700;font-style:italic>$post</span><span style=font-style:italic>&#34;</span>)
+</span></span><span style=display:flex><span>                <span style=color:#93a1a1;font-style:italic>// When requesting the blog post
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span>                <span style=color:#859900>val</span> <span style=color:#268bd2>response</span> = <span style=color:#268bd2>testClient</span>.<span style=color:#859900>get</span>(<span style=color:#2aa198>&#34;</span><span style=color:#2aa198>${testApplication.baseUrl}</span><span style=color:#2aa198>/posts/</span><span style=color:#2aa198>$post</span><span style=color:#2aa198>&#34;</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>                <span style=font-style:italic>// Then it should return properly formatted HTML
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>                assertEquals(<span style=font-weight:700>HttpStatusCode</span>.OK, response.status)
-</span></span><span style=display:flex><span>                assertEquals(
-</span></span><span style=display:flex><span>                    <span style=font-weight:700>ContentType</span>.<span style=font-weight:700>Text</span>.<span style=font-weight:700>Html</span>.withCharset(<span style=font-weight:700>Charsets</span>.UTF_8),
-</span></span><span style=display:flex><span>                    response.contentType(),
+</span></span><span style=display:flex><span>                <span style=color:#93a1a1;font-style:italic>// Then it should return properly formatted HTML
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span>                <span style=color:#268bd2>assertEquals</span>(<span style=color:#cb4b16>HttpStatusCode</span>.<span style=color:#268bd2>OK</span>, <span style=color:#268bd2>response</span>.<span style=color:#268bd2>status</span>)
+</span></span><span style=display:flex><span>                <span style=color:#268bd2>assertEquals</span>(
+</span></span><span style=display:flex><span>                    <span style=color:#cb4b16>ContentType</span>.<span style=color:#cb4b16>Text</span>.<span style=color:#cb4b16>Html</span>.<span style=color:#268bd2>withCharset</span>(<span style=color:#cb4b16>Charsets</span>.<span style=color:#268bd2>UTF_8</span>),
+</span></span><span style=display:flex><span>                    <span style=color:#268bd2>response</span>.<span style=color:#268bd2>contentType</span>(),
 </span></span><span style=display:flex><span>                )
-</span></span><span style=display:flex><span>                assertEquals(<span style=font-weight:700>TestFixtures</span>.readHtmlFixture(post), response.bodyAsText())
+</span></span><span style=display:flex><span>                <span style=color:#268bd2>assertEquals</span>(<span style=color:#cb4b16>TestFixtures</span>.<span style=color:#268bd2>readHtmlFixture</span>(<span style=color:#268bd2>post</span>), <span style=color:#268bd2>response</span>.<span style=color:#268bd2>bodyAsText</span>())
 </span></span><span style=display:flex><span>            }
 </span></span><span style=display:flex><span>        }
 </span></span><span style=display:flex><span>}
-</span></span></code></pre></div><p>The test uses markdown and HTML fixtures to verify that this markdown:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-markdown data-lang=markdown><span style=display:flex><span>---
+</span></span></code></pre></div><p>The test uses markdown and HTML fixtures to verify that this markdown:</p><div class=highlight><pre tabindex=0 style=color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-markdown data-lang=markdown><span style=display:flex><span>---
 </span></span><span style=display:flex><span>title: Hello, World!
 </span></span><span style=display:flex><span>description: This is the description
 </span></span><span style=display:flex><span>---
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-weight:700>## Basic content
-</span></span></span><span style=display:flex><span><span style=font-weight:700></span>
+</span></span><span style=display:flex><span><span style=color:#d33682>## Basic content
+</span></span></span><span style=display:flex><span><span style=color:#d33682></span>
 </span></span><span style=display:flex><span>This is my first blog post. Welcome to my blog!
-</span></span></code></pre></div><p>will be transformed into this HTML:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-html data-lang=html><span style=display:flex><span><span>&lt;!doctype html&gt;</span>
-</span></span><span style=display:flex><span>&lt;<span style=font-weight:700>html</span>&gt;
-</span></span><span style=display:flex><span>  &lt;<span style=font-weight:700>head</span>&gt;
-</span></span><span style=display:flex><span>    &lt;<span style=font-weight:700>title</span>&gt;Hello, World!&lt;/<span style=font-weight:700>title</span>&gt;
-</span></span><span style=display:flex><span>    &lt;<span style=font-weight:700>meta</span> charset=<span style=font-style:italic>&#34;utf-8&#34;</span> /&gt;
-</span></span><span style=display:flex><span>    &lt;<span style=font-weight:700>meta</span> content=<span style=font-style:italic>&#34;This is the description&#34;</span> name=<span style=font-style:italic>&#34;description&#34;</span> /&gt;
-</span></span><span style=display:flex><span>  &lt;/<span style=font-weight:700>head</span>&gt;
-</span></span><span style=display:flex><span>  &lt;<span style=font-weight:700>body</span>&gt;
-</span></span><span style=display:flex><span>    &lt;<span style=font-weight:700>h1</span>&gt;Hello, World!&lt;/<span style=font-weight:700>h1</span>&gt;
-</span></span><span style=display:flex><span>    &lt;<span style=font-weight:700>h2</span>&gt;Basic content&lt;/<span style=font-weight:700>h2</span>&gt;
-</span></span><span style=display:flex><span>    &lt;<span style=font-weight:700>p</span>&gt;This is my first blog post. Welcome to my blog!&lt;/<span style=font-weight:700>p</span>&gt;
-</span></span><span style=display:flex><span>  &lt;/<span style=font-weight:700>body</span>&gt;
-</span></span><span style=display:flex><span>&lt;/<span style=font-weight:700>html</span>&gt;
+</span></span></code></pre></div><p>will be transformed into this HTML:</p><div class=highlight><pre tabindex=0 style=color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-html data-lang=html><span style=display:flex><span><span style=color:#93a1a1;font-style:italic>&lt;!doctype html&gt;</span>
+</span></span><span style=display:flex><span>&lt;<span style=color:#268bd2;font-weight:700>html</span>&gt;
+</span></span><span style=display:flex><span>  &lt;<span style=color:#268bd2;font-weight:700>head</span>&gt;
+</span></span><span style=display:flex><span>    &lt;<span style=color:#268bd2;font-weight:700>title</span>&gt;Hello, World!&lt;/<span style=color:#268bd2;font-weight:700>title</span>&gt;
+</span></span><span style=display:flex><span>    &lt;<span style=color:#268bd2;font-weight:700>meta</span> <span style=color:#268bd2>charset</span>=<span style=color:#2aa198>&#34;utf-8&#34;</span> /&gt;
+</span></span><span style=display:flex><span>    &lt;<span style=color:#268bd2;font-weight:700>meta</span> <span style=color:#268bd2>content</span>=<span style=color:#2aa198>&#34;This is the description&#34;</span> <span style=color:#268bd2>name</span>=<span style=color:#2aa198>&#34;description&#34;</span> /&gt;
+</span></span><span style=display:flex><span>  &lt;/<span style=color:#268bd2;font-weight:700>head</span>&gt;
+</span></span><span style=display:flex><span>  &lt;<span style=color:#268bd2;font-weight:700>body</span>&gt;
+</span></span><span style=display:flex><span>    &lt;<span style=color:#268bd2;font-weight:700>h1</span>&gt;Hello, World!&lt;/<span style=color:#268bd2;font-weight:700>h1</span>&gt;
+</span></span><span style=display:flex><span>    &lt;<span style=color:#268bd2;font-weight:700>h2</span>&gt;Basic content&lt;/<span style=color:#268bd2;font-weight:700>h2</span>&gt;
+</span></span><span style=display:flex><span>    &lt;<span style=color:#268bd2;font-weight:700>p</span>&gt;This is my first blog post. Welcome to my blog!&lt;/<span style=color:#268bd2;font-weight:700>p</span>&gt;
+</span></span><span style=display:flex><span>  &lt;/<span style=color:#268bd2;font-weight:700>body</span>&gt;
+</span></span><span style=display:flex><span>&lt;/<span style=color:#268bd2;font-weight:700>html</span>&gt;
 </span></span></code></pre></div><p>(The actual fixtures contain a bit more complex content, I simplified it a bit in this post to avoid spamming with long code blocks.)</p><p>For now, it&rsquo;s not nearly there. But I&rsquo;m getting closer, one unit test at a time. Which is a lot better than just coding blindly until it happens to work (good luck refactoring the mess you&rsquo;ve made without breaking stuff with that approach).</p><h2 id=next-steps>Next Steps
 <a class=heading-link href=#next-steps><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
 <span class=sr-only>Link to heading</span></a></h2><ol start=0><li>(<strong>Get layers in order?</strong> Try again to move the controller to the adapter layer, it probably belongs there)</li><li><strong>Write Unit Remaining Unit Tests</strong>: Let&rsquo;s get 100% coverage on that infra layer too!</li><li><strong>Implement Transformation</strong>: Make the output device (domain model to HTML) work</li><li><strong>Refactor</strong>: Clean up the code while keeping all tests passing</li><li><strong>Extend Features</strong>: Add support for more markdown elements and custom templates</li></ol><h2 id=lessons-learned-so-far>Lessons Learned So Far

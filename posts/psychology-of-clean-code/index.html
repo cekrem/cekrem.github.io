@@ -12,57 +12,57 @@
 </span><span class=separator>•</span>
 <span class=tag><a href=/tags/software-engineering/>Software-Engineering</a></span></div></div></header><div class=post-content><p>We all know we should write clean code. We&rsquo;ve read the books, attended the talks, and nodded along to the principles. Yet, somehow, we still find ourselves writing messy React components. Why is that? The answer lies not in our technical skills, but in our psychology.</p><h2 id=the-cognitive-load-trap>The Cognitive Load Trap
 <a class=heading-link href=#the-cognitive-load-trap><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><p>Consider this common scenario:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=font-weight:700>const</span> UserDashboard = () =&gt; {
-</span></span><span style=display:flex><span>  <span style=font-weight:700>const</span> [users, setUsers] = useState([]);
-</span></span><span style=display:flex><span>  <span style=font-weight:700>const</span> [loading, setLoading] = useState(<span style=font-weight:700>true</span>);
-</span></span><span style=display:flex><span>  <span style=font-weight:700>const</span> [error, setError] = useState(<span style=font-weight:700>null</span>);
-</span></span><span style=display:flex><span>  <span style=font-weight:700>const</span> [filter, setFilter] = useState(<span style=font-style:italic>&#34;&#34;</span>);
-</span></span><span style=display:flex><span>  <span style=font-weight:700>const</span> [sortBy, setSortBy] = useState(<span style=font-style:italic>&#34;name&#34;</span>);
-</span></span><span style=display:flex><span>  <span style=font-weight:700>const</span> [page, setPage] = useState(1);
-</span></span><span style=display:flex><span>  <span style=font-weight:700>const</span> [totalPages, setTotalPages] = useState(1);
+<span class=sr-only>Link to heading</span></a></h2><p>Consider this common scenario:</p><div class=highlight><pre tabindex=0 style=color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=color:#859900>const</span> <span style=color:#268bd2>UserDashboard</span> = () =&gt; {
+</span></span><span style=display:flex><span>  <span style=color:#859900>const</span> [<span style=color:#268bd2>users</span>, <span style=color:#268bd2>setUsers</span>] = <span style=color:#268bd2>useState</span>([]);
+</span></span><span style=display:flex><span>  <span style=color:#859900>const</span> [<span style=color:#268bd2>loading</span>, <span style=color:#268bd2>setLoading</span>] = <span style=color:#268bd2>useState</span>(<span style=color:#859900;font-weight:700>true</span>);
+</span></span><span style=display:flex><span>  <span style=color:#859900>const</span> [<span style=color:#268bd2>error</span>, <span style=color:#268bd2>setError</span>] = <span style=color:#268bd2>useState</span>(<span style=color:#859900;font-weight:700>null</span>);
+</span></span><span style=display:flex><span>  <span style=color:#859900>const</span> [<span style=color:#268bd2>filter</span>, <span style=color:#268bd2>setFilter</span>] = <span style=color:#268bd2>useState</span>(<span style=color:#2aa198>&#34;&#34;</span>);
+</span></span><span style=display:flex><span>  <span style=color:#859900>const</span> [<span style=color:#268bd2>sortBy</span>, <span style=color:#268bd2>setSortBy</span>] = <span style=color:#268bd2>useState</span>(<span style=color:#2aa198>&#34;name&#34;</span>);
+</span></span><span style=display:flex><span>  <span style=color:#859900>const</span> [<span style=color:#268bd2>page</span>, <span style=color:#268bd2>setPage</span>] = <span style=color:#268bd2>useState</span>(<span style=color:#2aa198;font-weight:700>1</span>);
+</span></span><span style=display:flex><span>  <span style=color:#859900>const</span> [<span style=color:#268bd2>totalPages</span>, <span style=color:#268bd2>setTotalPages</span>] = <span style=color:#268bd2>useState</span>(<span style=color:#2aa198;font-weight:700>1</span>);
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  useEffect(() =&gt; {
-</span></span><span style=display:flex><span>    fetchUsers();
-</span></span><span style=display:flex><span>  }, [filter, sortBy, page]);
+</span></span><span style=display:flex><span>  <span style=color:#268bd2>useEffect</span>(() =&gt; {
+</span></span><span style=display:flex><span>    <span style=color:#268bd2>fetchUsers</span>();
+</span></span><span style=display:flex><span>  }, [<span style=color:#268bd2>filter</span>, <span style=color:#268bd2>sortBy</span>, <span style=color:#268bd2>page</span>]);
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=font-weight:700>const</span> fetchUsers = <span style=font-weight:700>async</span> () =&gt; {
-</span></span><span style=display:flex><span>    <span style=font-weight:700>try</span> {
-</span></span><span style=display:flex><span>      setLoading(<span style=font-weight:700>true</span>);
-</span></span><span style=display:flex><span>      <span style=font-weight:700>const</span> response = <span style=font-weight:700>await</span> fetch(
-</span></span><span style=display:flex><span>        <span style=font-style:italic>`/api/users?filter=</span><span style=font-weight:700;font-style:italic>${</span>filter<span style=font-weight:700;font-style:italic>}</span><span style=font-style:italic>&amp;sort=</span><span style=font-weight:700;font-style:italic>${</span>sortBy<span style=font-weight:700;font-style:italic>}</span><span style=font-style:italic>&amp;page=</span><span style=font-weight:700;font-style:italic>${</span>page<span style=font-weight:700;font-style:italic>}</span><span style=font-style:italic>`</span>
+</span></span><span style=display:flex><span>  <span style=color:#859900>const</span> <span style=color:#268bd2>fetchUsers</span> = <span style=color:#859900>async</span> () =&gt; {
+</span></span><span style=display:flex><span>    <span style=color:#859900>try</span> {
+</span></span><span style=display:flex><span>      <span style=color:#268bd2>setLoading</span>(<span style=color:#859900;font-weight:700>true</span>);
+</span></span><span style=display:flex><span>      <span style=color:#859900>const</span> <span style=color:#268bd2>response</span> = <span style=color:#859900>await</span> <span style=color:#268bd2>fetch</span>(
+</span></span><span style=display:flex><span>        <span style=color:#2aa198>`/api/users?filter=</span><span style=color:#2aa198>${</span><span style=color:#268bd2>filter</span><span style=color:#2aa198>}</span><span style=color:#2aa198>&amp;sort=</span><span style=color:#2aa198>${</span><span style=color:#268bd2>sortBy</span><span style=color:#2aa198>}</span><span style=color:#2aa198>&amp;page=</span><span style=color:#2aa198>${</span><span style=color:#268bd2>page</span><span style=color:#2aa198>}</span><span style=color:#2aa198>`</span>
 </span></span><span style=display:flex><span>      );
-</span></span><span style=display:flex><span>      <span style=font-weight:700>const</span> data = <span style=font-weight:700>await</span> response.json();
-</span></span><span style=display:flex><span>      setUsers(data.users);
-</span></span><span style=display:flex><span>      setTotalPages(data.totalPages);
-</span></span><span style=display:flex><span>    } <span style=font-weight:700>catch</span> (err) {
-</span></span><span style=display:flex><span>      setError(err.message);
-</span></span><span style=display:flex><span>    } <span style=font-weight:700>finally</span> {
-</span></span><span style=display:flex><span>      setLoading(<span style=font-weight:700>false</span>);
+</span></span><span style=display:flex><span>      <span style=color:#859900>const</span> <span style=color:#268bd2>data</span> = <span style=color:#859900>await</span> <span style=color:#268bd2>response</span>.<span style=color:#268bd2>json</span>();
+</span></span><span style=display:flex><span>      <span style=color:#268bd2>setUsers</span>(<span style=color:#268bd2>data</span>.<span style=color:#268bd2>users</span>);
+</span></span><span style=display:flex><span>      <span style=color:#268bd2>setTotalPages</span>(<span style=color:#268bd2>data</span>.<span style=color:#268bd2>totalPages</span>);
+</span></span><span style=display:flex><span>    } <span style=color:#859900>catch</span> (<span style=color:#268bd2>err</span>) {
+</span></span><span style=display:flex><span>      <span style=color:#268bd2>setError</span>(<span style=color:#268bd2>err</span>.<span style=color:#268bd2>message</span>);
+</span></span><span style=display:flex><span>    } <span style=color:#859900>finally</span> {
+</span></span><span style=display:flex><span>      <span style=color:#268bd2>setLoading</span>(<span style=color:#859900;font-weight:700>false</span>);
 </span></span><span style=display:flex><span>    }
 </span></span><span style=display:flex><span>  };
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=font-weight:700>const</span> handleFilterChange = (e) =&gt; setFilter(e.target.value);
-</span></span><span style=display:flex><span>  <span style=font-weight:700>const</span> handleSortChange = (e) =&gt; setSortBy(e.target.value);
-</span></span><span style=display:flex><span>  <span style=font-weight:700>const</span> handlePageChange = (newPage) =&gt; setPage(newPage);
+</span></span><span style=display:flex><span>  <span style=color:#859900>const</span> <span style=color:#268bd2>handleFilterChange</span> = (<span style=color:#268bd2>e</span>) =&gt; <span style=color:#268bd2>setFilter</span>(<span style=color:#268bd2>e</span>.<span style=color:#268bd2>target</span>.<span style=color:#268bd2>value</span>);
+</span></span><span style=display:flex><span>  <span style=color:#859900>const</span> <span style=color:#268bd2>handleSortChange</span> = (<span style=color:#268bd2>e</span>) =&gt; <span style=color:#268bd2>setSortBy</span>(<span style=color:#268bd2>e</span>.<span style=color:#268bd2>target</span>.<span style=color:#268bd2>value</span>);
+</span></span><span style=display:flex><span>  <span style=color:#859900>const</span> <span style=color:#268bd2>handlePageChange</span> = (<span style=color:#268bd2>newPage</span>) =&gt; <span style=color:#268bd2>setPage</span>(<span style=color:#268bd2>newPage</span>);
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=font-weight:700>if</span> (loading) <span style=font-weight:700>return</span> &lt;<span style=font-weight:700>LoadingSpinner</span> /&gt;;
-</span></span><span style=display:flex><span>  <span style=font-weight:700>if</span> (error) <span style=font-weight:700>return</span> &lt;<span style=font-weight:700>ErrorMessage</span> error={error} /&gt;;
+</span></span><span style=display:flex><span>  <span style=color:#859900>if</span> (<span style=color:#268bd2>loading</span>) <span style=color:#859900>return</span> &lt;<span style=color:#268bd2;font-weight:700>LoadingSpinner</span> /&gt;;
+</span></span><span style=display:flex><span>  <span style=color:#859900>if</span> (<span style=color:#268bd2>error</span>) <span style=color:#859900>return</span> &lt;<span style=color:#268bd2;font-weight:700>ErrorMessage</span> <span style=color:#268bd2>error</span>={<span style=color:#268bd2>error</span>} /&gt;;
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=font-weight:700>return</span> (
-</span></span><span style=display:flex><span>    &lt;<span style=font-weight:700>div</span>&gt;
-</span></span><span style=display:flex><span>      &lt;<span style=font-weight:700>FilterBar</span>
-</span></span><span style=display:flex><span>        filter={filter}
-</span></span><span style=display:flex><span>        onFilterChange={handleFilterChange}
-</span></span><span style=display:flex><span>        sortBy={sortBy}
-</span></span><span style=display:flex><span>        onSortChange={handleSortChange}
+</span></span><span style=display:flex><span>  <span style=color:#859900>return</span> (
+</span></span><span style=display:flex><span>    &lt;<span style=color:#268bd2;font-weight:700>div</span>&gt;
+</span></span><span style=display:flex><span>      &lt;<span style=color:#268bd2;font-weight:700>FilterBar</span>
+</span></span><span style=display:flex><span>        <span style=color:#268bd2>filter</span>={<span style=color:#268bd2>filter</span>}
+</span></span><span style=display:flex><span>        <span style=color:#268bd2>onFilterChange</span>={<span style=color:#268bd2>handleFilterChange</span>}
+</span></span><span style=display:flex><span>        <span style=color:#268bd2>sortBy</span>={<span style=color:#268bd2>sortBy</span>}
+</span></span><span style=display:flex><span>        <span style=color:#268bd2>onSortChange</span>={<span style=color:#268bd2>handleSortChange</span>}
 </span></span><span style=display:flex><span>      /&gt;
-</span></span><span style=display:flex><span>      &lt;<span style=font-weight:700>UserList</span> users={users} /&gt;
-</span></span><span style=display:flex><span>      &lt;<span style=font-weight:700>Pagination</span>
-</span></span><span style=display:flex><span>        currentPage={page}
-</span></span><span style=display:flex><span>        totalPages={totalPages}
-</span></span><span style=display:flex><span>        onPageChange={handlePageChange}
+</span></span><span style=display:flex><span>      &lt;<span style=color:#268bd2;font-weight:700>UserList</span> <span style=color:#268bd2>users</span>={<span style=color:#268bd2>users</span>} /&gt;
+</span></span><span style=display:flex><span>      &lt;<span style=color:#268bd2;font-weight:700>Pagination</span>
+</span></span><span style=display:flex><span>        <span style=color:#268bd2>currentPage</span>={<span style=color:#268bd2>page</span>}
+</span></span><span style=display:flex><span>        <span style=color:#268bd2>totalPages</span>={<span style=color:#268bd2>totalPages</span>}
+</span></span><span style=display:flex><span>        <span style=color:#268bd2>onPageChange</span>={<span style=color:#268bd2>handlePageChange</span>}
 </span></span><span style=display:flex><span>      /&gt;
-</span></span><span style=display:flex><span>    &lt;/<span style=font-weight:700>div</span>&gt;
+</span></span><span style=display:flex><span>    &lt;/<span style=color:#268bd2;font-weight:700>div</span>&gt;
 </span></span><span style=display:flex><span>  );
 </span></span><span style=display:flex><span>};
 </span></span></code></pre></div><p>This component isn&rsquo;t terrible, but it&rsquo;s not great either. It&rsquo;s doing too much, handling too many concerns, and will be difficult to maintain. Yet, it&rsquo;s exactly the kind of component we write when we&rsquo;re under pressure or trying to move fast.</p><h2 id=why-we-write-messy-code>Why We Write Messy Code
@@ -79,32 +79,32 @@
 <a class=heading-link href=#breaking-the-cycle><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
 <span class=sr-only>Link to heading</span></a></h2><h3 id=1-start-small-and-iterate>1. Start Small and Iterate
 <a class=heading-link href=#1-start-small-and-iterate><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h3><p>Instead of the monolithic component above, we could start with:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=font-weight:700>const</span> UserDashboard = () =&gt; {
-</span></span><span style=display:flex><span>  <span style=font-weight:700>const</span> { users, loading, error } = useUsers();
+<span class=sr-only>Link to heading</span></a></h3><p>Instead of the monolithic component above, we could start with:</p><div class=highlight><pre tabindex=0 style=color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=color:#859900>const</span> <span style=color:#268bd2>UserDashboard</span> = () =&gt; {
+</span></span><span style=display:flex><span>  <span style=color:#859900>const</span> { <span style=color:#268bd2>users</span>, <span style=color:#268bd2>loading</span>, <span style=color:#268bd2>error</span> } = <span style=color:#268bd2>useUsers</span>();
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=font-weight:700>if</span> (loading) <span style=font-weight:700>return</span> &lt;<span style=font-weight:700>LoadingSpinner</span> /&gt;;
-</span></span><span style=display:flex><span>  <span style=font-weight:700>if</span> (error) <span style=font-weight:700>return</span> &lt;<span style=font-weight:700>ErrorMessage</span> error={error} /&gt;;
+</span></span><span style=display:flex><span>  <span style=color:#859900>if</span> (<span style=color:#268bd2>loading</span>) <span style=color:#859900>return</span> &lt;<span style=color:#268bd2;font-weight:700>LoadingSpinner</span> /&gt;;
+</span></span><span style=display:flex><span>  <span style=color:#859900>if</span> (<span style=color:#268bd2>error</span>) <span style=color:#859900>return</span> &lt;<span style=color:#268bd2;font-weight:700>ErrorMessage</span> <span style=color:#268bd2>error</span>={<span style=color:#268bd2>error</span>} /&gt;;
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=font-weight:700>return</span> &lt;<span style=font-weight:700>UserList</span> users={users} /&gt;;
+</span></span><span style=display:flex><span>  <span style=color:#859900>return</span> &lt;<span style=color:#268bd2;font-weight:700>UserList</span> <span style=color:#268bd2>users</span>={<span style=color:#268bd2>users</span>} /&gt;;
 </span></span><span style=display:flex><span>};
-</span></span></code></pre></div><p>Then gradually add features as needed:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=font-weight:700>const</span> UserDashboard = () =&gt; {
-</span></span><span style=display:flex><span>  <span style=font-weight:700>const</span> { users, loading, error } = useUsers();
-</span></span><span style=display:flex><span>  <span style=font-weight:700>const</span> { filter, setFilter } = useFilter();
-</span></span><span style=display:flex><span>  <span style=font-weight:700>const</span> { sortBy, setSortBy } = useSort();
+</span></span></code></pre></div><p>Then gradually add features as needed:</p><div class=highlight><pre tabindex=0 style=color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=color:#859900>const</span> <span style=color:#268bd2>UserDashboard</span> = () =&gt; {
+</span></span><span style=display:flex><span>  <span style=color:#859900>const</span> { <span style=color:#268bd2>users</span>, <span style=color:#268bd2>loading</span>, <span style=color:#268bd2>error</span> } = <span style=color:#268bd2>useUsers</span>();
+</span></span><span style=display:flex><span>  <span style=color:#859900>const</span> { <span style=color:#268bd2>filter</span>, <span style=color:#268bd2>setFilter</span> } = <span style=color:#268bd2>useFilter</span>();
+</span></span><span style=display:flex><span>  <span style=color:#859900>const</span> { <span style=color:#268bd2>sortBy</span>, <span style=color:#268bd2>setSortBy</span> } = <span style=color:#268bd2>useSort</span>();
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=font-weight:700>if</span> (loading) <span style=font-weight:700>return</span> &lt;<span style=font-weight:700>LoadingSpinner</span> /&gt;;
-</span></span><span style=display:flex><span>  <span style=font-weight:700>if</span> (error) <span style=font-weight:700>return</span> &lt;<span style=font-weight:700>ErrorMessage</span> error={error} /&gt;;
+</span></span><span style=display:flex><span>  <span style=color:#859900>if</span> (<span style=color:#268bd2>loading</span>) <span style=color:#859900>return</span> &lt;<span style=color:#268bd2;font-weight:700>LoadingSpinner</span> /&gt;;
+</span></span><span style=display:flex><span>  <span style=color:#859900>if</span> (<span style=color:#268bd2>error</span>) <span style=color:#859900>return</span> &lt;<span style=color:#268bd2;font-weight:700>ErrorMessage</span> <span style=color:#268bd2>error</span>={<span style=color:#268bd2>error</span>} /&gt;;
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=font-weight:700>return</span> (
-</span></span><span style=display:flex><span>    &lt;<span style=font-weight:700>div</span>&gt;
-</span></span><span style=display:flex><span>      &lt;<span style=font-weight:700>FilterBar</span>
-</span></span><span style=display:flex><span>        filter={filter}
-</span></span><span style=display:flex><span>        onFilterChange={setFilter}
-</span></span><span style=display:flex><span>        sortBy={sortBy}
-</span></span><span style=display:flex><span>        onSortChange={setSortBy}
+</span></span><span style=display:flex><span>  <span style=color:#859900>return</span> (
+</span></span><span style=display:flex><span>    &lt;<span style=color:#268bd2;font-weight:700>div</span>&gt;
+</span></span><span style=display:flex><span>      &lt;<span style=color:#268bd2;font-weight:700>FilterBar</span>
+</span></span><span style=display:flex><span>        <span style=color:#268bd2>filter</span>={<span style=color:#268bd2>filter</span>}
+</span></span><span style=display:flex><span>        <span style=color:#268bd2>onFilterChange</span>={<span style=color:#268bd2>setFilter</span>}
+</span></span><span style=display:flex><span>        <span style=color:#268bd2>sortBy</span>={<span style=color:#268bd2>sortBy</span>}
+</span></span><span style=display:flex><span>        <span style=color:#268bd2>onSortChange</span>={<span style=color:#268bd2>setSortBy</span>}
 </span></span><span style=display:flex><span>      /&gt;
-</span></span><span style=display:flex><span>      &lt;<span style=font-weight:700>UserList</span> users={users} /&gt;
-</span></span><span style=display:flex><span>    &lt;/<span style=font-weight:700>div</span>&gt;
+</span></span><span style=display:flex><span>      &lt;<span style=color:#268bd2;font-weight:700>UserList</span> <span style=color:#268bd2>users</span>={<span style=color:#268bd2>users</span>} /&gt;
+</span></span><span style=display:flex><span>    &lt;/<span style=color:#268bd2;font-weight:700>div</span>&gt;
 </span></span><span style=display:flex><span>  );
 </span></span><span style=display:flex><span>};
 </span></span></code></pre></div><h3 id=2-create-psychological-safety>2. Create Psychological Safety

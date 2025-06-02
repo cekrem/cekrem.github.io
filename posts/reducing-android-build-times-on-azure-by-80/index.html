@@ -37,10 +37,10 @@ Context Link to heading The Vipps App – until recently – took about 45 minut
 <a class=heading-link href=#here-be-dragons-or--what-sounds-like-a-breeze-but-really-isnt-in-azure-land><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
 <span class=sr-only>Link to heading</span></a></h2><h4 id=choosing-which-vm-to-use>Choosing which VM to use
 <a class=heading-link href=#choosing-which-vm-to-use><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h4><p>A lesson learned early in Azure dealings is that <strong>disks are usually the bottleneck of everything</strong>. On VMSSs you have 4 options</p><ul><li>Standard HDD: unthinkably slow</li><li>Premium SSD: still way too slow, and I suspect the main reason generic hosted agents are so slow</li><li><a href=https://docs.microsoft.com/en-us/azure/virtual-machines/ephemeral-os-disks class=external-link target=_blank rel=noopener>Ephemeral HDD</a> as &ldquo;temp/resource disk&rdquo;: faster, but not by any means fast</li><li>Ephemeral HDD as &ldquo;OS cache disk&rdquo;: as fast as it gets on Azure, which is not very fast but not ridiculously slow either. <strong>This is what you want!</strong></li></ul><p>An ephemeral disk is an actual disk physically mounted on the same hardware as the VM, which makes it a lot faster than any other disk accessed remotely. It&rsquo;s not entirely clear to me what the <a href=https://docs.microsoft.com/en-us/azure/virtual-machines/ephemeral-os-disks class=external-link target=_blank rel=noopener>placement of the ephemeral disk</a> actually means, but there&rsquo;s a huge performance difference. I&rsquo;m not sure why one would ever choose temp/resource over OS cache ¯\<em>(ツ)</em>/¯</p><p>The next step is to find a VM that actually <em>supports</em> the &ldquo;right&rdquo; ephemeral placement, and after some vigorous trial and error we decided on the <a href=https://docs.microsoft.com/en-us/azure/virtual-machines/ddv4-ddsv4-series class=external-link target=_blank rel=noopener>Standard_D16ds_v4</a>. It turns out 16 cores and 64GiB RAM is all you need for Azure to build something about 5 times slower than your laptop :D</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-env data-lang=env><span style=display:flex><span><span style=font-style:italic># Insane RAM usage? Yes, please</span>
+<span class=sr-only>Link to heading</span></a></h4><p>A lesson learned early in Azure dealings is that <strong>disks are usually the bottleneck of everything</strong>. On VMSSs you have 4 options</p><ul><li>Standard HDD: unthinkably slow</li><li>Premium SSD: still way too slow, and I suspect the main reason generic hosted agents are so slow</li><li><a href=https://docs.microsoft.com/en-us/azure/virtual-machines/ephemeral-os-disks class=external-link target=_blank rel=noopener>Ephemeral HDD</a> as &ldquo;temp/resource disk&rdquo;: faster, but not by any means fast</li><li>Ephemeral HDD as &ldquo;OS cache disk&rdquo;: as fast as it gets on Azure, which is not very fast but not ridiculously slow either. <strong>This is what you want!</strong></li></ul><p>An ephemeral disk is an actual disk physically mounted on the same hardware as the VM, which makes it a lot faster than any other disk accessed remotely. It&rsquo;s not entirely clear to me what the <a href=https://docs.microsoft.com/en-us/azure/virtual-machines/ephemeral-os-disks class=external-link target=_blank rel=noopener>placement of the ephemeral disk</a> actually means, but there&rsquo;s a huge performance difference. I&rsquo;m not sure why one would ever choose temp/resource over OS cache ¯\<em>(ツ)</em>/¯</p><p>The next step is to find a VM that actually <em>supports</em> the &ldquo;right&rdquo; ephemeral placement, and after some vigorous trial and error we decided on the <a href=https://docs.microsoft.com/en-us/azure/virtual-machines/ddv4-ddsv4-series class=external-link target=_blank rel=noopener>Standard_D16ds_v4</a>. It turns out 16 cores and 64GiB RAM is all you need for Azure to build something about 5 times slower than your laptop :D</p><div class=highlight><pre tabindex=0 style=color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-env data-lang=env><span style=display:flex><span><span style=color:#93a1a1;font-style:italic># Insane RAM usage? Yes, please</span>
 </span></span><span style=display:flex><span>org.gradle.jvmargs=-Xms16g -Xmx48g -XX:+UseParallelGC
-</span></span><span style=display:flex><span>org.gradle.caching=true
-</span></span><span style=display:flex><span>org.gradle.parallel=true
+</span></span><span style=display:flex><span>org.gradle.caching=<span style=color:#cb4b16>true</span>
+</span></span><span style=display:flex><span>org.gradle.parallel=<span style=color:#cb4b16>true</span>
 </span></span></code></pre></div><p>A medium+ spec&rsquo;ed VM with an ephemeral disk is faster than most top spec&rsquo;ed über pricey tiers. I should charge you for that advice, given what I&rsquo;ve gone through to find out. But I won&rsquo;t.</p><h4 id=connecting-azure-devops-to-your-new-vmss>Connecting Azure DevOps to your new VMSS
 <a class=heading-link href=#connecting-azure-devops-to-your-new-vmss><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
 <span class=sr-only>Link to heading</span></a></h4><p>After creating your scale set, you have to connect it to your build pipeline. You can try to do this from the Azure portal or the <code>az</code> CLI, but I think it&rsquo;s actually impossible. The &ldquo;right&rdquo; way is to register a new Build Agent from DevOps.</p><p><img src=add-agent-pool.png alt="Add agent pool from Azure DevOps"></p><h4 id=finding-out-which-permissions-you-need-to-make-said-connection>Finding out which permissions you need to make said connection
@@ -51,90 +51,90 @@ Context Link to heading The Vipps App – until recently – took about 45 minut
 <a class=heading-link href=#figuring-out-why-how-azure-has-broken-said-software-like-apt><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
 <span class=sr-only>Link to heading</span></a></h4><p>The main gotcha here (besides not using Ubuntu 20) is that Azure has their own azurized <code>/etc/apt/sources.list</code> that works about 30% of the time. Be sure to fix that in your provisioning script!</p><h4 id=provisioning-your-vms-with-what-you-need-to-avoid-downloading-java-android-sdk--for-each-build>Provisioning your VMs with what you need (to avoid downloading Java, Android SDK ++ for each build)
 <a class=heading-link href=#provisioning-your-vms-with-what-you-need-to-avoid-downloading-java-android-sdk--for-each-build><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h4><p>There are whispers and rumors of <a href=https://cloudinit.readthedocs.io/en/latest/ class=external-link target=_blank rel=noopener>cloudinit</a> and a few other approaches, but in practice you&rsquo;re pretty much running blind going most routes. No logging, no feedback, no sense of &ldquo;did this run or not?&rdquo;. Adding a custom script extension kind of works, though. In order to load it from an external location and not an unstable azure blob, you need to add it using <code>az</code>, not the portal:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback><span style=display:flex><span>az vmss extension set -g [resource-group] --vmss-name [vmss-name] --name customScript --publisher Microsoft.Azure.Extensions --protected-settings &#39;{&#34;fileUris&#34;:[&#34;https://example.com/setup.sh&#34;],&#34;commmand&#34;: &#34;bash setup.sh&#34; }&#39;
-</span></span></code></pre></div><p>BUT, don&rsquo;t ever try to just change that script, or even change the script and re-run the above command. You risk Azure caching <em>half the script</em>(!!!) and essentially running half of the old and half of the new version. So be sure to change file name on each iteration. I&rsquo;m serious.</p><p>Our <code>setup.sh</code> looks like this:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span>#!/bin/bash
-</span></span></span><span style=display:flex><span><span></span>
-</span></span><span style=display:flex><span><span style=font-style:italic># prepare for bashttle</span>
-</span></span><span style=display:flex><span>set -e
+<span class=sr-only>Link to heading</span></a></h4><p>There are whispers and rumors of <a href=https://cloudinit.readthedocs.io/en/latest/ class=external-link target=_blank rel=noopener>cloudinit</a> and a few other approaches, but in practice you&rsquo;re pretty much running blind going most routes. No logging, no feedback, no sense of &ldquo;did this run or not?&rdquo;. Adding a custom script extension kind of works, though. In order to load it from an external location and not an unstable azure blob, you need to add it using <code>az</code>, not the portal:</p><div class=highlight><pre tabindex=0 style=color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-fallback data-lang=fallback><span style=display:flex><span>az vmss extension set -g [resource-group] --vmss-name [vmss-name] --name customScript --publisher Microsoft.Azure.Extensions --protected-settings &#39;{&#34;fileUris&#34;:[&#34;https://example.com/setup.sh&#34;],&#34;commmand&#34;: &#34;bash setup.sh&#34; }&#39;
+</span></span></code></pre></div><p>BUT, don&rsquo;t ever try to just change that script, or even change the script and re-run the above command. You risk Azure caching <em>half the script</em>(!!!) and essentially running half of the old and half of the new version. So be sure to change file name on each iteration. I&rsquo;m serious.</p><p>Our <code>setup.sh</code> looks like this:</p><div class=highlight><pre tabindex=0 style=color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#93a1a1;font-style:italic>#!/bin/bash
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span>
+</span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic># prepare for bashttle</span>
+</span></span><span style=display:flex><span><span style=color:#cb4b16>set</span> -e
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span> <span style=font-style:italic># let&#39;s do all logging to a file on the VM, and print it from the build pipeline (where we can actually see output...) # this ensures our builds have the provisioning debug log recorded in the build pipeline on DevOps</span>
-</span></span><span style=display:flex><span>logFile=<span style=font-style:italic>&#34;/var/log/debug&#34;</span>
-</span></span><span style=display:flex><span>currentUser=<span style=font-weight:700>$(</span>whoami<span style=font-weight:700>)</span>
-</span></span><span style=display:flex><span>sudo touch $logFile
-</span></span><span style=display:flex><span>sudo chown <span style=font-style:italic>&#34;</span>$currentUser<span style=font-style:italic>&#34;</span> $logFile
+</span></span><span style=display:flex><span> <span style=color:#93a1a1;font-style:italic># let&#39;s do all logging to a file on the VM, and print it from the build pipeline (where we can actually see output...) # this ensures our builds have the provisioning debug log recorded in the build pipeline on DevOps</span>
+</span></span><span style=display:flex><span><span style=color:#268bd2>logFile</span>=<span style=color:#2aa198>&#34;/var/log/debug&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#268bd2>currentUser</span>=<span style=color:#859900>$(</span>whoami<span style=color:#859900>)</span>
+</span></span><span style=display:flex><span>sudo touch <span style=color:#268bd2>$logFile</span>
+</span></span><span style=display:flex><span>sudo chown <span style=color:#2aa198>&#34;</span><span style=color:#268bd2>$currentUser</span><span style=color:#2aa198>&#34;</span> <span style=color:#268bd2>$logFile</span>
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-style:italic># if provisioning fails, print log to the terminal that&#39;s running the `az` command</span>
+</span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic># if provisioning fails, print log to the terminal that&#39;s running the `az` command</span>
 </span></span><span style=display:flex><span>cleanup() {
-</span></span><span style=display:flex><span>  ret=$?
-</span></span><span style=display:flex><span>  <span style=font-weight:700>if</span> [ $ret -ne 0 ]; <span style=font-weight:700>then</span>
-</span></span><span style=display:flex><span>    echo <span style=font-style:italic>&#34;Debug log:&#34;</span>
-</span></span><span style=display:flex><span>    cat $logFile
-</span></span><span style=display:flex><span>  <span style=font-weight:700>fi</span>
+</span></span><span style=display:flex><span>  <span style=color:#268bd2>ret</span>=<span style=color:#268bd2>$?</span>
+</span></span><span style=display:flex><span>  <span style=color:#859900>if</span> [ <span style=color:#268bd2>$ret</span> -ne <span style=color:#2aa198;font-weight:700>0</span> ]; <span style=color:#859900>then</span>
+</span></span><span style=display:flex><span>    <span style=color:#cb4b16>echo</span> <span style=color:#2aa198>&#34;Debug log:&#34;</span>
+</span></span><span style=display:flex><span>    cat <span style=color:#268bd2>$logFile</span>
+</span></span><span style=display:flex><span>  <span style=color:#859900>fi</span>
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  exit $ret
+</span></span><span style=display:flex><span>  <span style=color:#cb4b16>exit</span> <span style=color:#268bd2>$ret</span>
 </span></span><span style=display:flex><span>}
-</span></span><span style=display:flex><span>trap cleanup EXIT
+</span></span><span style=display:flex><span><span style=color:#cb4b16>trap</span> cleanup EXIT
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-style:italic># make `apt` great again</span>
-</span></span><span style=display:flex><span>cat <span style=font-style:italic>&lt;&lt;EOF &gt; /etc/apt/sources.list
-</span></span></span><span style=display:flex><span><span style=font-style:italic>###### Ubuntu Main Repos
-</span></span></span><span style=display:flex><span><span style=font-style:italic>deb http://no.archive.ubuntu.com/ubuntu/ bionic main restricted universe multiverse
-</span></span></span><span style=display:flex><span><span style=font-style:italic>
-</span></span></span><span style=display:flex><span><span style=font-style:italic>###### Ubuntu Update Repos
-</span></span></span><span style=display:flex><span><span style=font-style:italic>deb http://no.archive.ubuntu.com/ubuntu/ bionic-security main restricted universe multiverse
-</span></span></span><span style=display:flex><span><span style=font-style:italic>deb http://no.archive.ubuntu.com/ubuntu/ bionic-updates main restricted universe multiverse
-</span></span></span><span style=display:flex><span><span style=font-style:italic>deb http://no.archive.ubuntu.com/ubuntu/ bionic-proposed main restricted universe multiverse
-</span></span></span><span style=display:flex><span><span style=font-style:italic>deb http://no.archive.ubuntu.com/ubuntu/ bionic-backports main restricted universe multiverse
-</span></span></span><span style=display:flex><span><span style=font-style:italic>EOF</span>
+</span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic># make `apt` great again</span>
+</span></span><span style=display:flex><span>cat <span style=color:#2aa198>&lt;&lt;EOF &gt; /etc/apt/sources.list
+</span></span></span><span style=display:flex><span><span style=color:#2aa198>###### Ubuntu Main Repos
+</span></span></span><span style=display:flex><span><span style=color:#2aa198>deb http://no.archive.ubuntu.com/ubuntu/ bionic main restricted universe multiverse
+</span></span></span><span style=display:flex><span><span style=color:#2aa198>
+</span></span></span><span style=display:flex><span><span style=color:#2aa198>###### Ubuntu Update Repos
+</span></span></span><span style=display:flex><span><span style=color:#2aa198>deb http://no.archive.ubuntu.com/ubuntu/ bionic-security main restricted universe multiverse
+</span></span></span><span style=display:flex><span><span style=color:#2aa198>deb http://no.archive.ubuntu.com/ubuntu/ bionic-updates main restricted universe multiverse
+</span></span></span><span style=display:flex><span><span style=color:#2aa198>deb http://no.archive.ubuntu.com/ubuntu/ bionic-proposed main restricted universe multiverse
+</span></span></span><span style=display:flex><span><span style=color:#2aa198>deb http://no.archive.ubuntu.com/ubuntu/ bionic-backports main restricted universe multiverse
+</span></span></span><span style=display:flex><span><span style=color:#2aa198>EOF</span>
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-style:italic># install java and unzip</span>
-</span></span><span style=display:flex><span>sudo apt update &gt;&gt;$logFile
-</span></span><span style=display:flex><span>sudo apt -y install openjdk-11-jdk-headless unzip &gt;&gt;$logFile
+</span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic># install java and unzip</span>
+</span></span><span style=display:flex><span>sudo apt update &gt;&gt;<span style=color:#268bd2>$logFile</span>
+</span></span><span style=display:flex><span>sudo apt -y install openjdk-11-jdk-headless unzip &gt;&gt;<span style=color:#268bd2>$logFile</span>
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-style:italic># env vars</span>
-</span></span><span style=display:flex><span>export java_dir=/usr/lib/jvm/java-11-openjdk-amd64
-</span></span><span style=display:flex><span>export android_dir=/home/AzDevOps/android-sdk
-</span></span><span style=display:flex><span>export PATH=$PATH:$android_dir/cmdline-tools/latest
-</span></span><span style=display:flex><span>export PATH=$PATH:$android_dir/cmdline-tools/latest/bin
+</span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic># env vars</span>
+</span></span><span style=display:flex><span><span style=color:#cb4b16>export</span> <span style=color:#268bd2>java_dir</span>=/usr/lib/jvm/java-11-openjdk-amd64
+</span></span><span style=display:flex><span><span style=color:#cb4b16>export</span> <span style=color:#268bd2>android_dir</span>=/home/AzDevOps/android-sdk
+</span></span><span style=display:flex><span><span style=color:#cb4b16>export</span> <span style=color:#268bd2>PATH</span>=<span style=color:#268bd2>$PATH</span>:<span style=color:#268bd2>$android_dir</span>/cmdline-tools/latest
+</span></span><span style=display:flex><span><span style=color:#cb4b16>export</span> <span style=color:#268bd2>PATH</span>=<span style=color:#268bd2>$PATH</span>:<span style=color:#268bd2>$android_dir</span>/cmdline-tools/latest/bin
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>echo <span style=font-style:italic>&#34;android dir: </span>$android_dir<span style=font-style:italic>&#34;</span> &gt;&gt;$logFile
+</span></span><span style=display:flex><span><span style=color:#cb4b16>echo</span> <span style=color:#2aa198>&#34;android dir: </span><span style=color:#268bd2>$android_dir</span><span style=color:#2aa198>&#34;</span> &gt;&gt;<span style=color:#268bd2>$logFile</span>
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-style:italic># get and extract android command line tools</span>
+</span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic># get and extract android command line tools</span>
 </span></span><span style=display:flex><span>wget -O tools.zip https://dl.google.com/android/repository/commandlinetools-linux-8092744_latest.zip
-</span></span><span style=display:flex><span>mkdir -p $android_dir/cmdline-tools
-</span></span><span style=display:flex><span>unzip tools.zip -d $android_dir/cmdline-tools &gt;&gt;$logFile
+</span></span><span style=display:flex><span>mkdir -p <span style=color:#268bd2>$android_dir</span>/cmdline-tools
+</span></span><span style=display:flex><span>unzip tools.zip -d <span style=color:#268bd2>$android_dir</span>/cmdline-tools &gt;&gt;<span style=color:#268bd2>$logFile</span>
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-style:italic># https://stackoverflow.com/questions/60440509/android-command-line-tools-sdkmanager-always-shows-warning-could-not-create-se</span>
-</span></span><span style=display:flex><span>rm -rf $android_dir/cmdline-tools/latest
-</span></span><span style=display:flex><span>mv $android_dir/cmdline-tools/cmdline-tools $android_dir/cmdline-tools/latest
+</span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic># https://stackoverflow.com/questions/60440509/android-command-line-tools-sdkmanager-always-shows-warning-could-not-create-se</span>
+</span></span><span style=display:flex><span>rm -rf <span style=color:#268bd2>$android_dir</span>/cmdline-tools/latest
+</span></span><span style=display:flex><span>mv <span style=color:#268bd2>$android_dir</span>/cmdline-tools/cmdline-tools <span style=color:#268bd2>$android_dir</span>/cmdline-tools/latest
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-style:italic># install android SDK</span>
-</span></span><span style=display:flex><span>yes | sdkmanager --licenses &gt;&gt;$logFile
+</span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic># install android SDK</span>
+</span></span><span style=display:flex><span>yes | sdkmanager --licenses &gt;&gt;<span style=color:#268bd2>$logFile</span>
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>sdkmanager <span style=font-style:italic>&#34;emulator&#34;</span> <span style=font-style:italic>&#34;tools&#34;</span> <span style=font-style:italic>&#34;platform-tools&#34;</span>
-</span></span><span style=display:flex><span>yes | sdkmanager <span style=font-weight:700;font-style:italic>\
-</span></span></span><span style=display:flex><span><span style=font-weight:700;font-style:italic></span>  <span style=font-style:italic>&#34;build-tools;31.0.0&#34;</span> &gt;&gt;$logFile
+</span></span><span style=display:flex><span>sdkmanager <span style=color:#2aa198>&#34;emulator&#34;</span> <span style=color:#2aa198>&#34;tools&#34;</span> <span style=color:#2aa198>&#34;platform-tools&#34;</span>
+</span></span><span style=display:flex><span>yes | sdkmanager <span style=color:#2aa198>\
+</span></span></span><span style=display:flex><span><span style=color:#2aa198></span>  <span style=color:#2aa198>&#34;build-tools;31.0.0&#34;</span> &gt;&gt;<span style=color:#268bd2>$logFile</span>
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>yes | sdkmanager <span style=font-weight:700;font-style:italic>\
-</span></span></span><span style=display:flex><span><span style=font-weight:700;font-style:italic></span>  <span style=font-style:italic>&#34;extras;android;m2repository&#34;</span> <span style=font-weight:700;font-style:italic>\
-</span></span></span><span style=display:flex><span><span style=font-weight:700;font-style:italic></span>  <span style=font-style:italic>&#34;extras;google;m2repository&#34;</span> <span style=font-weight:700;font-style:italic>\
-</span></span></span><span style=display:flex><span><span style=font-weight:700;font-style:italic></span>  <span style=font-style:italic>&#34;extras;google;google_play_services&#34;</span> &gt;&gt;$logFile
+</span></span><span style=display:flex><span>yes | sdkmanager <span style=color:#2aa198>\
+</span></span></span><span style=display:flex><span><span style=color:#2aa198></span>  <span style=color:#2aa198>&#34;extras;android;m2repository&#34;</span> <span style=color:#2aa198>\
+</span></span></span><span style=display:flex><span><span style=color:#2aa198></span>  <span style=color:#2aa198>&#34;extras;google;m2repository&#34;</span> <span style=color:#2aa198>\
+</span></span></span><span style=display:flex><span><span style=color:#2aa198></span>  <span style=color:#2aa198>&#34;extras;google;google_play_services&#34;</span> &gt;&gt;<span style=color:#268bd2>$logFile</span>
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>yes | sdkmanager <span style=font-weight:700;font-style:italic>\
-</span></span></span><span style=display:flex><span><span style=font-weight:700;font-style:italic></span>  <span style=font-style:italic>&#34;platforms;android-31&#34;</span> &gt;&gt;$logFile
+</span></span><span style=display:flex><span>yes | sdkmanager <span style=color:#2aa198>\
+</span></span></span><span style=display:flex><span><span style=color:#2aa198></span>  <span style=color:#2aa198>&#34;platforms;android-31&#34;</span> &gt;&gt;<span style=color:#268bd2>$logFile</span>
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>echo <span style=font-style:italic>&#34;All is well.&#34;</span> &gt;&gt;$logFile
+</span></span><span style=display:flex><span><span style=color:#cb4b16>echo</span> <span style=color:#2aa198>&#34;All is well.&#34;</span> &gt;&gt;<span style=color:#268bd2>$logFile</span>
 </span></span></code></pre></div><h2 id=and-then-just-like-that>And then, just like that
 <a class=heading-link href=#and-then-just-like-that><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><p>Change your <code>build.yaml</code></p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-gdscript3 data-lang=gdscript3><span style=display:flex><span>      jobs:
-</span></span><span style=display:flex><span>      - job: Build
-</span></span><span style=display:flex><span>-     - pool: <span style=font-style:italic>&#39;macOS-latest&#39;</span>
-</span></span><span style=display:flex><span>+     - pool: <span style=font-style:italic>&#39;android-vmss-ephemeral&#39;</span>
+<span class=sr-only>Link to heading</span></a></h2><p>Change your <code>build.yaml</code></p><div class=highlight><pre tabindex=0 style=color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-gdscript3 data-lang=gdscript3><span style=display:flex><span>      <span style=color:#268bd2>jobs</span>:
+</span></span><span style=display:flex><span>      - <span style=color:#268bd2>job</span>: <span style=color:#268bd2>Build</span>
+</span></span><span style=display:flex><span>-     - <span style=color:#268bd2>pool</span>: <span style=color:#2aa198>&#39;macOS-latest&#39;</span>
+</span></span><span style=display:flex><span>+     - <span style=color:#268bd2>pool</span>: <span style=color:#2aa198>&#39;android-vmss-ephemeral&#39;</span>
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>[...]
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>+       - script: |
-</span></span><span style=display:flex><span>+           sudo cat /<span style=font-weight:700>var</span>/log/debug
+</span></span><span style=display:flex><span>+       - <span style=color:#268bd2>script</span>: |
+</span></span><span style=display:flex><span>+           <span style=color:#268bd2>sudo</span> <span style=color:#268bd2>cat</span> /<span style=color:#859900>var</span>/<span style=color:#cb4b16>log</span>/<span style=color:#268bd2>debug</span>
 </span></span></code></pre></div><p><img src=new-build.png alt="new build"></p><p>I did have a beer. It was non-alcoholic.</p></div><footer></footer></article></section></div><script type=text/javascript src=https://testimonial.to/js/iframeResizer.min.js></script><style>form{display:flex;justify-content:center}</style><form action="https://api.follow.it/subscription-form/SDRVMUk2VmsySENBNk94RDNKNDFnS3NmWlQ5a3gxejNIeUlJWHl3QjdqNnRHdENkaXp5aXZhZlFvcGtzcEZ3K0o5TFVRdSt2WWM5RWRsWmZwWVhNUS9PZjJqMWZ3aHBwZUhjT1ZpWXBGRkdZOWtIcGhYQkJkSkE4QTQ1eHl5YkF8RTZHTExQOWFrN1pFY1F0RzZ5c3pVN2I1QTI1YXNtMjZiYllLU25zQkJ3bz0=/8" method=post><input type=email name=email required placeholder=Email spellcheck=false style=padding:1rem;border:none;outline:none>
 <button type=submit style=border:none;outline:none;background:#eee;cursor:pointer>
 Subscribe</button></form><div id=elm-widget></div><script src=/widget.js></script><script>Elm.Main.init({node:document.getElementById("elm-widget"),flags:window.location.pathname})</script><script type=text/javascript src="https://platform-api.sharethis.com/js/sharethis.js#property=6834b86198608700128c9ffa&product=sticky-share-buttons" async></script><footer class=footer><section class=container>© 2021 - 2025 Christian Ekrem

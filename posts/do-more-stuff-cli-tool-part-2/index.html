@@ -20,137 +20,137 @@
 <a class=heading-link href=#mosaic-youre-no-fun><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
 <span class=sr-only>Link to heading</span></a></h2><p>My plan was to proceed this series by creating the <a href=https://github.com/cekrem/domorestuff class=external-link target=_blank rel=noopener>same app as I did in the previous post</a>, only using <a href=https://github.com/JakeWharton/mosaic class=external-link target=_blank rel=noopener>Mosaic</a> instead of <a href=https://github.com/vadimdemedes/ink class=external-link target=_blank rel=noopener>Ink</a>. Turns out, that wasn&rsquo;t as much fun as I anticipated. When my 2-year-old is acting up, I tell him &ldquo;fun, or room?&rdquo;. Using the same approach, I&rsquo;m sending Mosaic to his (her?) room for the following reasons:</p><ul><li>Getting even &ldquo;hello world&rdquo; to work was a real hassle. Gradle this, dependency that, and frankly not plug and play at all. npm > gradle when measuring &ldquo;fun&rdquo;.</li><li>It&rsquo;s not really proper Compose after all. <a href=https://github.com/JakeWharton/mosaic#why-doesnt-work-take-place-in-a-launchedeffect class=external-link target=_blank rel=noopener>We can&rsquo;t use LaunchedEffect</a>, so there&rsquo;s no <code>remember</code>, and all work is being done in the main scope. It just feels wrong.</li><li>I work with Kotlin, Compose and Gradle every day anyway, so for a refreshing side project it doesn&rsquo;t quite cut it for me :P</li></ul><p>I still think it&rsquo;s an amazing <del>project</del> concept, and kudos to mr Wharton for kicking it off. But it&rsquo;s not for me. After all, why do a side project if it&rsquo;s no fun?</p><h2 id=back-in-ink-land>Back in Ink-land
 <a class=heading-link href=#back-in-ink-land><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><p>I&rsquo;m having a hoot and a half tweaking <a href=https://github.com/cekrem/domorestuff class=external-link target=_blank rel=noopener>domorestuff</a> every once in a while. <a href=https://redux.js.org class=external-link target=_blank rel=noopener>Redux</a> also works, although there&rsquo;s this weird issue with needing ReactDOM to get the <a href=https://redux.js.org/introduction/why-rtk-is-redux-today class=external-link target=_blank rel=noopener>new tooling</a> to work. I can&rsquo;t see that it&rsquo;s actually called, but builds fail without it. I can live with that ¯\<em>(ツ)</em>/¯</p><p>Is this how the cool kids write Redux these days? I don&rsquo;t know. But it felt oh-so-good to make reducers again, and better still knowing that it&rsquo;ll be used to render something in the terminal:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-JavaScript data-lang=JavaScript><span style=display:flex><span>https:<span style=font-style:italic>//github.com/cekrem/domorestuff/blob/master/source/store.js
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>
-</span></span><span style=display:flex><span><span style=font-weight:700>import</span> pkg from <span style=font-style:italic>&#39;@reduxjs/toolkit&#39;</span>;
-</span></span><span style=display:flex><span><span style=font-weight:700>import</span> {v4 as uuidv4} from <span style=font-style:italic>&#39;uuid&#39;</span>;
+<span class=sr-only>Link to heading</span></a></h2><p>I&rsquo;m having a hoot and a half tweaking <a href=https://github.com/cekrem/domorestuff class=external-link target=_blank rel=noopener>domorestuff</a> every once in a while. <a href=https://redux.js.org class=external-link target=_blank rel=noopener>Redux</a> also works, although there&rsquo;s this weird issue with needing ReactDOM to get the <a href=https://redux.js.org/introduction/why-rtk-is-redux-today class=external-link target=_blank rel=noopener>new tooling</a> to work. I can&rsquo;t see that it&rsquo;s actually called, but builds fail without it. I can live with that ¯\<em>(ツ)</em>/¯</p><p>Is this how the cool kids write Redux these days? I don&rsquo;t know. But it felt oh-so-good to make reducers again, and better still knowing that it&rsquo;ll be used to render something in the terminal:</p><div class=highlight><pre tabindex=0 style=color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-JavaScript data-lang=JavaScript><span style=display:flex><span><span style=color:#268bd2>https</span>:<span style=color:#93a1a1;font-style:italic>//github.com/cekrem/domorestuff/blob/master/source/store.js
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span>
+</span></span><span style=display:flex><span><span style=color:#859900>import</span> <span style=color:#268bd2>pkg</span> <span style=color:#268bd2>from</span> <span style=color:#2aa198>&#39;@reduxjs/toolkit&#39;</span>;
+</span></span><span style=display:flex><span><span style=color:#859900>import</span> {<span style=color:#268bd2>v4</span> <span style=color:#268bd2>as</span> <span style=color:#268bd2>uuidv4</span>} <span style=color:#268bd2>from</span> <span style=color:#2aa198>&#39;uuid&#39;</span>;
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-weight:700>const</span> {configureStore, createSlice} = pkg;
+</span></span><span style=display:flex><span><span style=color:#859900>const</span> {<span style=color:#268bd2>configureStore</span>, <span style=color:#268bd2>createSlice</span>} = <span style=color:#268bd2>pkg</span>;
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-weight:700>export</span> <span style=font-weight:700>const</span> COLORS = {
-</span></span><span style=display:flex><span>	success: <span style=font-style:italic>&#39;green&#39;</span>,
-</span></span><span style=display:flex><span>	error: <span style=font-style:italic>&#39;red&#39;</span>,
-</span></span><span style=display:flex><span>	pending: <span style=font-style:italic>&#39;black&#39;</span>,
+</span></span><span style=display:flex><span><span style=color:#859900>export</span> <span style=color:#859900>const</span> <span style=color:#268bd2>COLORS</span> = {
+</span></span><span style=display:flex><span>	<span style=color:#268bd2>success</span>: <span style=color:#2aa198>&#39;green&#39;</span>,
+</span></span><span style=display:flex><span>	<span style=color:#268bd2>error</span>: <span style=color:#2aa198>&#39;red&#39;</span>,
+</span></span><span style=display:flex><span>	<span style=color:#268bd2>pending</span>: <span style=color:#2aa198>&#39;black&#39;</span>,
 </span></span><span style=display:flex><span>};
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-weight:700>const</span> [normal, input, search] = [<span style=font-style:italic>&#39;normal&#39;</span>, <span style=font-style:italic>&#39;input&#39;</span>, <span style=font-style:italic>&#39;search&#39;</span>];
-</span></span><span style=display:flex><span><span style=font-weight:700>export</span> <span style=font-weight:700>const</span> MODE = Object.freeze({
-</span></span><span style=display:flex><span>	normal,
-</span></span><span style=display:flex><span>	input,
-</span></span><span style=display:flex><span>	search,
+</span></span><span style=display:flex><span><span style=color:#859900>const</span> [<span style=color:#268bd2>normal</span>, <span style=color:#268bd2>input</span>, <span style=color:#268bd2>search</span>] = [<span style=color:#2aa198>&#39;normal&#39;</span>, <span style=color:#2aa198>&#39;input&#39;</span>, <span style=color:#2aa198>&#39;search&#39;</span>];
+</span></span><span style=display:flex><span><span style=color:#859900>export</span> <span style=color:#859900>const</span> <span style=color:#268bd2>MODE</span> = <span style=color:#cb4b16>Object</span>.<span style=color:#268bd2>freeze</span>({
+</span></span><span style=display:flex><span>	<span style=color:#268bd2>normal</span>,
+</span></span><span style=display:flex><span>	<span style=color:#268bd2>input</span>,
+</span></span><span style=display:flex><span>	<span style=color:#268bd2>search</span>,
 </span></span><span style=display:flex><span>});
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-weight:700>const</span> initialState = {
-</span></span><span style=display:flex><span>	commands: {},
-</span></span><span style=display:flex><span>	newCommand: <span style=font-style:italic>&#39;&#39;</span>,
-</span></span><span style=display:flex><span>	activeIndex: 0,
-</span></span><span style=display:flex><span>	inputMode: MODE.normal,
+</span></span><span style=display:flex><span><span style=color:#859900>const</span> <span style=color:#268bd2>initialState</span> = {
+</span></span><span style=display:flex><span>	<span style=color:#268bd2>commands</span>: {},
+</span></span><span style=display:flex><span>	<span style=color:#268bd2>newCommand</span>: <span style=color:#2aa198>&#39;&#39;</span>,
+</span></span><span style=display:flex><span>	<span style=color:#268bd2>activeIndex</span>: <span style=color:#2aa198;font-weight:700>0</span>,
+</span></span><span style=display:flex><span>	<span style=color:#268bd2>inputMode</span>: <span style=color:#268bd2>MODE</span>.<span style=color:#268bd2>normal</span>,
 </span></span><span style=display:flex><span>};
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-weight:700>const</span> parseCommand = raw =&gt; {
-</span></span><span style=display:flex><span>	<span style=font-weight:700>const</span> [root, ...args] = raw.includes(<span style=font-style:italic>&#39; &#39;</span>) ? raw.split(<span style=font-style:italic>&#39; &#39;</span>) : [raw];
-</span></span><span style=display:flex><span>	<span style=font-weight:700>return</span> {
-</span></span><span style=display:flex><span>		id: uuidv4(),
-</span></span><span style=display:flex><span>		raw,
-</span></span><span style=display:flex><span>		root,
-</span></span><span style=display:flex><span>		args,
-</span></span><span style=display:flex><span>		color: COLORS.pending,
+</span></span><span style=display:flex><span><span style=color:#859900>const</span> <span style=color:#268bd2>parseCommand</span> = <span style=color:#268bd2>raw</span> =&gt; {
+</span></span><span style=display:flex><span>	<span style=color:#859900>const</span> [<span style=color:#268bd2>root</span>, ...<span style=color:#268bd2>args</span>] = <span style=color:#268bd2>raw</span>.<span style=color:#268bd2>includes</span>(<span style=color:#2aa198>&#39; &#39;</span>) ? <span style=color:#268bd2>raw</span>.<span style=color:#268bd2>split</span>(<span style=color:#2aa198>&#39; &#39;</span>) : [<span style=color:#268bd2>raw</span>];
+</span></span><span style=display:flex><span>	<span style=color:#859900>return</span> {
+</span></span><span style=display:flex><span>		<span style=color:#268bd2>id</span>: <span style=color:#268bd2>uuidv4</span>(),
+</span></span><span style=display:flex><span>		<span style=color:#268bd2>raw</span>,
+</span></span><span style=display:flex><span>		<span style=color:#268bd2>root</span>,
+</span></span><span style=display:flex><span>		<span style=color:#268bd2>args</span>,
+</span></span><span style=display:flex><span>		<span style=color:#268bd2>color</span>: <span style=color:#268bd2>COLORS</span>.<span style=color:#268bd2>pending</span>,
 </span></span><span style=display:flex><span>	};
 </span></span><span style=display:flex><span>};
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-weight:700>const</span> rootSlice = createSlice({
-</span></span><span style=display:flex><span>	name: <span style=font-style:italic>&#39;root&#39;</span>,
-</span></span><span style=display:flex><span>	initialState,
-</span></span><span style=display:flex><span>	reducers: {
-</span></span><span style=display:flex><span>		setInitial: (_, {payload}) =&gt; {
-</span></span><span style=display:flex><span>			<span style=font-weight:700>const</span> commands = payload.map(parseCommand);
-</span></span><span style=display:flex><span>			<span style=font-weight:700>return</span> {
-</span></span><span style=display:flex><span>				...initialState,
-</span></span><span style=display:flex><span>				commands: commands.reduce(
-</span></span><span style=display:flex><span>					(acc, entry) =&gt; ({
-</span></span><span style=display:flex><span>						...acc,
-</span></span><span style=display:flex><span>						[entry.id]: entry,
+</span></span><span style=display:flex><span><span style=color:#859900>const</span> <span style=color:#268bd2>rootSlice</span> = <span style=color:#268bd2>createSlice</span>({
+</span></span><span style=display:flex><span>	<span style=color:#268bd2>name</span>: <span style=color:#2aa198>&#39;root&#39;</span>,
+</span></span><span style=display:flex><span>	<span style=color:#268bd2>initialState</span>,
+</span></span><span style=display:flex><span>	<span style=color:#268bd2>reducers</span>: {
+</span></span><span style=display:flex><span>		<span style=color:#268bd2>setInitial</span>: (<span style=color:#268bd2>_</span>, {<span style=color:#268bd2>payload</span>}) =&gt; {
+</span></span><span style=display:flex><span>			<span style=color:#859900>const</span> <span style=color:#268bd2>commands</span> = <span style=color:#268bd2>payload</span>.<span style=color:#268bd2>map</span>(<span style=color:#268bd2>parseCommand</span>);
+</span></span><span style=display:flex><span>			<span style=color:#859900>return</span> {
+</span></span><span style=display:flex><span>				...<span style=color:#268bd2>initialState</span>,
+</span></span><span style=display:flex><span>				<span style=color:#268bd2>commands</span>: <span style=color:#268bd2>commands</span>.<span style=color:#268bd2>reduce</span>(
+</span></span><span style=display:flex><span>					(<span style=color:#268bd2>acc</span>, <span style=color:#268bd2>entry</span>) =&gt; ({
+</span></span><span style=display:flex><span>						...<span style=color:#268bd2>acc</span>,
+</span></span><span style=display:flex><span>						[<span style=color:#268bd2>entry</span>.<span style=color:#268bd2>id</span>]: <span style=color:#268bd2>entry</span>,
 </span></span><span style=display:flex><span>					}),
 </span></span><span style=display:flex><span>					{},
 </span></span><span style=display:flex><span>				),
 </span></span><span style=display:flex><span>			};
 </span></span><span style=display:flex><span>		},
-</span></span><span style=display:flex><span>		addCommand: ({commands, ...state}, {payload}) =&gt; {
-</span></span><span style=display:flex><span>			<span style=font-weight:700>const</span> command = parseCommand(payload);
-</span></span><span style=display:flex><span>			<span style=font-weight:700>return</span> {
-</span></span><span style=display:flex><span>				...state,
-</span></span><span style=display:flex><span>				inputMode: MODE.normal,
-</span></span><span style=display:flex><span>				newCommand: <span style=font-style:italic>&#39;&#39;</span>,
-</span></span><span style=display:flex><span>				commands: {...commands, [command.id]: command},
+</span></span><span style=display:flex><span>		<span style=color:#268bd2>addCommand</span>: ({<span style=color:#268bd2>commands</span>, ...<span style=color:#268bd2>state</span>}, {<span style=color:#268bd2>payload</span>}) =&gt; {
+</span></span><span style=display:flex><span>			<span style=color:#859900>const</span> <span style=color:#268bd2>command</span> = <span style=color:#268bd2>parseCommand</span>(<span style=color:#268bd2>payload</span>);
+</span></span><span style=display:flex><span>			<span style=color:#859900>return</span> {
+</span></span><span style=display:flex><span>				...<span style=color:#268bd2>state</span>,
+</span></span><span style=display:flex><span>				<span style=color:#268bd2>inputMode</span>: <span style=color:#268bd2>MODE</span>.<span style=color:#268bd2>normal</span>,
+</span></span><span style=display:flex><span>				<span style=color:#268bd2>newCommand</span>: <span style=color:#2aa198>&#39;&#39;</span>,
+</span></span><span style=display:flex><span>				<span style=color:#268bd2>commands</span>: {...<span style=color:#268bd2>commands</span>, [<span style=color:#268bd2>command</span>.<span style=color:#268bd2>id</span>]: <span style=color:#268bd2>command</span>},
 </span></span><span style=display:flex><span>			};
 </span></span><span style=display:flex><span>		},
-</span></span><span style=display:flex><span>		nextCommand: ({activeIndex, ...state}) =&gt; ({
-</span></span><span style=display:flex><span>			...state,
-</span></span><span style=display:flex><span>			activeIndex: activeIndex + 1,
+</span></span><span style=display:flex><span>		<span style=color:#268bd2>nextCommand</span>: ({<span style=color:#268bd2>activeIndex</span>, ...<span style=color:#268bd2>state</span>}) =&gt; ({
+</span></span><span style=display:flex><span>			...<span style=color:#268bd2>state</span>,
+</span></span><span style=display:flex><span>			<span style=color:#268bd2>activeIndex</span>: <span style=color:#268bd2>activeIndex</span> + <span style=color:#2aa198;font-weight:700>1</span>,
 </span></span><span style=display:flex><span>		}),
-</span></span><span style=display:flex><span>		previousCommand: ({activeIndex, ...state}) =&gt; ({
-</span></span><span style=display:flex><span>			...state,
-</span></span><span style=display:flex><span>			activeIndex: activeIndex - 1,
+</span></span><span style=display:flex><span>		<span style=color:#268bd2>previousCommand</span>: ({<span style=color:#268bd2>activeIndex</span>, ...<span style=color:#268bd2>state</span>}) =&gt; ({
+</span></span><span style=display:flex><span>			...<span style=color:#268bd2>state</span>,
+</span></span><span style=display:flex><span>			<span style=color:#268bd2>activeIndex</span>: <span style=color:#268bd2>activeIndex</span> - <span style=color:#2aa198;font-weight:700>1</span>,
 </span></span><span style=display:flex><span>		}),
-</span></span><span style=display:flex><span>		deleteCommand: ({commands, ...state}) =&gt; {
-</span></span><span style=display:flex><span>			<span style=font-weight:700>const</span> ids = Object.values(commands).map(({id}) =&gt; id);
-</span></span><span style=display:flex><span>			<span style=font-weight:700>const</span> id = ids[state.activeIndex % ids.length];
+</span></span><span style=display:flex><span>		<span style=color:#268bd2>deleteCommand</span>: ({<span style=color:#268bd2>commands</span>, ...<span style=color:#268bd2>state</span>}) =&gt; {
+</span></span><span style=display:flex><span>			<span style=color:#859900>const</span> <span style=color:#268bd2>ids</span> = <span style=color:#cb4b16>Object</span>.<span style=color:#268bd2>values</span>(<span style=color:#268bd2>commands</span>).<span style=color:#268bd2>map</span>(({<span style=color:#268bd2>id</span>}) =&gt; <span style=color:#268bd2>id</span>);
+</span></span><span style=display:flex><span>			<span style=color:#859900>const</span> <span style=color:#268bd2>id</span> = <span style=color:#268bd2>ids</span>[<span style=color:#268bd2>state</span>.<span style=color:#268bd2>activeIndex</span> % <span style=color:#268bd2>ids</span>.<span style=color:#268bd2>length</span>];
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>			<span style=font-weight:700>const</span> {[id]: _, ...remainingCommands} = commands;
-</span></span><span style=display:flex><span>			<span style=font-weight:700>return</span> {
-</span></span><span style=display:flex><span>				...state,
-</span></span><span style=display:flex><span>				commands: remainingCommands,
+</span></span><span style=display:flex><span>			<span style=color:#859900>const</span> {[<span style=color:#268bd2>id</span>]: <span style=color:#268bd2>_</span>, ...<span style=color:#268bd2>remainingCommands</span>} = <span style=color:#268bd2>commands</span>;
+</span></span><span style=display:flex><span>			<span style=color:#859900>return</span> {
+</span></span><span style=display:flex><span>				...<span style=color:#268bd2>state</span>,
+</span></span><span style=display:flex><span>				<span style=color:#268bd2>commands</span>: <span style=color:#268bd2>remainingCommands</span>,
 </span></span><span style=display:flex><span>			};
 </span></span><span style=display:flex><span>		},
-</span></span><span style=display:flex><span>		setInputMode: (state, {payload}) =&gt; ({
-</span></span><span style=display:flex><span>			...state,
-</span></span><span style=display:flex><span>			newCommand: <span style=font-style:italic>&#39;&#39;</span>,
-</span></span><span style=display:flex><span>			inputMode: payload,
+</span></span><span style=display:flex><span>		<span style=color:#268bd2>setInputMode</span>: (<span style=color:#268bd2>state</span>, {<span style=color:#268bd2>payload</span>}) =&gt; ({
+</span></span><span style=display:flex><span>			...<span style=color:#268bd2>state</span>,
+</span></span><span style=display:flex><span>			<span style=color:#268bd2>newCommand</span>: <span style=color:#2aa198>&#39;&#39;</span>,
+</span></span><span style=display:flex><span>			<span style=color:#268bd2>inputMode</span>: <span style=color:#268bd2>payload</span>,
 </span></span><span style=display:flex><span>		}),
-</span></span><span style=display:flex><span>		inputCharacter: ({newCommand, ...state}, {payload}) =&gt; ({
-</span></span><span style=display:flex><span>			...state,
-</span></span><span style=display:flex><span>			newCommand: newCommand + payload,
+</span></span><span style=display:flex><span>		<span style=color:#268bd2>inputCharacter</span>: ({<span style=color:#268bd2>newCommand</span>, ...<span style=color:#268bd2>state</span>}, {<span style=color:#268bd2>payload</span>}) =&gt; ({
+</span></span><span style=display:flex><span>			...<span style=color:#268bd2>state</span>,
+</span></span><span style=display:flex><span>			<span style=color:#268bd2>newCommand</span>: <span style=color:#268bd2>newCommand</span> + <span style=color:#268bd2>payload</span>,
 </span></span><span style=display:flex><span>		}),
-</span></span><span style=display:flex><span>		inputDelete: ({newCommand, ...state}) =&gt; ({
-</span></span><span style=display:flex><span>			...state,
-</span></span><span style=display:flex><span>			inputMode: newCommand.length ? MODE.input : MODE.normal,
-</span></span><span style=display:flex><span>			newCommand: newCommand.slice(0, -1),
+</span></span><span style=display:flex><span>		<span style=color:#268bd2>inputDelete</span>: ({<span style=color:#268bd2>newCommand</span>, ...<span style=color:#268bd2>state</span>}) =&gt; ({
+</span></span><span style=display:flex><span>			...<span style=color:#268bd2>state</span>,
+</span></span><span style=display:flex><span>			<span style=color:#268bd2>inputMode</span>: <span style=color:#268bd2>newCommand</span>.<span style=color:#268bd2>length</span> ? <span style=color:#268bd2>MODE</span>.<span style=color:#268bd2>input</span> : <span style=color:#268bd2>MODE</span>.<span style=color:#268bd2>normal</span>,
+</span></span><span style=display:flex><span>			<span style=color:#268bd2>newCommand</span>: <span style=color:#268bd2>newCommand</span>.<span style=color:#268bd2>slice</span>(<span style=color:#2aa198;font-weight:700>0</span>, -<span style=color:#2aa198;font-weight:700>1</span>),
 </span></span><span style=display:flex><span>		}),
-</span></span><span style=display:flex><span>		<span style=font-style:italic>// set any prop (but only for existing commands)
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>		setCommandProp: ({commands, ...state}, {payload}) =&gt;
-</span></span><span style=display:flex><span>			payload.id <span style=font-weight:700>in</span> commands
+</span></span><span style=display:flex><span>		<span style=color:#93a1a1;font-style:italic>// set any prop (but only for existing commands)
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span>		<span style=color:#268bd2>setCommandProp</span>: ({<span style=color:#268bd2>commands</span>, ...<span style=color:#268bd2>state</span>}, {<span style=color:#268bd2>payload</span>}) =&gt;
+</span></span><span style=display:flex><span>			<span style=color:#268bd2>payload</span>.<span style=color:#268bd2>id</span> <span style=color:#859900>in</span> <span style=color:#268bd2>commands</span>
 </span></span><span style=display:flex><span>				? {
-</span></span><span style=display:flex><span>						...state,
-</span></span><span style=display:flex><span>						commands: {
-</span></span><span style=display:flex><span>							...commands,
-</span></span><span style=display:flex><span>							[payload.id]: {
-</span></span><span style=display:flex><span>								...commands[payload.id],
-</span></span><span style=display:flex><span>								[payload.key]: payload.value,
+</span></span><span style=display:flex><span>						...<span style=color:#268bd2>state</span>,
+</span></span><span style=display:flex><span>						<span style=color:#268bd2>commands</span>: {
+</span></span><span style=display:flex><span>							...<span style=color:#268bd2>commands</span>,
+</span></span><span style=display:flex><span>							[<span style=color:#268bd2>payload</span>.<span style=color:#268bd2>id</span>]: {
+</span></span><span style=display:flex><span>								...<span style=color:#268bd2>commands</span>[<span style=color:#268bd2>payload</span>.<span style=color:#268bd2>id</span>],
+</span></span><span style=display:flex><span>								[<span style=color:#268bd2>payload</span>.<span style=color:#268bd2>key</span>]: <span style=color:#268bd2>payload</span>.<span style=color:#268bd2>value</span>,
 </span></span><span style=display:flex><span>							},
 </span></span><span style=display:flex><span>						},
 </span></span><span style=display:flex><span>				  }
 </span></span><span style=display:flex><span>				: {
-</span></span><span style=display:flex><span>						...state,
-</span></span><span style=display:flex><span>						commands,
+</span></span><span style=display:flex><span>						...<span style=color:#268bd2>state</span>,
+</span></span><span style=display:flex><span>						<span style=color:#268bd2>commands</span>,
 </span></span><span style=display:flex><span>				  },
 </span></span><span style=display:flex><span>	},
 </span></span><span style=display:flex><span>});
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-weight:700>export</span> <span style=font-weight:700>const</span> {
-</span></span><span style=display:flex><span>	setInitial,
-</span></span><span style=display:flex><span>	addCommand,
-</span></span><span style=display:flex><span>	deleteCommand,
-</span></span><span style=display:flex><span>	nextCommand,
-</span></span><span style=display:flex><span>	previousCommand,
-</span></span><span style=display:flex><span>	inputCharacter,
-</span></span><span style=display:flex><span>	inputDelete,
-</span></span><span style=display:flex><span>	setInputMode,
-</span></span><span style=display:flex><span>	setCommandProp,
-</span></span><span style=display:flex><span>} = rootSlice.actions;
+</span></span><span style=display:flex><span><span style=color:#859900>export</span> <span style=color:#859900>const</span> {
+</span></span><span style=display:flex><span>	<span style=color:#268bd2>setInitial</span>,
+</span></span><span style=display:flex><span>	<span style=color:#268bd2>addCommand</span>,
+</span></span><span style=display:flex><span>	<span style=color:#268bd2>deleteCommand</span>,
+</span></span><span style=display:flex><span>	<span style=color:#268bd2>nextCommand</span>,
+</span></span><span style=display:flex><span>	<span style=color:#268bd2>previousCommand</span>,
+</span></span><span style=display:flex><span>	<span style=color:#268bd2>inputCharacter</span>,
+</span></span><span style=display:flex><span>	<span style=color:#268bd2>inputDelete</span>,
+</span></span><span style=display:flex><span>	<span style=color:#268bd2>setInputMode</span>,
+</span></span><span style=display:flex><span>	<span style=color:#268bd2>setCommandProp</span>,
+</span></span><span style=display:flex><span>} = <span style=color:#268bd2>rootSlice</span>.<span style=color:#268bd2>actions</span>;
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-weight:700>export</span> <span style=font-weight:700>const</span> store = configureStore({
-</span></span><span style=display:flex><span>	reducer: {
-</span></span><span style=display:flex><span>		root: rootSlice.reducer,
+</span></span><span style=display:flex><span><span style=color:#859900>export</span> <span style=color:#859900>const</span> <span style=color:#268bd2>store</span> = <span style=color:#268bd2>configureStore</span>({
+</span></span><span style=display:flex><span>	<span style=color:#268bd2>reducer</span>: {
+</span></span><span style=display:flex><span>		<span style=color:#268bd2>root</span>: <span style=color:#268bd2>rootSlice</span>.<span style=color:#268bd2>reducer</span>,
 </span></span><span style=display:flex><span>	},
 </span></span><span style=display:flex><span>});
 </span></span></code></pre></div><p>Compose, sadly, can&rsquo;t touch this. And Gradle troubleshooting is the worst. Also, as the keen observer might notice: I&rsquo;m adding search/filtering. It&rsquo;s not done yet, and maybe not even useful at all. But definitely fun!</p></div><footer></footer></article></section></div><script type=text/javascript src=https://testimonial.to/js/iframeResizer.min.js></script><style>form{display:flex;justify-content:center}</style><form action="https://api.follow.it/subscription-form/SDRVMUk2VmsySENBNk94RDNKNDFnS3NmWlQ5a3gxejNIeUlJWHl3QjdqNnRHdENkaXp5aXZhZlFvcGtzcEZ3K0o5TFVRdSt2WWM5RWRsWmZwWVhNUS9PZjJqMWZ3aHBwZUhjT1ZpWXBGRkdZOWtIcGhYQkJkSkE4QTQ1eHl5YkF8RTZHTExQOWFrN1pFY1F0RzZ5c3pVN2I1QTI1YXNtMjZiYllLU25zQkJ3bz0=/8" method=post><input type=email name=email required placeholder=Email spellcheck=false style=padding:1rem;border:none;outline:none>

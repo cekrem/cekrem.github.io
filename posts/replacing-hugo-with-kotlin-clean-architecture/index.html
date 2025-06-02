@@ -18,64 +18,64 @@
 <a class=heading-link href=#the-plan><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
 <span class=sr-only>Link to heading</span></a></h2><p>Rather than just throwing together another quick web app, I&rsquo;m attempting to build this the &ldquo;right&rdquo; way:</p><ol><li>Following Clean Architecture principles to the letter</li><li>Using Test-Driven Development (TDD)</li><li>Keeping the codebase screaming its intent</li></ol><h2 id=the-architecture>The Architecture
 <a class=heading-link href=#the-architecture><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><p>Following Uncle Bob&rsquo;s Clean Architecture principles, I&rsquo;ve structured the project into clear layers:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-gdscript3 data-lang=gdscript3><span style=display:flex><span>src/main/kotlin/io/github/cekrem/
-</span></span><span style=display:flex><span><span>├──</span> domain/                     <span style=font-style:italic># Core business entities and rules</span>
-</span></span><span style=display:flex><span><span>│</span>   <span>└──</span> model/                  <span style=font-style:italic># Content, ContentBlock, ContentType, etc.</span>
-</span></span><span style=display:flex><span><span>├──</span> application/               <span style=font-style:italic># Application-specific business rules</span>
-</span></span><span style=display:flex><span><span>│</span>   <span>├──</span> config/               <span style=font-style:italic># Blog configuration (title, description, url, menu items etc)</span>
-</span></span><span style=display:flex><span><span>│</span>   <span>├──</span> gateway/              <span style=font-style:italic># Port interfaces (ContentSource)</span>
-</span></span><span style=display:flex><span><span>│</span>   <span>├──</span> parser/              <span style=font-style:italic># Content parsing interfaces</span>
-</span></span><span style=display:flex><span><span>│</span>   <span>└──</span> usecase/             <span style=font-style:italic># Application use cases</span>
-</span></span><span style=display:flex><span><span>├──</span> adapter/                  <span style=font-style:italic># Interface adapters</span>
-</span></span><span style=display:flex><span><span>│</span>   <span>└──</span> presenter/           <span style=font-style:italic># Presentation interfaces</span>
-</span></span><span style=display:flex><span><span>└──</span> infrastructure/          <span style=font-style:italic># External frameworks and tools</span>
-</span></span><span style=display:flex><span>    <span>├──</span> contentsource/       <span style=font-style:italic># File, Mock, and RSS implementations</span>
-</span></span><span style=display:flex><span>    <span>├──</span> factory/             <span style=font-style:italic># Dependency injection</span>
-</span></span><span style=display:flex><span>    <span>├──</span> parser/              <span style=font-style:italic># Markdown parsing implementation</span>
-</span></span><span style=display:flex><span>    <span>└──</span> web/                 <span style=font-style:italic># Ktor setup, routes, and templates</span>
+<span class=sr-only>Link to heading</span></a></h2><p>Following Uncle Bob&rsquo;s Clean Architecture principles, I&rsquo;ve structured the project into clear layers:</p><div class=highlight><pre tabindex=0 style=color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-gdscript3 data-lang=gdscript3><span style=display:flex><span><span style=color:#268bd2>src</span>/<span style=color:#268bd2>main</span>/<span style=color:#268bd2>kotlin</span>/<span style=color:#268bd2>io</span>/<span style=color:#268bd2>github</span>/<span style=color:#268bd2>cekrem</span>/
+</span></span><span style=display:flex><span>├── <span style=color:#268bd2>domain</span>/                     <span style=color:#93a1a1;font-style:italic># Core business entities and rules</span>
+</span></span><span style=display:flex><span>│   └── <span style=color:#268bd2>model</span>/                  <span style=color:#93a1a1;font-style:italic># Content, ContentBlock, ContentType, etc.</span>
+</span></span><span style=display:flex><span>├── <span style=color:#268bd2>application</span>/               <span style=color:#93a1a1;font-style:italic># Application-specific business rules</span>
+</span></span><span style=display:flex><span>│   ├── <span style=color:#268bd2>config</span>/               <span style=color:#93a1a1;font-style:italic># Blog configuration (title, description, url, menu items etc)</span>
+</span></span><span style=display:flex><span>│   ├── <span style=color:#268bd2>gateway</span>/              <span style=color:#93a1a1;font-style:italic># Port interfaces (ContentSource)</span>
+</span></span><span style=display:flex><span>│   ├── <span style=color:#268bd2>parser</span>/              <span style=color:#93a1a1;font-style:italic># Content parsing interfaces</span>
+</span></span><span style=display:flex><span>│   └── <span style=color:#268bd2>usecase</span>/             <span style=color:#93a1a1;font-style:italic># Application use cases</span>
+</span></span><span style=display:flex><span>├── <span style=color:#268bd2>adapter</span>/                  <span style=color:#93a1a1;font-style:italic># Interface adapters</span>
+</span></span><span style=display:flex><span>│   └── <span style=color:#268bd2>presenter</span>/           <span style=color:#93a1a1;font-style:italic># Presentation interfaces</span>
+</span></span><span style=display:flex><span>└── <span style=color:#268bd2>infrastructure</span>/          <span style=color:#93a1a1;font-style:italic># External frameworks and tools</span>
+</span></span><span style=display:flex><span>    ├── <span style=color:#268bd2>contentsource</span>/       <span style=color:#93a1a1;font-style:italic># File, Mock, and RSS implementations</span>
+</span></span><span style=display:flex><span>    ├── <span style=color:#268bd2>factory</span>/             <span style=color:#93a1a1;font-style:italic># Dependency injection</span>
+</span></span><span style=display:flex><span>    ├── <span style=color:#268bd2>parser</span>/              <span style=color:#93a1a1;font-style:italic># Markdown parsing implementation</span>
+</span></span><span style=display:flex><span>    └── <span style=color:#268bd2>web</span>/                 <span style=color:#93a1a1;font-style:italic># Ktor setup, routes, and templates</span>
 </span></span></code></pre></div><h3 id=domain-layer>Domain Layer
 <a class=heading-link href=#domain-layer><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h3><p>The domain models are pure Kotlin data classes, representing the core concepts:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-kotlin data-lang=kotlin><span style=display:flex><span><span style=font-weight:700>data</span> <span style=font-weight:700>class</span> <span style=font-weight:700>Content</span>(
-</span></span><span style=display:flex><span>    <span style=font-weight:700>val</span> path: String,
-</span></span><span style=display:flex><span>    <span style=font-weight:700>val</span> title: String,
-</span></span><span style=display:flex><span>    <span style=font-weight:700>val</span> blocks: List&lt;ContentBlock&gt;,
-</span></span><span style=display:flex><span>    <span style=font-weight:700>val</span> type: ContentType,
-</span></span><span style=display:flex><span>    <span style=font-weight:700>val</span> metadata: Metadata,
-</span></span><span style=display:flex><span>    <span style=font-weight:700>val</span> publishedAt: LocalDateTime? = <span style=font-weight:700>null</span>,
-</span></span><span style=display:flex><span>    <span style=font-weight:700>val</span> updatedAt: LocalDateTime? = <span style=font-weight:700>null</span>,
-</span></span><span style=display:flex><span>    <span style=font-weight:700>val</span> slug: String = path.split(<span style=font-style:italic>&#34;/&#34;</span>).last(),
+<span class=sr-only>Link to heading</span></a></h3><p>The domain models are pure Kotlin data classes, representing the core concepts:</p><div class=highlight><pre tabindex=0 style=color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-kotlin data-lang=kotlin><span style=display:flex><span><span style=color:#859900>data</span> <span style=color:#859900>class</span> <span style=color:#cb4b16>Content</span>(
+</span></span><span style=display:flex><span>    <span style=color:#859900>val</span> <span style=color:#268bd2>path</span>: <span style=color:#268bd2>String</span>,
+</span></span><span style=display:flex><span>    <span style=color:#859900>val</span> <span style=color:#268bd2>title</span>: <span style=color:#268bd2>String</span>,
+</span></span><span style=display:flex><span>    <span style=color:#859900>val</span> <span style=color:#268bd2>blocks</span>: <span style=color:#268bd2>List</span>&lt;<span style=color:#268bd2>ContentBlock</span>&gt;,
+</span></span><span style=display:flex><span>    <span style=color:#859900>val</span> <span style=color:#268bd2>type</span>: <span style=color:#268bd2>ContentType</span>,
+</span></span><span style=display:flex><span>    <span style=color:#859900>val</span> <span style=color:#268bd2>metadata</span>: <span style=color:#268bd2>Metadata</span>,
+</span></span><span style=display:flex><span>    <span style=color:#859900>val</span> <span style=color:#268bd2>publishedAt</span>: <span style=color:#268bd2>LocalDateTime</span>? = <span style=color:#859900>null</span>,
+</span></span><span style=display:flex><span>    <span style=color:#859900>val</span> <span style=color:#268bd2>updatedAt</span>: <span style=color:#268bd2>LocalDateTime</span>? = <span style=color:#859900>null</span>,
+</span></span><span style=display:flex><span>    <span style=color:#859900>val</span> <span style=color:#268bd2>slug</span>: <span style=color:#268bd2>String</span> = <span style=color:#268bd2>path</span>.<span style=color:#268bd2>split</span>(<span style=color:#2aa198>&#34;/&#34;</span>).<span style=color:#268bd2>last</span>(),
 </span></span><span style=display:flex><span>)
 </span></span></code></pre></div><h3 id=application-layer>Application Layer
 <a class=heading-link href=#application-layer><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h3><p>The application layer contains use cases that orchestrate the domain logic. I&rsquo;m using the <code>UseCase</code> interface pattern I discussed in <a href=/posts/a-use-case-for-usecases-in-kotlin>A Use Case for UseCases in Kotlin</a>:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-kotlin data-lang=kotlin><span style=display:flex><span><span style=font-weight:700>interface</span> <span style=font-weight:700>UseCase</span>&lt;<span style=font-weight:700>in</span> I, <span style=font-weight:700>out</span> O&gt; {
-</span></span><span style=display:flex><span>    <span style=font-weight:700>suspend</span> <span style=font-weight:700>operator</span> <span style=font-weight:700>fun</span> invoke(input: I): O
+<span class=sr-only>Link to heading</span></a></h3><p>The application layer contains use cases that orchestrate the domain logic. I&rsquo;m using the <code>UseCase</code> interface pattern I discussed in <a href=/posts/a-use-case-for-usecases-in-kotlin>A Use Case for UseCases in Kotlin</a>:</p><div class=highlight><pre tabindex=0 style=color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-kotlin data-lang=kotlin><span style=display:flex><span><span style=color:#859900>interface</span> <span style=color:#cb4b16>UseCase</span>&lt;<span style=color:#859900>in</span> <span style=color:#268bd2>I</span>, <span style=color:#859900>out</span> <span style=color:#268bd2>O</span>&gt; {
+</span></span><span style=display:flex><span>    <span style=color:#859900>suspend</span> <span style=color:#859900>operator</span> <span style=color:#859900>fun</span> <span style=color:#268bd2>invoke</span>(<span style=color:#268bd2>input</span>: <span style=color:#268bd2>I</span>): <span style=color:#268bd2>O</span>
 </span></span><span style=display:flex><span>}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-weight:700>class</span> <span style=font-weight:700>GetContentUseCase</span>(
-</span></span><span style=display:flex><span>    <span style=font-weight:700>private</span> <span style=font-weight:700>val</span> contentSource: ContentSource
-</span></span><span style=display:flex><span>) : UseCase&lt;String, Content?&gt; {
-</span></span><span style=display:flex><span>    <span style=font-weight:700>override</span> <span style=font-weight:700>suspend</span> <span style=font-weight:700>fun</span> invoke(input: String): Content? =
-</span></span><span style=display:flex><span>        contentSource.getByPath(input)
+</span></span><span style=display:flex><span><span style=color:#859900>class</span> <span style=color:#cb4b16>GetContentUseCase</span>(
+</span></span><span style=display:flex><span>    <span style=color:#859900>private</span> <span style=color:#859900>val</span> <span style=color:#268bd2>contentSource</span>: <span style=color:#268bd2>ContentSource</span>
+</span></span><span style=display:flex><span>) : <span style=color:#268bd2>UseCase</span>&lt;<span style=color:#268bd2>String</span>, <span style=color:#268bd2>Content</span>?&gt; {
+</span></span><span style=display:flex><span>    <span style=color:#859900>override</span> <span style=color:#859900>suspend</span> <span style=color:#859900>fun</span> <span style=color:#268bd2>invoke</span>(<span style=color:#268bd2>input</span>: <span style=color:#268bd2>String</span>): <span style=color:#268bd2>Content</span>? =
+</span></span><span style=display:flex><span>        <span style=color:#268bd2>contentSource</span>.<span style=color:#268bd2>getByPath</span>(<span style=color:#268bd2>input</span>)
 </span></span><span style=display:flex><span>}
 </span></span></code></pre></div><h3 id=interface-adapters-layer>Interface Adapters Layer
 <a class=heading-link href=#interface-adapters-layer><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h3><p>The adapters layer converts data between the formats most convenient for the use cases and external agencies. For this blog engine, the main adapter is the content presenter:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-kotlin data-lang=kotlin><span style=display:flex><span><span style=font-weight:700>interface</span> <span style=font-weight:700>ContentPresenter</span> {
-</span></span><span style=display:flex><span>    <span style=font-weight:700>fun</span> presentContent(content: Content): Any
+<span class=sr-only>Link to heading</span></a></h3><p>The adapters layer converts data between the formats most convenient for the use cases and external agencies. For this blog engine, the main adapter is the content presenter:</p><div class=highlight><pre tabindex=0 style=color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-kotlin data-lang=kotlin><span style=display:flex><span><span style=color:#859900>interface</span> <span style=color:#cb4b16>ContentPresenter</span> {
+</span></span><span style=display:flex><span>    <span style=color:#859900>fun</span> <span style=color:#268bd2>presentContent</span>(<span style=color:#268bd2>content</span>: <span style=color:#268bd2>Content</span>): <span style=color:#268bd2>Any</span>
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=font-weight:700>fun</span> presentContentList(contents: List&lt;ContentSummary&gt;): Any
+</span></span><span style=display:flex><span>    <span style=color:#859900>fun</span> <span style=color:#268bd2>presentContentList</span>(<span style=color:#268bd2>contents</span>: <span style=color:#268bd2>List</span>&lt;<span style=color:#268bd2>ContentSummary</span>&gt;): <span style=color:#268bd2>Any</span>
 </span></span><span style=display:flex><span>}
 </span></span></code></pre></div><p>This layer ensures that our domain and application layers remain clean and independent of any presentation concerns. The <code>Any</code> return type provides maximum flexibility - implementations can return HTML strings, view models, or any other format needed by the infrastructure layer. This approach perfectly aligns with the Clean Architecture&rsquo;s dependency rule while keeping our options open for different presentation formats.</p><h3 id=infrastructure-layer>Infrastructure Layer
 <a class=heading-link href=#infrastructure-layer><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h3><p>The infrastructure layer handles the technical details of web serving (using Ktor), content storage, and template rendering:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-kotlin data-lang=kotlin><span style=display:flex><span><span style=font-weight:700>fun</span> startServer(
-</span></span><span style=display:flex><span>    getContent: GetContentUseCase,
-</span></span><span style=display:flex><span>    listContents: ListContentsByTypeUseCase,
-</span></span><span style=display:flex><span>    getListableContentTypes: GetListableContentTypes,
-</span></span><span style=display:flex><span>    contentPresenter: ContentPresenter,
-</span></span><span style=display:flex><span>    config: ServerConfig,
+<span class=sr-only>Link to heading</span></a></h3><p>The infrastructure layer handles the technical details of web serving (using Ktor), content storage, and template rendering:</p><div class=highlight><pre tabindex=0 style=color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-kotlin data-lang=kotlin><span style=display:flex><span><span style=color:#859900>fun</span> <span style=color:#268bd2>startServer</span>(
+</span></span><span style=display:flex><span>    <span style=color:#268bd2>getContent</span>: <span style=color:#268bd2>GetContentUseCase</span>,
+</span></span><span style=display:flex><span>    <span style=color:#268bd2>listContents</span>: <span style=color:#268bd2>ListContentsByTypeUseCase</span>,
+</span></span><span style=display:flex><span>    <span style=color:#268bd2>getListableContentTypes</span>: <span style=color:#268bd2>GetListableContentTypes</span>,
+</span></span><span style=display:flex><span>    <span style=color:#268bd2>contentPresenter</span>: <span style=color:#268bd2>ContentPresenter</span>,
+</span></span><span style=display:flex><span>    <span style=color:#268bd2>config</span>: <span style=color:#268bd2>ServerConfig</span>,
 </span></span><span style=display:flex><span>) {
-</span></span><span style=display:flex><span>    embeddedServer(Netty, port = config.port) {
-</span></span><span style=display:flex><span>        <span style=font-style:italic>// ... Ktor setup
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>    }.start(wait = <span style=font-weight:700>true</span>)
+</span></span><span style=display:flex><span>    <span style=color:#268bd2>embeddedServer</span>(<span style=color:#268bd2>Netty</span>, <span style=color:#268bd2>port</span> = <span style=color:#268bd2>config</span>.<span style=color:#268bd2>port</span>) {
+</span></span><span style=display:flex><span>        <span style=color:#93a1a1;font-style:italic>// ... Ktor setup
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span>    }.<span style=color:#268bd2>start</span>(<span style=color:#268bd2>wait</span> = <span style=color:#859900>true</span>)
 </span></span><span style=display:flex><span>}
 </span></span></code></pre></div><h2 id=why-this-matters>Why This Matters
 <a class=heading-link href=#why-this-matters><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>

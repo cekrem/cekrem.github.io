@@ -16,117 +16,117 @@
 <a class=heading-link href=#introduction><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
 <span class=sr-only>Link to heading</span></a></h2><p>We&rsquo;ve covered <a href=/posts/clean-architecture-and-plugins-in-go>Dependency Inversion</a>, <a href=/posts/interface-segregation-in-practice>Interface Segregation</a>, <a href=/posts/liskov-substitution-the-real-meaning-of-inheritance>Liskov Substitution</a>, and <a href=/posts/open-closed-principle-in-react>Open-Closed</a>. Now it&rsquo;s time for the foundation of SOLID: the Single Responsibility Principle (SRP).</p><p>Again, kudos to Uncle Bob for reminding me about the importance of good <strong>software architecture</strong> in his classic <a href=https://amzn.to/4iAc8o1 class=external-link target=_blank rel=noopener>Clean Architecture</a>! That book is my primary inspiration for this series.</p><blockquote><p>The Single Responsibility Principle states that a class should have only one reason to change.</p></blockquote><h2 id=the-problem-with-multiple-responsibilities>The Problem with Multiple Responsibilities
 <a class=heading-link href=#the-problem-with-multiple-responsibilities><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><p>Here&rsquo;s a common anti-pattern:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=font-style:italic>// DON&#39;T DO THIS
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span><span style=font-weight:700>const</span> UserProfile = () =&gt; {
-</span></span><span style=display:flex><span>  <span style=font-weight:700>const</span> [user, setUser] = useState&lt;<span style=font-weight:700>User</span> <span>|</span> null&gt;(<span style=font-weight:700>null</span>);
-</span></span><span style=display:flex><span>  <span style=font-weight:700>const</span> [loading, setLoading] = useState(<span style=font-weight:700>true</span>);
-</span></span><span style=display:flex><span>  <span style=font-weight:700>const</span> [error, setError] = useState&lt;<span style=font-weight:700>Error</span> <span>|</span> null&gt;(<span style=font-weight:700>null</span>);
+<span class=sr-only>Link to heading</span></a></h2><p>Here&rsquo;s a common anti-pattern:</p><div class=highlight><pre tabindex=0 style=color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=color:#93a1a1;font-style:italic>// DON&#39;T DO THIS
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span><span style=color:#859900>const</span> <span style=color:#268bd2>UserProfile</span> = () =&gt; {
+</span></span><span style=display:flex><span>  <span style=color:#859900>const</span> [<span style=color:#268bd2>user</span>, <span style=color:#268bd2>setUser</span>] = <span style=color:#268bd2>useState</span>&lt;<span style=color:#268bd2;font-weight:700>User</span> | <span style=color:#268bd2>null</span>&gt;(<span style=color:#859900;font-weight:700>null</span>);
+</span></span><span style=display:flex><span>  <span style=color:#859900>const</span> [<span style=color:#268bd2>loading</span>, <span style=color:#268bd2>setLoading</span>] = <span style=color:#268bd2>useState</span>(<span style=color:#859900;font-weight:700>true</span>);
+</span></span><span style=display:flex><span>  <span style=color:#859900>const</span> [<span style=color:#268bd2>error</span>, <span style=color:#268bd2>setError</span>] = <span style=color:#268bd2>useState</span>&lt;<span style=color:#268bd2;font-weight:700>Error</span> | <span style=color:#268bd2>null</span>&gt;(<span style=color:#859900;font-weight:700>null</span>);
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  useEffect(() =&gt; {
-</span></span><span style=display:flex><span>    fetchUser();
+</span></span><span style=display:flex><span>  <span style=color:#268bd2>useEffect</span>(() =&gt; {
+</span></span><span style=display:flex><span>    <span style=color:#268bd2>fetchUser</span>();
 </span></span><span style=display:flex><span>  }, []);
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=font-weight:700>const</span> fetchUser = <span style=font-weight:700>async</span> () =&gt; {
-</span></span><span style=display:flex><span>    <span style=font-weight:700>try</span> {
-</span></span><span style=display:flex><span>      <span style=font-weight:700>const</span> response = <span style=font-weight:700>await</span> fetch(<span style=font-style:italic>&#34;/api/user&#34;</span>);
-</span></span><span style=display:flex><span>      <span style=font-weight:700>const</span> data = <span style=font-weight:700>await</span> response.json();
-</span></span><span style=display:flex><span>      setUser(data);
-</span></span><span style=display:flex><span>    } <span style=font-weight:700>catch</span> (e) {
-</span></span><span style=display:flex><span>      setError(e <span style=font-weight:700>as</span> Error);
-</span></span><span style=display:flex><span>    } <span style=font-weight:700>finally</span> {
-</span></span><span style=display:flex><span>      setLoading(<span style=font-weight:700>false</span>);
+</span></span><span style=display:flex><span>  <span style=color:#859900>const</span> <span style=color:#268bd2>fetchUser</span> = <span style=color:#859900>async</span> () =&gt; {
+</span></span><span style=display:flex><span>    <span style=color:#859900>try</span> {
+</span></span><span style=display:flex><span>      <span style=color:#859900>const</span> <span style=color:#268bd2>response</span> = <span style=color:#859900>await</span> <span style=color:#268bd2>fetch</span>(<span style=color:#2aa198>&#34;/api/user&#34;</span>);
+</span></span><span style=display:flex><span>      <span style=color:#859900>const</span> <span style=color:#268bd2>data</span> = <span style=color:#859900>await</span> <span style=color:#268bd2>response</span>.<span style=color:#268bd2>json</span>();
+</span></span><span style=display:flex><span>      <span style=color:#268bd2>setUser</span>(<span style=color:#268bd2>data</span>);
+</span></span><span style=display:flex><span>    } <span style=color:#859900>catch</span> (<span style=color:#268bd2>e</span>) {
+</span></span><span style=display:flex><span>      <span style=color:#268bd2>setError</span>(<span style=color:#268bd2>e</span> <span style=color:#859900>as</span> <span style=color:#cb4b16>Error</span>);
+</span></span><span style=display:flex><span>    } <span style=color:#859900>finally</span> {
+</span></span><span style=display:flex><span>      <span style=color:#268bd2>setLoading</span>(<span style=color:#859900;font-weight:700>false</span>);
 </span></span><span style=display:flex><span>    }
 </span></span><span style=display:flex><span>  };
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=font-weight:700>const</span> handleUpdateProfile = <span style=font-weight:700>async</span> (data: <span>Partial</span>&lt;<span style=font-weight:700>User</span>&gt;) =&gt; {
-</span></span><span style=display:flex><span>    <span style=font-weight:700>try</span> {
-</span></span><span style=display:flex><span>      <span style=font-weight:700>await</span> fetch(<span style=font-style:italic>&#34;/api/user&#34;</span>, {
-</span></span><span style=display:flex><span>        method: <span style=font-style:italic>&#34;PUT&#34;</span>,
-</span></span><span style=display:flex><span>        body: <span>JSON.stringify</span>(data),
+</span></span><span style=display:flex><span>  <span style=color:#859900>const</span> <span style=color:#268bd2>handleUpdateProfile</span> = <span style=color:#859900>async</span> (<span style=color:#268bd2>data</span>: <span style=color:#859900;font-weight:700>Partial</span>&lt;<span style=color:#268bd2;font-weight:700>User</span>&gt;) =&gt; {
+</span></span><span style=display:flex><span>    <span style=color:#859900>try</span> {
+</span></span><span style=display:flex><span>      <span style=color:#859900>await</span> <span style=color:#268bd2>fetch</span>(<span style=color:#2aa198>&#34;/api/user&#34;</span>, {
+</span></span><span style=display:flex><span>        <span style=color:#268bd2>method</span>: <span style=color:#2aa198>&#34;PUT&#34;</span>,
+</span></span><span style=display:flex><span>        <span style=color:#268bd2>body</span>: <span style=color:#859900;font-weight:700>JSON.stringify</span>(<span style=color:#268bd2>data</span>),
 </span></span><span style=display:flex><span>      });
-</span></span><span style=display:flex><span>      fetchUser(); <span style=font-style:italic>// Refresh data
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>    } <span style=font-weight:700>catch</span> (e) {
-</span></span><span style=display:flex><span>      setError(e <span style=font-weight:700>as</span> Error);
+</span></span><span style=display:flex><span>      <span style=color:#268bd2>fetchUser</span>(); <span style=color:#93a1a1;font-style:italic>// Refresh data
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span>    } <span style=color:#859900>catch</span> (<span style=color:#268bd2>e</span>) {
+</span></span><span style=display:flex><span>      <span style=color:#268bd2>setError</span>(<span style=color:#268bd2>e</span> <span style=color:#859900>as</span> <span style=color:#cb4b16>Error</span>);
 </span></span><span style=display:flex><span>    }
 </span></span><span style=display:flex><span>  };
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=font-weight:700>if</span> (loading) <span style=font-weight:700>return</span> &lt;<span style=font-weight:700>div</span>&gt;Loading...&lt;/<span style=font-weight:700>div</span>&gt;;
-</span></span><span style=display:flex><span>  <span style=font-weight:700>if</span> (error) <span style=font-weight:700>return</span> &lt;<span style=font-weight:700>div</span>&gt;Error: {error.message}&lt;/<span style=font-weight:700>div</span>&gt;;
-</span></span><span style=display:flex><span>  <span style=font-weight:700>if</span> (!user) <span style=font-weight:700>return</span> &lt;<span style=font-weight:700>div</span>&gt;No user found&lt;/<span style=font-weight:700>div</span>&gt;;
+</span></span><span style=display:flex><span>  <span style=color:#859900>if</span> (<span style=color:#268bd2>loading</span>) <span style=color:#859900>return</span> &lt;<span style=color:#268bd2;font-weight:700>div</span>&gt;<span style=color:#268bd2>Loading</span>...&lt;/<span style=color:#268bd2;font-weight:700>div</span>&gt;;
+</span></span><span style=display:flex><span>  <span style=color:#859900>if</span> (<span style=color:#268bd2>error</span>) <span style=color:#859900>return</span> &lt;<span style=color:#268bd2;font-weight:700>div</span>&gt;<span style=color:#cb4b16>Error</span>: {<span style=color:#268bd2>error</span>.<span style=color:#268bd2>message</span>}&lt;/<span style=color:#268bd2;font-weight:700>div</span>&gt;;
+</span></span><span style=display:flex><span>  <span style=color:#859900>if</span> (!<span style=color:#268bd2>user</span>) <span style=color:#859900>return</span> &lt;<span style=color:#268bd2;font-weight:700>div</span>&gt;<span style=color:#268bd2>No</span> <span style=color:#268bd2>user</span> <span style=color:#268bd2>found</span>&lt;/<span style=color:#268bd2;font-weight:700>div</span>&gt;;
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=font-weight:700>return</span> (
-</span></span><span style=display:flex><span>    &lt;<span style=font-weight:700>div</span>&gt;
-</span></span><span style=display:flex><span>      &lt;<span style=font-weight:700>h1</span>&gt;{user.name}&lt;/<span style=font-weight:700>h1</span>&gt;
-</span></span><span style=display:flex><span>      &lt;<span style=font-weight:700>form</span> onSubmit={<span style=font-style:italic>/* form logic */</span>}&gt;{<span style=font-style:italic>/* Complex form fields */</span>}&lt;/<span style=font-weight:700>form</span>&gt;
-</span></span><span style=display:flex><span>      &lt;<span style=font-weight:700>UserStats</span> userId={user.id} /&gt;
-</span></span><span style=display:flex><span>      &lt;<span style=font-weight:700>UserPosts</span> userId={user.id} /&gt;
-</span></span><span style=display:flex><span>    &lt;/<span style=font-weight:700>div</span>&gt;
+</span></span><span style=display:flex><span>  <span style=color:#859900>return</span> (
+</span></span><span style=display:flex><span>    &lt;<span style=color:#268bd2;font-weight:700>div</span>&gt;
+</span></span><span style=display:flex><span>      &lt;<span style=color:#268bd2;font-weight:700>h1</span>&gt;{<span style=color:#268bd2>user</span>.<span style=color:#268bd2>name</span>}&lt;/<span style=color:#268bd2;font-weight:700>h1</span>&gt;
+</span></span><span style=display:flex><span>      &lt;<span style=color:#268bd2;font-weight:700>form</span> <span style=color:#268bd2>onSubmit</span>={<span style=color:#93a1a1;font-style:italic>/* form logic */</span>}&gt;{<span style=color:#93a1a1;font-style:italic>/* Complex form fields */</span>}&lt;/<span style=color:#268bd2;font-weight:700>form</span>&gt;
+</span></span><span style=display:flex><span>      &lt;<span style=color:#268bd2;font-weight:700>UserStats</span> <span style=color:#268bd2>userId</span>={<span style=color:#268bd2>user</span>.<span style=color:#268bd2>id</span>} /&gt;
+</span></span><span style=display:flex><span>      &lt;<span style=color:#268bd2;font-weight:700>UserPosts</span> <span style=color:#268bd2>userId</span>={<span style=color:#268bd2>user</span>.<span style=color:#268bd2>id</span>} /&gt;
+</span></span><span style=display:flex><span>    &lt;/<span style=color:#268bd2;font-weight:700>div</span>&gt;
 </span></span><span style=display:flex><span>  );
 </span></span><span style=display:flex><span>};
 </span></span></code></pre></div><p>This component violates SRP because it&rsquo;s responsible for:</p><ol><li>Data fetching</li><li>Error handling</li><li>Loading states</li><li>Form handling</li><li>Layout and presentation</li></ol><h2 id=a-better-way-separation-of-concerns>A Better Way: Separation of Concerns
 <a class=heading-link href=#a-better-way-separation-of-concerns><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><p>Let&rsquo;s break it down into focused components:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=font-style:italic>// Data fetching hook
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span><span style=font-weight:700>const</span> useUser = (userId: <span>string</span>) =&gt; {
-</span></span><span style=display:flex><span>  <span style=font-weight:700>const</span> [user, setUser] = useState&lt;<span style=font-weight:700>User</span> <span>|</span> null&gt;(<span style=font-weight:700>null</span>);
-</span></span><span style=display:flex><span>  <span style=font-weight:700>const</span> [loading, setLoading] = useState(<span style=font-weight:700>true</span>);
-</span></span><span style=display:flex><span>  <span style=font-weight:700>const</span> [error, setError] = useState&lt;<span style=font-weight:700>Error</span> <span>|</span> null&gt;(<span style=font-weight:700>null</span>);
+<span class=sr-only>Link to heading</span></a></h2><p>Let&rsquo;s break it down into focused components:</p><div class=highlight><pre tabindex=0 style=color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=color:#93a1a1;font-style:italic>// Data fetching hook
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span><span style=color:#859900>const</span> <span style=color:#268bd2>useUser</span> = (<span style=color:#268bd2>userId</span>: <span style=color:#859900;font-weight:700>string</span>) =&gt; {
+</span></span><span style=display:flex><span>  <span style=color:#859900>const</span> [<span style=color:#268bd2>user</span>, <span style=color:#268bd2>setUser</span>] = <span style=color:#268bd2>useState</span>&lt;<span style=color:#268bd2;font-weight:700>User</span> | <span style=color:#268bd2>null</span>&gt;(<span style=color:#859900;font-weight:700>null</span>);
+</span></span><span style=display:flex><span>  <span style=color:#859900>const</span> [<span style=color:#268bd2>loading</span>, <span style=color:#268bd2>setLoading</span>] = <span style=color:#268bd2>useState</span>(<span style=color:#859900;font-weight:700>true</span>);
+</span></span><span style=display:flex><span>  <span style=color:#859900>const</span> [<span style=color:#268bd2>error</span>, <span style=color:#268bd2>setError</span>] = <span style=color:#268bd2>useState</span>&lt;<span style=color:#268bd2;font-weight:700>Error</span> | <span style=color:#268bd2>null</span>&gt;(<span style=color:#859900;font-weight:700>null</span>);
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  useEffect(() =&gt; {
-</span></span><span style=display:flex><span>    fetchUser();
-</span></span><span style=display:flex><span>  }, [userId]);
+</span></span><span style=display:flex><span>  <span style=color:#268bd2>useEffect</span>(() =&gt; {
+</span></span><span style=display:flex><span>    <span style=color:#268bd2>fetchUser</span>();
+</span></span><span style=display:flex><span>  }, [<span style=color:#268bd2>userId</span>]);
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=font-weight:700>const</span> fetchUser = <span style=font-weight:700>async</span> () =&gt; {
-</span></span><span style=display:flex><span>    <span style=font-weight:700>try</span> {
-</span></span><span style=display:flex><span>      <span style=font-weight:700>const</span> response = <span style=font-weight:700>await</span> fetch(<span style=font-style:italic>`/api/user/</span><span style=font-weight:700;font-style:italic>${</span>userId<span style=font-weight:700;font-style:italic>}</span><span style=font-style:italic>`</span>);
-</span></span><span style=display:flex><span>      <span style=font-weight:700>const</span> data = <span style=font-weight:700>await</span> response.json();
-</span></span><span style=display:flex><span>      setUser(data);
-</span></span><span style=display:flex><span>    } <span style=font-weight:700>catch</span> (e) {
-</span></span><span style=display:flex><span>      setError(e <span style=font-weight:700>as</span> Error);
-</span></span><span style=display:flex><span>    } <span style=font-weight:700>finally</span> {
-</span></span><span style=display:flex><span>      setLoading(<span style=font-weight:700>false</span>);
+</span></span><span style=display:flex><span>  <span style=color:#859900>const</span> <span style=color:#268bd2>fetchUser</span> = <span style=color:#859900>async</span> () =&gt; {
+</span></span><span style=display:flex><span>    <span style=color:#859900>try</span> {
+</span></span><span style=display:flex><span>      <span style=color:#859900>const</span> <span style=color:#268bd2>response</span> = <span style=color:#859900>await</span> <span style=color:#268bd2>fetch</span>(<span style=color:#2aa198>`/api/user/</span><span style=color:#2aa198>${</span><span style=color:#268bd2>userId</span><span style=color:#2aa198>}</span><span style=color:#2aa198>`</span>);
+</span></span><span style=display:flex><span>      <span style=color:#859900>const</span> <span style=color:#268bd2>data</span> = <span style=color:#859900>await</span> <span style=color:#268bd2>response</span>.<span style=color:#268bd2>json</span>();
+</span></span><span style=display:flex><span>      <span style=color:#268bd2>setUser</span>(<span style=color:#268bd2>data</span>);
+</span></span><span style=display:flex><span>    } <span style=color:#859900>catch</span> (<span style=color:#268bd2>e</span>) {
+</span></span><span style=display:flex><span>      <span style=color:#268bd2>setError</span>(<span style=color:#268bd2>e</span> <span style=color:#859900>as</span> <span style=color:#cb4b16>Error</span>);
+</span></span><span style=display:flex><span>    } <span style=color:#859900>finally</span> {
+</span></span><span style=display:flex><span>      <span style=color:#268bd2>setLoading</span>(<span style=color:#859900;font-weight:700>false</span>);
 </span></span><span style=display:flex><span>    }
 </span></span><span style=display:flex><span>  };
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=font-weight:700>return</span> { user, loading, error, refetch: <span>fetchUser</span> };
+</span></span><span style=display:flex><span>  <span style=color:#859900>return</span> { <span style=color:#268bd2>user</span>, <span style=color:#268bd2>loading</span>, <span style=color:#268bd2>error</span>, <span style=color:#268bd2>refetch</span>: <span style=color:#859900;font-weight:700>fetchUser</span> };
 </span></span><span style=display:flex><span>};
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-style:italic>// Presentation component
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span><span style=font-weight:700>const</span> UserProfileView = ({
-</span></span><span style=display:flex><span>  user,
-</span></span><span style=display:flex><span>  onUpdate,
+</span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic>// Presentation component
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span><span style=color:#859900>const</span> <span style=color:#268bd2>UserProfileView</span> = ({
+</span></span><span style=display:flex><span>  <span style=color:#268bd2>user</span>,
+</span></span><span style=display:flex><span>  <span style=color:#268bd2>onUpdate</span>,
 </span></span><span style=display:flex><span>}: {
-</span></span><span style=display:flex><span>  user: <span>User</span>;
-</span></span><span style=display:flex><span>  onUpdate: (data: <span>Partial</span>&lt;<span style=font-weight:700>User</span>&gt;) =&gt; <span style=font-weight:700>void</span>;
+</span></span><span style=display:flex><span>  <span style=color:#268bd2>user</span>: <span style=color:#859900;font-weight:700>User</span>;
+</span></span><span style=display:flex><span>  <span style=color:#268bd2>onUpdate</span>: (<span style=color:#268bd2>data</span>: <span style=color:#859900;font-weight:700>Partial</span>&lt;<span style=color:#268bd2;font-weight:700>User</span>&gt;) =&gt; <span style=color:#859900>void</span>;
 </span></span><span style=display:flex><span>}) =&gt; (
-</span></span><span style=display:flex><span>  &lt;<span style=font-weight:700>div</span>&gt;
-</span></span><span style=display:flex><span>    &lt;<span style=font-weight:700>h1</span>&gt;{user.name}&lt;/<span style=font-weight:700>h1</span>&gt;
-</span></span><span style=display:flex><span>    &lt;<span style=font-weight:700>UserProfileForm</span> user={user} onSubmit={onUpdate} /&gt;
-</span></span><span style=display:flex><span>    &lt;<span style=font-weight:700>UserStats</span> userId={user.id} /&gt;
-</span></span><span style=display:flex><span>    &lt;<span style=font-weight:700>UserPosts</span> userId={user.id} /&gt;
-</span></span><span style=display:flex><span>  &lt;/<span style=font-weight:700>div</span>&gt;
+</span></span><span style=display:flex><span>  &lt;<span style=color:#268bd2;font-weight:700>div</span>&gt;
+</span></span><span style=display:flex><span>    &lt;<span style=color:#268bd2;font-weight:700>h1</span>&gt;{<span style=color:#268bd2>user</span>.<span style=color:#268bd2>name</span>}&lt;/<span style=color:#268bd2;font-weight:700>h1</span>&gt;
+</span></span><span style=display:flex><span>    &lt;<span style=color:#268bd2;font-weight:700>UserProfileForm</span> <span style=color:#268bd2>user</span>={<span style=color:#268bd2>user</span>} <span style=color:#268bd2>onSubmit</span>={<span style=color:#268bd2>onUpdate</span>} /&gt;
+</span></span><span style=display:flex><span>    &lt;<span style=color:#268bd2;font-weight:700>UserStats</span> <span style=color:#268bd2>userId</span>={<span style=color:#268bd2>user</span>.<span style=color:#268bd2>id</span>} /&gt;
+</span></span><span style=display:flex><span>    &lt;<span style=color:#268bd2;font-weight:700>UserPosts</span> <span style=color:#268bd2>userId</span>={<span style=color:#268bd2>user</span>.<span style=color:#268bd2>id</span>} /&gt;
+</span></span><span style=display:flex><span>  &lt;/<span style=color:#268bd2;font-weight:700>div</span>&gt;
 </span></span><span style=display:flex><span>);
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-style:italic>// Container component
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span><span style=font-weight:700>const</span> UserProfileContainer = ({ userId }: { userId: <span>string</span> }) =&gt; {
-</span></span><span style=display:flex><span>  <span style=font-weight:700>const</span> { user, loading, error, refetch } = useUser(userId);
+</span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic>// Container component
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span><span style=color:#859900>const</span> <span style=color:#268bd2>UserProfileContainer</span> = ({ <span style=color:#268bd2>userId</span> }: { <span style=color:#268bd2>userId</span>: <span style=color:#859900;font-weight:700>string</span> }) =&gt; {
+</span></span><span style=display:flex><span>  <span style=color:#859900>const</span> { <span style=color:#268bd2>user</span>, <span style=color:#268bd2>loading</span>, <span style=color:#268bd2>error</span>, <span style=color:#268bd2>refetch</span> } = <span style=color:#268bd2>useUser</span>(<span style=color:#268bd2>userId</span>);
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=font-weight:700>const</span> handleUpdate = <span style=font-weight:700>async</span> (data: <span>Partial</span>&lt;<span style=font-weight:700>User</span>&gt;) =&gt; {
-</span></span><span style=display:flex><span>    <span style=font-weight:700>try</span> {
-</span></span><span style=display:flex><span>      <span style=font-weight:700>await</span> fetch(<span style=font-style:italic>`/api/user/</span><span style=font-weight:700;font-style:italic>${</span>userId<span style=font-weight:700;font-style:italic>}</span><span style=font-style:italic>`</span>, {
-</span></span><span style=display:flex><span>        method: <span style=font-style:italic>&#34;PUT&#34;</span>,
-</span></span><span style=display:flex><span>        body: <span>JSON.stringify</span>(data),
+</span></span><span style=display:flex><span>  <span style=color:#859900>const</span> <span style=color:#268bd2>handleUpdate</span> = <span style=color:#859900>async</span> (<span style=color:#268bd2>data</span>: <span style=color:#859900;font-weight:700>Partial</span>&lt;<span style=color:#268bd2;font-weight:700>User</span>&gt;) =&gt; {
+</span></span><span style=display:flex><span>    <span style=color:#859900>try</span> {
+</span></span><span style=display:flex><span>      <span style=color:#859900>await</span> <span style=color:#268bd2>fetch</span>(<span style=color:#2aa198>`/api/user/</span><span style=color:#2aa198>${</span><span style=color:#268bd2>userId</span><span style=color:#2aa198>}</span><span style=color:#2aa198>`</span>, {
+</span></span><span style=display:flex><span>        <span style=color:#268bd2>method</span>: <span style=color:#2aa198>&#34;PUT&#34;</span>,
+</span></span><span style=display:flex><span>        <span style=color:#268bd2>body</span>: <span style=color:#859900;font-weight:700>JSON.stringify</span>(<span style=color:#268bd2>data</span>),
 </span></span><span style=display:flex><span>      });
-</span></span><span style=display:flex><span>      refetch();
-</span></span><span style=display:flex><span>    } <span style=font-weight:700>catch</span> (e) {
-</span></span><span style=display:flex><span>      <span style=font-style:italic>// Error handling
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>    }
+</span></span><span style=display:flex><span>      <span style=color:#268bd2>refetch</span>();
+</span></span><span style=display:flex><span>    } <span style=color:#859900>catch</span> (<span style=color:#268bd2>e</span>) {
+</span></span><span style=display:flex><span>      <span style=color:#93a1a1;font-style:italic>// Error handling
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span>    }
 </span></span><span style=display:flex><span>  };
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=font-weight:700>if</span> (loading) <span style=font-weight:700>return</span> &lt;<span style=font-weight:700>LoadingSpinner</span> /&gt;;
-</span></span><span style=display:flex><span>  <span style=font-weight:700>if</span> (error) <span style=font-weight:700>return</span> &lt;<span style=font-weight:700>ErrorMessage</span> error={error} /&gt;;
-</span></span><span style=display:flex><span>  <span style=font-weight:700>if</span> (!user) <span style=font-weight:700>return</span> &lt;<span style=font-weight:700>NotFound</span> message=<span style=font-style:italic>&#34;User not found&#34;</span> /&gt;;
+</span></span><span style=display:flex><span>  <span style=color:#859900>if</span> (<span style=color:#268bd2>loading</span>) <span style=color:#859900>return</span> &lt;<span style=color:#268bd2;font-weight:700>LoadingSpinner</span> /&gt;;
+</span></span><span style=display:flex><span>  <span style=color:#859900>if</span> (<span style=color:#268bd2>error</span>) <span style=color:#859900>return</span> &lt;<span style=color:#268bd2;font-weight:700>ErrorMessage</span> <span style=color:#268bd2>error</span>={<span style=color:#268bd2>error</span>} /&gt;;
+</span></span><span style=display:flex><span>  <span style=color:#859900>if</span> (!<span style=color:#268bd2>user</span>) <span style=color:#859900>return</span> &lt;<span style=color:#268bd2;font-weight:700>NotFound</span> <span style=color:#268bd2>message</span>=<span style=color:#2aa198>&#34;User not found&#34;</span> /&gt;;
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=font-weight:700>return</span> &lt;<span style=font-weight:700>UserProfileView</span> user={user} onUpdate={handleUpdate} /&gt;;
+</span></span><span style=display:flex><span>  <span style=color:#859900>return</span> &lt;<span style=color:#268bd2;font-weight:700>UserProfileView</span> <span style=color:#268bd2>user</span>={<span style=color:#268bd2>user</span>} <span style=color:#268bd2>onUpdate</span>={<span style=color:#268bd2>handleUpdate</span>} /&gt;;
 </span></span><span style=display:flex><span>};
 </span></span></code></pre></div><h2 id=key-takeaways>Key Takeaways
 <a class=heading-link href=#key-takeaways><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>

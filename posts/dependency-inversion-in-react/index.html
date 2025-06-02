@@ -12,102 +12,102 @@
 </span><span class=separator>•</span>
 <span class=tag><a href=/tags/solid-principles/>Solid-Principles</a></span></div></div></header><div class=post-content><p>In the world of React development, we often find ourselves writing components that are tightly coupled to their dependencies. This makes testing difficult, maintenance a challenge, and change nearly impossible. The Dependency Inversion Principle (DIP) offers a way out of this mess, but how do we apply it effectively <strong>in React</strong>?</p><p><strong>Note:</strong> For a more backend-oriented take on Dependency Inversion, check out my previous post on <a href=https://cekrem.github.io/posts/clean-architecture-and-plugins-in-go/ class=external-link target=_blank rel=noopener>Dependency Inversion in Go Using Plugins</a>.</p><h2 id=the-problem-tight-coupling-in-react>The Problem: Tight Coupling in React
 <a class=heading-link href=#the-problem-tight-coupling-in-react><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><p>Consider this common scenario:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=font-weight:700>const</span> UserProfile = () =&gt; {
-</span></span><span style=display:flex><span>  <span style=font-weight:700>const</span> [user, setUser] = useState(<span style=font-weight:700>null</span>);
-</span></span><span style=display:flex><span>  <span style=font-weight:700>const</span> [loading, setLoading] = useState(<span style=font-weight:700>true</span>);
+<span class=sr-only>Link to heading</span></a></h2><p>Consider this common scenario:</p><div class=highlight><pre tabindex=0 style=color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=color:#859900>const</span> <span style=color:#268bd2>UserProfile</span> = () =&gt; {
+</span></span><span style=display:flex><span>  <span style=color:#859900>const</span> [<span style=color:#268bd2>user</span>, <span style=color:#268bd2>setUser</span>] = <span style=color:#268bd2>useState</span>(<span style=color:#859900;font-weight:700>null</span>);
+</span></span><span style=display:flex><span>  <span style=color:#859900>const</span> [<span style=color:#268bd2>loading</span>, <span style=color:#268bd2>setLoading</span>] = <span style=color:#268bd2>useState</span>(<span style=color:#859900;font-weight:700>true</span>);
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  useEffect(() =&gt; {
-</span></span><span style=display:flex><span>    fetch(<span style=font-style:italic>&#34;/api/user&#34;</span>)
-</span></span><span style=display:flex><span>      .then((res) =&gt; res.json())
-</span></span><span style=display:flex><span>      .then((data) =&gt; {
-</span></span><span style=display:flex><span>        setUser(data);
-</span></span><span style=display:flex><span>        setLoading(<span style=font-weight:700>false</span>);
+</span></span><span style=display:flex><span>  <span style=color:#268bd2>useEffect</span>(() =&gt; {
+</span></span><span style=display:flex><span>    <span style=color:#268bd2>fetch</span>(<span style=color:#2aa198>&#34;/api/user&#34;</span>)
+</span></span><span style=display:flex><span>      .<span style=color:#268bd2>then</span>((<span style=color:#268bd2>res</span>) =&gt; <span style=color:#268bd2>res</span>.<span style=color:#268bd2>json</span>())
+</span></span><span style=display:flex><span>      .<span style=color:#268bd2>then</span>((<span style=color:#268bd2>data</span>) =&gt; {
+</span></span><span style=display:flex><span>        <span style=color:#268bd2>setUser</span>(<span style=color:#268bd2>data</span>);
+</span></span><span style=display:flex><span>        <span style=color:#268bd2>setLoading</span>(<span style=color:#859900;font-weight:700>false</span>);
 </span></span><span style=display:flex><span>      });
 </span></span><span style=display:flex><span>  }, []);
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=font-weight:700>if</span> (loading) <span style=font-weight:700>return</span> &lt;<span style=font-weight:700>LoadingSpinner</span> /&gt;;
-</span></span><span style=display:flex><span>  <span style=font-weight:700>return</span> &lt;<span style=font-weight:700>UserDetails</span> user={user} /&gt;;
+</span></span><span style=display:flex><span>  <span style=color:#859900>if</span> (<span style=color:#268bd2>loading</span>) <span style=color:#859900>return</span> &lt;<span style=color:#268bd2;font-weight:700>LoadingSpinner</span> /&gt;;
+</span></span><span style=display:flex><span>  <span style=color:#859900>return</span> &lt;<span style=color:#268bd2;font-weight:700>UserDetails</span> <span style=color:#268bd2>user</span>={<span style=color:#268bd2>user</span>} /&gt;;
 </span></span><span style=display:flex><span>};
 </span></span></code></pre></div><p>This component has several problems:</p><ul><li>It&rsquo;s tightly coupled to the fetch API</li><li>It&rsquo;s difficult to test because of the direct API call</li><li>It&rsquo;s hard to change the data source</li><li>It&rsquo;s impossible to test loading states easily</li></ul><p><img src=https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExejNkMWJuengyMnJ4MGw2eHkwNTJyNjhrZXJndTZxcjExNXBuMDltciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ZHnKJsXLI6ZClYFwzH/giphy.gif alt="Michael Scott sad"></p><h2 id=the-solution-dependency-inversion>The Solution: Dependency Inversion
 <a class=heading-link href=#the-solution-dependency-inversion><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><p>The Dependency Inversion Principle states that high-level modules should not depend on low-level modules. Both should depend on abstractions. In React, this means our components should depend on interfaces, not concrete implementations.</p><p>Let&rsquo;s see how we can refactor this:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=font-weight:700>interface</span> UserRepository {
-</span></span><span style=display:flex><span>  getUser: () =&gt; Promise&lt;<span style=font-weight:700>User</span>&gt;;
+<span class=sr-only>Link to heading</span></a></h2><p>The Dependency Inversion Principle states that high-level modules should not depend on low-level modules. Both should depend on abstractions. In React, this means our components should depend on interfaces, not concrete implementations.</p><p>Let&rsquo;s see how we can refactor this:</p><div class=highlight><pre tabindex=0 style=color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=color:#859900>interface</span> <span style=color:#268bd2>UserRepository</span> {
+</span></span><span style=display:flex><span>  <span style=color:#268bd2>getUser</span>: () =&gt; <span style=color:#268bd2>Promise</span>&lt;<span style=color:#268bd2;font-weight:700>User</span>&gt;;
 </span></span><span style=display:flex><span>}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-weight:700>const</span> UserProfile = ({
-</span></span><span style=display:flex><span>  userRepository,
+</span></span><span style=display:flex><span><span style=color:#859900>const</span> <span style=color:#268bd2>UserProfile</span> = ({
+</span></span><span style=display:flex><span>  <span style=color:#268bd2>userRepository</span>,
 </span></span><span style=display:flex><span>}: {
-</span></span><span style=display:flex><span>  userRepository: <span>UserRepository</span>;
+</span></span><span style=display:flex><span>  <span style=color:#268bd2>userRepository</span>: <span style=color:#859900;font-weight:700>UserRepository</span>;
 </span></span><span style=display:flex><span>}) =&gt; {
-</span></span><span style=display:flex><span>  <span style=font-weight:700>const</span> [user, setUser] = useState&lt;<span style=font-weight:700>User</span> <span>|</span> null&gt;(<span style=font-weight:700>null</span>);
-</span></span><span style=display:flex><span>  <span style=font-weight:700>const</span> [loading, setLoading] = useState(<span style=font-weight:700>true</span>);
+</span></span><span style=display:flex><span>  <span style=color:#859900>const</span> [<span style=color:#268bd2>user</span>, <span style=color:#268bd2>setUser</span>] = <span style=color:#268bd2>useState</span>&lt;<span style=color:#268bd2;font-weight:700>User</span> | <span style=color:#268bd2>null</span>&gt;(<span style=color:#859900;font-weight:700>null</span>);
+</span></span><span style=display:flex><span>  <span style=color:#859900>const</span> [<span style=color:#268bd2>loading</span>, <span style=color:#268bd2>setLoading</span>] = <span style=color:#268bd2>useState</span>(<span style=color:#859900;font-weight:700>true</span>);
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  useEffect(() =&gt; {
-</span></span><span style=display:flex><span>    userRepository.getUser().then((data) =&gt; {
-</span></span><span style=display:flex><span>      setUser(data);
-</span></span><span style=display:flex><span>      setLoading(<span style=font-weight:700>false</span>);
+</span></span><span style=display:flex><span>  <span style=color:#268bd2>useEffect</span>(() =&gt; {
+</span></span><span style=display:flex><span>    <span style=color:#268bd2>userRepository</span>.<span style=color:#268bd2>getUser</span>().<span style=color:#268bd2>then</span>((<span style=color:#268bd2>data</span>) =&gt; {
+</span></span><span style=display:flex><span>      <span style=color:#268bd2>setUser</span>(<span style=color:#268bd2>data</span>);
+</span></span><span style=display:flex><span>      <span style=color:#268bd2>setLoading</span>(<span style=color:#859900;font-weight:700>false</span>);
 </span></span><span style=display:flex><span>    });
-</span></span><span style=display:flex><span>  }, [userRepository]);
+</span></span><span style=display:flex><span>  }, [<span style=color:#268bd2>userRepository</span>]);
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=font-weight:700>if</span> (loading) <span style=font-weight:700>return</span> &lt;<span style=font-weight:700>LoadingSpinner</span> /&gt;;
-</span></span><span style=display:flex><span>  <span style=font-weight:700>return</span> &lt;<span style=font-weight:700>UserDetails</span> user={user} /&gt;;
+</span></span><span style=display:flex><span>  <span style=color:#859900>if</span> (<span style=color:#268bd2>loading</span>) <span style=color:#859900>return</span> &lt;<span style=color:#268bd2;font-weight:700>LoadingSpinner</span> /&gt;;
+</span></span><span style=display:flex><span>  <span style=color:#859900>return</span> &lt;<span style=color:#268bd2;font-weight:700>UserDetails</span> <span style=color:#268bd2>user</span>={<span style=color:#268bd2>user</span>} /&gt;;
 </span></span><span style=display:flex><span>};
 </span></span></code></pre></div><p>(You could of course consider extracting all this state + useEffect stuff into a custom hook, but that&rsquo;s beside the point at this point.)</p><h2 id=implementing-the-repository>Implementing the Repository
 <a class=heading-link href=#implementing-the-repository><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><p>Now we can create concrete implementations of our repository:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=font-weight:700>class</span> ApiUserRepository <span style=font-weight:700>implements</span> UserRepository {
-</span></span><span style=display:flex><span>  <span style=font-weight:700>async</span> getUser(): Promise&lt;<span style=font-weight:700>User</span>&gt; {
-</span></span><span style=display:flex><span>    <span style=font-weight:700>const</span> response = <span style=font-weight:700>await</span> fetch(<span style=font-style:italic>&#34;/api/user&#34;</span>);
-</span></span><span style=display:flex><span>    <span style=font-weight:700>return</span> response.json();
+<span class=sr-only>Link to heading</span></a></h2><p>Now we can create concrete implementations of our repository:</p><div class=highlight><pre tabindex=0 style=color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=color:#859900>class</span> <span style=color:#268bd2>ApiUserRepository</span> <span style=color:#859900>implements</span> <span style=color:#268bd2>UserRepository</span> {
+</span></span><span style=display:flex><span>  <span style=color:#859900>async</span> <span style=color:#268bd2>getUser</span>(): <span style=color:#268bd2>Promise</span>&lt;<span style=color:#268bd2;font-weight:700>User</span>&gt; {
+</span></span><span style=display:flex><span>    <span style=color:#859900>const</span> <span style=color:#268bd2>response</span> = <span style=color:#859900>await</span> <span style=color:#268bd2>fetch</span>(<span style=color:#2aa198>&#34;/api/user&#34;</span>);
+</span></span><span style=display:flex><span>    <span style=color:#859900>return</span> <span style=color:#268bd2>response</span>.<span style=color:#268bd2>json</span>();
 </span></span><span style=display:flex><span>  }
 </span></span><span style=display:flex><span>}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-weight:700>class</span> MockUserRepository <span style=font-weight:700>implements</span> UserRepository {
-</span></span><span style=display:flex><span>  <span style=font-weight:700>private</span> resolveUser: (user: <span>User</span>) =&gt; <span style=font-weight:700>void</span> = () =&gt; {};
-</span></span><span style=display:flex><span>  <span style=font-weight:700>private</span> rejectUserPromise: (error: <span>Error</span>) =&gt; <span style=font-weight:700>void</span> = () =&gt; {};
+</span></span><span style=display:flex><span><span style=color:#859900>class</span> <span style=color:#268bd2>MockUserRepository</span> <span style=color:#859900>implements</span> <span style=color:#268bd2>UserRepository</span> {
+</span></span><span style=display:flex><span>  <span style=color:#859900>private</span> <span style=color:#268bd2>resolveUser</span>: (<span style=color:#268bd2>user</span>: <span style=color:#859900;font-weight:700>User</span>) =&gt; <span style=color:#859900>void</span> = () =&gt; {};
+</span></span><span style=display:flex><span>  <span style=color:#859900>private</span> <span style=color:#268bd2>rejectUserPromise</span>: (<span style=color:#268bd2>error</span>: <span style=color:#859900;font-weight:700>Error</span>) =&gt; <span style=color:#859900>void</span> = () =&gt; {};
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  getUser(): Promise&lt;<span style=font-weight:700>User</span>&gt; {
-</span></span><span style=display:flex><span>    <span style=font-weight:700>return</span> <span style=font-weight:700>new</span> Promise((resolve, reject) =&gt; {
-</span></span><span style=display:flex><span>      <span style=font-weight:700>this</span>.resolveUser = resolve;
-</span></span><span style=display:flex><span>      <span style=font-weight:700>this</span>.rejectUserPromise = reject;
+</span></span><span style=display:flex><span>  <span style=color:#268bd2>getUser</span>(): <span style=color:#268bd2>Promise</span>&lt;<span style=color:#268bd2;font-weight:700>User</span>&gt; {
+</span></span><span style=display:flex><span>    <span style=color:#859900>return</span> <span style=color:#859900>new</span> <span style=color:#268bd2>Promise</span>((<span style=color:#268bd2>resolve</span>, <span style=color:#268bd2>reject</span>) =&gt; {
+</span></span><span style=display:flex><span>      <span style=color:#859900>this</span>.<span style=color:#268bd2>resolveUser</span> = <span style=color:#268bd2>resolve</span>;
+</span></span><span style=display:flex><span>      <span style=color:#859900>this</span>.<span style=color:#268bd2>rejectUserPromise</span> = <span style=color:#268bd2>reject</span>;
 </span></span><span style=display:flex><span>    });
 </span></span><span style=display:flex><span>  }
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=font-style:italic>// Helper method to resolve the promise
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>  resolveWithUser(user: <span>User</span>) {
-</span></span><span style=display:flex><span>    <span style=font-weight:700>this</span>.resolveUser(user);
+</span></span><span style=display:flex><span>  <span style=color:#93a1a1;font-style:italic>// Helper method to resolve the promise
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span>  <span style=color:#268bd2>resolveWithUser</span>(<span style=color:#268bd2>user</span>: <span style=color:#859900;font-weight:700>User</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#859900>this</span>.<span style=color:#268bd2>resolveUser</span>(<span style=color:#268bd2>user</span>);
 </span></span><span style=display:flex><span>  }
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=font-style:italic>// Helper method to reject the promise
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>  rejectUser(error: <span>Error</span>) {
-</span></span><span style=display:flex><span>    <span style=font-weight:700>this</span>.rejectUserPromise(error);
+</span></span><span style=display:flex><span>  <span style=color:#93a1a1;font-style:italic>// Helper method to reject the promise
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span>  <span style=color:#268bd2>rejectUser</span>(<span style=color:#268bd2>error</span>: <span style=color:#859900;font-weight:700>Error</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#859900>this</span>.<span style=color:#268bd2>rejectUserPromise</span>(<span style=color:#268bd2>error</span>);
 </span></span><span style=display:flex><span>  }
 </span></span><span style=display:flex><span>}
 </span></span></code></pre></div><h2 id=testing-made-easy>Testing Made Easy
 <a class=heading-link href=#testing-made-easy><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><p>With this structure, testing becomes straightforward:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span>describe(<span style=font-style:italic>&#34;UserProfile&#34;</span>, () =&gt; {
-</span></span><span style=display:flex><span>  it(<span style=font-style:italic>&#34;shows loading state initially&#34;</span>, () =&gt; {
-</span></span><span style=display:flex><span>    <span style=font-weight:700>const</span> mockRepo = <span style=font-weight:700>new</span> MockUserRepository();
-</span></span><span style=display:flex><span>    render(&lt;<span style=font-weight:700>UserProfile</span> userRepository={mockRepo} /&gt;);
-</span></span><span style=display:flex><span>    expect(screen.getByTestId(<span style=font-style:italic>&#34;loading-spinner&#34;</span>)).toBeInTheDocument();
+<span class=sr-only>Link to heading</span></a></h2><p>With this structure, testing becomes straightforward:</p><div class=highlight><pre tabindex=0 style=color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=color:#268bd2>describe</span>(<span style=color:#2aa198>&#34;UserProfile&#34;</span>, () =&gt; {
+</span></span><span style=display:flex><span>  <span style=color:#268bd2>it</span>(<span style=color:#2aa198>&#34;shows loading state initially&#34;</span>, () =&gt; {
+</span></span><span style=display:flex><span>    <span style=color:#859900>const</span> <span style=color:#268bd2>mockRepo</span> = <span style=color:#859900>new</span> <span style=color:#268bd2>MockUserRepository</span>();
+</span></span><span style=display:flex><span>    <span style=color:#268bd2>render</span>(&lt;<span style=color:#268bd2;font-weight:700>UserProfile</span> <span style=color:#268bd2>userRepository</span>={<span style=color:#268bd2>mockRepo</span>} /&gt;);
+</span></span><span style=display:flex><span>    <span style=color:#268bd2>expect</span>(<span style=color:#268bd2>screen</span>.<span style=color:#268bd2>getByTestId</span>(<span style=color:#2aa198>&#34;loading-spinner&#34;</span>)).<span style=color:#268bd2>toBeInTheDocument</span>();
 </span></span><span style=display:flex><span>  });
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  it(<span style=font-style:italic>&#34;displays user data when loaded&#34;</span>, <span style=font-weight:700>async</span> () =&gt; {
-</span></span><span style=display:flex><span>    <span style=font-weight:700>const</span> mockRepo = <span style=font-weight:700>new</span> MockUserRepository();
-</span></span><span style=display:flex><span>    render(&lt;<span style=font-weight:700>UserProfile</span> userRepository={mockRepo} /&gt;);
+</span></span><span style=display:flex><span>  <span style=color:#268bd2>it</span>(<span style=color:#2aa198>&#34;displays user data when loaded&#34;</span>, <span style=color:#859900>async</span> () =&gt; {
+</span></span><span style=display:flex><span>    <span style=color:#859900>const</span> <span style=color:#268bd2>mockRepo</span> = <span style=color:#859900>new</span> <span style=color:#268bd2>MockUserRepository</span>();
+</span></span><span style=display:flex><span>    <span style=color:#268bd2>render</span>(&lt;<span style=color:#268bd2;font-weight:700>UserProfile</span> <span style=color:#268bd2>userRepository</span>={<span style=color:#268bd2>mockRepo</span>} /&gt;);
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=font-style:italic>// Simulate data fetching
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>    mockRepo.resolveWithUser({
-</span></span><span style=display:flex><span>      id: <span>1</span>,
-</span></span><span style=display:flex><span>      name: <span style=font-style:italic>&#34;Test User&#34;</span>,
-</span></span><span style=display:flex><span>      email: <span style=font-style:italic>&#34;test@example.com&#34;</span>,
+</span></span><span style=display:flex><span>    <span style=color:#93a1a1;font-style:italic>// Simulate data fetching
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span>    <span style=color:#268bd2>mockRepo</span>.<span style=color:#268bd2>resolveWithUser</span>({
+</span></span><span style=display:flex><span>      <span style=color:#268bd2>id</span>: <span style=color:#859900;font-weight:700>1</span>,
+</span></span><span style=display:flex><span>      <span style=color:#268bd2>name</span>: <span style=color:#2aa198>&#34;Test User&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#268bd2>email</span>: <span style=color:#2aa198>&#34;test@example.com&#34;</span>,
 </span></span><span style=display:flex><span>    });
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=font-weight:700>const</span> userData = <span style=font-weight:700>await</span> screen.findByText(<span style=font-style:italic>&#34;Test User&#34;</span>);
-</span></span><span style=display:flex><span>    expect(userData).toBeInTheDocument();
+</span></span><span style=display:flex><span>    <span style=color:#859900>const</span> <span style=color:#268bd2>userData</span> = <span style=color:#859900>await</span> <span style=color:#268bd2>screen</span>.<span style=color:#268bd2>findByText</span>(<span style=color:#2aa198>&#34;Test User&#34;</span>);
+</span></span><span style=display:flex><span>    <span style=color:#268bd2>expect</span>(<span style=color:#268bd2>userData</span>).<span style=color:#268bd2>toBeInTheDocument</span>();
 </span></span><span style=display:flex><span>  });
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=font-style:italic>// Testing exceptions would be equally stragihtforward, but excluded for brevity
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>});
+</span></span><span style=display:flex><span>  <span style=color:#93a1a1;font-style:italic>// Testing exceptions would be equally stragihtforward, but excluded for brevity
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span>});
 </span></span></code></pre></div><h2 id=best-practices>Best Practices
 <a class=heading-link href=#best-practices><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
 <span class=sr-only>Link to heading</span></a></h2><ol><li><strong>Define Clear Interfaces</strong>: Create interfaces that represent your dependencies</li><li><strong>Inject Dependencies</strong>: Pass dependencies as props or through context, or better yet using <a href=#note-on-dependency-injection>TSyringe</a></li><li><strong>Test in Isolation</strong>: Each component should be testable without its dependencies</li></ol><h2 id=conclusion>Conclusion

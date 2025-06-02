@@ -24,269 +24,269 @@
 <a class=heading-link href=#the-example-project-a-color-picker><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
 <span class=sr-only>Link to heading</span></a></h2><p>Let&rsquo;s build a simple example: an Elm application that uses a Web Component color picker. We&rsquo;ll:</p><ol><li>Create a simple Elm app that displays the selected color</li><li>Integrate a color-picker Web Component</li><li>Use ports to communicate between them</li></ol><h2 id=step-1-setting-up-the-elm-application>Step 1: Setting Up the Elm Application
 <a class=heading-link href=#step-1-setting-up-the-elm-application><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><p>First, let&rsquo;s create our core Elm application:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-elm data-lang=elm><span style=display:flex><span><span style=font-weight:700>port</span> <span style=font-weight:700>module</span> <span>Main</span> exposing (main)
+<span class=sr-only>Link to heading</span></a></h2><p>First, let&rsquo;s create our core Elm application:</p><div class=highlight><pre tabindex=0 style=color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-elm data-lang=elm><span style=display:flex><span><span style=color:#859900>port</span> <span style=color:#859900>module</span> <span style=color:#859900;font-weight:700>Main</span> <span style=color:#268bd2>exposing</span> (<span style=color:#268bd2>main</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-weight:700>import </span><span style=font-weight:700>Browser</span>
-</span></span><span style=display:flex><span><span style=font-weight:700>import </span><span style=font-weight:700>Html</span> exposing (..)
-</span></span><span style=display:flex><span><span style=font-weight:700>import </span><span style=font-weight:700>Html.Attributes</span> exposing (..)
-</span></span><span style=display:flex><span><span style=font-weight:700>import </span><span style=font-weight:700>Json.Decode</span> <span style=font-weight:700>as</span> <span>Decode</span>
-</span></span><span style=display:flex><span><span style=font-weight:700>import </span><span style=font-weight:700>Json.Encode</span> <span style=font-weight:700>as</span> <span>Encode</span>
+</span></span><span style=display:flex><span><span style=color:#dc322f;font-weight:700>import </span><span style=color:#cb4b16>Browser</span>
+</span></span><span style=display:flex><span><span style=color:#dc322f;font-weight:700>import </span><span style=color:#cb4b16>Html</span> <span style=color:#268bd2>exposing</span> <span style=color:#268bd2>(..)</span>
+</span></span><span style=display:flex><span><span style=color:#dc322f;font-weight:700>import </span><span style=color:#cb4b16>Html.Attributes</span> <span style=color:#268bd2>exposing</span> <span style=color:#268bd2>(..)</span>
+</span></span><span style=display:flex><span><span style=color:#dc322f;font-weight:700>import </span><span style=color:#cb4b16>Json.Decode</span> <span style=color:#859900>as</span> <span style=color:#859900;font-weight:700>Decode</span>
+</span></span><span style=display:flex><span><span style=color:#dc322f;font-weight:700>import </span><span style=color:#cb4b16>Json.Encode</span> <span style=color:#859900>as</span> <span style=color:#859900;font-weight:700>Encode</span>
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-style:italic>-- PORTS</span>
+</span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic>-- PORTS</span>
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-weight:700>port</span> sendColor : <span>String</span> -&gt; <span>Cmd</span> msg
-</span></span><span style=display:flex><span><span style=font-weight:700>port</span> receiveColor : (<span>String</span> -&gt; msg) -&gt; <span>Sub</span> msg
+</span></span><span style=display:flex><span><span style=color:#859900>port</span> <span style=color:#268bd2>sendColor</span> <span style=color:#268bd2>:</span> <span style=color:#859900;font-weight:700>String</span> <span style=color:#268bd2>-&gt;</span> <span style=color:#859900;font-weight:700>Cmd</span> <span style=color:#268bd2>msg</span>
+</span></span><span style=display:flex><span><span style=color:#859900>port</span> <span style=color:#268bd2>receiveColor</span> <span style=color:#268bd2>:</span> (<span style=color:#859900;font-weight:700>String</span> <span style=color:#268bd2>-&gt;</span> <span style=color:#268bd2>msg</span>) <span style=color:#268bd2>-&gt;</span> <span style=color:#859900;font-weight:700>Sub</span> <span style=color:#268bd2>msg</span>
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-style:italic>-- MODEL</span>
+</span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic>-- MODEL</span>
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-weight:700>type</span> <span style=font-weight:700>alias</span> <span>Model</span> =
-</span></span><span style=display:flex><span>    { currentColor : <span>String</span>
+</span></span><span style=display:flex><span><span style=color:#859900>type</span> <span style=color:#859900>alias</span> <span style=color:#859900;font-weight:700>Model</span> <span style=color:#268bd2>=</span>
+</span></span><span style=display:flex><span>    { <span style=color:#268bd2>currentColor</span> <span style=color:#268bd2>:</span> <span style=color:#859900;font-weight:700>String</span>
 </span></span><span style=display:flex><span>    }
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>init : () -&gt; ( <span>Model</span>, <span>Cmd</span> <span>Msg</span> )
-</span></span><span style=display:flex><span>init _ =
-</span></span><span style=display:flex><span>    ( { currentColor = <span style=font-style:italic>&#34;#3366ff&#34;</span> }
-</span></span><span style=display:flex><span>    , sendColor <span style=font-style:italic>&#34;#3366ff&#34;</span>  <span style=font-style:italic>-- Initialize the color picker with our default</span>
+</span></span><span style=display:flex><span><span style=color:#268bd2>init</span> <span style=color:#268bd2>:</span> () <span style=color:#268bd2>-&gt;</span> ( <span style=color:#859900;font-weight:700>Model</span>, <span style=color:#859900;font-weight:700>Cmd</span> <span style=color:#859900;font-weight:700>Msg</span> )
+</span></span><span style=display:flex><span><span style=color:#268bd2>init</span> <span style=color:#268bd2>_</span> <span style=color:#268bd2>=</span>
+</span></span><span style=display:flex><span>    ( { <span style=color:#268bd2>currentColor</span> <span style=color:#268bd2>=</span> <span style=color:#2aa198>&#34;#3366ff&#34;</span> }
+</span></span><span style=display:flex><span>    , <span style=color:#268bd2>sendColor</span> <span style=color:#2aa198>&#34;#3366ff&#34;</span>  <span style=color:#93a1a1;font-style:italic>-- Initialize the color picker with our default</span>
 </span></span><span style=display:flex><span>    )
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-style:italic>-- UPDATE</span>
+</span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic>-- UPDATE</span>
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-weight:700>type</span> <span>Msg</span>
-</span></span><span style=display:flex><span>    = <span>ColorChanged</span> <span>String</span>
+</span></span><span style=display:flex><span><span style=color:#859900>type</span> <span style=color:#859900;font-weight:700>Msg</span>
+</span></span><span style=display:flex><span>    <span style=color:#268bd2>=</span> <span style=color:#859900;font-weight:700>ColorChanged</span> <span style=color:#859900;font-weight:700>String</span>
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>update : <span>Msg</span> -&gt; <span>Model</span> -&gt; ( <span>Model</span>, <span>Cmd</span> <span>Msg</span> )
-</span></span><span style=display:flex><span>update msg model =
-</span></span><span style=display:flex><span>    <span style=font-weight:700>case</span> msg <span style=font-weight:700>of</span>
-</span></span><span style=display:flex><span>        <span>ColorChanged</span> newColor -&gt;
-</span></span><span style=display:flex><span>            ( { model | currentColor = newColor }
-</span></span><span style=display:flex><span>            , <span>Cmd</span>.none
+</span></span><span style=display:flex><span><span style=color:#268bd2>update</span> <span style=color:#268bd2>:</span> <span style=color:#859900;font-weight:700>Msg</span> <span style=color:#268bd2>-&gt;</span> <span style=color:#859900;font-weight:700>Model</span> <span style=color:#268bd2>-&gt;</span> ( <span style=color:#859900;font-weight:700>Model</span>, <span style=color:#859900;font-weight:700>Cmd</span> <span style=color:#859900;font-weight:700>Msg</span> )
+</span></span><span style=display:flex><span><span style=color:#268bd2>update</span> <span style=color:#268bd2>msg</span> <span style=color:#268bd2>model</span> <span style=color:#268bd2>=</span>
+</span></span><span style=display:flex><span>    <span style=color:#859900>case</span> <span style=color:#268bd2>msg</span> <span style=color:#859900>of</span>
+</span></span><span style=display:flex><span>        <span style=color:#859900;font-weight:700>ColorChanged</span> <span style=color:#268bd2>newColor</span> <span style=color:#268bd2>-&gt;</span>
+</span></span><span style=display:flex><span>            ( { <span style=color:#268bd2>model</span> <span style=color:#268bd2>|</span> <span style=color:#268bd2>currentColor</span> <span style=color:#268bd2>=</span> <span style=color:#268bd2>newColor</span> }
+</span></span><span style=display:flex><span>            , <span style=color:#859900;font-weight:700>Cmd</span><span style=color:#268bd2>.</span><span style=color:#268bd2>none</span>
 </span></span><span style=display:flex><span>            )
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-style:italic>-- SUBSCRIPTIONS</span>
+</span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic>-- SUBSCRIPTIONS</span>
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>subscriptions : <span>Model</span> -&gt; <span>Sub</span> <span>Msg</span>
-</span></span><span style=display:flex><span>subscriptions _ =
-</span></span><span style=display:flex><span>    receiveColor <span>ColorChanged</span>
+</span></span><span style=display:flex><span><span style=color:#268bd2>subscriptions</span> <span style=color:#268bd2>:</span> <span style=color:#859900;font-weight:700>Model</span> <span style=color:#268bd2>-&gt;</span> <span style=color:#859900;font-weight:700>Sub</span> <span style=color:#859900;font-weight:700>Msg</span>
+</span></span><span style=display:flex><span><span style=color:#268bd2>subscriptions</span> <span style=color:#268bd2>_</span> <span style=color:#268bd2>=</span>
+</span></span><span style=display:flex><span>    <span style=color:#268bd2>receiveColor</span> <span style=color:#859900;font-weight:700>ColorChanged</span>
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-style:italic>-- VIEW</span>
+</span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic>-- VIEW</span>
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>view : <span>Model</span> -&gt; <span>Html</span> <span>Msg</span>
-</span></span><span style=display:flex><span>view model =
-</span></span><span style=display:flex><span>    div [ style <span style=font-style:italic>&#34;padding&#34;</span> <span style=font-style:italic>&#34;2rem&#34;</span>, style <span style=font-style:italic>&#34;font-family&#34;</span> <span style=font-style:italic>&#34;system-ui, sans-serif&#34;</span> ]
-</span></span><span style=display:flex><span>        [ h1 [] [ text <span style=font-style:italic>&#34;Elm + Web Components&#34;</span> ]
-</span></span><span style=display:flex><span>        , div []
-</span></span><span style=display:flex><span>            [ p [] [ text <span style=font-style:italic>&#34;Selected color: &#34;</span>, strong [] [ text model.currentColor ] ]
-</span></span><span style=display:flex><span>            , div
-</span></span><span style=display:flex><span>                [ style <span style=font-style:italic>&#34;width&#34;</span> <span style=font-style:italic>&#34;100px&#34;</span>
-</span></span><span style=display:flex><span>                , style <span style=font-style:italic>&#34;height&#34;</span> <span style=font-style:italic>&#34;100px&#34;</span>
-</span></span><span style=display:flex><span>                , style <span style=font-style:italic>&#34;background-color&#34;</span> model.currentColor
-</span></span><span style=display:flex><span>                , style <span style=font-style:italic>&#34;margin&#34;</span> <span style=font-style:italic>&#34;1rem 0&#34;</span>
-</span></span><span style=display:flex><span>                , style <span style=font-style:italic>&#34;border-radius&#34;</span> <span style=font-style:italic>&#34;4px&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#268bd2>view</span> <span style=color:#268bd2>:</span> <span style=color:#859900;font-weight:700>Model</span> <span style=color:#268bd2>-&gt;</span> <span style=color:#859900;font-weight:700>Html</span> <span style=color:#859900;font-weight:700>Msg</span>
+</span></span><span style=display:flex><span><span style=color:#268bd2>view</span> <span style=color:#268bd2>model</span> <span style=color:#268bd2>=</span>
+</span></span><span style=display:flex><span>    <span style=color:#268bd2>div</span> [ <span style=color:#268bd2>style</span> <span style=color:#2aa198>&#34;padding&#34;</span> <span style=color:#2aa198>&#34;2rem&#34;</span>, <span style=color:#268bd2>style</span> <span style=color:#2aa198>&#34;font-family&#34;</span> <span style=color:#2aa198>&#34;system-ui, sans-serif&#34;</span> ]
+</span></span><span style=display:flex><span>        [ <span style=color:#268bd2>h</span><span style=color:#2aa198;font-weight:700>1</span> [] [ <span style=color:#268bd2>text</span> <span style=color:#2aa198>&#34;Elm + Web Components&#34;</span> ]
+</span></span><span style=display:flex><span>        , <span style=color:#268bd2>div</span> []
+</span></span><span style=display:flex><span>            [ <span style=color:#268bd2>p</span> [] [ <span style=color:#268bd2>text</span> <span style=color:#2aa198>&#34;Selected color: &#34;</span>, <span style=color:#268bd2>strong</span> [] [ <span style=color:#268bd2>text</span> <span style=color:#268bd2>model</span><span style=color:#268bd2>.</span><span style=color:#268bd2>currentColor</span> ] ]
+</span></span><span style=display:flex><span>            , <span style=color:#268bd2>div</span>
+</span></span><span style=display:flex><span>                [ <span style=color:#268bd2>style</span> <span style=color:#2aa198>&#34;width&#34;</span> <span style=color:#2aa198>&#34;100px&#34;</span>
+</span></span><span style=display:flex><span>                , <span style=color:#268bd2>style</span> <span style=color:#2aa198>&#34;height&#34;</span> <span style=color:#2aa198>&#34;100px&#34;</span>
+</span></span><span style=display:flex><span>                , <span style=color:#268bd2>style</span> <span style=color:#2aa198>&#34;background-color&#34;</span> <span style=color:#268bd2>model</span><span style=color:#268bd2>.</span><span style=color:#268bd2>currentColor</span>
+</span></span><span style=display:flex><span>                , <span style=color:#268bd2>style</span> <span style=color:#2aa198>&#34;margin&#34;</span> <span style=color:#2aa198>&#34;1rem 0&#34;</span>
+</span></span><span style=display:flex><span>                , <span style=color:#268bd2>style</span> <span style=color:#2aa198>&#34;border-radius&#34;</span> <span style=color:#2aa198>&#34;4px&#34;</span>
 </span></span><span style=display:flex><span>                ]
 </span></span><span style=display:flex><span>                []
-</span></span><span style=display:flex><span>            , div []
-</span></span><span style=display:flex><span>                [ <span style=font-style:italic>-- Our Web Component will be placed here</span>
-</span></span><span style=display:flex><span>                  node <span style=font-style:italic>&#34;color-picker&#34;</span>
-</span></span><span style=display:flex><span>                    [ attribute <span style=font-style:italic>&#34;current-color&#34;</span> model.currentColor
+</span></span><span style=display:flex><span>            , <span style=color:#268bd2>div</span> []
+</span></span><span style=display:flex><span>                [ <span style=color:#93a1a1;font-style:italic>-- Our Web Component will be placed here</span>
+</span></span><span style=display:flex><span>                  <span style=color:#268bd2>node</span> <span style=color:#2aa198>&#34;color-picker&#34;</span>
+</span></span><span style=display:flex><span>                    [ <span style=color:#268bd2>attribute</span> <span style=color:#2aa198>&#34;current-color&#34;</span> <span style=color:#268bd2>model</span><span style=color:#268bd2>.</span><span style=color:#268bd2>currentColor</span>
 </span></span><span style=display:flex><span>                    ]
 </span></span><span style=display:flex><span>                    []
 </span></span><span style=display:flex><span>                ]
 </span></span><span style=display:flex><span>            ]
 </span></span><span style=display:flex><span>        ]
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-style:italic>-- MAIN</span>
+</span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic>-- MAIN</span>
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-weight:700>main </span>: <span>Program</span> () <span>Model</span> <span>Msg</span>
-</span></span><span style=display:flex><span><span style=font-weight:700>main </span>=
-</span></span><span style=display:flex><span>    <span>Browser</span>.element
-</span></span><span style=display:flex><span>        { init = init
-</span></span><span style=display:flex><span>        , view = view
-</span></span><span style=display:flex><span>        , update = update
-</span></span><span style=display:flex><span>        , subscriptions = subscriptions
+</span></span><span style=display:flex><span><span style=color:#859900>main </span><span style=color:#268bd2>:</span> <span style=color:#859900;font-weight:700>Program</span> () <span style=color:#859900;font-weight:700>Model</span> <span style=color:#859900;font-weight:700>Msg</span>
+</span></span><span style=display:flex><span><span style=color:#859900>main </span><span style=color:#268bd2>=</span>
+</span></span><span style=display:flex><span>    <span style=color:#859900;font-weight:700>Browser</span><span style=color:#268bd2>.</span><span style=color:#268bd2>element</span>
+</span></span><span style=display:flex><span>        { <span style=color:#268bd2>init</span> <span style=color:#268bd2>=</span> <span style=color:#268bd2>init</span>
+</span></span><span style=display:flex><span>        , <span style=color:#268bd2>view</span> <span style=color:#268bd2>=</span> <span style=color:#268bd2>view</span>
+</span></span><span style=display:flex><span>        , <span style=color:#268bd2>update</span> <span style=color:#268bd2>=</span> <span style=color:#268bd2>update</span>
+</span></span><span style=display:flex><span>        , <span style=color:#268bd2>subscriptions</span> <span style=color:#268bd2>=</span> <span style=color:#268bd2>subscriptions</span>
 </span></span><span style=display:flex><span>        }
 </span></span></code></pre></div><p>In this Elm code, we&rsquo;ve:</p><ol><li>Defined two ports: <code>sendColor</code> to send the current color to JavaScript, and <code>receiveColor</code> to receive color changes</li><li>Used <code>node</code> to insert our custom element (which we&rsquo;ll create next)</li><li>Set up the appropriate model, update, and subscription functions</li></ol><h2 id=step-2-the-javascript-glue>Step 2: The JavaScript Glue
 <a class=heading-link href=#step-2-the-javascript-glue><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><p>Next, we need to initialize Elm and wire up our ports:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=display:flex><span><span style=font-style:italic>// index.js
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>
-</span></span><span style=display:flex><span><span style=font-style:italic>// Init Elm app
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span><span style=font-weight:700>const</span> app = Elm.Main.init({ node: document.querySelector(<span style=font-style:italic>&#34;main&#34;</span>) });
+<span class=sr-only>Link to heading</span></a></h2><p>Next, we need to initialize Elm and wire up our ports:</p><div class=highlight><pre tabindex=0 style=color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=display:flex><span><span style=color:#93a1a1;font-style:italic>// index.js
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span>
+</span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic>// Init Elm app
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span><span style=color:#859900>const</span> <span style=color:#268bd2>app</span> = <span style=color:#268bd2>Elm</span>.<span style=color:#268bd2>Main</span>.<span style=color:#268bd2>init</span>({ <span style=color:#268bd2>node</span>: <span style=color:#cb4b16>document</span>.<span style=color:#268bd2>querySelector</span>(<span style=color:#2aa198>&#34;main&#34;</span>) });
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-style:italic>// Define our color-picker Web Component
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span><span style=font-weight:700>class</span> ColorPicker <span style=font-weight:700>extends</span> HTMLElement {
-</span></span><span style=display:flex><span>  constructor() {
-</span></span><span style=display:flex><span>    <span style=font-weight:700>super</span>();
-</span></span><span style=display:flex><span>    <span style=font-weight:700>this</span>.attachShadow({ mode: <span style=font-style:italic>&#34;open&#34;</span> });
-</span></span><span style=display:flex><span>    <span style=font-weight:700>this</span>._app = <span style=font-weight:700>null</span>; <span style=font-style:italic>// Will store reference to Elm app
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>    <span style=font-weight:700>this</span>._boundHandler = <span style=font-weight:700>this</span>._handleColorChange.bind(<span style=font-weight:700>this</span>);
-</span></span><span style=display:flex><span>    <span style=font-weight:700>this</span>.render();
+</span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic>// Define our color-picker Web Component
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span><span style=color:#859900>class</span> <span style=color:#268bd2>ColorPicker</span> <span style=color:#859900>extends</span> <span style=color:#268bd2>HTMLElement</span> {
+</span></span><span style=display:flex><span>  <span style=color:#268bd2>constructor</span>() {
+</span></span><span style=display:flex><span>    <span style=color:#859900>super</span>();
+</span></span><span style=display:flex><span>    <span style=color:#859900>this</span>.<span style=color:#268bd2>attachShadow</span>({ <span style=color:#268bd2>mode</span>: <span style=color:#2aa198>&#34;open&#34;</span> });
+</span></span><span style=display:flex><span>    <span style=color:#859900>this</span>.<span style=color:#268bd2>_app</span> = <span style=color:#859900;font-weight:700>null</span>; <span style=color:#93a1a1;font-style:italic>// Will store reference to Elm app
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span>    <span style=color:#859900>this</span>.<span style=color:#268bd2>_boundHandler</span> = <span style=color:#859900>this</span>.<span style=color:#268bd2>_handleColorChange</span>.<span style=color:#268bd2>bind</span>(<span style=color:#859900>this</span>);
+</span></span><span style=display:flex><span>    <span style=color:#859900>this</span>.<span style=color:#268bd2>render</span>();
 </span></span><span style=display:flex><span>  }
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=font-style:italic>// Connect to DOM - add event listeners
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>  connectedCallback() {
-</span></span><span style=display:flex><span>    <span style=font-weight:700>this</span>._attachEventListeners();
+</span></span><span style=display:flex><span>  <span style=color:#93a1a1;font-style:italic>// Connect to DOM - add event listeners
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span>  <span style=color:#268bd2>connectedCallback</span>() {
+</span></span><span style=display:flex><span>    <span style=color:#859900>this</span>.<span style=color:#268bd2>_attachEventListeners</span>();
 </span></span><span style=display:flex><span>  }
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=font-style:italic>// Clean up when removed from DOM
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>  disconnectedCallback() {
-</span></span><span style=display:flex><span>    <span style=font-weight:700>this</span>._detachEventListeners();
+</span></span><span style=display:flex><span>  <span style=color:#93a1a1;font-style:italic>// Clean up when removed from DOM
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span>  <span style=color:#268bd2>disconnectedCallback</span>() {
+</span></span><span style=display:flex><span>    <span style=color:#859900>this</span>.<span style=color:#268bd2>_detachEventListeners</span>();
 </span></span><span style=display:flex><span>  }
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=font-style:italic>// Add event listeners to the input
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>  _attachEventListeners() {
-</span></span><span style=display:flex><span>    <span style=font-weight:700>const</span> input = <span style=font-weight:700>this</span>.shadowRoot.querySelector(<span style=font-style:italic>&#34;input&#34;</span>);
-</span></span><span style=display:flex><span>    <span style=font-weight:700>if</span> (input) {
-</span></span><span style=display:flex><span>      input.addEventListener(<span style=font-style:italic>&#34;input&#34;</span>, <span style=font-weight:700>this</span>._boundHandler);
+</span></span><span style=display:flex><span>  <span style=color:#93a1a1;font-style:italic>// Add event listeners to the input
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span>  <span style=color:#268bd2>_attachEventListeners</span>() {
+</span></span><span style=display:flex><span>    <span style=color:#859900>const</span> <span style=color:#268bd2>input</span> = <span style=color:#859900>this</span>.<span style=color:#268bd2>shadowRoot</span>.<span style=color:#268bd2>querySelector</span>(<span style=color:#2aa198>&#34;input&#34;</span>);
+</span></span><span style=display:flex><span>    <span style=color:#859900>if</span> (<span style=color:#268bd2>input</span>) {
+</span></span><span style=display:flex><span>      <span style=color:#268bd2>input</span>.<span style=color:#268bd2>addEventListener</span>(<span style=color:#2aa198>&#34;input&#34;</span>, <span style=color:#859900>this</span>.<span style=color:#268bd2>_boundHandler</span>);
 </span></span><span style=display:flex><span>    }
 </span></span><span style=display:flex><span>  }
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=font-style:italic>// Remove event listeners from the input
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>  _detachEventListeners() {
-</span></span><span style=display:flex><span>    <span style=font-weight:700>const</span> input = <span style=font-weight:700>this</span>.shadowRoot.querySelector(<span style=font-style:italic>&#34;input&#34;</span>);
-</span></span><span style=display:flex><span>    <span style=font-weight:700>if</span> (input) {
-</span></span><span style=display:flex><span>      input.removeEventListener(<span style=font-style:italic>&#34;input&#34;</span>, <span style=font-weight:700>this</span>._boundHandler);
+</span></span><span style=display:flex><span>  <span style=color:#93a1a1;font-style:italic>// Remove event listeners from the input
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span>  <span style=color:#268bd2>_detachEventListeners</span>() {
+</span></span><span style=display:flex><span>    <span style=color:#859900>const</span> <span style=color:#268bd2>input</span> = <span style=color:#859900>this</span>.<span style=color:#268bd2>shadowRoot</span>.<span style=color:#268bd2>querySelector</span>(<span style=color:#2aa198>&#34;input&#34;</span>);
+</span></span><span style=display:flex><span>    <span style=color:#859900>if</span> (<span style=color:#268bd2>input</span>) {
+</span></span><span style=display:flex><span>      <span style=color:#268bd2>input</span>.<span style=color:#268bd2>removeEventListener</span>(<span style=color:#2aa198>&#34;input&#34;</span>, <span style=color:#859900>this</span>.<span style=color:#268bd2>_boundHandler</span>);
 </span></span><span style=display:flex><span>    }
 </span></span><span style=display:flex><span>  }
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=font-style:italic>// Handle color changes from the input
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>  _handleColorChange(event) {
-</span></span><span style=display:flex><span>    <span style=font-weight:700>const</span> newColor = event.target.value;
-</span></span><span style=display:flex><span>    <span style=font-weight:700>this</span>.setAttribute(<span style=font-style:italic>&#34;current-color&#34;</span>, newColor);
+</span></span><span style=display:flex><span>  <span style=color:#93a1a1;font-style:italic>// Handle color changes from the input
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span>  <span style=color:#268bd2>_handleColorChange</span>(<span style=color:#268bd2>event</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#859900>const</span> <span style=color:#268bd2>newColor</span> = <span style=color:#268bd2>event</span>.<span style=color:#268bd2>target</span>.<span style=color:#268bd2>value</span>;
+</span></span><span style=display:flex><span>    <span style=color:#859900>this</span>.<span style=color:#268bd2>setAttribute</span>(<span style=color:#2aa198>&#34;current-color&#34;</span>, <span style=color:#268bd2>newColor</span>);
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=font-style:italic>// Send the color back to Elm
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>    <span style=font-weight:700>if</span> (<span style=font-weight:700>this</span>._app &amp;&amp; <span style=font-weight:700>this</span>._app.ports &amp;&amp; <span style=font-weight:700>this</span>._app.ports.receiveColor) {
-</span></span><span style=display:flex><span>      <span style=font-weight:700>this</span>._app.ports.receiveColor.send(newColor);
+</span></span><span style=display:flex><span>    <span style=color:#93a1a1;font-style:italic>// Send the color back to Elm
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span>    <span style=color:#859900>if</span> (<span style=color:#859900>this</span>.<span style=color:#268bd2>_app</span> &amp;&amp; <span style=color:#859900>this</span>.<span style=color:#268bd2>_app</span>.<span style=color:#268bd2>ports</span> &amp;&amp; <span style=color:#859900>this</span>.<span style=color:#268bd2>_app</span>.<span style=color:#268bd2>ports</span>.<span style=color:#268bd2>receiveColor</span>) {
+</span></span><span style=display:flex><span>      <span style=color:#859900>this</span>.<span style=color:#268bd2>_app</span>.<span style=color:#268bd2>ports</span>.<span style=color:#268bd2>receiveColor</span>.<span style=color:#268bd2>send</span>(<span style=color:#268bd2>newColor</span>);
 </span></span><span style=display:flex><span>    }
 </span></span><span style=display:flex><span>  }
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=font-style:italic>// Store reference to Elm app
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>  setApp(app) {
-</span></span><span style=display:flex><span>    <span style=font-weight:700>this</span>._app = app;
+</span></span><span style=display:flex><span>  <span style=color:#93a1a1;font-style:italic>// Store reference to Elm app
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span>  <span style=color:#268bd2>setApp</span>(<span style=color:#268bd2>app</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#859900>this</span>.<span style=color:#268bd2>_app</span> = <span style=color:#268bd2>app</span>;
 </span></span><span style=display:flex><span>  }
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=font-style:italic>// Watch for attribute changes
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>  <span style=font-weight:700>static</span> get observedAttributes() {
-</span></span><span style=display:flex><span>    <span style=font-weight:700>return</span> [<span style=font-style:italic>&#34;current-color&#34;</span>];
+</span></span><span style=display:flex><span>  <span style=color:#93a1a1;font-style:italic>// Watch for attribute changes
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span>  <span style=color:#859900>static</span> <span style=color:#268bd2>get</span> <span style=color:#268bd2>observedAttributes</span>() {
+</span></span><span style=display:flex><span>    <span style=color:#859900>return</span> [<span style=color:#2aa198>&#34;current-color&#34;</span>];
 </span></span><span style=display:flex><span>  }
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=font-style:italic>// Handle attribute changes
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>  attributeChangedCallback(name, oldValue, newValue) {
-</span></span><span style=display:flex><span>    <span style=font-weight:700>if</span> (name === <span style=font-style:italic>&#34;current-color&#34;</span> &amp;&amp; oldValue !== newValue) {
-</span></span><span style=display:flex><span>      <span style=font-style:italic>// Update the input value directly if possible
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>      <span style=font-weight:700>const</span> input = <span style=font-weight:700>this</span>.shadowRoot.querySelector(<span style=font-style:italic>&#34;input&#34;</span>);
-</span></span><span style=display:flex><span>      <span style=font-weight:700>if</span> (input &amp;&amp; input.value !== newValue) {
-</span></span><span style=display:flex><span>        input.value = newValue;
-</span></span><span style=display:flex><span>      } <span style=font-weight:700>else</span> {
-</span></span><span style=display:flex><span>        <span style=font-style:italic>// Otherwise re-render
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>        <span style=font-weight:700>this</span>.render();
-</span></span><span style=display:flex><span>        <span style=font-weight:700>this</span>._attachEventListeners();
+</span></span><span style=display:flex><span>  <span style=color:#93a1a1;font-style:italic>// Handle attribute changes
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span>  <span style=color:#268bd2>attributeChangedCallback</span>(<span style=color:#268bd2>name</span>, <span style=color:#268bd2>oldValue</span>, <span style=color:#268bd2>newValue</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#859900>if</span> (<span style=color:#268bd2>name</span> === <span style=color:#2aa198>&#34;current-color&#34;</span> &amp;&amp; <span style=color:#268bd2>oldValue</span> !== <span style=color:#268bd2>newValue</span>) {
+</span></span><span style=display:flex><span>      <span style=color:#93a1a1;font-style:italic>// Update the input value directly if possible
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span>      <span style=color:#859900>const</span> <span style=color:#268bd2>input</span> = <span style=color:#859900>this</span>.<span style=color:#268bd2>shadowRoot</span>.<span style=color:#268bd2>querySelector</span>(<span style=color:#2aa198>&#34;input&#34;</span>);
+</span></span><span style=display:flex><span>      <span style=color:#859900>if</span> (<span style=color:#268bd2>input</span> &amp;&amp; <span style=color:#268bd2>input</span>.<span style=color:#268bd2>value</span> !== <span style=color:#268bd2>newValue</span>) {
+</span></span><span style=display:flex><span>        <span style=color:#268bd2>input</span>.<span style=color:#268bd2>value</span> = <span style=color:#268bd2>newValue</span>;
+</span></span><span style=display:flex><span>      } <span style=color:#859900>else</span> {
+</span></span><span style=display:flex><span>        <span style=color:#93a1a1;font-style:italic>// Otherwise re-render
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span>        <span style=color:#859900>this</span>.<span style=color:#268bd2>render</span>();
+</span></span><span style=display:flex><span>        <span style=color:#859900>this</span>.<span style=color:#268bd2>_attachEventListeners</span>();
 </span></span><span style=display:flex><span>      }
 </span></span><span style=display:flex><span>    }
 </span></span><span style=display:flex><span>  }
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  get currentColor() {
-</span></span><span style=display:flex><span>    <span style=font-weight:700>return</span> <span style=font-weight:700>this</span>.getAttribute(<span style=font-style:italic>&#34;current-color&#34;</span>) || <span style=font-style:italic>&#34;#000000&#34;</span>;
+</span></span><span style=display:flex><span>  <span style=color:#268bd2>get</span> <span style=color:#268bd2>currentColor</span>() {
+</span></span><span style=display:flex><span>    <span style=color:#859900>return</span> <span style=color:#859900>this</span>.<span style=color:#268bd2>getAttribute</span>(<span style=color:#2aa198>&#34;current-color&#34;</span>) || <span style=color:#2aa198>&#34;#000000&#34;</span>;
 </span></span><span style=display:flex><span>  }
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  render() {
-</span></span><span style=display:flex><span>    <span style=font-weight:700>this</span>.shadowRoot.innerHTML = <span style=font-style:italic>`
-</span></span></span><span style=display:flex><span><span style=font-style:italic>      &lt;style&gt;
-</span></span></span><span style=display:flex><span><span style=font-style:italic>        :host {
-</span></span></span><span style=display:flex><span><span style=font-style:italic>          display: block;
-</span></span></span><span style=display:flex><span><span style=font-style:italic>          font-family: inherit;
-</span></span></span><span style=display:flex><span><span style=font-style:italic>        }
-</span></span></span><span style=display:flex><span><span style=font-style:italic>        .picker-container {
-</span></span></span><span style=display:flex><span><span style=font-style:italic>          display: flex;
-</span></span></span><span style=display:flex><span><span style=font-style:italic>          align-items: center;
-</span></span></span><span style=display:flex><span><span style=font-style:italic>          gap: 8px;
-</span></span></span><span style=display:flex><span><span style=font-style:italic>        }
-</span></span></span><span style=display:flex><span><span style=font-style:italic>        label {
-</span></span></span><span style=display:flex><span><span style=font-style:italic>          font-weight: bold;
-</span></span></span><span style=display:flex><span><span style=font-style:italic>        }
-</span></span></span><span style=display:flex><span><span style=font-style:italic>        input[type=&#34;color&#34;] {
-</span></span></span><span style=display:flex><span><span style=font-style:italic>          width: 50px;
-</span></span></span><span style=display:flex><span><span style=font-style:italic>          height: 30px;
-</span></span></span><span style=display:flex><span><span style=font-style:italic>          border: none;
-</span></span></span><span style=display:flex><span><span style=font-style:italic>          border-radius: 4px;
-</span></span></span><span style=display:flex><span><span style=font-style:italic>        }
-</span></span></span><span style=display:flex><span><span style=font-style:italic>      &lt;/style&gt;
-</span></span></span><span style=display:flex><span><span style=font-style:italic>      &lt;div class=&#34;picker-container&#34;&gt;
-</span></span></span><span style=display:flex><span><span style=font-style:italic>        &lt;label for=&#34;color-input&#34;&gt;Pick a color:&lt;/label&gt;
-</span></span></span><span style=display:flex><span><span style=font-style:italic>        &lt;input type=&#34;color&#34; id=&#34;color-input&#34; value=&#34;</span><span style=font-weight:700;font-style:italic>${</span><span style=font-weight:700>this</span>.currentColor<span style=font-weight:700;font-style:italic>}</span><span style=font-style:italic>&#34;&gt;
-</span></span></span><span style=display:flex><span><span style=font-style:italic>      &lt;/div&gt;
-</span></span></span><span style=display:flex><span><span style=font-style:italic>    `</span>;
+</span></span><span style=display:flex><span>  <span style=color:#268bd2>render</span>() {
+</span></span><span style=display:flex><span>    <span style=color:#859900>this</span>.<span style=color:#268bd2>shadowRoot</span>.<span style=color:#268bd2>innerHTML</span> = <span style=color:#2aa198>`
+</span></span></span><span style=display:flex><span><span style=color:#2aa198>      &lt;style&gt;
+</span></span></span><span style=display:flex><span><span style=color:#2aa198>        :host {
+</span></span></span><span style=display:flex><span><span style=color:#2aa198>          display: block;
+</span></span></span><span style=display:flex><span><span style=color:#2aa198>          font-family: inherit;
+</span></span></span><span style=display:flex><span><span style=color:#2aa198>        }
+</span></span></span><span style=display:flex><span><span style=color:#2aa198>        .picker-container {
+</span></span></span><span style=display:flex><span><span style=color:#2aa198>          display: flex;
+</span></span></span><span style=display:flex><span><span style=color:#2aa198>          align-items: center;
+</span></span></span><span style=display:flex><span><span style=color:#2aa198>          gap: 8px;
+</span></span></span><span style=display:flex><span><span style=color:#2aa198>        }
+</span></span></span><span style=display:flex><span><span style=color:#2aa198>        label {
+</span></span></span><span style=display:flex><span><span style=color:#2aa198>          font-weight: bold;
+</span></span></span><span style=display:flex><span><span style=color:#2aa198>        }
+</span></span></span><span style=display:flex><span><span style=color:#2aa198>        input[type=&#34;color&#34;] {
+</span></span></span><span style=display:flex><span><span style=color:#2aa198>          width: 50px;
+</span></span></span><span style=display:flex><span><span style=color:#2aa198>          height: 30px;
+</span></span></span><span style=display:flex><span><span style=color:#2aa198>          border: none;
+</span></span></span><span style=display:flex><span><span style=color:#2aa198>          border-radius: 4px;
+</span></span></span><span style=display:flex><span><span style=color:#2aa198>        }
+</span></span></span><span style=display:flex><span><span style=color:#2aa198>      &lt;/style&gt;
+</span></span></span><span style=display:flex><span><span style=color:#2aa198>      &lt;div class=&#34;picker-container&#34;&gt;
+</span></span></span><span style=display:flex><span><span style=color:#2aa198>        &lt;label for=&#34;color-input&#34;&gt;Pick a color:&lt;/label&gt;
+</span></span></span><span style=display:flex><span><span style=color:#2aa198>        &lt;input type=&#34;color&#34; id=&#34;color-input&#34; value=&#34;</span><span style=color:#2aa198>${</span><span style=color:#859900>this</span>.<span style=color:#268bd2>currentColor</span><span style=color:#2aa198>}</span><span style=color:#2aa198>&#34;&gt;
+</span></span></span><span style=display:flex><span><span style=color:#2aa198>      &lt;/div&gt;
+</span></span></span><span style=display:flex><span><span style=color:#2aa198>    `</span>;
 </span></span><span style=display:flex><span>  }
 </span></span><span style=display:flex><span>}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-style:italic>// Register the Web Component
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>customElements.define(<span style=font-style:italic>&#34;color-picker&#34;</span>, ColorPicker);
+</span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic>// Register the Web Component
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span><span style=color:#268bd2>customElements</span>.<span style=color:#268bd2>define</span>(<span style=color:#2aa198>&#34;color-picker&#34;</span>, <span style=color:#268bd2>ColorPicker</span>);
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-style:italic>// Set up communication from Elm to the Web Component
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>app.ports.sendColor.subscribe((color) =&gt; {
-</span></span><span style=display:flex><span>  <span style=font-style:italic>// Find our color picker element
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>  <span style=font-weight:700>const</span> picker = document.querySelector(<span style=font-style:italic>&#34;color-picker&#34;</span>);
-</span></span><span style=display:flex><span>  <span style=font-weight:700>if</span> (picker) {
-</span></span><span style=display:flex><span>    <span style=font-style:italic>// Give the Web Component a reference to the Elm app
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>    <span style=font-weight:700>if</span> (!picker._app) {
-</span></span><span style=display:flex><span>      picker.setApp(app);
+</span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic>// Set up communication from Elm to the Web Component
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span><span style=color:#268bd2>app</span>.<span style=color:#268bd2>ports</span>.<span style=color:#268bd2>sendColor</span>.<span style=color:#268bd2>subscribe</span>((<span style=color:#268bd2>color</span>) =&gt; {
+</span></span><span style=display:flex><span>  <span style=color:#93a1a1;font-style:italic>// Find our color picker element
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span>  <span style=color:#859900>const</span> <span style=color:#268bd2>picker</span> = <span style=color:#cb4b16>document</span>.<span style=color:#268bd2>querySelector</span>(<span style=color:#2aa198>&#34;color-picker&#34;</span>);
+</span></span><span style=display:flex><span>  <span style=color:#859900>if</span> (<span style=color:#268bd2>picker</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#93a1a1;font-style:italic>// Give the Web Component a reference to the Elm app
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span>    <span style=color:#859900>if</span> (!<span style=color:#268bd2>picker</span>.<span style=color:#268bd2>_app</span>) {
+</span></span><span style=display:flex><span>      <span style=color:#268bd2>picker</span>.<span style=color:#268bd2>setApp</span>(<span style=color:#268bd2>app</span>);
 </span></span><span style=display:flex><span>    }
-</span></span><span style=display:flex><span>    <span style=font-style:italic>// Update the color
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>    picker.setAttribute(<span style=font-style:italic>&#34;current-color&#34;</span>, color);
+</span></span><span style=display:flex><span>    <span style=color:#93a1a1;font-style:italic>// Update the color
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span>    <span style=color:#268bd2>picker</span>.<span style=color:#268bd2>setAttribute</span>(<span style=color:#2aa198>&#34;current-color&#34;</span>, <span style=color:#268bd2>color</span>);
 </span></span><span style=display:flex><span>  }
 </span></span><span style=display:flex><span>});
 </span></span></code></pre></div><p>This update ensures that the JavaScript code in the blog post matches exactly with the code from <code>foo.html</code>.</p><h2 id=step-3-html-setup>Step 3: HTML Setup
 <a class=heading-link href=#step-3-html-setup><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><p>Finally, we need a simple HTML file to bring it all together:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-html data-lang=html><span style=display:flex><span><span>&lt;!DOCTYPE html&gt;</span>
-</span></span><span style=display:flex><span>&lt;<span style=font-weight:700>html</span> lang=<span style=font-style:italic>&#34;en&#34;</span>&gt;
-</span></span><span style=display:flex><span>  &lt;<span style=font-weight:700>head</span>&gt;
-</span></span><span style=display:flex><span>    &lt;<span style=font-weight:700>meta</span> charset=<span style=font-style:italic>&#34;UTF-8&#34;</span> /&gt;
-</span></span><span style=display:flex><span>    &lt;<span style=font-weight:700>meta</span> name=<span style=font-style:italic>&#34;viewport&#34;</span> content=<span style=font-style:italic>&#34;width=device-width, initial-scale=1.0&#34;</span> /&gt;
-</span></span><span style=display:flex><span>    &lt;<span style=font-weight:700>title</span>&gt;Elm + Web Components&lt;/<span style=font-weight:700>title</span>&gt;
-</span></span><span style=display:flex><span>    &lt;<span style=font-weight:700>script</span> src=<span style=font-style:italic>&#34;index.js&#34;</span>&gt;&lt;/<span style=font-weight:700>script</span>&gt;
-</span></span><span style=display:flex><span>    &lt;<span style=font-weight:700>script</span> src=<span style=font-style:italic>&#34;elm.js&#34;</span>&gt;&lt;/<span style=font-weight:700>script</span>&gt;
-</span></span><span style=display:flex><span>  &lt;/<span style=font-weight:700>head</span>&gt;
-</span></span><span style=display:flex><span>  &lt;<span style=font-weight:700>body</span>&gt;
-</span></span><span style=display:flex><span>    &lt;<span style=font-weight:700>div</span> id=<span style=font-style:italic>&#34;elm-app&#34;</span>&gt;&lt;/<span style=font-weight:700>div</span>&gt;
-</span></span><span style=display:flex><span>  &lt;/<span style=font-weight:700>body</span>&gt;
-</span></span><span style=display:flex><span>&lt;/<span style=font-weight:700>html</span>&gt;
+<span class=sr-only>Link to heading</span></a></h2><p>Finally, we need a simple HTML file to bring it all together:</p><div class=highlight><pre tabindex=0 style=color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-html data-lang=html><span style=display:flex><span><span style=color:#93a1a1;font-style:italic>&lt;!DOCTYPE html&gt;</span>
+</span></span><span style=display:flex><span>&lt;<span style=color:#268bd2;font-weight:700>html</span> <span style=color:#268bd2>lang</span>=<span style=color:#2aa198>&#34;en&#34;</span>&gt;
+</span></span><span style=display:flex><span>  &lt;<span style=color:#268bd2;font-weight:700>head</span>&gt;
+</span></span><span style=display:flex><span>    &lt;<span style=color:#268bd2;font-weight:700>meta</span> <span style=color:#268bd2>charset</span>=<span style=color:#2aa198>&#34;UTF-8&#34;</span> /&gt;
+</span></span><span style=display:flex><span>    &lt;<span style=color:#268bd2;font-weight:700>meta</span> <span style=color:#268bd2>name</span>=<span style=color:#2aa198>&#34;viewport&#34;</span> <span style=color:#268bd2>content</span>=<span style=color:#2aa198>&#34;width=device-width, initial-scale=1.0&#34;</span> /&gt;
+</span></span><span style=display:flex><span>    &lt;<span style=color:#268bd2;font-weight:700>title</span>&gt;Elm + Web Components&lt;/<span style=color:#268bd2;font-weight:700>title</span>&gt;
+</span></span><span style=display:flex><span>    &lt;<span style=color:#268bd2;font-weight:700>script</span> <span style=color:#268bd2>src</span>=<span style=color:#2aa198>&#34;index.js&#34;</span>&gt;&lt;/<span style=color:#268bd2;font-weight:700>script</span>&gt;
+</span></span><span style=display:flex><span>    &lt;<span style=color:#268bd2;font-weight:700>script</span> <span style=color:#268bd2>src</span>=<span style=color:#2aa198>&#34;elm.js&#34;</span>&gt;&lt;/<span style=color:#268bd2;font-weight:700>script</span>&gt;
+</span></span><span style=display:flex><span>  &lt;/<span style=color:#268bd2;font-weight:700>head</span>&gt;
+</span></span><span style=display:flex><span>  &lt;<span style=color:#268bd2;font-weight:700>body</span>&gt;
+</span></span><span style=display:flex><span>    &lt;<span style=color:#268bd2;font-weight:700>div</span> <span style=color:#268bd2>id</span>=<span style=color:#2aa198>&#34;elm-app&#34;</span>&gt;&lt;/<span style=color:#268bd2;font-weight:700>div</span>&gt;
+</span></span><span style=display:flex><span>  &lt;/<span style=color:#268bd2;font-weight:700>body</span>&gt;
+</span></span><span style=display:flex><span>&lt;/<span style=color:#268bd2;font-weight:700>html</span>&gt;
 </span></span></code></pre></div><h2 id=how-it-works>How It Works
 <a class=heading-link href=#how-it-works><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
 <span class=sr-only>Link to heading</span></a></h2><p>The data flow in our application follows this pattern:</p><ol><li><p><strong>Elm → JavaScript</strong>:</p><ul><li>Elm sends the current color through the <code>sendColor</code> port</li><li>JavaScript receives this value and updates the Web Component&rsquo;s attribute</li></ul></li><li><p><strong>Web Component → JavaScript → Elm</strong>:</p><ul><li>User interacts with the color picker</li><li>Web Component fires an event</li><li>The event handler sends the new color to Elm via the <code>receiveColor</code> port</li><li>Elm updates its model with the new color</li></ul></li></ol><p>This clean separation maintains Elm&rsquo;s purity while leveraging the native capabilities of the web platform.</p><h2 id=real-world-considerations>Real-World Considerations
 <a class=heading-link href=#real-world-considerations><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
 <span class=sr-only>Link to heading</span></a></h2><h3 id=1-more-complex-data>1. More Complex Data
 <a class=heading-link href=#1-more-complex-data><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h3><p>For our simple example, we&rsquo;re just passing strings. For complex data, you&rsquo;ll need to encode/decode JSON:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-elm data-lang=elm><span style=display:flex><span><span style=font-style:italic>-- In Elm</span>
-</span></span><span style=display:flex><span><span style=font-weight:700>port</span> sendComplexData : <span>Encode</span>.<span>Value</span> -&gt; <span>Cmd</span> msg
-</span></span><span style=display:flex><span><span style=font-weight:700>port</span> receiveComplexData : (<span>Decode</span>.<span>Value</span> -&gt; msg) -&gt; <span>Sub</span> msg
+<span class=sr-only>Link to heading</span></a></h3><p>For our simple example, we&rsquo;re just passing strings. For complex data, you&rsquo;ll need to encode/decode JSON:</p><div class=highlight><pre tabindex=0 style=color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-elm data-lang=elm><span style=display:flex><span><span style=color:#93a1a1;font-style:italic>-- In Elm</span>
+</span></span><span style=display:flex><span><span style=color:#859900>port</span> <span style=color:#268bd2>sendComplexData</span> <span style=color:#268bd2>:</span> <span style=color:#859900;font-weight:700>Encode</span><span style=color:#268bd2>.</span><span style=color:#859900;font-weight:700>Value</span> <span style=color:#268bd2>-&gt;</span> <span style=color:#859900;font-weight:700>Cmd</span> <span style=color:#268bd2>msg</span>
+</span></span><span style=display:flex><span><span style=color:#859900>port</span> <span style=color:#268bd2>receiveComplexData</span> <span style=color:#268bd2>:</span> (<span style=color:#859900;font-weight:700>Decode</span><span style=color:#268bd2>.</span><span style=color:#859900;font-weight:700>Value</span> <span style=color:#268bd2>-&gt;</span> <span style=color:#268bd2>msg</span>) <span style=color:#268bd2>-&gt;</span> <span style=color:#859900;font-weight:700>Sub</span> <span style=color:#268bd2>msg</span>
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-style:italic>-- Using it</span>
-</span></span><span style=display:flex><span>sendComplexData (<span>Encode</span>.object
-</span></span><span style=display:flex><span>    [ (<span style=font-style:italic>&#34;color&#34;</span>, <span>Encode</span>.string model.color)
-</span></span><span style=display:flex><span>    , (<span style=font-style:italic>&#34;opacity&#34;</span>, <span>Encode</span>.float model.opacity)
-</span></span><span style=display:flex><span>    , (<span style=font-style:italic>&#34;name&#34;</span>, <span>Encode</span>.string model.name)
+</span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic>-- Using it</span>
+</span></span><span style=display:flex><span><span style=color:#268bd2>sendComplexData</span> (<span style=color:#859900;font-weight:700>Encode</span><span style=color:#268bd2>.</span><span style=color:#268bd2>object</span>
+</span></span><span style=display:flex><span>    [ (<span style=color:#2aa198>&#34;color&#34;</span>, <span style=color:#859900;font-weight:700>Encode</span><span style=color:#268bd2>.</span><span style=color:#268bd2>string</span> <span style=color:#268bd2>model</span><span style=color:#268bd2>.</span><span style=color:#268bd2>color</span>)
+</span></span><span style=display:flex><span>    , (<span style=color:#2aa198>&#34;opacity&#34;</span>, <span style=color:#859900;font-weight:700>Encode</span><span style=color:#268bd2>.</span><span style=color:#268bd2>float</span> <span style=color:#268bd2>model</span><span style=color:#268bd2>.</span><span style=color:#268bd2>opacity</span>)
+</span></span><span style=display:flex><span>    , (<span style=color:#2aa198>&#34;name&#34;</span>, <span style=color:#859900;font-weight:700>Encode</span><span style=color:#268bd2>.</span><span style=color:#268bd2>string</span> <span style=color:#268bd2>model</span><span style=color:#268bd2>.</span><span style=color:#268bd2>name</span>)
 </span></span><span style=display:flex><span>    ])
-</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=display:flex><span><span style=font-style:italic>// In JavaScript
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>app.ports.sendComplexData.subscribe((data) =&gt; {
-</span></span><span style=display:flex><span>  console.log(data.color, data.opacity, data.name);
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=display:flex><span><span style=color:#93a1a1;font-style:italic>// In JavaScript
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span><span style=color:#268bd2>app</span>.<span style=color:#268bd2>ports</span>.<span style=color:#268bd2>sendComplexData</span>.<span style=color:#268bd2>subscribe</span>((<span style=color:#268bd2>data</span>) =&gt; {
+</span></span><span style=display:flex><span>  <span style=color:#268bd2>console</span>.<span style=color:#268bd2>log</span>(<span style=color:#268bd2>data</span>.<span style=color:#268bd2>color</span>, <span style=color:#268bd2>data</span>.<span style=color:#268bd2>opacity</span>, <span style=color:#268bd2>data</span>.<span style=color:#268bd2>name</span>);
 </span></span><span style=display:flex><span>});
 </span></span></code></pre></div><h3 id=2-error-handling>2. Error Handling
 <a class=heading-link href=#2-error-handling><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h3><p>When receiving data from JavaScript, always be prepared for unexpected values:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-elm data-lang=elm><span style=display:flex><span><span style=font-weight:700>type</span> <span>Msg</span>
-</span></span><span style=display:flex><span>    = <span>GotColorData</span> (<span>Result</span> <span>Decode</span>.<span>Error</span> <span>ColorData</span>)
+<span class=sr-only>Link to heading</span></a></h3><p>When receiving data from JavaScript, always be prepared for unexpected values:</p><div class=highlight><pre tabindex=0 style=color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-elm data-lang=elm><span style=display:flex><span><span style=color:#859900>type</span> <span style=color:#859900;font-weight:700>Msg</span>
+</span></span><span style=display:flex><span>    <span style=color:#268bd2>=</span> <span style=color:#859900;font-weight:700>GotColorData</span> (<span style=color:#859900;font-weight:700>Result</span> <span style=color:#859900;font-weight:700>Decode</span><span style=color:#268bd2>.</span><span style=color:#859900;font-weight:700>Error</span> <span style=color:#859900;font-weight:700>ColorData</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>subscriptions : <span>Model</span> -&gt; <span>Sub</span> <span>Msg</span>
-</span></span><span style=display:flex><span>subscriptions _ =
-</span></span><span style=display:flex><span>    receiveComplexData (decodeColorData &gt;&gt; <span>GotColorData</span>)
+</span></span><span style=display:flex><span><span style=color:#268bd2>subscriptions</span> <span style=color:#268bd2>:</span> <span style=color:#859900;font-weight:700>Model</span> <span style=color:#268bd2>-&gt;</span> <span style=color:#859900;font-weight:700>Sub</span> <span style=color:#859900;font-weight:700>Msg</span>
+</span></span><span style=display:flex><span><span style=color:#268bd2>subscriptions</span> <span style=color:#268bd2>_</span> <span style=color:#268bd2>=</span>
+</span></span><span style=display:flex><span>    <span style=color:#268bd2>receiveComplexData</span> (<span style=color:#268bd2>decodeColorData</span> <span style=color:#268bd2>&gt;&gt;</span> <span style=color:#859900;font-weight:700>GotColorData</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>decodeColorData : <span>Decode</span>.<span>Value</span> -&gt; <span>Result</span> <span>Decode</span>.<span>Error</span> <span>ColorData</span>
-</span></span><span style=display:flex><span>decodeColorData value =
-</span></span><span style=display:flex><span>    <span>Decode</span>.decodeValue colorDataDecoder value
+</span></span><span style=display:flex><span><span style=color:#268bd2>decodeColorData</span> <span style=color:#268bd2>:</span> <span style=color:#859900;font-weight:700>Decode</span><span style=color:#268bd2>.</span><span style=color:#859900;font-weight:700>Value</span> <span style=color:#268bd2>-&gt;</span> <span style=color:#859900;font-weight:700>Result</span> <span style=color:#859900;font-weight:700>Decode</span><span style=color:#268bd2>.</span><span style=color:#859900;font-weight:700>Error</span> <span style=color:#859900;font-weight:700>ColorData</span>
+</span></span><span style=display:flex><span><span style=color:#268bd2>decodeColorData</span> <span style=color:#268bd2>value</span> <span style=color:#268bd2>=</span>
+</span></span><span style=display:flex><span>    <span style=color:#859900;font-weight:700>Decode</span><span style=color:#268bd2>.</span><span style=color:#268bd2>decodeValue</span> <span style=color:#268bd2>colorDataDecoder</span> <span style=color:#268bd2>value</span>
 </span></span></code></pre></div><h3 id=3-multiple-components>3. Multiple Components
 <a class=heading-link href=#3-multiple-components><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h3><p>With multiple Web Components, maintain a clear naming convention for your ports:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-elm data-lang=elm><span style=display:flex><span><span style=font-weight:700>port</span> sendColorPickerData : <span>Encode</span>.<span>Value</span> -&gt; <span>Cmd</span> msg
-</span></span><span style=display:flex><span><span style=font-weight:700>port</span> receiveColorPickerData : (<span>Decode</span>.<span>Value</span> -&gt; msg) -&gt; <span>Sub</span> msg
+<span class=sr-only>Link to heading</span></a></h3><p>With multiple Web Components, maintain a clear naming convention for your ports:</p><div class=highlight><pre tabindex=0 style=color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-elm data-lang=elm><span style=display:flex><span><span style=color:#859900>port</span> <span style=color:#268bd2>sendColorPickerData</span> <span style=color:#268bd2>:</span> <span style=color:#859900;font-weight:700>Encode</span><span style=color:#268bd2>.</span><span style=color:#859900;font-weight:700>Value</span> <span style=color:#268bd2>-&gt;</span> <span style=color:#859900;font-weight:700>Cmd</span> <span style=color:#268bd2>msg</span>
+</span></span><span style=display:flex><span><span style=color:#859900>port</span> <span style=color:#268bd2>receiveColorPickerData</span> <span style=color:#268bd2>:</span> (<span style=color:#859900;font-weight:700>Decode</span><span style=color:#268bd2>.</span><span style=color:#859900;font-weight:700>Value</span> <span style=color:#268bd2>-&gt;</span> <span style=color:#268bd2>msg</span>) <span style=color:#268bd2>-&gt;</span> <span style=color:#859900;font-weight:700>Sub</span> <span style=color:#268bd2>msg</span>
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-weight:700>port</span> sendMapData : <span>Encode</span>.<span>Value</span> -&gt; <span>Cmd</span> msg
-</span></span><span style=display:flex><span><span style=font-weight:700>port</span> receiveMapData : (<span>Decode</span>.<span>Value</span> -&gt; msg) -&gt; <span>Sub</span> msg
+</span></span><span style=display:flex><span><span style=color:#859900>port</span> <span style=color:#268bd2>sendMapData</span> <span style=color:#268bd2>:</span> <span style=color:#859900;font-weight:700>Encode</span><span style=color:#268bd2>.</span><span style=color:#859900;font-weight:700>Value</span> <span style=color:#268bd2>-&gt;</span> <span style=color:#859900;font-weight:700>Cmd</span> <span style=color:#268bd2>msg</span>
+</span></span><span style=display:flex><span><span style=color:#859900>port</span> <span style=color:#268bd2>receiveMapData</span> <span style=color:#268bd2>:</span> (<span style=color:#859900;font-weight:700>Decode</span><span style=color:#268bd2>.</span><span style=color:#859900;font-weight:700>Value</span> <span style=color:#268bd2>-&gt;</span> <span style=color:#268bd2>msg</span>) <span style=color:#268bd2>-&gt;</span> <span style=color:#859900;font-weight:700>Sub</span> <span style=color:#268bd2>msg</span>
 </span></span></code></pre></div><h2 id=how-this-relates-to-clean-architecture>How This Relates to Clean Architecture
 <a class=heading-link href=#how-this-relates-to-clean-architecture><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
 <span class=sr-only>Link to heading</span></a></h2><p>This ports + Web Components pattern aligns perfectly with Clean Architecture principles:</p><ol><li><p><strong>Separation of Concerns</strong>:</p><ul><li>Elm handles application logic</li><li>Web Components handle specialized UI rendering</li><li>Ports define clear boundaries between systems</li></ul></li><li><p><strong>Dependency Rule</strong>:</p><ul><li>Core business logic in Elm doesn&rsquo;t depend on the Web Component details</li><li>The outer layer (JavaScript) depends on the inner layer (Elm), not vice versa</li></ul></li><li><p><strong>Testability</strong>:</p><ul><li>Elm code can be tested without Web Components</li><li>Ports can be mocked for testing</li><li>Web Components can be tested in isolation</li></ul></li></ol><p>This approach gives us the best of both worlds:</p><ul><li><strong>Elm&rsquo;s strengths</strong>: Type safety, immutability, and predictable state management</li><li><strong>Web Components&rsquo; strengths</strong>: Standards-based, reusable UI components</li></ul><h2 id=conclusion>Conclusion

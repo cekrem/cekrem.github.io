@@ -16,221 +16,221 @@
 <a class=heading-link href=#introduction><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
 <span class=sr-only>Link to heading</span></a></h2><p>After exploring <a href=/posts/clean-architecture-and-plugins-in-go>Dependency Inversion</a>, <a href=/posts/interface-segregation-in-practice>Interface Segregation</a>, and <a href=/posts/liskov-substitution-the-real-meaning-of-inheritance>Liskov Substitution</a>, let&rsquo;s tackle the Open-Closed Principle (OCP) in the context of modern React applications.</p><p>Again, kudos to Uncle Bob for reminding me about the importance of good <strong>software architecture</strong> in his classic <a href=https://amzn.to/4iAc8o1 class=external-link target=_blank rel=noopener>Clean Architecture</a>! That book is my primary inspiration for this series.</p><blockquote><p>The Open-Closed Principle states that software entities should be open for extension but closed for modification.</p></blockquote><p>In React terms: components should be easy to extend without changing their existing code. Let&rsquo;s see how this plays out in practice.</p><h2 id=the-problem-with-closed-components>The Problem with Closed Components
 <a class=heading-link href=#the-problem-with-closed-components><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><p>Here&rsquo;s a common anti-pattern:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=font-style:italic>// DON&#39;T DO THIS
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span><span style=font-weight:700>const</span> Button = ({ label, onClick, variant }: ButtonProps) =&gt; {
-</span></span><span style=display:flex><span>  <span style=font-weight:700>let</span> className = <span style=font-style:italic>&#34;button&#34;</span>;
+<span class=sr-only>Link to heading</span></a></h2><p>Here&rsquo;s a common anti-pattern:</p><div class=highlight><pre tabindex=0 style=color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=color:#93a1a1;font-style:italic>// DON&#39;T DO THIS
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span><span style=color:#859900>const</span> <span style=color:#268bd2>Button</span> = ({ <span style=color:#268bd2>label</span>, <span style=color:#268bd2>onClick</span>, <span style=color:#268bd2>variant</span> }: <span style=color:#268bd2>ButtonProps</span>) =&gt; {
+</span></span><span style=display:flex><span>  <span style=color:#859900>let</span> <span style=color:#268bd2>className</span> = <span style=color:#2aa198>&#34;button&#34;</span>;
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=font-style:italic>// Direct modification for each variant
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>  <span style=font-weight:700>if</span> (variant === <span style=font-style:italic>&#34;primary&#34;</span>) {
-</span></span><span style=display:flex><span>    className += <span style=font-style:italic>&#34; button-primary&#34;</span>;
-</span></span><span style=display:flex><span>  } <span style=font-weight:700>else</span> <span style=font-weight:700>if</span> (variant === <span style=font-style:italic>&#34;secondary&#34;</span>) {
-</span></span><span style=display:flex><span>    className += <span style=font-style:italic>&#34; button-secondary&#34;</span>;
-</span></span><span style=display:flex><span>  } <span style=font-weight:700>else</span> <span style=font-weight:700>if</span> (variant === <span style=font-style:italic>&#34;danger&#34;</span>) {
-</span></span><span style=display:flex><span>    className += <span style=font-style:italic>&#34; button-danger&#34;</span>;
+</span></span><span style=display:flex><span>  <span style=color:#93a1a1;font-style:italic>// Direct modification for each variant
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span>  <span style=color:#859900>if</span> (<span style=color:#268bd2>variant</span> === <span style=color:#2aa198>&#34;primary&#34;</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#268bd2>className</span> += <span style=color:#2aa198>&#34; button-primary&#34;</span>;
+</span></span><span style=display:flex><span>  } <span style=color:#859900>else</span> <span style=color:#859900>if</span> (<span style=color:#268bd2>variant</span> === <span style=color:#2aa198>&#34;secondary&#34;</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#268bd2>className</span> += <span style=color:#2aa198>&#34; button-secondary&#34;</span>;
+</span></span><span style=display:flex><span>  } <span style=color:#859900>else</span> <span style=color:#859900>if</span> (<span style=color:#268bd2>variant</span> === <span style=color:#2aa198>&#34;danger&#34;</span>) {
+</span></span><span style=display:flex><span>    <span style=color:#268bd2>className</span> += <span style=color:#2aa198>&#34; button-danger&#34;</span>;
 </span></span><span style=display:flex><span>  }
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=font-weight:700>return</span> (
-</span></span><span style=display:flex><span>    &lt;<span style=font-weight:700>button</span> className={className} onClick={onClick}&gt;
-</span></span><span style=display:flex><span>      {label}
-</span></span><span style=display:flex><span>    &lt;/<span style=font-weight:700>button</span>&gt;
+</span></span><span style=display:flex><span>  <span style=color:#859900>return</span> (
+</span></span><span style=display:flex><span>    &lt;<span style=color:#268bd2;font-weight:700>button</span> <span style=color:#268bd2>className</span>={<span style=color:#268bd2>className</span>} <span style=color:#268bd2>onClick</span>={<span style=color:#268bd2>onClick</span>}&gt;
+</span></span><span style=display:flex><span>      {<span style=color:#268bd2>label</span>}
+</span></span><span style=display:flex><span>    &lt;/<span style=color:#268bd2;font-weight:700>button</span>&gt;
 </span></span><span style=display:flex><span>  );
 </span></span><span style=display:flex><span>};
 </span></span></code></pre></div><p>This violates OCP because:</p><ol><li>Adding a new variant requires modifying the component</li><li>The component needs to know about all possible variants</li><li>Testing becomes more complex with each addition</li></ol><h2 id=building-open-components>Building Open Components
 <a class=heading-link href=#building-open-components><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><p>Let&rsquo;s refactor this to follow OCP:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=font-weight:700>type</span> ButtonBaseProps = {
-</span></span><span style=display:flex><span>  label: <span>string</span>;
-</span></span><span style=display:flex><span>  onClick: () =&gt; <span style=font-weight:700>void</span>;
-</span></span><span style=display:flex><span>  className?: <span>string</span>;
-</span></span><span style=display:flex><span>  children?: <span>React.ReactNode</span>;
+<span class=sr-only>Link to heading</span></a></h2><p>Let&rsquo;s refactor this to follow OCP:</p><div class=highlight><pre tabindex=0 style=color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=color:#859900>type</span> <span style=color:#268bd2>ButtonBaseProps</span> = {
+</span></span><span style=display:flex><span>  <span style=color:#268bd2>label</span>: <span style=color:#859900;font-weight:700>string</span>;
+</span></span><span style=display:flex><span>  <span style=color:#268bd2>onClick</span>: () =&gt; <span style=color:#859900>void</span>;
+</span></span><span style=display:flex><span>  <span style=color:#268bd2>className?</span>: <span style=color:#859900;font-weight:700>string</span>;
+</span></span><span style=display:flex><span>  <span style=color:#268bd2>children?</span>: <span style=color:#859900;font-weight:700>React.ReactNode</span>;
 </span></span><span style=display:flex><span>};
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-weight:700>const</span> ButtonBase = ({
-</span></span><span style=display:flex><span>  label,
-</span></span><span style=display:flex><span>  onClick,
-</span></span><span style=display:flex><span>  className = <span style=font-style:italic>&#34;&#34;</span>,
-</span></span><span style=display:flex><span>  children,
-</span></span><span style=display:flex><span>}: ButtonBaseProps) =&gt; (
-</span></span><span style=display:flex><span>  &lt;<span style=font-weight:700>button</span> className={<span style=font-style:italic>`button </span><span style=font-weight:700;font-style:italic>${</span>className<span style=font-weight:700;font-style:italic>}</span><span style=font-style:italic>`</span>.trim()} onClick={onClick}&gt;
-</span></span><span style=display:flex><span>    {children || label}
-</span></span><span style=display:flex><span>  &lt;/<span style=font-weight:700>button</span>&gt;
+</span></span><span style=display:flex><span><span style=color:#859900>const</span> <span style=color:#268bd2>ButtonBase</span> = ({
+</span></span><span style=display:flex><span>  <span style=color:#268bd2>label</span>,
+</span></span><span style=display:flex><span>  <span style=color:#268bd2>onClick</span>,
+</span></span><span style=display:flex><span>  <span style=color:#268bd2>className</span> = <span style=color:#2aa198>&#34;&#34;</span>,
+</span></span><span style=display:flex><span>  <span style=color:#268bd2>children</span>,
+</span></span><span style=display:flex><span>}: <span style=color:#268bd2>ButtonBaseProps</span>) =&gt; (
+</span></span><span style=display:flex><span>  &lt;<span style=color:#268bd2;font-weight:700>button</span> <span style=color:#268bd2>className</span>={<span style=color:#2aa198>`button </span><span style=color:#2aa198>${</span><span style=color:#268bd2>className</span><span style=color:#2aa198>}</span><span style=color:#2aa198>`</span>.<span style=color:#268bd2>trim</span>()} <span style=color:#268bd2>onClick</span>={<span style=color:#268bd2>onClick</span>}&gt;
+</span></span><span style=display:flex><span>    {<span style=color:#268bd2>children</span> || <span style=color:#268bd2>label</span>}
+</span></span><span style=display:flex><span>  &lt;/<span style=color:#268bd2;font-weight:700>button</span>&gt;
 </span></span><span style=display:flex><span>);
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-style:italic>// Variant components extend the base
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span><span style=font-weight:700>const</span> PrimaryButton = (props: <span>ButtonBaseProps</span>) =&gt; (
-</span></span><span style=display:flex><span>  &lt;<span style=font-weight:700>ButtonBase</span> {...props} className=<span style=font-style:italic>&#34;button-primary&#34;</span> /&gt;
+</span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic>// Variant components extend the base
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span><span style=color:#859900>const</span> <span style=color:#268bd2>PrimaryButton</span> = (<span style=color:#268bd2>props</span>: <span style=color:#859900;font-weight:700>ButtonBaseProps</span>) =&gt; (
+</span></span><span style=display:flex><span>  &lt;<span style=color:#268bd2;font-weight:700>ButtonBase</span> {<span style=color:#268bd2>...props</span>} <span style=color:#268bd2>className</span>=<span style=color:#2aa198>&#34;button-primary&#34;</span> /&gt;
 </span></span><span style=display:flex><span>);
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-weight:700>const</span> SecondaryButton = (props: <span>ButtonBaseProps</span>) =&gt; (
-</span></span><span style=display:flex><span>  &lt;<span style=font-weight:700>ButtonBase</span> {...props} className=<span style=font-style:italic>&#34;button-secondary&#34;</span> /&gt;
+</span></span><span style=display:flex><span><span style=color:#859900>const</span> <span style=color:#268bd2>SecondaryButton</span> = (<span style=color:#268bd2>props</span>: <span style=color:#859900;font-weight:700>ButtonBaseProps</span>) =&gt; (
+</span></span><span style=display:flex><span>  &lt;<span style=color:#268bd2;font-weight:700>ButtonBase</span> {<span style=color:#268bd2>...props</span>} <span style=color:#268bd2>className</span>=<span style=color:#2aa198>&#34;button-secondary&#34;</span> /&gt;
 </span></span><span style=display:flex><span>);
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-weight:700>const</span> DangerButton = (props: <span>ButtonBaseProps</span>) =&gt; (
-</span></span><span style=display:flex><span>  &lt;<span style=font-weight:700>ButtonBase</span> {...props} className=<span style=font-style:italic>&#34;button-danger&#34;</span> /&gt;
+</span></span><span style=display:flex><span><span style=color:#859900>const</span> <span style=color:#268bd2>DangerButton</span> = (<span style=color:#268bd2>props</span>: <span style=color:#859900;font-weight:700>ButtonBaseProps</span>) =&gt; (
+</span></span><span style=display:flex><span>  &lt;<span style=color:#268bd2;font-weight:700>ButtonBase</span> {<span style=color:#268bd2>...props</span>} <span style=color:#268bd2>className</span>=<span style=color:#2aa198>&#34;button-danger&#34;</span> /&gt;
 </span></span><span style=display:flex><span>);
-</span></span></code></pre></div><p>Now we can easily add new variants without modifying existing code:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=font-style:italic>// Adding a new variant without touching the original components
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span><span style=font-weight:700>const</span> OutlineButton = (props: <span>ButtonBaseProps</span>) =&gt; (
-</span></span><span style=display:flex><span>  &lt;<span style=font-weight:700>ButtonBase</span> {...props} className=<span style=font-style:italic>&#34;button-outline&#34;</span> /&gt;
+</span></span></code></pre></div><p>Now we can easily add new variants without modifying existing code:</p><div class=highlight><pre tabindex=0 style=color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=color:#93a1a1;font-style:italic>// Adding a new variant without touching the original components
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span><span style=color:#859900>const</span> <span style=color:#268bd2>OutlineButton</span> = (<span style=color:#268bd2>props</span>: <span style=color:#859900;font-weight:700>ButtonBaseProps</span>) =&gt; (
+</span></span><span style=display:flex><span>  &lt;<span style=color:#268bd2;font-weight:700>ButtonBase</span> {<span style=color:#268bd2>...props</span>} <span style=color:#268bd2>className</span>=<span style=color:#2aa198>&#34;button-outline&#34;</span> /&gt;
 </span></span><span style=display:flex><span>);
 </span></span></code></pre></div><h2 id=component-composition-pattern>Component Composition Pattern
 <a class=heading-link href=#component-composition-pattern><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><p>Let&rsquo;s look at a more complex example using composition:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=font-weight:700>type</span> CardProps = {
-</span></span><span style=display:flex><span>  title: <span>string</span>;
-</span></span><span style=display:flex><span>  children: <span>React.ReactNode</span>;
-</span></span><span style=display:flex><span>  renderHeader?: (title: <span>string</span>) =&gt; React.ReactNode;
-</span></span><span style=display:flex><span>  renderFooter?: () =&gt; React.ReactNode;
-</span></span><span style=display:flex><span>  className?: <span>string</span>;
+<span class=sr-only>Link to heading</span></a></h2><p>Let&rsquo;s look at a more complex example using composition:</p><div class=highlight><pre tabindex=0 style=color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=color:#859900>type</span> <span style=color:#268bd2>CardProps</span> = {
+</span></span><span style=display:flex><span>  <span style=color:#268bd2>title</span>: <span style=color:#859900;font-weight:700>string</span>;
+</span></span><span style=display:flex><span>  <span style=color:#268bd2>children</span>: <span style=color:#859900;font-weight:700>React.ReactNode</span>;
+</span></span><span style=display:flex><span>  <span style=color:#268bd2>renderHeader</span>?: (<span style=color:#268bd2>title</span>: <span style=color:#859900;font-weight:700>string</span>) =&gt; <span style=color:#268bd2>React</span>.<span style=color:#268bd2>ReactNode</span>;
+</span></span><span style=display:flex><span>  <span style=color:#268bd2>renderFooter</span>?: () =&gt; <span style=color:#268bd2>React</span>.<span style=color:#268bd2>ReactNode</span>;
+</span></span><span style=display:flex><span>  <span style=color:#268bd2>className?</span>: <span style=color:#859900;font-weight:700>string</span>;
 </span></span><span style=display:flex><span>};
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-weight:700>const</span> Card = ({
-</span></span><span style=display:flex><span>  title,
-</span></span><span style=display:flex><span>  children,
-</span></span><span style=display:flex><span>  renderHeader,
-</span></span><span style=display:flex><span>  renderFooter,
-</span></span><span style=display:flex><span>  className = <span style=font-style:italic>&#34;&#34;</span>,
-</span></span><span style=display:flex><span>}: CardProps) =&gt; (
-</span></span><span style=display:flex><span>  &lt;<span style=font-weight:700>div</span> className={<span style=font-style:italic>`card </span><span style=font-weight:700;font-style:italic>${</span>className<span style=font-weight:700;font-style:italic>}</span><span style=font-style:italic>`</span>.trim()}&gt;
-</span></span><span style=display:flex><span>    {renderHeader ? (
-</span></span><span style=display:flex><span>      renderHeader(title)
+</span></span><span style=display:flex><span><span style=color:#859900>const</span> <span style=color:#268bd2>Card</span> = ({
+</span></span><span style=display:flex><span>  <span style=color:#268bd2>title</span>,
+</span></span><span style=display:flex><span>  <span style=color:#268bd2>children</span>,
+</span></span><span style=display:flex><span>  <span style=color:#268bd2>renderHeader</span>,
+</span></span><span style=display:flex><span>  <span style=color:#268bd2>renderFooter</span>,
+</span></span><span style=display:flex><span>  <span style=color:#268bd2>className</span> = <span style=color:#2aa198>&#34;&#34;</span>,
+</span></span><span style=display:flex><span>}: <span style=color:#268bd2>CardProps</span>) =&gt; (
+</span></span><span style=display:flex><span>  &lt;<span style=color:#268bd2;font-weight:700>div</span> <span style=color:#268bd2>className</span>={<span style=color:#2aa198>`card </span><span style=color:#2aa198>${</span><span style=color:#268bd2>className</span><span style=color:#2aa198>}</span><span style=color:#2aa198>`</span>.<span style=color:#268bd2>trim</span>()}&gt;
+</span></span><span style=display:flex><span>    {<span style=color:#268bd2>renderHeader</span> ? (
+</span></span><span style=display:flex><span>      <span style=color:#268bd2>renderHeader</span>(<span style=color:#268bd2>title</span>)
 </span></span><span style=display:flex><span>    ) : (
-</span></span><span style=display:flex><span>      &lt;<span style=font-weight:700>div</span> className=<span style=font-style:italic>&#34;card-header&#34;</span>&gt;{title}&lt;/<span style=font-weight:700>div</span>&gt;
+</span></span><span style=display:flex><span>      &lt;<span style=color:#268bd2;font-weight:700>div</span> <span style=color:#268bd2>className</span>=<span style=color:#2aa198>&#34;card-header&#34;</span>&gt;{<span style=color:#268bd2>title</span>}&lt;/<span style=color:#268bd2;font-weight:700>div</span>&gt;
 </span></span><span style=display:flex><span>    )}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    &lt;<span style=font-weight:700>div</span> className=<span style=font-style:italic>&#34;card-content&#34;</span>&gt;{children}&lt;/<span style=font-weight:700>div</span>&gt;
+</span></span><span style=display:flex><span>    &lt;<span style=color:#268bd2;font-weight:700>div</span> <span style=color:#268bd2>className</span>=<span style=color:#2aa198>&#34;card-content&#34;</span>&gt;{<span style=color:#268bd2>children</span>}&lt;/<span style=color:#268bd2;font-weight:700>div</span>&gt;
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    {renderFooter &amp;&amp; renderFooter()}
-</span></span><span style=display:flex><span>  &lt;/<span style=font-weight:700>div</span>&gt;
+</span></span><span style=display:flex><span>    {<span style=color:#268bd2>renderFooter</span> &amp;&amp; <span style=color:#268bd2>renderFooter</span>()}
+</span></span><span style=display:flex><span>  &lt;/<span style=color:#268bd2;font-weight:700>div</span>&gt;
 </span></span><span style=display:flex><span>);
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-style:italic>// Extended without modification
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span><span style=font-weight:700>const</span> ProductCard = ({ product, onAddToCart, ...props }: ProductCardProps) =&gt; (
-</span></span><span style=display:flex><span>  &lt;<span style=font-weight:700>Card</span>
-</span></span><span style=display:flex><span>    {...props}
-</span></span><span style=display:flex><span>    renderFooter={() =&gt; (
-</span></span><span style=display:flex><span>      &lt;<span style=font-weight:700>button</span> onClick={onAddToCart}&gt;Add to Cart - ${product.price}&lt;/<span style=font-weight:700>button</span>&gt;
+</span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic>// Extended without modification
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span><span style=color:#859900>const</span> <span style=color:#268bd2>ProductCard</span> = ({ <span style=color:#268bd2>product</span>, <span style=color:#268bd2>onAddToCart</span>, ...<span style=color:#268bd2>props</span> }: <span style=color:#268bd2>ProductCardProps</span>) =&gt; (
+</span></span><span style=display:flex><span>  &lt;<span style=color:#268bd2;font-weight:700>Card</span>
+</span></span><span style=display:flex><span>    {<span style=color:#268bd2>...props</span>}
+</span></span><span style=display:flex><span>    <span style=color:#268bd2>renderFooter</span>={() =&gt; (
+</span></span><span style=display:flex><span>      &lt;<span style=color:#268bd2;font-weight:700>button</span> <span style=color:#268bd2>onClick</span>={<span style=color:#268bd2>onAddToCart</span>}&gt;<span style=color:#268bd2>Add</span> <span style=color:#268bd2>to</span> <span style=color:#268bd2>Cart</span> - <span style=color:#268bd2>$</span>{<span style=color:#268bd2>product</span>.<span style=color:#268bd2>price</span>}&lt;/<span style=color:#268bd2;font-weight:700>button</span>&gt;
 </span></span><span style=display:flex><span>    )}
 </span></span><span style=display:flex><span>  /&gt;
 </span></span><span style=display:flex><span>);
 </span></span></code></pre></div><h2 id=higher-order-components-for-extension>Higher-Order Components for Extension
 <a class=heading-link href=#higher-order-components-for-extension><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><p>HOCs provide another way to follow OCP:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=font-weight:700>type</span> WithLoadingProps = {
-</span></span><span style=display:flex><span>  isLoading?: <span>boolean</span>;
+<span class=sr-only>Link to heading</span></a></h2><p>HOCs provide another way to follow OCP:</p><div class=highlight><pre tabindex=0 style=color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=color:#859900>type</span> <span style=color:#268bd2>WithLoadingProps</span> = {
+</span></span><span style=display:flex><span>  <span style=color:#268bd2>isLoading?</span>: <span style=color:#859900;font-weight:700>boolean</span>;
 </span></span><span style=display:flex><span>};
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-weight:700>const</span> withLoading = &lt;<span style=font-weight:700>P</span> extends object&gt;(
-</span></span><span style=display:flex><span>  WrappedComponent: <span>React.ComponentType</span>&lt;<span style=font-weight:700>P</span>&gt;
+</span></span><span style=display:flex><span><span style=color:#859900>const</span> <span style=color:#268bd2>withLoading</span> = &lt;<span style=color:#268bd2;font-weight:700>P</span> <span style=color:#268bd2>extends</span> <span style=color:#268bd2>object</span>&gt;(
+</span></span><span style=display:flex><span>  <span style=color:#268bd2>WrappedComponent</span>: <span style=color:#859900;font-weight:700>React.ComponentType</span>&lt;<span style=color:#268bd2;font-weight:700>P</span>&gt;
 </span></span><span style=display:flex><span>) =&gt; {
-</span></span><span style=display:flex><span>  <span style=font-weight:700>return</span> ({ isLoading, ...props }: P &amp; WithLoadingProps) =&gt; {
-</span></span><span style=display:flex><span>    <span style=font-weight:700>if</span> (isLoading) {
-</span></span><span style=display:flex><span>      <span style=font-weight:700>return</span> &lt;<span style=font-weight:700>div</span> className=<span style=font-style:italic>&#34;loader&#34;</span>&gt;Loading...&lt;/<span style=font-weight:700>div</span>&gt;;
+</span></span><span style=display:flex><span>  <span style=color:#859900>return</span> ({ <span style=color:#268bd2>isLoading</span>, ...<span style=color:#268bd2>props</span> }: <span style=color:#268bd2>P</span> &amp; <span style=color:#268bd2>WithLoadingProps</span>) =&gt; {
+</span></span><span style=display:flex><span>    <span style=color:#859900>if</span> (<span style=color:#268bd2>isLoading</span>) {
+</span></span><span style=display:flex><span>      <span style=color:#859900>return</span> &lt;<span style=color:#268bd2;font-weight:700>div</span> <span style=color:#268bd2>className</span>=<span style=color:#2aa198>&#34;loader&#34;</span>&gt;<span style=color:#268bd2>Loading</span>...&lt;/<span style=color:#268bd2;font-weight:700>div</span>&gt;;
 </span></span><span style=display:flex><span>    }
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    <span style=font-weight:700>return</span> &lt;<span style=font-weight:700>WrappedComponent</span> {...<span>(</span>props as P<span>)</span>} /&gt;;
+</span></span><span style=display:flex><span>    <span style=color:#859900>return</span> &lt;<span style=color:#268bd2;font-weight:700>WrappedComponent</span> {<span style=color:#268bd2>...</span>(<span style=color:#268bd2>props</span> <span style=color:#268bd2>as</span> <span style=color:#268bd2>P</span>)} /&gt;;
 </span></span><span style=display:flex><span>  };
 </span></span><span style=display:flex><span>};
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-style:italic>// Usage
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span><span style=font-weight:700>const</span> UserProfileWithLoading = withLoading(UserProfile);
+</span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic>// Usage
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span><span style=color:#859900>const</span> <span style=color:#268bd2>UserProfileWithLoading</span> = <span style=color:#268bd2>withLoading</span>(<span style=color:#268bd2>UserProfile</span>);
 </span></span></code></pre></div><h2 id=custom-hooks-following-ocp>Custom Hooks Following OCP
 <a class=heading-link href=#custom-hooks-following-ocp><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><p>Custom hooks can also follow OCP:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=font-weight:700>const</span> useDataFetching = &lt;<span style=font-weight:700>T</span>,&gt;(url: <span>string</span>) =&gt; {
-</span></span><span style=display:flex><span>  <span style=font-weight:700>const</span> [data, setData] = useState&lt;<span style=font-weight:700>T</span> <span>|</span> null&gt;(<span style=font-weight:700>null</span>);
-</span></span><span style=display:flex><span>  <span style=font-weight:700>const</span> [error, setError] = useState&lt;<span style=font-weight:700>Error</span> <span>|</span> null&gt;(<span style=font-weight:700>null</span>);
-</span></span><span style=display:flex><span>  <span style=font-weight:700>const</span> [loading, setLoading] = useState(<span style=font-weight:700>true</span>);
+<span class=sr-only>Link to heading</span></a></h2><p>Custom hooks can also follow OCP:</p><div class=highlight><pre tabindex=0 style=color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=color:#859900>const</span> <span style=color:#268bd2>useDataFetching</span> = &lt;<span style=color:#268bd2;font-weight:700>T</span>,&gt;(<span style=color:#268bd2>url</span>: <span style=color:#859900;font-weight:700>string</span>) =&gt; {
+</span></span><span style=display:flex><span>  <span style=color:#859900>const</span> [<span style=color:#268bd2>data</span>, <span style=color:#268bd2>setData</span>] = <span style=color:#268bd2>useState</span>&lt;<span style=color:#268bd2;font-weight:700>T</span> | <span style=color:#268bd2>null</span>&gt;(<span style=color:#859900;font-weight:700>null</span>);
+</span></span><span style=display:flex><span>  <span style=color:#859900>const</span> [<span style=color:#268bd2>error</span>, <span style=color:#268bd2>setError</span>] = <span style=color:#268bd2>useState</span>&lt;<span style=color:#268bd2;font-weight:700>Error</span> | <span style=color:#268bd2>null</span>&gt;(<span style=color:#859900;font-weight:700>null</span>);
+</span></span><span style=display:flex><span>  <span style=color:#859900>const</span> [<span style=color:#268bd2>loading</span>, <span style=color:#268bd2>setLoading</span>] = <span style=color:#268bd2>useState</span>(<span style=color:#859900;font-weight:700>true</span>);
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  useEffect(() =&gt; {
-</span></span><span style=display:flex><span>    fetchData();
-</span></span><span style=display:flex><span>  }, [url]);
+</span></span><span style=display:flex><span>  <span style=color:#268bd2>useEffect</span>(() =&gt; {
+</span></span><span style=display:flex><span>    <span style=color:#268bd2>fetchData</span>();
+</span></span><span style=display:flex><span>  }, [<span style=color:#268bd2>url</span>]);
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=font-weight:700>const</span> fetchData = <span style=font-weight:700>async</span> () =&gt; {
-</span></span><span style=display:flex><span>    <span style=font-weight:700>try</span> {
-</span></span><span style=display:flex><span>      <span style=font-weight:700>const</span> response = <span style=font-weight:700>await</span> fetch(url);
-</span></span><span style=display:flex><span>      <span style=font-weight:700>const</span> result = <span style=font-weight:700>await</span> response.json();
-</span></span><span style=display:flex><span>      setData(result);
-</span></span><span style=display:flex><span>    } <span style=font-weight:700>catch</span> (e) {
-</span></span><span style=display:flex><span>      setError(e <span style=font-weight:700>as</span> Error);
-</span></span><span style=display:flex><span>    } <span style=font-weight:700>finally</span> {
-</span></span><span style=display:flex><span>      setLoading(<span style=font-weight:700>false</span>);
+</span></span><span style=display:flex><span>  <span style=color:#859900>const</span> <span style=color:#268bd2>fetchData</span> = <span style=color:#859900>async</span> () =&gt; {
+</span></span><span style=display:flex><span>    <span style=color:#859900>try</span> {
+</span></span><span style=display:flex><span>      <span style=color:#859900>const</span> <span style=color:#268bd2>response</span> = <span style=color:#859900>await</span> <span style=color:#268bd2>fetch</span>(<span style=color:#268bd2>url</span>);
+</span></span><span style=display:flex><span>      <span style=color:#859900>const</span> <span style=color:#268bd2>result</span> = <span style=color:#859900>await</span> <span style=color:#268bd2>response</span>.<span style=color:#268bd2>json</span>();
+</span></span><span style=display:flex><span>      <span style=color:#268bd2>setData</span>(<span style=color:#268bd2>result</span>);
+</span></span><span style=display:flex><span>    } <span style=color:#859900>catch</span> (<span style=color:#268bd2>e</span>) {
+</span></span><span style=display:flex><span>      <span style=color:#268bd2>setError</span>(<span style=color:#268bd2>e</span> <span style=color:#859900>as</span> <span style=color:#cb4b16>Error</span>);
+</span></span><span style=display:flex><span>    } <span style=color:#859900>finally</span> {
+</span></span><span style=display:flex><span>      <span style=color:#268bd2>setLoading</span>(<span style=color:#859900;font-weight:700>false</span>);
 </span></span><span style=display:flex><span>    }
 </span></span><span style=display:flex><span>  };
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=font-weight:700>return</span> { data, error, loading, refetch: <span>fetchData</span> };
+</span></span><span style=display:flex><span>  <span style=color:#859900>return</span> { <span style=color:#268bd2>data</span>, <span style=color:#268bd2>error</span>, <span style=color:#268bd2>loading</span>, <span style=color:#268bd2>refetch</span>: <span style=color:#859900;font-weight:700>fetchData</span> };
 </span></span><span style=display:flex><span>};
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-style:italic>// Extended without modification
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span><span style=font-weight:700>const</span> useUserData = (userId: <span>string</span>) =&gt; {
-</span></span><span style=display:flex><span>  <span style=font-weight:700>const</span> result = useDataFetching&lt;<span style=font-weight:700>User</span>&gt;(<span style=font-style:italic>`/api/users/</span><span style=font-weight:700;font-style:italic>${</span>userId<span style=font-weight:700;font-style:italic>}</span><span style=font-style:italic>`</span>);
+</span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic>// Extended without modification
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span><span style=color:#859900>const</span> <span style=color:#268bd2>useUserData</span> = (<span style=color:#268bd2>userId</span>: <span style=color:#859900;font-weight:700>string</span>) =&gt; {
+</span></span><span style=display:flex><span>  <span style=color:#859900>const</span> <span style=color:#268bd2>result</span> = <span style=color:#268bd2>useDataFetching</span>&lt;<span style=color:#268bd2;font-weight:700>User</span>&gt;(<span style=color:#2aa198>`/api/users/</span><span style=color:#2aa198>${</span><span style=color:#268bd2>userId</span><span style=color:#2aa198>}</span><span style=color:#2aa198>`</span>);
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=font-style:italic>// Add user-specific functionality
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>  <span style=font-weight:700>const</span> updateUser = <span style=font-weight:700>async</span> (data: <span>Partial</span>&lt;<span style=font-weight:700>User</span>&gt;) =&gt; {
-</span></span><span style=display:flex><span>    <span style=font-style:italic>// Update logic
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>  };
+</span></span><span style=display:flex><span>  <span style=color:#93a1a1;font-style:italic>// Add user-specific functionality
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span>  <span style=color:#859900>const</span> <span style=color:#268bd2>updateUser</span> = <span style=color:#859900>async</span> (<span style=color:#268bd2>data</span>: <span style=color:#859900;font-weight:700>Partial</span>&lt;<span style=color:#268bd2;font-weight:700>User</span>&gt;) =&gt; {
+</span></span><span style=display:flex><span>    <span style=color:#93a1a1;font-style:italic>// Update logic
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span>  };
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>  <span style=font-weight:700>return</span> { ...result, updateUser };
+</span></span><span style=display:flex><span>  <span style=color:#859900>return</span> { ...<span style=color:#268bd2>result</span>, <span style=color:#268bd2>updateUser</span> };
 </span></span><span style=display:flex><span>};
 </span></span></code></pre></div><h2 id=testing-benefits>Testing Benefits
 <a class=heading-link href=#testing-benefits><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><p>OCP makes testing much more straightforward:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span>describe(<span style=font-style:italic>&#34;ButtonBase&#34;</span>, () =&gt; {
-</span></span><span style=display:flex><span>  it(<span style=font-style:italic>&#34;renders with custom className&#34;</span>, () =&gt; {
-</span></span><span style=display:flex><span>    render(&lt;<span style=font-weight:700>ButtonBase</span> label=<span style=font-style:italic>&#34;Test&#34;</span> onClick={() =&gt; {}} className=<span style=font-style:italic>&#34;custom&#34;</span> /&gt;);
+<span class=sr-only>Link to heading</span></a></h2><p>OCP makes testing much more straightforward:</p><div class=highlight><pre tabindex=0 style=color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=color:#268bd2>describe</span>(<span style=color:#2aa198>&#34;ButtonBase&#34;</span>, () =&gt; {
+</span></span><span style=display:flex><span>  <span style=color:#268bd2>it</span>(<span style=color:#2aa198>&#34;renders with custom className&#34;</span>, () =&gt; {
+</span></span><span style=display:flex><span>    <span style=color:#268bd2>render</span>(&lt;<span style=color:#268bd2;font-weight:700>ButtonBase</span> <span style=color:#268bd2>label</span>=<span style=color:#2aa198>&#34;Test&#34;</span> <span style=color:#268bd2>onClick</span>={() =&gt; {}} <span style=color:#268bd2>className</span>=<span style=color:#2aa198>&#34;custom&#34;</span> /&gt;);
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    expect(screen.getByRole(<span style=font-style:italic>&#34;button&#34;</span>)).toHaveClass(<span style=font-style:italic>&#34;button custom&#34;</span>);
+</span></span><span style=display:flex><span>    <span style=color:#268bd2>expect</span>(<span style=color:#268bd2>screen</span>.<span style=color:#268bd2>getByRole</span>(<span style=color:#2aa198>&#34;button&#34;</span>)).<span style=color:#268bd2>toHaveClass</span>(<span style=color:#2aa198>&#34;button custom&#34;</span>);
 </span></span><span style=display:flex><span>  });
 </span></span><span style=display:flex><span>});
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-style:italic>// New variants can have their own tests
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>describe(<span style=font-style:italic>&#34;PrimaryButton&#34;</span>, () =&gt; {
-</span></span><span style=display:flex><span>  it(<span style=font-style:italic>&#34;includes primary styling&#34;</span>, () =&gt; {
-</span></span><span style=display:flex><span>    render(&lt;<span style=font-weight:700>PrimaryButton</span> label=<span style=font-style:italic>&#34;Test&#34;</span> onClick={() =&gt; {}} /&gt;);
+</span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic>// New variants can have their own tests
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span><span style=color:#268bd2>describe</span>(<span style=color:#2aa198>&#34;PrimaryButton&#34;</span>, () =&gt; {
+</span></span><span style=display:flex><span>  <span style=color:#268bd2>it</span>(<span style=color:#2aa198>&#34;includes primary styling&#34;</span>, () =&gt; {
+</span></span><span style=display:flex><span>    <span style=color:#268bd2>render</span>(&lt;<span style=color:#268bd2;font-weight:700>PrimaryButton</span> <span style=color:#268bd2>label</span>=<span style=color:#2aa198>&#34;Test&#34;</span> <span style=color:#268bd2>onClick</span>={() =&gt; {}} /&gt;);
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>    expect(screen.getByRole(<span style=font-style:italic>&#34;button&#34;</span>)).toHaveClass(<span style=font-style:italic>&#34;button button-primary&#34;</span>);
+</span></span><span style=display:flex><span>    <span style=color:#268bd2>expect</span>(<span style=color:#268bd2>screen</span>.<span style=color:#268bd2>getByRole</span>(<span style=color:#2aa198>&#34;button&#34;</span>)).<span style=color:#268bd2>toHaveClass</span>(<span style=color:#2aa198>&#34;button button-primary&#34;</span>);
 </span></span><span style=display:flex><span>  });
 </span></span><span style=display:flex><span>});
 </span></span></code></pre></div><h2 id=key-takeaways>Key Takeaways
 <a class=heading-link href=#key-takeaways><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
 <span class=sr-only>Link to heading</span></a></h2><ol><li><strong>Use composition over modification</strong> - extend through props and render props</li><li><strong>Create base components</strong> that are easy to extend</li><li><strong>Leverage HOCs and custom hooks</strong> for reusable extensions</li><li><strong>Think in terms of extension points</strong> - what might need to change?</li><li><strong>Use TypeScript</strong> to make extensions type-safe</li></ol><h2 id=ocp-and-composition-over-inheritance>OCP and &ldquo;Composition over Inheritance&rdquo;
 <a class=heading-link href=#ocp-and-composition-over-inheritance><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><p>The React team&rsquo;s recommendation of <a href=https://react.dev/learn/thinking-in-react class=external-link target=_blank rel=noopener>&ldquo;composition over inheritance&rdquo;</a> aligns perfectly with the Open-Closed Principle. Here&rsquo;s why:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=font-style:italic>// Inheritance-based approach (less flexible)
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span><span style=font-weight:700>class</span> Button <span style=font-weight:700>extends</span> BaseButton {
-</span></span><span style=display:flex><span>  render() {
-</span></span><span style=display:flex><span>    <span style=font-weight:700>return</span> (
-</span></span><span style=display:flex><span>      &lt;<span style=font-weight:700>button</span> className={<span style=font-weight:700>this</span>.getButtonClass()}&gt;
-</span></span><span style=display:flex><span>        {<span style=font-weight:700>this</span>.props.icon &amp;&amp; &lt;<span style=font-weight:700>Icon</span> name={<span style=font-weight:700>this</span>.props.icon} /&gt;}
-</span></span><span style=display:flex><span>        {<span style=font-weight:700>this</span>.props.label}
-</span></span><span style=display:flex><span>      &lt;/<span style=font-weight:700>button</span>&gt;
+<span class=sr-only>Link to heading</span></a></h2><p>The React team&rsquo;s recommendation of <a href=https://react.dev/learn/thinking-in-react class=external-link target=_blank rel=noopener>&ldquo;composition over inheritance&rdquo;</a> aligns perfectly with the Open-Closed Principle. Here&rsquo;s why:</p><div class=highlight><pre tabindex=0 style=color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-tsx data-lang=tsx><span style=display:flex><span><span style=color:#93a1a1;font-style:italic>// Inheritance-based approach (less flexible)
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span><span style=color:#859900>class</span> <span style=color:#268bd2>Button</span> <span style=color:#859900>extends</span> <span style=color:#268bd2>BaseButton</span> {
+</span></span><span style=display:flex><span>  <span style=color:#268bd2>render() {</span>
+</span></span><span style=display:flex><span>    <span style=color:#859900>return</span> (
+</span></span><span style=display:flex><span>      &lt;<span style=color:#268bd2;font-weight:700>button</span> <span style=color:#268bd2>className</span>={<span style=color:#859900>this</span>.<span style=color:#268bd2>getButtonClass</span>()}&gt;
+</span></span><span style=display:flex><span>        {<span style=color:#859900>this</span>.<span style=color:#268bd2>props</span>.<span style=color:#268bd2>icon</span> &amp;&amp; &lt;<span style=color:#268bd2;font-weight:700>Icon</span> <span style=color:#268bd2>name</span>={<span style=color:#859900>this</span>.<span style=color:#268bd2>props</span>.<span style=color:#268bd2>icon</span>} /&gt;}
+</span></span><span style=display:flex><span>        {<span style=color:#859900>this</span>.<span style=color:#268bd2>props</span>.<span style=color:#268bd2>label</span>}
+</span></span><span style=display:flex><span>      &lt;/<span style=color:#268bd2;font-weight:700>button</span>&gt;
 </span></span><span style=display:flex><span>    );
 </span></span><span style=display:flex><span>  }
 </span></span><span style=display:flex><span>}
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-style:italic>// Composition-based approach (more flexible, follows OCP)
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span><span style=font-weight:700>const</span> Button = ({
-</span></span><span style=display:flex><span>  label,
-</span></span><span style=display:flex><span>  icon,
-</span></span><span style=display:flex><span>  renderPrefix,
-</span></span><span style=display:flex><span>  renderSuffix,
-</span></span><span style=display:flex><span>  ...props
-</span></span><span style=display:flex><span>}: ButtonProps) =&gt; (
-</span></span><span style=display:flex><span>  &lt;<span style=font-weight:700>ButtonBase</span> {...props}&gt;
-</span></span><span style=display:flex><span>    {renderPrefix?.()}
-</span></span><span style=display:flex><span>    {icon &amp;&amp; &lt;<span style=font-weight:700>Icon</span> name={icon} /&gt;}
-</span></span><span style=display:flex><span>    {label}
-</span></span><span style=display:flex><span>    {renderSuffix?.()}
-</span></span><span style=display:flex><span>  &lt;/<span style=font-weight:700>ButtonBase</span>&gt;
+</span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic>// Composition-based approach (more flexible, follows OCP)
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span><span style=color:#859900>const</span> <span style=color:#268bd2>Button</span> = ({
+</span></span><span style=display:flex><span>  <span style=color:#268bd2>label</span>,
+</span></span><span style=display:flex><span>  <span style=color:#268bd2>icon</span>,
+</span></span><span style=display:flex><span>  <span style=color:#268bd2>renderPrefix</span>,
+</span></span><span style=display:flex><span>  <span style=color:#268bd2>renderSuffix</span>,
+</span></span><span style=display:flex><span>  ...<span style=color:#268bd2>props</span>
+</span></span><span style=display:flex><span>}: <span style=color:#268bd2>ButtonProps</span>) =&gt; (
+</span></span><span style=display:flex><span>  &lt;<span style=color:#268bd2;font-weight:700>ButtonBase</span> {<span style=color:#268bd2>...props</span>}&gt;
+</span></span><span style=display:flex><span>    {<span style=color:#268bd2>renderPrefix</span>?.()}
+</span></span><span style=display:flex><span>    {<span style=color:#268bd2>icon</span> &amp;&amp; &lt;<span style=color:#268bd2;font-weight:700>Icon</span> <span style=color:#268bd2>name</span>={<span style=color:#268bd2>icon</span>} /&gt;}
+</span></span><span style=display:flex><span>    {<span style=color:#268bd2>label</span>}
+</span></span><span style=display:flex><span>    {<span style=color:#268bd2>renderSuffix</span>?.()}
+</span></span><span style=display:flex><span>  &lt;/<span style=color:#268bd2;font-weight:700>ButtonBase</span>&gt;
 </span></span><span style=display:flex><span>);
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-style:italic>// Now we can extend behavior without modification
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span><span style=font-weight:700>const</span> DropdownButton = ({ items, ...props }: DropdownButtonProps) =&gt; (
-</span></span><span style=display:flex><span>  &lt;<span style=font-weight:700>Button</span>
-</span></span><span style=display:flex><span>    {...props}
-</span></span><span style=display:flex><span>    renderSuffix={() =&gt; &lt;<span style=font-weight:700>DropdownIcon</span> /&gt;}
-</span></span><span style=display:flex><span>    onClick={() =&gt; setIsOpen(<span style=font-weight:700>true</span>)}
+</span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic>// Now we can extend behavior without modification
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span><span style=color:#859900>const</span> <span style=color:#268bd2>DropdownButton</span> = ({ <span style=color:#268bd2>items</span>, ...<span style=color:#268bd2>props</span> }: <span style=color:#268bd2>DropdownButtonProps</span>) =&gt; (
+</span></span><span style=display:flex><span>  &lt;<span style=color:#268bd2;font-weight:700>Button</span>
+</span></span><span style=display:flex><span>    {<span style=color:#268bd2>...props</span>}
+</span></span><span style=display:flex><span>    <span style=color:#268bd2>renderSuffix</span>={() =&gt; &lt;<span style=color:#268bd2;font-weight:700>DropdownIcon</span> /&gt;}
+</span></span><span style=display:flex><span>    <span style=color:#268bd2>onClick</span>={() =&gt; <span style=color:#268bd2>setIsOpen</span>(<span style=color:#859900;font-weight:700>true</span>)}
 </span></span><span style=display:flex><span>  /&gt;
 </span></span><span style=display:flex><span>);
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=font-weight:700>const</span> LoadingButton = ({ isLoading, ...props }: LoadingButtonProps) =&gt; (
-</span></span><span style=display:flex><span>  &lt;<span style=font-weight:700>Button</span>
-</span></span><span style=display:flex><span>    {...props}
-</span></span><span style=display:flex><span>    renderPrefix={() =&gt; isLoading &amp;&amp; &lt;<span style=font-weight:700>Spinner</span> /&gt;}
-</span></span><span style=display:flex><span>    disabled={isLoading}
+</span></span><span style=display:flex><span><span style=color:#859900>const</span> <span style=color:#268bd2>LoadingButton</span> = ({ <span style=color:#268bd2>isLoading</span>, ...<span style=color:#268bd2>props</span> }: <span style=color:#268bd2>LoadingButtonProps</span>) =&gt; (
+</span></span><span style=display:flex><span>  &lt;<span style=color:#268bd2;font-weight:700>Button</span>
+</span></span><span style=display:flex><span>    {<span style=color:#268bd2>...props</span>}
+</span></span><span style=display:flex><span>    <span style=color:#268bd2>renderPrefix</span>={() =&gt; <span style=color:#268bd2>isLoading</span> &amp;&amp; &lt;<span style=color:#268bd2;font-weight:700>Spinner</span> /&gt;}
+</span></span><span style=display:flex><span>    <span style=color:#268bd2>disabled</span>={<span style=color:#268bd2>isLoading</span>}
 </span></span><span style=display:flex><span>  /&gt;
 </span></span><span style=display:flex><span>);
 </span></span></code></pre></div><p>This composition-based approach:</p><ol><li>Makes components open for extension (through props and render functions)</li><li>Keeps base components closed for modification</li><li>Allows for unlimited combinations of behaviors</li><li>Maintains type safety and prop transparency</li></ol><p>The React team&rsquo;s preference for composition isn&rsquo;t just about style—it&rsquo;s about creating extensible, maintainable components that naturally follow OCP.</p><h2 id=conclusion>Conclusion

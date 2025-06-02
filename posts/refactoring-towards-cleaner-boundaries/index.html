@@ -16,61 +16,61 @@
 <a class=heading-link href=#the-controller-conundrum><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
 <span class=sr-only>Link to heading</span></a></h2><p>One of the most significant architectural changes in this iteration was moving the <code>ContentController</code> from the infrastructure layer to the <strong>interface adapters layer</strong>. This shift better aligns with Clean Architecture principles:</p><h3 id=before-infrastructure-layer>Before (Infrastructure Layer)
 <a class=heading-link href=#before-infrastructure-layer><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h3><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-kotlin data-lang=kotlin><span style=display:flex><span><span style=font-style:italic>// ... existing code ...
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span><span style=font-weight:700>class</span> <span style=font-weight:700>ContentController</span>(
-</span></span><span style=display:flex><span>    <span style=font-weight:700>private</span> <span style=font-weight:700>val</span> getContent: GetContentUseCase,
-</span></span><span style=display:flex><span>    <span style=font-weight:700>private</span> <span style=font-weight:700>val</span> listContents: ListContentsByTypeUseCase,
-</span></span><span style=display:flex><span>    <span style=font-weight:700>private</span> <span style=font-weight:700>val</span> getListableContentTypes: GetListableContentTypes,
-</span></span><span style=display:flex><span>    <span style=font-weight:700>private</span> <span style=font-weight:700>val</span> contentPresenter: ContentPresenter,
+<span class=sr-only>Link to heading</span></a></h3><div class=highlight><pre tabindex=0 style=color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-kotlin data-lang=kotlin><span style=display:flex><span><span style=color:#93a1a1;font-style:italic>// ... existing code ...
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span><span style=color:#859900>class</span> <span style=color:#cb4b16>ContentController</span>(
+</span></span><span style=display:flex><span>    <span style=color:#859900>private</span> <span style=color:#859900>val</span> <span style=color:#268bd2>getContent</span>: <span style=color:#268bd2>GetContentUseCase</span>,
+</span></span><span style=display:flex><span>    <span style=color:#859900>private</span> <span style=color:#859900>val</span> <span style=color:#268bd2>listContents</span>: <span style=color:#268bd2>ListContentsByTypeUseCase</span>,
+</span></span><span style=display:flex><span>    <span style=color:#859900>private</span> <span style=color:#859900>val</span> <span style=color:#268bd2>getListableContentTypes</span>: <span style=color:#268bd2>GetListableContentTypes</span>,
+</span></span><span style=display:flex><span>    <span style=color:#859900>private</span> <span style=color:#859900>val</span> <span style=color:#268bd2>contentPresenter</span>: <span style=color:#268bd2>ContentPresenter</span>,
 </span></span><span style=display:flex><span>) {
-</span></span><span style=display:flex><span>    <span style=font-weight:700>suspend</span> <span style=font-weight:700>fun</span> handleHealthCheck(call: ApplicationCall) {
-</span></span><span style=display:flex><span>        call.respondText(<span style=font-style:italic>&#34;OK&#34;</span>)
+</span></span><span style=display:flex><span>    <span style=color:#859900>suspend</span> <span style=color:#859900>fun</span> <span style=color:#268bd2>handleHealthCheck</span>(<span style=color:#268bd2>call</span>: <span style=color:#268bd2>ApplicationCall</span>) {
+</span></span><span style=display:flex><span>        <span style=color:#268bd2>call</span>.<span style=color:#268bd2>respondText</span>(<span style=color:#2aa198>&#34;OK&#34;</span>)
 </span></span><span style=display:flex><span>    }
-</span></span><span style=display:flex><span>    <span style=font-style:italic>// ... existing code ...
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>}
+</span></span><span style=display:flex><span>    <span style=color:#93a1a1;font-style:italic>// ... existing code ...
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span>}
 </span></span></code></pre></div><h3 id=after-interface-adapters-layer>After (Interface Adapters Layer)
 <a class=heading-link href=#after-interface-adapters-layer><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h3><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-kotlin data-lang=kotlin><span style=display:flex><span><span style=font-weight:700>class</span> <span style=font-weight:700>ContentController</span>(
-</span></span><span style=display:flex><span>    <span style=font-weight:700>private</span> <span style=font-weight:700>val</span> getContent: GetContentUseCase,
-</span></span><span style=display:flex><span>    <span style=font-weight:700>private</span> <span style=font-weight:700>val</span> listContents: ListContentsByTypeUseCase,
-</span></span><span style=display:flex><span>    <span style=font-weight:700>private</span> <span style=font-weight:700>val</span> getListableContentTypes: GetListableContentTypes,
-</span></span><span style=display:flex><span>    <span style=font-weight:700>private</span> <span style=font-weight:700>val</span> contentPresenter: ContentPresenter,
+<span class=sr-only>Link to heading</span></a></h3><div class=highlight><pre tabindex=0 style=color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-kotlin data-lang=kotlin><span style=display:flex><span><span style=color:#859900>class</span> <span style=color:#cb4b16>ContentController</span>(
+</span></span><span style=display:flex><span>    <span style=color:#859900>private</span> <span style=color:#859900>val</span> <span style=color:#268bd2>getContent</span>: <span style=color:#268bd2>GetContentUseCase</span>,
+</span></span><span style=display:flex><span>    <span style=color:#859900>private</span> <span style=color:#859900>val</span> <span style=color:#268bd2>listContents</span>: <span style=color:#268bd2>ListContentsByTypeUseCase</span>,
+</span></span><span style=display:flex><span>    <span style=color:#859900>private</span> <span style=color:#859900>val</span> <span style=color:#268bd2>getListableContentTypes</span>: <span style=color:#268bd2>GetListableContentTypes</span>,
+</span></span><span style=display:flex><span>    <span style=color:#859900>private</span> <span style=color:#859900>val</span> <span style=color:#268bd2>contentPresenter</span>: <span style=color:#268bd2>ContentPresenter</span>,
 </span></span><span style=display:flex><span>) {
-</span></span><span style=display:flex><span>    <span style=font-weight:700>suspend</span> <span style=font-weight:700>fun</span> healthCheckResponse() = Response(statusCode = 200, body = <span style=font-style:italic>&#34;OK&#34;</span>)
-</span></span><span style=display:flex><span>    <span style=font-style:italic>// ... existing code ...
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>}
+</span></span><span style=display:flex><span>    <span style=color:#859900>suspend</span> <span style=color:#859900>fun</span> <span style=color:#268bd2>healthCheckResponse</span>() = <span style=color:#268bd2>Response</span>(<span style=color:#268bd2>statusCode</span> = <span style=color:#2aa198;font-weight:700>200</span>, <span style=color:#268bd2>body</span> = <span style=color:#2aa198>&#34;OK&#34;</span>)
+</span></span><span style=display:flex><span>    <span style=color:#93a1a1;font-style:italic>// ... existing code ...
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span>}
 </span></span></code></pre></div><p><strong>Why This Matters:</strong></p><ol><li><strong>Separation of Concerns</strong>: The controller now focuses on adapting application output to the web layer, and knows nothing about Ktor or other infrastructure concerns</li><li><strong>Testability</strong>: We can test the controller without Ktor dependencies</li><li><strong>Flexibility</strong>: The same controller could be reused with different web frameworks</li></ol><h2 id=the-dto-transformation>The DTO Transformation
 <a class=heading-link href=#the-dto-transformation><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><p>Another key change was introducing <strong>DTOs (Data Transfer Objects)</strong> for content presentation:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-kotlin data-lang=kotlin><span style=display:flex><span><span style=font-weight:700>sealed</span> <span style=font-weight:700>class</span> <span style=font-weight:700>ContentBlockDto</span>(
-</span></span><span style=display:flex><span>    <span style=font-weight:700>open</span> <span style=font-weight:700>val</span> blockTypes: Map&lt;String, Boolean&gt; = emptyMap(),
-</span></span><span style=display:flex><span>    <span style=font-weight:700>open</span> <span style=font-weight:700>val</span> properties: Map&lt;String, Any?&gt; = emptyMap(),
+<span class=sr-only>Link to heading</span></a></h2><p>Another key change was introducing <strong>DTOs (Data Transfer Objects)</strong> for content presentation:</p><div class=highlight><pre tabindex=0 style=color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-kotlin data-lang=kotlin><span style=display:flex><span><span style=color:#859900>sealed</span> <span style=color:#859900>class</span> <span style=color:#cb4b16>ContentBlockDto</span>(
+</span></span><span style=display:flex><span>    <span style=color:#859900>open</span> <span style=color:#859900>val</span> <span style=color:#268bd2>blockTypes</span>: <span style=color:#268bd2>Map</span>&lt;<span style=color:#268bd2>String</span>, <span style=color:#268bd2>Boolean</span>&gt; = <span style=color:#268bd2>emptyMap</span>(),
+</span></span><span style=display:flex><span>    <span style=color:#859900>open</span> <span style=color:#859900>val</span> <span style=color:#268bd2>properties</span>: <span style=color:#268bd2>Map</span>&lt;<span style=color:#268bd2>String</span>, <span style=color:#268bd2>Any</span>?&gt; = <span style=color:#268bd2>emptyMap</span>(),
 </span></span><span style=display:flex><span>) {
-</span></span><span style=display:flex><span>    <span style=font-weight:700>data</span> <span style=font-weight:700>class</span> <span style=font-weight:700>Heading</span>(
-</span></span><span style=display:flex><span>        <span style=font-weight:700>val</span> text: String,
-</span></span><span style=display:flex><span>        <span style=font-weight:700>val</span> level: Int,
-</span></span><span style=display:flex><span>    ) : ContentBlockDto(
-</span></span><span style=display:flex><span>        blockTypes = mapOf(<span style=font-style:italic>&#34;heading&#34;</span> to <span style=font-weight:700>true</span>), <span style=font-style:italic>// this wouldn&#39;t make sense in the domain model, but most template renderers benefit greatly from this kind of data
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>        properties = mapOf(<span style=font-style:italic>&#34;text&#34;</span> to text, <span style=font-style:italic>&#34;level&#34;</span> to level),
+</span></span><span style=display:flex><span>    <span style=color:#859900>data</span> <span style=color:#859900>class</span> <span style=color:#cb4b16>Heading</span>(
+</span></span><span style=display:flex><span>        <span style=color:#859900>val</span> <span style=color:#268bd2>text</span>: <span style=color:#268bd2>String</span>,
+</span></span><span style=display:flex><span>        <span style=color:#859900>val</span> <span style=color:#268bd2>level</span>: <span style=color:#268bd2>Int</span>,
+</span></span><span style=display:flex><span>    ) : <span style=color:#268bd2>ContentBlockDto</span>(
+</span></span><span style=display:flex><span>        <span style=color:#268bd2>blockTypes</span> = <span style=color:#268bd2>mapOf</span>(<span style=color:#2aa198>&#34;heading&#34;</span> <span style=color:#268bd2>to</span> <span style=color:#859900>true</span>), <span style=color:#93a1a1;font-style:italic>// this wouldn&#39;t make sense in the domain model, but most template renderers benefit greatly from this kind of data
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span>        <span style=color:#268bd2>properties</span> = <span style=color:#268bd2>mapOf</span>(<span style=color:#2aa198>&#34;text&#34;</span> <span style=color:#268bd2>to</span> <span style=color:#268bd2>text</span>, <span style=color:#2aa198>&#34;level&#34;</span> <span style=color:#268bd2>to</span> <span style=color:#268bd2>level</span>),
 </span></span><span style=display:flex><span>    )
-</span></span><span style=display:flex><span>    <span style=font-style:italic>// ... other DTOs ...
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>}
+</span></span><span style=display:flex><span>    <span style=color:#93a1a1;font-style:italic>// ... other DTOs ...
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span>}
 </span></span></code></pre></div><p><strong>Benefits:</strong></p><ol><li><strong>Clear Boundaries</strong>: DTOs prevent domain models from leaking into the infrastructure layer (the presenter now gets a DTO, not a domain model)</li><li><strong>Flexibility</strong>: We can change the presentation format without affecting the domain, and we can craft a DTO that&rsquo;s perfect for the specific output format we need rather than a generic domain model (the domain model had sealed class content blocks with a bunch of subclasses, which is very tricky for template engines to render)</li><li><strong>Testability</strong>: DTOs are simple data structures that are easy to test</li></ol><h2 id=the-testing-evolution>The Testing Evolution
 <a class=heading-link href=#the-testing-evolution><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><p>The test suite evolved significantly, particularly in the acceptance tests:</p><div class=highlight><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-kotlin data-lang=kotlin><span style=display:flex><span><span style=font-weight:700>class</span> <span style=font-weight:700>ServeMarkdownBlogPostFeatureTest</span> : FeatureAcceptanceTest() {
-</span></span><span style=display:flex><span>    @Test
-</span></span><span style=display:flex><span>    <span style=font-weight:700>fun</span> `should convert and serve markdown blog posts as properly formatted HTML pages`() =
-</span></span><span style=display:flex><span>        runTest {
-</span></span><span style=display:flex><span>            <span style=font-style:italic>// Iterate over all the blog posts in the test fixtures (real blog posts like the one you&#39;re reading right now)
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>            <span style=font-weight:700>TestFixtures</span>.blogPosts.forEach { (slug, post) -&gt;
-</span></span><span style=display:flex><span>                <span style=font-style:italic>// Given
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>                testApplication.givenBlogPost(slug = slug, content = post.markdownInput)
+<span class=sr-only>Link to heading</span></a></h2><p>The test suite evolved significantly, particularly in the acceptance tests:</p><div class=highlight><pre tabindex=0 style=color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-kotlin data-lang=kotlin><span style=display:flex><span><span style=color:#859900>class</span> <span style=color:#cb4b16>ServeMarkdownBlogPostFeatureTest</span> : <span style=color:#268bd2>FeatureAcceptanceTest</span>() {
+</span></span><span style=display:flex><span>    <span style=color:#268bd2>@Test</span>
+</span></span><span style=display:flex><span>    <span style=color:#859900>fun</span> <span style=color:#268bd2>`should convert and serve markdown blog posts as properly formatted HTML pages`</span>() =
+</span></span><span style=display:flex><span>        <span style=color:#268bd2>runTest</span> {
+</span></span><span style=display:flex><span>            <span style=color:#93a1a1;font-style:italic>// Iterate over all the blog posts in the test fixtures (real blog posts like the one you&#39;re reading right now)
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span>            <span style=color:#cb4b16>TestFixtures</span>.<span style=color:#268bd2>blogPosts</span>.<span style=color:#268bd2>forEach</span> { (<span style=color:#268bd2>slug</span>, <span style=color:#268bd2>post</span>) -&gt;
+</span></span><span style=display:flex><span>                <span style=color:#93a1a1;font-style:italic>// Given
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span>                <span style=color:#268bd2>testApplication</span>.<span style=color:#268bd2>givenBlogPost</span>(<span style=color:#268bd2>slug</span> = <span style=color:#268bd2>slug</span>, <span style=color:#268bd2>content</span> = <span style=color:#268bd2>post</span>.<span style=color:#268bd2>markdownInput</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>                <span style=font-style:italic>// When
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>                <span style=font-weight:700>val</span> response = testClient.<span style=font-weight:700>get</span>(<span style=font-style:italic>&#34;</span><span style=font-weight:700;font-style:italic>${testApplication.baseUrl}</span><span style=font-style:italic>/posts/</span><span style=font-weight:700;font-style:italic>$slug</span><span style=font-style:italic>&#34;</span>)
+</span></span><span style=display:flex><span>                <span style=color:#93a1a1;font-style:italic>// When
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span>                <span style=color:#859900>val</span> <span style=color:#268bd2>response</span> = <span style=color:#268bd2>testClient</span>.<span style=color:#859900>get</span>(<span style=color:#2aa198>&#34;</span><span style=color:#2aa198>${testApplication.baseUrl}</span><span style=color:#2aa198>/posts/</span><span style=color:#2aa198>$slug</span><span style=color:#2aa198>&#34;</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>                <span style=font-style:italic>// Then
-</span></span></span><span style=display:flex><span><span style=font-style:italic></span>                assertEquals(post.expectedHtmlOutput.standardizeHtml(),
-</span></span><span style=display:flex><span>                           response.bodyAsText().standardizeHtml())
+</span></span><span style=display:flex><span>                <span style=color:#93a1a1;font-style:italic>// Then
+</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span>                <span style=color:#268bd2>assertEquals</span>(<span style=color:#268bd2>post</span>.<span style=color:#268bd2>expectedHtmlOutput</span>.<span style=color:#268bd2>standardizeHtml</span>(),
+</span></span><span style=display:flex><span>                           <span style=color:#268bd2>response</span>.<span style=color:#268bd2>bodyAsText</span>().<span style=color:#268bd2>standardizeHtml</span>())
 </span></span><span style=display:flex><span>            }
 </span></span><span style=display:flex><span>        }
 </span></span><span style=display:flex><span>}

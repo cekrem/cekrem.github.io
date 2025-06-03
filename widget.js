@@ -6221,7 +6221,7 @@ var $elm$core$Set$fromList = function (list) {
 };
 var $author$project$Testemonials$activePaths = $elm$core$Set$fromList(
 	_List_fromArray(
-		['', '/', '/hire', '/hire/']));
+		['', '/', '/hire', '/hire/', '/posts/starting-small-with-elm-a-widget-approach', '/posts/starting-small-with-elm-a-widget-approach/']));
 var $elm$core$Dict$member = F2(
 	function (key, dict) {
 		var _v0 = A2($elm$core$Dict$get, key, dict);

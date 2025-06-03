@@ -5375,14 +5375,14 @@ var $elm$core$Task$perform = F2(
 	});
 var $elm$browser$Browser$element = _Browser_element;
 var $author$project$Main$None = {$: 1};
-var $author$project$Main$Testemonials = function (a) {
+var $author$project$Main$Testimonials = function (a) {
 	return {$: 0, a: a};
 };
-var $author$project$Main$TestemonialsMsg = function (a) {
+var $author$project$Main$TestimonialsMsg = function (a) {
 	return {$: 1, a: a};
 };
-var $author$project$Testemonials$Loading = {$: 1};
-var $author$project$Testemonials$GotTestemonials = function (a) {
+var $author$project$Testimonials$Loading = {$: 1};
+var $author$project$Testimonials$GotTestimonials = function (a) {
 	return {$: 2, a: a};
 };
 var $elm$json$Json$Decode$decodeString = _Json_runOnString;
@@ -6173,30 +6173,30 @@ var $elm$http$Http$get = function (r) {
 		{ay: $elm$http$Http$emptyBody, aC: r.aC, R: _List_Nil, aH: 'GET', aR: $elm$core$Maybe$Nothing, aq: $elm$core$Maybe$Nothing, aT: r.aT});
 };
 var $elm$json$Json$Decode$list = _Json_decodeList;
-var $author$project$Testemonials$Testemonial = F6(
+var $author$project$Testimonials$Testimonial = F6(
 	function (name, title, text, date, link, image) {
 		return {M: date, U: image, W: link, Y: name, ao: text, ap: title};
 	});
 var $elm$json$Json$Decode$field = _Json_decodeField;
 var $elm$json$Json$Decode$map6 = _Json_map6;
 var $elm$json$Json$Decode$string = _Json_decodeString;
-var $author$project$Testemonials$testemonialDecoder = A7(
+var $author$project$Testimonials$testimonialDecoder = A7(
 	$elm$json$Json$Decode$map6,
-	$author$project$Testemonials$Testemonial,
+	$author$project$Testimonials$Testimonial,
 	A2($elm$json$Json$Decode$field, 'name', $elm$json$Json$Decode$string),
 	A2($elm$json$Json$Decode$field, 'title', $elm$json$Json$Decode$string),
 	A2($elm$json$Json$Decode$field, 'text', $elm$json$Json$Decode$string),
 	A2($elm$json$Json$Decode$field, 'date', $elm$json$Json$Decode$string),
 	A2($elm$json$Json$Decode$field, 'link', $elm$json$Json$Decode$string),
 	A2($elm$json$Json$Decode$field, 'image', $elm$json$Json$Decode$string));
-var $author$project$Testemonials$testemonialsDecoder = $elm$json$Json$Decode$list($author$project$Testemonials$testemonialDecoder);
-var $author$project$Testemonials$getTestemonials = $elm$http$Http$get(
+var $author$project$Testimonials$testimonialsDecoder = $elm$json$Json$Decode$list($author$project$Testimonials$testimonialDecoder);
+var $author$project$Testimonials$getTestimonials = $elm$http$Http$get(
 	{
-		aC: A2($elm$http$Http$expectJson, $author$project$Testemonials$GotTestemonials, $author$project$Testemonials$testemonialsDecoder),
-		aT: '/testemonials.json'
+		aC: A2($elm$http$Http$expectJson, $author$project$Testimonials$GotTestimonials, $author$project$Testimonials$testimonialsDecoder),
+		aT: '/testimonials.json'
 	});
-var $author$project$Testemonials$init = function (_v0) {
-	return _Utils_Tuple2($author$project$Testemonials$Loading, $author$project$Testemonials$getTestemonials);
+var $author$project$Testimonials$init = function (_v0) {
+	return _Utils_Tuple2($author$project$Testimonials$Loading, $author$project$Testimonials$getTestimonials);
 };
 var $elm$core$Platform$Cmd$map = _Platform_map;
 var $elm$core$Tuple$mapBoth = F3(
@@ -6219,7 +6219,7 @@ var $elm$core$Set$insert = F2(
 var $elm$core$Set$fromList = function (list) {
 	return A3($elm$core$List$foldl, $elm$core$Set$insert, $elm$core$Set$empty, list);
 };
-var $author$project$Testemonials$activePaths = $elm$core$Set$fromList(
+var $author$project$Testimonials$activePaths = $elm$core$Set$fromList(
 	_List_fromArray(
 		['', '/', '/hire', '/hire/', '/posts/starting-small-with-elm-a-widget-approach', '/posts/starting-small-with-elm-a-widget-approach/']));
 var $elm$core$Dict$member = F2(
@@ -6236,31 +6236,31 @@ var $elm$core$Set$member = F2(
 		var dict = _v0;
 		return A2($elm$core$Dict$member, key, dict);
 	});
-var $author$project$Testemonials$showForPath = function (path) {
-	return A2($elm$core$Set$member, path, $author$project$Testemonials$activePaths);
+var $author$project$Testimonials$showForPath = function (path) {
+	return A2($elm$core$Set$member, path, $author$project$Testimonials$activePaths);
 };
 var $author$project$Main$init = function (path) {
-	return $author$project$Testemonials$showForPath(path) ? A3(
+	return $author$project$Testimonials$showForPath(path) ? A3(
 		$elm$core$Tuple$mapBoth,
-		$author$project$Main$Testemonials,
-		$elm$core$Platform$Cmd$map($author$project$Main$TestemonialsMsg),
-		$author$project$Testemonials$init(0)) : _Utils_Tuple2($author$project$Main$None, $elm$core$Platform$Cmd$none);
+		$author$project$Main$Testimonials,
+		$elm$core$Platform$Cmd$map($author$project$Main$TestimonialsMsg),
+		$author$project$Testimonials$init(0)) : _Utils_Tuple2($author$project$Main$None, $elm$core$Platform$Cmd$none);
 };
 var $elm$core$Platform$Sub$batch = _Platform_batch;
 var $elm$core$Platform$Sub$none = $elm$core$Platform$Sub$batch(_List_Nil);
 var $author$project$Main$subscriptions = function (_v0) {
 	return $elm$core$Platform$Sub$none;
 };
-var $author$project$Testemonials$Failure = {$: 0};
-var $author$project$Testemonials$SetRandomizedIndex = function (a) {
+var $author$project$Testimonials$Failure = {$: 0};
+var $author$project$Testimonials$SetRandomizedIndex = function (a) {
 	return {$: 3, a: a};
 };
-var $author$project$Testemonials$Success = F2(
+var $author$project$Testimonials$Success = F2(
 	function (a, b) {
 		return {$: 2, a: a, b: b};
 	});
 var $elm$core$Basics$modBy = _Basics_modBy;
-var $author$project$Testemonials$changeOrRollover = F2(
+var $author$project$Testimonials$changeOrRollover = F2(
 	function (list, targetIndex) {
 		var threshold = function (length) {
 			return length - A2($elm$core$Basics$modBy, 2, length);
@@ -6286,7 +6286,7 @@ var $elm$time$Time$posixToMillis = function (_v0) {
 	var millis = _v0;
 	return millis;
 };
-var $author$project$Testemonials$update = F2(
+var $author$project$Testimonials$update = F2(
 	function (msg, model) {
 		var _v0 = _Utils_Tuple2(model, msg);
 		_v0$5:
@@ -6295,14 +6295,14 @@ var $author$project$Testemonials$update = F2(
 				case 0:
 					if (_v0.a.$ === 2) {
 						var _v1 = _v0.a;
-						var testemonials = _v1.a;
+						var testimonials = _v1.a;
 						var index = _v1.b;
 						var _v2 = _v0.b;
 						return _Utils_Tuple2(
 							A2(
-								$author$project$Testemonials$Success,
-								testemonials,
-								A2($author$project$Testemonials$changeOrRollover, testemonials, index + 1)),
+								$author$project$Testimonials$Success,
+								testimonials,
+								A2($author$project$Testimonials$changeOrRollover, testimonials, index + 1)),
 							$elm$core$Platform$Cmd$none);
 					} else {
 						break _v0$5;
@@ -6310,14 +6310,14 @@ var $author$project$Testemonials$update = F2(
 				case 1:
 					if (_v0.a.$ === 2) {
 						var _v3 = _v0.a;
-						var testemonials = _v3.a;
+						var testimonials = _v3.a;
 						var index = _v3.b;
 						var _v4 = _v0.b;
 						return _Utils_Tuple2(
 							A2(
-								$author$project$Testemonials$Success,
-								testemonials,
-								A2($author$project$Testemonials$changeOrRollover, testemonials, index - 1)),
+								$author$project$Testimonials$Success,
+								testimonials,
+								A2($author$project$Testimonials$changeOrRollover, testimonials, index - 1)),
 							$elm$core$Platform$Cmd$none);
 					} else {
 						break _v0$5;
@@ -6325,15 +6325,15 @@ var $author$project$Testemonials$update = F2(
 				case 3:
 					if (_v0.a.$ === 2) {
 						var _v5 = _v0.a;
-						var testemonials = _v5.a;
+						var testimonials = _v5.a;
 						var time = _v0.b.a;
 						return _Utils_Tuple2(
 							A2(
-								$author$project$Testemonials$Success,
-								testemonials,
+								$author$project$Testimonials$Success,
+								testimonials,
 								A2(
-									$author$project$Testemonials$changeOrRollover,
-									testemonials,
+									$author$project$Testimonials$changeOrRollover,
+									testimonials,
 									$elm$time$Time$posixToMillis(time))),
 							$elm$core$Platform$Cmd$none);
 					} else {
@@ -6341,12 +6341,12 @@ var $author$project$Testemonials$update = F2(
 					}
 				default:
 					if (!_v0.b.a.$) {
-						var testemonials = _v0.b.a.a;
+						var testimonials = _v0.b.a.a;
 						return _Utils_Tuple2(
-							A2($author$project$Testemonials$Success, testemonials, 0),
-							A2($elm$core$Task$perform, $author$project$Testemonials$SetRandomizedIndex, $elm$time$Time$now));
+							A2($author$project$Testimonials$Success, testimonials, 0),
+							A2($elm$core$Task$perform, $author$project$Testimonials$SetRandomizedIndex, $elm$time$Time$now));
 					} else {
-						return _Utils_Tuple2($author$project$Testemonials$Failure, $elm$core$Platform$Cmd$none);
+						return _Utils_Tuple2($author$project$Testimonials$Failure, $elm$core$Platform$Cmd$none);
 					}
 			}
 		}
@@ -6356,13 +6356,13 @@ var $author$project$Main$update = F2(
 	function (msg, model) {
 		var _v0 = _Utils_Tuple2(model, msg);
 		if ((!_v0.a.$) && (_v0.b.$ === 1)) {
-			var testemonialsModel = _v0.a.a;
-			var testemonialsMsg = _v0.b.a;
+			var testimonialsModel = _v0.a.a;
+			var testimonialsMsg = _v0.b.a;
 			return A3(
 				$elm$core$Tuple$mapBoth,
-				$author$project$Main$Testemonials,
-				$elm$core$Platform$Cmd$map($author$project$Main$TestemonialsMsg),
-				A2($author$project$Testemonials$update, testemonialsMsg, testemonialsModel));
+				$author$project$Main$Testimonials,
+				$elm$core$Platform$Cmd$map($author$project$Main$TestimonialsMsg),
+				A2($author$project$Testimonials$update, testimonialsMsg, testimonialsModel));
 		} else {
 			return _Utils_Tuple2(model, $elm$core$Platform$Cmd$none);
 		}
@@ -6383,7 +6383,7 @@ var $elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
 var $elm$html$Html$text = $elm$virtual_dom$VirtualDom$text;
 var $elm$virtual_dom$VirtualDom$style = _VirtualDom_style;
 var $elm$html$Html$Attributes$style = $elm$virtual_dom$VirtualDom$style;
-var $author$project$Testemonials$hideOnBreakpoint = F2(
+var $author$project$Testimonials$hideOnBreakpoint = F2(
 	function (breakpoint, content) {
 		var clampStyle = 'clamp(10px, calc((100vw - ' + (breakpoint + ') * 1000), 10000px)');
 		return A2(
@@ -6397,8 +6397,8 @@ var $author$project$Testemonials$hideOnBreakpoint = F2(
 			_List_fromArray(
 				[content]));
 	});
-var $author$project$Testemonials$Left = {$: 1};
-var $author$project$Testemonials$Right = {$: 0};
+var $author$project$Testimonials$Left = {$: 1};
+var $author$project$Testimonials$Right = {$: 0};
 var $elm$virtual_dom$VirtualDom$Normal = function (a) {
 	return {$: 0, a: a};
 };
@@ -6416,8 +6416,8 @@ var $elm$html$Html$Events$onClick = function (msg) {
 		'click',
 		$elm$json$Json$Decode$succeed(msg));
 };
-var $author$project$Testemonials$button = function (isLeft) {
-	var _v0 = isLeft ? _Utils_Tuple3('left', '◂', $author$project$Testemonials$Left) : _Utils_Tuple3('right', '▸', $author$project$Testemonials$Right);
+var $author$project$Testimonials$button = function (isLeft) {
+	var _v0 = isLeft ? _Utils_Tuple3('left', '◂', $author$project$Testimonials$Left) : _Utils_Tuple3('right', '▸', $author$project$Testimonials$Right);
 	var side = _v0.a;
 	var content = _v0.b;
 	var msg = _v0.c;
@@ -6438,8 +6438,8 @@ var $author$project$Testemonials$button = function (isLeft) {
 				$elm$html$Html$text(content)
 			]));
 };
-var $author$project$Testemonials$leftButton = $author$project$Testemonials$button(true);
-var $author$project$Testemonials$rightButton = $author$project$Testemonials$button(false);
+var $author$project$Testimonials$leftButton = $author$project$Testimonials$button(true);
+var $author$project$Testimonials$rightButton = $author$project$Testimonials$button(false);
 var $elm$html$Html$a = _VirtualDom_node('a');
 var $elm$html$Html$Attributes$href = function (url) {
 	return A2(
@@ -6448,7 +6448,7 @@ var $elm$html$Html$Attributes$href = function (url) {
 		_VirtualDom_noJavaScriptUri(url));
 };
 var $elm$html$Html$h6 = _VirtualDom_node('h6');
-var $author$project$Testemonials$title = function (text) {
+var $author$project$Testimonials$title = function (text) {
 	return A2(
 		$elm$html$Html$h6,
 		_List_fromArray(
@@ -6460,7 +6460,7 @@ var $author$project$Testemonials$title = function (text) {
 				$elm$html$Html$text(text)
 			]));
 };
-var $author$project$Testemonials$clickableTitle = F2(
+var $author$project$Testimonials$clickableTitle = F2(
 	function (url, text) {
 		return A2(
 			$elm$html$Html$a,
@@ -6470,10 +6470,10 @@ var $author$project$Testemonials$clickableTitle = F2(
 				]),
 			_List_fromArray(
 				[
-					$author$project$Testemonials$title(text)
+					$author$project$Testimonials$title(text)
 				]));
 	});
-var $author$project$Testemonials$flexRow = function (content) {
+var $author$project$Testimonials$flexRow = function (content) {
 	return A2(
 		$elm$html$Html$div,
 		_List_fromArray(
@@ -6487,7 +6487,7 @@ var $author$project$Testemonials$flexRow = function (content) {
 };
 var $elm$html$Html$img = _VirtualDom_node('img');
 var $elm$html$Html$p = _VirtualDom_node('p');
-var $author$project$Testemonials$paragraph = function (text) {
+var $author$project$Testimonials$paragraph = function (text) {
 	return A2(
 		$elm$html$Html$p,
 		_List_fromArray(
@@ -6507,7 +6507,7 @@ var $elm$html$Html$Attributes$src = function (url) {
 		_VirtualDom_noJavaScriptOrHtmlUri(url));
 };
 var $elm$html$Html$span = _VirtualDom_node('span');
-var $author$project$Testemonials$stars = A2(
+var $author$project$Testimonials$stars = A2(
 	$elm$html$Html$span,
 	_List_fromArray(
 		[
@@ -6524,7 +6524,7 @@ var $elm$core$String$replace = F3(
 			after,
 			A2($elm$core$String$split, before, string));
 	});
-var $author$project$Testemonials$subtitle = function (text) {
+var $author$project$Testimonials$subtitle = function (text) {
 	return A2(
 		$elm$html$Html$p,
 		_List_fromArray(
@@ -6541,8 +6541,8 @@ var $author$project$Testemonials$subtitle = function (text) {
 				A3($elm$core$String$replace, '@ ', '@\n', text))
 			]));
 };
-var $author$project$Testemonials$testemonialEntry = F2(
-	function (visible, testemonial) {
+var $author$project$Testimonials$testimonialEntry = F2(
+	function (visible, testimonial) {
 		var conditionalStyles = visible ? _List_fromArray(
 			[
 				A2($elm$html$Html$Attributes$style, 'width', '60rem'),
@@ -6582,14 +6582,14 @@ var $author$project$Testemonials$testemonialEntry = F2(
 				conditionalStyles),
 			_List_fromArray(
 				[
-					$author$project$Testemonials$flexRow(
+					$author$project$Testimonials$flexRow(
 					_List_fromArray(
 						[
 							A2(
 							$elm$html$Html$img,
 							_List_fromArray(
 								[
-									$elm$html$Html$Attributes$src(testemonial.U),
+									$elm$html$Html$Attributes$src(testimonial.U),
 									A2($elm$html$Html$Attributes$style, 'width', '4em'),
 									A2($elm$html$Html$Attributes$style, 'border-radius', '50%')
 								]),
@@ -6599,26 +6599,26 @@ var $author$project$Testemonials$testemonialEntry = F2(
 							_List_Nil,
 							_List_fromArray(
 								[
-									A2($author$project$Testemonials$clickableTitle, testemonial.W, testemonial.Y),
-									$author$project$Testemonials$subtitle(testemonial.ap)
+									A2($author$project$Testimonials$clickableTitle, testimonial.W, testimonial.Y),
+									$author$project$Testimonials$subtitle(testimonial.ap)
 								]))
 						])),
-					$author$project$Testemonials$flexRow(
+					$author$project$Testimonials$flexRow(
 					_List_fromArray(
-						[$author$project$Testemonials$stars])),
-					$author$project$Testemonials$flexRow(
+						[$author$project$Testimonials$stars])),
+					$author$project$Testimonials$flexRow(
 					_List_fromArray(
 						[
-							$author$project$Testemonials$paragraph(testemonial.ao)
+							$author$project$Testimonials$paragraph(testimonial.ao)
 						])),
-					$author$project$Testemonials$flexRow(
+					$author$project$Testimonials$flexRow(
 					_List_fromArray(
 						[
-							$author$project$Testemonials$subtitle(testemonial.M)
+							$author$project$Testimonials$subtitle(testimonial.M)
 						]))
 				]));
 	});
-var $author$project$Testemonials$view = function (model) {
+var $author$project$Testimonials$view = function (model) {
 	switch (model.$) {
 		case 1:
 			return $elm$html$Html$text('...');
@@ -6631,10 +6631,10 @@ var $author$project$Testemonials$view = function (model) {
 						$elm$html$Html$text('')
 					]));
 		default:
-			var testemonials = model.a;
+			var testimonials = model.a;
 			var index = model.b;
 			return A2(
-				$author$project$Testemonials$hideOnBreakpoint,
+				$author$project$Testimonials$hideOnBreakpoint,
 				'600px',
 				A2(
 					$elm$html$Html$div,
@@ -6650,20 +6650,20 @@ var $author$project$Testemonials$view = function (model) {
 						]),
 					A2(
 						$elm$core$List$cons,
-						$author$project$Testemonials$leftButton,
+						$author$project$Testimonials$leftButton,
 						A2(
 							$elm$core$List$cons,
-							$author$project$Testemonials$rightButton,
+							$author$project$Testimonials$rightButton,
 							A2(
 								$elm$core$List$indexedMap,
 								F2(
 									function (i, t) {
 										return A2(
-											$author$project$Testemonials$testemonialEntry,
+											$author$project$Testimonials$testimonialEntry,
 											_Utils_eq(i, index) || _Utils_eq(i, index + 1),
 											t);
 									}),
-								testemonials)))));
+								testimonials)))));
 	}
 };
 var $author$project$Main$view = function (model) {
@@ -6677,11 +6677,11 @@ var $author$project$Main$view = function (model) {
 			[
 				function () {
 				if (!model.$) {
-					var testemonialsModel = model.a;
+					var testimonialsModel = model.a;
 					return A2(
 						$elm$html$Html$map,
-						$author$project$Main$TestemonialsMsg,
-						$author$project$Testemonials$view(testemonialsModel));
+						$author$project$Main$TestimonialsMsg,
+						$author$project$Testimonials$view(testimonialsModel));
 				} else {
 					return $elm$html$Html$text('');
 				}

@@ -6409,8 +6409,7 @@ var $author$project$Testemonials$paragraph = function (text) {
 		_List_fromArray(
 			[
 				A2($elm$html$Html$Attributes$style, 'margin', '0'),
-				A2($elm$html$Html$Attributes$style, 'font-size', '1em'),
-				A2($elm$html$Html$Attributes$style, 'line-height', '1.4')
+				A2($elm$html$Html$Attributes$style, 'font-size', '1em')
 			]),
 		_List_fromArray(
 			[
@@ -6448,7 +6447,6 @@ var $author$project$Testemonials$subtitle = function (text) {
 			[
 				A2($elm$html$Html$Attributes$style, 'margin', '0'),
 				A2($elm$html$Html$Attributes$style, 'font-size', '1em'),
-				A2($elm$html$Html$Attributes$style, 'line-height', '1.4'),
 				A2($elm$html$Html$Attributes$style, 'white-space', 'pre'),
 				A2($elm$html$Html$Attributes$style, 'font-weight', '200'),
 				A2($elm$html$Html$Attributes$style, 'opacity', '0.8')
@@ -6463,8 +6461,8 @@ var $author$project$Testemonials$testemonialEntry = F2(
 	function (visible, testemonial) {
 		var conditionalStyles = visible ? _List_fromArray(
 			[
-				A2($elm$html$Html$Attributes$style, 'width', '50rem'),
-				A2($elm$html$Html$Attributes$style, 'max-height', '55rem'),
+				A2($elm$html$Html$Attributes$style, 'width', '60rem'),
+				A2($elm$html$Html$Attributes$style, 'max-height', '60rem'),
 				A2($elm$html$Html$Attributes$style, 'padding', '2rem'),
 				A2($elm$html$Html$Attributes$style, 'margin', '0.5rem'),
 				A2($elm$html$Html$Attributes$style, 'flex', '1')
@@ -6494,7 +6492,8 @@ var $author$project$Testemonials$testemonialEntry = F2(
 						A2($elm$html$Html$Attributes$style, 'display', 'flex'),
 						A2($elm$html$Html$Attributes$style, 'white-space', 'nowrap'),
 						A2($elm$html$Html$Attributes$style, 'flex-direction', 'column'),
-						A2($elm$html$Html$Attributes$style, 'gap', '1rem')
+						A2($elm$html$Html$Attributes$style, 'gap', '1rem'),
+						A2($elm$html$Html$Attributes$style, 'font-size', '1.8rem')
 					]),
 				conditionalStyles),
 			_List_fromArray(

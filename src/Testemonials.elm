@@ -37,7 +37,14 @@ init () =
 
 activePaths : Set.Set String
 activePaths =
-    Set.fromList [ "", "/", "/hire", "/hire/" ]
+    Set.fromList
+        [ ""
+        , "/"
+        , "/hire"
+        , "/hire/"
+        , "/posts/starting-small-with-elm-a-widget-approach"
+        , "/posts/starting-small-with-elm-a-widget-approach/"
+        ]
 
 
 showForPath : String -> Bool

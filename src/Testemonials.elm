@@ -6,6 +6,8 @@ import Html.Events as Events
 import Http
 import Json.Decode
 import Set
+import Task
+import Time
 
 
 {-| This view renders a testemonials carousel (only on wide screens, for now).
@@ -61,6 +63,7 @@ type Msg
     = Right
     | Left
     | GotTestemonials (Result Http.Error (List Testemonial))
+    | SetRandomizedIndex Time.Posix
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -72,8 +75,11 @@ update msg model =
         ( Success testemonials index, Left ) ->
             ( Success testemonials (changeOrRollover testemonials (index - 1)), Cmd.none )
 
+        ( Success testemonials _, SetRandomizedIndex time ) ->
+            ( Success testemonials (changeOrRollover testemonials (time |> Time.posixToMillis)), Cmd.none )
+
         ( _, GotTestemonials (Ok testemonials) ) ->
-            ( Success testemonials 0, Cmd.none )
+            ( Success testemonials 0, Task.perform SetRandomizedIndex Time.now )
 
         ( _, GotTestemonials (Err _) ) ->
             ( Failure, Cmd.none )
@@ -107,7 +113,7 @@ view model =
 
         Failure ->
             Html.div []
-                [ Html.text "something went wrong while fetching testemonials :("
+                [ Html.text ""
                 ]
 
         Success testemonials index ->
@@ -210,7 +216,7 @@ testemonialEntry visible testemonial =
          , Attributes.style "transition-duration" "0.4s"
          , Attributes.style "margin" "0.5rem"
          , Attributes.style "border-radius" "2rem"
-         , Attributes.style "background" "rgba(255,255,255,0.8)"
+         , Attributes.style "background" "rgba(127,127,127,0.1)"
          , Attributes.style "overflow-x" "hidden"
          , Attributes.style "display" "flex"
          , Attributes.style "white-space" "nowrap"

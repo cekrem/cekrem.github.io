@@ -72,11 +72,11 @@ module Main exposing (..)
 
 import Browser
 import Html exposing (..)
-import Testemonials
+import Testimonials
 
 main : Program String Model Msg
 main =
-    {-| I'm using Browser.element instead of Browser.application to control
+    {- I'm using Browser.element instead of Browser.application to control
         only _part_ of the DOM with Elm. Browser.sandbox would also often suffice, but
         it doesn't support HTTP requests. -}
     Browser.element
@@ -86,23 +86,23 @@ main =
         , view = view
         }
 
-{-| For now I either render Testemonials (the carousel) or nothing,
+{- For now I either render Testimonials (the carousel) or nothing,
 but this could easily grow to view other things on other routes.
 
 Perhaps the "Subscribe" input/form could be Elm?
 
 -}
 type Model
-    = Testemonials Testemonials.Model
+    = Testimonials Testimonials.Model
     | None
 
 init : String -> ( Model, Cmd Msg )
 init path =
-    -- in effect: show testemonials for "/" and "/hire" routes, and for this very post
-    if Testemonials.showForPath path then
-        Testemonials.init ()
-            -- Map the Testemonials specific model and commands to match the Main ones
-            |> Tuple.mapBoth Testemonials (Cmd.map TestemonialsMsg)
+    -- in effect: show testimonials for "/" and "/hire" routes, and for this very post
+    if Testimonials.showForPath path then
+        Testimonials.init ()
+            -- Map the Testimonials specific model and commands to match the Main ones
+            |> Tuple.mapBoth Testimonials (Cmd.map TestimonialsMsg)
     else
         ( None, Cmd.none )
 ```
@@ -114,16 +114,16 @@ The key insight here is that our main module acts as a super-simple **router** t
 The actual testimonials functionality lives in a separate module:
 
 ```elm
-module Testemonials exposing (Model, Msg, init, showForPath, update, view)
+module Testimonials exposing (Model, Msg, init, showForPath, update, view)
 
 type Model
     = Failure
     | Loading
-    | Success (List Testemonial) Int
+    | Success (List Testimonial) Int
 
 init : () -> ( Model, Cmd Msg )
 init () =
-    ( Loading, getTestemonials )
+    ( Loading, getTestimonials )
 
 activePaths : Set.Set String
 activePaths =
@@ -141,29 +141,29 @@ This demonstrates several important patterns:
 3. **Pure functions** – The `showForPath` function is completely predictable and testable
 4. **Separated concerns** – Data fetching, state management, and rendering are cleanly separated
 
-## Migrating testemonials data?
+## Migrating testimonials data?
 
-Like I said, I used to have that iframe (from [(https://testemonials.to)]), and while I'm definitely ditching that I'd like to keep the data I've collected. This is literally how I migrated: I `document.querySelector`ed the element containing all existing testemonials the and sent the `innerHTML` to GPT-4o with instructions to make pretty JSON matching my Elm model. Simple as that. See, I'm not against Automating The Boring Stuff (the actual name of my last AI-related talk @ Ensō), I just [hate letting LLMs have all the fun of the actual coding](https://cekrem.github.io/posts/coding-as-craft-going-back-to-the-old-gym/).
+Like I said, I used to have that iframe (from [testemonials.to](https://testimonials.to)), and while I'm definitely ditching that I'd like to keep the data I've collected. This is literally how I migrated: I `document.querySelector`ed the element containing all existing testimonials and sent the `innerHTML` to GPT-4o with instructions to make pretty JSON matching my Elm model. Simple as that. See, I'm not against Automating The Boring Stuff (the actual name of my last AI-related talk @ Ensō), I just [hate letting LLMs have all the fun of the actual coding](https://cekrem.github.io/posts/coding-as-craft-going-back-to-the-old-gym/).
 
 ## Handling Data and HTTP
 
-One of Elm's many strengths is how it handles side effects like HTTP requests (`ports` in another way Elm deals with the outside world, read more about that [here](https://cekrem.github.io/posts/a-case-for-port-boundaries-in-frontend/)). Anyway, here's how the testimonials widget fetches data:
+One of Elm's many strengths is how it handles side effects like HTTP requests (`ports` is another way Elm deals with the outside world, read more about that [here](https://cekrem.github.io/posts/a-case-for-port-boundaries-in-frontend/)). Anyway, here's how the testimonials widget fetches data:
 
 ```elm
-getTestemonials : Cmd Msg
-getTestemonials =
+getTestimonials : Cmd Msg
+getTestimonials =
     Http.get
-        { url = "/testemonials.json"
-        , expect = Http.expectJson GotTestemonials testemonialsDecoder
+        { url = "/testimonials.json"
+        , expect = Http.expectJson GotTestimonials testimonialsDecoder
         }
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case ( model, msg ) of
-        ( _, GotTestemonials (Ok testemonials) ) ->
-            ( Success testemonials 0, Cmnd.none)
+        ( _, GotTestimonials (Ok testimonials) ) ->
+            ( Success testimonials 0, Cmnd.none)
 
-        ( _, GotTestemonials (Err _) ) ->
+        ( _, GotTestimonials (Err _) ) ->
             ( Failure, Cmd.none )
 ```
 
@@ -171,7 +171,7 @@ Compare this to typical JavaScript approaches:
 
 - **No promise chains or async/await complexity** – Commands are values that describe what you want to do
 - **Explicit error handling** – The `Result` type forces you to handle both success and failure cases
-- **No runtime errors** – If it compiles, the HTTP handling will work as expected
+- **No runtime errors** – If it compiles, it won't throw exceptions (HTTP requests can fail, and Stuff™ can happen, but it all be predictably handled)
 - **Testable** – You can test your update function by passing it messages directly
 
 ## Styling Without Conflicts
@@ -179,8 +179,8 @@ Compare this to typical JavaScript approaches:
 One challenge with widget-based approaches is styling conflicts. Since this Elm widget lives inside a Hugo site with its own CSS, I needed to avoid dependencies on external stylesheets. The solution? Inline styles with careful encapsulation. Granted, I _have_ started down the rabbit hole of changing the overall styling of this blog, as you may have noticed, but to keep this example clear I gave myself the restraint of not depending on any (subject-to-change!) existing classes:
 
 ```elm
-testemonialEntry : Bool -> Testemonial -> Html Msg
-testemonialEntry visible testemonial =
+testimonialEntry : Bool -> Testimonial -> Html Msg
+testimonialEntry visible testimonial =
     let
         conditionalStyles = {- implementation details -}
     in
@@ -203,7 +203,7 @@ Doh...
 
 ## Responsive Behavior
 
-A fun challenge when commiting to _not_ relying on external CSS is hiding/showing based on screen size. Rather than relying on CSS media queries, my beloved widget uses a CSS `clamp()` function to hide the entire widget on smaller screens.
+A fun challenge when committing to _not_ relying on external CSS is hiding/showing based on screen size. Rather than relying on CSS media queries, my beloved widget uses a CSS `clamp()` function to hide the entire widget on smaller screens.
 
 I bet you haven't seen one of these in the wild, and I don't really think you should try the following at home either:
 
@@ -295,4 +295,4 @@ In the case of Elm, the first small step might just be a single widget.
 
 ---
 
-_If you're interested in exploring this approach further, check out the [complete source code](https://github.com/cekrem/cekrem.github.io/tree/main/src) for this blog's Elm widgets. The simplicity might surprise you._
+_If you're interested in exploring this approach further, check out the [complete source code](https://github.com/cekrem/cekrem.github.io/tree/master/src) for this blog's Elm widgets. The simplicity might surprise you._

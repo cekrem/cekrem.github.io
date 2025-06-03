@@ -1,4 +1,4 @@
-module Testemonials exposing (Model, Msg, init, showForPath, update, view)
+module Testimonials exposing (Model, Msg, init, showForPath, update, view)
 
 import Html exposing (..)
 import Html.Attributes as Attributes
@@ -10,12 +10,12 @@ import Task
 import Time
 
 
-{-| This view renders a testemonials carousel (only on wide screens, for now).
+{-| This view renders a testimonials carousel (only on wide screens, for now).
 
 Also (again, for now) it relies only on inline styling, as the stylesheet of the mother app
 this widget is rendered in is subject to complete replacement.
 
-Testemonials are found in /static/testemonials.json (which hugo moves to root `/` on deploy).
+Testimonials are found in /static/testimonials.json (which hugo moves to root `/` on deploy).
 
 -}
 
@@ -27,12 +27,12 @@ Testemonials are found in /static/testemonials.json (which hugo moves to root `/
 type Model
     = Failure
     | Loading
-    | Success (List Testemonial) Int
+    | Success (List Testimonial) Int
 
 
 init : () -> ( Model, Cmd Msg )
 init () =
-    ( Loading, getTestemonials )
+    ( Loading, getTestimonials )
 
 
 activePaths : Set.Set String
@@ -52,7 +52,7 @@ showForPath path =
     activePaths |> Set.member path
 
 
-type alias Testemonial =
+type alias Testimonial =
     { name : String
     , title : String
     , text : String
@@ -69,26 +69,26 @@ type alias Testemonial =
 type Msg
     = Right
     | Left
-    | GotTestemonials (Result Http.Error (List Testemonial))
+    | GotTestimonials (Result Http.Error (List Testimonial))
     | SetRandomizedIndex Time.Posix
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case ( model, msg ) of
-        ( Success testemonials index, Right ) ->
-            ( Success testemonials (changeOrRollover testemonials (index + 1)), Cmd.none )
+        ( Success testimonials index, Right ) ->
+            ( Success testimonials (changeOrRollover testimonials (index + 1)), Cmd.none )
 
-        ( Success testemonials index, Left ) ->
-            ( Success testemonials (changeOrRollover testemonials (index - 1)), Cmd.none )
+        ( Success testimonials index, Left ) ->
+            ( Success testimonials (changeOrRollover testimonials (index - 1)), Cmd.none )
 
-        ( Success testemonials _, SetRandomizedIndex time ) ->
-            ( Success testemonials (changeOrRollover testemonials (time |> Time.posixToMillis)), Cmd.none )
+        ( Success testimonials _, SetRandomizedIndex time ) ->
+            ( Success testimonials (changeOrRollover testimonials (time |> Time.posixToMillis)), Cmd.none )
 
-        ( _, GotTestemonials (Ok testemonials) ) ->
-            ( Success testemonials 0, Task.perform SetRandomizedIndex Time.now )
+        ( _, GotTestimonials (Ok testimonials) ) ->
+            ( Success testimonials 0, Task.perform SetRandomizedIndex Time.now )
 
-        ( _, GotTestemonials (Err _) ) ->
+        ( _, GotTestimonials (Err _) ) ->
             ( Failure, Cmd.none )
 
         _ ->
@@ -96,7 +96,7 @@ update msg model =
 
 
 {-| either set to targetIndex, or rollover if it's out of bounds.
-Also: make sure never to set last index on odd numbered testemonials (ie always show two in slider!)
+Also: make sure never to set last index on odd numbered testimonials (ie always show two in slider!)
 -}
 changeOrRollover : List a -> Int -> Int
 changeOrRollover list targetIndex =
@@ -123,7 +123,7 @@ view model =
                 [ Html.text ""
                 ]
 
-        Success testemonials index ->
+        Success testimonials index ->
             Html.div
                 [ Attributes.style "position" "relative"
                 , Attributes.style "width" "100%"
@@ -135,10 +135,10 @@ view model =
                 ]
                 (leftButton
                     :: rightButton
-                    :: (testemonials
+                    :: (testimonials
                             |> List.indexedMap
                                 (\i t ->
-                                    testemonialEntry (i == index || i == index + 1) t
+                                    testimonialEntry (i == index || i == index + 1) t
                                 )
                        )
                 )
@@ -193,8 +193,8 @@ button isLeft =
         [ Html.text content ]
 
 
-testemonialEntry : Bool -> Testemonial -> Html Msg
-testemonialEntry visible testemonial =
+testimonialEntry : Bool -> Testimonial -> Html Msg
+testimonialEntry visible testimonial =
     -- Most of this could and should have been ish a one-liner of tailwind, but tailwind breaks the mother app
     let
         conditionalStyles =
@@ -235,22 +235,22 @@ testemonialEntry visible testemonial =
         )
         [ flexRow
             [ Html.img
-                [ Attributes.src testemonial.image
+                [ Attributes.src testimonial.image
                 , Attributes.style "width" "4em"
                 , Attributes.style "border-radius" "50%"
                 ]
                 []
             , Html.div []
-                [ clickableTitle testemonial.link testemonial.name
-                , subtitle testemonial.title
+                [ clickableTitle testimonial.link testimonial.name
+                , subtitle testimonial.title
                 ]
             ]
         , flexRow
             [ stars ]
         , flexRow
-            [ paragraph testemonial.text ]
+            [ paragraph testimonial.text ]
         , flexRow
-            [ subtitle testemonial.date ]
+            [ subtitle testimonial.date ]
         ]
 
 
@@ -312,22 +312,22 @@ subtitle text =
 -- CMD
 
 
-getTestemonials : Cmd Msg
-getTestemonials =
+getTestimonials : Cmd Msg
+getTestimonials =
     Http.get
-        { url = "/testemonials.json"
-        , expect = Http.expectJson GotTestemonials testemonialsDecoder
+        { url = "/testimonials.json"
+        , expect = Http.expectJson GotTestimonials testimonialsDecoder
         }
 
 
-testemonialsDecoder : Json.Decode.Decoder (List Testemonial)
-testemonialsDecoder =
-    Json.Decode.list testemonialDecoder
+testimonialsDecoder : Json.Decode.Decoder (List Testimonial)
+testimonialsDecoder =
+    Json.Decode.list testimonialDecoder
 
 
-testemonialDecoder : Json.Decode.Decoder Testemonial
-testemonialDecoder =
-    Json.Decode.map6 Testemonial
+testimonialDecoder : Json.Decode.Decoder Testimonial
+testimonialDecoder =
+    Json.Decode.map6 Testimonial
         (Json.Decode.field "name" Json.Decode.string)
         (Json.Decode.field "title" Json.Decode.string)
         (Json.Decode.field "text" Json.Decode.string)

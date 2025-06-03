@@ -4,7 +4,7 @@ import Browser
 import Html exposing (..)
 import Html.Attributes as Attributes
 import Html.Events exposing (..)
-import Testemonials
+import Testimonials
 
 
 
@@ -26,15 +26,15 @@ main =
 
 
 type Model
-    = Testemonials Testemonials.Model
+    = Testimonials Testimonials.Model
     | None
 
 
 init : String -> ( Model, Cmd Msg )
 init path =
-    if Testemonials.showForPath path then
-        Testemonials.init ()
-            |> Tuple.mapBoth Testemonials (Cmd.map TestemonialsMsg)
+    if Testimonials.showForPath path then
+        Testimonials.init ()
+            |> Tuple.mapBoth Testimonials (Cmd.map TestimonialsMsg)
 
     else
         ( None
@@ -48,15 +48,15 @@ init path =
 
 type Msg
     = NoOp
-    | TestemonialsMsg Testemonials.Msg
+    | TestimonialsMsg Testimonials.Msg
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case ( model, msg ) of
-        ( Testemonials testemonialsModel, TestemonialsMsg testemonialsMsg ) ->
-            Testemonials.update testemonialsMsg testemonialsModel
-                |> Tuple.mapBoth Testemonials (Cmd.map TestemonialsMsg)
+        ( Testimonials testimonialsModel, TestimonialsMsg testimonialsMsg ) ->
+            Testimonials.update testimonialsMsg testimonialsModel
+                |> Tuple.mapBoth Testimonials (Cmd.map TestimonialsMsg)
 
         _ ->
             ( model, Cmd.none )
@@ -79,9 +79,9 @@ view : Model -> Html Msg
 view model =
     div [ Attributes.class "container" ]
         [ case model of
-            Testemonials testemonialsModel ->
-                Testemonials.view testemonialsModel
-                    |> Html.map TestemonialsMsg
+            Testimonials testimonialsModel ->
+                Testimonials.view testimonialsModel
+                    |> Html.map TestimonialsMsg
 
             None ->
                 Html.text ""

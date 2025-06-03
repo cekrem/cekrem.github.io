@@ -186,8 +186,8 @@ testemonialEntry visible testemonial =
     let
         conditionalStyles =
             if visible then
-                [ Attributes.style "width" "50rem"
-                , Attributes.style "max-height" "55rem"
+                [ Attributes.style "width" "60rem"
+                , Attributes.style "max-height" "60rem"
                 , Attributes.style "padding" "2rem"
                 , Attributes.style "margin" "0.5rem"
                 , Attributes.style "flex" "1"
@@ -216,6 +216,7 @@ testemonialEntry visible testemonial =
          , Attributes.style "white-space" "nowrap"
          , Attributes.style "flex-direction" "column"
          , Attributes.style "gap" "1rem"
+         , Attributes.style "font-size" "1.8rem"
          ]
             ++ conditionalStyles
         )
@@ -278,7 +279,6 @@ paragraph text =
     Html.p
         [ Attributes.style "margin" "0"
         , Attributes.style "font-size" "1em"
-        , Attributes.style "line-height" "1.4"
         ]
         [ Html.text text ]
 
@@ -288,7 +288,6 @@ subtitle text =
     Html.p
         [ Attributes.style "margin" "0"
         , Attributes.style "font-size" "1em"
-        , Attributes.style "line-height" "1.4"
         , Attributes.style "white-space" "pre"
         , Attributes.style "font-weight" "200"
         , Attributes.style "opacity" "0.8"

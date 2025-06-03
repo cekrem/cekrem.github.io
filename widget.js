@@ -4545,7 +4545,53 @@ function _Http_track(router, xhr, tracker)
 			al: event.lengthComputable ? $elm$core$Maybe$Just(event.total) : $elm$core$Maybe$Nothing
 		}))));
 	});
-}var $elm$core$Basics$EQ = 1;
+}
+
+
+function _Time_now(millisToPosix)
+{
+	return _Scheduler_binding(function(callback)
+	{
+		callback(_Scheduler_succeed(millisToPosix(Date.now())));
+	});
+}
+
+var _Time_setInterval = F2(function(interval, task)
+{
+	return _Scheduler_binding(function(callback)
+	{
+		var id = setInterval(function() { _Scheduler_rawSpawn(task); }, interval);
+		return function() { clearInterval(id); };
+	});
+});
+
+function _Time_here()
+{
+	return _Scheduler_binding(function(callback)
+	{
+		callback(_Scheduler_succeed(
+			A2($elm$time$Time$customZone, -(new Date().getTimezoneOffset()), _List_Nil)
+		));
+	});
+}
+
+
+function _Time_getZoneName()
+{
+	return _Scheduler_binding(function(callback)
+	{
+		try
+		{
+			var name = $elm$time$Time$Name(Intl.DateTimeFormat().resolvedOptions().timeZone);
+		}
+		catch (e)
+		{
+			var name = $elm$time$Time$Offset(new Date().getTimezoneOffset());
+		}
+		callback(_Scheduler_succeed(name));
+	});
+}
+var $elm$core$Basics$EQ = 1;
 var $elm$core$Basics$GT = 2;
 var $elm$core$Basics$LT = 0;
 var $elm$core$List$cons = _List_cons;
@@ -6206,6 +6252,9 @@ var $author$project$Main$subscriptions = function (_v0) {
 	return $elm$core$Platform$Sub$none;
 };
 var $author$project$Testemonials$Failure = {$: 0};
+var $author$project$Testemonials$SetRandomizedIndex = function (a) {
+	return {$: 3, a: a};
+};
 var $author$project$Testemonials$Success = F2(
 	function (a, b) {
 		return {$: 2, a: a, b: b};
@@ -6219,10 +6268,28 @@ var $author$project$Testemonials$changeOrRollover = F2(
 			$elm$core$List$length(list));
 		return A2($elm$core$Basics$modBy, threshold, targetIndex);
 	});
+var $elm$time$Time$Name = function (a) {
+	return {$: 0, a: a};
+};
+var $elm$time$Time$Offset = function (a) {
+	return {$: 1, a: a};
+};
+var $elm$time$Time$Zone = F2(
+	function (a, b) {
+		return {$: 0, a: a, b: b};
+	});
+var $elm$time$Time$customZone = $elm$time$Time$Zone;
+var $elm$time$Time$Posix = $elm$core$Basics$identity;
+var $elm$time$Time$millisToPosix = $elm$core$Basics$identity;
+var $elm$time$Time$now = _Time_now($elm$time$Time$millisToPosix);
+var $elm$time$Time$posixToMillis = function (_v0) {
+	var millis = _v0;
+	return millis;
+};
 var $author$project$Testemonials$update = F2(
 	function (msg, model) {
 		var _v0 = _Utils_Tuple2(model, msg);
-		_v0$4:
+		_v0$5:
 		while (true) {
 			switch (_v0.b.$) {
 				case 0:
@@ -6238,7 +6305,7 @@ var $author$project$Testemonials$update = F2(
 								A2($author$project$Testemonials$changeOrRollover, testemonials, index + 1)),
 							$elm$core$Platform$Cmd$none);
 					} else {
-						break _v0$4;
+						break _v0$5;
 					}
 				case 1:
 					if (_v0.a.$ === 2) {
@@ -6253,14 +6320,31 @@ var $author$project$Testemonials$update = F2(
 								A2($author$project$Testemonials$changeOrRollover, testemonials, index - 1)),
 							$elm$core$Platform$Cmd$none);
 					} else {
-						break _v0$4;
+						break _v0$5;
+					}
+				case 3:
+					if (_v0.a.$ === 2) {
+						var _v5 = _v0.a;
+						var testemonials = _v5.a;
+						var time = _v0.b.a;
+						return _Utils_Tuple2(
+							A2(
+								$author$project$Testemonials$Success,
+								testemonials,
+								A2(
+									$author$project$Testemonials$changeOrRollover,
+									testemonials,
+									$elm$time$Time$posixToMillis(time))),
+							$elm$core$Platform$Cmd$none);
+					} else {
+						break _v0$5;
 					}
 				default:
 					if (!_v0.b.a.$) {
 						var testemonials = _v0.b.a.a;
 						return _Utils_Tuple2(
 							A2($author$project$Testemonials$Success, testemonials, 0),
-							$elm$core$Platform$Cmd$none);
+							A2($elm$core$Task$perform, $author$project$Testemonials$SetRandomizedIndex, $elm$time$Time$now));
 					} else {
 						return _Utils_Tuple2($author$project$Testemonials$Failure, $elm$core$Platform$Cmd$none);
 					}
@@ -6487,7 +6571,7 @@ var $author$project$Testemonials$testemonialEntry = F2(
 						A2($elm$html$Html$Attributes$style, 'transition-duration', '0.4s'),
 						A2($elm$html$Html$Attributes$style, 'margin', '0.5rem'),
 						A2($elm$html$Html$Attributes$style, 'border-radius', '2rem'),
-						A2($elm$html$Html$Attributes$style, 'background', 'rgba(255,255,255,0.8)'),
+						A2($elm$html$Html$Attributes$style, 'background', 'rgba(127,127,127,0.1)'),
 						A2($elm$html$Html$Attributes$style, 'overflow-x', 'hidden'),
 						A2($elm$html$Html$Attributes$style, 'display', 'flex'),
 						A2($elm$html$Html$Attributes$style, 'white-space', 'nowrap'),
@@ -6544,7 +6628,7 @@ var $author$project$Testemonials$view = function (model) {
 				_List_Nil,
 				_List_fromArray(
 					[
-						$elm$html$Html$text('something went wrong while fetching testemonials :(')
+						$elm$html$Html$text('')
 					]));
 		default:
 			var testemonials = model.a;

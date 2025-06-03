@@ -4,6 +4,13 @@
   box-sizing: inherit;
 }
 
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-smoothing: antialiased;
+  font-smooth: always;
+}
+
 html {
   box-sizing: border-box;
   font-size: 62.5%;

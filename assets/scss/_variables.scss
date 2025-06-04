@@ -51,21 +51,9 @@ $alt-fg-color-dark: #dadada !default;
 $lighter-alt-bg-color-dark: #4f4f4f !default;
 $link-color-dark: #42a5f5 !default;
 
-// Solarized Light Colors
-$bg-color: #fdf6e3 !default; // Base3 (background)
-$fg-color: #657b83 !default; // Base00 (foreground)
-$alt-bg-color: #eee8d5 !default; // Base2 (alternate background)
-$alt-fg-color: #586e75 !default; // Base01 (alternate foreground)
-$darker-alt-bg-color: #93a1a1 !default; // Base1 (darker alternate background)
-$link-color: #268bd2 !default; // Blue (link color)
-
-// Solarized Dark Colors
-$bg-color-dark: #002b36 !default; // Base03 (background)
-$fg-color-dark: #839496 !default; // Base0 (foreground)
-$alt-bg-color-dark: #073642 !default; // Base02 (alternate background)
-$alt-fg-color-dark: #93a1a1 !default; // Base1 (alternate foreground)
-$lighter-alt-bg-color-dark: #586e75 !default; // Base01 (lighter alternate background)
-$link-color-dark: #268bd2 !default; // Blue (link color)
+// Color overrides
+$link-color: #60b5cc;
+$link-color-dark: #60b5cc;
 
 // Notice colors
 $fg-color-notice-note-icon: #5e35b1 !default;

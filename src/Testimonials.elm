@@ -223,7 +223,7 @@ testimonialEntry visible testimonial =
          , Attributes.style "transition-duration" "0.4s"
          , Attributes.style "margin" "0.5rem"
          , Attributes.style "border-radius" "2rem"
-         , Attributes.style "background" "rgba(127,127,127,0.1)"
+         , Attributes.style "background" "rgba(127,127,127,0.05)"
          , Attributes.style "overflow-x" "hidden"
          , Attributes.style "display" "flex"
          , Attributes.style "white-space" "nowrap"

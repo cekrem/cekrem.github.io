@@ -1,4 +1,4 @@
-<!doctype html><html lang=en><head><title>Exploring UIs in the terminal part 2: More ink! · cekrem.github.io</title><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=color-scheme content="light dark"><meta name=author content="Christian Ekrem"><meta name=description content="Why I'm not bothering with Mason after all..."><meta name=keywords content="developer,personal"><meta name=fediverse:creator content><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://cekrem.github.io/images/featured-with-margins.png"><meta name=twitter:title content="Exploring UIs in the terminal part 2: More ink!"><meta name=twitter:description content="Why I'm not bothering with Mason after all..."><meta property="og:url" content="https://cekrem.github.io/posts/do-more-stuff-cli-tool-part-2/"><meta property="og:site_name" content="cekrem.github.io"><meta property="og:title" content="Exploring UIs in the terminal part 2: More ink!"><meta property="og:description" content="Why I'm not bothering with Mason after all..."><meta property="og:locale" content="en_us"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2023-09-12T00:00:00+00:00"><meta property="article:modified_time" content="2023-09-12T00:00:00+00:00"><meta property="article:tag" content="Cli"><meta property="article:tag" content="Ui"><meta property="article:tag" content="Npm Package"><meta property="article:tag" content="React"><meta property="article:tag" content="Redux"><meta property="article:tag" content="Ink"><meta property="og:image" content="https://cekrem.github.io/images/featured-with-margins.png"><link rel=canonical href=https://cekrem.github.io/posts/do-more-stuff-cli-tool-part-2/><link rel=preload href=/fonts/fa-brands-400.woff2 as=font type=font/woff2 crossorigin><link rel=preload href=/fonts/fa-regular-400.woff2 as=font type=font/woff2 crossorigin><link rel=preload href=/fonts/fa-solid-900.woff2 as=font type=font/woff2 crossorigin><link rel=stylesheet href=/css/coder.min.68f223388cb4e4100cebdf9e19427ffc94855508d0e5bdad30d0ebbc8d3c516c.css integrity="sha256-aPIjOIy05BAM69+eGUJ//JSFVQjQ5b2tMNDrvI08UWw=" crossorigin=anonymous media=screen><link rel=icon type=image/svg+xml href=/images/favicon.svg sizes=any><link rel=icon type=image/png href=/images/favicon-32x32.png sizes=32x32><link rel=icon type=image/png href=/images/favicon-16x16.png sizes=16x16><link rel=apple-touch-icon href=/images/apple-touch-icon.png><link rel=apple-touch-icon sizes=180x180 href=/images/apple-touch-icon.png><link rel=manifest href=/site.webmanifest><link rel=mask-icon href=/images/safari-pinned-tab.svg color=#5bbad5></head><body class="preload-transitions colorscheme-light"><main class=wrapper><nav class=navigation><section class=container><a class=navigation-title href=https://cekrem.github.io/>cekrem.github.io
+<!doctype html><html lang=en><head><title>Exploring UIs in the terminal part 2: More ink! · cekrem.github.io</title><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=color-scheme content="light dark"><meta name=author content="Christian Ekrem"><meta name=description content="Why I'm not bothering with Mason after all..."><meta name=keywords content="developer,personal"><meta name=fediverse:creator content><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://cekrem.github.io/images/featured-with-margins.png"><meta name=twitter:title content="Exploring UIs in the terminal part 2: More ink!"><meta name=twitter:description content="Why I'm not bothering with Mason after all..."><meta property="og:url" content="https://cekrem.github.io/posts/do-more-stuff-cli-tool-part-2/"><meta property="og:site_name" content="cekrem.github.io"><meta property="og:title" content="Exploring UIs in the terminal part 2: More ink!"><meta property="og:description" content="Why I'm not bothering with Mason after all..."><meta property="og:locale" content="en_us"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2023-09-12T00:00:00+00:00"><meta property="article:modified_time" content="2023-09-12T00:00:00+00:00"><meta property="article:tag" content="Cli"><meta property="article:tag" content="Ui"><meta property="article:tag" content="Npm Package"><meta property="article:tag" content="React"><meta property="article:tag" content="Redux"><meta property="article:tag" content="Ink"><meta property="og:image" content="https://cekrem.github.io/images/featured-with-margins.png"><link rel=canonical href=https://cekrem.github.io/posts/do-more-stuff-cli-tool-part-2/><link rel=preload href=/fonts/fa-brands-400.woff2 as=font type=font/woff2 crossorigin><link rel=preload href=/fonts/fa-regular-400.woff2 as=font type=font/woff2 crossorigin><link rel=preload href=/fonts/fa-solid-900.woff2 as=font type=font/woff2 crossorigin><link rel=stylesheet href=/css/coder.min.68f223388cb4e4100cebdf9e19427ffc94855508d0e5bdad30d0ebbc8d3c516c.css integrity="sha256-aPIjOIy05BAM69+eGUJ//JSFVQjQ5b2tMNDrvI08UWw=" crossorigin=anonymous media=screen><link rel=stylesheet href=/css/coder-dark.min.f513e4bba3a4eeb1006198f582e95439de42718d98b02cd44169fe9ed71e1378.css integrity="sha256-9RPku6Ok7rEAYZj1gulUOd5CcY2YsCzUQWn+ntceE3g=" crossorigin=anonymous media=screen><link rel=icon type=image/svg+xml href=/images/favicon.svg sizes=any><link rel=icon type=image/png href=/images/favicon-32x32.png sizes=32x32><link rel=icon type=image/png href=/images/favicon-16x16.png sizes=16x16><link rel=apple-touch-icon href=/images/apple-touch-icon.png><link rel=apple-touch-icon sizes=180x180 href=/images/apple-touch-icon.png><link rel=manifest href=/site.webmanifest><link rel=mask-icon href=/images/safari-pinned-tab.svg color=#5bbad5></head><body class="preload-transitions colorscheme-auto"><main class=wrapper><nav class=navigation><section class=container><a class=navigation-title href=https://cekrem.github.io/>cekrem.github.io
 </a><input type=checkbox id=menu-toggle>
 <label class="menu-button float-right" for=menu-toggle><i class="fa-solid fa-bars fa-fw" aria-hidden=true></i></label><ul class=navigation-list><li class=navigation-item><a class=navigation-link href=/hire/>Hire me?</a></li><li class=navigation-item><a class=navigation-link href=/about/>About</a></li><li class=navigation-item><a class=navigation-link href=/posts/books-i-think-software-engineers-should-read>Recommended Books</a></li><li class=navigation-item><a class=navigation-link href=https://creators.spotify.com/pod/show/disippel>Podcast (🇳🇴)</a></li><li class=navigation-item><a class=navigation-link href=/posts/>Blog</a></li></ul></section></nav><div class=content><section class="container post"><article><header><div class=post-title><h1 class=title><a class=title-link href=https://cekrem.github.io/posts/do-more-stuff-cli-tool-part-2/>Exploring UIs in the terminal part 2: More ink!</a></h1></div><div class=post-meta><div class=date><span class=posted-on><i class="fa-solid fa-calendar" aria-hidden=true></i>
 <time datetime=2023-09-12T00:00:00Z>September 12, 2023
@@ -20,140 +20,140 @@
 <a class=heading-link href=#mosaic-youre-no-fun><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
 <span class=sr-only>Link to heading</span></a></h2><p>My plan was to proceed this series by creating the <a href=https://github.com/cekrem/domorestuff class=external-link target=_blank rel=noopener>same app as I did in the previous post</a>, only using <a href=https://github.com/JakeWharton/mosaic class=external-link target=_blank rel=noopener>Mosaic</a> instead of <a href=https://github.com/vadimdemedes/ink class=external-link target=_blank rel=noopener>Ink</a>. Turns out, that wasn&rsquo;t as much fun as I anticipated. When my 2-year-old is acting up, I tell him &ldquo;fun, or room?&rdquo;. Using the same approach, I&rsquo;m sending Mosaic to his (her?) room for the following reasons:</p><ul><li>Getting even &ldquo;hello world&rdquo; to work was a real hassle. Gradle this, dependency that, and frankly not plug and play at all. npm > gradle when measuring &ldquo;fun&rdquo;.</li><li>It&rsquo;s not really proper Compose after all. <a href=https://github.com/JakeWharton/mosaic#why-doesnt-work-take-place-in-a-launchedeffect class=external-link target=_blank rel=noopener>We can&rsquo;t use LaunchedEffect</a>, so there&rsquo;s no <code>remember</code>, and all work is being done in the main scope. It just feels wrong.</li><li>I work with Kotlin, Compose and Gradle every day anyway, so for a refreshing side project it doesn&rsquo;t quite cut it for me :P</li></ul><p>I still think it&rsquo;s an amazing <del>project</del> concept, and kudos to mr Wharton for kicking it off. But it&rsquo;s not for me. After all, why do a side project if it&rsquo;s no fun?</p><h2 id=back-in-ink-land>Back in Ink-land
 <a class=heading-link href=#back-in-ink-land><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><p>I&rsquo;m having a hoot and a half tweaking <a href=https://github.com/cekrem/domorestuff class=external-link target=_blank rel=noopener>domorestuff</a> every once in a while. <a href=https://redux.js.org class=external-link target=_blank rel=noopener>Redux</a> also works, although there&rsquo;s this weird issue with needing ReactDOM to get the <a href=https://redux.js.org/introduction/why-rtk-is-redux-today class=external-link target=_blank rel=noopener>new tooling</a> to work. I can&rsquo;t see that it&rsquo;s actually called, but builds fail without it. I can live with that ¯\<em>(ツ)</em>/¯</p><p>Is this how the cool kids write Redux these days? I don&rsquo;t know. But it felt oh-so-good to make reducers again, and better still knowing that it&rsquo;ll be used to render something in the terminal:</p><div class=highlight><pre tabindex=0 style=color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-JavaScript data-lang=JavaScript><span style=display:flex><span><span style=color:#268bd2>https</span>:<span style=color:#93a1a1;font-style:italic>//github.com/cekrem/domorestuff/blob/master/source/store.js
-</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span>
-</span></span><span style=display:flex><span><span style=color:#859900>import</span> <span style=color:#268bd2>pkg</span> <span style=color:#268bd2>from</span> <span style=color:#2aa198>&#39;@reduxjs/toolkit&#39;</span>;
-</span></span><span style=display:flex><span><span style=color:#859900>import</span> {<span style=color:#268bd2>v4</span> <span style=color:#268bd2>as</span> <span style=color:#268bd2>uuidv4</span>} <span style=color:#268bd2>from</span> <span style=color:#2aa198>&#39;uuid&#39;</span>;
+<span class=sr-only>Link to heading</span></a></h2><p>I&rsquo;m having a hoot and a half tweaking <a href=https://github.com/cekrem/domorestuff class=external-link target=_blank rel=noopener>domorestuff</a> every once in a while. <a href=https://redux.js.org class=external-link target=_blank rel=noopener>Redux</a> also works, although there&rsquo;s this weird issue with needing ReactDOM to get the <a href=https://redux.js.org/introduction/why-rtk-is-redux-today class=external-link target=_blank rel=noopener>new tooling</a> to work. I can&rsquo;t see that it&rsquo;s actually called, but builds fail without it. I can live with that ¯\<em>(ツ)</em>/¯</p><p>Is this how the cool kids write Redux these days? I don&rsquo;t know. But it felt oh-so-good to make reducers again, and better still knowing that it&rsquo;ll be used to render something in the terminal:</p><div class=highlight><pre tabindex=0 style=color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-JavaScript data-lang=JavaScript><span style=display:flex><span>https<span style=color:#ff6ac1>:</span><span style=color:#78787e>//github.com/cekrem/domorestuff/blob/master/source/store.js
+</span></span></span><span style=display:flex><span><span style=color:#78787e></span>
+</span></span><span style=display:flex><span><span style=color:#ff6ac1>import</span> pkg from <span style=color:#5af78e>&#39;@reduxjs/toolkit&#39;</span>;
+</span></span><span style=display:flex><span><span style=color:#ff6ac1>import</span> {v4 as uuidv4} from <span style=color:#5af78e>&#39;uuid&#39;</span>;
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#859900>const</span> {<span style=color:#268bd2>configureStore</span>, <span style=color:#268bd2>createSlice</span>} = <span style=color:#268bd2>pkg</span>;
+</span></span><span style=display:flex><span><span style=color:#ff6ac1>const</span> {configureStore, createSlice} <span style=color:#ff6ac1>=</span> pkg;
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#859900>export</span> <span style=color:#859900>const</span> <span style=color:#268bd2>COLORS</span> = {
-</span></span><span style=display:flex><span>	<span style=color:#268bd2>success</span>: <span style=color:#2aa198>&#39;green&#39;</span>,
-</span></span><span style=display:flex><span>	<span style=color:#268bd2>error</span>: <span style=color:#2aa198>&#39;red&#39;</span>,
-</span></span><span style=display:flex><span>	<span style=color:#268bd2>pending</span>: <span style=color:#2aa198>&#39;black&#39;</span>,
+</span></span><span style=display:flex><span><span style=color:#ff6ac1>export</span> <span style=color:#ff6ac1>const</span> COLORS <span style=color:#ff6ac1>=</span> {
+</span></span><span style=display:flex><span>	success<span style=color:#ff6ac1>:</span> <span style=color:#5af78e>&#39;green&#39;</span>,
+</span></span><span style=display:flex><span>	error<span style=color:#ff6ac1>:</span> <span style=color:#5af78e>&#39;red&#39;</span>,
+</span></span><span style=display:flex><span>	pending<span style=color:#ff6ac1>:</span> <span style=color:#5af78e>&#39;black&#39;</span>,
 </span></span><span style=display:flex><span>};
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#859900>const</span> [<span style=color:#268bd2>normal</span>, <span style=color:#268bd2>input</span>, <span style=color:#268bd2>search</span>] = [<span style=color:#2aa198>&#39;normal&#39;</span>, <span style=color:#2aa198>&#39;input&#39;</span>, <span style=color:#2aa198>&#39;search&#39;</span>];
-</span></span><span style=display:flex><span><span style=color:#859900>export</span> <span style=color:#859900>const</span> <span style=color:#268bd2>MODE</span> = <span style=color:#cb4b16>Object</span>.<span style=color:#268bd2>freeze</span>({
-</span></span><span style=display:flex><span>	<span style=color:#268bd2>normal</span>,
-</span></span><span style=display:flex><span>	<span style=color:#268bd2>input</span>,
-</span></span><span style=display:flex><span>	<span style=color:#268bd2>search</span>,
+</span></span><span style=display:flex><span><span style=color:#ff6ac1>const</span> [normal, input, search] <span style=color:#ff6ac1>=</span> [<span style=color:#5af78e>&#39;normal&#39;</span>, <span style=color:#5af78e>&#39;input&#39;</span>, <span style=color:#5af78e>&#39;search&#39;</span>];
+</span></span><span style=display:flex><span><span style=color:#ff6ac1>export</span> <span style=color:#ff6ac1>const</span> MODE <span style=color:#ff6ac1>=</span> <span style=color:#ff5c57>Object</span>.freeze({
+</span></span><span style=display:flex><span>	normal,
+</span></span><span style=display:flex><span>	input,
+</span></span><span style=display:flex><span>	search,
 </span></span><span style=display:flex><span>});
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#859900>const</span> <span style=color:#268bd2>initialState</span> = {
-</span></span><span style=display:flex><span>	<span style=color:#268bd2>commands</span>: {},
-</span></span><span style=display:flex><span>	<span style=color:#268bd2>newCommand</span>: <span style=color:#2aa198>&#39;&#39;</span>,
-</span></span><span style=display:flex><span>	<span style=color:#268bd2>activeIndex</span>: <span style=color:#2aa198;font-weight:700>0</span>,
-</span></span><span style=display:flex><span>	<span style=color:#268bd2>inputMode</span>: <span style=color:#268bd2>MODE</span>.<span style=color:#268bd2>normal</span>,
+</span></span><span style=display:flex><span><span style=color:#ff6ac1>const</span> initialState <span style=color:#ff6ac1>=</span> {
+</span></span><span style=display:flex><span>	commands<span style=color:#ff6ac1>:</span> {},
+</span></span><span style=display:flex><span>	newCommand<span style=color:#ff6ac1>:</span> <span style=color:#5af78e>&#39;&#39;</span>,
+</span></span><span style=display:flex><span>	activeIndex<span style=color:#ff6ac1>:</span> <span style=color:#ff9f43>0</span>,
+</span></span><span style=display:flex><span>	inputMode<span style=color:#ff6ac1>:</span> MODE.normal,
 </span></span><span style=display:flex><span>};
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#859900>const</span> <span style=color:#268bd2>parseCommand</span> = <span style=color:#268bd2>raw</span> =&gt; {
-</span></span><span style=display:flex><span>	<span style=color:#859900>const</span> [<span style=color:#268bd2>root</span>, ...<span style=color:#268bd2>args</span>] = <span style=color:#268bd2>raw</span>.<span style=color:#268bd2>includes</span>(<span style=color:#2aa198>&#39; &#39;</span>) ? <span style=color:#268bd2>raw</span>.<span style=color:#268bd2>split</span>(<span style=color:#2aa198>&#39; &#39;</span>) : [<span style=color:#268bd2>raw</span>];
-</span></span><span style=display:flex><span>	<span style=color:#859900>return</span> {
-</span></span><span style=display:flex><span>		<span style=color:#268bd2>id</span>: <span style=color:#268bd2>uuidv4</span>(),
-</span></span><span style=display:flex><span>		<span style=color:#268bd2>raw</span>,
-</span></span><span style=display:flex><span>		<span style=color:#268bd2>root</span>,
-</span></span><span style=display:flex><span>		<span style=color:#268bd2>args</span>,
-</span></span><span style=display:flex><span>		<span style=color:#268bd2>color</span>: <span style=color:#268bd2>COLORS</span>.<span style=color:#268bd2>pending</span>,
+</span></span><span style=display:flex><span><span style=color:#ff6ac1>const</span> parseCommand <span style=color:#ff6ac1>=</span> raw =&gt; {
+</span></span><span style=display:flex><span>	<span style=color:#ff6ac1>const</span> [root, ...args] <span style=color:#ff6ac1>=</span> raw.includes(<span style=color:#5af78e>&#39; &#39;</span>) <span style=color:#ff6ac1>?</span> raw.split(<span style=color:#5af78e>&#39; &#39;</span>) <span style=color:#ff6ac1>:</span> [raw];
+</span></span><span style=display:flex><span>	<span style=color:#ff6ac1>return</span> {
+</span></span><span style=display:flex><span>		id<span style=color:#ff6ac1>:</span> uuidv4(),
+</span></span><span style=display:flex><span>		raw,
+</span></span><span style=display:flex><span>		root,
+</span></span><span style=display:flex><span>		args,
+</span></span><span style=display:flex><span>		color<span style=color:#ff6ac1>:</span> COLORS.pending,
 </span></span><span style=display:flex><span>	};
 </span></span><span style=display:flex><span>};
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#859900>const</span> <span style=color:#268bd2>rootSlice</span> = <span style=color:#268bd2>createSlice</span>({
-</span></span><span style=display:flex><span>	<span style=color:#268bd2>name</span>: <span style=color:#2aa198>&#39;root&#39;</span>,
-</span></span><span style=display:flex><span>	<span style=color:#268bd2>initialState</span>,
-</span></span><span style=display:flex><span>	<span style=color:#268bd2>reducers</span>: {
-</span></span><span style=display:flex><span>		<span style=color:#268bd2>setInitial</span>: (<span style=color:#268bd2>_</span>, {<span style=color:#268bd2>payload</span>}) =&gt; {
-</span></span><span style=display:flex><span>			<span style=color:#859900>const</span> <span style=color:#268bd2>commands</span> = <span style=color:#268bd2>payload</span>.<span style=color:#268bd2>map</span>(<span style=color:#268bd2>parseCommand</span>);
-</span></span><span style=display:flex><span>			<span style=color:#859900>return</span> {
-</span></span><span style=display:flex><span>				...<span style=color:#268bd2>initialState</span>,
-</span></span><span style=display:flex><span>				<span style=color:#268bd2>commands</span>: <span style=color:#268bd2>commands</span>.<span style=color:#268bd2>reduce</span>(
-</span></span><span style=display:flex><span>					(<span style=color:#268bd2>acc</span>, <span style=color:#268bd2>entry</span>) =&gt; ({
-</span></span><span style=display:flex><span>						...<span style=color:#268bd2>acc</span>,
-</span></span><span style=display:flex><span>						[<span style=color:#268bd2>entry</span>.<span style=color:#268bd2>id</span>]: <span style=color:#268bd2>entry</span>,
+</span></span><span style=display:flex><span><span style=color:#ff6ac1>const</span> rootSlice <span style=color:#ff6ac1>=</span> createSlice({
+</span></span><span style=display:flex><span>	name<span style=color:#ff6ac1>:</span> <span style=color:#5af78e>&#39;root&#39;</span>,
+</span></span><span style=display:flex><span>	initialState,
+</span></span><span style=display:flex><span>	reducers<span style=color:#ff6ac1>:</span> {
+</span></span><span style=display:flex><span>		setInitial<span style=color:#ff6ac1>:</span> (_, {payload}) =&gt; {
+</span></span><span style=display:flex><span>			<span style=color:#ff6ac1>const</span> commands <span style=color:#ff6ac1>=</span> payload.map(parseCommand);
+</span></span><span style=display:flex><span>			<span style=color:#ff6ac1>return</span> {
+</span></span><span style=display:flex><span>				...initialState,
+</span></span><span style=display:flex><span>				commands<span style=color:#ff6ac1>:</span> commands.reduce(
+</span></span><span style=display:flex><span>					(acc, entry) =&gt; ({
+</span></span><span style=display:flex><span>						...acc,
+</span></span><span style=display:flex><span>						[entry.id]<span style=color:#ff6ac1>:</span> entry,
 </span></span><span style=display:flex><span>					}),
 </span></span><span style=display:flex><span>					{},
 </span></span><span style=display:flex><span>				),
 </span></span><span style=display:flex><span>			};
 </span></span><span style=display:flex><span>		},
-</span></span><span style=display:flex><span>		<span style=color:#268bd2>addCommand</span>: ({<span style=color:#268bd2>commands</span>, ...<span style=color:#268bd2>state</span>}, {<span style=color:#268bd2>payload</span>}) =&gt; {
-</span></span><span style=display:flex><span>			<span style=color:#859900>const</span> <span style=color:#268bd2>command</span> = <span style=color:#268bd2>parseCommand</span>(<span style=color:#268bd2>payload</span>);
-</span></span><span style=display:flex><span>			<span style=color:#859900>return</span> {
-</span></span><span style=display:flex><span>				...<span style=color:#268bd2>state</span>,
-</span></span><span style=display:flex><span>				<span style=color:#268bd2>inputMode</span>: <span style=color:#268bd2>MODE</span>.<span style=color:#268bd2>normal</span>,
-</span></span><span style=display:flex><span>				<span style=color:#268bd2>newCommand</span>: <span style=color:#2aa198>&#39;&#39;</span>,
-</span></span><span style=display:flex><span>				<span style=color:#268bd2>commands</span>: {...<span style=color:#268bd2>commands</span>, [<span style=color:#268bd2>command</span>.<span style=color:#268bd2>id</span>]: <span style=color:#268bd2>command</span>},
+</span></span><span style=display:flex><span>		addCommand<span style=color:#ff6ac1>:</span> ({commands, ...state}, {payload}) =&gt; {
+</span></span><span style=display:flex><span>			<span style=color:#ff6ac1>const</span> command <span style=color:#ff6ac1>=</span> parseCommand(payload);
+</span></span><span style=display:flex><span>			<span style=color:#ff6ac1>return</span> {
+</span></span><span style=display:flex><span>				...state,
+</span></span><span style=display:flex><span>				inputMode<span style=color:#ff6ac1>:</span> MODE.normal,
+</span></span><span style=display:flex><span>				newCommand<span style=color:#ff6ac1>:</span> <span style=color:#5af78e>&#39;&#39;</span>,
+</span></span><span style=display:flex><span>				commands<span style=color:#ff6ac1>:</span> {...commands, [command.id]<span style=color:#ff6ac1>:</span> command},
 </span></span><span style=display:flex><span>			};
 </span></span><span style=display:flex><span>		},
-</span></span><span style=display:flex><span>		<span style=color:#268bd2>nextCommand</span>: ({<span style=color:#268bd2>activeIndex</span>, ...<span style=color:#268bd2>state</span>}) =&gt; ({
-</span></span><span style=display:flex><span>			...<span style=color:#268bd2>state</span>,
-</span></span><span style=display:flex><span>			<span style=color:#268bd2>activeIndex</span>: <span style=color:#268bd2>activeIndex</span> + <span style=color:#2aa198;font-weight:700>1</span>,
+</span></span><span style=display:flex><span>		nextCommand<span style=color:#ff6ac1>:</span> ({activeIndex, ...state}) =&gt; ({
+</span></span><span style=display:flex><span>			...state,
+</span></span><span style=display:flex><span>			activeIndex<span style=color:#ff6ac1>:</span> activeIndex <span style=color:#ff6ac1>+</span> <span style=color:#ff9f43>1</span>,
 </span></span><span style=display:flex><span>		}),
-</span></span><span style=display:flex><span>		<span style=color:#268bd2>previousCommand</span>: ({<span style=color:#268bd2>activeIndex</span>, ...<span style=color:#268bd2>state</span>}) =&gt; ({
-</span></span><span style=display:flex><span>			...<span style=color:#268bd2>state</span>,
-</span></span><span style=display:flex><span>			<span style=color:#268bd2>activeIndex</span>: <span style=color:#268bd2>activeIndex</span> - <span style=color:#2aa198;font-weight:700>1</span>,
+</span></span><span style=display:flex><span>		previousCommand<span style=color:#ff6ac1>:</span> ({activeIndex, ...state}) =&gt; ({
+</span></span><span style=display:flex><span>			...state,
+</span></span><span style=display:flex><span>			activeIndex<span style=color:#ff6ac1>:</span> activeIndex <span style=color:#ff6ac1>-</span> <span style=color:#ff9f43>1</span>,
 </span></span><span style=display:flex><span>		}),
-</span></span><span style=display:flex><span>		<span style=color:#268bd2>deleteCommand</span>: ({<span style=color:#268bd2>commands</span>, ...<span style=color:#268bd2>state</span>}) =&gt; {
-</span></span><span style=display:flex><span>			<span style=color:#859900>const</span> <span style=color:#268bd2>ids</span> = <span style=color:#cb4b16>Object</span>.<span style=color:#268bd2>values</span>(<span style=color:#268bd2>commands</span>).<span style=color:#268bd2>map</span>(({<span style=color:#268bd2>id</span>}) =&gt; <span style=color:#268bd2>id</span>);
-</span></span><span style=display:flex><span>			<span style=color:#859900>const</span> <span style=color:#268bd2>id</span> = <span style=color:#268bd2>ids</span>[<span style=color:#268bd2>state</span>.<span style=color:#268bd2>activeIndex</span> % <span style=color:#268bd2>ids</span>.<span style=color:#268bd2>length</span>];
+</span></span><span style=display:flex><span>		deleteCommand<span style=color:#ff6ac1>:</span> ({commands, ...state}) =&gt; {
+</span></span><span style=display:flex><span>			<span style=color:#ff6ac1>const</span> ids <span style=color:#ff6ac1>=</span> <span style=color:#ff5c57>Object</span>.values(commands).map(({id}) =&gt; id);
+</span></span><span style=display:flex><span>			<span style=color:#ff6ac1>const</span> id <span style=color:#ff6ac1>=</span> ids[state.activeIndex <span style=color:#ff6ac1>%</span> ids.length];
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>			<span style=color:#859900>const</span> {[<span style=color:#268bd2>id</span>]: <span style=color:#268bd2>_</span>, ...<span style=color:#268bd2>remainingCommands</span>} = <span style=color:#268bd2>commands</span>;
-</span></span><span style=display:flex><span>			<span style=color:#859900>return</span> {
-</span></span><span style=display:flex><span>				...<span style=color:#268bd2>state</span>,
-</span></span><span style=display:flex><span>				<span style=color:#268bd2>commands</span>: <span style=color:#268bd2>remainingCommands</span>,
+</span></span><span style=display:flex><span>			<span style=color:#ff6ac1>const</span> {[id]<span style=color:#ff6ac1>:</span> _, ...remainingCommands} <span style=color:#ff6ac1>=</span> commands;
+</span></span><span style=display:flex><span>			<span style=color:#ff6ac1>return</span> {
+</span></span><span style=display:flex><span>				...state,
+</span></span><span style=display:flex><span>				commands<span style=color:#ff6ac1>:</span> remainingCommands,
 </span></span><span style=display:flex><span>			};
 </span></span><span style=display:flex><span>		},
-</span></span><span style=display:flex><span>		<span style=color:#268bd2>setInputMode</span>: (<span style=color:#268bd2>state</span>, {<span style=color:#268bd2>payload</span>}) =&gt; ({
-</span></span><span style=display:flex><span>			...<span style=color:#268bd2>state</span>,
-</span></span><span style=display:flex><span>			<span style=color:#268bd2>newCommand</span>: <span style=color:#2aa198>&#39;&#39;</span>,
-</span></span><span style=display:flex><span>			<span style=color:#268bd2>inputMode</span>: <span style=color:#268bd2>payload</span>,
+</span></span><span style=display:flex><span>		setInputMode<span style=color:#ff6ac1>:</span> (state, {payload}) =&gt; ({
+</span></span><span style=display:flex><span>			...state,
+</span></span><span style=display:flex><span>			newCommand<span style=color:#ff6ac1>:</span> <span style=color:#5af78e>&#39;&#39;</span>,
+</span></span><span style=display:flex><span>			inputMode<span style=color:#ff6ac1>:</span> payload,
 </span></span><span style=display:flex><span>		}),
-</span></span><span style=display:flex><span>		<span style=color:#268bd2>inputCharacter</span>: ({<span style=color:#268bd2>newCommand</span>, ...<span style=color:#268bd2>state</span>}, {<span style=color:#268bd2>payload</span>}) =&gt; ({
-</span></span><span style=display:flex><span>			...<span style=color:#268bd2>state</span>,
-</span></span><span style=display:flex><span>			<span style=color:#268bd2>newCommand</span>: <span style=color:#268bd2>newCommand</span> + <span style=color:#268bd2>payload</span>,
+</span></span><span style=display:flex><span>		inputCharacter<span style=color:#ff6ac1>:</span> ({newCommand, ...state}, {payload}) =&gt; ({
+</span></span><span style=display:flex><span>			...state,
+</span></span><span style=display:flex><span>			newCommand<span style=color:#ff6ac1>:</span> newCommand <span style=color:#ff6ac1>+</span> payload,
 </span></span><span style=display:flex><span>		}),
-</span></span><span style=display:flex><span>		<span style=color:#268bd2>inputDelete</span>: ({<span style=color:#268bd2>newCommand</span>, ...<span style=color:#268bd2>state</span>}) =&gt; ({
-</span></span><span style=display:flex><span>			...<span style=color:#268bd2>state</span>,
-</span></span><span style=display:flex><span>			<span style=color:#268bd2>inputMode</span>: <span style=color:#268bd2>newCommand</span>.<span style=color:#268bd2>length</span> ? <span style=color:#268bd2>MODE</span>.<span style=color:#268bd2>input</span> : <span style=color:#268bd2>MODE</span>.<span style=color:#268bd2>normal</span>,
-</span></span><span style=display:flex><span>			<span style=color:#268bd2>newCommand</span>: <span style=color:#268bd2>newCommand</span>.<span style=color:#268bd2>slice</span>(<span style=color:#2aa198;font-weight:700>0</span>, -<span style=color:#2aa198;font-weight:700>1</span>),
+</span></span><span style=display:flex><span>		inputDelete<span style=color:#ff6ac1>:</span> ({newCommand, ...state}) =&gt; ({
+</span></span><span style=display:flex><span>			...state,
+</span></span><span style=display:flex><span>			inputMode<span style=color:#ff6ac1>:</span> newCommand.length <span style=color:#ff6ac1>?</span> MODE.input <span style=color:#ff6ac1>:</span> MODE.normal,
+</span></span><span style=display:flex><span>			newCommand<span style=color:#ff6ac1>:</span> newCommand.slice(<span style=color:#ff9f43>0</span>, <span style=color:#ff6ac1>-</span><span style=color:#ff9f43>1</span>),
 </span></span><span style=display:flex><span>		}),
-</span></span><span style=display:flex><span>		<span style=color:#93a1a1;font-style:italic>// set any prop (but only for existing commands)
-</span></span></span><span style=display:flex><span><span style=color:#93a1a1;font-style:italic></span>		<span style=color:#268bd2>setCommandProp</span>: ({<span style=color:#268bd2>commands</span>, ...<span style=color:#268bd2>state</span>}, {<span style=color:#268bd2>payload</span>}) =&gt;
-</span></span><span style=display:flex><span>			<span style=color:#268bd2>payload</span>.<span style=color:#268bd2>id</span> <span style=color:#859900>in</span> <span style=color:#268bd2>commands</span>
-</span></span><span style=display:flex><span>				? {
-</span></span><span style=display:flex><span>						...<span style=color:#268bd2>state</span>,
-</span></span><span style=display:flex><span>						<span style=color:#268bd2>commands</span>: {
-</span></span><span style=display:flex><span>							...<span style=color:#268bd2>commands</span>,
-</span></span><span style=display:flex><span>							[<span style=color:#268bd2>payload</span>.<span style=color:#268bd2>id</span>]: {
-</span></span><span style=display:flex><span>								...<span style=color:#268bd2>commands</span>[<span style=color:#268bd2>payload</span>.<span style=color:#268bd2>id</span>],
-</span></span><span style=display:flex><span>								[<span style=color:#268bd2>payload</span>.<span style=color:#268bd2>key</span>]: <span style=color:#268bd2>payload</span>.<span style=color:#268bd2>value</span>,
+</span></span><span style=display:flex><span>		<span style=color:#78787e>// set any prop (but only for existing commands)
+</span></span></span><span style=display:flex><span><span style=color:#78787e></span>		setCommandProp<span style=color:#ff6ac1>:</span> ({commands, ...state}, {payload}) =&gt;
+</span></span><span style=display:flex><span>			payload.id <span style=color:#ff6ac1>in</span> commands
+</span></span><span style=display:flex><span>				<span style=color:#ff6ac1>?</span> {
+</span></span><span style=display:flex><span>						...state,
+</span></span><span style=display:flex><span>						commands<span style=color:#ff6ac1>:</span> {
+</span></span><span style=display:flex><span>							...commands,
+</span></span><span style=display:flex><span>							[payload.id]<span style=color:#ff6ac1>:</span> {
+</span></span><span style=display:flex><span>								...commands[payload.id],
+</span></span><span style=display:flex><span>								[payload.key]<span style=color:#ff6ac1>:</span> payload.value,
 </span></span><span style=display:flex><span>							},
 </span></span><span style=display:flex><span>						},
 </span></span><span style=display:flex><span>				  }
-</span></span><span style=display:flex><span>				: {
-</span></span><span style=display:flex><span>						...<span style=color:#268bd2>state</span>,
-</span></span><span style=display:flex><span>						<span style=color:#268bd2>commands</span>,
+</span></span><span style=display:flex><span>				<span style=color:#ff6ac1>:</span> {
+</span></span><span style=display:flex><span>						...state,
+</span></span><span style=display:flex><span>						commands,
 </span></span><span style=display:flex><span>				  },
 </span></span><span style=display:flex><span>	},
 </span></span><span style=display:flex><span>});
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#859900>export</span> <span style=color:#859900>const</span> {
-</span></span><span style=display:flex><span>	<span style=color:#268bd2>setInitial</span>,
-</span></span><span style=display:flex><span>	<span style=color:#268bd2>addCommand</span>,
-</span></span><span style=display:flex><span>	<span style=color:#268bd2>deleteCommand</span>,
-</span></span><span style=display:flex><span>	<span style=color:#268bd2>nextCommand</span>,
-</span></span><span style=display:flex><span>	<span style=color:#268bd2>previousCommand</span>,
-</span></span><span style=display:flex><span>	<span style=color:#268bd2>inputCharacter</span>,
-</span></span><span style=display:flex><span>	<span style=color:#268bd2>inputDelete</span>,
-</span></span><span style=display:flex><span>	<span style=color:#268bd2>setInputMode</span>,
-</span></span><span style=display:flex><span>	<span style=color:#268bd2>setCommandProp</span>,
-</span></span><span style=display:flex><span>} = <span style=color:#268bd2>rootSlice</span>.<span style=color:#268bd2>actions</span>;
+</span></span><span style=display:flex><span><span style=color:#ff6ac1>export</span> <span style=color:#ff6ac1>const</span> {
+</span></span><span style=display:flex><span>	setInitial,
+</span></span><span style=display:flex><span>	addCommand,
+</span></span><span style=display:flex><span>	deleteCommand,
+</span></span><span style=display:flex><span>	nextCommand,
+</span></span><span style=display:flex><span>	previousCommand,
+</span></span><span style=display:flex><span>	inputCharacter,
+</span></span><span style=display:flex><span>	inputDelete,
+</span></span><span style=display:flex><span>	setInputMode,
+</span></span><span style=display:flex><span>	setCommandProp,
+</span></span><span style=display:flex><span>} <span style=color:#ff6ac1>=</span> rootSlice.actions;
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#859900>export</span> <span style=color:#859900>const</span> <span style=color:#268bd2>store</span> = <span style=color:#268bd2>configureStore</span>({
-</span></span><span style=display:flex><span>	<span style=color:#268bd2>reducer</span>: {
-</span></span><span style=display:flex><span>		<span style=color:#268bd2>root</span>: <span style=color:#268bd2>rootSlice</span>.<span style=color:#268bd2>reducer</span>,
+</span></span><span style=display:flex><span><span style=color:#ff6ac1>export</span> <span style=color:#ff6ac1>const</span> store <span style=color:#ff6ac1>=</span> configureStore({
+</span></span><span style=display:flex><span>	reducer<span style=color:#ff6ac1>:</span> {
+</span></span><span style=display:flex><span>		root<span style=color:#ff6ac1>:</span> rootSlice.reducer,
 </span></span><span style=display:flex><span>	},
 </span></span><span style=display:flex><span>});
-</span></span></code></pre></div><p>Compose, sadly, can&rsquo;t touch this. And Gradle troubleshooting is the worst. Also, as the keen observer might notice: I&rsquo;m adding search/filtering. It&rsquo;s not done yet, and maybe not even useful at all. But definitely fun!</p></div><footer></footer></article></section></div><style>form{display:flex;justify-content:center}</style><form action="https://api.follow.it/subscription-form/SDRVMUk2VmsySENBNk94RDNKNDFnS3NmWlQ5a3gxejNIeUlJWHl3QjdqNnRHdENkaXp5aXZhZlFvcGtzcEZ3K0o5TFVRdSt2WWM5RWRsWmZwWVhNUS9PZjJqMWZ3aHBwZUhjT1ZpWXBGRkdZOWtIcGhYQkJkSkE4QTQ1eHl5YkF8RTZHTExQOWFrN1pFY1F0RzZ5c3pVN2I1QTI1YXNtMjZiYllLU25zQkJ3bz0=/8" method=post><input type=email name=email required placeholder=Email spellcheck=false style=padding:1rem;border:none;outline:none>
-<button type=submit style=border:none;outline:none;background:#eee;cursor:pointer>
+</span></span></code></pre></div><p>Compose, sadly, can&rsquo;t touch this. And Gradle troubleshooting is the worst. Also, as the keen observer might notice: I&rsquo;m adding search/filtering. It&rsquo;s not done yet, and maybe not even useful at all. But definitely fun!</p></div><footer></footer></article></section></div><style>form{display:flex;justify-content:center}</style><form action="https://api.follow.it/subscription-form/SDRVMUk2VmsySENBNk94RDNKNDFnS3NmWlQ5a3gxejNIeUlJWHl3QjdqNnRHdENkaXp5aXZhZlFvcGtzcEZ3K0o5TFVRdSt2WWM5RWRsWmZwWVhNUS9PZjJqMWZ3aHBwZUhjT1ZpWXBGRkdZOWtIcGhYQkJkSkE4QTQ1eHl5YkF8RTZHTExQOWFrN1pFY1F0RzZ5c3pVN2I1QTI1YXNtMjZiYllLU25zQkJ3bz0=/8" method=post><input type=email name=email required placeholder=Email spellcheck=false style="padding:1rem;border:none;border-radius:1rem 0 0 1rem;outline:none">
+<button type=submit style="border:none;border-radius:0 1rem 1rem 0;outline:none;background:rgba(127,127,127,5%);cursor:pointer">
 Subscribe</button></form><div id=elm-widget></div><script src=/widget.js></script><script>Elm.Main.init({node:document.getElementById("elm-widget"),flags:window.location.pathname})</script><script type=text/javascript src="https://platform-api.sharethis.com/js/sharethis.js#property=6834b86198608700128c9ffa&product=sticky-share-buttons" async></script><footer class=footer><section class=container>© 2021 - 2025 Christian Ekrem
-<script data-name=BMC-Widget data-cfasync=false src=https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js data-emoji=🍺 data-id=cekrem data-description="Support me on Buy me a coffee!" data-message data-color=#ddd data-position=Right data-x_margin=18 data-y_margin=18></script></section><script src=https://formspree.io/js/formbutton-v1.min.js defer></script></footer><script src=https://sdk.feedback.one/v0/core.min.js data-project-id=019589e0-c6fb-7b80-b6ae-dffbfbb11f72 defer></script></main><script src=/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script><script data-goatcounter=https://cekrem.goatcounter.com/count async src=//gc.zgo.at/count.js></script></body></html>
+<script data-name=BMC-Widget data-cfasync=false src=https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js data-emoji=🍺 data-id=cekrem data-description="Support me on Buy me a coffee!" data-message data-color=#ddd data-position=Left data-x_margin=18 data-y_margin=18></script></section><script src=https://formspree.io/js/formbutton-v1.min.js defer></script></footer><script src=https://sdk.feedback.one/v0/core.min.js data-project-id=019589e0-c6fb-7b80-b6ae-dffbfbb11f72 defer></script></main><script src=/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script><script data-goatcounter=https://cekrem.goatcounter.com/count async src=//gc.zgo.at/count.js></script></body></html>

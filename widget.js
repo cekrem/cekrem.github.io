@@ -6571,7 +6571,7 @@ var $author$project$Testimonials$testimonialEntry = F2(
 						A2($elm$html$Html$Attributes$style, 'transition-duration', '0.4s'),
 						A2($elm$html$Html$Attributes$style, 'margin', '0.5rem'),
 						A2($elm$html$Html$Attributes$style, 'border-radius', '2rem'),
-						A2($elm$html$Html$Attributes$style, 'background', 'rgba(127,127,127,0.1)'),
+						A2($elm$html$Html$Attributes$style, 'background', 'rgba(127,127,127,0.05)'),
 						A2($elm$html$Html$Attributes$style, 'overflow-x', 'hidden'),
 						A2($elm$html$Html$Attributes$style, 'display', 'flex'),
 						A2($elm$html$Html$Attributes$style, 'white-space', 'nowrap'),

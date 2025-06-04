@@ -7,57 +7,57 @@
  &lt;/a>
 &lt;/h2>
 &lt;p>Consider this common scenario:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#586e75;background-color:#eee8d5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-tsx" data-lang="tsx">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#859900">const&lt;/span> &lt;span style="color:#268bd2">UserDashboard&lt;/span> = () =&amp;gt; {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#859900">const&lt;/span> [&lt;span style="color:#268bd2">users&lt;/span>, &lt;span style="color:#268bd2">setUsers&lt;/span>] = &lt;span style="color:#268bd2">useState&lt;/span>([]);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#859900">const&lt;/span> [&lt;span style="color:#268bd2">loading&lt;/span>, &lt;span style="color:#268bd2">setLoading&lt;/span>] = &lt;span style="color:#268bd2">useState&lt;/span>(&lt;span style="color:#859900;font-weight:bold">true&lt;/span>);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#859900">const&lt;/span> [&lt;span style="color:#268bd2">error&lt;/span>, &lt;span style="color:#268bd2">setError&lt;/span>] = &lt;span style="color:#268bd2">useState&lt;/span>(&lt;span style="color:#859900;font-weight:bold">null&lt;/span>);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#859900">const&lt;/span> [&lt;span style="color:#268bd2">filter&lt;/span>, &lt;span style="color:#268bd2">setFilter&lt;/span>] = &lt;span style="color:#268bd2">useState&lt;/span>(&lt;span style="color:#2aa198">&amp;#34;&amp;#34;&lt;/span>);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#859900">const&lt;/span> [&lt;span style="color:#268bd2">sortBy&lt;/span>, &lt;span style="color:#268bd2">setSortBy&lt;/span>] = &lt;span style="color:#268bd2">useState&lt;/span>(&lt;span style="color:#2aa198">&amp;#34;name&amp;#34;&lt;/span>);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#859900">const&lt;/span> [&lt;span style="color:#268bd2">page&lt;/span>, &lt;span style="color:#268bd2">setPage&lt;/span>] = &lt;span style="color:#268bd2">useState&lt;/span>(&lt;span style="color:#2aa198;font-weight:bold">1&lt;/span>);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#859900">const&lt;/span> [&lt;span style="color:#268bd2">totalPages&lt;/span>, &lt;span style="color:#268bd2">setTotalPages&lt;/span>] = &lt;span style="color:#268bd2">useState&lt;/span>(&lt;span style="color:#2aa198;font-weight:bold">1&lt;/span>);
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-tsx" data-lang="tsx">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff6ac1">const&lt;/span> UserDashboard &lt;span style="color:#ff6ac1">=&lt;/span> () &lt;span style="color:#ff6ac1">=&amp;gt;&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">const&lt;/span> [users, setUsers] &lt;span style="color:#ff6ac1">=&lt;/span> useState([]);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">const&lt;/span> [loading, setLoading] &lt;span style="color:#ff6ac1">=&lt;/span> useState(&lt;span style="color:#ff6ac1">true&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">const&lt;/span> [error, setError] &lt;span style="color:#ff6ac1">=&lt;/span> useState(&lt;span style="color:#ff6ac1">null&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">const&lt;/span> [filter, setFilter] &lt;span style="color:#ff6ac1">=&lt;/span> useState(&lt;span style="color:#5af78e">&amp;#34;&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">const&lt;/span> [sortBy, setSortBy] &lt;span style="color:#ff6ac1">=&lt;/span> useState(&lt;span style="color:#5af78e">&amp;#34;name&amp;#34;&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">const&lt;/span> [page, setPage] &lt;span style="color:#ff6ac1">=&lt;/span> useState(&lt;span style="color:#ff9f43">1&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">const&lt;/span> [totalPages, setTotalPages] &lt;span style="color:#ff6ac1">=&lt;/span> useState(&lt;span style="color:#ff9f43">1&lt;/span>);
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#268bd2">useEffect&lt;/span>(() =&amp;gt; {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#268bd2">fetchUsers&lt;/span>();
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }, [&lt;span style="color:#268bd2">filter&lt;/span>, &lt;span style="color:#268bd2">sortBy&lt;/span>, &lt;span style="color:#268bd2">page&lt;/span>]);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> useEffect(() &lt;span style="color:#ff6ac1">=&amp;gt;&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> fetchUsers();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }, [filter, sortBy, page]);
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#859900">const&lt;/span> &lt;span style="color:#268bd2">fetchUsers&lt;/span> = &lt;span style="color:#859900">async&lt;/span> () =&amp;gt; {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#859900">try&lt;/span> {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#268bd2">setLoading&lt;/span>(&lt;span style="color:#859900;font-weight:bold">true&lt;/span>);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#859900">const&lt;/span> &lt;span style="color:#268bd2">response&lt;/span> = &lt;span style="color:#859900">await&lt;/span> &lt;span style="color:#268bd2">fetch&lt;/span>(
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#2aa198">`/api/users?filter=&lt;/span>&lt;span style="color:#2aa198">${&lt;/span>&lt;span style="color:#268bd2">filter&lt;/span>&lt;span style="color:#2aa198">}&lt;/span>&lt;span style="color:#2aa198">&amp;amp;sort=&lt;/span>&lt;span style="color:#2aa198">${&lt;/span>&lt;span style="color:#268bd2">sortBy&lt;/span>&lt;span style="color:#2aa198">}&lt;/span>&lt;span style="color:#2aa198">&amp;amp;page=&lt;/span>&lt;span style="color:#2aa198">${&lt;/span>&lt;span style="color:#268bd2">page&lt;/span>&lt;span style="color:#2aa198">}&lt;/span>&lt;span style="color:#2aa198">`&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">const&lt;/span> fetchUsers &lt;span style="color:#ff6ac1">=&lt;/span> &lt;span style="color:#ff6ac1">async&lt;/span> () &lt;span style="color:#ff6ac1">=&amp;gt;&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">try&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> setLoading(&lt;span style="color:#ff6ac1">true&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">const&lt;/span> response &lt;span style="color:#ff6ac1">=&lt;/span> &lt;span style="color:#ff6ac1">await&lt;/span> fetch(
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#5af78e">`/api/users?filter=&lt;/span>&lt;span style="color:#5af78e">${&lt;/span>filter&lt;span style="color:#5af78e">}&lt;/span>&lt;span style="color:#5af78e">&amp;amp;sort=&lt;/span>&lt;span style="color:#5af78e">${&lt;/span>sortBy&lt;span style="color:#5af78e">}&lt;/span>&lt;span style="color:#5af78e">&amp;amp;page=&lt;/span>&lt;span style="color:#5af78e">${&lt;/span>page&lt;span style="color:#5af78e">}&lt;/span>&lt;span style="color:#5af78e">`&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> );
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#859900">const&lt;/span> &lt;span style="color:#268bd2">data&lt;/span> = &lt;span style="color:#859900">await&lt;/span> &lt;span style="color:#268bd2">response&lt;/span>.&lt;span style="color:#268bd2">json&lt;/span>();
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#268bd2">setUsers&lt;/span>(&lt;span style="color:#268bd2">data&lt;/span>.&lt;span style="color:#268bd2">users&lt;/span>);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#268bd2">setTotalPages&lt;/span>(&lt;span style="color:#268bd2">data&lt;/span>.&lt;span style="color:#268bd2">totalPages&lt;/span>);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> } &lt;span style="color:#859900">catch&lt;/span> (&lt;span style="color:#268bd2">err&lt;/span>) {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#268bd2">setError&lt;/span>(&lt;span style="color:#268bd2">err&lt;/span>.&lt;span style="color:#268bd2">message&lt;/span>);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> } &lt;span style="color:#859900">finally&lt;/span> {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#268bd2">setLoading&lt;/span>(&lt;span style="color:#859900;font-weight:bold">false&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">const&lt;/span> data &lt;span style="color:#ff6ac1">=&lt;/span> &lt;span style="color:#ff6ac1">await&lt;/span> response.json();
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> setUsers(data.users);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> setTotalPages(data.totalPages);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> } &lt;span style="color:#ff6ac1">catch&lt;/span> (err) {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> setError(err.message);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> } &lt;span style="color:#ff6ac1">finally&lt;/span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> setLoading(&lt;span style="color:#ff6ac1">false&lt;/span>);
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> };
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#859900">const&lt;/span> &lt;span style="color:#268bd2">handleFilterChange&lt;/span> = (&lt;span style="color:#268bd2">e&lt;/span>) =&amp;gt; &lt;span style="color:#268bd2">setFilter&lt;/span>(&lt;span style="color:#268bd2">e&lt;/span>.&lt;span style="color:#268bd2">target&lt;/span>.&lt;span style="color:#268bd2">value&lt;/span>);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#859900">const&lt;/span> &lt;span style="color:#268bd2">handleSortChange&lt;/span> = (&lt;span style="color:#268bd2">e&lt;/span>) =&amp;gt; &lt;span style="color:#268bd2">setSortBy&lt;/span>(&lt;span style="color:#268bd2">e&lt;/span>.&lt;span style="color:#268bd2">target&lt;/span>.&lt;span style="color:#268bd2">value&lt;/span>);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#859900">const&lt;/span> &lt;span style="color:#268bd2">handlePageChange&lt;/span> = (&lt;span style="color:#268bd2">newPage&lt;/span>) =&amp;gt; &lt;span style="color:#268bd2">setPage&lt;/span>(&lt;span style="color:#268bd2">newPage&lt;/span>);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">const&lt;/span> handleFilterChange &lt;span style="color:#ff6ac1">=&lt;/span> (e) &lt;span style="color:#ff6ac1">=&amp;gt;&lt;/span> setFilter(e.target.value);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">const&lt;/span> handleSortChange &lt;span style="color:#ff6ac1">=&lt;/span> (e) &lt;span style="color:#ff6ac1">=&amp;gt;&lt;/span> setSortBy(e.target.value);
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">const&lt;/span> handlePageChange &lt;span style="color:#ff6ac1">=&lt;/span> (newPage) &lt;span style="color:#ff6ac1">=&amp;gt;&lt;/span> setPage(newPage);
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#859900">if&lt;/span> (&lt;span style="color:#268bd2">loading&lt;/span>) &lt;span style="color:#859900">return&lt;/span> &amp;lt;&lt;span style="color:#268bd2;font-weight:bold">LoadingSpinner&lt;/span> /&amp;gt;;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#859900">if&lt;/span> (&lt;span style="color:#268bd2">error&lt;/span>) &lt;span style="color:#859900">return&lt;/span> &amp;lt;&lt;span style="color:#268bd2;font-weight:bold">ErrorMessage&lt;/span> &lt;span style="color:#268bd2">error&lt;/span>={&lt;span style="color:#268bd2">error&lt;/span>} /&amp;gt;;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">if&lt;/span> (loading) &lt;span style="color:#ff6ac1">return&lt;/span> &amp;lt;&lt;span style="color:#ff6ac1">LoadingSpinner&lt;/span> /&amp;gt;;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">if&lt;/span> (error) &lt;span style="color:#ff6ac1">return&lt;/span> &amp;lt;&lt;span style="color:#ff6ac1">ErrorMessage&lt;/span> &lt;span style="color:#57c7ff">error&lt;/span>&lt;span style="color:#ff6ac1">=&lt;/span>{error} /&amp;gt;;
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#859900">return&lt;/span> (
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#268bd2;font-weight:bold">div&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#268bd2;font-weight:bold">FilterBar&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#268bd2">filter&lt;/span>={&lt;span style="color:#268bd2">filter&lt;/span>}
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#268bd2">onFilterChange&lt;/span>={&lt;span style="color:#268bd2">handleFilterChange&lt;/span>}
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#268bd2">sortBy&lt;/span>={&lt;span style="color:#268bd2">sortBy&lt;/span>}
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#268bd2">onSortChange&lt;/span>={&lt;span style="color:#268bd2">handleSortChange&lt;/span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">return&lt;/span> (
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#ff6ac1">div&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#ff6ac1">FilterBar&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#57c7ff">filter&lt;/span>&lt;span style="color:#ff6ac1">=&lt;/span>{filter}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#57c7ff">onFilterChange&lt;/span>&lt;span style="color:#ff6ac1">=&lt;/span>{handleFilterChange}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#57c7ff">sortBy&lt;/span>&lt;span style="color:#ff6ac1">=&lt;/span>{sortBy}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#57c7ff">onSortChange&lt;/span>&lt;span style="color:#ff6ac1">=&lt;/span>{handleSortChange}
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> /&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#268bd2;font-weight:bold">UserList&lt;/span> &lt;span style="color:#268bd2">users&lt;/span>={&lt;span style="color:#268bd2">users&lt;/span>} /&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#268bd2;font-weight:bold">Pagination&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#268bd2">currentPage&lt;/span>={&lt;span style="color:#268bd2">page&lt;/span>}
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#268bd2">totalPages&lt;/span>={&lt;span style="color:#268bd2">totalPages&lt;/span>}
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#268bd2">onPageChange&lt;/span>={&lt;span style="color:#268bd2">handlePageChange&lt;/span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#ff6ac1">UserList&lt;/span> &lt;span style="color:#57c7ff">users&lt;/span>&lt;span style="color:#ff6ac1">=&lt;/span>{users} /&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#ff6ac1">Pagination&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#57c7ff">currentPage&lt;/span>&lt;span style="color:#ff6ac1">=&lt;/span>{page}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#57c7ff">totalPages&lt;/span>&lt;span style="color:#ff6ac1">=&lt;/span>{totalPages}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#57c7ff">onPageChange&lt;/span>&lt;span style="color:#ff6ac1">=&lt;/span>{handlePageChange}
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> /&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;/&lt;span style="color:#268bd2;font-weight:bold">div&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;/&lt;span style="color:#ff6ac1">div&lt;/span>&amp;gt;
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> );
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>};
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>This component isn&amp;rsquo;t terrible, but it&amp;rsquo;s not great either. It&amp;rsquo;s doing too much, handling too many concerns, and will be difficult to maintain. Yet, it&amp;rsquo;s exactly the kind of component we write when we&amp;rsquo;re under pressure or trying to move fast.&lt;/p></description></item><item><title>Books I Think Software Engineers Should Read</title><link>https://cekrem.github.io/posts/books-i-think-software-engineers-should-read/</link><pubDate>Wed, 18 Dec 2024 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/books-i-think-software-engineers-should-read/</guid><description>&lt;p>What follows is a non-ordered &amp;amp; non-exhaustive list of great programming books that I&amp;rsquo;d recommend every ambitious software engineer. The language specific ones are obviously not for everyone.&lt;/p>

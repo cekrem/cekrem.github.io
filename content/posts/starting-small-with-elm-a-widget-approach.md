@@ -44,7 +44,7 @@ The widget replaces what used to be an embedded iframe – a perfect example of 
 Here's how the integration works at a high level:
 
 ```html
-<!-- In your Hugo template (layouts/partials/footer.html) -->
+<!-- I put the following in my Hugo footer (layouts/partials/footer.html) -->
 <div id="elm-widget"></div>
 <script src="/widget.js"></script>
 <script>

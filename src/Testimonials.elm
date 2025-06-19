@@ -3,6 +3,7 @@ module Testimonials exposing (Model, Msg, init, showForPath, update, view)
 import Html exposing (..)
 import Html.Attributes as Attributes
 import Html.Events as Events
+import HtmlHelpers exposing (hideOnBreakpoint)
 import Http
 import Json.Decode
 import Set
@@ -143,22 +144,6 @@ view model =
                        )
                 )
                 |> hideOnBreakpoint "600px"
-
-
-{-| This hacky wrapper essentialy sets max-height and -width to 0px at a given breakpoint
--}
-hideOnBreakpoint : String -> Html msg -> Html msg
-hideOnBreakpoint breakpoint content =
-    let
-        clampStyle =
-            "clamp(10px, calc((100vw - " ++ breakpoint ++ ") * 1000), 10000px)"
-    in
-    Html.div
-        [ Attributes.style "max-width" clampStyle
-        , Attributes.style "max-height" clampStyle
-        , Attributes.style "overflow" "hidden"
-        ]
-        [ content ]
 
 
 leftButton : Html Msg

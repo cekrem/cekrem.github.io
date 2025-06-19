@@ -110,6 +110,9 @@ view model =
         , Attributes.style "justify-content" "center"
         , Attributes.style "align-items" "center"
         , Attributes.style "transition" "0.4s ease left"
+
+        -- turned off for now! Working locally but not in production.
+        , Attributes.style "display" "none"
         ]
         [ Html.input
             [ Attributes.style "padding" "1rem"

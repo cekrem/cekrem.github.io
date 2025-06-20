@@ -146,8 +146,16 @@ searchResults model =
                     , Attributes.style "left" "0rem"
                     , Attributes.style "border-radius" "1rem"
                     , Attributes.style "border" "thin solid"
+                    , Attributes.style "border-collapse" "collapse"
                     , Attributes.style "backdrop-filter" "blur(100rem)"
                     , Attributes.style "max-width" "100vw"
+                    , Attributes.style "transition" "opacity 0.4s ease"
+                    , Attributes.style "opacity" <|
+                        if term == "" then
+                            "0"
+
+                        else
+                            "1"
                     ]
                     (if term /= "" then
                         posts
@@ -158,6 +166,7 @@ searchResults model =
                             >> List.take 10
                             >> List.map Tuple.second
                             >> List.map resultEntry
+                            >> orEmptyEntry
 
                      else
                         []
@@ -188,20 +197,35 @@ weightPost term post =
         Nothing
 
 
+entryStyle : List (Html.Attribute msg)
+entryStyle =
+    [ Attributes.style "overflow" "hidden"
+    , Attributes.style "text-wrap" "nowrap"
+    , Attributes.style "max-width" "calc(100vw - 5rem)"
+    , Attributes.style "text-overflow" "ellipsis"
+    , Attributes.style "margin" "0.5rem"
+    ]
+
+
 resultEntry : Post -> Html Msg
 resultEntry post =
     Html.div
-        [ Attributes.style "overflow" "hidden"
-        , Attributes.style "text-wrap" "nowrap"
-        , Attributes.style "max-width" "calc(100vw - 5rem)"
-        , Attributes.style "text-overflow" "ellipsis"
-        , Attributes.style "margin" "0.5rem"
-        ]
+        entryStyle
         [ Html.a
             [ Attributes.href post.link
             ]
             [ Html.text post.title ]
         ]
+
+
+orEmptyEntry : List (Html msg) -> List (Html msg)
+orEmptyEntry list =
+    case list of
+        [] ->
+            [ Html.div entryStyle [ Html.text "No results (searched through titles && descriptions)" ] ]
+
+        nonEmpty ->
+            nonEmpty
 
 
 

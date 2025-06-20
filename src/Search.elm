@@ -105,7 +105,7 @@ view model =
         [ Attributes.style "position" "fixed"
         , Attributes.style "bottom" "0"
         , Attributes.style "left" searchPosition
-        , Attributes.style "margin" "2rem"
+        , Attributes.style "margin" "4rem 2rem"
         , Attributes.style "flex-direction" "column"
         , Attributes.style "justify-content" "center"
         , Attributes.style "align-items" "center"
@@ -115,7 +115,7 @@ view model =
             [ Attributes.style "padding" "1rem"
             , Attributes.style "border" "none"
             , Attributes.style "outline" "none"
-            , Attributes.style "border-radius" "1rem"
+            , Attributes.style "border-radius" "1rem 0 0 1rem"
             , Attributes.style "width" "32rem"
 
             -- update
@@ -127,7 +127,9 @@ view model =
         , Html.div
             [ Attributes.style "cursor" "pointer"
             , Attributes.style "float" "right"
-            , Attributes.style "margin" "1rem"
+            , Attributes.style "padding" "0.8rem"
+            , Attributes.style "border-radius" "0 2rem 2rem 0"
+            , Attributes.style "backdrop-filter" "blur(5rem)"
             , Events.onClick ToggleSearch
             ]
             [ Html.text "Search?" ]
@@ -147,7 +149,7 @@ searchResults model =
                     , Attributes.style "border-radius" "1rem"
                     , Attributes.style "border" "thin solid"
                     , Attributes.style "border-collapse" "collapse"
-                    , Attributes.style "backdrop-filter" "blur(100rem)"
+                    , Attributes.style "backdrop-filter" "blur(5rem)"
                     , Attributes.style "max-width" "100vw"
                     , Attributes.style "transition" "opacity 0.4s ease"
                     , Attributes.style "opacity" <|

@@ -6853,7 +6853,7 @@ var $author$project$Search$searchResults = function (model) {
 							A2($elm$html$Html$Attributes$style, 'border-radius', '1rem'),
 							A2($elm$html$Html$Attributes$style, 'border', 'thin solid'),
 							A2($elm$html$Html$Attributes$style, 'border-collapse', 'collapse'),
-							A2($elm$html$Html$Attributes$style, 'backdrop-filter', 'blur(100rem)'),
+							A2($elm$html$Html$Attributes$style, 'backdrop-filter', 'blur(5rem)'),
 							A2($elm$html$Html$Attributes$style, 'max-width', '100vw'),
 							A2($elm$html$Html$Attributes$style, 'transition', 'opacity 0.4s ease'),
 							A2(
@@ -6902,7 +6902,7 @@ var $author$project$Search$view = function (model) {
 				A2($elm$html$Html$Attributes$style, 'position', 'fixed'),
 				A2($elm$html$Html$Attributes$style, 'bottom', '0'),
 				A2($elm$html$Html$Attributes$style, 'left', searchPosition),
-				A2($elm$html$Html$Attributes$style, 'margin', '2rem'),
+				A2($elm$html$Html$Attributes$style, 'margin', '4rem 2rem'),
 				A2($elm$html$Html$Attributes$style, 'flex-direction', 'column'),
 				A2($elm$html$Html$Attributes$style, 'justify-content', 'center'),
 				A2($elm$html$Html$Attributes$style, 'align-items', 'center'),
@@ -6917,7 +6917,7 @@ var $author$project$Search$view = function (model) {
 						A2($elm$html$Html$Attributes$style, 'padding', '1rem'),
 						A2($elm$html$Html$Attributes$style, 'border', 'none'),
 						A2($elm$html$Html$Attributes$style, 'outline', 'none'),
-						A2($elm$html$Html$Attributes$style, 'border-radius', '1rem'),
+						A2($elm$html$Html$Attributes$style, 'border-radius', '1rem 0 0 1rem'),
 						A2($elm$html$Html$Attributes$style, 'width', '32rem'),
 						$elm$html$Html$Attributes$placeholder('Search in realtime'),
 						$elm$html$Html$Attributes$value(model.E),
@@ -6930,7 +6930,9 @@ var $author$project$Search$view = function (model) {
 					[
 						A2($elm$html$Html$Attributes$style, 'cursor', 'pointer'),
 						A2($elm$html$Html$Attributes$style, 'float', 'right'),
-						A2($elm$html$Html$Attributes$style, 'margin', '1rem'),
+						A2($elm$html$Html$Attributes$style, 'padding', '0.8rem'),
+						A2($elm$html$Html$Attributes$style, 'border-radius', '0 2rem 2rem 0'),
+						A2($elm$html$Html$Attributes$style, 'backdrop-filter', 'blur(5rem)'),
 						$elm$html$Html$Events$onClick($author$project$Search$ToggleSearch)
 					]),
 				_List_fromArray(

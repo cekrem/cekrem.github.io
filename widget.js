@@ -6879,8 +6879,7 @@ var $author$project$Search$view = function (model) {
 				A2($elm$html$Html$Attributes$style, 'flex-direction', 'column'),
 				A2($elm$html$Html$Attributes$style, 'justify-content', 'center'),
 				A2($elm$html$Html$Attributes$style, 'align-items', 'center'),
-				A2($elm$html$Html$Attributes$style, 'transition', '0.4s ease left'),
-				A2($elm$html$Html$Attributes$style, 'display', 'none')
+				A2($elm$html$Html$Attributes$style, 'transition', '0.4s ease left')
 			]),
 		_List_fromArray(
 			[

@@ -6644,6 +6644,33 @@ var $elm$virtual_dom$VirtualDom$lazy3 = _VirtualDom_lazy3;
 var $elm$html$Html$Lazy$lazy3 = $elm$virtual_dom$VirtualDom$lazy3;
 var $elm$core$Basics$neq = _Utils_notEqual;
 var $cekrem$html_helpers$HtmlHelpers$nothing = $elm$html$Html$text('');
+var $elm$virtual_dom$VirtualDom$style = _VirtualDom_style;
+var $elm$html$Html$Attributes$style = $elm$virtual_dom$VirtualDom$style;
+var $author$project$Search$entryStyle = _List_fromArray(
+	[
+		A2($elm$html$Html$Attributes$style, 'overflow', 'hidden'),
+		A2($elm$html$Html$Attributes$style, 'text-wrap', 'nowrap'),
+		A2($elm$html$Html$Attributes$style, 'max-width', 'calc(100vw - 5rem)'),
+		A2($elm$html$Html$Attributes$style, 'text-overflow', 'ellipsis'),
+		A2($elm$html$Html$Attributes$style, 'margin', '0.5rem')
+	]);
+var $author$project$Search$orEmptyEntry = function (list) {
+	if (!list.b) {
+		return _List_fromArray(
+			[
+				A2(
+				$elm$html$Html$div,
+				$author$project$Search$entryStyle,
+				_List_fromArray(
+					[
+						$elm$html$Html$text('No results (searched through titles && descriptions)')
+					]))
+			]);
+	} else {
+		var nonEmpty = list;
+		return nonEmpty;
+	}
+};
 var $elm$html$Html$a = _VirtualDom_node('a');
 var $elm$html$Html$Attributes$href = function (url) {
 	return A2(
@@ -6651,19 +6678,10 @@ var $elm$html$Html$Attributes$href = function (url) {
 		'href',
 		_VirtualDom_noJavaScriptUri(url));
 };
-var $elm$virtual_dom$VirtualDom$style = _VirtualDom_style;
-var $elm$html$Html$Attributes$style = $elm$virtual_dom$VirtualDom$style;
 var $author$project$Search$resultEntry = function (post) {
 	return A2(
 		$elm$html$Html$div,
-		_List_fromArray(
-			[
-				A2($elm$html$Html$Attributes$style, 'overflow', 'hidden'),
-				A2($elm$html$Html$Attributes$style, 'text-wrap', 'nowrap'),
-				A2($elm$html$Html$Attributes$style, 'max-width', 'calc(100vw - 5rem)'),
-				A2($elm$html$Html$Attributes$style, 'text-overflow', 'ellipsis'),
-				A2($elm$html$Html$Attributes$style, 'margin', '0.5rem')
-			]),
+		$author$project$Search$entryStyle,
 		_List_fromArray(
 			[
 				A2(
@@ -6834,8 +6852,14 @@ var $author$project$Search$searchResults = function (model) {
 							A2($elm$html$Html$Attributes$style, 'left', '0rem'),
 							A2($elm$html$Html$Attributes$style, 'border-radius', '1rem'),
 							A2($elm$html$Html$Attributes$style, 'border', 'thin solid'),
+							A2($elm$html$Html$Attributes$style, 'border-collapse', 'collapse'),
 							A2($elm$html$Html$Attributes$style, 'backdrop-filter', 'blur(100rem)'),
-							A2($elm$html$Html$Attributes$style, 'max-width', '100vw')
+							A2($elm$html$Html$Attributes$style, 'max-width', '100vw'),
+							A2($elm$html$Html$Attributes$style, 'transition', 'opacity 0.4s ease'),
+							A2(
+							$elm$html$Html$Attributes$style,
+							'opacity',
+							(term === '') ? '0' : '1')
 						]),
 					(term !== '') ? A3(
 						$elm$core$Basics$composeR,
@@ -6853,7 +6877,10 @@ var $author$project$Search$searchResults = function (model) {
 									A2(
 										$elm$core$Basics$composeR,
 										$elm$core$List$map($elm$core$Tuple$second),
-										$elm$core$List$map($author$project$Search$resultEntry))))),
+										A2(
+											$elm$core$Basics$composeR,
+											$elm$core$List$map($author$project$Search$resultEntry),
+											$author$project$Search$orEmptyEntry))))),
 						posts) : _List_Nil) : $cekrem$html_helpers$HtmlHelpers$nothing;
 			}),
 		model.w,

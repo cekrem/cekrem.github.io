@@ -18,6 +18,9 @@ jobs:
           submodules: true # Fetch Hugo themes (true OR recursive)
           fetch-depth: 0 # Fetch all history for .GitInfo and .Lastmod
 
+      - name: Setup xq
+        run: curl -sSL https://bit.ly/install-xq | sudo bash
+
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
@@ -26,6 +29,9 @@ jobs:
 
       - name: Build static site
         run: hugo --minify
+
+      - name: Unminify index.xml
+        run: mv public/index.xml public/minified.xml && xq public/minified.xml > public/index.xml
 
       - name: Build Elm widget
         run: npm ci && node_modules/.bin/elm make src/Main.elm --optimize --output public/widget.js

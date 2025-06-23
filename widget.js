@@ -6627,7 +6627,6 @@ var $elm$virtual_dom$VirtualDom$node = function (tag) {
 		_VirtualDom_noScript(tag));
 };
 var $elm$html$Html$node = $elm$virtual_dom$VirtualDom$node;
-var $cekrem$html_helpers$HtmlHelpers$nothing = $elm$html$Html$text('');
 var $elm$virtual_dom$VirtualDom$Normal = function (a) {
 	return {$: 0, a: a};
 };
@@ -6639,12 +6638,6 @@ var $elm$html$Html$Events$on = F2(
 			event,
 			$elm$virtual_dom$VirtualDom$Normal(decoder));
 	});
-var $elm$html$Html$Events$onBlur = function (msg) {
-	return A2(
-		$elm$html$Html$Events$on,
-		'blur',
-		$elm$json$Json$Decode$succeed(msg));
-};
 var $elm$html$Html$Events$onClick = function (msg) {
 	return A2(
 		$elm$html$Html$Events$on,
@@ -6686,6 +6679,7 @@ var $elm$html$Html$Attributes$placeholder = $elm$html$Html$Attributes$stringProp
 var $elm$virtual_dom$VirtualDom$lazy3 = _VirtualDom_lazy3;
 var $elm$html$Html$Lazy$lazy3 = $elm$virtual_dom$VirtualDom$lazy3;
 var $elm$core$Basics$neq = _Utils_notEqual;
+var $cekrem$html_helpers$HtmlHelpers$nothing = $elm$html$Html$text('');
 var $elm$virtual_dom$VirtualDom$style = _VirtualDom_style;
 var $elm$html$Html$Attributes$style = $elm$virtual_dom$VirtualDom$style;
 var $author$project$Search$entryStyle = _List_fromArray(
@@ -6964,8 +6958,7 @@ var $author$project$Search$view = function (model) {
 						$elm$html$Html$Attributes$id($author$project$Search$inputId),
 						$elm$html$Html$Attributes$placeholder('Search in realtime'),
 						$elm$html$Html$Attributes$value(model.E),
-						$elm$html$Html$Events$onInput($author$project$Search$ChangeTerm),
-						$elm$html$Html$Events$onBlur($author$project$Search$ToggleSearch)
+						$elm$html$Html$Events$onInput($author$project$Search$ChangeTerm)
 					]),
 				_List_Nil),
 				(!model.s) ? A2(
@@ -6983,7 +6976,19 @@ var $author$project$Search$view = function (model) {
 				_List_fromArray(
 					[
 						$elm$html$Html$text('Search?')
-					])) : $cekrem$html_helpers$HtmlHelpers$nothing,
+					])) : A2(
+				$elm$html$Html$div,
+				_List_fromArray(
+					[
+						A2($elm$html$Html$Attributes$style, 'position', 'fixed'),
+						A2($elm$html$Html$Attributes$style, 'top', '0'),
+						A2($elm$html$Html$Attributes$style, 'bottom', '0'),
+						A2($elm$html$Html$Attributes$style, 'left', '0'),
+						A2($elm$html$Html$Attributes$style, 'right', '0'),
+						A2($elm$html$Html$Attributes$style, 'z-index', '-1'),
+						$elm$html$Html$Events$onClick($author$project$Search$ToggleSearch)
+					]),
+				_List_Nil),
 				$author$project$Search$searchResults(model)
 			]));
 };

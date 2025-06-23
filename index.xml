@@ -6,8 +6,16 @@
     <description>Recent content on cekrem.github.io</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 10 Jun 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 23 Jun 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://cekrem.github.io/index.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Pragmatic Hacks: When 'Good Enough' is Actually Good Enough</title>
+      <link>https://cekrem.github.io/posts/pragmatic-hacks-search-widget-elm/</link>
+      <pubDate>Mon, 23 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>https://cekrem.github.io/posts/pragmatic-hacks-search-widget-elm/</guid>
+      <description><![CDATA[<p>Sometimes the best solution isn&rsquo;t the most elegant one. Sometimes it&rsquo;s the one that works, ships quickly, and solves the problem at hand. This is the story of how I built a search widget for my blog using what purists might call &ldquo;hacks&rdquo; – and why that was exactly the right choice.</p>
+<p>If you haven&rsquo;t already I suggest you check out <a href="https://cekrem.github.io/posts/starting-small-with-elm-a-widget-approach/" >Starting Small with Elm: A Widget Approach</a> for some context; that&rsquo;s where this Elm widget stuff all begun.</p>]]></description>
+    </item>
     <item>
       <title>Claude Code: Game Changer or Just Hype?</title>
       <link>https://cekrem.github.io/posts/claude-code-game-changer-or-just-hype/</link>

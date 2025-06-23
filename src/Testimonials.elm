@@ -1,6 +1,6 @@
 module Testimonials exposing (Model, Msg, init, showForPath, update, view)
 
-import Html exposing (..)
+import Html exposing (Html)
 import Html.Attributes as Attributes
 import Html.Events as Events
 import HtmlHelpers exposing (hideOnBreakpoint)
@@ -102,6 +102,7 @@ Also: make sure never to set last index on odd numbered testimonials (ie always 
 changeOrRollover : List a -> Int -> Int
 changeOrRollover list targetIndex =
     let
+        threshold : Int
         threshold =
             List.length list
                 |> (\length -> length - modBy 2 length)
@@ -182,6 +183,7 @@ testimonialEntry : Bool -> Testimonial -> Html Msg
 testimonialEntry visible testimonial =
     -- Most of this could and should have been ish a one-liner of tailwind, but tailwind breaks the mother app
     let
+        conditionalStyles : List (Html.Attribute msg)
         conditionalStyles =
             if visible then
                 [ Attributes.style "width" "60rem"

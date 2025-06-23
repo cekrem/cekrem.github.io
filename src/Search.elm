@@ -1,4 +1,4 @@
-module Search exposing (Model, Msg, init, update, view)
+module Search exposing (Model, Msg, Post, init, update, view)
 
 import Browser.Dom as Dom
 import Html exposing (Html)
@@ -48,12 +48,14 @@ update msg model =
     case msg of
         ToggleSearch ->
             let
+                open : Bool
                 open =
                     not model.open
 
+                cmd : Cmd Msg
                 cmd =
                     if open then
-                        Dom.focus inputId |> Task.attempt FocusResult
+                        Dom.focus inputId |> Task.attempt (\_ -> Noop)
 
                     else
                         Cmd.none
@@ -69,7 +71,7 @@ update msg model =
         GotXmlFeed (Err _) ->
             ( { model | content = Nothing }, Cmd.none )
 
-        FocusResult _ ->
+        Noop ->
             ( model, Cmd.none )
 
 
@@ -77,18 +79,17 @@ type Msg
     = ChangeTerm String
     | GotXmlFeed (Result Http.Error String)
     | ToggleSearch
-    | FocusResult (Result Dom.Error ())
+    | Noop
 
 
 transformFeed : String -> List Post
-transformFeed rawFeed =
-    rawFeed
-        |> String.split "<item>\n"
+transformFeed =
+    String.split "<item>\n"
         >> List.drop 1
         >> List.map String.trim
         >> List.map
             (\entry ->
-                { raw = entry |> String.toLower >> String.replace " " ""
+                { raw = entry |> lowerCaseAndRemoveWhitespace
                 , title = entry |> parseProp "title"
                 , link = entry |> parseProp "link"
                 }
@@ -116,6 +117,7 @@ inputId =
 view : Model -> Html Msg
 view model =
     let
+        searchPosition : String
         searchPosition =
             if not model.open then
                 "-34rem"
@@ -199,13 +201,9 @@ searchResults model =
                     (if term /= "" then
                         posts
                             |> List.filterMap (weightPost term)
-                            >> List.sortBy Tuple.first
-                            -- TODO: just use sortWith properly
-                            >> List.reverse
-                            >> List.take 10
-                            >> List.map Tuple.second
-                            >> List.map resultEntry
-                            >> orEmptyEntry
+                            |> sortByWeight
+                            |> List.map resultEntry
+                            |> orEmptyEntry
 
                      else
                         []
@@ -215,25 +213,8 @@ searchResults model =
                 nothing
         )
         model.open
-        (model.searchTerm |> String.toLower >> String.replace " " "")
+        (model.searchTerm |> lowerCaseAndRemoveWhitespace)
         (model.content |> Maybe.withDefault [])
-
-
-{-| Veeeery simplified weighting based on number of matches
--}
-weightPost : String -> Post -> Maybe ( Int, Post )
-weightPost term post =
-    let
-        weight =
-            post.raw
-                |> String.indices term
-                >> List.length
-    in
-    if weight > 0 then
-        Just ( weight, post )
-
-    else
-        Nothing
 
 
 entryStyle : List (Html.Attribute msg)
@@ -265,6 +246,42 @@ orEmptyEntry list =
 
         nonEmpty ->
             nonEmpty
+
+
+
+-- HELPERS
+
+
+lowerCaseAndRemoveWhitespace : String -> String
+lowerCaseAndRemoveWhitespace =
+    String.toLower >> String.replace " " ""
+
+
+sortByWeight : List ( comparable, b ) -> List b
+sortByWeight =
+    List.sortBy Tuple.first
+        -- TODO: just use sortWith properly
+        >> List.reverse
+        >> List.take 10
+        >> List.map Tuple.second
+
+
+{-| Veeeery simplified weighting based on number of matches
+-}
+weightPost : String -> Post -> Maybe ( Int, Post )
+weightPost term post =
+    let
+        weight : Int
+        weight =
+            post.raw
+                |> String.indices term
+                |> List.length
+    in
+    if weight > 0 then
+        Just ( weight, post )
+
+    else
+        Nothing
 
 
 

@@ -1,9 +1,8 @@
-module Main exposing (..)
+module Main exposing (Model, Msg(..), RouteModel(..), main)
 
 import Browser
-import Html exposing (..)
+import Html exposing (Html)
 import Html.Attributes as Attributes
-import Html.Events exposing (..)
 import Search
 import Testimonials
 
@@ -69,8 +68,7 @@ init path =
 
 
 type Msg
-    = NoOp
-    | TestimonialsMsg Testimonials.Msg
+    = TestimonialsMsg Testimonials.Msg
     | SearchMsg Search.Msg
 
 
@@ -130,7 +128,7 @@ subscriptions _ =
 
 view : Model -> Html Msg
 view model =
-    div [ Attributes.class "container" ]
+    Html.div [ Attributes.class "container" ]
         [ case model.routeModel of
             Testimonials testimonialsModel ->
                 Testimonials.view testimonialsModel

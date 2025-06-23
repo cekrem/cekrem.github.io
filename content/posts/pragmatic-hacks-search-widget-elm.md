@@ -37,14 +37,13 @@ The transformation logic is beautifully simple:
 
 ```elm
 transformFeed : String -> List Post
-transformFeed rawFeed =
-    rawFeed
-        |> String.split "<item>\n"
+transformFeed =
+    String.split "<item>\n"
         >> List.drop 1
         >> List.map String.trim
         >> List.map
             (\entry ->
-                { raw = entry |> String.toLower >> String.replace " " ""
+                { raw = entry |> lowerCaseAndRemoveWhitespace
                 , title = entry |> parseProp "title"
                 , link = entry |> parseProp "link"
                 }
@@ -55,7 +54,7 @@ Yes, I’m parsing XML with string splitting. Yes, that would make any XML parse
 
 Admittedly, it’s brittle: even minifying the `index.xml` file breaks everything (because we're splitting on `<item>\n</item>`). So why is it OK to be this reckless?
 
-Because it’s my personal blog. Nothing™ changes here without my knowing _and_ doing it — and, as we’ll get back to, the consequences of this breaking are minuscule.
+Because it’s my personal blog. Nothing™ changes here without my knowing _and_ doing it — and, as we’ll get back to, the consequences of this breaking are minuscule. Hadn't it been so, I would have at least added some tests (and probably parsed the XML properly, handled errors etc).
 
 ## Why This is Actually Good (Enough) Engineering
 

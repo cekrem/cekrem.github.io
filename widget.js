@@ -6174,7 +6174,7 @@ var $author$project$Search$getXmlFeed = $elm$http$Http$get(
 	});
 var $author$project$Search$init = function (_v0) {
 	return _Utils_Tuple2(
-		{A: $elm$core$Maybe$Nothing, w: false, E: ''},
+		{A: $elm$core$Maybe$Nothing, s: false, E: ''},
 		$author$project$Search$getXmlFeed);
 };
 var $author$project$Testimonials$Loading = {$: 1};
@@ -6410,6 +6410,34 @@ var $author$project$Main$updateRouteModel = F2(
 			return _Utils_Tuple2(routeModel, $elm$core$Platform$Cmd$none);
 		}
 	});
+var $author$project$Search$FocusResult = function (a) {
+	return {$: 3, a: a};
+};
+var $elm$core$Basics$composeL = F3(
+	function (g, f, x) {
+		return g(
+			f(x));
+	});
+var $elm$core$Task$onError = _Scheduler_onError;
+var $elm$core$Task$attempt = F2(
+	function (resultToMessage, task) {
+		return $elm$core$Task$command(
+			A2(
+				$elm$core$Task$onError,
+				A2(
+					$elm$core$Basics$composeL,
+					A2($elm$core$Basics$composeL, $elm$core$Task$succeed, resultToMessage),
+					$elm$core$Result$Err),
+				A2(
+					$elm$core$Task$andThen,
+					A2(
+						$elm$core$Basics$composeL,
+						A2($elm$core$Basics$composeL, $elm$core$Task$succeed, resultToMessage),
+						$elm$core$Result$Ok),
+					task)));
+	});
+var $elm$browser$Browser$Dom$focus = _Browser_call('focus');
+var $author$project$Search$inputId = 'search-input';
 var $elm$core$Basics$not = _Basics_not;
 var $elm$core$List$drop = F2(
 	function (n, list) {
@@ -6509,11 +6537,16 @@ var $author$project$Search$update = F2(
 	function (msg, model) {
 		switch (msg.$) {
 			case 2:
+				var open = !model.s;
+				var cmd = open ? A2(
+					$elm$core$Task$attempt,
+					$author$project$Search$FocusResult,
+					$elm$browser$Browser$Dom$focus($author$project$Search$inputId)) : $elm$core$Platform$Cmd$none;
 				return _Utils_Tuple2(
 					_Utils_update(
 						model,
-						{w: !model.w}),
-					$elm$core$Platform$Cmd$none);
+						{s: open}),
+					cmd);
 			case 0:
 				var term = msg.a;
 				return _Utils_Tuple2(
@@ -6521,7 +6554,7 @@ var $author$project$Search$update = F2(
 						model,
 						{E: term}),
 					$elm$core$Platform$Cmd$none);
-			default:
+			case 1:
 				if (!msg.a.$) {
 					var feed = msg.a.a;
 					return _Utils_Tuple2(
@@ -6539,6 +6572,8 @@ var $author$project$Search$update = F2(
 							{A: $elm$core$Maybe$Nothing}),
 						$elm$core$Platform$Cmd$none);
 				}
+			default:
+				return _Utils_Tuple2(model, $elm$core$Platform$Cmd$none);
 		}
 	});
 var $author$project$Main$updateSearchModel = F2(
@@ -6585,12 +6620,14 @@ var $author$project$Search$ChangeTerm = function (a) {
 	return {$: 0, a: a};
 };
 var $author$project$Search$ToggleSearch = {$: 2};
+var $elm$html$Html$Attributes$id = $elm$html$Html$Attributes$stringProperty('id');
 var $elm$html$Html$input = _VirtualDom_node('input');
 var $elm$virtual_dom$VirtualDom$node = function (tag) {
 	return _VirtualDom_node(
 		_VirtualDom_noScript(tag));
 };
 var $elm$html$Html$node = $elm$virtual_dom$VirtualDom$node;
+var $cekrem$html_helpers$HtmlHelpers$nothing = $elm$html$Html$text('');
 var $elm$virtual_dom$VirtualDom$Normal = function (a) {
 	return {$: 0, a: a};
 };
@@ -6602,6 +6639,12 @@ var $elm$html$Html$Events$on = F2(
 			event,
 			$elm$virtual_dom$VirtualDom$Normal(decoder));
 	});
+var $elm$html$Html$Events$onBlur = function (msg) {
+	return A2(
+		$elm$html$Html$Events$on,
+		'blur',
+		$elm$json$Json$Decode$succeed(msg));
+};
 var $elm$html$Html$Events$onClick = function (msg) {
 	return A2(
 		$elm$html$Html$Events$on,
@@ -6643,7 +6686,6 @@ var $elm$html$Html$Attributes$placeholder = $elm$html$Html$Attributes$stringProp
 var $elm$virtual_dom$VirtualDom$lazy3 = _VirtualDom_lazy3;
 var $elm$html$Html$Lazy$lazy3 = $elm$virtual_dom$VirtualDom$lazy3;
 var $elm$core$Basics$neq = _Utils_notEqual;
-var $cekrem$html_helpers$HtmlHelpers$nothing = $elm$html$Html$text('');
 var $elm$virtual_dom$VirtualDom$style = _VirtualDom_style;
 var $elm$html$Html$Attributes$style = $elm$virtual_dom$VirtualDom$style;
 var $author$project$Search$entryStyle = _List_fromArray(
@@ -6883,7 +6925,7 @@ var $author$project$Search$searchResults = function (model) {
 											$author$project$Search$orEmptyEntry))))),
 						posts) : _List_Nil) : $cekrem$html_helpers$HtmlHelpers$nothing;
 			}),
-		model.w,
+		model.s,
 		A3(
 			$elm$core$Basics$composeR,
 			$elm$core$String$toLower,
@@ -6893,7 +6935,7 @@ var $author$project$Search$searchResults = function (model) {
 };
 var $elm$html$Html$Attributes$value = $elm$html$Html$Attributes$stringProperty('value');
 var $author$project$Search$view = function (model) {
-	var searchPosition = (!model.w) ? '-34rem' : '0';
+	var searchPosition = (!model.s) ? '-34rem' : '0';
 	return A3(
 		$elm$html$Html$node,
 		'search',
@@ -6919,12 +6961,14 @@ var $author$project$Search$view = function (model) {
 						A2($elm$html$Html$Attributes$style, 'outline', 'none'),
 						A2($elm$html$Html$Attributes$style, 'border-radius', '1rem 0 0 1rem'),
 						A2($elm$html$Html$Attributes$style, 'width', '32rem'),
+						$elm$html$Html$Attributes$id($author$project$Search$inputId),
 						$elm$html$Html$Attributes$placeholder('Search in realtime'),
 						$elm$html$Html$Attributes$value(model.E),
-						$elm$html$Html$Events$onInput($author$project$Search$ChangeTerm)
+						$elm$html$Html$Events$onInput($author$project$Search$ChangeTerm),
+						$elm$html$Html$Events$onBlur($author$project$Search$ToggleSearch)
 					]),
 				_List_Nil),
-				A2(
+				(!model.s) ? A2(
 				$elm$html$Html$div,
 				_List_fromArray(
 					[
@@ -6933,12 +6977,13 @@ var $author$project$Search$view = function (model) {
 						A2($elm$html$Html$Attributes$style, 'padding', '0.8rem'),
 						A2($elm$html$Html$Attributes$style, 'border-radius', '0 2rem 2rem 0'),
 						A2($elm$html$Html$Attributes$style, 'backdrop-filter', 'blur(5rem)'),
+						A2($elm$html$Html$Attributes$style, 'transition', '0.4s ease opacity'),
 						$elm$html$Html$Events$onClick($author$project$Search$ToggleSearch)
 					]),
 				_List_fromArray(
 					[
 						$elm$html$Html$text('Search?')
-					])),
+					])) : $cekrem$html_helpers$HtmlHelpers$nothing,
 				$author$project$Search$searchResults(model)
 			]));
 };

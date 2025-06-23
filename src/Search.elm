@@ -1,5 +1,6 @@
 module Search exposing (Model, Msg, init, update, view)
 
+import Browser.Dom as Dom
 import Html exposing (Html)
 import Html.Attributes as Attributes
 import Html.Events as Events
@@ -7,6 +8,7 @@ import Html.Lazy as Lazy
 import HtmlHelpers exposing (nothing)
 import Http
 import Maybe exposing (Maybe)
+import Task
 
 
 
@@ -45,7 +47,18 @@ update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
         ToggleSearch ->
-            ( { model | open = not model.open }, Cmd.none )
+            let
+                open =
+                    not model.open
+
+                cmd =
+                    if open then
+                        Dom.focus inputId |> Task.attempt FocusResult
+
+                    else
+                        Cmd.none
+            in
+            ( { model | open = open }, cmd )
 
         ChangeTerm term ->
             ( { model | searchTerm = term }, Cmd.none )
@@ -56,11 +69,15 @@ update msg model =
         GotXmlFeed (Err _) ->
             ( { model | content = Nothing }, Cmd.none )
 
+        FocusResult _ ->
+            ( model, Cmd.none )
+
 
 type Msg
     = ChangeTerm String
     | GotXmlFeed (Result Http.Error String)
     | ToggleSearch
+    | FocusResult (Result Dom.Error ())
 
 
 transformFeed : String -> List Post
@@ -91,6 +108,11 @@ parseProp prop =
 -- VIEW
 
 
+inputId : String
+inputId =
+    "search-input"
+
+
 view : Model -> Html Msg
 view model =
     let
@@ -115,8 +137,9 @@ view model =
             [ Attributes.style "padding" "1rem"
             , Attributes.style "border" "none"
             , Attributes.style "outline" "none"
-            , Attributes.style "border-radius" "1rem 0 0 1rem"
+            , Attributes.style "border-radius" "1rem"
             , Attributes.style "width" "32rem"
+            , Attributes.id inputId
 
             -- update
             , Attributes.placeholder "Search in realtime"
@@ -124,15 +147,29 @@ view model =
             , Events.onInput ChangeTerm
             ]
             []
-        , Html.div
-            [ Attributes.style "cursor" "pointer"
-            , Attributes.style "float" "right"
-            , Attributes.style "padding" "0.8rem"
-            , Attributes.style "border-radius" "0 2rem 2rem 0"
-            , Attributes.style "backdrop-filter" "blur(5rem)"
-            , Events.onClick ToggleSearch
-            ]
-            [ Html.text "Search?" ]
+        , if not model.open then
+            Html.div
+                [ Attributes.style "cursor" "pointer"
+                , Attributes.style "float" "right"
+                , Attributes.style "padding" "0.8rem"
+                , Attributes.style "border-radius" "0 2rem 2rem 0"
+                , Attributes.style "backdrop-filter" "blur(5rem)"
+                , Attributes.style "transition" "0.4s ease opacity"
+                , Events.onClick ToggleSearch
+                ]
+                [ Html.text "Search?" ]
+
+          else
+            Html.div
+                [ Attributes.style "position" "fixed"
+                , Attributes.style "top" "0"
+                , Attributes.style "bottom" "0"
+                , Attributes.style "left" "0"
+                , Attributes.style "right" "0"
+                , Attributes.style "z-index" "-1"
+                , Events.onClick ToggleSearch
+                ]
+                []
         , searchResults model
         ]
 

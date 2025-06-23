@@ -5376,13 +5376,13 @@ var $elm$core$Task$perform = F2(
 var $elm$browser$Browser$element = _Browser_element;
 var $author$project$Main$None = {$: 1};
 var $author$project$Main$SearchMsg = function (a) {
-	return {$: 2, a: a};
+	return {$: 1, a: a};
 };
 var $author$project$Main$Testimonials = function (a) {
 	return {$: 0, a: a};
 };
 var $author$project$Main$TestimonialsMsg = function (a) {
-	return {$: 1, a: a};
+	return {$: 0, a: a};
 };
 var $elm$core$Platform$Cmd$batch = _Platform_batch;
 var $author$project$Search$GotXmlFeed = function (a) {
@@ -6398,7 +6398,7 @@ var $author$project$Testimonials$update = F2(
 var $author$project$Main$updateRouteModel = F2(
 	function (msg, routeModel) {
 		var _v0 = _Utils_Tuple2(routeModel, msg);
-		if ((!_v0.a.$) && (_v0.b.$ === 1)) {
+		if ((!_v0.a.$) && (!_v0.b.$)) {
 			var testimonialsModel = _v0.a.a;
 			var testimonialsMsg = _v0.b.a;
 			return A3(
@@ -6460,6 +6460,18 @@ var $elm$core$List$drop = F2(
 			}
 		}
 	});
+var $elm$core$String$replace = F3(
+	function (before, after, string) {
+		return A2(
+			$elm$core$String$join,
+			after,
+			A2($elm$core$String$split, before, string));
+	});
+var $elm$core$String$toLower = _String_toLower;
+var $author$project$Search$lowerCaseAndRemoveWhitespace = A2(
+	$elm$core$Basics$composeR,
+	$elm$core$String$toLower,
+	A2($elm$core$String$replace, ' ', ''));
 var $elm$core$Basics$negate = function (n) {
 	return -n;
 };
@@ -6500,39 +6512,24 @@ var $author$project$Search$parseProp = function (prop) {
 					$elm$core$Maybe$withDefault(''),
 					$elm$core$String$dropRight(2)))));
 };
-var $elm$core$String$replace = F3(
-	function (before, after, string) {
-		return A2(
-			$elm$core$String$join,
-			after,
-			A2($elm$core$String$split, before, string));
-	});
-var $elm$core$String$toLower = _String_toLower;
 var $elm$core$String$trim = _String_trim;
-var $author$project$Search$transformFeed = function (rawFeed) {
-	return A3(
+var $author$project$Search$transformFeed = A2(
+	$elm$core$Basics$composeR,
+	$elm$core$String$split('<item>\n'),
+	A2(
 		$elm$core$Basics$composeR,
-		$elm$core$String$split('<item>\n'),
+		$elm$core$List$drop(1),
 		A2(
 			$elm$core$Basics$composeR,
-			$elm$core$List$drop(1),
-			A2(
-				$elm$core$Basics$composeR,
-				$elm$core$List$map($elm$core$String$trim),
-				$elm$core$List$map(
-					function (entry) {
-						return {
-							J: A2($author$project$Search$parseProp, 'link', entry),
-							N: A3(
-								$elm$core$Basics$composeR,
-								$elm$core$String$toLower,
-								A2($elm$core$String$replace, ' ', ''),
-								entry),
-							R: A2($author$project$Search$parseProp, 'title', entry)
-						};
-					}))),
-		rawFeed);
-};
+			$elm$core$List$map($elm$core$String$trim),
+			$elm$core$List$map(
+				function (entry) {
+					return {
+						J: A2($author$project$Search$parseProp, 'link', entry),
+						N: $author$project$Search$lowerCaseAndRemoveWhitespace(entry),
+						R: A2($author$project$Search$parseProp, 'title', entry)
+					};
+				}))));
 var $author$project$Search$update = F2(
 	function (msg, model) {
 		switch (msg.$) {
@@ -6578,7 +6575,7 @@ var $author$project$Search$update = F2(
 	});
 var $author$project$Main$updateSearchModel = F2(
 	function (msg, searchModel) {
-		if (msg.$ === 2) {
+		if (msg.$ === 1) {
 			var searchMsg = msg.a;
 			return A2(
 				$elm$core$Tuple$mapSecond,
@@ -6863,14 +6860,21 @@ var $elm$core$List$take = F2(
 	function (n, list) {
 		return A3($elm$core$List$takeFast, 0, n, list);
 	});
+var $author$project$Search$sortByWeight = A2(
+	$elm$core$Basics$composeR,
+	$elm$core$List$sortBy($elm$core$Tuple$first),
+	A2(
+		$elm$core$Basics$composeR,
+		$elm$core$List$reverse,
+		A2(
+			$elm$core$Basics$composeR,
+			$elm$core$List$take(10),
+			$elm$core$List$map($elm$core$Tuple$second))));
 var $elm$core$String$indices = _String_indexes;
 var $author$project$Search$weightPost = F2(
 	function (term, post) {
-		var weight = A3(
-			$elm$core$Basics$composeR,
-			$elm$core$String$indices(term),
-			$elm$core$List$length,
-			post.N);
+		var weight = $elm$core$List$length(
+			A2($elm$core$String$indices, term, post.N));
 		return (weight > 0) ? $elm$core$Maybe$Just(
 			_Utils_Tuple2(weight, post)) : $elm$core$Maybe$Nothing;
 	});
@@ -6897,34 +6901,18 @@ var $author$project$Search$searchResults = function (model) {
 							'opacity',
 							(term === '') ? '0' : '1')
 						]),
-					(term !== '') ? A3(
-						$elm$core$Basics$composeR,
-						$elm$core$List$filterMap(
-							$author$project$Search$weightPost(term)),
+					(term !== '') ? $author$project$Search$orEmptyEntry(
 						A2(
-							$elm$core$Basics$composeR,
-							$elm$core$List$sortBy($elm$core$Tuple$first),
-							A2(
-								$elm$core$Basics$composeR,
-								$elm$core$List$reverse,
+							$elm$core$List$map,
+							$author$project$Search$resultEntry,
+							$author$project$Search$sortByWeight(
 								A2(
-									$elm$core$Basics$composeR,
-									$elm$core$List$take(10),
-									A2(
-										$elm$core$Basics$composeR,
-										$elm$core$List$map($elm$core$Tuple$second),
-										A2(
-											$elm$core$Basics$composeR,
-											$elm$core$List$map($author$project$Search$resultEntry),
-											$author$project$Search$orEmptyEntry))))),
-						posts) : _List_Nil) : $cekrem$html_helpers$HtmlHelpers$nothing;
+									$elm$core$List$filterMap,
+									$author$project$Search$weightPost(term),
+									posts)))) : _List_Nil) : $cekrem$html_helpers$HtmlHelpers$nothing;
 			}),
 		model.s,
-		A3(
-			$elm$core$Basics$composeR,
-			$elm$core$String$toLower,
-			A2($elm$core$String$replace, ' ', ''),
-			model.E),
+		$author$project$Search$lowerCaseAndRemoveWhitespace(model.E),
 		A2($elm$core$Maybe$withDefault, _List_Nil, model.A));
 };
 var $elm$html$Html$Attributes$value = $elm$html$Html$Attributes$stringProperty('value');

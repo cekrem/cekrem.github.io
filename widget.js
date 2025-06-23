@@ -6953,7 +6953,7 @@ var $author$project$Search$view = function (model) {
 						A2($elm$html$Html$Attributes$style, 'padding', '1rem'),
 						A2($elm$html$Html$Attributes$style, 'border', 'none'),
 						A2($elm$html$Html$Attributes$style, 'outline', 'none'),
-						A2($elm$html$Html$Attributes$style, 'border-radius', '1rem 0 0 1rem'),
+						A2($elm$html$Html$Attributes$style, 'border-radius', '1rem'),
 						A2($elm$html$Html$Attributes$style, 'width', '32rem'),
 						$elm$html$Html$Attributes$id($author$project$Search$inputId),
 						$elm$html$Html$Attributes$placeholder('Search in realtime'),

@@ -6410,9 +6410,7 @@ var $author$project$Main$updateRouteModel = F2(
 			return _Utils_Tuple2(routeModel, $elm$core$Platform$Cmd$none);
 		}
 	});
-var $author$project$Search$FocusResult = function (a) {
-	return {$: 3, a: a};
-};
+var $author$project$Search$Noop = {$: 3};
 var $elm$core$Basics$composeL = F3(
 	function (g, f, x) {
 		return g(
@@ -6537,7 +6535,9 @@ var $author$project$Search$update = F2(
 				var open = !model.s;
 				var cmd = open ? A2(
 					$elm$core$Task$attempt,
-					$author$project$Search$FocusResult,
+					function (_v1) {
+						return $author$project$Search$Noop;
+					},
 					$elm$browser$Browser$Dom$focus($author$project$Search$inputId)) : $elm$core$Platform$Cmd$none;
 				return _Utils_Tuple2(
 					_Utils_update(

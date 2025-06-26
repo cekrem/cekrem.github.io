@@ -257,13 +257,24 @@ lowerCaseAndRemoveWhitespace =
     String.toLower >> String.replace " " ""
 
 
-sortByWeight : List ( comparable, b ) -> List b
+sortByWeight : List ( comparable, a ) -> List a
 sortByWeight =
-    List.sortBy Tuple.first
-        -- TODO: just use sortWith properly
-        >> List.reverse
+    List.sortWith flippedComparison
         >> List.take 10
         >> List.map Tuple.second
+
+
+flippedComparison : ( comparable, a ) -> ( comparable, a ) -> Order
+flippedComparison ( a, _ ) ( b, _ ) =
+    case compare a b of
+        LT ->
+            GT
+
+        EQ ->
+            EQ
+
+        GT ->
+            LT
 
 
 {-| Veeeery simplified weighting based on number of matches

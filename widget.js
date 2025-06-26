@@ -6729,11 +6729,25 @@ var $author$project$Search$resultEntry = function (post) {
 					]))
 			]));
 };
+var $author$project$Search$flippedComparison = F2(
+	function (_v0, _v1) {
+		var a = _v0.a;
+		var b = _v1.a;
+		var _v2 = A2($elm$core$Basics$compare, a, b);
+		switch (_v2) {
+			case 0:
+				return 2;
+			case 1:
+				return 1;
+			default:
+				return 0;
+		}
+	});
 var $elm$core$Tuple$second = function (_v0) {
 	var y = _v0.b;
 	return y;
 };
-var $elm$core$List$sortBy = _List_sortBy;
+var $elm$core$List$sortWith = _List_sortWith;
 var $elm$core$List$takeReverse = F3(
 	function (n, list, kept) {
 		takeReverse:
@@ -6862,14 +6876,11 @@ var $elm$core$List$take = F2(
 	});
 var $author$project$Search$sortByWeight = A2(
 	$elm$core$Basics$composeR,
-	$elm$core$List$sortBy($elm$core$Tuple$first),
+	$elm$core$List$sortWith($author$project$Search$flippedComparison),
 	A2(
 		$elm$core$Basics$composeR,
-		$elm$core$List$reverse,
-		A2(
-			$elm$core$Basics$composeR,
-			$elm$core$List$take(10),
-			$elm$core$List$map($elm$core$Tuple$second))));
+		$elm$core$List$take(10),
+		$elm$core$List$map($elm$core$Tuple$second)));
 var $elm$core$String$indices = _String_indexes;
 var $author$project$Search$weightPost = F2(
 	function (term, post) {

@@ -1,12 +1,14 @@
-module Search exposing (Model, Msg, Post, init, update, view)
+module Search exposing (Model, Msg, Post, init, subscriptions, update, view)
 
 import Browser.Dom as Dom
+import Browser.Events
 import Html exposing (Html)
 import Html.Attributes as Attributes
 import Html.Events as Events
 import Html.Lazy as Lazy
 import HtmlHelpers exposing (nothing)
 import Http
+import Json.Decode as Json
 import Maybe exposing (Maybe)
 import Task
 
@@ -46,24 +48,8 @@ init () =
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
-        ToggleSearch ->
-            let
-                open : Bool
-                open =
-                    not model.open
-
-                cmd : Cmd Msg
-                cmd =
-                    if open then
-                        Dom.focus inputId |> Task.attempt (\_ -> Noop)
-
-                    else
-                        Cmd.none
-            in
-            ( { model | open = open }, cmd )
-
         ChangeTerm term ->
-            ( { model | searchTerm = term }, Cmd.none )
+            ( { model | searchTerm = term |> String.replace "/" "" }, Cmd.none )
 
         GotXmlFeed (Ok feed) ->
             ( { model | content = feed |> transformFeed |> Just }, Cmd.none )
@@ -74,11 +60,18 @@ update msg model =
         Noop ->
             ( model, Cmd.none )
 
+        OpenSearch ->
+            ( { model | open = True }, Dom.focus inputId |> Task.attempt (\_ -> Noop) )
+
+        CloseSearch ->
+            ( { model | open = False }, Cmd.none )
+
 
 type Msg
     = ChangeTerm String
     | GotXmlFeed (Result Http.Error String)
-    | ToggleSearch
+    | OpenSearch
+    | CloseSearch
     | Noop
 
 
@@ -157,7 +150,7 @@ view model =
                 , Attributes.style "border-radius" "0 2rem 2rem 0"
                 , Attributes.style "backdrop-filter" "blur(5rem)"
                 , Attributes.style "transition" "0.4s ease opacity"
-                , Events.onClick ToggleSearch
+                , Events.onClick OpenSearch
                 ]
                 [ Html.text "Search?" ]
 
@@ -169,7 +162,7 @@ view model =
                 , Attributes.style "left" "0"
                 , Attributes.style "right" "0"
                 , Attributes.style "z-index" "-1"
-                , Events.onClick ToggleSearch
+                , Events.onClick CloseSearch
                 ]
                 []
         , searchResults model
@@ -233,6 +226,7 @@ resultEntry post =
         entryStyle
         [ Html.a
             [ Attributes.href post.link
+            , Attributes.tabindex 0
             ]
             [ Html.text post.title ]
         ]
@@ -305,3 +299,39 @@ getXmlFeed =
         { url = "/index.xml"
         , expect = Http.expectString GotXmlFeed
         }
+
+
+
+-- SUBSCRIPTIONS
+
+
+subscriptions : Model -> Sub Msg
+subscriptions _ =
+    Browser.Events.onKeyPress keyboardEventDecoder
+
+
+keyPressHandler : RawKeyboardEvent -> Msg
+keyPressHandler { ctrlKey, code } =
+    case ( ctrlKey, code ) of
+        ( False, "Slash" ) ->
+            OpenSearch
+
+        ( False, "Escape" ) ->
+            CloseSearch
+
+        _ ->
+            Noop
+
+
+keyboardEventDecoder : Json.Decoder Msg
+keyboardEventDecoder =
+    Json.map2 RawKeyboardEvent
+        (Json.field "code" Json.string)
+        (Json.field "ctrlKey" Json.bool)
+        |> Json.map keyPressHandler
+
+
+type alias RawKeyboardEvent =
+    { code : String
+    , ctrlKey : Bool
+    }

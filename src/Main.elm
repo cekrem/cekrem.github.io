@@ -118,8 +118,8 @@ updateSearchModel msg searchModel =
 
 
 subscriptions : Model -> Sub Msg
-subscriptions _ =
-    Sub.none
+subscriptions model =
+    Search.subscriptions model.searchModel |> Sub.map SearchMsg
 
 
 

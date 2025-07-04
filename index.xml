@@ -6,8 +6,25 @@
     <description>Recent content on cekrem.github.io</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 26 Jun 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 04 Jul 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://cekrem.github.io/index.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Tailwind IntelliSense in Elm: A NeoVim Recipe</title>
+      <link>https://cekrem.github.io/posts/tailwind-intellisense-elm-neovim/</link>
+      <pubDate>Fri, 04 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://cekrem.github.io/posts/tailwind-intellisense-elm-neovim/</guid>
+      <description><![CDATA[<p>If you&rsquo;re using Elm with Tailwind CSS in NeoVim, you&rsquo;ve probably noticed that IntelliSense doesn&rsquo;t work out of the box. Here&rsquo;s a quick recipe to fix that.</p>
+<h2 id="the-problem">
+ The Problem
+ <a class="heading-link" href="#the-problem">
+ <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+ <span class="sr-only">Link to heading</span>
+ </a>
+</h2>
+<p>Tailwind&rsquo;s LSP doesn&rsquo;t recognize Elm&rsquo;s syntax for CSS classes. When you write:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-elm" data-lang="elm"><span style="display:flex;"><span><span style="color:#ff5c57">div</span> [ <span style="color:#ff5c57">class</span> <span style="color:#5af78e">&#34;bg-blue-500 text-white p-4&#34;</span> ] [ <span style="color:#ff5c57">text</span> <span style="color:#5af78e">&#34;Hello&#34;</span> ]
+</span></span></code></pre></div><p>You get no autocomplete, no validation, and no hover documentation for your Tailwind classes.</p>]]></description>
+    </item>
     <item>
       <title>Programming as Theory Building: Why Senior Developers Are More Valuable Than Ever</title>
       <link>https://cekrem.github.io/posts/programming-as-theory-building-naur/</link>

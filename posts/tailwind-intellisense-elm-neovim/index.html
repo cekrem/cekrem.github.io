@@ -1,0 +1,106 @@
+<!doctype html><html lang=en><head><title>Tailwind IntelliSense in Elm: A NeoVim Recipe · cekrem.github.io</title><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=color-scheme content="light dark"><meta name=author content="Christian Ekrem"><meta name=description content="Quick setup guide for getting Tailwind CSS autocomplete and hover working with Elm in NeoVim"><meta name=keywords content="developer,personal"><meta name=fediverse:creator content><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://cekrem.github.io/images/featured-with-margins.png"><meta name=twitter:title content="Tailwind IntelliSense in Elm: A NeoVim Recipe"><meta name=twitter:description content="Quick setup guide for getting Tailwind CSS autocomplete and hover working with Elm in NeoVim"><meta property="og:url" content="https://cekrem.github.io/posts/tailwind-intellisense-elm-neovim/"><meta property="og:site_name" content="cekrem.github.io"><meta property="og:title" content="Tailwind IntelliSense in Elm: A NeoVim Recipe"><meta property="og:description" content="Quick setup guide for getting Tailwind CSS autocomplete and hover working with Elm in NeoVim"><meta property="og:locale" content="en_us"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2025-07-04T00:00:00+00:00"><meta property="article:modified_time" content="2025-07-04T00:00:00+00:00"><meta property="article:tag" content="Elm"><meta property="article:tag" content="Neovim"><meta property="article:tag" content="Tailwind"><meta property="article:tag" content="Lsp"><meta property="article:tag" content="Recipe"><meta property="og:image" content="https://cekrem.github.io/images/featured-with-margins.png"><link rel=canonical href=https://cekrem.github.io/posts/tailwind-intellisense-elm-neovim/><link rel=preload href=/fonts/fa-brands-400.woff2 as=font type=font/woff2 crossorigin><link rel=preload href=/fonts/fa-regular-400.woff2 as=font type=font/woff2 crossorigin><link rel=preload href=/fonts/fa-solid-900.woff2 as=font type=font/woff2 crossorigin><link rel=stylesheet href=/css/coder.min.0be07cbe43dba3fa453dd30d5e061a4931b10e5b391f3ea77262bb86ffc94b4d.css integrity="sha256-C+B8vkPbo/pFPdMNXgYaSTGxDls5Hz6ncmK7hv/JS00=" crossorigin=anonymous media=screen><link rel=stylesheet href=/css/coder-dark.min.be284be20943b01514c49cbe3832fe8cc215513c0e5962b1d349102cf16f2c25.css integrity="sha256-vihL4glDsBUUxJy+ODL+jMIVUTwOWWKx00kQLPFvLCU=" crossorigin=anonymous media=screen><link rel=icon type=image/svg+xml href=/images/favicon.svg sizes=any><link rel=icon type=image/png href=/images/favicon-32x32.png sizes=32x32><link rel=icon type=image/png href=/images/favicon-16x16.png sizes=16x16><link rel=apple-touch-icon href=/images/apple-touch-icon.png><link rel=apple-touch-icon sizes=180x180 href=/images/apple-touch-icon.png><link rel=manifest href=/site.webmanifest><link rel=mask-icon href=/images/safari-pinned-tab.svg color=#5bbad5></head><body class="preload-transitions colorscheme-auto"><main class=wrapper><nav class=navigation><section class=container><a class=navigation-title href=https://cekrem.github.io/>cekrem.github.io
+</a><input type=checkbox id=menu-toggle>
+<label class="menu-button float-right" for=menu-toggle><i class="fa-solid fa-bars fa-fw" aria-hidden=true></i></label><ul class=navigation-list><li class=navigation-item><a class=navigation-link href=/hire/>Hire me?</a></li><li class=navigation-item><a class=navigation-link href=/about/>About</a></li><li class=navigation-item><a class=navigation-link href=/posts/books-i-think-software-engineers-should-read>Recommended Books</a></li><li class=navigation-item><a class=navigation-link href=https://creators.spotify.com/pod/show/disippel>Podcast (🇳🇴)</a></li><li class=navigation-item><a class=navigation-link href=/posts/>Blog</a></li></ul></section></nav><div class=content><section class="container post"><article><header><div class=post-title><h1 class=title><a class=title-link href=https://cekrem.github.io/posts/tailwind-intellisense-elm-neovim/>Tailwind IntelliSense in Elm: A NeoVim Recipe</a></h1></div><div class=post-meta><div class=date><span class=posted-on><i class="fa-solid fa-calendar" aria-hidden=true></i>
+<time datetime=2025-07-04T00:00:00Z>July 4, 2025
+</time></span><span class=reading-time><i class="fa-solid fa-clock" aria-hidden=true></i>
+3-minute read</span></div><div class=tags><i class="fa-solid fa-tag" aria-hidden=true></i>
+<span class=tag><a href=/tags/elm/>Elm</a>
+</span><span class=separator>•</span>
+<span class=tag><a href=/tags/neovim/>Neovim</a>
+</span><span class=separator>•</span>
+<span class=tag><a href=/tags/tailwind/>Tailwind</a>
+</span><span class=separator>•</span>
+<span class=tag><a href=/tags/lsp/>Lsp</a>
+</span><span class=separator>•</span>
+<span class=tag><a href=/tags/recipe/>Recipe</a></span></div></div></header><div class=post-content><p>If you&rsquo;re using Elm with Tailwind CSS in NeoVim, you&rsquo;ve probably noticed that IntelliSense doesn&rsquo;t work out of the box. Here&rsquo;s a quick recipe to fix that.</p><h2 id=the-problem>The Problem
+<a class=heading-link href=#the-problem><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h2><p>Tailwind&rsquo;s LSP doesn&rsquo;t recognize Elm&rsquo;s syntax for CSS classes. When you write:</p><div class=highlight><pre tabindex=0 style=color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-elm data-lang=elm><span style=display:flex><span><span style=color:#ff5c57>div</span> [ <span style=color:#ff5c57>class</span> <span style=color:#5af78e>&#34;bg-blue-500 text-white p-4&#34;</span> ] [ <span style=color:#ff5c57>text</span> <span style=color:#5af78e>&#34;Hello&#34;</span> ]
+</span></span></code></pre></div><p>You get no autocomplete, no validation, and no hover documentation for your Tailwind classes.</p><h2 id=the-solution>The Solution
+<a class=heading-link href=#the-solution><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h2><h3 id=my-setup-lazyvim>My Setup (LazyVim)
+<a class=heading-link href=#my-setup-lazyvim><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h3><p>Here&rsquo;s what works for me using LazyVim. If you&rsquo;re using a different NeoVim distribution, your mileage may vary:</p><div class=highlight><pre tabindex=0 style=color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-lua data-lang=lua><span style=display:flex><span>{
+</span></span><span style=display:flex><span>  <span style=color:#5af78e>&#34;neovim/nvim-lspconfig&#34;</span>,
+</span></span><span style=display:flex><span>  opts <span style=color:#ff6ac1>=</span> {
+</span></span><span style=display:flex><span>    servers <span style=color:#ff6ac1>=</span> {
+</span></span><span style=display:flex><span>      tailwindcss <span style=color:#ff6ac1>=</span> {
+</span></span><span style=display:flex><span>        filetypes_include <span style=color:#ff6ac1>=</span> { <span style=color:#5af78e>&#34;elm&#34;</span> },
+</span></span><span style=display:flex><span>        <span style=color:#78787e>-- exclude a filetype from the default_config</span>
+</span></span><span style=display:flex><span>        filetypes_exclude <span style=color:#ff6ac1>=</span> {},
+</span></span><span style=display:flex><span>      },
+</span></span><span style=display:flex><span>    },
+</span></span><span style=display:flex><span>    setup <span style=color:#ff6ac1>=</span> {
+</span></span><span style=display:flex><span>      tailwindcss <span style=color:#ff6ac1>=</span> <span style=color:#ff6ac1>function</span>(_, opts)
+</span></span><span style=display:flex><span>        <span style=color:#ff5c57>local</span> tw <span style=color:#ff6ac1>=</span> LazyVim.lsp.get_raw_config(<span style=color:#5af78e>&#34;tailwindcss&#34;</span>)
+</span></span><span style=display:flex><span>        opts.filetypes <span style=color:#ff6ac1>=</span> opts.filetypes <span style=color:#ff6ac1>or</span> {}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#78787e>-- Add default filetypes</span>
+</span></span><span style=display:flex><span>        vim.list_extend(opts.filetypes, tw.default_config.filetypes)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#78787e>-- Remove excluded filetypes</span>
+</span></span><span style=display:flex><span>        opts.filetypes <span style=color:#ff6ac1>=</span> vim.tbl_filter(<span style=color:#ff6ac1>function</span>(ft)
+</span></span><span style=display:flex><span>          <span style=color:#ff6ac1>return</span> <span style=color:#ff6ac1>not</span> vim.tbl_contains(opts.filetypes_exclude <span style=color:#ff6ac1>or</span> {}, ft)
+</span></span><span style=display:flex><span>        <span style=color:#ff6ac1>end</span>, opts.filetypes)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        opts.settings <span style=color:#ff6ac1>=</span> {
+</span></span><span style=display:flex><span>          tailwindCSS <span style=color:#ff6ac1>=</span> {
+</span></span><span style=display:flex><span>            includeLanguages <span style=color:#ff6ac1>=</span> {
+</span></span><span style=display:flex><span>              elm <span style=color:#ff6ac1>=</span> <span style=color:#5af78e>&#34;html&#34;</span>,
+</span></span><span style=display:flex><span>            },
+</span></span><span style=display:flex><span>            experimental <span style=color:#ff6ac1>=</span> {
+</span></span><span style=display:flex><span>              classRegex <span style=color:#ff6ac1>=</span> {
+</span></span><span style=display:flex><span>                { <span style=color:#5af78e>[[\bclass[\s(&lt;|]+&#34;([^&#34;]*)&#34;]]</span> },
+</span></span><span style=display:flex><span>                { <span style=color:#5af78e>[[\bclass[\s(]+&#34;[^&#34;]*&#34;\s+&#34;([^&#34;]*)&#34;]]</span> },
+</span></span><span style=display:flex><span>                { <span style=color:#5af78e>[[\bclass[\s&lt;|]+&#34;[^&#34;]*&#34;\s*\+{2}\s*&#34; ([^&#34;]*)&#34;]]</span> },
+</span></span><span style=display:flex><span>                { <span style=color:#5af78e>[[\bclass[\s&lt;|]+&#34;[^&#34;]*&#34;\s*\+{2}\s*&#34; [^&#34;]*&#34;\s*\+{2}\s*&#34; ([^&#34;]*)&#34;]]</span> },
+</span></span><span style=display:flex><span>                { <span style=color:#5af78e>[[\bclass[\s&lt;|]+&#34;[^&#34;]*&#34;\s*\+{2}\s*&#34; [^&#34;]*&#34;\s*\+{2}\s*&#34; [^&#34;]*&#34;\s*\+{2}\s*&#34; ([^&#34;]*)&#34;]]</span> },
+</span></span><span style=display:flex><span>                { <span style=color:#5af78e>[[\bclassList[\s\[\(]+&#34;([^&#34;]*)&#34;]]</span> },
+</span></span><span style=display:flex><span>                { <span style=color:#5af78e>[[\bclassList[\s\[\(]+&#34;[^&#34;]*&#34;,\s[^\)]+\)[\s\[\(,]+&#34;([^&#34;]*)&#34;]]</span> },
+</span></span><span style=display:flex><span>                { <span style=color:#5af78e>[[\bclassList[\s\[\(]+&#34;[^&#34;]*&#34;,\s[^\)]+\)[\s\[\(,]+&#34;[^&#34;]*&#34;,\s[^\)]+\)[\s\[\(,]+&#34;([^&#34;]*)&#34;]]</span> },
+</span></span><span style=display:flex><span>              },
+</span></span><span style=display:flex><span>            },
+</span></span><span style=display:flex><span>          },
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#78787e>-- Add additional filetypes</span>
+</span></span><span style=display:flex><span>        vim.list_extend(opts.filetypes, opts.filetypes_include <span style=color:#ff6ac1>or</span> {})
+</span></span><span style=display:flex><span>      <span style=color:#ff6ac1>end</span>,
+</span></span><span style=display:flex><span>    },
+</span></span><span style=display:flex><span>  },
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><h3 id=for-vanilla-neovim>For Vanilla NeoVim
+<a class=heading-link href=#for-vanilla-neovim><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h3><p>If you&rsquo;re using plain nvim-lspconfig, I&rsquo;m guessing you&rsquo;d need something like this (but I&rsquo;m mostly spitballing here - you get the idea):</p><div class=highlight><pre tabindex=0 style=color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-lua data-lang=lua><span style=display:flex><span>require(<span style=color:#5af78e>&#39;lspconfig&#39;</span>).tailwindcss.setup({
+</span></span><span style=display:flex><span>  filetypes <span style=color:#ff6ac1>=</span> {
+</span></span><span style=display:flex><span>    <span style=color:#5af78e>&#39;html&#39;</span>, <span style=color:#5af78e>&#39;css&#39;</span>, <span style=color:#5af78e>&#39;javascript&#39;</span>, <span style=color:#5af78e>&#39;typescript&#39;</span>, <span style=color:#5af78e>&#39;react&#39;</span>, <span style=color:#5af78e>&#39;vue&#39;</span>, <span style=color:#5af78e>&#39;svelte&#39;</span>, <span style=color:#5af78e>&#39;elm&#39;</span>
+</span></span><span style=display:flex><span>  },
+</span></span><span style=display:flex><span>  settings <span style=color:#ff6ac1>=</span> {
+</span></span><span style=display:flex><span>    tailwindCSS <span style=color:#ff6ac1>=</span> {
+</span></span><span style=display:flex><span>      includeLanguages <span style=color:#ff6ac1>=</span> {
+</span></span><span style=display:flex><span>        elm <span style=color:#ff6ac1>=</span> <span style=color:#5af78e>&#34;html&#34;</span>,
+</span></span><span style=display:flex><span>      },
+</span></span><span style=display:flex><span>      experimental <span style=color:#ff6ac1>=</span> {
+</span></span><span style=display:flex><span>        classRegex <span style=color:#ff6ac1>=</span> {
+</span></span><span style=display:flex><span>          { <span style=color:#5af78e>[[\bclass[\s(&lt;|]+&#34;([^&#34;]*)&#34;]]</span> },
+</span></span><span style=display:flex><span>          { <span style=color:#5af78e>[[\bclass[\s(]+&#34;[^&#34;]*&#34;\s+&#34;([^&#34;]*)&#34;]]</span> },
+</span></span><span style=display:flex><span>          { <span style=color:#5af78e>[[\bclass[\s&lt;|]+&#34;[^&#34;]*&#34;\s*\+{2}\s*&#34; ([^&#34;]*)&#34;]]</span> },
+</span></span><span style=display:flex><span>          { <span style=color:#5af78e>[[\bclass[\s&lt;|]+&#34;[^&#34;]*&#34;\s*\+{2}\s*&#34; [^&#34;]*&#34;\s*\+{2}\s*&#34; ([^&#34;]*)&#34;]]</span> },
+</span></span><span style=display:flex><span>          { <span style=color:#5af78e>[[\bclass[\s&lt;|]+&#34;[^&#34;]*&#34;\s*\+{2}\s*&#34; [^&#34;]*&#34;\s*\+{2}\s*&#34; [^&#34;]*&#34;\s*\+{2}\s*&#34; ([^&#34;]*)&#34;]]</span> },
+</span></span><span style=display:flex><span>          { <span style=color:#5af78e>[[\bclassList[\s\[\(]+&#34;([^&#34;]*)&#34;]]</span> },
+</span></span><span style=display:flex><span>          { <span style=color:#5af78e>[[\bclassList[\s\[\(]+&#34;[^&#34;]*&#34;,\s[^\)]+\)[\s\[\(,]+&#34;([^&#34;]*)&#34;]]</span> },
+</span></span><span style=display:flex><span>          { <span style=color:#5af78e>[[\bclassList[\s\[\(]+&#34;[^&#34;]*&#34;,\s[^\)]+\)[\s\[\(,]+&#34;[^&#34;]*&#34;,\s[^\)]+\)[\s\[\(,]+&#34;([^&#34;]*)&#34;]]</span> },
+</span></span><span style=display:flex><span>        },
+</span></span><span style=display:flex><span>      },
+</span></span><span style=display:flex><span>    },
+</span></span><span style=display:flex><span>  },
+</span></span><span style=display:flex><span>})
+</span></span></code></pre></div><h2 id=whats-happening>What&rsquo;s Happening
+<a class=heading-link href=#whats-happening><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h2><p>Both configs do the same thing with different syntax:</p><ol><li><strong>Add <code>elm</code> to filetypes</strong> - Tells Tailwind LSP to activate for Elm files</li><li><strong><code>includeLanguages = { elm = "html" }</code></strong> - Treats Elm syntax like HTML for class detection</li><li><strong><code>classRegex</code> patterns</strong> - Regular expressions that match Elm&rsquo;s various class syntax patterns:<ul><li><code>class "bg-blue-500"</code> - Basic class attribute</li><li><code>class "text-lg" ++ " font-bold"</code> - String concatenation</li><li><code>classList [ ("active", isActive) ]</code> - Conditional classes</li></ul></li></ol><h2 id=the-result>The Result
+<a class=heading-link href=#the-result><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h2><p>Now you get full Tailwind IntelliSense in your Elm files:</p><ul><li>Autocomplete for class names</li><li>Hover documentation</li><li>Color previews</li><li>Validation warnings for invalid classes</li></ul><h2 id=full-setup>Full Setup
+<a class=heading-link href=#full-setup><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
+<span class=sr-only>Link to heading</span></a></h2><p>My complete NeoVim config (including this setup) is available at <a href=https://github.com/cekrem/dotfiles class=external-link target=_blank rel=noopener>github.com/cekrem/dotfiles</a> if you want to see how it fits into a larger LazyVim configuration.</p><p>This small addition makes Elm + Tailwind development much more pleasant. No more guessing at class names or checking the docs constantly.</p></div><footer></footer></article></section></div><style>form{display:flex;justify-content:center}</style><form action="https://api.follow.it/subscription-form/SDRVMUk2VmsySENBNk94RDNKNDFnS3NmWlQ5a3gxejNIeUlJWHl3QjdqNnRHdENkaXp5aXZhZlFvcGtzcEZ3K0o5TFVRdSt2WWM5RWRsWmZwWVhNUS9PZjJqMWZ3aHBwZUhjT1ZpWXBGRkdZOWtIcGhYQkJkSkE4QTQ1eHl5YkF8RTZHTExQOWFrN1pFY1F0RzZ5c3pVN2I1QTI1YXNtMjZiYllLU25zQkJ3bz0=/8" method=post><input type=email name=email required placeholder=Email spellcheck=false style="padding:1rem;border:none;border-radius:1rem 0 0 1rem;outline:none">
+<button type=submit style="border:none;border-radius:0 1rem 1rem 0;outline:none;background:rgba(127,127,127,5%);cursor:pointer">
+Subscribe</button></form><div id=elm-widget></div><script src=/widget.js></script><script>Elm.Main.init({node:document.getElementById("elm-widget"),flags:window.location.pathname})</script><script type=text/javascript src="https://platform-api.sharethis.com/js/sharethis.js#property=6834b86198608700128c9ffa&product=sticky-share-buttons" async></script><footer class=footer><section class=container>© 2021 - 2025 Christian Ekrem
+<script data-name=BMC-Widget data-cfasync=false src=https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js data-emoji=🍺 data-id=cekrem data-description="Support me on Buy me a coffee!" data-message data-color=#ddd data-position=Left data-x_margin=18 data-y_margin=18></script></section><script src=https://formspree.io/js/formbutton-v1.min.js defer></script></footer><script src=https://sdk.feedback.one/v0/core.min.js data-project-id=019589e0-c6fb-7b80-b6ae-dffbfbb11f72 defer></script></main><script src=/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script><script data-goatcounter=https://cekrem.goatcounter.com/count async src=//gc.zgo.at/count.js></script></body></html>

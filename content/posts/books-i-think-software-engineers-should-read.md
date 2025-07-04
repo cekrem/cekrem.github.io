@@ -17,6 +17,8 @@ Disclaimer: I have not read all of these from cover to cover. I've read most, bu
 - [The Pragmatic Programmer: Your Journey To Mastery](https://amzn.to/4gjf4Ud) — A classic, and a good one at that!
 - [Staff Engineer: Leadership beyond the management track](https://amzn.to/41GYOrQ) — This one I find a tiny bit boring, to be perfectly honest, but still very helpful. Lot's of insight about "all the other stuff" (not coding).
 - [The Effective Engineer: How to Leverage Your Efforts In Software Engineering to Make a Disproportionate and Meaningful Impact](https://amzn.to/4gjc9ex) — I haven't read this one yet, but it's been highly recommended to me by trustworthy people. And how about that killer subtitle, ey?
+- [A Common-Sense Guide to Data Structures and Algorithms, Second Edition](https://amzn.to/4lfGwVD) — A practical approach to understanding data structures and algorithms that focuses on real-world applications rather than academic theory.
+- [Domain Modeling Made Functional: Tackle Software Complexity with Domain-Driven Design and F#](https://amzn.to/44B0dQE) — Excellent introduction to domain-driven design principles using functional programming concepts, applicable beyond F# to any language.
 
 ## Elm
 

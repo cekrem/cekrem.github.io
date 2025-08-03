@@ -26,6 +26,14 @@
 </span></span></code></pre></div><p>You get no autocomplete, no validation, and no hover documentation for your Tailwind classes.</p>]]></description>
     </item>
     <item>
+      <title>The Craftsman Mindset: Lessons from Four Weeks Offline</title>
+      <link>https://cekrem.github.io/posts/craftsman-mindset/</link>
+      <pubDate>Thu, 03 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://cekrem.github.io/posts/craftsman-mindset/</guid>
+      <description><![CDATA[<p>I just returned from four weeks of vacation—no laptop, no programming books, and a phone that could barely do more than call and text. It’s the longest I’ve been away from code in years. I didn’t plan to make it a digital detox, but it turned out to be exactly what I needed. If you do get a chance to do the same, I&rsquo;d highly recommend it!</p>
+<p>There’s something clarifying about stepping away from the things that usually fill your days. For me, that meant no late-night debugging, no “just one more chapter” of a programming book, and no side projects. Instead, I spent my sitting-down time reading more fiction, playing more Zelda, and generally letting my mind wander more than usual. It was good.</p>]]></description>
+    </item>
+    <item>
       <title>Programming as Theory Building: Why Senior Developers Are More Valuable Than Ever</title>
       <link>https://cekrem.github.io/posts/programming-as-theory-building-naur/</link>
       <pubDate>Thu, 26 Jun 2025 00:00:00 +0000</pubDate>
@@ -462,6 +470,8 @@
 <li><a href="https://amzn.to/4gjf4Ud" class="external-link" target="_blank" rel="noopener">The Pragmatic Programmer: Your Journey To Mastery</a> — A classic, and a good one at that!</li>
 <li><a href="https://amzn.to/41GYOrQ" class="external-link" target="_blank" rel="noopener">Staff Engineer: Leadership beyond the management track</a> — This one I find a tiny bit boring, to be perfectly honest, but still very helpful. Lot&rsquo;s of insight about &ldquo;all the other stuff&rdquo; (not coding).</li>
 <li><a href="https://amzn.to/4gjc9ex" class="external-link" target="_blank" rel="noopener">The Effective Engineer: How to Leverage Your Efforts In Software Engineering to Make a Disproportionate and Meaningful Impact</a> — I haven&rsquo;t read this one yet, but it&rsquo;s been highly recommended to me by trustworthy people. And how about that killer subtitle, ey?</li>
+<li><a href="https://amzn.to/4lfGwVD" class="external-link" target="_blank" rel="noopener">A Common-Sense Guide to Data Structures and Algorithms, Second Edition</a> — A practical approach to understanding data structures and algorithms that focuses on real-world applications rather than academic theory.</li>
+<li><a href="https://amzn.to/44B0dQE" class="external-link" target="_blank" rel="noopener">Domain Modeling Made Functional: Tackle Software Complexity with Domain-Driven Design and F#</a> — Excellent introduction to domain-driven design principles using functional programming concepts, applicable beyond F# to any language.</li>
 </ul>
 <h2 id="elm">
  Elm

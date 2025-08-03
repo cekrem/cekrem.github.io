@@ -6,8 +6,16 @@
     <description>Recent content on cekrem.github.io</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 04 Jul 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 03 Aug 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://cekrem.github.io/index.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>The Craftsman Mindset: Lessons from Four Weeks Offline</title>
+      <link>https://cekrem.github.io/posts/craftsman-mindset/</link>
+      <pubDate>Sun, 03 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>https://cekrem.github.io/posts/craftsman-mindset/</guid>
+      <description><![CDATA[<p>I just returned from four weeks of vacation—no laptop, no programming books, and a phone that could barely do more than call and text. It’s the longest I’ve been away from code in years. I didn’t plan to make it a digital detox, but it turned out to be exactly what I needed. If you do get a chance to do the same, I&rsquo;d highly recommend it!</p>
+<p>There’s something clarifying about stepping away from the things that usually fill your days. For me, that meant no late-night debugging, no “just one more chapter” of a programming book, and no side projects. Instead, I spent my sitting-down time reading more fiction, playing more Zelda, and generally letting my mind wander more than usual. It was good.</p>]]></description>
+    </item>
     <item>
       <title>Tailwind IntelliSense in Elm: A NeoVim Recipe</title>
       <link>https://cekrem.github.io/posts/tailwind-intellisense-elm-neovim/</link>
@@ -24,14 +32,6 @@
 <p>Tailwind&rsquo;s LSP doesn&rsquo;t recognize Elm&rsquo;s syntax for CSS classes. When you write:</p>
 <div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-elm" data-lang="elm"><span style="display:flex;"><span><span style="color:#ff5c57">div</span> [ <span style="color:#ff5c57">class</span> <span style="color:#5af78e">&#34;bg-blue-500 text-white p-4&#34;</span> ] [ <span style="color:#ff5c57">text</span> <span style="color:#5af78e">&#34;Hello&#34;</span> ]
 </span></span></code></pre></div><p>You get no autocomplete, no validation, and no hover documentation for your Tailwind classes.</p>]]></description>
-    </item>
-    <item>
-      <title>The Craftsman Mindset: Lessons from Four Weeks Offline</title>
-      <link>https://cekrem.github.io/posts/craftsman-mindset/</link>
-      <pubDate>Thu, 03 Jul 2025 00:00:00 +0000</pubDate>
-      <guid>https://cekrem.github.io/posts/craftsman-mindset/</guid>
-      <description><![CDATA[<p>I just returned from four weeks of vacation—no laptop, no programming books, and a phone that could barely do more than call and text. It’s the longest I’ve been away from code in years. I didn’t plan to make it a digital detox, but it turned out to be exactly what I needed. If you do get a chance to do the same, I&rsquo;d highly recommend it!</p>
-<p>There’s something clarifying about stepping away from the things that usually fill your days. For me, that meant no late-night debugging, no “just one more chapter” of a programming book, and no side projects. Instead, I spent my sitting-down time reading more fiction, playing more Zelda, and generally letting my mind wander more than usual. It was good.</p>]]></description>
     </item>
     <item>
       <title>Programming as Theory Building: Why Senior Developers Are More Valuable Than Ever</title>

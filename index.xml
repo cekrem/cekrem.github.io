@@ -6,8 +6,16 @@
     <description>Recent content on cekrem.github.io</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 03 Aug 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 07 Aug 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://cekrem.github.io/index.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>On the Value of Abstractions</title>
+      <link>https://cekrem.github.io/posts/on-the-value-of-abstractions/</link>
+      <pubDate>Thu, 07 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>https://cekrem.github.io/posts/on-the-value-of-abstractions/</guid>
+      <description><![CDATA[<p>Most of my day-to-day work is in Elm. The combination of a functional language and the Elm Architecture makes many architectural decisions almost invisible (I talk more about that <a href="https://cekrem.github.io/why-i-hope-i-get-to-write-a-lot-of-elm-code-in-2025/#the-elm-architecture-vs-clean-architecture" >in this blog post</a>). You get a clear separation of concerns, and the language nudges you toward good design by default.</p>
+<p>But my work isn’t limited to Elm. I frequently find myself building features that span both frontend and backend—writing new endpoints, and sometimes even designing new database tables. When I step outside the Elm world, I’m reminded that architecture is something I have to be intentional about again.</p>]]></description>
+    </item>
     <item>
       <title>The Craftsman Mindset: Lessons from Four Weeks Offline</title>
       <link>https://cekrem.github.io/posts/craftsman-mindset/</link>

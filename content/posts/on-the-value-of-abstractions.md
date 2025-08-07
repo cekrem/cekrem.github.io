@@ -6,7 +6,7 @@ description: "A reflection on why starting with abstractions—even simple ones�
 tags: [architecture, kotlin, elm, software-design]
 ---
 
-Most of my day-to-day work is in Elm. The combination of a functional language and the Elm Architecture makes many architectural decisions almost invisible (I talk more about that [in this blog post](/why-i-hope-i-get-to-write-a-lot-of-elm-code-in-2025/#the-elm-architecture-vs-clean-architecture)). You get a clear separation of concerns, and the language nudges you toward good design by default.
+Most of my day-to-day work is in Elm. The combination of a functional language and the Elm Architecture makes many architectural decisions almost invisible (I talk more about that [in this blog post](/posts/why-i-hope-i-get-to-write-a-lot-of-elm-code-in-2025/#the-elm-architecture-vs-clean-architecture)). You get a clear separation of concerns, and the language nudges you toward good design by default.
 
 But my work isn’t limited to Elm. I frequently find myself building features that span both frontend and backend—writing new endpoints, and sometimes even designing new database tables. When I step outside the Elm world, I’m reminded that architecture is something I have to be intentional about again.
 

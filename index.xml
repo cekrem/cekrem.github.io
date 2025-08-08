@@ -6,8 +6,16 @@
     <description>Recent content on cekrem.github.io</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 07 Aug 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 08 Aug 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://cekrem.github.io/index.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Kotlin's Rich Errors: Native, Typed Errors Without Exceptions</title>
+      <link>https://cekrem.github.io/posts/kotlin-rich-errors-elm-union-types/</link>
+      <pubDate>Fri, 08 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>https://cekrem.github.io/posts/kotlin-rich-errors-elm-union-types/</guid>
+      <description><![CDATA[<p>At KotlinConf 2025, the Kotlin team showcased progress toward <strong>Rich Errors</strong> with union types. After years of watching languages slowly adopt patterns that Elm has championed since day one, it&rsquo;s exciting to see Kotlin taking this significant step toward more explicit, type-safe error handling. And in a very &ldquo;native&rdquo; Kotlin way at that!</p>
+<p>I vividly remember this announcement giving my functional heart a pleasant jolt, but I haven&rsquo;t found the time for a write-up until now. Better late than never, though:</p>]]></description>
+    </item>
     <item>
       <title>On the Value of Abstractions</title>
       <link>https://cekrem.github.io/posts/on-the-value-of-abstractions/</link>

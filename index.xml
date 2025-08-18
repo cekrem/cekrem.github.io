@@ -6,8 +6,17 @@
     <description>Recent content on cekrem.github.io</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 08 Aug 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 18 Aug 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://cekrem.github.io/index.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Making Impossible States Impossible: Type-Safe Domain Modeling with Functional Dependency Injection</title>
+      <link>https://cekrem.github.io/posts/making-impossible-states-impossible-with-functional-dependency-injection/</link>
+      <pubDate>Mon, 18 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>https://cekrem.github.io/posts/making-impossible-states-impossible-with-functional-dependency-injection/</guid>
+      <description><![CDATA[<p>Most applications don&rsquo;t fail because algorithms are hard—they fail because our models allow states that make no sense in the domain. &ldquo;User without email but verified&rdquo;, &ldquo;order that&rsquo;s both shipped and cancelled&rdquo;, &ldquo;sum &lt; 0&rdquo;, &ldquo;modal dialog both closed and active&rdquo;. These states should be impossible from the start.</p>
+<blockquote>
+<p>Among the most time-consuming bugs to track down are the ones where we look at our application state and say &ldquo;this shouldn&rsquo;t be possible.&rdquo;</p>]]></description>
+    </item>
     <item>
       <title>Kotlin's Rich Errors: Native, Typed Errors Without Exceptions</title>
       <link>https://cekrem.github.io/posts/kotlin-rich-errors-elm-union-types/</link>

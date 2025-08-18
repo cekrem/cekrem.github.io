@@ -12,7 +12,7 @@ tags:
     "domain-modeling",
     "dependency-inversion",
   ]
-draft: true
+draft: false
 ---
 
 Most applications don't fail because algorithms are hard—they fail because our models allow states that make no sense in the domain. "User without email but verified", "order that's both shipped and cancelled", "sum < 0", "modal dialog both closed and active". These states should be impossible from the start.
@@ -89,9 +89,11 @@ Here each state is mutually exclusive and complete—UI logic becomes both simpl
 
 ## Functional Dependency Injection: Partial Application as Architecture
 
+Now that the domain's state space is constrained by types, we still need to wire in effects without reintroducing illegal states. This is where partial application shines: we keep the core pure and push effects to the edges by injecting them as functions.
+
 Here's where Clean Architecture's Dependency Inversion Principle meets functional programming in a beautiful way. Instead of injecting heavy interfaces and objects, we can inject **functions** as dependencies. As Scott Wlaschin demonstrates in "Domain Modeling Made Functional", partial application becomes the functional equivalent of dependency injection.
 
-Consider this workflow step from the book:
+Consider this workflow step from the book (F#!):
 
 ```fsharp
 type ValidateOrder =
@@ -112,17 +114,43 @@ let validateOrderStep =
     // Returns: UnvalidatedOrder -> Result<ValidatedOrder, ValidationError>
 ```
 
+In Elm, we'd do ish this:
+
+```elm
+-- Inject dependencies first, then input
+type alias CheckProductCodeExists =
+    ProductCode -> Result String ()
+
+type alias CheckAddressExists =
+    Address -> Result String ()
+
+type alias ValidateOrder =
+    CheckProductCodeExists
+    -> CheckAddressExists
+    -> UnvalidatedOrder
+    -> Result String ValidatedOrder
+
+validateOrder : ValidateOrder
+validateOrder checkProduct checkAddress unvalidated =
+    Debug.todo "implement"
+
+-- "Inject" concrete dependencies via partial application (currying)
+validateOrderStep : UnvalidatedOrder -> Result String ValidatedOrder
+validateOrderStep =
+    validateOrder checkProductCodeExists checkAddressExists
+```
+
 This is **dependency inversion without interfaces**! We've inverted the dependency (the function depends on abstractions, not concretions), and we can easily substitute different implementations for testing or different environments.
 
 ### Why This Respects Clean Architecture
 
-This approach follows Uncle Bob's dependency inversion principle perfectly:
+This approach aligns with dependency inversion in a minimal, practical way:
 
-1. **High-level modules don't depend on low-level modules**: Our `ValidateOrder` function doesn't know about specific database implementations
-2. **Both depend on abstractions**: The function signature `CheckProductCodeExists` is our abstraction
-3. **Abstractions don't depend on details**: The function type doesn't care how product codes are actually checked
+- **High-level policy stays pure and unaware of infrastructure** (e.g., `ValidateOrder` knows nothing about a database)
+- **Both sides depend on function types, not concretes** (e.g., `CheckProductCodeExists`)
+- **Abstractions remain stable while implementations vary** (swap different impls for prod/tests)
 
-But unlike traditional OOP dependency injection, we avoid the complexity of IoC containers, interfaces, and object lifecycle management. The type system and partial application handle everything for us.
+Unlike traditional OOP DI, we avoid IoC containers, interfaces, and lifecycle management. The type system and partial application do the heavy lifting.
 
 ## Phantom Types: Compile-Time Filtering
 
@@ -165,9 +193,9 @@ type WithQuantity = WithQuantity
 type Done = Done
 
 start : Order -> Step Start
+
 setTotal : Int -> Step Start -> Step WithTotal
 adjustQuantityFromTotal : Step WithTotal -> Step Done
-
 setQuantity : Int -> Step Start -> Step WithQuantity
 adjustTotalFromQuantity : Step WithQuantity -> Step Done
 
@@ -235,27 +263,6 @@ toHtml (Button attrs children) =
 
 The signatures do the work: `toHtml` cannot be called until we've satisfied both requirements. We can choose order freely, and we can add more "markings" later without changing existing users.
 
-## Package by Component: Organizing Rich Domain Models
-
-Following Clean Architecture's "Package by Component" principle (from Chapter 34: "The Missing Chapter"), we should organize our domain types by business capability, not technical layer:
-
-```
-src/
-├── Order/
-│   ├── Types.elm           -- Order, OrderId, OrderStatus
-│   ├── Validation.elm      -- ValidateOrder function
-│   ├── Pricing.elm         -- PriceOrder function
-│   └── Acknowledgment.elm  -- AcknowledgeOrder function
-├── Product/
-│   ├── Types.elm           -- Product, ProductCode
-│   └── Catalog.elm         -- CheckProductCodeExists
-└── Customer/
-    ├── Types.elm           -- Customer, EmailAddress
-    └── Verification.elm    -- CheckAddressExists
-```
-
-Each component exposes only what other components need to know about, keeping implementation details private. This makes it easier to evolve business logic without breaking other parts of the system.
-
 ## Practical Checklist for "Impossible States"
 
 - Define sum types for states that would otherwise be booleans that can be combined incorrectly
@@ -265,7 +272,6 @@ Each component exposes only what other components need to know about, keeping im
 - Use phantom types to distinguish subgroups that shouldn't be mixed
 - Think building sequences as types (phantom builder) when order matters
 - Apply partial application for functional dependency injection
-- Package by component, not by technical layer
 
 ## Testing and Compiler Assistance
 
@@ -293,7 +299,7 @@ This creates a clean separation where the domain layer has no knowledge of infra
 
 Typed functional languages make it both possible and natural to move validation from runtime to compile time. With sum types, rich domain values, phantom types, and functional dependency injection, we can achieve models that simply don't let us represent illegal states.
 
-Combined with Clean Architecture principles like dependency inversion and package by component, this approach gives us simpler code, safer refactoring, and fewer production errors. As system complexity continues to grow and robustness becomes increasingly critical, techniques for making impossible states impossible become more relevant than ever.
+This approach gives us simpler code, safer refactoring, and fewer production errors. As system complexity continues to grow and robustness becomes increasingly critical, techniques for making impossible states impossible become more relevant than ever.
 
 The compiler becomes our most trusted teammate—one that never gets tired, never misses edge cases, and works 24/7 to ensure our domain models stay consistent and correct.
 
@@ -305,4 +311,4 @@ The compiler becomes our most trusted teammate—one that never gets tired, neve
 - [Phantom Builder Pattern (video)](https://www.youtube.com/watch?v=Trp3tmpMb-o&t=377s)
 - [Domain Modeling Made Functional – Scott Wlaschin](https://amzn.to/4loKAlq)
 - [Elm Patterns – Process flow using phantom types](https://sporto.github.io/elm-patterns/advanced/flow-phantom-types.html)
-- [Clean Architecture – Robert C. Martin](https://www.amazon.com/Clean-Architecture-Craftsmans-Software-Structure/dp/0134494164)
+- [Elm Radio: Phantom Builders (podcast episode)](https://elm-radio.com/episode/phantom-builder/)

@@ -33,7 +33,7 @@ This is simultaneously one of the strongest arguments for typed functional langu
 
 ## Parse, Don't Validate
 
-Instead of "validating" data scattered throughout the code, we do one thing before bringing data into the domain layer: we parse raw data into rich, type-safe domain values. From there, the rest of the system works with values that are already guaranteed to be valid. This principle is excellently explained in Lexi Lambda's "Parse, don't validate" ([link](https://lexi-lambda.github.io/blog/2019/11/05/parse-don-t-validate/)).
+Instead of "validating" data scattered throughout the code, we do one thing before bringing data into the domain layer: we parse raw data into rich, type-safe domain values. From there, the rest of the system works with values that are already guaranteed to be valid. This principle is excellently explained in Alexis King's (Lexi Lambda) ["Parse, don't validate"](https://lexi-lambda.github.io/blog/2019/11/05/parse-don-t-validate/).
 
 Example in Elm—a non-empty string and an email:
 
@@ -219,9 +219,9 @@ flowPrioritizingQuantity quantity order =
 
 The signatures prevent us from skipping steps or mixing order. This gives the advantage of a state machine—with compiler checking—without explosion of separate intermediate types.
 
-## Phantom Builder Pattern: Correct Order, Guaranteed
+## Another example using Phantom Builders with Extensible Records
 
-Builders can also be type-secured so that necessary steps must be taken in the right order—before a "finished" object can be produced.
+Builders can also be type-secured so that necessary steps must be taken in the right order—before a "finished" object can be produced–using "extensible records" (`{ a | whateverTraitOrPropNeededOrGiven : () }`). A big thanks to one of my Elm heroes Jeroen Engels for [introducing this pattern in a very clear way in this video](https://www.youtube.com/watch?v=Trp3tmpMb-o).
 
 ```elm
 module Button exposing (Button, new, withDisabled, withOnClick, withText, withIcon, toHtml)
@@ -261,7 +261,7 @@ toHtml (Button attrs children) =
     Html.button (List.reverse attrs) (List.reverse children)
 ```
 
-The signatures do the work: `toHtml` cannot be called until we've satisfied both requirements. We can choose order freely, and we can add more "markings" later without changing existing users.
+Simply put, this ensures that a button _either_ has an onclick _or_ is disabled before allowing it to build. No runtime validation, just extensible record with "traits" or props that indicate their process state. The signatures do the work: `toHtml` cannot be called until we've satisfied both requirements. We can choose order freely, and we can add more "markings" later without changing existing users.
 
 ## Practical Checklist for "Impossible States"
 
@@ -305,7 +305,7 @@ The compiler becomes our most trusted teammate—one that never gets tired, neve
 
 ## References
 
-- [Parse, don't validate – Lexi Lambda](https://lexi-lambda.github.io/blog/2019/11/05/parse-don-t-validate/)
+- [Parse, don't validate – Alexis King @ Lexi Lambda](https://lexi-lambda.github.io/blog/2019/11/05/parse-don-t-validate/)
 - [Single out elements using phantom types – Jeroen Engels](https://jfmengels.net/single-out-elements-using-phantom-types)
 - [Making impossible states impossible (video)](https://www.youtube.com/watch?v=IcgmSRJHu_8)
 - [Phantom Builder Pattern (video)](https://www.youtube.com/watch?v=Trp3tmpMb-o&t=377s)

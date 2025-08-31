@@ -1,468 +1,468 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on cekrem.github.io</title><link>https://cekrem.github.io/posts/</link><description>Recent content in Posts on cekrem.github.io</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 18 Aug 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://cekrem.github.io/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Making Impossible States Impossible: Type-Safe Domain Modeling with Functional Dependency Injection</title><link>https://cekrem.github.io/posts/making-impossible-states-impossible-with-functional-dependency-injection/</link><pubDate>Mon, 18 Aug 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/making-impossible-states-impossible-with-functional-dependency-injection/</guid><description>&lt;p>Most applications don&amp;rsquo;t fail because algorithms are hard—they fail because our models allow states that make no sense in the domain. &amp;ldquo;User without email but verified&amp;rdquo;, &amp;ldquo;order that&amp;rsquo;s both shipped and cancelled&amp;rdquo;, &amp;ldquo;sum &amp;lt; 0&amp;rdquo;, &amp;ldquo;modal dialog both closed and active&amp;rdquo;. These states should be impossible from the start.&lt;/p>
-&lt;blockquote>
-&lt;p>Among the most time-consuming bugs to track down are the ones where we look at our application state and say &amp;ldquo;this shouldn&amp;rsquo;t be possible.&amp;rdquo;&lt;/p></description></item><item><title>Kotlin's Rich Errors: Native, Typed Errors Without Exceptions</title><link>https://cekrem.github.io/posts/kotlin-rich-errors-elm-union-types/</link><pubDate>Fri, 08 Aug 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/kotlin-rich-errors-elm-union-types/</guid><description>&lt;p>At KotlinConf 2025, the Kotlin team showcased progress toward &lt;strong>Rich Errors&lt;/strong> with union types. After years of watching languages slowly adopt patterns that Elm has championed since day one, it&amp;rsquo;s exciting to see Kotlin taking this significant step toward more explicit, type-safe error handling. And in a very &amp;ldquo;native&amp;rdquo; Kotlin way at that!&lt;/p>
-&lt;p>I vividly remember this announcement giving my functional heart a pleasant jolt, but I haven&amp;rsquo;t found the time for a write-up until now. Better late than never, though:&lt;/p></description></item><item><title>On the Value of Abstractions</title><link>https://cekrem.github.io/posts/on-the-value-of-abstractions/</link><pubDate>Thu, 07 Aug 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/on-the-value-of-abstractions/</guid><description>&lt;p>Most of my day-to-day work is in Elm. The combination of a functional language and the Elm Architecture makes many architectural decisions almost invisible (I talk more about that &lt;a href="https://cekrem.github.io/posts/why-i-hope-i-get-to-write-a-lot-of-elm-code-in-2025/#the-elm-architecture-vs-clean-architecture" >in this blog post&lt;/a>). You get a clear separation of concerns, and the language nudges you toward good design by default.&lt;/p>
-&lt;p>But my work isn’t limited to Elm. I frequently find myself building features that span both frontend and backend—writing new endpoints, and sometimes even designing new database tables. When I step outside the Elm world, I’m reminded that architecture is something I have to be intentional about again.&lt;/p></description></item><item><title>The Craftsman Mindset: Lessons from Four Weeks Offline</title><link>https://cekrem.github.io/posts/craftsman-mindset/</link><pubDate>Sun, 03 Aug 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/craftsman-mindset/</guid><description>&lt;p>I just returned from four weeks of vacation—no laptop, no programming books, and a phone that could barely do more than call and text. It’s the longest I’ve been away from code in years. I didn’t plan to make it a digital detox, but it turned out to be exactly what I needed. If you do get a chance to do the same, I&amp;rsquo;d highly recommend it!&lt;/p>
-&lt;p>There’s something clarifying about stepping away from the things that usually fill your days. For me, that meant no late-night debugging, no “just one more chapter” of a programming book, and no side projects. Instead, I spent my sitting-down time reading more fiction, playing more Zelda, and generally letting my mind wander more than usual. It was good.&lt;/p></description></item><item><title>Tailwind IntelliSense in Elm: A NeoVim Recipe</title><link>https://cekrem.github.io/posts/tailwind-intellisense-elm-neovim/</link><pubDate>Fri, 04 Jul 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/tailwind-intellisense-elm-neovim/</guid><description>&lt;p>If you&amp;rsquo;re using Elm with Tailwind CSS in NeoVim, you&amp;rsquo;ve probably noticed that IntelliSense doesn&amp;rsquo;t work out of the box. Here&amp;rsquo;s a quick recipe to fix that.&lt;/p>
-&lt;h2 id="the-problem">
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on cekrem.github.io</title><link>https://cekrem.github.io/posts/</link><description>Recent content in Posts on cekrem.github.io</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 18 Aug 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://cekrem.github.io/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Making Impossible States Impossible: Type-Safe Domain Modeling with Functional Dependency Injection</title><link>https://cekrem.github.io/posts/making-impossible-states-impossible-with-functional-dependency-injection/</link><pubDate>Mon, 18 Aug 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/making-impossible-states-impossible-with-functional-dependency-injection/</guid><description>&lt;p&gt;Most applications don&amp;rsquo;t fail because algorithms are hard—they fail because our models allow states that make no sense in the domain. &amp;ldquo;User without email but verified&amp;rdquo;, &amp;ldquo;order that&amp;rsquo;s both shipped and cancelled&amp;rdquo;, &amp;ldquo;sum &amp;lt; 0&amp;rdquo;, &amp;ldquo;modal dialog both closed and active&amp;rdquo;. These states should be impossible from the start.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Among the most time-consuming bugs to track down are the ones where we look at our application state and say &amp;ldquo;this shouldn&amp;rsquo;t be possible.&amp;rdquo;&lt;/p&gt;</description></item><item><title>Kotlin's Rich Errors: Native, Typed Errors Without Exceptions</title><link>https://cekrem.github.io/posts/kotlin-rich-errors-elm-union-types/</link><pubDate>Fri, 08 Aug 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/kotlin-rich-errors-elm-union-types/</guid><description>&lt;p&gt;At KotlinConf 2025, the Kotlin team showcased progress toward &lt;strong&gt;Rich Errors&lt;/strong&gt; with union types. After years of watching languages slowly adopt patterns that Elm has championed since day one, it&amp;rsquo;s exciting to see Kotlin taking this significant step toward more explicit, type-safe error handling. And in a very &amp;ldquo;native&amp;rdquo; Kotlin way at that!&lt;/p&gt;
+&lt;p&gt;I vividly remember this announcement giving my functional heart a pleasant jolt, but I haven&amp;rsquo;t found the time for a write-up until now. Better late than never, though:&lt;/p&gt;</description></item><item><title>On the Value of Abstractions</title><link>https://cekrem.github.io/posts/on-the-value-of-abstractions/</link><pubDate>Thu, 07 Aug 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/on-the-value-of-abstractions/</guid><description>&lt;p&gt;Most of my day-to-day work is in Elm. The combination of a functional language and the Elm Architecture makes many architectural decisions almost invisible (I talk more about that &lt;a href="https://cekrem.github.io/posts/why-i-hope-i-get-to-write-a-lot-of-elm-code-in-2025/#the-elm-architecture-vs-clean-architecture" &gt;in this blog post&lt;/a&gt;). You get a clear separation of concerns, and the language nudges you toward good design by default.&lt;/p&gt;
+&lt;p&gt;But my work isn’t limited to Elm. I frequently find myself building features that span both frontend and backend—writing new endpoints, and sometimes even designing new database tables. When I step outside the Elm world, I’m reminded that architecture is something I have to be intentional about again.&lt;/p&gt;</description></item><item><title>The Craftsman Mindset: Lessons from Four Weeks Offline</title><link>https://cekrem.github.io/posts/craftsman-mindset/</link><pubDate>Sun, 03 Aug 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/craftsman-mindset/</guid><description>&lt;p&gt;I just returned from four weeks of vacation—no laptop, no programming books, and a phone that could barely do more than call and text. It’s the longest I’ve been away from code in years. I didn’t plan to make it a digital detox, but it turned out to be exactly what I needed. If you do get a chance to do the same, I&amp;rsquo;d highly recommend it!&lt;/p&gt;
+&lt;p&gt;There’s something clarifying about stepping away from the things that usually fill your days. For me, that meant no late-night debugging, no “just one more chapter” of a programming book, and no side projects. Instead, I spent my sitting-down time reading more fiction, playing more Zelda, and generally letting my mind wander more than usual. It was good.&lt;/p&gt;</description></item><item><title>Tailwind IntelliSense in Elm: A NeoVim Recipe</title><link>https://cekrem.github.io/posts/tailwind-intellisense-elm-neovim/</link><pubDate>Fri, 04 Jul 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/tailwind-intellisense-elm-neovim/</guid><description>&lt;p&gt;If you&amp;rsquo;re using Elm with Tailwind CSS in NeoVim, you&amp;rsquo;ve probably noticed that IntelliSense doesn&amp;rsquo;t work out of the box. Here&amp;rsquo;s a quick recipe to fix that.&lt;/p&gt;
+&lt;h2 id="the-problem"&gt;
  The Problem
- &lt;a class="heading-link" href="#the-problem">
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
- &lt;span class="sr-only">Link to heading&lt;/span>
- &lt;/a>
-&lt;/h2>
-&lt;p>Tailwind&amp;rsquo;s LSP doesn&amp;rsquo;t recognize Elm&amp;rsquo;s syntax for CSS classes. When you write:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-elm" data-lang="elm">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff5c57">div&lt;/span> [ &lt;span style="color:#ff5c57">class&lt;/span> &lt;span style="color:#5af78e">&amp;#34;bg-blue-500 text-white p-4&amp;#34;&lt;/span> ] [ &lt;span style="color:#ff5c57">text&lt;/span> &lt;span style="color:#5af78e">&amp;#34;Hello&amp;#34;&lt;/span> ]
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>You get no autocomplete, no validation, and no hover documentation for your Tailwind classes.&lt;/p></description></item><item><title>Programming as Theory Building: Why Senior Developers Are More Valuable Than Ever</title><link>https://cekrem.github.io/posts/programming-as-theory-building-naur/</link><pubDate>Thu, 26 Jun 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/programming-as-theory-building-naur/</guid><description>&lt;p>In 1985, computer scientist Peter Naur wrote a prescient essay called &lt;a href="https://pages.cs.wisc.edu/~remzi/Naur.pdf" class="external-link" target="_blank" rel="noopener">&amp;ldquo;Programming as Theory Building&amp;rdquo;&lt;/a> that feels more relevant today than ever. As we watch junior developers reflexively accept LLM-generated code they don&amp;rsquo;t understand, and see codebases balloon with theoretically orphaned implementations, Naur&amp;rsquo;s central thesis becomes crystal clear: &lt;strong>a program is not its source code&lt;/strong>.&lt;/p>
-&lt;h2 id="the-theory-behind-the-code">
+ &lt;a class="heading-link" href="#the-problem"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Tailwind&amp;rsquo;s LSP doesn&amp;rsquo;t recognize Elm&amp;rsquo;s syntax for CSS classes. When you write:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-elm" data-lang="elm"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#ff5c57"&gt;div&lt;/span&gt; [ &lt;span style="color:#ff5c57"&gt;class&lt;/span&gt; &lt;span style="color:#5af78e"&gt;&amp;#34;bg-blue-500 text-white p-4&amp;#34;&lt;/span&gt; ] [ &lt;span style="color:#ff5c57"&gt;text&lt;/span&gt; &lt;span style="color:#5af78e"&gt;&amp;#34;Hello&amp;#34;&lt;/span&gt; ]
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You get no autocomplete, no validation, and no hover documentation for your Tailwind classes.&lt;/p&gt;</description></item><item><title>Programming as Theory Building: Why Senior Developers Are More Valuable Than Ever</title><link>https://cekrem.github.io/posts/programming-as-theory-building-naur/</link><pubDate>Thu, 26 Jun 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/programming-as-theory-building-naur/</guid><description>&lt;p&gt;In 1985, computer scientist Peter Naur wrote a prescient essay called &lt;a href="https://pages.cs.wisc.edu/~remzi/Naur.pdf" class="external-link" target="_blank" rel="noopener"&gt;&amp;ldquo;Programming as Theory Building&amp;rdquo;&lt;/a&gt; that feels more relevant today than ever. As we watch junior developers reflexively accept LLM-generated code they don&amp;rsquo;t understand, and see codebases balloon with theoretically orphaned implementations, Naur&amp;rsquo;s central thesis becomes crystal clear: &lt;strong&gt;a program is not its source code&lt;/strong&gt;.&lt;/p&gt;
+&lt;h2 id="the-theory-behind-the-code"&gt;
  The Theory Behind the Code
- &lt;a class="heading-link" href="#the-theory-behind-the-code">
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
- &lt;span class="sr-only">Link to heading&lt;/span>
- &lt;/a>
-&lt;/h2>
-&lt;p>Naur argues that programming is fundamentally about building a theory—a &lt;strong>shared mental model&lt;/strong> of how a system works, why it works that way, and how it should evolve. The source code is merely a written representation of this theory, and like all representations, it&amp;rsquo;s lossy. Critical knowledge about intent, design decisions, trade-offs, and the reasoning behind architectural choices exists only in the minds of the people who built the system.&lt;/p></description></item><item><title>Pragmatic Hacks: When 'Good Enough' is Actually Good Enough</title><link>https://cekrem.github.io/posts/pragmatic-hacks-search-widget-elm/</link><pubDate>Mon, 23 Jun 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/pragmatic-hacks-search-widget-elm/</guid><description>&lt;p>Sometimes the best solution isn&amp;rsquo;t the most elegant one. Sometimes it&amp;rsquo;s the one that works, ships quickly, and solves the problem at hand. This is the story of how I built a search widget for my blog using what purists might call &amp;ldquo;hacks&amp;rdquo; – and why that was exactly the right choice.&lt;/p>
-&lt;p>If you haven&amp;rsquo;t already I suggest you check out &lt;a href="https://cekrem.github.io/posts/starting-small-with-elm-a-widget-approach/" >Starting Small with Elm: A Widget Approach&lt;/a> for some context; that&amp;rsquo;s where this Elm widget stuff all begun.&lt;/p></description></item><item><title>Claude Code: Game Changer or Just Hype?</title><link>https://cekrem.github.io/posts/claude-code-game-changer-or-just-hype/</link><pubDate>Tue, 10 Jun 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/claude-code-game-changer-or-just-hype/</guid><description>&lt;p>Last week, I watched two very different developers encounter Claude Code for the first time. The contrast in their reactions perfectly captures the tension I&amp;rsquo;ve been feeling about AI coding assistants lately.&lt;/p>
-&lt;p>For those unfamiliar, &lt;a href="https://www.anthropic.com/claude-code" class="external-link" target="_blank" rel="noopener">Claude Code&lt;/a> is Anthropic&amp;rsquo;s AI-powered coding assistant that can read, write, and edit code across your entire codebase. Unlike traditional autocomplete tools, it can understand context across multiple files, execute commands, run tests, and even browse the web for documentation. Think of it as having an AI pair programmer that never gets tired and has read every Stack Overflow answer ever written.&lt;/p></description></item><item><title>Starting Small with Elm: A Widget Approach</title><link>https://cekrem.github.io/posts/starting-small-with-elm-a-widget-approach/</link><pubDate>Tue, 03 Jun 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/starting-small-with-elm-a-widget-approach/</guid><description>&lt;p>It&amp;rsquo;s awesome to learn Elm by building a side project, you absolutely should. And maybe you have – perhaps you&amp;rsquo;ve built a todo app, explored The Elm Architecture, and fallen in love with the reliability and maintainability that comes with functional programming and strong types.&lt;/p>
-&lt;p>But come Monday morning, you&amp;rsquo;re back to wrestling with JavaScript bugs, runtime errors, and the nagging feeling that there has to be a better way. The problem isn&amp;rsquo;t that Elm isn&amp;rsquo;t ready for production work – it absolutely is. The problem is convincing your team, your boss, or your organization to take the leap. And when you&amp;rsquo;re thinking about wholesale replacement, your boss&amp;rsquo;s skepticism might be quite healthy. But here&amp;rsquo;s the thing: if you reduce the scope, you can also reduce the risk and buy-in required. Instead of &amp;ldquo;let&amp;rsquo;s rebuild our entire app in Elm,&amp;rdquo; what if the conversation was &amp;ldquo;let&amp;rsquo;s try Elm for this one small widget&amp;rdquo;? Suddenly, the stakes drop dramatically.&lt;/p></description></item><item><title>Passion</title><link>https://cekrem.github.io/posts/passion/</link><pubDate>Fri, 23 May 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/passion/</guid><description>&lt;p>It&amp;rsquo;s Friday, and I&amp;rsquo;m up at 4am, wide awake, head filled with thoughts on recursive data structures and how to efficiently deal with them in our client&amp;rsquo;s Elm application. I tried going back to sleep for a few minutes, but decided against it. My (Garmin) sleep score averages well above 90%, so I can deal with one slightly short night. &lt;em>If I can just solve this puzzle&lt;/em>, it&amp;rsquo;ll be more than worth it! I&amp;rsquo;m doing test driven development on this particular problem. Not because I want to be fancy or make a point, but out of necessity – the complexity is far beyond what I would entrust myself without some guard rails while I iterate on it. &lt;strong>It feels great&lt;/strong>, and I&amp;rsquo;m already looking forward to the Sabbath moment when I can behold the work of my hands and see that it was good.&lt;/p></description></item><item><title>A Use Case for Port Boundaries in Frontend Development</title><link>https://cekrem.github.io/posts/a-case-for-port-boundaries-in-frontend/</link><pubDate>Mon, 19 May 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/a-case-for-port-boundaries-in-frontend/</guid><description>&lt;p>In the Elm ecosystem, the browser is treated like an I/O device. DOM events, JavaScript interop, and even network requests are kept outside the core logic. Rather than allowing side effects to permeate the codebase, Elm channels them through strictly typed boundaries known as &lt;em>ports&lt;/em>.&lt;/p>
-&lt;p>This architectural stance is both radical and liberating. It allows you to build user interfaces where logic remains pure, testable, and robust, even as surrounding technologies evolve.&lt;/p></description></item><item><title>Dependency Inversion in React: Building Truly Testable Components</title><link>https://cekrem.github.io/posts/dependency-inversion-in-react/</link><pubDate>Fri, 09 May 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/dependency-inversion-in-react/</guid><description>&lt;p>In the world of React development, we often find ourselves writing components that are tightly coupled to their dependencies. This makes testing difficult, maintenance a challenge, and change nearly impossible. The Dependency Inversion Principle (DIP) offers a way out of this mess, but how do we apply it effectively &lt;strong>in React&lt;/strong>?&lt;/p>
-&lt;p>&lt;strong>Note:&lt;/strong> For a more backend-oriented take on Dependency Inversion, check out my previous post on &lt;a href="https://cekrem.github.io/posts/clean-architecture-and-plugins-in-go/" class="external-link" target="_blank" rel="noopener">Dependency Inversion in Go Using Plugins&lt;/a>.&lt;/p></description></item><item><title>The Psychology of Clean Code: Why We Write Messy React Components</title><link>https://cekrem.github.io/posts/psychology-of-clean-code/</link><pubDate>Wed, 07 May 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/psychology-of-clean-code/</guid><description>&lt;p>We all know we should write clean code. We&amp;rsquo;ve read the books, attended the talks, and nodded along to the principles. Yet, somehow, we still find ourselves writing messy React components. Why is that? The answer lies not in our technical skills, but in our psychology.&lt;/p>
-&lt;h2 id="the-cognitive-load-trap">
+ &lt;a class="heading-link" href="#the-theory-behind-the-code"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Naur argues that programming is fundamentally about building a theory—a &lt;strong&gt;shared mental model&lt;/strong&gt; of how a system works, why it works that way, and how it should evolve. The source code is merely a written representation of this theory, and like all representations, it&amp;rsquo;s lossy. Critical knowledge about intent, design decisions, trade-offs, and the reasoning behind architectural choices exists only in the minds of the people who built the system.&lt;/p&gt;</description></item><item><title>Pragmatic Hacks: When 'Good Enough' is Actually Good Enough</title><link>https://cekrem.github.io/posts/pragmatic-hacks-search-widget-elm/</link><pubDate>Mon, 23 Jun 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/pragmatic-hacks-search-widget-elm/</guid><description>&lt;p&gt;Sometimes the best solution isn&amp;rsquo;t the most elegant one. Sometimes it&amp;rsquo;s the one that works, ships quickly, and solves the problem at hand. This is the story of how I built a search widget for my blog using what purists might call &amp;ldquo;hacks&amp;rdquo; – and why that was exactly the right choice.&lt;/p&gt;
+&lt;p&gt;If you haven&amp;rsquo;t already I suggest you check out &lt;a href="https://cekrem.github.io/posts/starting-small-with-elm-a-widget-approach/" &gt;Starting Small with Elm: A Widget Approach&lt;/a&gt; for some context; that&amp;rsquo;s where this Elm widget stuff all begun.&lt;/p&gt;</description></item><item><title>Claude Code: Game Changer or Just Hype?</title><link>https://cekrem.github.io/posts/claude-code-game-changer-or-just-hype/</link><pubDate>Tue, 10 Jun 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/claude-code-game-changer-or-just-hype/</guid><description>&lt;p&gt;Last week, I watched two very different developers encounter Claude Code for the first time. The contrast in their reactions perfectly captures the tension I&amp;rsquo;ve been feeling about AI coding assistants lately.&lt;/p&gt;
+&lt;p&gt;For those unfamiliar, &lt;a href="https://www.anthropic.com/claude-code" class="external-link" target="_blank" rel="noopener"&gt;Claude Code&lt;/a&gt; is Anthropic&amp;rsquo;s AI-powered coding assistant that can read, write, and edit code across your entire codebase. Unlike traditional autocomplete tools, it can understand context across multiple files, execute commands, run tests, and even browse the web for documentation. Think of it as having an AI pair programmer that never gets tired and has read every Stack Overflow answer ever written.&lt;/p&gt;</description></item><item><title>Starting Small with Elm: A Widget Approach</title><link>https://cekrem.github.io/posts/starting-small-with-elm-a-widget-approach/</link><pubDate>Tue, 03 Jun 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/starting-small-with-elm-a-widget-approach/</guid><description>&lt;p&gt;It&amp;rsquo;s awesome to learn Elm by building a side project, you absolutely should. And maybe you have – perhaps you&amp;rsquo;ve built a todo app, explored The Elm Architecture, and fallen in love with the reliability and maintainability that comes with functional programming and strong types.&lt;/p&gt;
+&lt;p&gt;But come Monday morning, you&amp;rsquo;re back to wrestling with JavaScript bugs, runtime errors, and the nagging feeling that there has to be a better way. The problem isn&amp;rsquo;t that Elm isn&amp;rsquo;t ready for production work – it absolutely is. The problem is convincing your team, your boss, or your organization to take the leap. And when you&amp;rsquo;re thinking about wholesale replacement, your boss&amp;rsquo;s skepticism might be quite healthy. But here&amp;rsquo;s the thing: if you reduce the scope, you can also reduce the risk and buy-in required. Instead of &amp;ldquo;let&amp;rsquo;s rebuild our entire app in Elm,&amp;rdquo; what if the conversation was &amp;ldquo;let&amp;rsquo;s try Elm for this one small widget&amp;rdquo;? Suddenly, the stakes drop dramatically.&lt;/p&gt;</description></item><item><title>Passion</title><link>https://cekrem.github.io/posts/passion/</link><pubDate>Fri, 23 May 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/passion/</guid><description>&lt;p&gt;It&amp;rsquo;s Friday, and I&amp;rsquo;m up at 4am, wide awake, head filled with thoughts on recursive data structures and how to efficiently deal with them in our client&amp;rsquo;s Elm application. I tried going back to sleep for a few minutes, but decided against it. My (Garmin) sleep score averages well above 90%, so I can deal with one slightly short night. &lt;em&gt;If I can just solve this puzzle&lt;/em&gt;, it&amp;rsquo;ll be more than worth it! I&amp;rsquo;m doing test driven development on this particular problem. Not because I want to be fancy or make a point, but out of necessity – the complexity is far beyond what I would entrust myself without some guard rails while I iterate on it. &lt;strong&gt;It feels great&lt;/strong&gt;, and I&amp;rsquo;m already looking forward to the Sabbath moment when I can behold the work of my hands and see that it was good.&lt;/p&gt;</description></item><item><title>A Use Case for Port Boundaries in Frontend Development</title><link>https://cekrem.github.io/posts/a-case-for-port-boundaries-in-frontend/</link><pubDate>Mon, 19 May 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/a-case-for-port-boundaries-in-frontend/</guid><description>&lt;p&gt;In the Elm ecosystem, the browser is treated like an I/O device. DOM events, JavaScript interop, and even network requests are kept outside the core logic. Rather than allowing side effects to permeate the codebase, Elm channels them through strictly typed boundaries known as &lt;em&gt;ports&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;This architectural stance is both radical and liberating. It allows you to build user interfaces where logic remains pure, testable, and robust, even as surrounding technologies evolve.&lt;/p&gt;</description></item><item><title>Dependency Inversion in React: Building Truly Testable Components</title><link>https://cekrem.github.io/posts/dependency-inversion-in-react/</link><pubDate>Fri, 09 May 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/dependency-inversion-in-react/</guid><description>&lt;p&gt;In the world of React development, we often find ourselves writing components that are tightly coupled to their dependencies. This makes testing difficult, maintenance a challenge, and change nearly impossible. The Dependency Inversion Principle (DIP) offers a way out of this mess, but how do we apply it effectively &lt;strong&gt;in React&lt;/strong&gt;?&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; For a more backend-oriented take on Dependency Inversion, check out my previous post on &lt;a href="https://cekrem.github.io/posts/clean-architecture-and-plugins-in-go/" class="external-link" target="_blank" rel="noopener"&gt;Dependency Inversion in Go Using Plugins&lt;/a&gt;.&lt;/p&gt;</description></item><item><title>The Psychology of Clean Code: Why We Write Messy React Components</title><link>https://cekrem.github.io/posts/psychology-of-clean-code/</link><pubDate>Wed, 07 May 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/psychology-of-clean-code/</guid><description>&lt;p&gt;We all know we should write clean code. We&amp;rsquo;ve read the books, attended the talks, and nodded along to the principles. Yet, somehow, we still find ourselves writing messy React components. Why is that? The answer lies not in our technical skills, but in our psychology.&lt;/p&gt;
+&lt;h2 id="the-cognitive-load-trap"&gt;
  The Cognitive Load Trap
- &lt;a class="heading-link" href="#the-cognitive-load-trap">
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
- &lt;span class="sr-only">Link to heading&lt;/span>
- &lt;/a>
-&lt;/h2>
-&lt;p>Consider this common scenario:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-tsx" data-lang="tsx">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff6ac1">const&lt;/span> UserDashboard &lt;span style="color:#ff6ac1">=&lt;/span> () &lt;span style="color:#ff6ac1">=&amp;gt;&lt;/span> {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">const&lt;/span> [users, setUsers] &lt;span style="color:#ff6ac1">=&lt;/span> useState([]);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">const&lt;/span> [loading, setLoading] &lt;span style="color:#ff6ac1">=&lt;/span> useState(&lt;span style="color:#ff6ac1">true&lt;/span>);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">const&lt;/span> [error, setError] &lt;span style="color:#ff6ac1">=&lt;/span> useState(&lt;span style="color:#ff6ac1">null&lt;/span>);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">const&lt;/span> [filter, setFilter] &lt;span style="color:#ff6ac1">=&lt;/span> useState(&lt;span style="color:#5af78e">&amp;#34;&amp;#34;&lt;/span>);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">const&lt;/span> [sortBy, setSortBy] &lt;span style="color:#ff6ac1">=&lt;/span> useState(&lt;span style="color:#5af78e">&amp;#34;name&amp;#34;&lt;/span>);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">const&lt;/span> [page, setPage] &lt;span style="color:#ff6ac1">=&lt;/span> useState(&lt;span style="color:#ff9f43">1&lt;/span>);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">const&lt;/span> [totalPages, setTotalPages] &lt;span style="color:#ff6ac1">=&lt;/span> useState(&lt;span style="color:#ff9f43">1&lt;/span>);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> useEffect(() &lt;span style="color:#ff6ac1">=&amp;gt;&lt;/span> {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> fetchUsers();
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }, [filter, sortBy, page]);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">const&lt;/span> fetchUsers &lt;span style="color:#ff6ac1">=&lt;/span> &lt;span style="color:#ff6ac1">async&lt;/span> () &lt;span style="color:#ff6ac1">=&amp;gt;&lt;/span> {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">try&lt;/span> {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> setLoading(&lt;span style="color:#ff6ac1">true&lt;/span>);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">const&lt;/span> response &lt;span style="color:#ff6ac1">=&lt;/span> &lt;span style="color:#ff6ac1">await&lt;/span> fetch(
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#5af78e">`/api/users?filter=&lt;/span>&lt;span style="color:#5af78e">${&lt;/span>filter&lt;span style="color:#5af78e">}&lt;/span>&lt;span style="color:#5af78e">&amp;amp;sort=&lt;/span>&lt;span style="color:#5af78e">${&lt;/span>sortBy&lt;span style="color:#5af78e">}&lt;/span>&lt;span style="color:#5af78e">&amp;amp;page=&lt;/span>&lt;span style="color:#5af78e">${&lt;/span>page&lt;span style="color:#5af78e">}&lt;/span>&lt;span style="color:#5af78e">`&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> );
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">const&lt;/span> data &lt;span style="color:#ff6ac1">=&lt;/span> &lt;span style="color:#ff6ac1">await&lt;/span> response.json();
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> setUsers(data.users);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> setTotalPages(data.totalPages);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> } &lt;span style="color:#ff6ac1">catch&lt;/span> (err) {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> setError(err.message);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> } &lt;span style="color:#ff6ac1">finally&lt;/span> {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> setLoading(&lt;span style="color:#ff6ac1">false&lt;/span>);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> };
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">const&lt;/span> handleFilterChange &lt;span style="color:#ff6ac1">=&lt;/span> (e) &lt;span style="color:#ff6ac1">=&amp;gt;&lt;/span> setFilter(e.target.value);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">const&lt;/span> handleSortChange &lt;span style="color:#ff6ac1">=&lt;/span> (e) &lt;span style="color:#ff6ac1">=&amp;gt;&lt;/span> setSortBy(e.target.value);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">const&lt;/span> handlePageChange &lt;span style="color:#ff6ac1">=&lt;/span> (newPage) &lt;span style="color:#ff6ac1">=&amp;gt;&lt;/span> setPage(newPage);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">if&lt;/span> (loading) &lt;span style="color:#ff6ac1">return&lt;/span> &amp;lt;&lt;span style="color:#ff6ac1">LoadingSpinner&lt;/span> /&amp;gt;;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">if&lt;/span> (error) &lt;span style="color:#ff6ac1">return&lt;/span> &amp;lt;&lt;span style="color:#ff6ac1">ErrorMessage&lt;/span> &lt;span style="color:#57c7ff">error&lt;/span>&lt;span style="color:#ff6ac1">=&lt;/span>{error} /&amp;gt;;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">return&lt;/span> (
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#ff6ac1">div&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#ff6ac1">FilterBar&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#57c7ff">filter&lt;/span>&lt;span style="color:#ff6ac1">=&lt;/span>{filter}
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#57c7ff">onFilterChange&lt;/span>&lt;span style="color:#ff6ac1">=&lt;/span>{handleFilterChange}
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#57c7ff">sortBy&lt;/span>&lt;span style="color:#ff6ac1">=&lt;/span>{sortBy}
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#57c7ff">onSortChange&lt;/span>&lt;span style="color:#ff6ac1">=&lt;/span>{handleSortChange}
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> /&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#ff6ac1">UserList&lt;/span> &lt;span style="color:#57c7ff">users&lt;/span>&lt;span style="color:#ff6ac1">=&lt;/span>{users} /&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#ff6ac1">Pagination&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#57c7ff">currentPage&lt;/span>&lt;span style="color:#ff6ac1">=&lt;/span>{page}
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#57c7ff">totalPages&lt;/span>&lt;span style="color:#ff6ac1">=&lt;/span>{totalPages}
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#57c7ff">onPageChange&lt;/span>&lt;span style="color:#ff6ac1">=&lt;/span>{handlePageChange}
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> /&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;/&lt;span style="color:#ff6ac1">div&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> );
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>};
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>This component isn&amp;rsquo;t terrible, but it&amp;rsquo;s not great either. It&amp;rsquo;s doing too much, handling too many concerns, and will be difficult to maintain. Yet, it&amp;rsquo;s exactly the kind of component we write when we&amp;rsquo;re under pressure or trying to move fast.&lt;/p></description></item><item><title>Introducing HTML Helpers for Elm</title><link>https://cekrem.github.io/posts/introducing-html-helpers-for-elm/</link><pubDate>Tue, 06 May 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/introducing-html-helpers-for-elm/</guid><description>&lt;p>As I continue to build more Elm applications, I find myself creating small utility functions to overcome common pain points. I&amp;rsquo;m a big fan of abstracting away repetitive patterns into reusable, well-named functions. Today, I&amp;rsquo;m happy to announce the release of my first public Elm package: &lt;a href="https://package.elm-lang.org/packages/cekrem/html-helpers/latest/" class="external-link" target="_blank" rel="noopener">html-helpers&lt;/a>.&lt;/p>
-&lt;h2 id="whats-the-problem">
+ &lt;a class="heading-link" href="#the-cognitive-load-trap"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Consider this common scenario:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-tsx" data-lang="tsx"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#ff6ac1"&gt;const&lt;/span&gt; UserDashboard &lt;span style="color:#ff6ac1"&gt;=&lt;/span&gt; () &lt;span style="color:#ff6ac1"&gt;=&amp;gt;&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ff6ac1"&gt;const&lt;/span&gt; [users, setUsers] &lt;span style="color:#ff6ac1"&gt;=&lt;/span&gt; useState([]);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ff6ac1"&gt;const&lt;/span&gt; [loading, setLoading] &lt;span style="color:#ff6ac1"&gt;=&lt;/span&gt; useState(&lt;span style="color:#ff6ac1"&gt;true&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ff6ac1"&gt;const&lt;/span&gt; [error, setError] &lt;span style="color:#ff6ac1"&gt;=&lt;/span&gt; useState(&lt;span style="color:#ff6ac1"&gt;null&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ff6ac1"&gt;const&lt;/span&gt; [filter, setFilter] &lt;span style="color:#ff6ac1"&gt;=&lt;/span&gt; useState(&lt;span style="color:#5af78e"&gt;&amp;#34;&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ff6ac1"&gt;const&lt;/span&gt; [sortBy, setSortBy] &lt;span style="color:#ff6ac1"&gt;=&lt;/span&gt; useState(&lt;span style="color:#5af78e"&gt;&amp;#34;name&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ff6ac1"&gt;const&lt;/span&gt; [page, setPage] &lt;span style="color:#ff6ac1"&gt;=&lt;/span&gt; useState(&lt;span style="color:#ff9f43"&gt;1&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ff6ac1"&gt;const&lt;/span&gt; [totalPages, setTotalPages] &lt;span style="color:#ff6ac1"&gt;=&lt;/span&gt; useState(&lt;span style="color:#ff9f43"&gt;1&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; useEffect(() &lt;span style="color:#ff6ac1"&gt;=&amp;gt;&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; fetchUsers();
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }, [filter, sortBy, page]);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ff6ac1"&gt;const&lt;/span&gt; fetchUsers &lt;span style="color:#ff6ac1"&gt;=&lt;/span&gt; &lt;span style="color:#ff6ac1"&gt;async&lt;/span&gt; () &lt;span style="color:#ff6ac1"&gt;=&amp;gt;&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ff6ac1"&gt;try&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; setLoading(&lt;span style="color:#ff6ac1"&gt;true&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ff6ac1"&gt;const&lt;/span&gt; response &lt;span style="color:#ff6ac1"&gt;=&lt;/span&gt; &lt;span style="color:#ff6ac1"&gt;await&lt;/span&gt; fetch(
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#5af78e"&gt;`/api/users?filter=&lt;/span&gt;&lt;span style="color:#5af78e"&gt;${&lt;/span&gt;filter&lt;span style="color:#5af78e"&gt;}&lt;/span&gt;&lt;span style="color:#5af78e"&gt;&amp;amp;sort=&lt;/span&gt;&lt;span style="color:#5af78e"&gt;${&lt;/span&gt;sortBy&lt;span style="color:#5af78e"&gt;}&lt;/span&gt;&lt;span style="color:#5af78e"&gt;&amp;amp;page=&lt;/span&gt;&lt;span style="color:#5af78e"&gt;${&lt;/span&gt;page&lt;span style="color:#5af78e"&gt;}&lt;/span&gt;&lt;span style="color:#5af78e"&gt;`&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; );
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ff6ac1"&gt;const&lt;/span&gt; data &lt;span style="color:#ff6ac1"&gt;=&lt;/span&gt; &lt;span style="color:#ff6ac1"&gt;await&lt;/span&gt; response.json();
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; setUsers(data.users);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; setTotalPages(data.totalPages);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; } &lt;span style="color:#ff6ac1"&gt;catch&lt;/span&gt; (err) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; setError(err.message);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; } &lt;span style="color:#ff6ac1"&gt;finally&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; setLoading(&lt;span style="color:#ff6ac1"&gt;false&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; };
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ff6ac1"&gt;const&lt;/span&gt; handleFilterChange &lt;span style="color:#ff6ac1"&gt;=&lt;/span&gt; (e) &lt;span style="color:#ff6ac1"&gt;=&amp;gt;&lt;/span&gt; setFilter(e.target.value);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ff6ac1"&gt;const&lt;/span&gt; handleSortChange &lt;span style="color:#ff6ac1"&gt;=&lt;/span&gt; (e) &lt;span style="color:#ff6ac1"&gt;=&amp;gt;&lt;/span&gt; setSortBy(e.target.value);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ff6ac1"&gt;const&lt;/span&gt; handlePageChange &lt;span style="color:#ff6ac1"&gt;=&lt;/span&gt; (newPage) &lt;span style="color:#ff6ac1"&gt;=&amp;gt;&lt;/span&gt; setPage(newPage);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ff6ac1"&gt;if&lt;/span&gt; (loading) &lt;span style="color:#ff6ac1"&gt;return&lt;/span&gt; &amp;lt;&lt;span style="color:#ff6ac1"&gt;LoadingSpinner&lt;/span&gt; /&amp;gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ff6ac1"&gt;if&lt;/span&gt; (error) &lt;span style="color:#ff6ac1"&gt;return&lt;/span&gt; &amp;lt;&lt;span style="color:#ff6ac1"&gt;ErrorMessage&lt;/span&gt; &lt;span style="color:#57c7ff"&gt;error&lt;/span&gt;&lt;span style="color:#ff6ac1"&gt;=&lt;/span&gt;{error} /&amp;gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ff6ac1"&gt;return&lt;/span&gt; (
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &amp;lt;&lt;span style="color:#ff6ac1"&gt;div&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &amp;lt;&lt;span style="color:#ff6ac1"&gt;FilterBar&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#57c7ff"&gt;filter&lt;/span&gt;&lt;span style="color:#ff6ac1"&gt;=&lt;/span&gt;{filter}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#57c7ff"&gt;onFilterChange&lt;/span&gt;&lt;span style="color:#ff6ac1"&gt;=&lt;/span&gt;{handleFilterChange}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#57c7ff"&gt;sortBy&lt;/span&gt;&lt;span style="color:#ff6ac1"&gt;=&lt;/span&gt;{sortBy}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#57c7ff"&gt;onSortChange&lt;/span&gt;&lt;span style="color:#ff6ac1"&gt;=&lt;/span&gt;{handleSortChange}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; /&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &amp;lt;&lt;span style="color:#ff6ac1"&gt;UserList&lt;/span&gt; &lt;span style="color:#57c7ff"&gt;users&lt;/span&gt;&lt;span style="color:#ff6ac1"&gt;=&lt;/span&gt;{users} /&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &amp;lt;&lt;span style="color:#ff6ac1"&gt;Pagination&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#57c7ff"&gt;currentPage&lt;/span&gt;&lt;span style="color:#ff6ac1"&gt;=&lt;/span&gt;{page}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#57c7ff"&gt;totalPages&lt;/span&gt;&lt;span style="color:#ff6ac1"&gt;=&lt;/span&gt;{totalPages}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#57c7ff"&gt;onPageChange&lt;/span&gt;&lt;span style="color:#ff6ac1"&gt;=&lt;/span&gt;{handlePageChange}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; /&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &amp;lt;/&lt;span style="color:#ff6ac1"&gt;div&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; );
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;};
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This component isn&amp;rsquo;t terrible, but it&amp;rsquo;s not great either. It&amp;rsquo;s doing too much, handling too many concerns, and will be difficult to maintain. Yet, it&amp;rsquo;s exactly the kind of component we write when we&amp;rsquo;re under pressure or trying to move fast.&lt;/p&gt;</description></item><item><title>Introducing HTML Helpers for Elm</title><link>https://cekrem.github.io/posts/introducing-html-helpers-for-elm/</link><pubDate>Tue, 06 May 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/introducing-html-helpers-for-elm/</guid><description>&lt;p&gt;As I continue to build more Elm applications, I find myself creating small utility functions to overcome common pain points. I&amp;rsquo;m a big fan of abstracting away repetitive patterns into reusable, well-named functions. Today, I&amp;rsquo;m happy to announce the release of my first public Elm package: &lt;a href="https://package.elm-lang.org/packages/cekrem/html-helpers/latest/" class="external-link" target="_blank" rel="noopener"&gt;html-helpers&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id="whats-the-problem"&gt;
  What&amp;rsquo;s the Problem?
- &lt;a class="heading-link" href="#whats-the-problem">
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
- &lt;span class="sr-only">Link to heading&lt;/span>
- &lt;/a>
-&lt;/h2>
-&lt;p>Elm&amp;rsquo;s HTML API is quite straightforward - you create HTML elements as functions, pass them attributes and children, and compose them together. But a few cases come up repeatedly that can be awkward:&lt;/p></description></item><item><title>Coding as Craft: Going Back to the Old Gym</title><link>https://cekrem.github.io/posts/coding-as-craft-going-back-to-the-old-gym/</link><pubDate>Tue, 22 Apr 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/coding-as-craft-going-back-to-the-old-gym/</guid><description>&lt;p>Recently, &lt;a href="https://x.com/tobi/status/1909231499448401946" class="external-link" target="_blank" rel="noopener">Shopify&amp;rsquo;s CEO Tobi Lütke shared his thoughts on AI&amp;rsquo;s role in coding&lt;/a>, stating that &amp;ldquo;reflexive AI usage is now a baseline expectation at Shopify.&amp;rdquo; The gist of his message was that AI is revolutionizing how we work, and everybody should jump on board this train or risk being left behind. I&amp;rsquo;m paraphrasing a bit, but not much – check out the post for complete context and content.&lt;/p>
-&lt;p>This struck a chord with me, but not in the way he intended. In a Slack conversation with fellow Elm engineers, I found myself typing:&lt;/p></description></item><item><title>React Reconciliation: The Hidden Engine Behind Your Components</title><link>https://cekrem.github.io/posts/react-reconciliation-deep-dive/</link><pubDate>Tue, 08 Apr 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/react-reconciliation-deep-dive/</guid><description>&lt;h5 id="update-while-simplifying-a-complex-code-example-shortly-before-publishing-i-messed-up-some-details-thanks-to-reader-feedback-for-pointing-this-out-im-very-grateful-i-also-messed-up-an-internal-link-but-thats-fixed-as-well-thanks-again">
+ &lt;a class="heading-link" href="#whats-the-problem"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Elm&amp;rsquo;s HTML API is quite straightforward - you create HTML elements as functions, pass them attributes and children, and compose them together. But a few cases come up repeatedly that can be awkward:&lt;/p&gt;</description></item><item><title>Coding as Craft: Going Back to the Old Gym</title><link>https://cekrem.github.io/posts/coding-as-craft-going-back-to-the-old-gym/</link><pubDate>Tue, 22 Apr 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/coding-as-craft-going-back-to-the-old-gym/</guid><description>&lt;p&gt;Recently, &lt;a href="https://x.com/tobi/status/1909231499448401946" class="external-link" target="_blank" rel="noopener"&gt;Shopify&amp;rsquo;s CEO Tobi Lütke shared his thoughts on AI&amp;rsquo;s role in coding&lt;/a&gt;, stating that &amp;ldquo;reflexive AI usage is now a baseline expectation at Shopify.&amp;rdquo; The gist of his message was that AI is revolutionizing how we work, and everybody should jump on board this train or risk being left behind. I&amp;rsquo;m paraphrasing a bit, but not much – check out the post for complete context and content.&lt;/p&gt;
+&lt;p&gt;This struck a chord with me, but not in the way he intended. In a Slack conversation with fellow Elm engineers, I found myself typing:&lt;/p&gt;</description></item><item><title>React Reconciliation: The Hidden Engine Behind Your Components</title><link>https://cekrem.github.io/posts/react-reconciliation-deep-dive/</link><pubDate>Tue, 08 Apr 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/react-reconciliation-deep-dive/</guid><description>&lt;h5 id="update-while-simplifying-a-complex-code-example-shortly-before-publishing-i-messed-up-some-details-thanks-to-reader-feedback-for-pointing-this-out-im-very-grateful-i-also-messed-up-an-internal-link-but-thats-fixed-as-well-thanks-again"&gt;
  Update: While simplifying a complex code example shortly before publishing, I messed up some details. Thanks to reader feedback for pointing this out, I&amp;rsquo;m very grateful! I also messed up an internal link, but that&amp;rsquo;s fixed as well. Thanks again
- &lt;a class="heading-link" href="#update-while-simplifying-a-complex-code-example-shortly-before-publishing-i-messed-up-some-details-thanks-to-reader-feedback-for-pointing-this-out-im-very-grateful-i-also-messed-up-an-internal-link-but-thats-fixed-as-well-thanks-again">
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
- &lt;span class="sr-only">Link to heading&lt;/span>
- &lt;/a>
-&lt;/h5>
-&lt;h2 id="the-reconciliation-engine">
+ &lt;a class="heading-link" href="#update-while-simplifying-a-complex-code-example-shortly-before-publishing-i-messed-up-some-details-thanks-to-reader-feedback-for-pointing-this-out-im-very-grateful-i-also-messed-up-an-internal-link-but-thats-fixed-as-well-thanks-again"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h5&gt;
+&lt;h2 id="the-reconciliation-engine"&gt;
  The Reconciliation Engine
- &lt;a class="heading-link" href="#the-reconciliation-engine">
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
- &lt;span class="sr-only">Link to heading&lt;/span>
- &lt;/a>
-&lt;/h2>
-&lt;p>In my previous articles (&lt;a href="https://cekrem.github.io/posts/beyond-react-memo-smarter-performance-optimization/" >1&lt;/a>, &lt;a href="https://cekrem.github.io/posts/react-memo-when-it-helps-when-it-hurts/" >2&lt;/a>), I explored how &lt;code>React.memo&lt;/code> works and smarter ways to optimize performance through composition. But to truly master React performance, we need to understand the engine that powers it all: React&amp;rsquo;s reconciliation algorithm.&lt;/p></description></item><item><title>React.memo Demystified: When It Helps and When It Hurts</title><link>https://cekrem.github.io/posts/react-memo-when-it-helps-when-it-hurts/</link><pubDate>Wed, 02 Apr 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/react-memo-when-it-helps-when-it-hurts/</guid><description>&lt;h2 id="the-promise-of-memoization">
+ &lt;a class="heading-link" href="#the-reconciliation-engine"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;In my previous articles (&lt;a href="https://cekrem.github.io/posts/beyond-react-memo-smarter-performance-optimization/" &gt;1&lt;/a&gt;, &lt;a href="https://cekrem.github.io/posts/react-memo-when-it-helps-when-it-hurts/" &gt;2&lt;/a&gt;), I explored how &lt;code&gt;React.memo&lt;/code&gt; works and smarter ways to optimize performance through composition. But to truly master React performance, we need to understand the engine that powers it all: React&amp;rsquo;s reconciliation algorithm.&lt;/p&gt;</description></item><item><title>React.memo Demystified: When It Helps and When It Hurts</title><link>https://cekrem.github.io/posts/react-memo-when-it-helps-when-it-hurts/</link><pubDate>Wed, 02 Apr 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/react-memo-when-it-helps-when-it-hurts/</guid><description>&lt;h2 id="the-promise-of-memoization"&gt;
  The Promise of Memoization
- &lt;a class="heading-link" href="#the-promise-of-memoization">
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
- &lt;span class="sr-only">Link to heading&lt;/span>
- &lt;/a>
-&lt;/h2>
-&lt;p>When React applications start to slow down, &lt;code>React.memo&lt;/code>, &lt;code>useMemo&lt;/code>, and &lt;code>useCallback&lt;/code> are often the first tools developers reach for. After all, preventing unnecessary re-renders seems like a straightforward path to better performance. But in the React ecosystem, memoization is far more complex than it first appears.&lt;/p>
-&lt;p>In this post, we&amp;rsquo;ll look at how these tools actually work under the hood, the subtle ways they can fail, and when they&amp;rsquo;re truly beneficial versus when they&amp;rsquo;re just adding unnecessary complexity.&lt;/p></description></item><item><title>Introducing `content-visibility: auto` - A Hidden Performance Gem</title><link>https://cekrem.github.io/posts/content-visibility-auto-performance/</link><pubDate>Wed, 26 Mar 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/content-visibility-auto-performance/</guid><description>&lt;h2 id="introduction">
+ &lt;a class="heading-link" href="#the-promise-of-memoization"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;When React applications start to slow down, &lt;code&gt;React.memo&lt;/code&gt;, &lt;code&gt;useMemo&lt;/code&gt;, and &lt;code&gt;useCallback&lt;/code&gt; are often the first tools developers reach for. After all, preventing unnecessary re-renders seems like a straightforward path to better performance. But in the React ecosystem, memoization is far more complex than it first appears.&lt;/p&gt;
+&lt;p&gt;In this post, we&amp;rsquo;ll look at how these tools actually work under the hood, the subtle ways they can fail, and when they&amp;rsquo;re truly beneficial versus when they&amp;rsquo;re just adding unnecessary complexity.&lt;/p&gt;</description></item><item><title>Introducing `content-visibility: auto` - A Hidden Performance Gem</title><link>https://cekrem.github.io/posts/content-visibility-auto-performance/</link><pubDate>Wed, 26 Mar 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/content-visibility-auto-performance/</guid><description>&lt;h2 id="introduction"&gt;
  Introduction
- &lt;a class="heading-link" href="#introduction">
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
- &lt;span class="sr-only">Link to heading&lt;/span>
- &lt;/a>
-&lt;/h2>
-&lt;p>When dealing with large lists or complex DOM structures, performance optimization often feels like a complex puzzle. But sometimes, the simplest solutions are the most effective. Enter &lt;code>content-visibility: auto&lt;/code> - a CSS property that can dramatically improve rendering performance with minimal effort.&lt;/p>
-&lt;p>You can (and IMHO should) read all about it &lt;a href="https://developer.mozilla.org/en-US/docs/Web/CSS/content-visibility" class="external-link" target="_blank" rel="noopener">here&lt;/a>! 🤓&lt;/p>
-&lt;h2 id="the-magic-of-content-visibility-auto">
+ &lt;a class="heading-link" href="#introduction"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;When dealing with large lists or complex DOM structures, performance optimization often feels like a complex puzzle. But sometimes, the simplest solutions are the most effective. Enter &lt;code&gt;content-visibility: auto&lt;/code&gt; - a CSS property that can dramatically improve rendering performance with minimal effort.&lt;/p&gt;
+&lt;p&gt;You can (and IMHO should) read all about it &lt;a href="https://developer.mozilla.org/en-US/docs/Web/CSS/content-visibility" class="external-link" target="_blank" rel="noopener"&gt;here&lt;/a&gt;! 🤓&lt;/p&gt;
+&lt;h2 id="the-magic-of-content-visibility-auto"&gt;
  The Magic of content-visibility: auto
- &lt;a class="heading-link" href="#the-magic-of-content-visibility-auto">
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
- &lt;span class="sr-only">Link to heading&lt;/span>
- &lt;/a>
-&lt;/h2>
-&lt;p>&lt;code>content-visibility: auto&lt;/code> tells the browser to skip rendering elements that are not currently visible in the viewport. It&amp;rsquo;s like having a virtual scroll implementation, but without the complexity of managing scroll positions or item heights manually.&lt;/p></description></item><item><title>Building Better UI Components: Elm Ports with Web Components</title><link>https://cekrem.github.io/posts/elm-ports-with-web-components/</link><pubDate>Wed, 19 Mar 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/elm-ports-with-web-components/</guid><description>&lt;p>One of the most common questions I get about Elm is: &amp;ldquo;How do I integrate it with existing JavaScript ecosystems?&amp;rdquo; While Elm&amp;rsquo;s isolation is a strength, real-world projects often require working with external libraries, APIs, or UI components. Doing incremental migration is also the recommended way to introduce Elm, and luckily there are may ways to accomplish this.&lt;/p>
-&lt;p>Today, I&amp;rsquo;ll show you how to combine two powerful technologies:&lt;/p>
-&lt;ol>
-&lt;li>&lt;strong>Elm Ports&lt;/strong>: The official way to communicate between Elm and JavaScript&lt;/li>
-&lt;li>&lt;strong>Web Components&lt;/strong>: Standard, framework-agnostic UI components&lt;/li>
-&lt;/ol>
-&lt;p>This combination gives us the best of both worlds: Elm&amp;rsquo;s type safety and predictable architecture alongside the reusability and interoperability of Web Components. Let&amp;rsquo;s dive in!&lt;/p></description></item><item><title>Feedback.one: A Refreshing Take on User Feedback Built with Elm and Rust</title><link>https://cekrem.github.io/posts/feedback-one-elm-rust-feedback-widget/</link><pubDate>Thu, 13 Mar 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/feedback-one-elm-rust-feedback-widget/</guid><description>&lt;p>I recently added a new feedback widget to this site – &lt;a href="https://feedback.one/" class="external-link" target="_blank" rel="noopener">Feedback.one&lt;/a> – and I&amp;rsquo;m impressed enough with it that I thought it deserved its own post. Beyond being a useful tool, it&amp;rsquo;s also an excellent example of how functional programming languages like Elm can shine in production environments.&lt;/p>
-&lt;h2 id="what-is-feedbackone">
+ &lt;a class="heading-link" href="#the-magic-of-content-visibility-auto"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;content-visibility: auto&lt;/code&gt; tells the browser to skip rendering elements that are not currently visible in the viewport. It&amp;rsquo;s like having a virtual scroll implementation, but without the complexity of managing scroll positions or item heights manually.&lt;/p&gt;</description></item><item><title>Building Better UI Components: Elm Ports with Web Components</title><link>https://cekrem.github.io/posts/elm-ports-with-web-components/</link><pubDate>Wed, 19 Mar 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/elm-ports-with-web-components/</guid><description>&lt;p&gt;One of the most common questions I get about Elm is: &amp;ldquo;How do I integrate it with existing JavaScript ecosystems?&amp;rdquo; While Elm&amp;rsquo;s isolation is a strength, real-world projects often require working with external libraries, APIs, or UI components. Doing incremental migration is also the recommended way to introduce Elm, and luckily there are may ways to accomplish this.&lt;/p&gt;
+&lt;p&gt;Today, I&amp;rsquo;ll show you how to combine two powerful technologies:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Elm Ports&lt;/strong&gt;: The official way to communicate between Elm and JavaScript&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Web Components&lt;/strong&gt;: Standard, framework-agnostic UI components&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;This combination gives us the best of both worlds: Elm&amp;rsquo;s type safety and predictable architecture alongside the reusability and interoperability of Web Components. Let&amp;rsquo;s dive in!&lt;/p&gt;</description></item><item><title>Feedback.one: A Refreshing Take on User Feedback Built with Elm and Rust</title><link>https://cekrem.github.io/posts/feedback-one-elm-rust-feedback-widget/</link><pubDate>Thu, 13 Mar 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/feedback-one-elm-rust-feedback-widget/</guid><description>&lt;p&gt;I recently added a new feedback widget to this site – &lt;a href="https://feedback.one/" class="external-link" target="_blank" rel="noopener"&gt;Feedback.one&lt;/a&gt; – and I&amp;rsquo;m impressed enough with it that I thought it deserved its own post. Beyond being a useful tool, it&amp;rsquo;s also an excellent example of how functional programming languages like Elm can shine in production environments.&lt;/p&gt;
+&lt;h2 id="what-is-feedbackone"&gt;
  What is Feedback.one?
- &lt;a class="heading-link" href="#what-is-feedbackone">
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
- &lt;span class="sr-only">Link to heading&lt;/span>
- &lt;/a>
-&lt;/h2>
-&lt;p>At its core, Feedback.one is a simple but powerful tool that adds a non-intrusive feedback button to your website. With one line of code, you get:&lt;/p></description></item><item><title>Beyond React.memo: Smarter Ways to Optimize Performance</title><link>https://cekrem.github.io/posts/beyond-react-memo-smarter-performance-optimization/</link><pubDate>Tue, 11 Mar 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/beyond-react-memo-smarter-performance-optimization/</guid><description>&lt;h2 id="introduction">
+ &lt;a class="heading-link" href="#what-is-feedbackone"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;At its core, Feedback.one is a simple but powerful tool that adds a non-intrusive feedback button to your website. With one line of code, you get:&lt;/p&gt;</description></item><item><title>Beyond React.memo: Smarter Ways to Optimize Performance</title><link>https://cekrem.github.io/posts/beyond-react-memo-smarter-performance-optimization/</link><pubDate>Tue, 11 Mar 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/beyond-react-memo-smarter-performance-optimization/</guid><description>&lt;h2 id="introduction"&gt;
  Introduction
- &lt;a class="heading-link" href="#introduction">
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
- &lt;span class="sr-only">Link to heading&lt;/span>
- &lt;/a>
-&lt;/h2>
-&lt;p>When it comes to React performance optimization, &lt;code>React.memo&lt;/code> is often the first tool developers reach for. It&amp;rsquo;s the hammer we grab when we notice re-render issues, and suddenly everything looks like a nail. But what if I told you that in many cases, there are simpler, more elegant solutions that align better with React&amp;rsquo;s compositional nature?&lt;/p>
-&lt;p>Today, I want to explore some fundamental concepts about how React renders components and share composition patterns that can dramatically improve performance without the complexity and gotchas of memoization.&lt;/p></description></item><item><title>Why I Hope I Get to Write a Lot of Elm Code in 2025</title><link>https://cekrem.github.io/posts/why-i-hope-i-get-to-write-a-lot-of-elm-code-in-2025/</link><pubDate>Tue, 04 Mar 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/why-i-hope-i-get-to-write-a-lot-of-elm-code-in-2025/</guid><description>&lt;p>In a world dominated by React, Vue, and Svelte, it might seem strange to highlight Elm – a niche language that has existed since 2012 but has had fewer releases since then than React has in a year. But right now, when frontend development is becoming increasingly complex, and clients are doing heavy lifting that previously belonged on the other side of an API call, it&amp;rsquo;s worth taking a closer look at what Elm does right.&lt;/p></description></item><item><title>Refactoring Towards Cleaner Boundaries: Lessons from Building a Markdown Blog Engine (Part 3)</title><link>https://cekrem.github.io/posts/refactoring-towards-cleaner-boundaries/</link><pubDate>Tue, 25 Feb 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/refactoring-towards-cleaner-boundaries/</guid><description>&lt;p>In &lt;a href="https://cekrem.github.io/posts/replacing-hugo-with-kotlin-clean-architecture" >part 1&lt;/a>, we laid out our Clean Architecture vision. In &lt;a href="https://cekrem.github.io/posts/double-loop-tdd-blog-engine-pt2" >part 2&lt;/a>, we explored Double Loop TDD. Today, we dive into the &lt;strong>refactoring journey&lt;/strong> that emerged from implementing these principles.&lt;/p>
-&lt;p>The source code at the time of writing is &lt;a href="https://github.com/cekrem/clean-blog/tree/v0.3" class="external-link" target="_blank" rel="noopener">available on GitHub&lt;/a>.&lt;/p>
-&lt;h2 id="the-controller-conundrum">
+ &lt;a class="heading-link" href="#introduction"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;When it comes to React performance optimization, &lt;code&gt;React.memo&lt;/code&gt; is often the first tool developers reach for. It&amp;rsquo;s the hammer we grab when we notice re-render issues, and suddenly everything looks like a nail. But what if I told you that in many cases, there are simpler, more elegant solutions that align better with React&amp;rsquo;s compositional nature?&lt;/p&gt;
+&lt;p&gt;Today, I want to explore some fundamental concepts about how React renders components and share composition patterns that can dramatically improve performance without the complexity and gotchas of memoization.&lt;/p&gt;</description></item><item><title>Why I Hope I Get to Write a Lot of Elm Code in 2025</title><link>https://cekrem.github.io/posts/why-i-hope-i-get-to-write-a-lot-of-elm-code-in-2025/</link><pubDate>Tue, 04 Mar 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/why-i-hope-i-get-to-write-a-lot-of-elm-code-in-2025/</guid><description>&lt;p&gt;In a world dominated by React, Vue, and Svelte, it might seem strange to highlight Elm – a niche language that has existed since 2012 but has had fewer releases since then than React has in a year. But right now, when frontend development is becoming increasingly complex, and clients are doing heavy lifting that previously belonged on the other side of an API call, it&amp;rsquo;s worth taking a closer look at what Elm does right.&lt;/p&gt;</description></item><item><title>Refactoring Towards Cleaner Boundaries: Lessons from Building a Markdown Blog Engine (Part 3)</title><link>https://cekrem.github.io/posts/refactoring-towards-cleaner-boundaries/</link><pubDate>Tue, 25 Feb 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/refactoring-towards-cleaner-boundaries/</guid><description>&lt;p&gt;In &lt;a href="https://cekrem.github.io/posts/replacing-hugo-with-kotlin-clean-architecture" &gt;part 1&lt;/a&gt;, we laid out our Clean Architecture vision. In &lt;a href="https://cekrem.github.io/posts/double-loop-tdd-blog-engine-pt2" &gt;part 2&lt;/a&gt;, we explored Double Loop TDD. Today, we dive into the &lt;strong&gt;refactoring journey&lt;/strong&gt; that emerged from implementing these principles.&lt;/p&gt;
+&lt;p&gt;The source code at the time of writing is &lt;a href="https://github.com/cekrem/clean-blog/tree/v0.3" class="external-link" target="_blank" rel="noopener"&gt;available on GitHub&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id="the-controller-conundrum"&gt;
  The Controller Conundrum
- &lt;a class="heading-link" href="#the-controller-conundrum">
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
- &lt;span class="sr-only">Link to heading&lt;/span>
- &lt;/a>
-&lt;/h2>
-&lt;p>One of the most significant architectural changes in this iteration was moving the &lt;code>ContentController&lt;/code> from the infrastructure layer to the &lt;strong>interface adapters layer&lt;/strong>. This shift better aligns with Clean Architecture principles:&lt;/p></description></item><item><title>Double Loop TDD: Building My Blog Engine the Right Way (part 2)</title><link>https://cekrem.github.io/posts/double-loop-tdd-blog-engine-pt2/</link><pubDate>Tue, 18 Feb 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/double-loop-tdd-blog-engine-pt2/</guid><description>&lt;h2 id="from-hugo-to-kotlin-the-journey-continues">
+ &lt;a class="heading-link" href="#the-controller-conundrum"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;One of the most significant architectural changes in this iteration was moving the &lt;code&gt;ContentController&lt;/code&gt; from the infrastructure layer to the &lt;strong&gt;interface adapters layer&lt;/strong&gt;. This shift better aligns with Clean Architecture principles:&lt;/p&gt;</description></item><item><title>Double Loop TDD: Building My Blog Engine the Right Way (part 2)</title><link>https://cekrem.github.io/posts/double-loop-tdd-blog-engine-pt2/</link><pubDate>Tue, 18 Feb 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/double-loop-tdd-blog-engine-pt2/</guid><description>&lt;h2 id="from-hugo-to-kotlin-the-journey-continues"&gt;
  From Hugo to Kotlin: The Journey Continues
- &lt;a class="heading-link" href="#from-hugo-to-kotlin-the-journey-continues">
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
- &lt;span class="sr-only">Link to heading&lt;/span>
- &lt;/a>
-&lt;/h2>
-&lt;p>In my &lt;a href="https://cekrem.github.io/posts/replacing-hugo-with-kotlin-clean-architecture" >previous post&lt;/a>, embarked on a bold and ambitious journey to replace Hugo with a custom Kotlin-based blog engine built using Clean Architecture principles (to the letter!). Today, I want to dive deeper into the development process, specifically how I&amp;rsquo;m using &lt;strong>Double Loop TDD&lt;/strong> to ensure the quality and maintainability of the system. Again, I&amp;rsquo;m trying to go all-in, basically to see how far is too far, and to learn and explore.&lt;/p></description></item><item><title>Making a Clean Architecture Blog Engine From Scratch pt 1</title><link>https://cekrem.github.io/posts/replacing-hugo-with-kotlin-clean-architecture/</link><pubDate>Tue, 11 Feb 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/replacing-hugo-with-kotlin-clean-architecture/</guid><description>&lt;h2 id="lets-make-a-blog-engine-ey">
+ &lt;a class="heading-link" href="#from-hugo-to-kotlin-the-journey-continues"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;In my &lt;a href="https://cekrem.github.io/posts/replacing-hugo-with-kotlin-clean-architecture" &gt;previous post&lt;/a&gt;, embarked on a bold and ambitious journey to replace Hugo with a custom Kotlin-based blog engine built using Clean Architecture principles (to the letter!). Today, I want to dive deeper into the development process, specifically how I&amp;rsquo;m using &lt;strong&gt;Double Loop TDD&lt;/strong&gt; to ensure the quality and maintainability of the system. Again, I&amp;rsquo;m trying to go all-in, basically to see how far is too far, and to learn and explore.&lt;/p&gt;</description></item><item><title>Making a Clean Architecture Blog Engine From Scratch pt 1</title><link>https://cekrem.github.io/posts/replacing-hugo-with-kotlin-clean-architecture/</link><pubDate>Tue, 11 Feb 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/replacing-hugo-with-kotlin-clean-architecture/</guid><description>&lt;h2 id="lets-make-a-blog-engine-ey"&gt;
  Let&amp;rsquo;s make a blog engine, ey?
- &lt;a class="heading-link" href="#lets-make-a-blog-engine-ey">
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
- &lt;span class="sr-only">Link to heading&lt;/span>
- &lt;/a>
-&lt;/h2>
-&lt;p>Don&amp;rsquo;t get me wrong - &lt;a href="https://gohugo.io/" class="external-link" target="_blank" rel="noopener">Hugo&lt;/a> (the stuff that I&amp;rsquo;m currently using to drive this site) is great. It&amp;rsquo;s blazing fast, feature-rich, and battle-tested. But as a developer who&amp;rsquo;s been diving deep into Clean Architecture lately (as you might have noticed from my &lt;a href="https://cekrem.github.io/posts/clean-architecture-and-plugins-in-go" >recent&lt;/a> &lt;a href="https://cekrem.github.io/posts/interface-segregation-in-practice" >posts&lt;/a>), I&amp;rsquo;ve been itching to apply these principles to a real project. And what better way to learn than by potentially over-engineering my own blog engine?&lt;/p></description></item><item><title>Single Responsibility Principle in React: The Art of Component Focus</title><link>https://cekrem.github.io/posts/single-responsibility-principle-in-react/</link><pubDate>Tue, 04 Feb 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/single-responsibility-principle-in-react/</guid><description>&lt;h2 id="introduction">
+ &lt;a class="heading-link" href="#lets-make-a-blog-engine-ey"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Don&amp;rsquo;t get me wrong - &lt;a href="https://gohugo.io/" class="external-link" target="_blank" rel="noopener"&gt;Hugo&lt;/a&gt; (the stuff that I&amp;rsquo;m currently using to drive this site) is great. It&amp;rsquo;s blazing fast, feature-rich, and battle-tested. But as a developer who&amp;rsquo;s been diving deep into Clean Architecture lately (as you might have noticed from my &lt;a href="https://cekrem.github.io/posts/clean-architecture-and-plugins-in-go" &gt;recent&lt;/a&gt; &lt;a href="https://cekrem.github.io/posts/interface-segregation-in-practice" &gt;posts&lt;/a&gt;), I&amp;rsquo;ve been itching to apply these principles to a real project. And what better way to learn than by potentially over-engineering my own blog engine?&lt;/p&gt;</description></item><item><title>Single Responsibility Principle in React: The Art of Component Focus</title><link>https://cekrem.github.io/posts/single-responsibility-principle-in-react/</link><pubDate>Tue, 04 Feb 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/single-responsibility-principle-in-react/</guid><description>&lt;h2 id="introduction"&gt;
  Introduction
- &lt;a class="heading-link" href="#introduction">
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
- &lt;span class="sr-only">Link to heading&lt;/span>
- &lt;/a>
-&lt;/h2>
-&lt;p>We&amp;rsquo;ve covered &lt;a href="https://cekrem.github.io/posts/clean-architecture-and-plugins-in-go" >Dependency Inversion&lt;/a>, &lt;a href="https://cekrem.github.io/posts/interface-segregation-in-practice" >Interface Segregation&lt;/a>, &lt;a href="https://cekrem.github.io/posts/liskov-substitution-the-real-meaning-of-inheritance" >Liskov Substitution&lt;/a>, and &lt;a href="https://cekrem.github.io/posts/open-closed-principle-in-react" >Open-Closed&lt;/a>. Now it&amp;rsquo;s time for the foundation of SOLID: the Single Responsibility Principle (SRP).&lt;/p>
-&lt;p>Again, kudos to Uncle Bob for reminding me about the importance of good &lt;strong>software architecture&lt;/strong> in his classic &lt;a href="https://amzn.to/4iAc8o1" class="external-link" target="_blank" rel="noopener">Clean Architecture&lt;/a>! That book is my primary inspiration for this series.&lt;/p>
-&lt;blockquote>
-&lt;p>The Single Responsibility Principle states that a class should have only one reason to change.&lt;/p></description></item><item><title>A Use Case for `UseCase`s in Kotlin</title><link>https://cekrem.github.io/posts/a-use-case-for-usecases-in-kotlin/</link><pubDate>Fri, 31 Jan 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/a-use-case-for-usecases-in-kotlin/</guid><description>&lt;h2 id="my-first-encounter-with-a-kotlin-usecase">
- My First Encounter with a Kotlin &lt;code>UseCase&lt;/code>
- &lt;a class="heading-link" href="#my-first-encounter-with-a-kotlin-usecase">
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
- &lt;span class="sr-only">Link to heading&lt;/span>
- &lt;/a>
-&lt;/h2>
-&lt;p>One of my responsibilities as an Android Developer in Vipps (Mobilepay) was to do tech interviews. After a while, I also made the tech assignments and changed the recruitment process a bit. But in the earlier days, we used a standard &amp;ldquo;build X using Y&amp;rdquo;, where &amp;ldquo;Y&amp;rdquo; was modern Android tools (preferably Compose), and &amp;ldquo;X&amp;rdquo; was some non-descript hello world-ish app that did something I can&amp;rsquo;t for the life of me remember. During one of the tech task evaluations we did prior to an interview, I encountered a strange animal completely unknown to me. A &lt;code>UseCase&lt;/code> class, with an &lt;code>operator fun invoke()&lt;/code> method.&lt;/p></description></item><item><title>Open-Closed Principle in React: Building Extensible Components</title><link>https://cekrem.github.io/posts/open-closed-principle-in-react/</link><pubDate>Tue, 28 Jan 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/open-closed-principle-in-react/</guid><description>&lt;h2 id="introduction">
+ &lt;a class="heading-link" href="#introduction"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;We&amp;rsquo;ve covered &lt;a href="https://cekrem.github.io/posts/clean-architecture-and-plugins-in-go" &gt;Dependency Inversion&lt;/a&gt;, &lt;a href="https://cekrem.github.io/posts/interface-segregation-in-practice" &gt;Interface Segregation&lt;/a&gt;, &lt;a href="https://cekrem.github.io/posts/liskov-substitution-the-real-meaning-of-inheritance" &gt;Liskov Substitution&lt;/a&gt;, and &lt;a href="https://cekrem.github.io/posts/open-closed-principle-in-react" &gt;Open-Closed&lt;/a&gt;. Now it&amp;rsquo;s time for the foundation of SOLID: the Single Responsibility Principle (SRP).&lt;/p&gt;
+&lt;p&gt;Again, kudos to Uncle Bob for reminding me about the importance of good &lt;strong&gt;software architecture&lt;/strong&gt; in his classic &lt;a href="https://amzn.to/4iAc8o1" class="external-link" target="_blank" rel="noopener"&gt;Clean Architecture&lt;/a&gt;! That book is my primary inspiration for this series.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The Single Responsibility Principle states that a class should have only one reason to change.&lt;/p&gt;</description></item><item><title>A Use Case for `UseCase`s in Kotlin</title><link>https://cekrem.github.io/posts/a-use-case-for-usecases-in-kotlin/</link><pubDate>Fri, 31 Jan 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/a-use-case-for-usecases-in-kotlin/</guid><description>&lt;h2 id="my-first-encounter-with-a-kotlin-usecase"&gt;
+ My First Encounter with a Kotlin &lt;code&gt;UseCase&lt;/code&gt;
+ &lt;a class="heading-link" href="#my-first-encounter-with-a-kotlin-usecase"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;One of my responsibilities as an Android Developer in Vipps (Mobilepay) was to do tech interviews. After a while, I also made the tech assignments and changed the recruitment process a bit. But in the earlier days, we used a standard &amp;ldquo;build X using Y&amp;rdquo;, where &amp;ldquo;Y&amp;rdquo; was modern Android tools (preferably Compose), and &amp;ldquo;X&amp;rdquo; was some non-descript hello world-ish app that did something I can&amp;rsquo;t for the life of me remember. During one of the tech task evaluations we did prior to an interview, I encountered a strange animal completely unknown to me. A &lt;code&gt;UseCase&lt;/code&gt; class, with an &lt;code&gt;operator fun invoke()&lt;/code&gt; method.&lt;/p&gt;</description></item><item><title>Open-Closed Principle in React: Building Extensible Components</title><link>https://cekrem.github.io/posts/open-closed-principle-in-react/</link><pubDate>Tue, 28 Jan 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/open-closed-principle-in-react/</guid><description>&lt;h2 id="introduction"&gt;
  Introduction
- &lt;a class="heading-link" href="#introduction">
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
- &lt;span class="sr-only">Link to heading&lt;/span>
- &lt;/a>
-&lt;/h2>
-&lt;p>After exploring &lt;a href="https://cekrem.github.io/posts/clean-architecture-and-plugins-in-go" >Dependency Inversion&lt;/a>, &lt;a href="https://cekrem.github.io/posts/interface-segregation-in-practice" >Interface Segregation&lt;/a>, and &lt;a href="https://cekrem.github.io/posts/liskov-substitution-the-real-meaning-of-inheritance" >Liskov Substitution&lt;/a>, let&amp;rsquo;s tackle the Open-Closed Principle (OCP) in the context of modern React applications.&lt;/p>
-&lt;p>Again, kudos to Uncle Bob for reminding me about the importance of good &lt;strong>software architecture&lt;/strong> in his classic &lt;a href="https://amzn.to/4iAc8o1" class="external-link" target="_blank" rel="noopener">Clean Architecture&lt;/a>! That book is my primary inspiration for this series.&lt;/p>
-&lt;blockquote>
-&lt;p>The Open-Closed Principle states that software entities should be open for extension but closed for modification.&lt;/p></description></item><item><title>Liskov Substitution: The Real Meaning of Inheritance</title><link>https://cekrem.github.io/posts/liskov-substitution-the-real-meaning-of-inheritance/</link><pubDate>Tue, 21 Jan 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/liskov-substitution-the-real-meaning-of-inheritance/</guid><description>&lt;h2 id="introduction">
+ &lt;a class="heading-link" href="#introduction"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;After exploring &lt;a href="https://cekrem.github.io/posts/clean-architecture-and-plugins-in-go" &gt;Dependency Inversion&lt;/a&gt;, &lt;a href="https://cekrem.github.io/posts/interface-segregation-in-practice" &gt;Interface Segregation&lt;/a&gt;, and &lt;a href="https://cekrem.github.io/posts/liskov-substitution-the-real-meaning-of-inheritance" &gt;Liskov Substitution&lt;/a&gt;, let&amp;rsquo;s tackle the Open-Closed Principle (OCP) in the context of modern React applications.&lt;/p&gt;
+&lt;p&gt;Again, kudos to Uncle Bob for reminding me about the importance of good &lt;strong&gt;software architecture&lt;/strong&gt; in his classic &lt;a href="https://amzn.to/4iAc8o1" class="external-link" target="_blank" rel="noopener"&gt;Clean Architecture&lt;/a&gt;! That book is my primary inspiration for this series.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The Open-Closed Principle states that software entities should be open for extension but closed for modification.&lt;/p&gt;</description></item><item><title>Liskov Substitution: The Real Meaning of Inheritance</title><link>https://cekrem.github.io/posts/liskov-substitution-the-real-meaning-of-inheritance/</link><pubDate>Tue, 21 Jan 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/liskov-substitution-the-real-meaning-of-inheritance/</guid><description>&lt;h2 id="introduction"&gt;
  Introduction
- &lt;a class="heading-link" href="#introduction">
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
- &lt;span class="sr-only">Link to heading&lt;/span>
- &lt;/a>
-&lt;/h2>
-&lt;p>After exploring &lt;a href="https://cekrem.github.io/posts/clean-architecture-and-plugins-in-go" >Dependency Inversion&lt;/a> and &lt;a href="https://cekrem.github.io/posts/interface-segregation-in-practice" >Interface Segregation&lt;/a>, let&amp;rsquo;s tackle perhaps the most misunderstood principle of SOLID: The Liskov Substitution Principle (LSP).&lt;/p>
-&lt;p>Again, kudos to Uncle Bob for reminding me about the importance of good &lt;strong>software architecture&lt;/strong> in his classic &lt;a href="https://amzn.to/4iAc8o1" class="external-link" target="_blank" rel="noopener">Clean Architecture&lt;/a>! That book is my primary inspiration for this series. Without clean architecture, we&amp;rsquo;ll all be building firmware (my paraphrased summary).&lt;/p>
-&lt;blockquote>
-&lt;p>The Liskov Substitution Principle states that if S is a subtype of T, then objects of type T may be replaced with objects of type S without altering any of the desirable properties of the program.&lt;/p></description></item><item><title>The One Book (Besides The Bible) I Want My Future Manager to Read</title><link>https://cekrem.github.io/posts/the-one-book-i-want-my-future-manager-to-read/</link><pubDate>Fri, 17 Jan 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/the-one-book-i-want-my-future-manager-to-read/</guid><description>&lt;p>Following up on my &lt;a href="https://cekrem.github.io/posts/books-i-think-software-engineers-should-read" >previous post about books software engineers should read&lt;/a>, I want to highlight one particular book that I believe could revolutionize how we approach work in software development: Cal Newport&amp;rsquo;s &lt;a href="https://amzn.to/4ag23Zy" class="external-link" target="_blank" rel="noopener">&amp;ldquo;Slow Productivity: The Lost Art of Accomplishment Without Burnout&amp;rdquo;&lt;/a>.&lt;/p>
-&lt;h2 id="why-this-book">
+ &lt;a class="heading-link" href="#introduction"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;After exploring &lt;a href="https://cekrem.github.io/posts/clean-architecture-and-plugins-in-go" &gt;Dependency Inversion&lt;/a&gt; and &lt;a href="https://cekrem.github.io/posts/interface-segregation-in-practice" &gt;Interface Segregation&lt;/a&gt;, let&amp;rsquo;s tackle perhaps the most misunderstood principle of SOLID: The Liskov Substitution Principle (LSP).&lt;/p&gt;
+&lt;p&gt;Again, kudos to Uncle Bob for reminding me about the importance of good &lt;strong&gt;software architecture&lt;/strong&gt; in his classic &lt;a href="https://amzn.to/4iAc8o1" class="external-link" target="_blank" rel="noopener"&gt;Clean Architecture&lt;/a&gt;! That book is my primary inspiration for this series. Without clean architecture, we&amp;rsquo;ll all be building firmware (my paraphrased summary).&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The Liskov Substitution Principle states that if S is a subtype of T, then objects of type T may be replaced with objects of type S without altering any of the desirable properties of the program.&lt;/p&gt;</description></item><item><title>The One Book (Besides The Bible) I Want My Future Manager to Read</title><link>https://cekrem.github.io/posts/the-one-book-i-want-my-future-manager-to-read/</link><pubDate>Fri, 17 Jan 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/the-one-book-i-want-my-future-manager-to-read/</guid><description>&lt;p&gt;Following up on my &lt;a href="https://cekrem.github.io/posts/books-i-think-software-engineers-should-read" &gt;previous post about books software engineers should read&lt;/a&gt;, I want to highlight one particular book that I believe could revolutionize how we approach work in software development: Cal Newport&amp;rsquo;s &lt;a href="https://amzn.to/4ag23Zy" class="external-link" target="_blank" rel="noopener"&gt;&amp;ldquo;Slow Productivity: The Lost Art of Accomplishment Without Burnout&amp;rdquo;&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id="why-this-book"&gt;
  Why This Book?
- &lt;a class="heading-link" href="#why-this-book">
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
- &lt;span class="sr-only">Link to heading&lt;/span>
- &lt;/a>
-&lt;/h2>
-&lt;p>In an industry obsessed with &amp;ldquo;moving fast and breaking things,&amp;rdquo; where sprint velocities and story points often overshadow actual value delivery, Newport&amp;rsquo;s concept of Slow Productivity feels like a breath of fresh air. The book presents three core principles that I believe could transform how we approach software development:&lt;/p></description></item><item><title>Interface Segregation: Why Your Interfaces Should Be Small and Focused</title><link>https://cekrem.github.io/posts/interface-segregation-in-practice/</link><pubDate>Tue, 14 Jan 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/interface-segregation-in-practice/</guid><description>&lt;h2 id="introduction">
+ &lt;a class="heading-link" href="#why-this-book"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;In an industry obsessed with &amp;ldquo;moving fast and breaking things,&amp;rdquo; where sprint velocities and story points often overshadow actual value delivery, Newport&amp;rsquo;s concept of Slow Productivity feels like a breath of fresh air. The book presents three core principles that I believe could transform how we approach software development:&lt;/p&gt;</description></item><item><title>Interface Segregation: Why Your Interfaces Should Be Small and Focused</title><link>https://cekrem.github.io/posts/interface-segregation-in-practice/</link><pubDate>Tue, 14 Jan 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/interface-segregation-in-practice/</guid><description>&lt;h2 id="introduction"&gt;
  Introduction
- &lt;a class="heading-link" href="#introduction">
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
- &lt;span class="sr-only">Link to heading&lt;/span>
- &lt;/a>
-&lt;/h2>
-&lt;p>In our &lt;a href="https://cekrem.github.io/posts/clean-architecture-and-plugins-in-go" >previous post&lt;/a>, we explored the Dependency Inversion Principle and how it enables clean, modular architectures. Today, let&amp;rsquo;s dive into another crucial SOLID principle: Interface Segregation.&lt;/p>
-&lt;p>Again, kudos to Uncle Bob for reminding me about the importance of good &lt;strong>software architecture&lt;/strong> in his classic &lt;a href="https://amzn.to/4iAc8o1" class="external-link" target="_blank" rel="noopener">Clean Architecture&lt;/a>! That book is my primary inspiration for this series. Without clean architecture, we&amp;rsquo;ll all be building firmware (my paraphrased summary).&lt;/p></description></item><item><title>Clean Architecture: A Practical Example of Dependency Inversion in Go using Plugins</title><link>https://cekrem.github.io/posts/clean-architecture-and-plugins-in-go/</link><pubDate>Tue, 07 Jan 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/clean-architecture-and-plugins-in-go/</guid><description>&lt;h2 id="introduction">
+ &lt;a class="heading-link" href="#introduction"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;In our &lt;a href="https://cekrem.github.io/posts/clean-architecture-and-plugins-in-go" &gt;previous post&lt;/a&gt;, we explored the Dependency Inversion Principle and how it enables clean, modular architectures. Today, let&amp;rsquo;s dive into another crucial SOLID principle: Interface Segregation.&lt;/p&gt;
+&lt;p&gt;Again, kudos to Uncle Bob for reminding me about the importance of good &lt;strong&gt;software architecture&lt;/strong&gt; in his classic &lt;a href="https://amzn.to/4iAc8o1" class="external-link" target="_blank" rel="noopener"&gt;Clean Architecture&lt;/a&gt;! That book is my primary inspiration for this series. Without clean architecture, we&amp;rsquo;ll all be building firmware (my paraphrased summary).&lt;/p&gt;</description></item><item><title>Clean Architecture: A Practical Example of Dependency Inversion in Go using Plugins</title><link>https://cekrem.github.io/posts/clean-architecture-and-plugins-in-go/</link><pubDate>Tue, 07 Jan 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/clean-architecture-and-plugins-in-go/</guid><description>&lt;h2 id="introduction"&gt;
  Introduction
- &lt;a class="heading-link" href="#introduction">
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
- &lt;span class="sr-only">Link to heading&lt;/span>
- &lt;/a>
-&lt;/h2>
-&lt;p>&lt;strong>Update: this has become a series, the next entry can be found here: &lt;a href="https://cekrem.github.io/posts/interface-segregation-in-practice/" >Interface Segregation: Why Your Interfaces Should Be Small and Focused&lt;/a>&lt;/strong>&lt;/p>
-&lt;p>I&amp;rsquo;ve lately enjoyed revisiting the &lt;a href="//en.wikipedia.org/wiki/SOLID" class="external-link" target="_blank" rel="noopener">SOLID Design Principles&lt;/a>. In the world of software architecture, few principles have stood the test of time like these. I find the &amp;ldquo;Dependency Inversion Principle&amp;rdquo; particularly interesting, as it&amp;rsquo;s one of the few that are either forgotten in modern applications, or drowned in so much over-engineering that the cost/benefit equation is offset anyways.&lt;/p></description></item><item><title>Books I Think Software Engineers Should Read</title><link>https://cekrem.github.io/posts/books-i-think-software-engineers-should-read/</link><pubDate>Wed, 18 Dec 2024 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/books-i-think-software-engineers-should-read/</guid><description>&lt;p>What follows is a non-ordered &amp;amp; non-exhaustive list of great programming books that I&amp;rsquo;d recommend every ambitious software engineer. The language specific ones are obviously not for everyone.&lt;/p>
-&lt;p>Disclaimer: I have not read all of these from cover to cover. I&amp;rsquo;ve read most, but some are on my list of books to read next based on suggestions and/or reviews from people I trust.&lt;/p>
-&lt;h2 id="general">
+ &lt;a class="heading-link" href="#introduction"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Update: this has become a series, the next entry can be found here: &lt;a href="https://cekrem.github.io/posts/interface-segregation-in-practice/" &gt;Interface Segregation: Why Your Interfaces Should Be Small and Focused&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;ve lately enjoyed revisiting the &lt;a href="//en.wikipedia.org/wiki/SOLID" class="external-link" target="_blank" rel="noopener"&gt;SOLID Design Principles&lt;/a&gt;. In the world of software architecture, few principles have stood the test of time like these. I find the &amp;ldquo;Dependency Inversion Principle&amp;rdquo; particularly interesting, as it&amp;rsquo;s one of the few that are either forgotten in modern applications, or drowned in so much over-engineering that the cost/benefit equation is offset anyways.&lt;/p&gt;</description></item><item><title>Books I Think Software Engineers Should Read</title><link>https://cekrem.github.io/posts/books-i-think-software-engineers-should-read/</link><pubDate>Wed, 18 Dec 2024 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/books-i-think-software-engineers-should-read/</guid><description>&lt;p&gt;What follows is a non-ordered &amp;amp; non-exhaustive list of great programming books that I&amp;rsquo;d recommend every ambitious software engineer. The language specific ones are obviously not for everyone.&lt;/p&gt;
+&lt;p&gt;Disclaimer: I have not read all of these from cover to cover. I&amp;rsquo;ve read most, but some are on my list of books to read next based on suggestions and/or reviews from people I trust.&lt;/p&gt;
+&lt;h2 id="general"&gt;
  General
- &lt;a class="heading-link" href="#general">
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
- &lt;span class="sr-only">Link to heading&lt;/span>
- &lt;/a>
-&lt;/h2>
-&lt;ul>
-&lt;li>&lt;a href="https://amzn.to/4gAOaHa" class="external-link" target="_blank" rel="noopener">Deep Work: Rules for Focused Success in a Distracted World&lt;/a> – Not a programming / software engineering book at all per say, but a &lt;em>highly&lt;/em> recommended read regardless. If you read one book on this list, go for this one, for real.&lt;/li>
-&lt;li>&lt;a href="https://amzn.to/3VIleoE" class="external-link" target="_blank" rel="noopener">Clean Code&lt;/a>, &lt;a href="https://amzn.to/3ZZu3Ny" class="external-link" target="_blank" rel="noopener">Clean Code&lt;em>r&lt;/em>&lt;/a> and &lt;a href="https://amzn.to/4iAc8o1" class="external-link" target="_blank" rel="noopener">Clean Architecture&lt;/a> — These Uncle Bob classics are great. I&amp;rsquo;m currently enjoying the architecture one &lt;em>on audible&lt;/em>, that&amp;rsquo;s a first for me with a software engineering book. Simply great, and truly a pleasant read/listen.&lt;/li>
-&lt;li>&lt;a href="https://amzn.to/4gjf4Ud" class="external-link" target="_blank" rel="noopener">The Pragmatic Programmer: Your Journey To Mastery&lt;/a> — A classic, and a good one at that!&lt;/li>
-&lt;li>&lt;a href="https://amzn.to/41GYOrQ" class="external-link" target="_blank" rel="noopener">Staff Engineer: Leadership beyond the management track&lt;/a> — This one I find a tiny bit boring, to be perfectly honest, but still very helpful. Lot&amp;rsquo;s of insight about &amp;ldquo;all the other stuff&amp;rdquo; (not coding).&lt;/li>
-&lt;li>&lt;a href="https://amzn.to/4gjc9ex" class="external-link" target="_blank" rel="noopener">The Effective Engineer: How to Leverage Your Efforts In Software Engineering to Make a Disproportionate and Meaningful Impact&lt;/a> — I haven&amp;rsquo;t read this one yet, but it&amp;rsquo;s been highly recommended to me by trustworthy people. And how about that killer subtitle, ey?&lt;/li>
-&lt;li>&lt;a href="https://amzn.to/4lfGwVD" class="external-link" target="_blank" rel="noopener">A Common-Sense Guide to Data Structures and Algorithms, Second Edition&lt;/a> — A practical approach to understanding data structures and algorithms that focuses on real-world applications rather than academic theory.&lt;/li>
-&lt;li>&lt;a href="https://amzn.to/44B0dQE" class="external-link" target="_blank" rel="noopener">Domain Modeling Made Functional: Tackle Software Complexity with Domain-Driven Design and F#&lt;/a> — Excellent introduction to domain-driven design principles using functional programming concepts, applicable beyond F# to any language.&lt;/li>
-&lt;/ul>
-&lt;h2 id="elm">
+ &lt;a class="heading-link" href="#general"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://amzn.to/4gAOaHa" class="external-link" target="_blank" rel="noopener"&gt;Deep Work: Rules for Focused Success in a Distracted World&lt;/a&gt; – Not a programming / software engineering book at all per say, but a &lt;em&gt;highly&lt;/em&gt; recommended read regardless. If you read one book on this list, go for this one, for real.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://amzn.to/3VIleoE" class="external-link" target="_blank" rel="noopener"&gt;Clean Code&lt;/a&gt;, &lt;a href="https://amzn.to/3ZZu3Ny" class="external-link" target="_blank" rel="noopener"&gt;Clean Code&lt;em&gt;r&lt;/em&gt;&lt;/a&gt; and &lt;a href="https://amzn.to/4iAc8o1" class="external-link" target="_blank" rel="noopener"&gt;Clean Architecture&lt;/a&gt; — These Uncle Bob classics are great. I&amp;rsquo;m currently enjoying the architecture one &lt;em&gt;on audible&lt;/em&gt;, that&amp;rsquo;s a first for me with a software engineering book. Simply great, and truly a pleasant read/listen.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://amzn.to/4gjf4Ud" class="external-link" target="_blank" rel="noopener"&gt;The Pragmatic Programmer: Your Journey To Mastery&lt;/a&gt; — A classic, and a good one at that!&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://amzn.to/41GYOrQ" class="external-link" target="_blank" rel="noopener"&gt;Staff Engineer: Leadership beyond the management track&lt;/a&gt; — This one I find a tiny bit boring, to be perfectly honest, but still very helpful. Lot&amp;rsquo;s of insight about &amp;ldquo;all the other stuff&amp;rdquo; (not coding).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://amzn.to/4gjc9ex" class="external-link" target="_blank" rel="noopener"&gt;The Effective Engineer: How to Leverage Your Efforts In Software Engineering to Make a Disproportionate and Meaningful Impact&lt;/a&gt; — I haven&amp;rsquo;t read this one yet, but it&amp;rsquo;s been highly recommended to me by trustworthy people. And how about that killer subtitle, ey?&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://amzn.to/4lfGwVD" class="external-link" target="_blank" rel="noopener"&gt;A Common-Sense Guide to Data Structures and Algorithms, Second Edition&lt;/a&gt; — A practical approach to understanding data structures and algorithms that focuses on real-world applications rather than academic theory.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://amzn.to/44B0dQE" class="external-link" target="_blank" rel="noopener"&gt;Domain Modeling Made Functional: Tackle Software Complexity with Domain-Driven Design and F#&lt;/a&gt; — Excellent introduction to domain-driven design principles using functional programming concepts, applicable beyond F# to any language.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="elm"&gt;
  Elm
- &lt;a class="heading-link" href="#elm">
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
- &lt;span class="sr-only">Link to heading&lt;/span>
- &lt;/a>
-&lt;/h2>
-&lt;ul>
-&lt;li>&lt;a href="https://amzn.to/4kBLTxA" class="external-link" target="_blank" rel="noopener">Elm in Action&lt;/a> – This is The Book™ on Elm, by Richard Feldman (author of &lt;a href="https://www.roc-lang.org" class="external-link" target="_blank" rel="noopener">the Roc Programming language&lt;/a>). It&amp;rsquo;s simply great. The last few chapters are a tiny bit overwhelming if you&amp;rsquo;re new to Elm, but thankfully &lt;a href="https://elm.land" class="external-link" target="_blank" rel="noopener">Elm Land&lt;/a> solves much of that stuff for you.&lt;/li>
-&lt;li>&lt;a href="https://elm-lang.org/community" class="external-link" target="_blank" rel="noopener">The Elm Community&lt;/a> –Not a book at all, I know, but since this is my all time favorite programming community I can&amp;rsquo;t help but mention it anyways. The Slack, the Discourse, Subreddit – it&amp;rsquo;s all great.&lt;/li>
-&lt;/ul>
-&lt;h2 id="golang">
+ &lt;a class="heading-link" href="#elm"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://amzn.to/4kBLTxA" class="external-link" target="_blank" rel="noopener"&gt;Elm in Action&lt;/a&gt; – This is The Book™ on Elm, by Richard Feldman (author of &lt;a href="https://www.roc-lang.org" class="external-link" target="_blank" rel="noopener"&gt;the Roc Programming language&lt;/a&gt;). It&amp;rsquo;s simply great. The last few chapters are a tiny bit overwhelming if you&amp;rsquo;re new to Elm, but thankfully &lt;a href="https://elm.land" class="external-link" target="_blank" rel="noopener"&gt;Elm Land&lt;/a&gt; solves much of that stuff for you.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://elm-lang.org/community" class="external-link" target="_blank" rel="noopener"&gt;The Elm Community&lt;/a&gt; –Not a book at all, I know, but since this is my all time favorite programming community I can&amp;rsquo;t help but mention it anyways. The Slack, the Discourse, Subreddit – it&amp;rsquo;s all great.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="golang"&gt;
  Golang
- &lt;a class="heading-link" href="#golang">
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
- &lt;span class="sr-only">Link to heading&lt;/span>
- &lt;/a>
-&lt;/h2>
-&lt;ul>
-&lt;li>&lt;a href="https://amzn.to/4fruZyJ" class="external-link" target="_blank" rel="noopener">The Go Programming Language&lt;/a> —
-Kind of obvious, this one. But a great classic! I remember enjoying the chapter about UTF-8 a lot, as well as the generally thorough explanations of how and &lt;em>why&lt;/em> Golang behaves.&lt;/li>
-&lt;li>&lt;a href="https://amzn.to/3Bpf4TL" class="external-link" target="_blank" rel="noopener">Concurrency in Go: Tools and Techniques for Developers&lt;/a> — This is a truly great programming book! Even though Golang is made for concurrency, it&amp;rsquo;s still very possible to mess up. This book shows you how it&amp;rsquo;s done. What&amp;rsquo;s a bit cool (🤓) is that it predates the &lt;code>context.Context&lt;/code> interface, and as such suggests using a manual &amp;ldquo;done channel&amp;rdquo; to enable canceling of coroutines. It shows the author&amp;rsquo;s insight that an exact pattern like that was introduced with the &lt;code>Context.Done()&lt;/code> method introduced later in the language. For more on that, check out &lt;a href="https://github.com/cekrem/goutils/commit/0a511038efd9186cf204d503f7ff37c83b5c5838" class="external-link" target="_blank" rel="noopener">this git diff&lt;/a>, on a small golang utility library I started on way back.&lt;/li>
-&lt;li>Feel free to skip this one, though: &lt;a href="https://amzn.to/3P1uq3R" class="external-link" target="_blank" rel="noopener">Learning Functional Programming in Go&lt;/a> — This book should, IMHO, rather have been a tweet. Something like this: &amp;ldquo;Go is not really suited for functional programming, I&amp;rsquo;d advice you not to do it at scale.&amp;rdquo; Fun fact: this book is actually what got me into &lt;a href="#kotlin" >Kotlin&lt;/a>. All that talk about &lt;a href="https://stackoverflow.com/questions/310974/what-is-tail-call-optimization" class="external-link" target="_blank" rel="noopener">tail call optimization&lt;/a> (and how Golang is &lt;em>not&lt;/em> doing that&amp;hellip;) got me searching for more functional fun outside of Elm, Haskell and Lisp.&lt;/li>
-&lt;/ul>
-&lt;h2 id="python">
+ &lt;a class="heading-link" href="#golang"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://amzn.to/4fruZyJ" class="external-link" target="_blank" rel="noopener"&gt;The Go Programming Language&lt;/a&gt; —
+Kind of obvious, this one. But a great classic! I remember enjoying the chapter about UTF-8 a lot, as well as the generally thorough explanations of how and &lt;em&gt;why&lt;/em&gt; Golang behaves.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://amzn.to/3Bpf4TL" class="external-link" target="_blank" rel="noopener"&gt;Concurrency in Go: Tools and Techniques for Developers&lt;/a&gt; — This is a truly great programming book! Even though Golang is made for concurrency, it&amp;rsquo;s still very possible to mess up. This book shows you how it&amp;rsquo;s done. What&amp;rsquo;s a bit cool (🤓) is that it predates the &lt;code&gt;context.Context&lt;/code&gt; interface, and as such suggests using a manual &amp;ldquo;done channel&amp;rdquo; to enable canceling of coroutines. It shows the author&amp;rsquo;s insight that an exact pattern like that was introduced with the &lt;code&gt;Context.Done()&lt;/code&gt; method introduced later in the language. For more on that, check out &lt;a href="https://github.com/cekrem/goutils/commit/0a511038efd9186cf204d503f7ff37c83b5c5838" class="external-link" target="_blank" rel="noopener"&gt;this git diff&lt;/a&gt;, on a small golang utility library I started on way back.&lt;/li&gt;
+&lt;li&gt;Feel free to skip this one, though: &lt;a href="https://amzn.to/3P1uq3R" class="external-link" target="_blank" rel="noopener"&gt;Learning Functional Programming in Go&lt;/a&gt; — This book should, IMHO, rather have been a tweet. Something like this: &amp;ldquo;Go is not really suited for functional programming, I&amp;rsquo;d advice you not to do it at scale.&amp;rdquo; Fun fact: this book is actually what got me into &lt;a href="#kotlin" &gt;Kotlin&lt;/a&gt;. All that talk about &lt;a href="https://stackoverflow.com/questions/310974/what-is-tail-call-optimization" class="external-link" target="_blank" rel="noopener"&gt;tail call optimization&lt;/a&gt; (and how Golang is &lt;em&gt;not&lt;/em&gt; doing that&amp;hellip;) got me searching for more functional fun outside of Elm, Haskell and Lisp.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="python"&gt;
  Python
- &lt;a class="heading-link" href="#python">
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
- &lt;span class="sr-only">Link to heading&lt;/span>
- &lt;/a>
-&lt;/h2>
-&lt;ul>
-&lt;li>&lt;a href="https://amzn.to/3Dyiyni" class="external-link" target="_blank" rel="noopener">Fluent Python: Clear, Concise, and Effective Programming&lt;/a> — I read this one on my Kindle, actually, before I learned that Kindle&amp;rsquo;s not where programming books really shine. That aside, I have nothing but fond memories from the first edition, and I&amp;rsquo;ve heard the updates on the second edition are really worthwhile. If you want to read &lt;em>one&lt;/em> Python book, this is it.&lt;/li>
-&lt;li>&lt;a href="https://amzn.to/4gx5tt2" class="external-link" target="_blank" rel="noopener">Automate the Boring Stuff with Python, 2nd Edition: Practical Programming for Total Beginners&lt;/a> — This one is also cool! While mainly targeting &amp;ldquo;total beginners&amp;rdquo;, it&amp;rsquo;s also suitable for seasoned programmers who don&amp;rsquo;t usually work in Python, but want to leverage its super fast scripting capabilities to automate stuff.&lt;/li>
-&lt;/ul>
-&lt;h2 id="kotlin">
+ &lt;a class="heading-link" href="#python"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://amzn.to/3Dyiyni" class="external-link" target="_blank" rel="noopener"&gt;Fluent Python: Clear, Concise, and Effective Programming&lt;/a&gt; — I read this one on my Kindle, actually, before I learned that Kindle&amp;rsquo;s not where programming books really shine. That aside, I have nothing but fond memories from the first edition, and I&amp;rsquo;ve heard the updates on the second edition are really worthwhile. If you want to read &lt;em&gt;one&lt;/em&gt; Python book, this is it.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://amzn.to/4gx5tt2" class="external-link" target="_blank" rel="noopener"&gt;Automate the Boring Stuff with Python, 2nd Edition: Practical Programming for Total Beginners&lt;/a&gt; — This one is also cool! While mainly targeting &amp;ldquo;total beginners&amp;rdquo;, it&amp;rsquo;s also suitable for seasoned programmers who don&amp;rsquo;t usually work in Python, but want to leverage its super fast scripting capabilities to automate stuff.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="kotlin"&gt;
  Kotlin
- &lt;a class="heading-link" href="#kotlin">
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
- &lt;span class="sr-only">Link to heading&lt;/span>
- &lt;/a>
-&lt;/h2>
-&lt;ul>
-&lt;li>&lt;a href="https://amzn.to/4gjT1wU" class="external-link" target="_blank" rel="noopener">Functional Programming in Kotlin&lt;/a> — Functional Programming &lt;em>and&lt;/em> Kotlin in the same book title?! No-brainer. This one is great!&lt;/li>
-&lt;li>&lt;a href="https://amzn.to/402VYev" class="external-link" target="_blank" rel="noopener">Kotlin in Action&lt;/a> — One of two &amp;ldquo;general Kotlin books&amp;rdquo; I&amp;rsquo;d recommend.&lt;/li>
-&lt;li>&lt;a href="https://amzn.to/3ZYEdxN" class="external-link" target="_blank" rel="noopener">Mastering Kotlin&lt;/a> — The other one :)&lt;/li>
-&lt;/ul>
-&lt;h2 id="lisp">
+ &lt;a class="heading-link" href="#kotlin"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://amzn.to/4gjT1wU" class="external-link" target="_blank" rel="noopener"&gt;Functional Programming in Kotlin&lt;/a&gt; — Functional Programming &lt;em&gt;and&lt;/em&gt; Kotlin in the same book title?! No-brainer. This one is great!&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://amzn.to/402VYev" class="external-link" target="_blank" rel="noopener"&gt;Kotlin in Action&lt;/a&gt; — One of two &amp;ldquo;general Kotlin books&amp;rdquo; I&amp;rsquo;d recommend.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://amzn.to/3ZYEdxN" class="external-link" target="_blank" rel="noopener"&gt;Mastering Kotlin&lt;/a&gt; — The other one :)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="lisp"&gt;
  Lisp
- &lt;a class="heading-link" href="#lisp">
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
- &lt;span class="sr-only">Link to heading&lt;/span>
- &lt;/a>
-&lt;/h2>
-&lt;ul>
-&lt;li>&lt;a href="https://amzn.to/4izuO7c" class="external-link" target="_blank" rel="noopener">Land of Lisp: Learn to Program in Lisp, One Game at a Time!&lt;/a> — A bit whimsical, but then again Lisp is &lt;em>not&lt;/em>, so in sum a semi-serious book. I liked it ¯\&lt;em>(ツ)&lt;/em>/¯&lt;/li>
-&lt;li>&lt;a href="https://amzn.to/4gf8sq2" class="external-link" target="_blank" rel="noopener">On Lisp: Advanced Techniques for Common Lisp&lt;/a> — &lt;em>The&lt;/em> Lisp book, by mr. Paul Graham himself. Hats off, hands down.&lt;/li>
-&lt;li>&lt;a href="https://amzn.to/3ZVWUSW" class="external-link" target="_blank" rel="noopener">Practical Common Lisp&lt;/a> — The other Lisp book, I guess? Great.&lt;/li>
-&lt;/ul>
-&lt;h2 id="react">
+ &lt;a class="heading-link" href="#lisp"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://amzn.to/4izuO7c" class="external-link" target="_blank" rel="noopener"&gt;Land of Lisp: Learn to Program in Lisp, One Game at a Time!&lt;/a&gt; — A bit whimsical, but then again Lisp is &lt;em&gt;not&lt;/em&gt;, so in sum a semi-serious book. I liked it ¯\&lt;em&gt;(ツ)&lt;/em&gt;/¯&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://amzn.to/4gf8sq2" class="external-link" target="_blank" rel="noopener"&gt;On Lisp: Advanced Techniques for Common Lisp&lt;/a&gt; — &lt;em&gt;The&lt;/em&gt; Lisp book, by mr. Paul Graham himself. Hats off, hands down.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://amzn.to/3ZVWUSW" class="external-link" target="_blank" rel="noopener"&gt;Practical Common Lisp&lt;/a&gt; — The other Lisp book, I guess? Great.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="react"&gt;
  React
- &lt;a class="heading-link" href="#react">
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
- &lt;span class="sr-only">Link to heading&lt;/span>
- &lt;/a>
-&lt;/h2>
-&lt;ul>
-&lt;li>&lt;a href="https://amzn.to/4iFXVWq" class="external-link" target="_blank" rel="noopener">Advanced React: Deep dives, investigations, performance patterns and techniques&lt;/a> — I&amp;rsquo;ve actually read (or at least skimmed) quite a few books on React — I even started writing one, way back — but this is the only one I think is worth recommending. If you&amp;rsquo;re a complete beginner there are probably other/better options, but given that you&amp;rsquo;re at least semi-familiar with thinking in React, this is The One.&lt;/li>
-&lt;/ul>
-&lt;h2 id="rust">
+ &lt;a class="heading-link" href="#react"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://amzn.to/4iFXVWq" class="external-link" target="_blank" rel="noopener"&gt;Advanced React: Deep dives, investigations, performance patterns and techniques&lt;/a&gt; — I&amp;rsquo;ve actually read (or at least skimmed) quite a few books on React — I even started writing one, way back — but this is the only one I think is worth recommending. If you&amp;rsquo;re a complete beginner there are probably other/better options, but given that you&amp;rsquo;re at least semi-familiar with thinking in React, this is The One.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="rust"&gt;
  Rust
- &lt;a class="heading-link" href="#rust">
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
- &lt;span class="sr-only">Link to heading&lt;/span>
- &lt;/a>
-&lt;/h2>
-&lt;ul>
-&lt;li>&lt;a href="https://amzn.to/4gFp7D3" class="external-link" target="_blank" rel="noopener">The Rust Programming Language&lt;/a> — &amp;ldquo;The Book&amp;rdquo;, as official as it gets, and quite good at that.&lt;/li>
-&lt;li>&lt;a href="https://amzn.to/400rtXM" class="external-link" target="_blank" rel="noopener">Programming Rust&lt;/a> — Less official, but a fine resource regardless. The two complement each other (and of course overlap a bit as well).&lt;/li>
-&lt;/ul>
-&lt;p>Warning: I might add more later.&lt;/p></description></item><item><title>I'm joining Ensō!</title><link>https://cekrem.github.io/posts/im-joining-enso/</link><pubDate>Wed, 04 Dec 2024 12:10:39 +0100</pubDate><guid>https://cekrem.github.io/posts/im-joining-enso/</guid><description>&lt;h2 id="my-favorite-consultancy">
+ &lt;a class="heading-link" href="#rust"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://amzn.to/4gFp7D3" class="external-link" target="_blank" rel="noopener"&gt;The Rust Programming Language&lt;/a&gt; — &amp;ldquo;The Book&amp;rdquo;, as official as it gets, and quite good at that.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://amzn.to/400rtXM" class="external-link" target="_blank" rel="noopener"&gt;Programming Rust&lt;/a&gt; — Less official, but a fine resource regardless. The two complement each other (and of course overlap a bit as well).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Warning: I might add more later.&lt;/p&gt;</description></item><item><title>I'm joining Ensō!</title><link>https://cekrem.github.io/posts/im-joining-enso/</link><pubDate>Wed, 04 Dec 2024 12:10:39 +0100</pubDate><guid>https://cekrem.github.io/posts/im-joining-enso/</guid><description>&lt;h2 id="my-favorite-consultancy"&gt;
  My favorite consultancy
- &lt;a class="heading-link" href="#my-favorite-consultancy">
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
- &lt;span class="sr-only">Link to heading&lt;/span>
- &lt;/a>
-&lt;/h2>
-&lt;p>I&amp;rsquo;m thrilled to share that I&amp;rsquo;ll be joining my favorite consultancy this coming February!&lt;/p>
-&lt;p>There&amp;rsquo;s not much more to add, except that it feels fantastic to have signed and secured this next chapter of my future. I had some intriguing opportunities along the way, but Ensō stands out as a rare gem—not just for the excellent terms and usual perks, but especially for the amazing people who make it an extraordinary company.&lt;/p></description></item><item><title>Free at last – dumbing down my iPhone and disabling all evil!</title><link>https://cekrem.github.io/posts/dumbing-down-my-iphone/</link><pubDate>Sun, 03 Nov 2024 13:35:45 +0200</pubDate><guid>https://cekrem.github.io/posts/dumbing-down-my-iphone/</guid><description>&lt;h2 id="the-problem">
+ &lt;a class="heading-link" href="#my-favorite-consultancy"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;I&amp;rsquo;m thrilled to share that I&amp;rsquo;ll be joining my favorite consultancy this coming February!&lt;/p&gt;
+&lt;p&gt;There&amp;rsquo;s not much more to add, except that it feels fantastic to have signed and secured this next chapter of my future. I had some intriguing opportunities along the way, but Ensō stands out as a rare gem—not just for the excellent terms and usual perks, but especially for the amazing people who make it an extraordinary company.&lt;/p&gt;</description></item><item><title>Free at last – dumbing down my iPhone and disabling all evil!</title><link>https://cekrem.github.io/posts/dumbing-down-my-iphone/</link><pubDate>Sun, 03 Nov 2024 13:35:45 +0200</pubDate><guid>https://cekrem.github.io/posts/dumbing-down-my-iphone/</guid><description>&lt;h2 id="the-problem"&gt;
  The problem
- &lt;a class="heading-link" href="#the-problem">
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
- &lt;span class="sr-only">Link to heading&lt;/span>
- &lt;/a>
-&lt;/h2>
-&lt;p>TL;DR: I need a phone, for a couple of obvious reasons. What I &lt;em>don&amp;rsquo;t&lt;/em> want is a smart phone killing my brain and soul, constantly bashing at my presence and peace of mind. Needless to say I&amp;rsquo;ve tried countless options and variations, but all my attempts have been less than ideal. My attempts usually fail in one of three ways:&lt;/p></description></item><item><title>Math test for staying home with semi-sick kids</title><link>https://cekrem.github.io/posts/math-test-for-home-schooling/</link><pubDate>Wed, 23 Oct 2024 13:35:45 +0200</pubDate><guid>https://cekrem.github.io/posts/math-test-for-home-schooling/</guid><description>&lt;h2 id="sick-kid-but-not-that-sick">
- Sick kid, but not &lt;em>that&lt;/em> sick?
- &lt;a class="heading-link" href="#sick-kid-but-not-that-sick">
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
- &lt;span class="sr-only">Link to heading&lt;/span>
- &lt;/a>
-&lt;/h2>
-&lt;p>The other day I was home with my oldest daughter. She had a slight cold and an Almost-Fever™, which is usually not enough to skip school by my standards, but this particular day was an outdoors day with a lot of straining physical activity. So, against my potential better judgment I let her stay home, but warned her that it wouldn&amp;rsquo;t be quite a spa – some chores and a little school work was to be expected. She gladly accepted my terms, well-raised and polite as she indeed is.&lt;/p></description></item><item><title>I released an EP without recording a single track. No loops or midi either.</title><link>https://cekrem.github.io/posts/turbo-tape-ai-ep/</link><pubDate>Tue, 04 Jun 2024 08:15:30 +0100</pubDate><guid>https://cekrem.github.io/posts/turbo-tape-ai-ep/</guid><description>&lt;h2 id="turbo-tape---bit-blaster-ep">
+ &lt;a class="heading-link" href="#the-problem"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;TL;DR: I need a phone, for a couple of obvious reasons. What I &lt;em&gt;don&amp;rsquo;t&lt;/em&gt; want is a smart phone killing my brain and soul, constantly bashing at my presence and peace of mind. Needless to say I&amp;rsquo;ve tried countless options and variations, but all my attempts have been less than ideal. My attempts usually fail in one of three ways:&lt;/p&gt;</description></item><item><title>Math test for staying home with semi-sick kids</title><link>https://cekrem.github.io/posts/math-test-for-home-schooling/</link><pubDate>Wed, 23 Oct 2024 13:35:45 +0200</pubDate><guid>https://cekrem.github.io/posts/math-test-for-home-schooling/</guid><description>&lt;h2 id="sick-kid-but-not-that-sick"&gt;
+ Sick kid, but not &lt;em&gt;that&lt;/em&gt; sick?
+ &lt;a class="heading-link" href="#sick-kid-but-not-that-sick"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;The other day I was home with my oldest daughter. She had a slight cold and an Almost-Fever™, which is usually not enough to skip school by my standards, but this particular day was an outdoors day with a lot of straining physical activity. So, against my potential better judgment I let her stay home, but warned her that it wouldn&amp;rsquo;t be quite a spa – some chores and a little school work was to be expected. She gladly accepted my terms, well-raised and polite as she indeed is.&lt;/p&gt;</description></item><item><title>I released an EP without recording a single track. No loops or midi either.</title><link>https://cekrem.github.io/posts/turbo-tape-ai-ep/</link><pubDate>Tue, 04 Jun 2024 08:15:30 +0100</pubDate><guid>https://cekrem.github.io/posts/turbo-tape-ai-ep/</guid><description>&lt;h2 id="turbo-tape---bit-blaster-ep"&gt;
  Turbo Tape - Bit Blaster (EP)
- &lt;a class="heading-link" href="#turbo-tape---bit-blaster-ep">
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
- &lt;span class="sr-only">Link to heading&lt;/span>
- &lt;/a>
-&lt;/h2>
-&lt;p>OK, so here goes: an entire EP without a single track of audio that I recorded myself. What&amp;rsquo;s more, I didn&amp;rsquo;t even connect my MIDI keyboard! You can stream it on &lt;a href="https://open.spotify.com/album/7t1lijjr9lKB3ilVaGhmVM?si=3NynQ5RGRdeSxzchWTTLdQ" class="external-link" target="_blank" rel="noopener">Spotify&lt;/a>, &lt;a href="https://music.apple.com/us/album/bit-blaster-ep/1750032737" class="external-link" target="_blank" rel="noopener">Apple Music&lt;/a>, &lt;a href="https://www.youtube.com/watch?v=-sz9yWBFBFM&amp;amp;list=OLAK5uy_mFUUQk8_HeMGOJiZWwj1SebgNTCdqUrV0&amp;amp;index=1" class="external-link" target="_blank" rel="noopener">YouTube&lt;/a> and probably everywhere else music is streamed. What invention describes the confusing mix of analog and digital means of conveying both data and audio than the &lt;a href="https://www.atarimagazines.com/compute/issue57/turbotape.html" class="external-link" target="_blank" rel="noopener">Turbo Tape&lt;/a>?&lt;/p></description></item><item><title>Going back(end) to the old gym!</title><link>https://cekrem.github.io/posts/back-to-the-old-gym/</link><pubDate>Mon, 12 Feb 2024 08:45:30 +0100</pubDate><guid>https://cekrem.github.io/posts/back-to-the-old-gym/</guid><description>&lt;p>&lt;strong>Update: After some heavy lifting at the old gym, I actually left Vipps and started on a Sabbatical. See &lt;a href="https://www.linkedin.com/feed/update/urn:li:activity:7233757597424615424/" class="external-link" target="_blank" rel="noopener">Goodbye Vipps!&lt;/a> for details (LinkedIn post).&lt;/strong> I&amp;rsquo;m also &lt;a href="https://cekrem.github.io/hire" >open for new opportunities&lt;/a>.&lt;/p>
-&lt;h6 id="timeline-from-backend-to-android---dev-plan-2021-2023---nailing-it-and-getting-promoted---back-to-the-old-gym---sabbatical---my-next-adventure">
- Timeline: &lt;a href="https://cekrem.github.io/posts/changing-jobs-without-leaving-your-company/" >From backend to Android&lt;/a> -&amp;gt; &lt;a href="https://cekrem.github.io/posts/devplan/" >Dev plan 2021-2023&lt;/a> -&amp;gt; &lt;a href="https://cekrem.github.io/posts/the-end-of-an-era/" >Nailing it and getting promoted!&lt;/a> -&amp;gt; &lt;a href="#" >Back to the old gym!&lt;/a> -&amp;gt; &lt;a href="https://www.linkedin.com/feed/update/urn:li:activity:7233757597424615424/" class="external-link" target="_blank" rel="noopener">Sabbatical!&lt;/a> -&amp;gt; &lt;a href="https://cekrem.github.io/hire" >My next adventure?&lt;/a>
- &lt;a class="heading-link" href="#timeline-from-backend-to-android---dev-plan-2021-2023---nailing-it-and-getting-promoted---back-to-the-old-gym---sabbatical---my-next-adventure">
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
- &lt;span class="sr-only">Link to heading&lt;/span>
- &lt;/a>
-&lt;/h6>
-&lt;p>It&amp;rsquo;s official! I&amp;rsquo;m transitioning back from &lt;a href="https://cekrem.github.io/posts/changing-jobs-without-leaving-your-company" >my pilgrimage as an Android developer&lt;/a>, going back to my backend roots. Ah, the glorious smell of rusty metal, engine oil and buzzing CRT monitors running nothing but &lt;code>vim&lt;/code>. The bonus is I still get to do Android! &lt;strong>More importantly, though, I&amp;rsquo;m back to working 80%&lt;/strong>. Sweet, glorious Jesus, YES! And there&amp;rsquo;s actually deeper stuff going on beneath the surface as well. Paradigm shift: √&lt;/p></description></item><item><title>Exploring UIs in the terminal part 2: More ink!</title><link>https://cekrem.github.io/posts/do-more-stuff-cli-tool-part-2/</link><pubDate>Tue, 12 Sep 2023 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/do-more-stuff-cli-tool-part-2/</guid><description>&lt;h2 id="abandon-ship-all-yall">
+ &lt;a class="heading-link" href="#turbo-tape---bit-blaster-ep"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;OK, so here goes: an entire EP without a single track of audio that I recorded myself. What&amp;rsquo;s more, I didn&amp;rsquo;t even connect my MIDI keyboard! You can stream it on &lt;a href="https://open.spotify.com/album/7t1lijjr9lKB3ilVaGhmVM?si=3NynQ5RGRdeSxzchWTTLdQ" class="external-link" target="_blank" rel="noopener"&gt;Spotify&lt;/a&gt;, &lt;a href="https://music.apple.com/us/album/bit-blaster-ep/1750032737" class="external-link" target="_blank" rel="noopener"&gt;Apple Music&lt;/a&gt;, &lt;a href="https://www.youtube.com/watch?v=-sz9yWBFBFM&amp;amp;list=OLAK5uy_mFUUQk8_HeMGOJiZWwj1SebgNTCdqUrV0&amp;amp;index=1" class="external-link" target="_blank" rel="noopener"&gt;YouTube&lt;/a&gt; and probably everywhere else music is streamed. What invention describes the confusing mix of analog and digital means of conveying both data and audio than the &lt;a href="https://www.atarimagazines.com/compute/issue57/turbotape.html" class="external-link" target="_blank" rel="noopener"&gt;Turbo Tape&lt;/a&gt;?&lt;/p&gt;</description></item><item><title>Going back(end) to the old gym!</title><link>https://cekrem.github.io/posts/back-to-the-old-gym/</link><pubDate>Mon, 12 Feb 2024 08:45:30 +0100</pubDate><guid>https://cekrem.github.io/posts/back-to-the-old-gym/</guid><description>&lt;p&gt;&lt;strong&gt;Update: After some heavy lifting at the old gym, I actually left Vipps and started on a Sabbatical. See &lt;a href="https://www.linkedin.com/feed/update/urn:li:activity:7233757597424615424/" class="external-link" target="_blank" rel="noopener"&gt;Goodbye Vipps!&lt;/a&gt; for details (LinkedIn post).&lt;/strong&gt; I&amp;rsquo;m also &lt;a href="https://cekrem.github.io/hire" &gt;open for new opportunities&lt;/a&gt;.&lt;/p&gt;
+&lt;h6 id="timeline-from-backend-to-android---dev-plan-2021-2023---nailing-it-and-getting-promoted---back-to-the-old-gym---sabbatical---my-next-adventure"&gt;
+ Timeline: &lt;a href="https://cekrem.github.io/posts/changing-jobs-without-leaving-your-company/" &gt;From backend to Android&lt;/a&gt; -&amp;gt; &lt;a href="https://cekrem.github.io/posts/devplan/" &gt;Dev plan 2021-2023&lt;/a&gt; -&amp;gt; &lt;a href="https://cekrem.github.io/posts/the-end-of-an-era/" &gt;Nailing it and getting promoted!&lt;/a&gt; -&amp;gt; &lt;a href="#" &gt;Back to the old gym!&lt;/a&gt; -&amp;gt; &lt;a href="https://www.linkedin.com/feed/update/urn:li:activity:7233757597424615424/" class="external-link" target="_blank" rel="noopener"&gt;Sabbatical!&lt;/a&gt; -&amp;gt; &lt;a href="https://cekrem.github.io/hire" &gt;My next adventure?&lt;/a&gt;
+ &lt;a class="heading-link" href="#timeline-from-backend-to-android---dev-plan-2021-2023---nailing-it-and-getting-promoted---back-to-the-old-gym---sabbatical---my-next-adventure"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h6&gt;
+&lt;p&gt;It&amp;rsquo;s official! I&amp;rsquo;m transitioning back from &lt;a href="https://cekrem.github.io/posts/changing-jobs-without-leaving-your-company" &gt;my pilgrimage as an Android developer&lt;/a&gt;, going back to my backend roots. Ah, the glorious smell of rusty metal, engine oil and buzzing CRT monitors running nothing but &lt;code&gt;vim&lt;/code&gt;. The bonus is I still get to do Android! &lt;strong&gt;More importantly, though, I&amp;rsquo;m back to working 80%&lt;/strong&gt;. Sweet, glorious Jesus, YES! And there&amp;rsquo;s actually deeper stuff going on beneath the surface as well. Paradigm shift: √&lt;/p&gt;</description></item><item><title>Exploring UIs in the terminal part 2: More ink!</title><link>https://cekrem.github.io/posts/do-more-stuff-cli-tool-part-2/</link><pubDate>Tue, 12 Sep 2023 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/do-more-stuff-cli-tool-part-2/</guid><description>&lt;h2 id="abandon-ship-all-yall"&gt;
  Abandon ship, all y&amp;rsquo;all
- &lt;a class="heading-link" href="#abandon-ship-all-yall">
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
- &lt;span class="sr-only">Link to heading&lt;/span>
- &lt;/a>
-&lt;/h2>
-&lt;p>In &lt;a href="https://cekrem.github.io/posts/do-more-stuff-cli-tool-part-1" >part 1&lt;/a>, I made a small POC cli tool for doing multiple things in parallel. Like curling multiple endpoints and collecting the responses in a neat and tidy list instead of opening several terminal tabs/panes. The goal was partly to explore how rendering actually works in a more confined environment than the DOM (web), or more complicated yet: native mobile apps. The other goal, as usual, was to have fun while doing it. My adventures in part 2 have, however, been slightly shipwrecked.&lt;/p></description></item><item><title>Exploring UIs in the terminal part 1: React/Ink</title><link>https://cekrem.github.io/posts/do-more-stuff-cli-tool-part-1/</link><pubDate>Tue, 29 Aug 2023 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/do-more-stuff-cli-tool-part-1/</guid><description>&lt;h2 id="where-do-uis-belong">
+ &lt;a class="heading-link" href="#abandon-ship-all-yall"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;In &lt;a href="https://cekrem.github.io/posts/do-more-stuff-cli-tool-part-1" &gt;part 1&lt;/a&gt;, I made a small POC cli tool for doing multiple things in parallel. Like curling multiple endpoints and collecting the responses in a neat and tidy list instead of opening several terminal tabs/panes. The goal was partly to explore how rendering actually works in a more confined environment than the DOM (web), or more complicated yet: native mobile apps. The other goal, as usual, was to have fun while doing it. My adventures in part 2 have, however, been slightly shipwrecked.&lt;/p&gt;</description></item><item><title>Exploring UIs in the terminal part 1: React/Ink</title><link>https://cekrem.github.io/posts/do-more-stuff-cli-tool-part-1/</link><pubDate>Tue, 29 Aug 2023 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/do-more-stuff-cli-tool-part-1/</guid><description>&lt;h2 id="where-do-uis-belong"&gt;
  Where do UIs belong?
- &lt;a class="heading-link" href="#where-do-uis-belong">
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
- &lt;span class="sr-only">Link to heading&lt;/span>
- &lt;/a>
-&lt;/h2>
-&lt;p>Most of us consider ReactJS a tool for rendering UI components on the web (or the DOM, specifically), and if by &amp;ldquo;React&amp;rdquo; we mean &amp;ldquo;ReactDOM&amp;rdquo; then we&amp;rsquo;re right. But as we&amp;rsquo;ve seen with React Native, React is not confined to the DOM at all, and can render to any number of environments. After all, like it says on the box, React is a &amp;ldquo;JavaScript library for building user interfaces&amp;rdquo;. We&amp;rsquo;ve seen the same with &lt;a href="https://www.jetbrains.com/lp/compose-multiplatform/" class="external-link" target="_blank" rel="noopener">Compose Multiplatform&lt;/a>: what used to be a framework for creating Android UI can actually be used for so much more.&lt;/p></description></item><item><title>The End of an Era!</title><link>https://cekrem.github.io/posts/the-end-of-an-era/</link><pubDate>Wed, 14 Jun 2023 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/the-end-of-an-era/</guid><description>&lt;p>&lt;strong>Update: &lt;a href="https://cekrem.github.io/posts/back-to-the-old-gym" >Here&lt;/a>&amp;rsquo;s the next development plan, kind of.&lt;/strong>&lt;/p>
-&lt;p>The Day Has Come. I&amp;rsquo;m officially archiving my previous &lt;a href="https://cekrem.github.io/posts/devplan" >development plan&lt;/a> and moving on to new adventures in Vipps Mobile Pay! It&amp;rsquo;s been a long time coming, and I&amp;rsquo;m happy to say that I&amp;rsquo;ve achieved most of the goals I set out to achieve. I&amp;rsquo;ve learned a lot, and I&amp;rsquo;m ready to proceed towards the next chapter. I&amp;rsquo;m not, however, ready to make a new plan just yet. So consider this post ceremonial more than anything.&lt;/p></description></item><item><title>Development plan 2021-2023</title><link>https://cekrem.github.io/posts/devplan/</link><pubDate>Tue, 13 Jun 2023 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/devplan/</guid><description>&lt;p>&lt;strong>Update: This plan is now archived. See &lt;a href="https://cekrem.github.io/posts/the-end-of-an-era" >The End of an Era&lt;/a> for details.&lt;/strong>&lt;/p>
-&lt;p>What follows is my own personal development plan as a software engineer at
-&lt;del>&lt;a href="https://vipps.io" class="external-link" target="_blank" rel="noopener">Vipps&lt;/a>&lt;/del> &lt;a href="https://vippsmobilepay.com" class="external-link" target="_blank" rel="noopener">Vipps MobilePay&lt;/a>. Some terms and
+ &lt;a class="heading-link" href="#where-do-uis-belong"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Most of us consider ReactJS a tool for rendering UI components on the web (or the DOM, specifically), and if by &amp;ldquo;React&amp;rdquo; we mean &amp;ldquo;ReactDOM&amp;rdquo; then we&amp;rsquo;re right. But as we&amp;rsquo;ve seen with React Native, React is not confined to the DOM at all, and can render to any number of environments. After all, like it says on the box, React is a &amp;ldquo;JavaScript library for building user interfaces&amp;rdquo;. We&amp;rsquo;ve seen the same with &lt;a href="https://www.jetbrains.com/lp/compose-multiplatform/" class="external-link" target="_blank" rel="noopener"&gt;Compose Multiplatform&lt;/a&gt;: what used to be a framework for creating Android UI can actually be used for so much more.&lt;/p&gt;</description></item><item><title>The End of an Era!</title><link>https://cekrem.github.io/posts/the-end-of-an-era/</link><pubDate>Wed, 14 Jun 2023 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/the-end-of-an-era/</guid><description>&lt;p&gt;&lt;strong&gt;Update: &lt;a href="https://cekrem.github.io/posts/back-to-the-old-gym" &gt;Here&lt;/a&gt;&amp;rsquo;s the next development plan, kind of.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The Day Has Come. I&amp;rsquo;m officially archiving my previous &lt;a href="https://cekrem.github.io/posts/devplan" &gt;development plan&lt;/a&gt; and moving on to new adventures in Vipps Mobile Pay! It&amp;rsquo;s been a long time coming, and I&amp;rsquo;m happy to say that I&amp;rsquo;ve achieved most of the goals I set out to achieve. I&amp;rsquo;ve learned a lot, and I&amp;rsquo;m ready to proceed towards the next chapter. I&amp;rsquo;m not, however, ready to make a new plan just yet. So consider this post ceremonial more than anything.&lt;/p&gt;</description></item><item><title>Development plan 2021-2023</title><link>https://cekrem.github.io/posts/devplan/</link><pubDate>Tue, 13 Jun 2023 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/devplan/</guid><description>&lt;p&gt;&lt;strong&gt;Update: This plan is now archived. See &lt;a href="https://cekrem.github.io/posts/the-end-of-an-era" &gt;The End of an Era&lt;/a&gt; for details.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;What follows is my own personal development plan as a software engineer at
+&lt;del&gt;&lt;a href="https://vipps.io" class="external-link" target="_blank" rel="noopener"&gt;Vipps&lt;/a&gt;&lt;/del&gt; &lt;a href="https://vippsmobilepay.com" class="external-link" target="_blank" rel="noopener"&gt;Vipps MobilePay&lt;/a&gt;. Some terms and
 expressions are a bit internal, as they will no doubt be for you as well on your own plan (should you find yourself
-inspired to write one), but I&amp;rsquo;ll leave it as is. Enjoy!&lt;/p>
-&lt;hr>
-&lt;h2 id="context">
+inspired to write one), but I&amp;rsquo;ll leave it as is. Enjoy!&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="context"&gt;
  Context
- &lt;a class="heading-link" href="#context">
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
- &lt;span class="sr-only">Link to heading&lt;/span>
- &lt;/a>
-&lt;/h2>
-&lt;p>I&amp;rsquo;ve been at &lt;a href="https://vippsmobilepay.com" class="external-link" target="_blank" rel="noopener">Vipps MobilePay&lt;/a> since 2018, mostly doing work that now belongs in the &amp;ldquo;Merchant Core&amp;rdquo; team. I
+ &lt;a class="heading-link" href="#context"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;I&amp;rsquo;ve been at &lt;a href="https://vippsmobilepay.com" class="external-link" target="_blank" rel="noopener"&gt;Vipps MobilePay&lt;/a&gt; since 2018, mostly doing work that now belongs in the &amp;ldquo;Merchant Core&amp;rdquo; team. I
 created a few small backend services from scratch (a very fun QR code generator, to name one), deprecated a few others (
 let&amp;rsquo;s not name those ever again&amp;hellip;), helped kick off the Vipps Design System and most significantly worked on the Vipps
 Merchant Portal and on automating merchant signup, risk analysis and onboarding. I&amp;rsquo;ve hosted a Vipps Community Of
 Practice plainly called &amp;ldquo;Side Projects And Experiments&amp;rdquo; (SPÆ) where I&amp;rsquo;ve touched on quite a lot of exciting tech and
 tried a few non-mainstream programming languages. Still 90% of my &amp;ldquo;real&amp;rdquo; work has been with Golang and React. And
-lot&amp;rsquo;s(!) of complex SQL. &lt;a href="https://cekrem.github.io/posts/changing-jobs-without-leaving-your-company" >In mid 2020, I decided to expand my horizon and challenge myself by doing something completely
-other&lt;/a>; I learned Kotlin during my summer holidays, and joined the
+lot&amp;rsquo;s(!) of complex SQL. &lt;a href="https://cekrem.github.io/posts/changing-jobs-without-leaving-your-company" &gt;In mid 2020, I decided to expand my horizon and challenge myself by doing something completely
+other&lt;/a&gt;; I learned Kotlin during my summer holidays, and joined the
 Android app to learn from Norway&amp;rsquo;s best app
 developers. So the Android team is where I&amp;rsquo;m at now; the ~~
 eCom~~ Recurring Payments and Vipps Login subteams more
-specifically.&lt;/p></description></item><item><title>Why I'm not using the Lightphone II (but my daughter is)</title><link>https://cekrem.github.io/posts/why-im-not-using-the-lightphone-ii/</link><pubDate>Tue, 08 Nov 2022 11:09:30 +0100</pubDate><guid>https://cekrem.github.io/posts/why-im-not-using-the-lightphone-ii/</guid><description>&lt;h1 id="whats-a-light-phone-and-why-are-there-two-of-them">
+specifically.&lt;/p&gt;</description></item><item><title>Why I'm not using the Lightphone II (but my daughter is)</title><link>https://cekrem.github.io/posts/why-im-not-using-the-lightphone-ii/</link><pubDate>Tue, 08 Nov 2022 11:09:30 +0100</pubDate><guid>https://cekrem.github.io/posts/why-im-not-using-the-lightphone-ii/</guid><description>&lt;h1 id="whats-a-light-phone-and-why-are-there-two-of-them"&gt;
  What&amp;rsquo;s a Light Phone, and why are there two of them?
- &lt;a class="heading-link" href="#whats-a-light-phone-and-why-are-there-two-of-them">
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
- &lt;span class="sr-only">Link to heading&lt;/span>
- &lt;/a>
-&lt;/h1>
-&lt;p>The original Light Phone was a seriously dumb device. No texting, only phone calls. The company behind it never meant for it to be your only device, but a device to bring when you were &amp;ldquo;going light&amp;rdquo; – detaching yourself from all the digital clutter of your everyday (social media, feeds, notifications ++). It was a big a hit as one might expect, I guess, but quite a few people found the experience delightfully refreshing – but definitely not sustainable. After all, we need a few more bare essentials than just phone calls. Right?&lt;/p></description></item><item><title>ripnote – the fastest and fuzziest way for a developer to take notes</title><link>https://cekrem.github.io/posts/ripnote/</link><pubDate>Mon, 15 Aug 2022 13:35:45 +0200</pubDate><guid>https://cekrem.github.io/posts/ripnote/</guid><description>&lt;h2 id="the-best-tool-for-note-taking">
+ &lt;a class="heading-link" href="#whats-a-light-phone-and-why-are-there-two-of-them"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;The original Light Phone was a seriously dumb device. No texting, only phone calls. The company behind it never meant for it to be your only device, but a device to bring when you were &amp;ldquo;going light&amp;rdquo; – detaching yourself from all the digital clutter of your everyday (social media, feeds, notifications ++). It was a big a hit as one might expect, I guess, but quite a few people found the experience delightfully refreshing – but definitely not sustainable. After all, we need a few more bare essentials than just phone calls. Right?&lt;/p&gt;</description></item><item><title>ripnote – the fastest and fuzziest way for a developer to take notes</title><link>https://cekrem.github.io/posts/ripnote/</link><pubDate>Mon, 15 Aug 2022 13:35:45 +0200</pubDate><guid>https://cekrem.github.io/posts/ripnote/</guid><description>&lt;h2 id="the-best-tool-for-note-taking"&gt;
  The best tool for note-taking?
- &lt;a class="heading-link" href="#the-best-tool-for-note-taking">
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
- &lt;span class="sr-only">Link to heading&lt;/span>
- &lt;/a>
-&lt;/h2>
-&lt;p>The one you have close at hand. ReMarkable this, vintage inherited bio-dynamic paper that – it&amp;rsquo;ll do you no good what-so-ever if it&amp;rsquo;s not readily available when you need it. I&amp;rsquo;ve spent way too much time trying to find the &amp;ldquo;ideal&amp;rdquo; solution for keeping track of notes and ideas through my workday. But all I &lt;em>really&lt;/em> need is this:&lt;/p></description></item><item><title>Changing Jobs Without Leaving Your Company</title><link>https://cekrem.github.io/posts/changing-jobs-without-leaving-your-company/</link><pubDate>Tue, 21 Jun 2022 07:00:15 +0200</pubDate><guid>https://cekrem.github.io/posts/changing-jobs-without-leaving-your-company/</guid><description>&lt;p>So you&amp;rsquo;ve been at your company for a couple of years. Your parents tell you to stick around for another five, but other people in tech - and your adventurous self - tell you it&amp;rsquo;s about time to learn something new. What if you could do both? The most common path to take in order to learn something new, advance your career, increase your salary or simply Change Things Up A Bit involves leaving your company for something else. This is especially true in tech. (Sadly, the salary part is &lt;em>especially&lt;/em> true in tech; to the point where just about the only way to get a raise is to &lt;em>say&lt;/em> that you&amp;rsquo;re leaving for a better deal, and either take the deal or the inevitable counter-offer from your current workplace. Not cool.)&lt;/p></description></item><item><title>Reducing Android Build Times on Azure by 80% using a Virtual Machine Scale Set (VMSS)</title><link>https://cekrem.github.io/posts/reducing-android-build-times-on-azure-by-80/</link><pubDate>Wed, 04 May 2022 12:00:21 +0200</pubDate><guid>https://cekrem.github.io/posts/reducing-android-build-times-on-azure-by-80/</guid><description>&lt;blockquote>
-&lt;p>A VMSS is, put as plainly as possible, a cluster of VMs that are scaled on-demand or manually.&lt;/p>&lt;/blockquote>
-&lt;h2 id="context">
+ &lt;a class="heading-link" href="#the-best-tool-for-note-taking"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;The one you have close at hand. ReMarkable this, vintage inherited bio-dynamic paper that – it&amp;rsquo;ll do you no good what-so-ever if it&amp;rsquo;s not readily available when you need it. I&amp;rsquo;ve spent way too much time trying to find the &amp;ldquo;ideal&amp;rdquo; solution for keeping track of notes and ideas through my workday. But all I &lt;em&gt;really&lt;/em&gt; need is this:&lt;/p&gt;</description></item><item><title>Changing Jobs Without Leaving Your Company</title><link>https://cekrem.github.io/posts/changing-jobs-without-leaving-your-company/</link><pubDate>Tue, 21 Jun 2022 07:00:15 +0200</pubDate><guid>https://cekrem.github.io/posts/changing-jobs-without-leaving-your-company/</guid><description>&lt;p&gt;So you&amp;rsquo;ve been at your company for a couple of years. Your parents tell you to stick around for another five, but other people in tech - and your adventurous self - tell you it&amp;rsquo;s about time to learn something new. What if you could do both? The most common path to take in order to learn something new, advance your career, increase your salary or simply Change Things Up A Bit involves leaving your company for something else. This is especially true in tech. (Sadly, the salary part is &lt;em&gt;especially&lt;/em&gt; true in tech; to the point where just about the only way to get a raise is to &lt;em&gt;say&lt;/em&gt; that you&amp;rsquo;re leaving for a better deal, and either take the deal or the inevitable counter-offer from your current workplace. Not cool.)&lt;/p&gt;</description></item><item><title>Reducing Android Build Times on Azure by 80% using a Virtual Machine Scale Set (VMSS)</title><link>https://cekrem.github.io/posts/reducing-android-build-times-on-azure-by-80/</link><pubDate>Wed, 04 May 2022 12:00:21 +0200</pubDate><guid>https://cekrem.github.io/posts/reducing-android-build-times-on-azure-by-80/</guid><description>&lt;blockquote&gt;
+&lt;p&gt;A VMSS is, put as plainly as possible, a cluster of VMs that are scaled on-demand or manually.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h2 id="context"&gt;
  Context
- &lt;a class="heading-link" href="#context">
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
- &lt;span class="sr-only">Link to heading&lt;/span>
- &lt;/a>
-&lt;/h2>
-&lt;p>The &lt;a href="https://play.google.com/store/apps/details?id=no.dnb.vipps&amp;amp;hl=no&amp;amp;gl=US" class="external-link" target="_blank" rel="noopener">Vipps App&lt;/a> – until recently – took about 45 minutes to build on &lt;del>A$ure&lt;/del> Azure. With a weekly release schedule, that might not sound like a huge dealbreaker, but since we&amp;rsquo;re using a &amp;ldquo;feature branch&amp;rdquo; approach to how we do &lt;code>git&lt;/code> (ie no &lt;code>develop&lt;/code> branch; &lt;code>master&lt;/code> should always be deployable-ish), we don&amp;rsquo;t allow merging &lt;em>anything&lt;/em> to &lt;code>master&lt;/code> without a successful cloud build. Waiting for code review is hard to avoid, but additionally waiting for slow builds is just wrong. It&amp;rsquo;s not easy for our internal testers to check out what we&amp;rsquo;re doing either, they &lt;em>too&lt;/em> are kept waiting. Suffice to say, the pain has been real. Personally, coming from a Golang background (where builds happen at the speed of your monitor&amp;rsquo;s refresh rate), this kind of wrecked my soul on a daily basis. Granted, Android builds are more complicated (I&amp;rsquo;m looking at you, Java ecosystem!) than single-binary Golang builds, but 40+ minutes for one app build is too slow nonetheless.&lt;/p></description></item><item><title>React Advent Calendar – keto vegan, gluten free and no parabens or plastic wrapping</title><link>https://cekrem.github.io/posts/react-advent-calendar/</link><pubDate>Fri, 03 Dec 2021 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/react-advent-calendar/</guid><description>&lt;h1 id="tldr-i-made-an-advent-calendar-in-react-my-wife-loved-it">
+ &lt;a class="heading-link" href="#context"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;The &lt;a href="https://play.google.com/store/apps/details?id=no.dnb.vipps&amp;amp;hl=no&amp;amp;gl=US" class="external-link" target="_blank" rel="noopener"&gt;Vipps App&lt;/a&gt; – until recently – took about 45 minutes to build on &lt;del&gt;A$ure&lt;/del&gt; Azure. With a weekly release schedule, that might not sound like a huge dealbreaker, but since we&amp;rsquo;re using a &amp;ldquo;feature branch&amp;rdquo; approach to how we do &lt;code&gt;git&lt;/code&gt; (ie no &lt;code&gt;develop&lt;/code&gt; branch; &lt;code&gt;master&lt;/code&gt; should always be deployable-ish), we don&amp;rsquo;t allow merging &lt;em&gt;anything&lt;/em&gt; to &lt;code&gt;master&lt;/code&gt; without a successful cloud build. Waiting for code review is hard to avoid, but additionally waiting for slow builds is just wrong. It&amp;rsquo;s not easy for our internal testers to check out what we&amp;rsquo;re doing either, they &lt;em&gt;too&lt;/em&gt; are kept waiting. Suffice to say, the pain has been real. Personally, coming from a Golang background (where builds happen at the speed of your monitor&amp;rsquo;s refresh rate), this kind of wrecked my soul on a daily basis. Granted, Android builds are more complicated (I&amp;rsquo;m looking at you, Java ecosystem!) than single-binary Golang builds, but 40+ minutes for one app build is too slow nonetheless.&lt;/p&gt;</description></item><item><title>React Advent Calendar – keto vegan, gluten free and no parabens or plastic wrapping</title><link>https://cekrem.github.io/posts/react-advent-calendar/</link><pubDate>Fri, 03 Dec 2021 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/react-advent-calendar/</guid><description>&lt;h1 id="tldr-i-made-an-advent-calendar-in-react-my-wife-loved-it"&gt;
  TL;DR: I made an advent calendar in React, my wife loved it
- &lt;a class="heading-link" href="#tldr-i-made-an-advent-calendar-in-react-my-wife-loved-it">
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
- &lt;span class="sr-only">Link to heading&lt;/span>
- &lt;/a>
-&lt;/h1>
-&lt;p>I grew up with a lot of creative advent calendars. The one type I &lt;em>didn&amp;rsquo;t&lt;/em> get was the standard chocolate one that&amp;rsquo;s most common these days. While I&amp;rsquo;ve not consistently been very good at paying this forward, I do make an effort some years to do something a bit different for my wife. Yes, my wife; the kids get standard ones :P This year&amp;rsquo;s plan was simple: create an online calendar with cozy favors, encouragements and the like each day until Christmas. I had planned to spend exactly one evening on this - the last evening of November, to be precise. But, my wife&amp;rsquo;s plans for the evening evaporated as she decided she &amp;ldquo;really wanted to hang out with me at home&amp;rdquo; instead. Needless to say, I had to work quite fast.&lt;/p></description></item><item><title>create-elm-live-app – the smallest npm package ever?</title><link>https://cekrem.github.io/posts/create-elm-live-app/</link><pubDate>Thu, 08 Jul 2021 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/create-elm-live-app/</guid><description>&lt;h2 id="the-problem">
+ &lt;a class="heading-link" href="#tldr-i-made-an-advent-calendar-in-react-my-wife-loved-it"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;I grew up with a lot of creative advent calendars. The one type I &lt;em&gt;didn&amp;rsquo;t&lt;/em&gt; get was the standard chocolate one that&amp;rsquo;s most common these days. While I&amp;rsquo;ve not consistently been very good at paying this forward, I do make an effort some years to do something a bit different for my wife. Yes, my wife; the kids get standard ones :P This year&amp;rsquo;s plan was simple: create an online calendar with cozy favors, encouragements and the like each day until Christmas. I had planned to spend exactly one evening on this - the last evening of November, to be precise. But, my wife&amp;rsquo;s plans for the evening evaporated as she decided she &amp;ldquo;really wanted to hang out with me at home&amp;rdquo; instead. Needless to say, I had to work quite fast.&lt;/p&gt;</description></item><item><title>create-elm-live-app – the smallest npm package ever?</title><link>https://cekrem.github.io/posts/create-elm-live-app/</link><pubDate>Thu, 08 Jul 2021 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/create-elm-live-app/</guid><description>&lt;h2 id="the-problem"&gt;
  The problem
- &lt;a class="heading-link" href="#the-problem">
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
- &lt;span class="sr-only">Link to heading&lt;/span>
- &lt;/a>
-&lt;/h2>
-&lt;p>I&amp;rsquo;ve been tinkering a bit with Elm lately. The super-enforced functional and minimal paradigm is very refreshing, and serves as a sort of detox after spending one too many hour stuck in Android&amp;rsquo;s not-so-lovely XML + mutating class world. Setting up a new bare minimum Elm app should be quite simple, but it turns out that there are a few more steps required than one would expect. My first instinct – being a React guy – was to try &lt;code>yarn create elm-app&lt;/code> (or &lt;code>npx create-elm-app&lt;/code>), hoping it would do the Elm-equivalent of what &lt;code>create-react-app&lt;/code> does. Turns out, to my disappointment, that the end result leaves something to be desired. No proper live-reload out of the box, and a lot of the webpack stuff I was hoping to avoid completely with Elm. Yuck.&lt;/p></description></item><item><title>pretty-git-report – a CLI to give you daily commit metrics</title><link>https://cekrem.github.io/posts/git-report/</link><pubDate>Wed, 07 Jul 2021 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/git-report/</guid><description>&lt;h2 id="have-you-ever">
+ &lt;a class="heading-link" href="#the-problem"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;I&amp;rsquo;ve been tinkering a bit with Elm lately. The super-enforced functional and minimal paradigm is very refreshing, and serves as a sort of detox after spending one too many hour stuck in Android&amp;rsquo;s not-so-lovely XML + mutating class world. Setting up a new bare minimum Elm app should be quite simple, but it turns out that there are a few more steps required than one would expect. My first instinct – being a React guy – was to try &lt;code&gt;yarn create elm-app&lt;/code&gt; (or &lt;code&gt;npx create-elm-app&lt;/code&gt;), hoping it would do the Elm-equivalent of what &lt;code&gt;create-react-app&lt;/code&gt; does. Turns out, to my disappointment, that the end result leaves something to be desired. No proper live-reload out of the box, and a lot of the webpack stuff I was hoping to avoid completely with Elm. Yuck.&lt;/p&gt;</description></item><item><title>pretty-git-report – a CLI to give you daily commit metrics</title><link>https://cekrem.github.io/posts/git-report/</link><pubDate>Wed, 07 Jul 2021 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/git-report/</guid><description>&lt;h2 id="have-you-ever"&gt;
  Have you ever&amp;hellip;
- &lt;a class="heading-link" href="#have-you-ever">
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
- &lt;span class="sr-only">Link to heading&lt;/span>
- &lt;/a>
-&lt;/h2>
-&lt;ul>
-&lt;li>Wanted to track your daily additions and deletions without leaving your beloved terminal?&lt;/li>
-&lt;li>Busted your back piping &lt;code>git log {insert-hundred-flags}&lt;/code> through endless hoops trying to create a somewhat human readable and useful output?&lt;/li>
-&lt;li>Wanted to use a functional node.js cli with an immoral amount of &lt;a href="https://ramdajs.com/" class="external-link" target="_blank" rel="noopener">Rambda&lt;/a> usage? (Sorry about that, btw, I just wanted to see how far I could go. &lt;a href="https://github.com/cekrem/pretty-git-report/blob/master/index.js" class="external-link" target="_blank" rel="noopener">Quite far&lt;/a>, it turns out!)&lt;/li>
-&lt;li>Wished you would live to see a tool (any tool at all) that treverses a directory tree - :O – concurrently?&lt;/li>
-&lt;/ul>
-&lt;p>Then look no further. Lo and behold:&lt;/p></description></item></channel></rss>
+ &lt;a class="heading-link" href="#have-you-ever"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Wanted to track your daily additions and deletions without leaving your beloved terminal?&lt;/li&gt;
+&lt;li&gt;Busted your back piping &lt;code&gt;git log {insert-hundred-flags}&lt;/code&gt; through endless hoops trying to create a somewhat human readable and useful output?&lt;/li&gt;
+&lt;li&gt;Wanted to use a functional node.js cli with an immoral amount of &lt;a href="https://ramdajs.com/" class="external-link" target="_blank" rel="noopener"&gt;Rambda&lt;/a&gt; usage? (Sorry about that, btw, I just wanted to see how far I could go. &lt;a href="https://github.com/cekrem/pretty-git-report/blob/master/index.js" class="external-link" target="_blank" rel="noopener"&gt;Quite far&lt;/a&gt;, it turns out!)&lt;/li&gt;
+&lt;li&gt;Wished you would live to see a tool (any tool at all) that treverses a directory tree - :O – concurrently?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Then look no further. Lo and behold:&lt;/p&gt;</description></item></channel></rss>

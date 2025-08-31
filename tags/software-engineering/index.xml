@@ -1,169 +1,169 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Software-Engineering on cekrem.github.io</title><link>https://cekrem.github.io/tags/software-engineering/</link><description>Recent content in Software-Engineering on cekrem.github.io</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Thu, 26 Jun 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://cekrem.github.io/tags/software-engineering/index.xml" rel="self" type="application/rss+xml"/><item><title>Programming as Theory Building: Why Senior Developers Are More Valuable Than Ever</title><link>https://cekrem.github.io/posts/programming-as-theory-building-naur/</link><pubDate>Thu, 26 Jun 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/programming-as-theory-building-naur/</guid><description>&lt;p>In 1985, computer scientist Peter Naur wrote a prescient essay called &lt;a href="https://pages.cs.wisc.edu/~remzi/Naur.pdf" class="external-link" target="_blank" rel="noopener">&amp;ldquo;Programming as Theory Building&amp;rdquo;&lt;/a> that feels more relevant today than ever. As we watch junior developers reflexively accept LLM-generated code they don&amp;rsquo;t understand, and see codebases balloon with theoretically orphaned implementations, Naur&amp;rsquo;s central thesis becomes crystal clear: &lt;strong>a program is not its source code&lt;/strong>.&lt;/p>
-&lt;h2 id="the-theory-behind-the-code">
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Software-Engineering on cekrem.github.io</title><link>https://cekrem.github.io/tags/software-engineering/</link><description>Recent content in Software-Engineering on cekrem.github.io</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Thu, 26 Jun 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://cekrem.github.io/tags/software-engineering/index.xml" rel="self" type="application/rss+xml"/><item><title>Programming as Theory Building: Why Senior Developers Are More Valuable Than Ever</title><link>https://cekrem.github.io/posts/programming-as-theory-building-naur/</link><pubDate>Thu, 26 Jun 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/programming-as-theory-building-naur/</guid><description>&lt;p&gt;In 1985, computer scientist Peter Naur wrote a prescient essay called &lt;a href="https://pages.cs.wisc.edu/~remzi/Naur.pdf" class="external-link" target="_blank" rel="noopener"&gt;&amp;ldquo;Programming as Theory Building&amp;rdquo;&lt;/a&gt; that feels more relevant today than ever. As we watch junior developers reflexively accept LLM-generated code they don&amp;rsquo;t understand, and see codebases balloon with theoretically orphaned implementations, Naur&amp;rsquo;s central thesis becomes crystal clear: &lt;strong&gt;a program is not its source code&lt;/strong&gt;.&lt;/p&gt;
+&lt;h2 id="the-theory-behind-the-code"&gt;
  The Theory Behind the Code
- &lt;a class="heading-link" href="#the-theory-behind-the-code">
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
- &lt;span class="sr-only">Link to heading&lt;/span>
- &lt;/a>
-&lt;/h2>
-&lt;p>Naur argues that programming is fundamentally about building a theory—a &lt;strong>shared mental model&lt;/strong> of how a system works, why it works that way, and how it should evolve. The source code is merely a written representation of this theory, and like all representations, it&amp;rsquo;s lossy. Critical knowledge about intent, design decisions, trade-offs, and the reasoning behind architectural choices exists only in the minds of the people who built the system.&lt;/p></description></item><item><title>The Psychology of Clean Code: Why We Write Messy React Components</title><link>https://cekrem.github.io/posts/psychology-of-clean-code/</link><pubDate>Wed, 07 May 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/psychology-of-clean-code/</guid><description>&lt;p>We all know we should write clean code. We&amp;rsquo;ve read the books, attended the talks, and nodded along to the principles. Yet, somehow, we still find ourselves writing messy React components. Why is that? The answer lies not in our technical skills, but in our psychology.&lt;/p>
-&lt;h2 id="the-cognitive-load-trap">
+ &lt;a class="heading-link" href="#the-theory-behind-the-code"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Naur argues that programming is fundamentally about building a theory—a &lt;strong&gt;shared mental model&lt;/strong&gt; of how a system works, why it works that way, and how it should evolve. The source code is merely a written representation of this theory, and like all representations, it&amp;rsquo;s lossy. Critical knowledge about intent, design decisions, trade-offs, and the reasoning behind architectural choices exists only in the minds of the people who built the system.&lt;/p&gt;</description></item><item><title>The Psychology of Clean Code: Why We Write Messy React Components</title><link>https://cekrem.github.io/posts/psychology-of-clean-code/</link><pubDate>Wed, 07 May 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/psychology-of-clean-code/</guid><description>&lt;p&gt;We all know we should write clean code. We&amp;rsquo;ve read the books, attended the talks, and nodded along to the principles. Yet, somehow, we still find ourselves writing messy React components. Why is that? The answer lies not in our technical skills, but in our psychology.&lt;/p&gt;
+&lt;h2 id="the-cognitive-load-trap"&gt;
  The Cognitive Load Trap
- &lt;a class="heading-link" href="#the-cognitive-load-trap">
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
- &lt;span class="sr-only">Link to heading&lt;/span>
- &lt;/a>
-&lt;/h2>
-&lt;p>Consider this common scenario:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-tsx" data-lang="tsx">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ff6ac1">const&lt;/span> UserDashboard &lt;span style="color:#ff6ac1">=&lt;/span> () &lt;span style="color:#ff6ac1">=&amp;gt;&lt;/span> {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">const&lt;/span> [users, setUsers] &lt;span style="color:#ff6ac1">=&lt;/span> useState([]);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">const&lt;/span> [loading, setLoading] &lt;span style="color:#ff6ac1">=&lt;/span> useState(&lt;span style="color:#ff6ac1">true&lt;/span>);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">const&lt;/span> [error, setError] &lt;span style="color:#ff6ac1">=&lt;/span> useState(&lt;span style="color:#ff6ac1">null&lt;/span>);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">const&lt;/span> [filter, setFilter] &lt;span style="color:#ff6ac1">=&lt;/span> useState(&lt;span style="color:#5af78e">&amp;#34;&amp;#34;&lt;/span>);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">const&lt;/span> [sortBy, setSortBy] &lt;span style="color:#ff6ac1">=&lt;/span> useState(&lt;span style="color:#5af78e">&amp;#34;name&amp;#34;&lt;/span>);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">const&lt;/span> [page, setPage] &lt;span style="color:#ff6ac1">=&lt;/span> useState(&lt;span style="color:#ff9f43">1&lt;/span>);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">const&lt;/span> [totalPages, setTotalPages] &lt;span style="color:#ff6ac1">=&lt;/span> useState(&lt;span style="color:#ff9f43">1&lt;/span>);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> useEffect(() &lt;span style="color:#ff6ac1">=&amp;gt;&lt;/span> {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> fetchUsers();
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }, [filter, sortBy, page]);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">const&lt;/span> fetchUsers &lt;span style="color:#ff6ac1">=&lt;/span> &lt;span style="color:#ff6ac1">async&lt;/span> () &lt;span style="color:#ff6ac1">=&amp;gt;&lt;/span> {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">try&lt;/span> {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> setLoading(&lt;span style="color:#ff6ac1">true&lt;/span>);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">const&lt;/span> response &lt;span style="color:#ff6ac1">=&lt;/span> &lt;span style="color:#ff6ac1">await&lt;/span> fetch(
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#5af78e">`/api/users?filter=&lt;/span>&lt;span style="color:#5af78e">${&lt;/span>filter&lt;span style="color:#5af78e">}&lt;/span>&lt;span style="color:#5af78e">&amp;amp;sort=&lt;/span>&lt;span style="color:#5af78e">${&lt;/span>sortBy&lt;span style="color:#5af78e">}&lt;/span>&lt;span style="color:#5af78e">&amp;amp;page=&lt;/span>&lt;span style="color:#5af78e">${&lt;/span>page&lt;span style="color:#5af78e">}&lt;/span>&lt;span style="color:#5af78e">`&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> );
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">const&lt;/span> data &lt;span style="color:#ff6ac1">=&lt;/span> &lt;span style="color:#ff6ac1">await&lt;/span> response.json();
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> setUsers(data.users);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> setTotalPages(data.totalPages);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> } &lt;span style="color:#ff6ac1">catch&lt;/span> (err) {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> setError(err.message);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> } &lt;span style="color:#ff6ac1">finally&lt;/span> {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> setLoading(&lt;span style="color:#ff6ac1">false&lt;/span>);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> };
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">const&lt;/span> handleFilterChange &lt;span style="color:#ff6ac1">=&lt;/span> (e) &lt;span style="color:#ff6ac1">=&amp;gt;&lt;/span> setFilter(e.target.value);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">const&lt;/span> handleSortChange &lt;span style="color:#ff6ac1">=&lt;/span> (e) &lt;span style="color:#ff6ac1">=&amp;gt;&lt;/span> setSortBy(e.target.value);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">const&lt;/span> handlePageChange &lt;span style="color:#ff6ac1">=&lt;/span> (newPage) &lt;span style="color:#ff6ac1">=&amp;gt;&lt;/span> setPage(newPage);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">if&lt;/span> (loading) &lt;span style="color:#ff6ac1">return&lt;/span> &amp;lt;&lt;span style="color:#ff6ac1">LoadingSpinner&lt;/span> /&amp;gt;;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">if&lt;/span> (error) &lt;span style="color:#ff6ac1">return&lt;/span> &amp;lt;&lt;span style="color:#ff6ac1">ErrorMessage&lt;/span> &lt;span style="color:#57c7ff">error&lt;/span>&lt;span style="color:#ff6ac1">=&lt;/span>{error} /&amp;gt;;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ff6ac1">return&lt;/span> (
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#ff6ac1">div&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#ff6ac1">FilterBar&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#57c7ff">filter&lt;/span>&lt;span style="color:#ff6ac1">=&lt;/span>{filter}
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#57c7ff">onFilterChange&lt;/span>&lt;span style="color:#ff6ac1">=&lt;/span>{handleFilterChange}
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#57c7ff">sortBy&lt;/span>&lt;span style="color:#ff6ac1">=&lt;/span>{sortBy}
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#57c7ff">onSortChange&lt;/span>&lt;span style="color:#ff6ac1">=&lt;/span>{handleSortChange}
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> /&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#ff6ac1">UserList&lt;/span> &lt;span style="color:#57c7ff">users&lt;/span>&lt;span style="color:#ff6ac1">=&lt;/span>{users} /&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#ff6ac1">Pagination&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#57c7ff">currentPage&lt;/span>&lt;span style="color:#ff6ac1">=&lt;/span>{page}
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#57c7ff">totalPages&lt;/span>&lt;span style="color:#ff6ac1">=&lt;/span>{totalPages}
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#57c7ff">onPageChange&lt;/span>&lt;span style="color:#ff6ac1">=&lt;/span>{handlePageChange}
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> /&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;/&lt;span style="color:#ff6ac1">div&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> );
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>};
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>This component isn&amp;rsquo;t terrible, but it&amp;rsquo;s not great either. It&amp;rsquo;s doing too much, handling too many concerns, and will be difficult to maintain. Yet, it&amp;rsquo;s exactly the kind of component we write when we&amp;rsquo;re under pressure or trying to move fast.&lt;/p></description></item><item><title>Books I Think Software Engineers Should Read</title><link>https://cekrem.github.io/posts/books-i-think-software-engineers-should-read/</link><pubDate>Wed, 18 Dec 2024 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/books-i-think-software-engineers-should-read/</guid><description>&lt;p>What follows is a non-ordered &amp;amp; non-exhaustive list of great programming books that I&amp;rsquo;d recommend every ambitious software engineer. The language specific ones are obviously not for everyone.&lt;/p>
-&lt;p>Disclaimer: I have not read all of these from cover to cover. I&amp;rsquo;ve read most, but some are on my list of books to read next based on suggestions and/or reviews from people I trust.&lt;/p>
-&lt;h2 id="general">
+ &lt;a class="heading-link" href="#the-cognitive-load-trap"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Consider this common scenario:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-tsx" data-lang="tsx"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#ff6ac1"&gt;const&lt;/span&gt; UserDashboard &lt;span style="color:#ff6ac1"&gt;=&lt;/span&gt; () &lt;span style="color:#ff6ac1"&gt;=&amp;gt;&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ff6ac1"&gt;const&lt;/span&gt; [users, setUsers] &lt;span style="color:#ff6ac1"&gt;=&lt;/span&gt; useState([]);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ff6ac1"&gt;const&lt;/span&gt; [loading, setLoading] &lt;span style="color:#ff6ac1"&gt;=&lt;/span&gt; useState(&lt;span style="color:#ff6ac1"&gt;true&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ff6ac1"&gt;const&lt;/span&gt; [error, setError] &lt;span style="color:#ff6ac1"&gt;=&lt;/span&gt; useState(&lt;span style="color:#ff6ac1"&gt;null&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ff6ac1"&gt;const&lt;/span&gt; [filter, setFilter] &lt;span style="color:#ff6ac1"&gt;=&lt;/span&gt; useState(&lt;span style="color:#5af78e"&gt;&amp;#34;&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ff6ac1"&gt;const&lt;/span&gt; [sortBy, setSortBy] &lt;span style="color:#ff6ac1"&gt;=&lt;/span&gt; useState(&lt;span style="color:#5af78e"&gt;&amp;#34;name&amp;#34;&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ff6ac1"&gt;const&lt;/span&gt; [page, setPage] &lt;span style="color:#ff6ac1"&gt;=&lt;/span&gt; useState(&lt;span style="color:#ff9f43"&gt;1&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ff6ac1"&gt;const&lt;/span&gt; [totalPages, setTotalPages] &lt;span style="color:#ff6ac1"&gt;=&lt;/span&gt; useState(&lt;span style="color:#ff9f43"&gt;1&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; useEffect(() &lt;span style="color:#ff6ac1"&gt;=&amp;gt;&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; fetchUsers();
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }, [filter, sortBy, page]);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ff6ac1"&gt;const&lt;/span&gt; fetchUsers &lt;span style="color:#ff6ac1"&gt;=&lt;/span&gt; &lt;span style="color:#ff6ac1"&gt;async&lt;/span&gt; () &lt;span style="color:#ff6ac1"&gt;=&amp;gt;&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ff6ac1"&gt;try&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; setLoading(&lt;span style="color:#ff6ac1"&gt;true&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ff6ac1"&gt;const&lt;/span&gt; response &lt;span style="color:#ff6ac1"&gt;=&lt;/span&gt; &lt;span style="color:#ff6ac1"&gt;await&lt;/span&gt; fetch(
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#5af78e"&gt;`/api/users?filter=&lt;/span&gt;&lt;span style="color:#5af78e"&gt;${&lt;/span&gt;filter&lt;span style="color:#5af78e"&gt;}&lt;/span&gt;&lt;span style="color:#5af78e"&gt;&amp;amp;sort=&lt;/span&gt;&lt;span style="color:#5af78e"&gt;${&lt;/span&gt;sortBy&lt;span style="color:#5af78e"&gt;}&lt;/span&gt;&lt;span style="color:#5af78e"&gt;&amp;amp;page=&lt;/span&gt;&lt;span style="color:#5af78e"&gt;${&lt;/span&gt;page&lt;span style="color:#5af78e"&gt;}&lt;/span&gt;&lt;span style="color:#5af78e"&gt;`&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; );
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ff6ac1"&gt;const&lt;/span&gt; data &lt;span style="color:#ff6ac1"&gt;=&lt;/span&gt; &lt;span style="color:#ff6ac1"&gt;await&lt;/span&gt; response.json();
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; setUsers(data.users);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; setTotalPages(data.totalPages);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; } &lt;span style="color:#ff6ac1"&gt;catch&lt;/span&gt; (err) {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; setError(err.message);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; } &lt;span style="color:#ff6ac1"&gt;finally&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; setLoading(&lt;span style="color:#ff6ac1"&gt;false&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; };
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ff6ac1"&gt;const&lt;/span&gt; handleFilterChange &lt;span style="color:#ff6ac1"&gt;=&lt;/span&gt; (e) &lt;span style="color:#ff6ac1"&gt;=&amp;gt;&lt;/span&gt; setFilter(e.target.value);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ff6ac1"&gt;const&lt;/span&gt; handleSortChange &lt;span style="color:#ff6ac1"&gt;=&lt;/span&gt; (e) &lt;span style="color:#ff6ac1"&gt;=&amp;gt;&lt;/span&gt; setSortBy(e.target.value);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ff6ac1"&gt;const&lt;/span&gt; handlePageChange &lt;span style="color:#ff6ac1"&gt;=&lt;/span&gt; (newPage) &lt;span style="color:#ff6ac1"&gt;=&amp;gt;&lt;/span&gt; setPage(newPage);
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ff6ac1"&gt;if&lt;/span&gt; (loading) &lt;span style="color:#ff6ac1"&gt;return&lt;/span&gt; &amp;lt;&lt;span style="color:#ff6ac1"&gt;LoadingSpinner&lt;/span&gt; /&amp;gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ff6ac1"&gt;if&lt;/span&gt; (error) &lt;span style="color:#ff6ac1"&gt;return&lt;/span&gt; &amp;lt;&lt;span style="color:#ff6ac1"&gt;ErrorMessage&lt;/span&gt; &lt;span style="color:#57c7ff"&gt;error&lt;/span&gt;&lt;span style="color:#ff6ac1"&gt;=&lt;/span&gt;{error} /&amp;gt;;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ff6ac1"&gt;return&lt;/span&gt; (
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &amp;lt;&lt;span style="color:#ff6ac1"&gt;div&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &amp;lt;&lt;span style="color:#ff6ac1"&gt;FilterBar&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#57c7ff"&gt;filter&lt;/span&gt;&lt;span style="color:#ff6ac1"&gt;=&lt;/span&gt;{filter}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#57c7ff"&gt;onFilterChange&lt;/span&gt;&lt;span style="color:#ff6ac1"&gt;=&lt;/span&gt;{handleFilterChange}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#57c7ff"&gt;sortBy&lt;/span&gt;&lt;span style="color:#ff6ac1"&gt;=&lt;/span&gt;{sortBy}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#57c7ff"&gt;onSortChange&lt;/span&gt;&lt;span style="color:#ff6ac1"&gt;=&lt;/span&gt;{handleSortChange}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; /&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &amp;lt;&lt;span style="color:#ff6ac1"&gt;UserList&lt;/span&gt; &lt;span style="color:#57c7ff"&gt;users&lt;/span&gt;&lt;span style="color:#ff6ac1"&gt;=&lt;/span&gt;{users} /&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &amp;lt;&lt;span style="color:#ff6ac1"&gt;Pagination&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#57c7ff"&gt;currentPage&lt;/span&gt;&lt;span style="color:#ff6ac1"&gt;=&lt;/span&gt;{page}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#57c7ff"&gt;totalPages&lt;/span&gt;&lt;span style="color:#ff6ac1"&gt;=&lt;/span&gt;{totalPages}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#57c7ff"&gt;onPageChange&lt;/span&gt;&lt;span style="color:#ff6ac1"&gt;=&lt;/span&gt;{handlePageChange}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; /&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &amp;lt;/&lt;span style="color:#ff6ac1"&gt;div&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; );
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;};
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This component isn&amp;rsquo;t terrible, but it&amp;rsquo;s not great either. It&amp;rsquo;s doing too much, handling too many concerns, and will be difficult to maintain. Yet, it&amp;rsquo;s exactly the kind of component we write when we&amp;rsquo;re under pressure or trying to move fast.&lt;/p&gt;</description></item><item><title>Books I Think Software Engineers Should Read</title><link>https://cekrem.github.io/posts/books-i-think-software-engineers-should-read/</link><pubDate>Wed, 18 Dec 2024 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/books-i-think-software-engineers-should-read/</guid><description>&lt;p&gt;What follows is a non-ordered &amp;amp; non-exhaustive list of great programming books that I&amp;rsquo;d recommend every ambitious software engineer. The language specific ones are obviously not for everyone.&lt;/p&gt;
+&lt;p&gt;Disclaimer: I have not read all of these from cover to cover. I&amp;rsquo;ve read most, but some are on my list of books to read next based on suggestions and/or reviews from people I trust.&lt;/p&gt;
+&lt;h2 id="general"&gt;
  General
- &lt;a class="heading-link" href="#general">
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
- &lt;span class="sr-only">Link to heading&lt;/span>
- &lt;/a>
-&lt;/h2>
-&lt;ul>
-&lt;li>&lt;a href="https://amzn.to/4gAOaHa" class="external-link" target="_blank" rel="noopener">Deep Work: Rules for Focused Success in a Distracted World&lt;/a> – Not a programming / software engineering book at all per say, but a &lt;em>highly&lt;/em> recommended read regardless. If you read one book on this list, go for this one, for real.&lt;/li>
-&lt;li>&lt;a href="https://amzn.to/3VIleoE" class="external-link" target="_blank" rel="noopener">Clean Code&lt;/a>, &lt;a href="https://amzn.to/3ZZu3Ny" class="external-link" target="_blank" rel="noopener">Clean Code&lt;em>r&lt;/em>&lt;/a> and &lt;a href="https://amzn.to/4iAc8o1" class="external-link" target="_blank" rel="noopener">Clean Architecture&lt;/a> — These Uncle Bob classics are great. I&amp;rsquo;m currently enjoying the architecture one &lt;em>on audible&lt;/em>, that&amp;rsquo;s a first for me with a software engineering book. Simply great, and truly a pleasant read/listen.&lt;/li>
-&lt;li>&lt;a href="https://amzn.to/4gjf4Ud" class="external-link" target="_blank" rel="noopener">The Pragmatic Programmer: Your Journey To Mastery&lt;/a> — A classic, and a good one at that!&lt;/li>
-&lt;li>&lt;a href="https://amzn.to/41GYOrQ" class="external-link" target="_blank" rel="noopener">Staff Engineer: Leadership beyond the management track&lt;/a> — This one I find a tiny bit boring, to be perfectly honest, but still very helpful. Lot&amp;rsquo;s of insight about &amp;ldquo;all the other stuff&amp;rdquo; (not coding).&lt;/li>
-&lt;li>&lt;a href="https://amzn.to/4gjc9ex" class="external-link" target="_blank" rel="noopener">The Effective Engineer: How to Leverage Your Efforts In Software Engineering to Make a Disproportionate and Meaningful Impact&lt;/a> — I haven&amp;rsquo;t read this one yet, but it&amp;rsquo;s been highly recommended to me by trustworthy people. And how about that killer subtitle, ey?&lt;/li>
-&lt;li>&lt;a href="https://amzn.to/4lfGwVD" class="external-link" target="_blank" rel="noopener">A Common-Sense Guide to Data Structures and Algorithms, Second Edition&lt;/a> — A practical approach to understanding data structures and algorithms that focuses on real-world applications rather than academic theory.&lt;/li>
-&lt;li>&lt;a href="https://amzn.to/44B0dQE" class="external-link" target="_blank" rel="noopener">Domain Modeling Made Functional: Tackle Software Complexity with Domain-Driven Design and F#&lt;/a> — Excellent introduction to domain-driven design principles using functional programming concepts, applicable beyond F# to any language.&lt;/li>
-&lt;/ul>
-&lt;h2 id="elm">
+ &lt;a class="heading-link" href="#general"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://amzn.to/4gAOaHa" class="external-link" target="_blank" rel="noopener"&gt;Deep Work: Rules for Focused Success in a Distracted World&lt;/a&gt; – Not a programming / software engineering book at all per say, but a &lt;em&gt;highly&lt;/em&gt; recommended read regardless. If you read one book on this list, go for this one, for real.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://amzn.to/3VIleoE" class="external-link" target="_blank" rel="noopener"&gt;Clean Code&lt;/a&gt;, &lt;a href="https://amzn.to/3ZZu3Ny" class="external-link" target="_blank" rel="noopener"&gt;Clean Code&lt;em&gt;r&lt;/em&gt;&lt;/a&gt; and &lt;a href="https://amzn.to/4iAc8o1" class="external-link" target="_blank" rel="noopener"&gt;Clean Architecture&lt;/a&gt; — These Uncle Bob classics are great. I&amp;rsquo;m currently enjoying the architecture one &lt;em&gt;on audible&lt;/em&gt;, that&amp;rsquo;s a first for me with a software engineering book. Simply great, and truly a pleasant read/listen.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://amzn.to/4gjf4Ud" class="external-link" target="_blank" rel="noopener"&gt;The Pragmatic Programmer: Your Journey To Mastery&lt;/a&gt; — A classic, and a good one at that!&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://amzn.to/41GYOrQ" class="external-link" target="_blank" rel="noopener"&gt;Staff Engineer: Leadership beyond the management track&lt;/a&gt; — This one I find a tiny bit boring, to be perfectly honest, but still very helpful. Lot&amp;rsquo;s of insight about &amp;ldquo;all the other stuff&amp;rdquo; (not coding).&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://amzn.to/4gjc9ex" class="external-link" target="_blank" rel="noopener"&gt;The Effective Engineer: How to Leverage Your Efforts In Software Engineering to Make a Disproportionate and Meaningful Impact&lt;/a&gt; — I haven&amp;rsquo;t read this one yet, but it&amp;rsquo;s been highly recommended to me by trustworthy people. And how about that killer subtitle, ey?&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://amzn.to/4lfGwVD" class="external-link" target="_blank" rel="noopener"&gt;A Common-Sense Guide to Data Structures and Algorithms, Second Edition&lt;/a&gt; — A practical approach to understanding data structures and algorithms that focuses on real-world applications rather than academic theory.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://amzn.to/44B0dQE" class="external-link" target="_blank" rel="noopener"&gt;Domain Modeling Made Functional: Tackle Software Complexity with Domain-Driven Design and F#&lt;/a&gt; — Excellent introduction to domain-driven design principles using functional programming concepts, applicable beyond F# to any language.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="elm"&gt;
  Elm
- &lt;a class="heading-link" href="#elm">
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
- &lt;span class="sr-only">Link to heading&lt;/span>
- &lt;/a>
-&lt;/h2>
-&lt;ul>
-&lt;li>&lt;a href="https://amzn.to/4kBLTxA" class="external-link" target="_blank" rel="noopener">Elm in Action&lt;/a> – This is The Book™ on Elm, by Richard Feldman (author of &lt;a href="https://www.roc-lang.org" class="external-link" target="_blank" rel="noopener">the Roc Programming language&lt;/a>). It&amp;rsquo;s simply great. The last few chapters are a tiny bit overwhelming if you&amp;rsquo;re new to Elm, but thankfully &lt;a href="https://elm.land" class="external-link" target="_blank" rel="noopener">Elm Land&lt;/a> solves much of that stuff for you.&lt;/li>
-&lt;li>&lt;a href="https://elm-lang.org/community" class="external-link" target="_blank" rel="noopener">The Elm Community&lt;/a> –Not a book at all, I know, but since this is my all time favorite programming community I can&amp;rsquo;t help but mention it anyways. The Slack, the Discourse, Subreddit – it&amp;rsquo;s all great.&lt;/li>
-&lt;/ul>
-&lt;h2 id="golang">
+ &lt;a class="heading-link" href="#elm"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://amzn.to/4kBLTxA" class="external-link" target="_blank" rel="noopener"&gt;Elm in Action&lt;/a&gt; – This is The Book™ on Elm, by Richard Feldman (author of &lt;a href="https://www.roc-lang.org" class="external-link" target="_blank" rel="noopener"&gt;the Roc Programming language&lt;/a&gt;). It&amp;rsquo;s simply great. The last few chapters are a tiny bit overwhelming if you&amp;rsquo;re new to Elm, but thankfully &lt;a href="https://elm.land" class="external-link" target="_blank" rel="noopener"&gt;Elm Land&lt;/a&gt; solves much of that stuff for you.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://elm-lang.org/community" class="external-link" target="_blank" rel="noopener"&gt;The Elm Community&lt;/a&gt; –Not a book at all, I know, but since this is my all time favorite programming community I can&amp;rsquo;t help but mention it anyways. The Slack, the Discourse, Subreddit – it&amp;rsquo;s all great.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="golang"&gt;
  Golang
- &lt;a class="heading-link" href="#golang">
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
- &lt;span class="sr-only">Link to heading&lt;/span>
- &lt;/a>
-&lt;/h2>
-&lt;ul>
-&lt;li>&lt;a href="https://amzn.to/4fruZyJ" class="external-link" target="_blank" rel="noopener">The Go Programming Language&lt;/a> —
-Kind of obvious, this one. But a great classic! I remember enjoying the chapter about UTF-8 a lot, as well as the generally thorough explanations of how and &lt;em>why&lt;/em> Golang behaves.&lt;/li>
-&lt;li>&lt;a href="https://amzn.to/3Bpf4TL" class="external-link" target="_blank" rel="noopener">Concurrency in Go: Tools and Techniques for Developers&lt;/a> — This is a truly great programming book! Even though Golang is made for concurrency, it&amp;rsquo;s still very possible to mess up. This book shows you how it&amp;rsquo;s done. What&amp;rsquo;s a bit cool (🤓) is that it predates the &lt;code>context.Context&lt;/code> interface, and as such suggests using a manual &amp;ldquo;done channel&amp;rdquo; to enable canceling of coroutines. It shows the author&amp;rsquo;s insight that an exact pattern like that was introduced with the &lt;code>Context.Done()&lt;/code> method introduced later in the language. For more on that, check out &lt;a href="https://github.com/cekrem/goutils/commit/0a511038efd9186cf204d503f7ff37c83b5c5838" class="external-link" target="_blank" rel="noopener">this git diff&lt;/a>, on a small golang utility library I started on way back.&lt;/li>
-&lt;li>Feel free to skip this one, though: &lt;a href="https://amzn.to/3P1uq3R" class="external-link" target="_blank" rel="noopener">Learning Functional Programming in Go&lt;/a> — This book should, IMHO, rather have been a tweet. Something like this: &amp;ldquo;Go is not really suited for functional programming, I&amp;rsquo;d advice you not to do it at scale.&amp;rdquo; Fun fact: this book is actually what got me into &lt;a href="#kotlin" >Kotlin&lt;/a>. All that talk about &lt;a href="https://stackoverflow.com/questions/310974/what-is-tail-call-optimization" class="external-link" target="_blank" rel="noopener">tail call optimization&lt;/a> (and how Golang is &lt;em>not&lt;/em> doing that&amp;hellip;) got me searching for more functional fun outside of Elm, Haskell and Lisp.&lt;/li>
-&lt;/ul>
-&lt;h2 id="python">
+ &lt;a class="heading-link" href="#golang"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://amzn.to/4fruZyJ" class="external-link" target="_blank" rel="noopener"&gt;The Go Programming Language&lt;/a&gt; —
+Kind of obvious, this one. But a great classic! I remember enjoying the chapter about UTF-8 a lot, as well as the generally thorough explanations of how and &lt;em&gt;why&lt;/em&gt; Golang behaves.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://amzn.to/3Bpf4TL" class="external-link" target="_blank" rel="noopener"&gt;Concurrency in Go: Tools and Techniques for Developers&lt;/a&gt; — This is a truly great programming book! Even though Golang is made for concurrency, it&amp;rsquo;s still very possible to mess up. This book shows you how it&amp;rsquo;s done. What&amp;rsquo;s a bit cool (🤓) is that it predates the &lt;code&gt;context.Context&lt;/code&gt; interface, and as such suggests using a manual &amp;ldquo;done channel&amp;rdquo; to enable canceling of coroutines. It shows the author&amp;rsquo;s insight that an exact pattern like that was introduced with the &lt;code&gt;Context.Done()&lt;/code&gt; method introduced later in the language. For more on that, check out &lt;a href="https://github.com/cekrem/goutils/commit/0a511038efd9186cf204d503f7ff37c83b5c5838" class="external-link" target="_blank" rel="noopener"&gt;this git diff&lt;/a&gt;, on a small golang utility library I started on way back.&lt;/li&gt;
+&lt;li&gt;Feel free to skip this one, though: &lt;a href="https://amzn.to/3P1uq3R" class="external-link" target="_blank" rel="noopener"&gt;Learning Functional Programming in Go&lt;/a&gt; — This book should, IMHO, rather have been a tweet. Something like this: &amp;ldquo;Go is not really suited for functional programming, I&amp;rsquo;d advice you not to do it at scale.&amp;rdquo; Fun fact: this book is actually what got me into &lt;a href="#kotlin" &gt;Kotlin&lt;/a&gt;. All that talk about &lt;a href="https://stackoverflow.com/questions/310974/what-is-tail-call-optimization" class="external-link" target="_blank" rel="noopener"&gt;tail call optimization&lt;/a&gt; (and how Golang is &lt;em&gt;not&lt;/em&gt; doing that&amp;hellip;) got me searching for more functional fun outside of Elm, Haskell and Lisp.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="python"&gt;
  Python
- &lt;a class="heading-link" href="#python">
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
- &lt;span class="sr-only">Link to heading&lt;/span>
- &lt;/a>
-&lt;/h2>
-&lt;ul>
-&lt;li>&lt;a href="https://amzn.to/3Dyiyni" class="external-link" target="_blank" rel="noopener">Fluent Python: Clear, Concise, and Effective Programming&lt;/a> — I read this one on my Kindle, actually, before I learned that Kindle&amp;rsquo;s not where programming books really shine. That aside, I have nothing but fond memories from the first edition, and I&amp;rsquo;ve heard the updates on the second edition are really worthwhile. If you want to read &lt;em>one&lt;/em> Python book, this is it.&lt;/li>
-&lt;li>&lt;a href="https://amzn.to/4gx5tt2" class="external-link" target="_blank" rel="noopener">Automate the Boring Stuff with Python, 2nd Edition: Practical Programming for Total Beginners&lt;/a> — This one is also cool! While mainly targeting &amp;ldquo;total beginners&amp;rdquo;, it&amp;rsquo;s also suitable for seasoned programmers who don&amp;rsquo;t usually work in Python, but want to leverage its super fast scripting capabilities to automate stuff.&lt;/li>
-&lt;/ul>
-&lt;h2 id="kotlin">
+ &lt;a class="heading-link" href="#python"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://amzn.to/3Dyiyni" class="external-link" target="_blank" rel="noopener"&gt;Fluent Python: Clear, Concise, and Effective Programming&lt;/a&gt; — I read this one on my Kindle, actually, before I learned that Kindle&amp;rsquo;s not where programming books really shine. That aside, I have nothing but fond memories from the first edition, and I&amp;rsquo;ve heard the updates on the second edition are really worthwhile. If you want to read &lt;em&gt;one&lt;/em&gt; Python book, this is it.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://amzn.to/4gx5tt2" class="external-link" target="_blank" rel="noopener"&gt;Automate the Boring Stuff with Python, 2nd Edition: Practical Programming for Total Beginners&lt;/a&gt; — This one is also cool! While mainly targeting &amp;ldquo;total beginners&amp;rdquo;, it&amp;rsquo;s also suitable for seasoned programmers who don&amp;rsquo;t usually work in Python, but want to leverage its super fast scripting capabilities to automate stuff.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="kotlin"&gt;
  Kotlin
- &lt;a class="heading-link" href="#kotlin">
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
- &lt;span class="sr-only">Link to heading&lt;/span>
- &lt;/a>
-&lt;/h2>
-&lt;ul>
-&lt;li>&lt;a href="https://amzn.to/4gjT1wU" class="external-link" target="_blank" rel="noopener">Functional Programming in Kotlin&lt;/a> — Functional Programming &lt;em>and&lt;/em> Kotlin in the same book title?! No-brainer. This one is great!&lt;/li>
-&lt;li>&lt;a href="https://amzn.to/402VYev" class="external-link" target="_blank" rel="noopener">Kotlin in Action&lt;/a> — One of two &amp;ldquo;general Kotlin books&amp;rdquo; I&amp;rsquo;d recommend.&lt;/li>
-&lt;li>&lt;a href="https://amzn.to/3ZYEdxN" class="external-link" target="_blank" rel="noopener">Mastering Kotlin&lt;/a> — The other one :)&lt;/li>
-&lt;/ul>
-&lt;h2 id="lisp">
+ &lt;a class="heading-link" href="#kotlin"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://amzn.to/4gjT1wU" class="external-link" target="_blank" rel="noopener"&gt;Functional Programming in Kotlin&lt;/a&gt; — Functional Programming &lt;em&gt;and&lt;/em&gt; Kotlin in the same book title?! No-brainer. This one is great!&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://amzn.to/402VYev" class="external-link" target="_blank" rel="noopener"&gt;Kotlin in Action&lt;/a&gt; — One of two &amp;ldquo;general Kotlin books&amp;rdquo; I&amp;rsquo;d recommend.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://amzn.to/3ZYEdxN" class="external-link" target="_blank" rel="noopener"&gt;Mastering Kotlin&lt;/a&gt; — The other one :)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="lisp"&gt;
  Lisp
- &lt;a class="heading-link" href="#lisp">
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
- &lt;span class="sr-only">Link to heading&lt;/span>
- &lt;/a>
-&lt;/h2>
-&lt;ul>
-&lt;li>&lt;a href="https://amzn.to/4izuO7c" class="external-link" target="_blank" rel="noopener">Land of Lisp: Learn to Program in Lisp, One Game at a Time!&lt;/a> — A bit whimsical, but then again Lisp is &lt;em>not&lt;/em>, so in sum a semi-serious book. I liked it ¯\&lt;em>(ツ)&lt;/em>/¯&lt;/li>
-&lt;li>&lt;a href="https://amzn.to/4gf8sq2" class="external-link" target="_blank" rel="noopener">On Lisp: Advanced Techniques for Common Lisp&lt;/a> — &lt;em>The&lt;/em> Lisp book, by mr. Paul Graham himself. Hats off, hands down.&lt;/li>
-&lt;li>&lt;a href="https://amzn.to/3ZVWUSW" class="external-link" target="_blank" rel="noopener">Practical Common Lisp&lt;/a> — The other Lisp book, I guess? Great.&lt;/li>
-&lt;/ul>
-&lt;h2 id="react">
+ &lt;a class="heading-link" href="#lisp"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://amzn.to/4izuO7c" class="external-link" target="_blank" rel="noopener"&gt;Land of Lisp: Learn to Program in Lisp, One Game at a Time!&lt;/a&gt; — A bit whimsical, but then again Lisp is &lt;em&gt;not&lt;/em&gt;, so in sum a semi-serious book. I liked it ¯\&lt;em&gt;(ツ)&lt;/em&gt;/¯&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://amzn.to/4gf8sq2" class="external-link" target="_blank" rel="noopener"&gt;On Lisp: Advanced Techniques for Common Lisp&lt;/a&gt; — &lt;em&gt;The&lt;/em&gt; Lisp book, by mr. Paul Graham himself. Hats off, hands down.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://amzn.to/3ZVWUSW" class="external-link" target="_blank" rel="noopener"&gt;Practical Common Lisp&lt;/a&gt; — The other Lisp book, I guess? Great.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="react"&gt;
  React
- &lt;a class="heading-link" href="#react">
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
- &lt;span class="sr-only">Link to heading&lt;/span>
- &lt;/a>
-&lt;/h2>
-&lt;ul>
-&lt;li>&lt;a href="https://amzn.to/4iFXVWq" class="external-link" target="_blank" rel="noopener">Advanced React: Deep dives, investigations, performance patterns and techniques&lt;/a> — I&amp;rsquo;ve actually read (or at least skimmed) quite a few books on React — I even started writing one, way back — but this is the only one I think is worth recommending. If you&amp;rsquo;re a complete beginner there are probably other/better options, but given that you&amp;rsquo;re at least semi-familiar with thinking in React, this is The One.&lt;/li>
-&lt;/ul>
-&lt;h2 id="rust">
+ &lt;a class="heading-link" href="#react"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://amzn.to/4iFXVWq" class="external-link" target="_blank" rel="noopener"&gt;Advanced React: Deep dives, investigations, performance patterns and techniques&lt;/a&gt; — I&amp;rsquo;ve actually read (or at least skimmed) quite a few books on React — I even started writing one, way back — but this is the only one I think is worth recommending. If you&amp;rsquo;re a complete beginner there are probably other/better options, but given that you&amp;rsquo;re at least semi-familiar with thinking in React, this is The One.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="rust"&gt;
  Rust
- &lt;a class="heading-link" href="#rust">
- &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading">&lt;/i>
- &lt;span class="sr-only">Link to heading&lt;/span>
- &lt;/a>
-&lt;/h2>
-&lt;ul>
-&lt;li>&lt;a href="https://amzn.to/4gFp7D3" class="external-link" target="_blank" rel="noopener">The Rust Programming Language&lt;/a> — &amp;ldquo;The Book&amp;rdquo;, as official as it gets, and quite good at that.&lt;/li>
-&lt;li>&lt;a href="https://amzn.to/400rtXM" class="external-link" target="_blank" rel="noopener">Programming Rust&lt;/a> — Less official, but a fine resource regardless. The two complement each other (and of course overlap a bit as well).&lt;/li>
-&lt;/ul>
-&lt;p>Warning: I might add more later.&lt;/p></description></item></channel></rss>
+ &lt;a class="heading-link" href="#rust"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://amzn.to/4gFp7D3" class="external-link" target="_blank" rel="noopener"&gt;The Rust Programming Language&lt;/a&gt; — &amp;ldquo;The Book&amp;rdquo;, as official as it gets, and quite good at that.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://amzn.to/400rtXM" class="external-link" target="_blank" rel="noopener"&gt;Programming Rust&lt;/a&gt; — Less official, but a fine resource regardless. The two complement each other (and of course overlap a bit as well).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Warning: I might add more later.&lt;/p&gt;</description></item></channel></rss>

@@ -48,13 +48,13 @@
 </span></span><span style=display:flex><span>    <span style=color:#57c7ff>=</span> <span style=color:#9aedfe>CompileCode</span> <span style=color:#9aedfe>String</span>
 </span></span><span style=display:flex><span>    <span style=color:#57c7ff>|</span> <span style=color:#9aedfe>CompilationComplete</span> (<span style=color:#9aedfe>Result</span> <span style=color:#9aedfe>Error</span> <span style=color:#9aedfe>String</span>)
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#78787e>-- Guida handles compilation directly in the browser:</span>
+</span></span><span style=display:flex><span><span style=color:#78787e>-- Guida handles compilation directly in the browser, using ports to pass source / compiled js:</span>
 </span></span><span style=display:flex><span><span style=color:#ff5c57>update</span> <span style=color:#57c7ff>:</span> <span style=color:#9aedfe>Msg</span> <span style=color:#57c7ff>-&gt;</span> <span style=color:#9aedfe>Model</span> <span style=color:#57c7ff>-&gt;</span> ( <span style=color:#9aedfe>Model</span>, <span style=color:#9aedfe>Cmd</span> <span style=color:#9aedfe>Msg</span> )
 </span></span><span style=display:flex><span><span style=color:#ff5c57>update</span> <span style=color:#ff5c57>msg</span> <span style=color:#ff5c57>model</span> <span style=color:#57c7ff>=</span>
 </span></span><span style=display:flex><span>    <span style=color:#ff6ac1>case</span> <span style=color:#ff5c57>msg</span> <span style=color:#ff6ac1>of</span>
 </span></span><span style=display:flex><span>        <span style=color:#9aedfe>CompileCode</span> <span style=color:#ff5c57>sourceCode</span> <span style=color:#57c7ff>-&gt;</span>
 </span></span><span style=display:flex><span>            ( { <span style=color:#ff5c57>model</span> <span style=color:#57c7ff>|</span> <span style=color:#ff5c57>status</span> <span style=color:#57c7ff>=</span> <span style=color:#9aedfe>Compiling</span> }
-</span></span><span style=display:flex><span>            , <span style=color:#9aedfe>Guida</span><span style=color:#57c7ff>.</span><span style=color:#ff5c57>compile</span> <span style=color:#ff5c57>sourceCode</span>
+</span></span><span style=display:flex><span>            , <span style=color:#ff5c57>sendSourceCodeToPortCmd</span> <span style=color:#ff5c57>sourceCode</span>
 </span></span><span style=display:flex><span>            )
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>        <span style=color:#9aedfe>CompilationComplete</span> <span style=color:#ff5c57>result</span> <span style=color:#57c7ff>-&gt;</span>

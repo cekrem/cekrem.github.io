@@ -13,7 +13,7 @@
       <link>https://cekrem.github.io/posts/compiler-driven-development-elm-playground/</link>
       <pubDate>Sun, 31 Aug 2025 00:00:00 +0000</pubDate>
       <guid>https://cekrem.github.io/posts/compiler-driven-development-elm-playground/</guid>
-      <description><![CDATA[<p>Sometimes the best solutions emerge from the ashes of failed approaches. This is the story of how I built <a href="https://elm-playground.render.com" class="external-link" target="_blank" rel="noopener">elm-playground</a> – an interactive Elm environment for teaching &ldquo;compiler-driven development&rdquo; – and how hitting memory limits forced me to discover something even better than my original plan.</p>
+      <description><![CDATA[<p>Sometimes the best solutions emerge from the ashes of failed approaches. This is the story of how I built <a href="https://elm-playground.onrender.com" class="external-link" target="_blank" rel="noopener">elm-playground</a> – an interactive Elm environment for teaching &ldquo;compiler-driven development&rdquo; – and how hitting memory limits forced me to discover something even better than my original plan.</p>
 <h2 id="the-mission-teaching-compiler-driven-development">
  The Mission: Teaching Compiler-Driven Development
  <a class="heading-link" href="#the-mission-teaching-compiler-driven-development">

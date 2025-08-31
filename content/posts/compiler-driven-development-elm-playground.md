@@ -6,7 +6,7 @@ date = "2025-08-31"
 draft = false
 +++
 
-Sometimes the best solutions emerge from the ashes of failed approaches. This is the story of how I built [elm-playground](https://elm-playground.render.com) – an interactive Elm environment for teaching "compiler-driven development" – and how hitting memory limits forced me to discover something even better than my original plan.
+Sometimes the best solutions emerge from the ashes of failed approaches. This is the story of how I built [elm-playground](https://elm-playground.onrender.com) – an interactive Elm environment for teaching "compiler-driven development" – and how hitting memory limits forced me to discover something even better than my original plan.
 
 ## The Mission: Teaching Compiler-Driven Development
 
@@ -118,7 +118,7 @@ With some blood, sweat, tears and greatinsights from the awesome Elm community, 
 
 ## The Final Result
 
-[Elm Playground](https://elm-playground.render.com) now provides exactly what I wanted for the workshop:
+[Elm Playground](https://elm-playground.onrender.com) now provides exactly what I wanted for the workshop:
 
 - **Interactive code editing** with syntax highlighting
 - **Real-time compilation** without server round-trips
@@ -205,7 +205,7 @@ Bonus: I was also invited to collaborate on [Guida](https://github.com/guida-lan
 
 ## Try It Yourself
 
-[Elm Playground](https://elm-playground.render.com) is live and ready for exploration. Whether you're teaching Elm, learning compiler-driven development, or just curious about in-browser compilation, I encourage you to give it a try.
+[Elm Playground](https://elm-playground.onrender.com) is live and ready for exploration. Whether you're teaching Elm, learning compiler-driven development, or just curious about in-browser compilation, I encourage you to give it a try.
 
 The source code is available on [GitHub](https://github.com/ensolabs/elm-playground), and contributions are welcome. Special thanks to [@deciojf](https://github.com/deciojf) and the Guida project for making this possible.
 

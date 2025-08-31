@@ -6,8 +6,23 @@
     <description>Recent content on cekrem.github.io</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 18 Aug 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 31 Aug 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://cekrem.github.io/index.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Compiler-Driven Development: Building an Elm Playground That Compiles in the Browser</title>
+      <link>https://cekrem.github.io/posts/compiler-driven-development-elm-playground/</link>
+      <pubDate>Sun, 31 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>https://cekrem.github.io/posts/compiler-driven-development-elm-playground/</guid>
+      <description><![CDATA[<p>Sometimes the best solutions emerge from the ashes of failed approaches. This is the story of how I built <a href="https://elm-playground.render.com" class="external-link" target="_blank" rel="noopener">elm-playground</a> – an interactive Elm environment for teaching &ldquo;compiler-driven development&rdquo; – and how hitting memory limits forced me to discover something even better than my original plan.</p>
+<h2 id="the-mission-teaching-compiler-driven-development">
+ The Mission: Teaching Compiler-Driven Development
+ <a class="heading-link" href="#the-mission-teaching-compiler-driven-development">
+ <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+ <span class="sr-only">Link to heading</span>
+ </a>
+</h2>
+<p>I&rsquo;ve been planning to host an Elm workshop at <a href="https://enso.no" class="external-link" target="_blank" rel="noopener">Ensō</a> with a specific theme: &ldquo;Compiler-driven development.&rdquo; The idea is to showcase how Elm&rsquo;s famously friendly compiler can guide your development process, catching errors before they become runtime surprises and helping you write better code through its helpful error messages.</p>]]></description>
+    </item>
     <item>
       <title>Making Impossible States Impossible: Type-Safe Domain Modeling with Functional Dependency Injection</title>
       <link>https://cekrem.github.io/posts/making-impossible-states-impossible-with-functional-dependency-injection/</link>

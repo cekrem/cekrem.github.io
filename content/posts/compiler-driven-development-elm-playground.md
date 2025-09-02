@@ -56,7 +56,7 @@ No matter what I tried, `elm make` consistently exceeded the 512MB memory limit.
 
 - **Pre-warming `elm-stuff`**: Reusing compiled dependencies between requests
 - **Symlinking instead of copying**: Reducing disk I/O overhead
-- **Switching from Go to Node.js**, using the existing node-elm-compiler package: Using lighter runtime abstractions
+- **Switching from Go to Node.js**, using the existing node-elm-compiler package
 - **Constraining `elm make`**: Looking for memory limit flags (spoiler: they don't exist)
 
 Nothing worked. The Elm compiler, while excellent at its job, simply requires more memory than a free hosting tier provides for even simple programs. (_Allegedly_, that is – locally I could never reproduce this high memory consumption! But how and why that is is a different post.)
@@ -109,7 +109,7 @@ Getting Guida integrated wasn't without challenges, though. Initially I hit CORS
 
 [@deciojf](https://github.com/deciojf), Guida's creator, pointed me to [`elm/project-metadata-utils`](https://package.elm-lang.org/packages/elm/project-metadata-utils/latest/) for proper error message decoding. I ended up borrowing his `viewError` function.
 
-With some blood, sweat, tears and greatinsights from the awesome Elm community, I finally had a working solution. The final architecture is refreshingly simple:
+With some blood, sweat, tears and great insights from the awesome Elm community, I finally had a working solution. The final architecture is refreshingly simple:
 
 1. **Pure frontend application** built with Elm
 2. **Guida integration** for in-browser compilation
@@ -132,7 +132,7 @@ More importantly, it perfectly demonstrates compiler-driven development. Worksho
 3. Experience the confidence that comes with "if it compiles, it works"
 4. Understand why Elm developers love their compiler
 
-The final two exercises don't work yet, because they have additional package dependencies not found in the deault `elm.json` file in Guida. But I'm quite confident I'll be able to solve that quite quickly 🤓
+Some of the later exercises don't work yet, because they have additional package dependencies not found in the deault `elm.json` file in Guida. But I'm quite confident I'll be able to solve that quite quickly 🤓
 
 ## Why This Solution is Better
 

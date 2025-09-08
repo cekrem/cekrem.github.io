@@ -6,8 +6,15 @@
     <description>Recent content on cekrem.github.io</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 31 Aug 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 08 Sep 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://cekrem.github.io/index.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>The Subtle Art of Taming Flows and Coroutines in Kotlin, or 'How Not to DDoS Yourself with Server-Sent Events'</title>
+      <link>https://cekrem.github.io/posts/the-subtle-art-of-taming-flows-and-coroutines-in-kotlin/</link>
+      <pubDate>Mon, 08 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>https://cekrem.github.io/posts/the-subtle-art-of-taming-flows-and-coroutines-in-kotlin/</guid>
+      <description><![CDATA[<p>I originally wanted to write a post about Server-Sent Events in general, and how delightfully cool they are. SSE provides a clean, standardized way for servers to push real-time updates to web clients over a simple HTTP connection. The <a href="https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events" class="external-link" target="_blank" rel="noopener">MDN documentation</a> showcases how straightforward the client-side implementation is, while <a href="https://ktor.io/docs/server-server-sent-events.html" class="external-link" target="_blank" rel="noopener">Ktor&rsquo;s SSE support</a> makes the server-side equally elegant. SSE strikes a perfect balance: simpler than WebSockets when you only need one-way communication, yet more efficient than polling.</p>]]></description>
+    </item>
     <item>
       <title>Compiler-Driven Development: Building an Elm Playground That Compiles in the Browser</title>
       <link>https://cekrem.github.io/posts/compiler-driven-development-elm-playground/</link>

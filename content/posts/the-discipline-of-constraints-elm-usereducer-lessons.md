@@ -3,14 +3,14 @@ title: "The Discipline of Constraints: What Elm Taught Me About React's useReduc
 date: 2025-09-18
 description: "How enforced discipline in one language can teach you better patterns in another - lessons from crossing the Elm/React boundary"
 tags: ["elm", "react", "usereducer", "architecture", "functional-programming"]
-draft: true
+draft: false
 ---
 
 ## The Accidental Teacher
 
 I've been thinking about discipline lately. Not the "wake up at 5 AM and eat nothing but kale" kind, but the more interesting variety: the kind that comes from working within constraints that make bad choices impossible.
 
-Last month, I found myself in an unusual position. After spending several months deep in Elm land - where the compiler is your strict but helpful mentor - I returned to a React codebase that was enthusiastically using `useReducer` everywhere. The whiplash was immediate and instructive.
+After spending several months deep in Elm land - where the compiler is your strict but helpful mentor - I returned to a React codebase that was enthusiastically using `useReducer` everywhere. The whiplash was immediate and instructive.
 
 You see, both approaches solve the same fundamental problem: managing complex state changes in a predictable way. But experiencing Elm's enforced discipline first made me realize just how much rope React gives you to hang yourself with - and, more importantly, how to avoid doing exactly that.
 
@@ -71,7 +71,7 @@ const reducer = (state: State, action: Action): State => {
       };
 
     default:
-      return state; // This line is doing a lot of heavy lifting
+      return state; // feel free to forget a case, nobody will tell you (or even know)
   }
 };
 ```
@@ -162,7 +162,7 @@ You're back in the imperative world of manual cleanup, race condition management
 
 What Elm taught me wasn't that React's approach is wrong - it's that discipline is a muscle that needs exercise. When the language forces you to be disciplined, you develop better habits. When it doesn't, you need to bring that discipline yourself.
 
-After my Elm detour, I found myself writing React code differently:
+After using Elm _every day_ at my client's, I found myself writing React code differently:
 
 1. **Never use `any` in action types.** If TypeScript is complaining about your action shape, fix the types, don't silence the compiler.
 
@@ -205,6 +205,8 @@ type UserState =
 
 This prevents impossible states like `loading: true, error: "Something went wrong"` that can cause confusing UI states.
 
+(More on that in [Making Impossible States Impossible with Functional Dependency Injection](/posts/making-impossible-states-impossible-with-functional-dependency-injection/).)
+
 ## The Deeper Pattern
 
 The real insight isn't about Elm vs React - it's about constraint-driven design. Working in a language that makes certain mistakes impossible teaches you to recognize and avoid those same mistakes when they become possible again.
@@ -213,7 +215,7 @@ Elm's constraints taught me better patterns for `useReducer`. The compiler's ins
 
 ## Bringing Elm's Discipline to React
 
-If you've never tried Elm but work with `useReducer` regularly, here are some constraints I learned to impose on myself:
+If you've never tried Elm but work with `useReducer` (or Redux) regularly, here are some constraints I learned to impose on myself:
 
 - **Exhaustive action handling**: Comment explicitly when you're intentionally ignoring an action.
 - **Total state transitions**: Think through what should happen to every piece of state for every action.
@@ -222,14 +224,18 @@ If you've never tried Elm but work with `useReducer` regularly, here are some co
 
 You don't need Elm's compiler to enforce these patterns, but experiencing enforced discipline helps you recognize when you're being undisciplined.
 
+(Actually, IMHO you _do_ need Elm's compiler; I'm trying not to sound Elm biased but who am I kidding 😆)
+
 ## The Craft Connection
 
 This connects back to something I've been thinking about regarding [coding as craft](/posts/coding-as-craft-going-back-to-the-old-gym/). Master craftsmen often impose constraints on themselves - not because they have to, but because constraints force innovation and build skill.
 
-The discipline I learned from Elm's compiler made me a better React developer. The constraints didn't limit my creativity; they channeled it in more productive directions.
+The discipline I learned from Elm's compiler made me a better React developer. And I'm more mindful with Kotlin and Golang as well, even though most of that stuff isn't functional at all. The constraints didn't limit my creativity; they channeled it in more productive directions.
 
 When you're building state management with `useReducer`, you're not just solving the immediate problem - you're practicing a way of thinking about state, time, and change. The habits you build in one context carry over to others.
 
 The real question isn't "Which approach is better?" It's "What can I learn from this constraint that will make me better when the constraint is removed?"
 
 Sometimes the best teacher is a language that simply won't let you make certain mistakes. Even if you never ship Elm to production, the lessons in discipline are worth the price of admission.
+
+So even if you have no realistic prospect of using Elm (or Haskell, OCaml or any other ambitious functional language) professionally – learning might make you a better developer nonetheless.

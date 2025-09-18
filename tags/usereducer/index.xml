@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Usereducer on cekrem.github.io</title><link>https://cekrem.github.io/tags/usereducer/</link><description>Recent content in Usereducer on cekrem.github.io</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Thu, 18 Sep 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://cekrem.github.io/tags/usereducer/index.xml" rel="self" type="application/rss+xml"/><item><title>The Discipline of Constraints: What Elm Taught Me About React's useReducer</title><link>https://cekrem.github.io/posts/the-discipline-of-constraints-elm-usereducer-lessons/</link><pubDate>Thu, 18 Sep 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/the-discipline-of-constraints-elm-usereducer-lessons/</guid><description>&lt;h2 id="the-accidental-teacher"&gt;
+ The Accidental Teacher
+ &lt;a class="heading-link" href="#the-accidental-teacher"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;I&amp;rsquo;ve been thinking about discipline lately. Not the &amp;ldquo;wake up at 5 AM and eat nothing but kale&amp;rdquo; kind, but the more interesting variety: the kind that comes from working within constraints that make bad choices impossible.&lt;/p&gt;
+&lt;p&gt;After spending several months deep in Elm land - where the compiler is your strict but helpful mentor - I returned to a React codebase that was enthusiastically using &lt;code&gt;useReducer&lt;/code&gt; everywhere. The whiplash was immediate and instructive.&lt;/p&gt;</description></item></channel></rss>

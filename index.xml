@@ -6,8 +6,23 @@
     <description>Recent content on cekrem.github.io</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 16 Sep 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 18 Sep 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://cekrem.github.io/index.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>The Discipline of Constraints: What Elm Taught Me About React's useReducer</title>
+      <link>https://cekrem.github.io/posts/the-discipline-of-constraints-elm-usereducer-lessons/</link>
+      <pubDate>Thu, 18 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>https://cekrem.github.io/posts/the-discipline-of-constraints-elm-usereducer-lessons/</guid>
+      <description><![CDATA[<h2 id="the-accidental-teacher">
+ The Accidental Teacher
+ <a class="heading-link" href="#the-accidental-teacher">
+ <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+ <span class="sr-only">Link to heading</span>
+ </a>
+</h2>
+<p>I&rsquo;ve been thinking about discipline lately. Not the &ldquo;wake up at 5 AM and eat nothing but kale&rdquo; kind, but the more interesting variety: the kind that comes from working within constraints that make bad choices impossible.</p>
+<p>After spending several months deep in Elm land - where the compiler is your strict but helpful mentor - I returned to a React codebase that was enthusiastically using <code>useReducer</code> everywhere. The whiplash was immediate and instructive.</p>]]></description>
+    </item>
     <item>
       <title>HTML Helpers 2.0.0 for Elm: Stable conditionals and attributes</title>
       <link>https://cekrem.github.io/posts/html-helpers-2-0-0-for-elm/</link>

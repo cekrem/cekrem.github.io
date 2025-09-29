@@ -6,8 +6,22 @@
     <description>Recent content on cekrem.github.io</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 18 Sep 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 29 Sep 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://cekrem.github.io/index.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Fighting for Brain, Heart and Sleep</title>
+      <link>https://cekrem.github.io/posts/fighting-for-brain-heart-and-sleep/</link>
+      <pubDate>Mon, 29 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>https://cekrem.github.io/posts/fighting-for-brain-heart-and-sleep/</guid>
+      <description><![CDATA[<h2 id="my-phone-is-not-dumb-enough">
+ My phone is not dumb enough
+ <a class="heading-link" href="#my-phone-is-not-dumb-enough">
+ <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+ <span class="sr-only">Link to heading</span>
+ </a>
+</h2>
+<p>I&rsquo;ve been touching on the general topic of digital minimalism from time to time on this blog, not least in <a href="https://cekrem.github.io/posts/dumbing-down-my-iphone/" >the post about dumbing down my iPhone and disabling its built-in browser</a>. I&rsquo;ve also <a href="https://cekrem.github.io/posts/why-im-not-using-the-lightphone-ii/" >kind of reviewed the Lightphone II</a>, and found it to be a great idea not quite making the cut when the rubber hits the(/my) road. The struggle against screen addiction and digital death is real, and it takes a great deal of intentionality to keep my various smart devices on a leash, making sure I&rsquo;m the head and not the tail!</p>]]></description>
+    </item>
     <item>
       <title>The Discipline of Constraints: What Elm Taught Me About React's useReducer</title>
       <link>https://cekrem.github.io/posts/the-discipline-of-constraints-elm-usereducer-lessons/</link>

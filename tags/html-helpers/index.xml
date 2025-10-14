@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Html-Helpers on cekrem.github.io</title><link>https://cekrem.github.io/tags/html-helpers/</link><description>Recent content in Html-Helpers on cekrem.github.io</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Tue, 14 Oct 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://cekrem.github.io/tags/html-helpers/index.xml" rel="self" type="application/rss+xml"/><item><title>Elm Land, Shared Subscriptions, and the Art of Workarounds</title><link>https://cekrem.github.io/posts/elm-land-shared-subscriptions-and-the-art-of-workarounds/</link><pubDate>Tue, 14 Oct 2025 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/elm-land-shared-subscriptions-and-the-art-of-workarounds/</guid><description>&lt;h2 id="the-problem-that-shouldnt-exist"&gt;
+ The Problem That Shouldn&amp;rsquo;t Exist
+ &lt;a class="heading-link" href="#the-problem-that-shouldnt-exist"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Here&amp;rsquo;s a question that comes up occasionally in Elm Land projects: &lt;em&gt;How do I react when something in the &lt;code&gt;Shared&lt;/code&gt; model changes?&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;It sounds simple enough. You have some global state in &lt;code&gt;Shared.Model&lt;/code&gt; - maybe feature flags loaded from the backend, authentication status, or some configuration data. Your page needs to &lt;em&gt;do something&lt;/em&gt; when that data changes. Not just render differently (that&amp;rsquo;s trivial), but actually perform an effect - fire off a new HTTP request, trigger some side effect locally, or whatever.&lt;/p&gt;</description></item></channel></rss>

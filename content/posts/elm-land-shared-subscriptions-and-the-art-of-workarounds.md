@@ -7,6 +7,8 @@ tags:
 draft: false
 ---
 
+> **Update:** Since publishing this post, I've taken a more direct approach to this problem. Check out [Why You Probably Shouldn't Use My Elm Land Fork](/posts/why-you-probably-shouldnt-use-my-elm-land-fork/) for the follow-up.
+
 ## The Problem That Shouldn't Exist
 
 Here's a question that comes up occasionally in Elm Land projects: _How do I react when something in the `Shared` model changes?_

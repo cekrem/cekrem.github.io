@@ -132,7 +132,11 @@ This fork is a bridge, not a rejection. It's a way to use Elm Land productively 
 If you've read all the caveats and still want to try it:
 
 ```bash
-npm install @cekrem/elm-land
+# Global install
+npm install -g @cekrem/elm-land
+
+# Project install
+npm install --save-dev @cekrem/elm-land
 ```
 
 Then use `elm-land` commands as normal - the CLI is identical, just with the new `withOnSharedMsg` hook available.

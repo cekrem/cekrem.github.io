@@ -59,7 +59,7 @@ You can see the [full implementation in the pull request](https://github.com/elm
 We hit a real need at my client project. We had moved a lot of state out of individual pages and into `Shared` to avoid refetching the same data across different parts of the app. Our views already reacted to the changed state just fine, but we needed to react to _the moment of change_ - to trigger effects when something in `Shared` changed, like showing a notification when one component deletes an item that another component is displaying. Without a way to react to those point-in-time events, we had a few unpalatable options:
 
 1. Use the `sendMsgWhen` hack from my previous post (never a real option, like I said the whole solution was mainly parodic)
-2. Route all changes through JavaScript ports (which is IMHO the idea that brought my woke my satirical mind in the first place – it gives me the shivers!)
+2. Route all changes through JavaScript ports (ah... The idea that woke my satirical mind in the first place – it still gives me the shivers!)
 3. Manually diff `Shared.Model` on every update
 4. Let go of the shared state mental model completely, accepting duplicated state across components
 5. Fork Elm Land and add the hook we need

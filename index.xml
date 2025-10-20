@@ -6,8 +6,17 @@
     <description>Recent content on cekrem.github.io</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 17 Oct 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 20 Oct 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://cekrem.github.io/index.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Why Elm is the Best Way for React Developers to Learn Real Functional Programming</title>
+      <link>https://cekrem.github.io/posts/elm-book-announcement/</link>
+      <pubDate>Mon, 20 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>https://cekrem.github.io/posts/elm-book-announcement/</guid>
+      <description><![CDATA[<p>As my newsletter subscribers suspect and my Ensō colleagues already know by now, <strong>I&rsquo;ve recently started writing a book</strong>. Not just any book—a practical guide for React developers who want to learn functional programming the right way, without getting lost in academic theory or Haskell&rsquo;s notorious learning curve.</p>
+<p><img src="https://cekrem.github.io/images/book.png" alt="Placeholder book cover"></p>
+<p>The working title is <a href="https://leanpub.com/elm-for-react-devs" class="external-link" target="_blank" rel="noopener"><strong>&ldquo;An Elm Primer for React Developers: The Best Way to Learn Real Functional Programming&rdquo;</strong></a>, and yes, that&rsquo;s a bold claim. Let me explain why I believe it.</p>]]></description>
+    </item>
     <item>
       <title>Why You Probably Shouldn't Use My Elm Land Fork</title>
       <link>https://cekrem.github.io/posts/why-you-probably-shouldnt-use-my-elm-land-fork/</link>

@@ -141,13 +141,18 @@ url = "https://enso.no"
 
 
 [[menu.main]]
-name = "Hire me?"
+name = "React → Elm Book"
 weight = 1
-url = "hire/"
+url = "/posts/elm-book-announcement"
+
+#[[menu.main]]
+#name = "Hire me?"
+#weight = 2
+#url = "hire/"
 
 [[menu.main]]
 name = "About"
-weight = 2
+weight = 3
 url = "about/"
 
 #[[menu.main]]

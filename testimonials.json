@@ -1,5 +1,13 @@
 [
   {
+    "name": "New book available now!",
+    "title": "Part 1/5 completed",
+    "text": "An Elm Primer for React Developers: The Best Way to Learn Real Functional Programming\n\nLearn Elm through the lens of React! This comprehensive guide helps React developers transition to Elm's type-safe, functional programming paradigm. Perfect for developers looking to build more reliable frontend applications with confidence. Available now on Leanpub.",
+    "date": "By Christian Ekrem",
+    "link": "https://leanpub.com/elm-for-react-devs",
+    "image": "https://d2sofvawe08yqg.cloudfront.net/elm-for-react-devs/s_hero?1620302297"
+  },
+  {
     "name": "Rune Garborg",
     "title": "CEO @ Vipps Mobile Pay",
     "text": "Thank you so much for all your contributions in Vipps. We had the privilege to have you as colleague from the very beginning of our history as a separate company. You have truly been a crucial resource in many different areas in Vipps from merchant experience to loyalty and a lot more. Thank you so much for being an important part of where Vipps is today!",
@@ -62,6 +70,14 @@
     "date": "Oct 24, 2024",
     "link": "https://www.linkedin.com/in/christian-ekrem/details/recommendations/",
     "image": "https://firebasestorage.googleapis.com/v0/b/testimonialto.appspot.com/o/testimonials%2F9481aab2-c756-4dda-a6e6-91a21c708ca9%2Favatar?alt=media&token=7b66c16c-49e0-4132-a19e-a30aa8a80844"
+  },
+  {
+    "name": "Guttorm Kvaal",
+    "title": "Former colleague @ Vipps Mobile Pay",
+    "text": "Christian is a enthusiastic and pragmatic programmer with a broad skill set. I enjoyed working with him.",
+    "date": "Oct 24, 2024",
+    "link": "https://www.linkedin.com/in/christian-ekrem/details/recommendations/",
+    "image": "https://firebasestorage.googleapis.com/v0/b/testimonialto.appspot.com/o/testimonials%2F03beafbd-da6b-4680-9d7f-f2822ea17315%2Favatar?alt=media&token=8db68766-138e-459b-bb27-15fd517cb217"
   },
   {
     "name": "Jo Inge Hjelle Bitubekk",

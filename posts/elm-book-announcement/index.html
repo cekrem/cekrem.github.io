@@ -30,25 +30,25 @@
 </span></span><span style=display:flex><span>            <span style=color:#5af78e>&#34;cat&#34;</span>
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>        <span style=color:#78787e>-- Ooops, forgot about that Penguin!</span>
-</span></span></code></pre></div><p>The compiler responds:</p><div class=highlight><pre tabindex=0 style=color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-mysql data-lang=mysql><span style=display:flex><span><span style=color:#78787e>-- MISSING PATTERNS --------------- /Users/cekrem/code/animals/src/Main.elm
-</span></span></span><span style=display:flex><span><span style=color:#78787e></span>This <span style=color:#ff6ac1>`</span><span style=color:#ff6ac1>case</span><span style=color:#ff6ac1>`</span> does <span style=color:#ff6ac1>not</span> have branches <span style=color:#ff6ac1>for</span> <span style=color:#ff6ac1>all</span> possibilities:
+</span></span></code></pre></div><p>The compiler responds:</p><div class=highlight><pre tabindex=0 style=color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>-- MISSING PATTERNS --------------- /Users/cekrem/code/animals/src/Main.elm
+</span></span><span style=display:flex><span>This `case` does not have branches for all possibilities:
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#ff9f43>306</span><span style=color:#ff6ac1>|&gt;</span>    <span style=color:#ff6ac1>case</span> animal of
-</span></span><span style=display:flex><span><span style=color:#ff9f43>307</span><span style=color:#ff6ac1>|&gt;</span>        Dog <span style=color:#ff6ac1>-&gt;</span>
-</span></span><span style=display:flex><span><span style=color:#ff9f43>308</span><span style=color:#ff6ac1>|&gt;</span>            <span style=color:#5af78e>&#34;dog&#34;</span>
-</span></span><span style=display:flex><span><span style=color:#ff9f43>309</span><span style=color:#ff6ac1>|&gt;</span>
-</span></span><span style=display:flex><span><span style=color:#ff9f43>310</span><span style=color:#ff6ac1>|&gt;</span>        Cat <span style=color:#ff6ac1>-&gt;</span>
-</span></span><span style=display:flex><span><span style=color:#ff9f43>311</span><span style=color:#ff6ac1>|&gt;</span>            <span style=color:#5af78e>&#34;cat&#34;</span>
+</span></span><span style=display:flex><span>306|&gt;    case animal of
+</span></span><span style=display:flex><span>307|&gt;        Dog -&gt;
+</span></span><span style=display:flex><span>308|&gt;            &#34;dog&#34;
+</span></span><span style=display:flex><span>309|&gt;
+</span></span><span style=display:flex><span>310|&gt;        Cat -&gt;
+</span></span><span style=display:flex><span>311|&gt;            &#34;cat&#34;
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>Missing possibilities include:
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>    Penguin
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>I would have <span style=color:#ff6ac1>to</span> crash <span style=color:#ff6ac1>if</span> I saw one of those. <span style=color:#ff6ac1>Add</span> branches <span style=color:#ff6ac1>for</span> them<span style=color:#ff6ac1>!</span>
+</span></span><span style=display:flex><span>I would have to crash if I saw one of those. Add branches for them!
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>Hint: <span style=color:#ff6ac1>If</span> you want <span style=color:#ff6ac1>to</span> <span style=color:#ff6ac1>write</span> the code <span style=color:#ff6ac1>for</span> <span style=color:#ff6ac1>each</span> branch later, <span style=color:#ff6ac1>use</span> <span style=color:#ff6ac1>`</span>Debug.todo<span style=color:#ff6ac1>`</span> <span style=color:#ff6ac1>as</span> a
-</span></span><span style=display:flex><span>placeholder. <span style=color:#ff6ac1>Read</span> <span style=color:#ff6ac1>&lt;</span>https:<span style=color:#ff6ac1>//</span>elm<span style=color:#ff6ac1>-</span>lang.org<span style=color:#ff6ac1>/</span><span style=color:#ff9f43>0</span>.<span style=color:#ff9f43>19</span>.<span style=color:#ff9f43>1</span><span style=color:#ff6ac1>/</span>missing<span style=color:#ff6ac1>-</span>patterns<span style=color:#ff6ac1>&gt;</span> <span style=color:#ff6ac1>for</span> more
-</span></span><span style=display:flex><span>guidance <span style=color:#ff6ac1>on</span> this workflow.
+</span></span><span style=display:flex><span>Hint: If you want to write the code for each branch later, use `Debug.todo` as a
+</span></span><span style=display:flex><span>placeholder. Read &lt;https://elm-lang.org/0.19.1/missing-patterns&gt; for more
+</span></span><span style=display:flex><span>guidance on this workflow.
 </span></span></code></pre></div><p>Sure beats all those <code>ensureNever</code> helpers you&rsquo;ve written in TypeScript, huh?</p></blockquote><h2 id=whats-next>What&rsquo;s Next
 <a class=heading-link href=#whats-next><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
 <span class=sr-only>Link to heading</span></a></h2><p>The book is currently in early access on <a href=https://leanpub.com/elm-for-react-devs class=external-link target=_blank rel=noopener>Leanpub</a>. I&rsquo;ll be publishing chapters as I complete them, following the serial publishing model that worked so well for other technical books.</p><p>I&rsquo;ll also be releasing select chapters here on my blog over the coming months. Chapter 2 compares The Elm Architecture to React patterns using a side-by-side Hangman game implementation—it&rsquo;s a great practical introduction to how differently Elm approaches state management.</p><p>If you&rsquo;re interested in following along:</p><ul><li>Subscribe to my newsletter (below)</li><li>Check out the book on <a href=https://leanpub.com/elm-for-react-devs class=external-link target=_blank rel=noopener>Leanpub</a> for early access</li><li>Stay tuned for more chapters here on the blog</li></ul><p>Whether you&rsquo;re curious about functional programming, frustrated with React&rsquo;s complexity, or just want to expand your horizons, I think you&rsquo;ll find this journey worthwhile. Elm changed how I think about code—not just in Elm, but in every language I write. I hope to share that experience with you.</p><h2 id=more-about-the-book>More about the Book

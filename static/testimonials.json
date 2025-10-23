@@ -1,13 +1,5 @@
 [
   {
-    "name": "New book available now!",
-    "title": "Part 1/5 completed",
-    "text": "An Elm Primer for React Developers: The Best Way to Learn Real Functional Programming\n\nLearn Elm through the lens of React! This comprehensive guide helps React developers transition to Elm's type-safe, functional programming paradigm. Perfect for developers looking to build more reliable frontend applications with confidence. Available now on Leanpub.",
-    "date": "By Christian Ekrem",
-    "link": "https://leanpub.com/elm-for-react-devs",
-    "image": "https://d2sofvawe08yqg.cloudfront.net/elm-for-react-devs/s_hero?1620302297"
-  },
-  {
     "name": "Eigil Skjæveland",
     "title": "Former colleague @ Vipps Mobile Pay",
     "text": "Christian is a connoisseur of the command-line and a hacker at heart, with a strong interest in technical details that made a real difference in our projects. He’s easy to work with and brings a positive vibe to the team.\n\nAs they say on eBay, A++++, would recommend.",

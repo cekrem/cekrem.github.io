@@ -139,10 +139,11 @@ view model =
                 ]
                 (HtmlHelpers.when (index > 0) leftButton
                     :: rightButton
+                    :: bookEntry (index == 0)
                     :: (testimonials
                             |> List.indexedMap
                                 (\i t ->
-                                    testimonialEntry (i == index || i == index + 1) t
+                                    testimonialEntry (i == index || i + 1 == index) t
                                 )
                        )
                 )
@@ -181,13 +182,23 @@ button isLeft =
         [ Html.text content ]
 
 
-testimonialEntry : Bool -> Testimonial -> Html Msg
-testimonialEntry visible testimonial =
+carouselStyles : Bool -> List (Html.Attribute msg)
+carouselStyles visible =
     -- Most of this could and should have been ish a one-liner of tailwind, but tailwind breaks the mother app
-    let
-        conditionalStyles : List (Html.Attribute msg)
-        conditionalStyles =
-            if visible then
+    [ Attributes.style "transition-property" "all"
+    , Attributes.style "transition-timing-function" "ease-out"
+    , Attributes.style "transition-duration" "0.4s"
+    , Attributes.style "margin" "0.5rem"
+    , Attributes.style "border-radius" "2rem"
+    , Attributes.style "background" "rgba(127,127,127,0.05)"
+    , Attributes.style "overflow-x" "hidden"
+    , Attributes.style "display" "flex"
+    , Attributes.style "white-space" "nowrap"
+    , Attributes.style "flex-direction" "column"
+    , Attributes.style "gap" "1rem"
+    , Attributes.style "font-size" "1.8rem"
+    ]
+        ++ (if visible then
                 [ Attributes.style "width" "60rem"
                 , Attributes.style "max-height" "60rem"
                 , Attributes.style "padding" "2rem"
@@ -205,23 +216,36 @@ testimonialEntry visible testimonial =
                 , Attributes.style "margin" "0rem"
                 , Attributes.style "flex" "0"
                 ]
-    in
-    Html.div
-        ([ Attributes.style "transition-property" "all"
-         , Attributes.style "transition-timing-function" "ease-out"
-         , Attributes.style "transition-duration" "0.4s"
-         , Attributes.style "margin" "0.5rem"
-         , Attributes.style "border-radius" "2rem"
-         , Attributes.style "background" "rgba(127,127,127,0.05)"
-         , Attributes.style "overflow-x" "hidden"
-         , Attributes.style "display" "flex"
-         , Attributes.style "white-space" "nowrap"
-         , Attributes.style "flex-direction" "column"
-         , Attributes.style "gap" "1rem"
-         , Attributes.style "font-size" "1.8rem"
-         ]
-            ++ conditionalStyles
+           )
+
+
+bookEntry : Bool -> Html msg
+bookEntry visible =
+    Html.a
+        (Attributes.href "https://leanpub.com/elm-for-react-devs/c/blog-october"
+            :: Attributes.style "text-align" "center"
+            :: carouselStyles visible
         )
+        [ title "Early access:"
+        , Html.img
+            [ Attributes.src "/images/book.png"
+            , Attributes.width 250
+            , Attributes.style "margin" "auto"
+            ]
+            []
+        , Html.span
+            []
+            [ Html.hr [] []
+            , title "20% off until"
+            , title "end of October!"
+            ]
+        ]
+
+
+testimonialEntry : Bool -> Testimonial -> Html Msg
+testimonialEntry visible testimonial =
+    Html.div
+        (carouselStyles visible)
         [ flexRow
             [ Html.img
                 [ Attributes.src testimonial.image

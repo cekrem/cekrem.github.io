@@ -6,6 +6,8 @@ import Html.Events as Events
 import HtmlHelpers exposing (hideOnBreakpoint)
 import Http
 import Json.Decode
+import Random
+import Random.List exposing (shuffle)
 import Set
 import Task
 import Time
@@ -71,7 +73,7 @@ type Msg
     = Right
     | Left
     | GotTestimonials (Result Http.Error (List Testimonial))
-    | SetRandomizedIndex Time.Posix
+    | GotShuffledTetsemonials (List Testimonial)
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -83,11 +85,11 @@ update msg model =
         ( Success testimonials index, Left ) ->
             ( Success testimonials (changeOrRollover testimonials (index - 1)), Cmd.none )
 
-        ( Success testimonials _, SetRandomizedIndex time ) ->
-            ( Success testimonials (changeOrRollover testimonials (time |> Time.posixToMillis)), Cmd.none )
+        ( Loading, GotShuffledTetsemonials testimonials ) ->
+            ( Success testimonials 0, Cmd.none )
 
         ( _, GotTestimonials (Ok testimonials) ) ->
-            ( Success testimonials 0, Cmd.none )
+            ( Loading, Random.generate GotShuffledTetsemonials (shuffle testimonials) )
 
         ( _, GotTestimonials (Err _) ) ->
             ( Failure, Cmd.none )

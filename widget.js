@@ -4545,53 +4545,7 @@ function _Http_track(router, xhr, tracker)
 			au: event.lengthComputable ? $elm$core$Maybe$Just(event.total) : $elm$core$Maybe$Nothing
 		}))));
 	});
-}
-
-
-function _Time_now(millisToPosix)
-{
-	return _Scheduler_binding(function(callback)
-	{
-		callback(_Scheduler_succeed(millisToPosix(Date.now())));
-	});
-}
-
-var _Time_setInterval = F2(function(interval, task)
-{
-	return _Scheduler_binding(function(callback)
-	{
-		var id = setInterval(function() { _Scheduler_rawSpawn(task); }, interval);
-		return function() { clearInterval(id); };
-	});
-});
-
-function _Time_here()
-{
-	return _Scheduler_binding(function(callback)
-	{
-		callback(_Scheduler_succeed(
-			A2($elm$time$Time$customZone, -(new Date().getTimezoneOffset()), _List_Nil)
-		));
-	});
-}
-
-
-function _Time_getZoneName()
-{
-	return _Scheduler_binding(function(callback)
-	{
-		try
-		{
-			var name = $elm$time$Time$Name(Intl.DateTimeFormat().resolvedOptions().timeZone);
-		}
-		catch (e)
-		{
-			var name = $elm$time$Time$Offset(new Date().getTimezoneOffset());
-		}
-		callback(_Scheduler_succeed(name));
-	});
-}
-var $elm$core$Basics$EQ = 1;
+}var $elm$core$Basics$EQ = 1;
 var $elm$core$Basics$GT = 2;
 var $elm$core$Basics$LT = 0;
 var $elm$core$List$cons = _List_cons;
@@ -6607,9 +6561,6 @@ var $author$project$Main$subscriptions = function (model) {
 		$author$project$Search$subscriptions(model.x));
 };
 var $author$project$Testimonials$Failure = {$: 0};
-var $author$project$Testimonials$SetRandomizedIndex = function (a) {
-	return {$: 3, a: a};
-};
 var $author$project$Testimonials$Success = F2(
 	function (a, b) {
 		return {$: 2, a: a, b: b};
@@ -6623,20 +6574,6 @@ var $author$project$Testimonials$changeOrRollover = F2(
 			$elm$core$List$length(list));
 		return A2($elm$core$Basics$modBy, threshold, targetIndex);
 	});
-var $elm$time$Time$Name = function (a) {
-	return {$: 0, a: a};
-};
-var $elm$time$Time$Offset = function (a) {
-	return {$: 1, a: a};
-};
-var $elm$time$Time$Zone = F2(
-	function (a, b) {
-		return {$: 0, a: a, b: b};
-	});
-var $elm$time$Time$customZone = $elm$time$Time$Zone;
-var $elm$time$Time$Posix = $elm$core$Basics$identity;
-var $elm$time$Time$millisToPosix = $elm$core$Basics$identity;
-var $elm$time$Time$now = _Time_now($elm$time$Time$millisToPosix);
 var $elm$time$Time$posixToMillis = function (_v0) {
 	var millis = _v0;
 	return millis;
@@ -6699,7 +6636,7 @@ var $author$project$Testimonials$update = F2(
 						var testimonials = _v0.b.a.a;
 						return _Utils_Tuple2(
 							A2($author$project$Testimonials$Success, testimonials, 0),
-							A2($elm$core$Task$perform, $author$project$Testimonials$SetRandomizedIndex, $elm$time$Time$now));
+							$elm$core$Platform$Cmd$none);
 					} else {
 						return _Utils_Tuple2($author$project$Testimonials$Failure, $elm$core$Platform$Cmd$none);
 					}
@@ -7518,6 +7455,10 @@ var $author$project$Testimonials$testimonialEntry = F2(
 						]))
 				]));
 	});
+var $cekrem$html_helpers$HtmlHelpers$when = F2(
+	function (cond, view_) {
+		return cond ? view_ : $cekrem$html_helpers$HtmlHelpers$nothing;
+	});
 var $author$project$Testimonials$view = function (model) {
 	switch (model.$) {
 		case 1:
@@ -7550,7 +7491,7 @@ var $author$project$Testimonials$view = function (model) {
 						]),
 					A2(
 						$elm$core$List$cons,
-						$author$project$Testimonials$leftButton,
+						A2($cekrem$html_helpers$HtmlHelpers$when, index > 0, $author$project$Testimonials$leftButton),
 						A2(
 							$elm$core$List$cons,
 							$author$project$Testimonials$rightButton,

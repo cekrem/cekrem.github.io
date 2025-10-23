@@ -62,7 +62,7 @@ Here's one right away, showcasing two of Elm's main selling points: the friendly
 >
 > The compiler responds:
 >
-> ```
+> ```text
 > -- MISSING PATTERNS --------------- /Users/cekrem/code/animals/src/Main.elm
 > This `case` does not have branches for all possibilities:
 >

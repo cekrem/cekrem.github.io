@@ -87,7 +87,7 @@ update msg model =
             ( Success testimonials (changeOrRollover testimonials (time |> Time.posixToMillis)), Cmd.none )
 
         ( _, GotTestimonials (Ok testimonials) ) ->
-            ( Success testimonials 0, Task.perform SetRandomizedIndex Time.now )
+            ( Success testimonials 0, Cmd.none )
 
         ( _, GotTestimonials (Err _) ) ->
             ( Failure, Cmd.none )
@@ -135,7 +135,7 @@ view model =
                 , Attributes.style "align-items" "center"
                 , Attributes.style "justify-content" "center"
                 ]
-                (leftButton
+                (HtmlHelpers.when (index > 0) leftButton
                     :: rightButton
                     :: (testimonials
                             |> List.indexedMap

@@ -12,6 +12,19 @@ As my newsletter subscribers suspect and my Ensō colleagues already know by now
 
 The working title is **"An Elm Primer for React Developers: The Best Way to Learn Real Functional Programming"**, and yes, that's a bold claim. Let me explain why I believe it. (Or go right ahead and download a free sample / buy the book on its [leanpub landing site](https://leanpub.com/elm-for-react-devs).)
 
+## Why Should You Care? (The Practical Case)
+
+Let me be direct: **this book will make you a better React developer, even if you never write a single line of production Elm.**
+
+Here's what learning Elm actually gives you:
+
+- **Write better React code**: You'll understand immutability patterns, reducer design, and effect management at a deeper level
+- **Understand the "why"**: You'll grasp WHY certain React patterns exist (like `useReducer`, immutable state updates, separating effects from rendering), not just HOW to use them
+- **Transfer the knowledge**: The FP fundamentals you learn apply directly to modern JavaScript/TypeScript, not just Elm
+- **Start small, stay practical**: You don't need to rewrite your app—I show you how to use Elm for just one widget inside a React codebase
+
+Think of Elm as the ideal FP training ground, with a compiler so helpful it puts AI tools to shame.
+
 ## Why Elm? Why Now?
 
 If you've been reading my blog, you know I've spent years writing React. Some of my most popular posts dive deep into React's internals—`React.memo`, reconciliation, performance optimization. Those articles have been used in React courses and even translated to Korean (true story!). That popularity reflects something important: React is powerful, but its complexity increases dramatically once you step beyond the basics.
@@ -27,11 +40,9 @@ Why? Because:
 - **Production-ready learning**: You're building real UIs, not solving academic exercises
 - **Concepts that transfer**: The FP fundamentals (immutability, pure functions, explicit effects) apply directly to Haskell, F#, OCaml, Clojure, and will even help you in JavaScript
 
-And here's the kicker: **if you understand React reducers and immutability patterns, you're already halfway there.**
-
 ## The Book's Promise
 
-Whether you end up using Elm professionally or not, learning Elm will make you a better developer in any language. It's the most effective way to internalize functional programming without getting lost in academic complexity.
+Whether you end up using Elm professionally or not, **learning Elm will make you a better developer in any language**. It's the most effective way to internalize functional programming without getting lost in academic complexity.
 
 This book isn't about convincing you to abandon React. It's a guided tour: what Elm looks like, how it compares, and how you might start using Elm—even if only as a single widget inside a React app.
 

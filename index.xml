@@ -6,8 +6,18 @@
     <description>Recent content on cekrem.github.io</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 20 Oct 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 29 Oct 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://cekrem.github.io/index.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>The Same App in React and Elm: A Side-by-Side Comparison</title>
+      <link>https://cekrem.github.io/posts/elm-architecture-vs-react-side-by-side/</link>
+      <pubDate>Wed, 29 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>https://cekrem.github.io/posts/elm-architecture-vs-react-side-by-side/</guid>
+      <description><![CDATA[<p>A few weeks ago, I <a href="https://cekrem.github.io/posts/elm-book-announcement/" class="external-link" target="_blank" rel="noopener">announced I&rsquo;m writing a book about Elm for React developers</a>. The response has been encouraging, so here&rsquo;s Chapter 2 from the book, showing what The Elm Architecture looks like in practice—side-by-side with React.</p>
+<hr>
+<p>In the <a href="https://cekrem.github.io/posts/elm-book-announcement/" class="external-link" target="_blank" rel="noopener">introduction</a>, we explored <em>why</em> Elm&rsquo;s constraints enable freedom from bugs. We talked about immutability, exhaustive checking, and compile-time guarantees. Now let&rsquo;s see what those principles look like in actual code.</p>
+<p>If you&rsquo;ve been using React for a while, you&rsquo;re familiar with the constant sense of making architectural decisions. Should this be a hook or a reducer? Do I need context here? Should I memoize this callback? Every feature brings a small avalanche of choices, and while that flexibility is powerful, it can also be exhausting.</p>]]></description>
+    </item>
     <item>
       <title>Why Elm is the Best Way for React Developers to Learn Real Functional Programming</title>
       <link>https://cekrem.github.io/posts/elm-book-announcement/</link>

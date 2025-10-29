@@ -46,13 +46,12 @@ This is simple enough to understand fully, but complex enough to expose the real
 >
 > This post shows complete code examples to illustrate the architectural differences. Don't worry about setting up Elm or typing this yourself yet—that's what Chapter 3 is for (available in the [book on Leanpub](https://leanpub.com/elm-for-react-devs)). Right now, just focus on understanding the patterns. Think of this as a guided tour before you get hands-on.
 
-## The React Version: Hooks and Effects
+## The React Version: Clean and Minimal
 
-Here's a typical React implementation using hooks and TypeScript. If you're comfortable with React patterns, feel free to skim—but pay attention to the `useEffect` and state management details:
+Here's a well-written React implementation using hooks and TypeScript (about 90 lines total). This represents _good_ React code—minimal state, computed derived values, no premature optimization:
 
 ```typescript
-import { useState, useEffect, useMemo } from "react";
-import type { ReactElement } from "react";
+import { useState } from "react";
 
 const MAX_LIVES = 6;
 
@@ -62,78 +61,40 @@ interface HangmanProps {
   initialWord?: string;
 }
 
-export default function Hangman({ initialWord = "FUNCTIONAL" }: HangmanProps) {
+const Hangman = ({ initialWord = "FUNCTIONAL" }: HangmanProps) => {
   const [wordToGuess] = useState(initialWord);
   const [guessedLetters, setGuessedLetters] = useState<Set<string>>(new Set());
-  const [livesRemaining, setLivesRemaining] = useState(MAX_LIVES);
-  const [gameStatus, setGameStatus] = useState<GameStatus>("playing");
 
-  // Derived state: display word with blanks
-  const displayWord = useMemo((): string => {
-    return wordToGuess
-      .split("")
-      .map((char: string): string => (guessedLetters.has(char) ? char : "_"))
-      .join(" ");
-  }, [wordToGuess, guessedLetters]);
+  // Compute derived state
+  const wrongGuesses = Array.from(guessedLetters).filter(
+    (letter) => !wordToGuess.includes(letter)
+  ).length;
 
-  // Check win condition
-  useEffect((): void => {
-    if (gameStatus !== "playing") return;
+  const livesRemaining = MAX_LIVES - wrongGuesses;
 
-    const hasWon: boolean = wordToGuess
-      .split("")
-      .every((char: string): boolean => guessedLetters.has(char));
-    if (hasWon) {
-      setGameStatus("won");
-    } else if (livesRemaining <= 0) {
-      setGameStatus("lost");
-    }
-  }, [guessedLetters, livesRemaining, wordToGuess, gameStatus]);
+  const hasWon = wordToGuess
+    .split("")
+    .every((char) => guessedLetters.has(char));
+  const hasLost = livesRemaining <= 0;
+  const gameStatus: GameStatus = hasWon ? "won" : hasLost ? "lost" : "playing";
 
-  const handleGuess = (letter: string): void => {
-    if (gameStatus !== "playing") return;
-    if (guessedLetters.has(letter)) return;
+  const displayWord = wordToGuess
+    .split("")
+    .map((char) => (guessedLetters.has(char) ? char : "_"))
+    .join(" ");
 
-    const newGuessedLetters = new Set(guessedLetters);
-    newGuessedLetters.add(letter);
-    setGuessedLetters(newGuessedLetters);
-
-    if (!wordToGuess.includes(letter)) {
-      setLivesRemaining((prev: number): number => prev - 1);
-    }
+  const handleGuess = (letter: string) => {
+    if (gameStatus !== "playing" || guessedLetters.has(letter)) return;
+    setGuessedLetters(new Set([...guessedLetters, letter]));
   };
 
-  const handleNewGame = (): void => {
+  const handleNewGame = () => {
     setGuessedLetters(new Set());
-    setLivesRemaining(MAX_LIVES);
-    setGameStatus("playing");
   };
 
-  const renderGameStatus = (): ReactElement | null => {
-    if (gameStatus === "won") return <div>🎉 You Won!</div>;
-    if (gameStatus === "lost")
-      return <div>😞 Game Over! The word was: {wordToGuess}</div>;
-    return null;
-  };
-
-  const renderLetterButtons = (): ReactElement[] => {
-    return Array.from({ length: 26 }, (_: unknown, i: number): string =>
-      String.fromCharCode(65 + i),
-    ).map((letter: string): ReactElement => {
-      const isGuessed: boolean = guessedLetters.has(letter);
-      const isDisabled: boolean = isGuessed || gameStatus !== "playing";
-
-      return (
-        <button
-          key={letter}
-          onClick={() => handleGuess(letter)}
-          disabled={isDisabled}
-        >
-          {letter}
-        </button>
-      );
-    });
-  };
+  const alphabet = Array.from({ length: 26 }, (_, i) =>
+    String.fromCharCode(65 + i)
+  );
 
   return (
     <div
@@ -145,25 +106,62 @@ export default function Hangman({ initialWord = "FUNCTIONAL" }: HangmanProps) {
       }}
     >
       <h1>Hangman</h1>
-      {renderGameStatus()}
+
+      {gameStatus === "won" && <div>🎉 You Won!</div>}
+      {gameStatus === "lost" && (
+        <div>😞 Game Over! The word was: {wordToGuess}</div>
+      )}
+
       <div>{displayWord}</div>
       <div>Lives remaining: {livesRemaining}</div>
-      <div>{renderLetterButtons()}</div>
+
+      <div>
+        {alphabet.map((letter) => {
+          const isGuessed = guessedLetters.has(letter);
+          const isDisabled = isGuessed || gameStatus !== "playing";
+
+          return (
+            <button
+              key={letter}
+              onClick={() => handleGuess(letter)}
+              disabled={isDisabled}
+            >
+              {letter}
+            </button>
+          );
+        })}
+      </div>
+
       <button onClick={handleNewGame}>New Game</button>
     </div>
   );
-}
+};
+
+export default Hangman;
 ```
 
-This looks reasonable, right? It's clean, modern React with TypeScript. But notice a few things:
+If you're an experienced React developer, you might appreciate the design here: only two pieces of state (`wordToGuess` and `guessedLetters`), everything else derived on-demand. No `useEffect` for state synchronization, no defensive `useMemo`. Clean and straightforward.
 
-1. **Multiple state setters**: Four different `useState` calls that could get out of sync
-2. **A `useEffect` for game logic**: We're using an effect to check win conditions, even though this isn't really a "side effect"
-3. **Dependency array management**: That `[guessedLetters, livesRemaining, wordToGuess, gameStatus]` needs to be exactly right
-4. **Manual state guards**: `if (gameStatus !== 'playing') return;` repeated in multiple places (and if you miss one, it's easy to ship subtle bugs)
-5. **Derived state with `useMemo`**: Requires dependency tracking to avoid recalculation
+But even this well-designed version has inherent complexity:
 
-None of these are dealbreakers. Experienced React developers handle this complexity daily. But it's still _complexity_, and with complexity comes the potential for bugs.
+1. **Scattered game logic**: Win/loss conditions computed inline, state guards in event handlers, derived values throughout the component
+2. **Recomputation on every render**: Five computed values (`wrongGuesses`, `livesRemaining`, `hasWon`, `hasLost`, `gameStatus`, `displayWord`) recalculate even when nothing changed
+3. **Manual state guards**: `if (gameStatus !== 'playing') return;` must be remembered in the right places
+4. **No protection against invalid state**: Nothing prevents adding non-alphabet characters to `guessedLetters`, or setting impossible game states
+5. **Logic coupled to rendering**: Game rules live inside the component, making them harder to test and reuse
+
+None of these are dealbreakers. This is genuinely good React code. But it's still _complexity_, and with complexity comes cognitive load. You have to think about where logic lives, what recomputes when, and which guards you need.
+
+> **A Note on Real-World React Code**
+>
+> The version above represents well-thought-out React—minimal state, no premature optimization. But in my experience reviewing production codebases, this isn't always what you encounter. More often, you'll see:
+>
+> - `useEffect` synchronizing derived state (checking win conditions in an effect rather than computing them)
+> - Defensive `useMemo` and `useCallback` "just in case" it's needed later
+> - Multiple pieces of state that could be derived (separate `livesRemaining` and `gameStatus` states)
+> - `useReducer` for anything beyond trivial state (which is closer to Elm, but more verbose)
+>
+> These patterns emerge naturally as teams grow, deadlines loom, and developers take the "safe" route of explicit state management. The simplified version here required deliberate design decisions. Even so, the architectural differences we're about to explore apply equally to both the optimized and the typical React patterns.
 
 ## The Elm Version: Model, Msg, Update, View
 
@@ -549,42 +547,35 @@ Let's compare what we had to think about in each version:
 
 **React version:**
 
-- Four separate state setters that could get out of sync
-- A `useEffect` with a dependency array that needs maintenance
-- A `useMemo` with another dependency array
+- Multiple computed values recalculating on every render
+- Game logic scattered across inline computations and event handlers
 - Manual guards to prevent invalid actions (`if (gameStatus !== 'playing')`)
-- Scattered game logic (some in `handleGuess`, some in `useEffect`)
+- No compile-time protection against invalid state (wrong letters in `guessedLetters`, contradictory game states)
+- Testing requires mounting the component or extracting logic to separate functions
 
 **Elm version:**
 
 - One immutable model that changes atomically
 - All game logic centralized in the `update` function
 - Pattern matching that forces handling all cases
-- No dependency arrays to maintain
-- Impossible to trigger state transitions the compiler hasn't checked
+- Impossible states prevented by the type system
+- Pure functions that are trivial to test in isolation
 
-The Elm version is more explicit—you write out every case. But that explicitness comes with safety. You can't forget to handle a state. You can't mutate data accidentally. You can't have a stale closure. The compiler has your back.
+The Elm version is more explicit—you write out every case. But that explicitness comes with safety. You can't forget to handle a state. You can't mutate data accidentally. You can't represent impossible states. The compiler has your back.
 
-## No useEffect Needed
+## Computed State vs Centralized Logic
 
-Look back at the React code. We used `useEffect` to check the win condition:
+Look back at the React code. We compute game status inline on every render:
 
 ```typescript
-useEffect((): void => {
-  if (gameStatus !== "playing") return;
-
-  const hasWon: boolean = wordToGuess
-    .split("")
-    .every((char: string): boolean => guessedLetters.has(char));
-  if (hasWon) {
-    setGameStatus("won");
-  } else if (livesRemaining <= 0) {
-    setGameStatus("lost");
-  }
-}, [guessedLetters, livesRemaining, wordToGuess, gameStatus]);
+const hasWon = wordToGuess
+  .split("")
+  .every((char) => guessedLetters.has(char));
+const hasLost = livesRemaining <= 0;
+const gameStatus: GameStatus = hasWon ? "won" : hasLost ? "lost" : "playing";
 ```
 
-This works, but it feels awkward. We're using an _effect_ (typically for side effects like fetching data) to synchronize _state_. And we need that dependency array to be exactly right, or we'll have stale data or infinite loops.
+This is fine for a small component, but as your app grows, this pattern leads to game logic scattered throughout your components. Testing requires either mounting the component or extracting these computations to separate utility functions.
 
 In Elm, this logic lives in the `update` function, right where state changes happen:
 
@@ -668,11 +659,11 @@ Remember the Elm Hook from the start of this post?
 
 Here's how:
 
-- **`init`** replaces: `useState` initial values, constructor logic
-- **`update`** replaces: `useState` setters, `useReducer`, `useEffect` (for state sync), event handlers
-- **`view`** replaces: the component render function, `useMemo` (Elm optimizes automatically)
+- **`init`** replaces: `useState` initial values, constructor logic, initialization
+- **`update`** replaces: `useState` setters, `useReducer`, event handlers, state transition logic
+- **`view`** replaces: the component render function (with automatic optimization)
 
-You don't need `useCallback` because there are no closures to worry about. You don't need `useRef` because you can't mutate anyway. You don't need `useContext` because... well, that's covered in later chapters of the book.
+You don't need `useCallback` because there are no closures to worry about. You don't need `useRef` because you can't mutate anyway. You don't need `useMemo` because Elm's virtual DOM efficiently handles recomputation. You don't need `useEffect` for state synchronization because state transitions are explicit and centralized. You don't need `useContext` because... well, that's covered in later chapters of the book.
 
 ## The FP Concepts You Just Learned
 

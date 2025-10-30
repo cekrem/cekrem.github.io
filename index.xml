@@ -6,8 +6,16 @@
     <description>Recent content on cekrem.github.io</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 29 Oct 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 30 Oct 2025 00:00:00 +0200</lastBuildDate>
     <atom:link href="https://cekrem.github.io/index.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Chapter 2, Take 2: Why I Changed Course</title>
+      <link>https://cekrem.github.io/posts/chapter-2-take-2/</link>
+      <pubDate>Thu, 30 Oct 2025 00:00:00 +0200</pubDate>
+      <guid>https://cekrem.github.io/posts/chapter-2-take-2/</guid>
+      <description><![CDATA[<p>I’m rewriting Chapter 2 of my upcoming book, <a href="https://leanpub.com/elm-for-react-devs" class="external-link" target="_blank" rel="noopener">An Elm Primer for React Developers</a>.</p>
+<p>Not because the original was &ldquo;wrong&rdquo;&quot;, but because the frame was off. I started by putting Elm and React side by side, trying to show “the Elm way” next to “the React way.” It felt tidy. It also pushed me into an awkward corner: either I write React the way I used to (which would undercut credibility with seasoned React developers), or I write the best React I can with everything I’ve learned from years in Elm (which would quietly disprove half my own argument). That tension is the point of this rewrite.</p>]]></description>
+    </item>
     <item>
       <title>The Same App in React and Elm: A Side-by-Side Comparison (Gone wrong!)</title>
       <link>https://cekrem.github.io/posts/elm-architecture-vs-react-side-by-side/</link>

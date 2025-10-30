@@ -11,6 +11,8 @@ I’m rewriting Chapter 2 of my upcoming book, [An Elm Primer for React Develope
 
 Not because the original was "wrong"", but because the frame was off. I started by putting Elm and React side by side, trying to show “the Elm way” next to “the React way.” It felt tidy. It also pushed me into an awkward corner: either I write React the way I used to (which would undercut credibility with seasoned React developers), or I write the best React I can with everything I’ve learned from years in Elm (which would quietly disprove half my own argument). That tension is the point of this rewrite.
 
+This chapter is about what React developers can learn from Elm—not about arguing that Elm is better than React.
+
 ### Early Access, Real Feedback
 
 Opening drafts early was the best decision I’ve made on this project. Readers called out places where I was “winning” with Elm by quietly applying discipline I had learned in Elm back into the React examples—making the comparison feel stacked. Others asked sharper questions: “Is the goal to prove Elm beats React, or to teach people to think functionally?” That feedback changed Chapter 2.
@@ -47,6 +49,8 @@ That difference is what gives Elm its teaching power. You’re not memorizing ru
 - Honesty: I don’t want to “win” via strawmen or outdated React. You deserve the best version of both worlds.
 - Practicality: You shouldn’t have to memorize guardrails to avoid common pitfalls. Elm bakes the guardrails in.
 - Transfer: The discipline you learn in Elm is portable. You’ll use it in React, TypeScript, Rust—anywhere.
+
+So, without more fuzz: Here is the _new_ Chapter 2! Enjoy 🤓
 
 ---
 

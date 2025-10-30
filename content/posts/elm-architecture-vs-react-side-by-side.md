@@ -20,24 +20,4 @@ How about that? That makes this very post a lot more useful for me than for the 
 
 I'll probably release another chapter (a more finished one) shortly.
 
-What follows is **the introduction** for Chapter 2, the chapter I'm currently rewriting:
-
----
-
-In the [introduction](https://cekrem.github.io/posts/elm-book-announcement/), we explored _why_ Elm's constraints enable freedom from bugs. We talked about immutability, exhaustive checking, and compile-time guarantees. Now let's see what those principles look like in actual code.
-
-If you've been using React for a while, you're familiar with the constant sense of making architectural decisions. Should this be a hook or a reducer? Do I need context here? Should I memoize this callback? Every feature brings a small avalanche of choices, and while that flexibility is powerful, it can also be exhausting.
-
-Elm takes a radically different approach: it gives you exactly one architecture. Not one _recommended_ architecture, but literally one. Every Elm application—whether it's a simple widget or a 100,000-line production codebase—follows the same pattern. The Elm Architecture (TEA) is built into the language itself.
-
-This might sound limiting at first. But consider: when there's only one way to do things, you spend less time making decisions and more time solving actual problems. You stop debating architecture and start building features. And surprisingly, this single pattern scales beautifully.
-
-Let's see what this looks like in practice.
-
-> **Elm Hook**
->
-> React hooks like useState, useReducer, useEffect, useMemo, and useCallback solve problems that don't exist in Elm. [The Elm Architecture](https://guide.elm-lang.org/architecture/) handles state, effects, and optimization by design. Keep reading to see how!
-
-[... Let's get back to just _how_ to see what this looks like in practice, once I've rewritten chapter two ]
-
-🤓
+**Update 2:** I humbly present to you, [Chapter 2, take 2](https://cekrem.github.io/posts/chapter-2-take-2/).

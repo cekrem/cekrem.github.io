@@ -12,6 +12,8 @@ As my newsletter subscribers suspect and my Ensō colleagues already know by now
 
 The working title is **"An Elm Primer for React Developers: The Best Way to Learn Real Functional Programming"**, and yes, that's a bold claim. Let me explain why I believe it. (Or go right ahead and download a free sample / buy the book on its [leanpub landing site](https://leanpub.com/elm-for-react-devs).)
 
+**Update:** In addition to that free sample, I've also published [Chapter 2](/posts/chapter-2-take-2/).
+
 ## Why Should You Care? (The Practical Case)
 
 Let me be direct: **this book will make you a better React developer, even if you never write a single line of production Elm.**

@@ -17,15 +17,6 @@
 <p>Not because the original was &ldquo;wrong&rdquo;&quot;, but because the frame was off. I started by putting Elm and React side by side, trying to show “the Elm way” next to “the React way.” It felt tidy. It also pushed me into an awkward corner: either I write React the way I used to (which would undercut credibility with seasoned React developers), or I write the best React I can with everything I’ve learned from years in Elm (which would quietly disprove half my own argument). That tension is the point of this rewrite.</p>]]></description>
     </item>
     <item>
-      <title>The Same App in React and Elm: A Side-by-Side Comparison (Gone wrong!)</title>
-      <link>https://cekrem.github.io/posts/elm-architecture-vs-react-side-by-side/</link>
-      <pubDate>Wed, 29 Oct 2025 00:00:00 +0000</pubDate>
-      <guid>https://cekrem.github.io/posts/elm-architecture-vs-react-side-by-side/</guid>
-      <description><![CDATA[<p><strong>TL;DR: See the new chapter 2 <a href="https://cekrem.github.io/posts/chapter-2-take-2/" >here</a></strong></p>
-<p><del>A few weeks ago, I <a href="https://cekrem.github.io/posts/elm-book-announcement/" class="external-link" target="_blank" rel="noopener">announced I&rsquo;m writing a book about Elm for React developers</a>. The response has been encouraging, so here&rsquo;s a full chapter from the book, showing what The Elm Architecture looks like in practice—side-by-side with React.</del></p>
-<p>I&rsquo;ve currently finished the introduction (published <a href="https://cekrem.github.io/posts/elm-book-announcement/" class="external-link" target="_blank" rel="noopener">here</a>) and drafted chapters 1-6. I don&rsquo;t plan on adding all, and not in sequence, but some of it will appear on this blog, not least to get early feedback.</p>]]></description>
-    </item>
-    <item>
       <title>Why Elm is the Best Way for React Developers to Learn Real Functional Programming</title>
       <link>https://cekrem.github.io/posts/elm-book-announcement/</link>
       <pubDate>Mon, 20 Oct 2025 00:00:00 +0000</pubDate>

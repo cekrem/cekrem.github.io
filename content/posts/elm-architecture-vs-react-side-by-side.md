@@ -6,18 +6,16 @@ tags = ["elm", "react", "functional programming", "typescript", "architecture"]
 draft = false
 +++
 
-A few weeks ago, I [announced I'm writing a book about Elm for React developers](https://cekrem.github.io/posts/elm-book-announcement/). The response has been encouraging, so here's a full chapter from the book, showing what The Elm Architecture looks like in practice—side-by-side with React.
+**TL;DR: See the new chapter 2 [here](/posts/chapter-2-take-2/)**
 
-(The formatting is slightly nicer in the actual book, but Hugo does a decent job as well.)
+~~A few weeks ago, I [announced I'm writing a book about Elm for React developers](https://cekrem.github.io/posts/elm-book-announcement/). The response has been encouraging, so here's a full chapter from the book, showing what The Elm Architecture looks like in practice—side-by-side with React.~~
 
 I've currently finished the introduction (published [here](https://cekrem.github.io/posts/elm-book-announcement/)) and drafted chapters 1-6. I don't plan on adding all, and not in sequence, but some of it will appear on this blog, not least to get early feedback.
 
 ---
 
-**Update**: I'm actually a bit back to the drawing board for this chapter. Early feedback (especially from the React community) has lead me to believe that I'm not successfully getting my message through with a side-by-side comparison like this, and need to rethink my approach (for this chapter, that is! I'm quite confident with the general message of my book, and other chapters – I hope – will spark more enthusiasm and less... other stuff).
+**Update**: I was forced back to the drawing board for this chapter. Early feedback (especially from the React community) has lead me to believe that I wasn't successfully getting my message through with a side-by-side comparison like this, and need to rethink my approach (for this chapter, that is! I'm quite confident with the general message of my book, and other chapters – I hope – will spark more enthusiasm and less... other stuff).
 
-How about that? That makes this very post a lot more useful for me than for the one reading it right now. Sorry about that, and thank you for your feedback – my next iteration will be better.
+So, I humbly present to you, [Chapter 2, take 2](/posts/chapter-2-take-2/).
 
-I'll probably release another chapter (a more finished one) shortly.
-
-**Update 2:** I humbly present to you, [Chapter 2, take 2](https://cekrem.github.io/posts/chapter-2-take-2/).
+How about that? That makes this very post a lot more useful for me than for the one reading it right now. Sorry about that, and thank you for your feedback. And the next version is far better :)

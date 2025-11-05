@@ -4,6 +4,7 @@ date: 2025-10-30T00:00:00+02:00
 slug: "chapter-2-take-2"
 description: "Rewriting Chapter 2 to focus on discipline by construction over side‑by‑side comparisons, and how early reader feedback shaped the new approach."
 tags: ["elm", "react", "functional-programming", "writing", "book-notes"]
+aliases: ["/posts/elm-architecture-vs-react-side-by-side"]
 draft: false
 ---
 

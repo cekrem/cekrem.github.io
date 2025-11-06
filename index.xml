@@ -6,8 +6,18 @@
     <description>Recent content on cekrem.github.io</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 30 Oct 2025 00:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 06 Nov 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://cekrem.github.io/index.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Why TypeScript Won't Save You</title>
+      <link>https://cekrem.github.io/posts/why-typescript-wont-save-you/</link>
+      <pubDate>Thu, 06 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>https://cekrem.github.io/posts/why-typescript-wont-save-you/</guid>
+      <description><![CDATA[<p>TypeScript won&rsquo;t save you from yourself.</p>
+<p>I know this sounds harsh, especially if you&rsquo;ve invested years mastering generics, conditional types, and mapped types. But the green checkmark from the TypeScript compiler means your code is consistent with itself - not that it&rsquo;s correct.</p>
+<p>This isn&rsquo;t an attack on TypeScript, but rather a proverbial sledgehammer to the belief that types equal type safety.</p>
+<p>The problem isn&rsquo;t the tool. It&rsquo;s the mindset. I see it constantly: developers who stop thinking about edge cases because &ldquo;the types will catch it,&rdquo; who skip validation because &ldquo;it&rsquo;s typed,&rdquo; who trust the compiler too much.</p>]]></description>
+    </item>
     <item>
       <title>Chapter 2, Take 2: Why I Changed Course</title>
       <link>https://cekrem.github.io/posts/chapter-2-take-2/</link>

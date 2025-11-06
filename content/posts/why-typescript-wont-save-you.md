@@ -1,32 +1,28 @@
 +++
 title = "Why TypeScript Won't Save You"
-date = "2025-11-13"
+date = "2025-11-06"
 description = "TypeScript is a fantastic tool, but it won't save you from yourself. Understanding its limits is the first step to writing actually safe code."
 tags = ["typescript", "type-safety", "architecture", "elm", "boundaries"]
-draft = true
+draft = false
 +++
 
-Last week, a colleague showed me some TypeScript code they were particularly proud of. Beautiful interfaces, generic constraints, mapped types - the works. "Look," they said, "the compiler guarantees this is safe."
+TypeScript won't save you from yourself.
 
-Then I asked: "What happens when the API returns null instead of an array?"
+I know this sounds harsh, especially if you've invested years mastering generics, conditional types, and mapped types. But the green checkmark from the TypeScript compiler means your code is consistent with itself - not that it's correct.
 
-Silence.
+This isn't an attack on TypeScript, but rather a proverbial sledgehammer to the belief that types equal type safety.
 
-The code compiled perfectly. The types looked great. And it would crash in production the moment the API had a bad day.
+The problem isn't the tool. It's the mindset. I see it constantly: developers who stop thinking about edge cases because "the types will catch it," who skip validation because "it's typed," who trust the compiler too much.
 
-This isn't a story about bad developers or bad code. It's about a fundamental misunderstanding of what TypeScript actually gives you - and more importantly, what it doesn't.
+TypeScript gives you the _feeling_ of safety without the guarantee. And that gap - between feeling and reality, between compile-time and runtime, between your code and the world - is where production bugs live.
 
 ## The Illusion of Safety
 
-TypeScript is an incredible tool. It catches countless bugs, makes refactoring safer, and dramatically improves the developer experience. I use it daily and wouldn't go back to plain JavaScript.
+TypeScript is an incredible tool. It catches countless bugs, makes refactoring safer, and dramatically improves the developer experience. I use it daily and wouldn't go back to plain JavaScript for critical production code.
 
-But here's what TypeScript won't do: **it won't save you from yourself.**
+But it won't protect you from the outside world. And the language itself makes this worse by providing escape hatches everywhere.
 
-The problem isn't TypeScript - it's the mindset that treating types as a safety guarantee creates. I see this constantly: developers who stop thinking about edge cases because "the types will catch it," who skip validation because "it's typed," who trust the green checkmark too much.
-
-TypeScript gives you the _feeling_ of safety without the guarantee. And that gap between feeling and reality is where production bugs live.
-
-## Escape Hatches Everywhere
+## On Escape Hatches
 
 Let me show you what I mean. Here's perfectly valid TypeScript:
 
@@ -37,26 +33,31 @@ interface User {
   email: string;
 }
 
-function getUser(id: number): User {
-  const response = fetch(`/api/users/${id}`);
-  return response.json() as User; // "Trust me, compiler"
+async function getUser(id: number): Promise<User> {
+  const response = await fetch(`/api/users/${id}`);
+  return await response.json();
 }
+
+const firstUser = await getUser(1);
+
+// what happens now?
+console.log(`Greetings, ${firstUser.name}!`);
 ```
 
-The compiler is happy. Your IDE shows no errors. But you've just lied to the type system.
+The compiler is happy. Your IDE shows no errors (it even suggests the `User` properties as you type inside that console.log). But you've just lied to the type system.
 
-That `as User` doesn't make the data a User - it just tells TypeScript to stop checking. The API could return `null`, an error object, or a completely different shape. TypeScript will never know.
+Without writing any `as User` (or the dirtier `as unknown as User`), you've convinced TypeScript that a function that can return _anything_ (including nothing) always returns a `User`. The API could return `null`, an error object, or a completely different shape. TypeScript will never know.
 
-And this is just one escape hatch. TypeScript also gives you:
+Implicit casting by return types is just one escape hatch. TypeScript also gives you:
 
 - `any` (the nuclear option)
 - `@ts-ignore` (sweep it under the rug)
-- `as unknown as T` (the double lie)
+- `as unknown as T` (the double lie that always works)
 - Type assertions that can't be verified
 
 In a large codebase, how do you know someone didn't cheat? You can't. **You're only as safe as your weakest `any`.**
 
-Compare this to Elm, where cheating is literally impossible. There is no escape hatch. If the compiler says it's safe, it actually is. (I explore this in depth in my new book, [An Elm Primer for React Developers](https://leanpub.com/elm-for-react-devs), which shows how Elm's guarantees change the way you think about type safety - even when you're back in TypeScript.)
+Compare this to Elm, where cheating is literally impossible. There is no escape hatch. If the compiler says it's safe, it actually is.
 
 ## The Boundary Problem
 
@@ -96,7 +97,7 @@ This is the norm! Your UI logic, state management, side effects, and data fetchi
 - Transforming that data (with a type assertion)
 - Rendering UI
 
-There's no boundary between safe and unsafe data. The infrastructure concern (fetching) is married to the framework (hooks, effects) and mixed with presentation logic. Everything is volatile, everywhere, all the time.
+There's no boundary between safe and unsafe data. The infrastructure concern (fetching) is married to the framework (hooks, effects) and mixed with presentation logic.
 
 This isn't just a TypeScript problem - it's an architectural one. But TypeScript makes it worse by giving you the illusion that `data as User` is somehow safe.
 
@@ -129,25 +130,25 @@ decodeUser json =
 
 Once you have a `User` in your domain layer, it's guaranteed to be valid. The type system won't let invalid data reach your business logic. Your inner layers only work with safe data.
 
-### In TypeScript: Hope and Pray
+### In TypeScript: No Boundaries
 
-In TypeScript, there's no such boundary. You can pass unvalidated data anywhere:
+In TypeScript, there's no such enforcement. You can pass unvalidated data anywhere:
 
 ```typescript
 // Infrastructure layer - gets raw data
 async function fetchUser(id: number): Promise<User> {
   const response = await fetch(`/api/users/${id}`);
-  return response.json(); // ?? Hope it's actually a User
+  return await response.json(); // ?? Hope it's actually a User
 }
 
 // Domain layer - assumes data is safe
 function sendWelcomeEmail(user: User) {
-  // Will crash if user.email is undefined
+  // Will crash if user is null, or an int or whatever
   emailService.send(user.email, "Welcome!");
 }
 ```
 
-TypeScript can't tell you that `fetchUser` might not return a real `User`. It can't tell you that your domain layer is working with potentially invalid data. **Everything is volatile, everywhere, all the time.**
+TypeScript can't tell you that `fetchUser` might not return a real `User`. It can't tell you that your domain layer is working with potentially invalid data.
 
 You _can_ build proper boundaries in TypeScript - using libraries like Zod or io-ts to validate at the edges:
 
@@ -171,64 +172,21 @@ async function fetchUser(id: number): Promise<User> {
 
 But notice: **you have to remember to do this.** TypeScript won't remind you. It won't fail to compile if you forget. And in a large codebase with dozens of developers, someone will forget.
 
+(You could (and should?) also consider [Effect](https://effect.website) for a more holistic approach, but that's a blog post of its own.)
+
 ## Runtime vs Compile-Time
 
-This points to the fundamental difference: **TypeScript disappears at runtime.**
+This points to the fundamental difference: **TypeScript disappears at runtime** and is **blissfully ignorant of many things at compile-time**.
 
 When your code runs in production, all those beautiful types are gone. What's left is JavaScript - dynamic, untyped, perfectly happy to let `undefined` crash your app.
 
-TypeScript is a compile-time tool. It checks your code against itself. But it can't check your code against reality.
+TypeScript is a compile-time tool. It checks your code against itself. But it can't check your code against reality. And unless you tell it to, it doesn't know or care about architectural layers or the difference between your domain and the dangerous outside world.
 
-Elm's types, on the other hand, are enforced at runtime through the architecture. The decoder doesn't just annotate - it actually validates. The Maybe type doesn't just document that a value might be missing - it forces you to handle that case or your code won't compile.
-
-## The Null/Undefined Trap
-
-Speaking of missing values, let's talk about TypeScript's most persistent problem:
-
-```typescript
-interface User {
-  id: number;
-  name: string;
-  email?: string; // Optional
-}
-
-function sendEmail(user: User) {
-  // TypeScript knows email might be undefined
-  // But this still compiles:
-  emailService.send(user.email, "Hello!");
-}
-```
-
-With `strictNullChecks` enabled, TypeScript will warn you. But:
-
-1. Not all projects enable it
-2. You can still ignore the warning
-3. Optional chaining (`user.email?.toLowerCase()`) hides the problem instead of solving it
-
-In Elm, there is no `null` or `undefined`. If a value might be missing, it's a `Maybe`:
-
-```elm
-type alias User =
-    { id : Int
-    , name : String
-    , email : Maybe String
-    }
-
-sendEmail : User -> Result Error ()
-sendEmail user =
-    case user.email of
-        Just email ->
-            emailService.send email "Hello!"
-
-        Nothing ->
-            Err (MissingEmail user.id)
-```
-
-You literally cannot access `user.email` without handling both cases. The code won't compile. No escape hatch. No forgetting. No runtime crash.
+Elm's types, on the other hand, are enforced consistently, end to end, through the architecture. The decoder doesn't just annotate - it actually validates. The Maybe type doesn't just document that a value might be missing - it forces you to handle that case or your code won't compile.
 
 ## The Deeper Problem: Mindset
 
-Here's what really concerns me: **TypeScript creates a false sense of security.**
+**TypeScript creates a false sense of security.**
 
 I see developers who:
 
@@ -254,12 +212,11 @@ In Elm, the language forces this architecture. Decoders at the boundary, pure fu
 
 In TypeScript, you have to build this discipline yourself:
 
-1. **Validate at boundaries** - Use Zod, io-ts, or similar. Don't trust external data.
+1. **Validate (or better yet _parse_) at boundaries** - Use Zod, io-ts, or Effect or similar. Don't trust external data.
 2. **Create safe types** - Once validated, use branded types or classes that can't be constructed with invalid data.
-3. **Ban escape hatches** - Configure ESLint to flag `any`, `as`, and `@ts-ignore`. Make them painful.
+3. **Ban escape hatches** - Configure your setup to flag `any`, `as`, and `@ts-ignore`. Make them painful.
 4. **Separate concerns** - Keep infrastructure (fetching, parsing) separate from domain logic. Don't mix `useEffect` with business rules.
 5. **Test the unhappy paths** - Types won't save you from bad data, but tests can.
-6. **Be honest about tradeoffs** - TypeScript is faster to write than Elm. That's a valid choice. Just know what you're giving up.
 
 ## The Craft of Type Safety
 
@@ -279,26 +236,22 @@ But it won't:
 - Validate external data
 - Prevent runtime errors
 - Guarantee type safety
-- Save you from yourself
+- **Protect you from bad data**
 
-Whether you're using TypeScript, Elm, or anything else, the key is understanding what you're actually getting. Tools are fantastic, but they're not a substitute for thinking.
+Whether you're using TypeScript, Elm, or anything else, the key is understanding what you're actually getting. Tools are fantastic, but they're not a substitute for thinking. And (more on that in a later post): **we need solid engineering and architecture on our frontends, not just typings**.
 
 ## Learning Real Type Safety
 
-If you want to understand what actual type safety feels like - the kind where "if it compiles, it works" is more than a meme - I'd encourage you to try Elm.
+If you want to understand what actual type safety feels like - the kind where "if it compiles, it works" is more than a meme - try Elm. There are other equally type safe (and functional) languages out there, but as I argue often: Elm provides the shortest and most direct path, especially if you're familiar with the frontend domain (and React in particular).
 
-Not necessarily to use it in production (though I do, and love it). But to learn what a language looks like when it takes type safety seriously. When there are no escape hatches. When the compiler actually has your back.
+Not necessarily for production (though I do, and love it). But to learn what a language looks like when it takes type safety seriously. When there are no escape hatches. When the compiler actually has your back. Once you've experienced real type safety, you start building better boundaries in every language.
 
-I'm writing about this extensively in [An Elm Primer for React Developers](https://leanpub.com/elm-for-react-devs). The book shows how Elm's approach to type safety, boundaries, and architecture can change how you think about code - even when you're back in TypeScript. Because once you've experienced real type safety, you start building better boundaries in every language.
+(I explore this extensively in [An Elm Primer for React Developers](https://leanpub.com/elm-for-react-devs) - how Elm's guarantees change the way you think about boundaries and architecture, even when you're back in TypeScript.)
 
 ## The Verdict
 
 TypeScript won't save you. But understanding its limitations might.
 
-Use TypeScript. Enjoy TypeScript. But don't trust it blindly. Validate at boundaries. Test the unhappy paths. Build proper architecture. And remember: the green checkmark means your code is consistent with itself, not that it's correct.
+Use TypeScript. Enjoy TypeScript. But don't trust it blindly. Validate at boundaries. Test the unhappy paths. Build proper architecture. And remember: the green checkmark means your code is consistent with itself, not that it's **correct**.
 
-The best code comes from developers who think, not from those who trust the compiler blindly.
-
----
-
-**What do you think?** I'd love to hear your experiences with TypeScript's limitations - or times when you thought you were safe but weren't. Find me on [Twitter/X](https://twitter.com/cekrem) or subscribe below for more posts about type safety, architecture, and the craft of software development.
+The best code comes from developers who think. From engineers and architects, people honing their craft. Not from framework-, and/or hype junkies with smooth typings and tight couplings.

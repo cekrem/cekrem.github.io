@@ -6,8 +6,26 @@
     <description>Recent content on cekrem.github.io</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 06 Nov 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 07 Nov 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://cekrem.github.io/index.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>The Clipboard API: How Did We Get Here?</title>
+      <link>https://cekrem.github.io/posts/clipboard-api-how-hard-can-it-be/</link>
+      <pubDate>Fri, 07 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>https://cekrem.github.io/posts/clipboard-api-how-hard-can-it-be/</guid>
+      <description><![CDATA[<p>I&rsquo;m writing <a href="https://leanpub.com/elm-for-react-devs/" class="external-link" target="_blank" rel="noopener">a book about Elm for React developers</a>. In the JavaScript interop chapter, I needed a simple example of calling a browser API from Elm through a port. Something straightforward, universally useful, not too trivial.</p>
+<p>&ldquo;Perfect,&rdquo; I thought. &ldquo;Let&rsquo;s copy text to the clipboard.&rdquo;</p>
+<h2 id="the-search">
+ The Search
+ <a class="heading-link" href="#the-search">
+ <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+ <span class="sr-only">Link to heading</span>
+ </a>
+</h2>
+<p>Out of curiosity, I checked npm for clipboard packages:</p>
+<p><img src="https://cekrem.github.io/images/clipboard_npm.png" alt="Over 1000 packages for clipboard operations"></p>
+<p><strong>Over one thousand packages.</strong> For copying text to the clipboard.</p>]]></description>
+    </item>
     <item>
       <title>Why TypeScript Won't Save You</title>
       <link>https://cekrem.github.io/posts/why-typescript-wont-save-you/</link>

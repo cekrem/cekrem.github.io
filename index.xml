@@ -6,8 +6,22 @@
     <description>Recent content on cekrem.github.io</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 07 Nov 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 10 Nov 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://cekrem.github.io/index.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>I'm taking a three-week LLM fast!</title>
+      <link>https://cekrem.github.io/posts/im-taking-a-three-week-llm-fast/</link>
+      <pubDate>Mon, 10 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>https://cekrem.github.io/posts/im-taking-a-three-week-llm-fast/</guid>
+      <description><![CDATA[<h2 id="im-not-that-addicted-am-i">
+ I&rsquo;m not that addicted. Am I?
+ <a class="heading-link" href="#im-not-that-addicted-am-i">
+ <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+ <span class="sr-only">Link to heading</span>
+ </a>
+</h2>
+<p>I don&rsquo;t use agents for coding. <a href="https://cekrem.github.io/posts/coding-as-craft-going-back-to-the-old-gym" >I love my craft far too much</a>. Don&rsquo;t get me wrong, I&rsquo;ve of course tried it. But every time I felt the worse for it afterwards, learned less than nothing, and <a href="https://cekrem.github.io/posts/programming-as-theory-building-naur/" >ended up with code I neither owned or understood completely</a>. Yuck. Nevertheless, LLMs have been sneaking into various workflows without my being completely intentional about it. My mantra has been to use it like Python scripts, &ldquo;to automate (or simplify/streamline) the boring parts&rdquo; while keeping it at arms length from everything I truly care about. But &ldquo;boring&rdquo; is a woolly and dynamic term, and I find myself growing lazy in more ways than I&rsquo;d planned, as well as more easily bored. I suspect my brain is shutting down various faculties whenever I don&rsquo;t bother finishing a sentence in my notes, summarizing longer parts of text or wraiting slopppy because some LLM will proof read things afterwards anyway. It&rsquo;s a bit like when Frodo slips on his ring to get out of a tough spot. It seems to solve an immediate problem quite efficiently, but every time Sauron closes in (and it&rsquo;s actually <em>never</em> worth it).</p>]]></description>
+    </item>
     <item>
       <title>The Clipboard API: How Did We Get Here?</title>
       <link>https://cekrem.github.io/posts/clipboard-api-how-hard-can-it-be/</link>

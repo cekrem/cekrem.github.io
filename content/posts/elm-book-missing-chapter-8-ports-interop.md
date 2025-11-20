@@ -234,7 +234,7 @@ We'll leave flags be for the present, and spend the rest of our chapter on ports
 
 ## Ports for Communicating with JavaScript
 
-If you've ever been exposed to SOLID design principles, Clean Architecture or any form of large scale systems engineering, chances are you've heard of [Ports and Adapters](<https://en.wikipedia.org/wiki/Hexagonal_architecture_(software)>). That's where Elm gets its `port` term from. A port in this regard supplies a means for "external devices" to connect to our app in a controlled manner. Note that even with the immense care Elm takes in approaching communication with JavaScript in a safe way, you're still required to mark modules containing ports with the `port` prefix to signal clearly that they are doing so.
+If you've ever been exposed to SOLID design principles, Clean Architecture or any form of large scale systems engineering, chances are you've heard of [Ports and Adapters](<https://en.wikipedia.org/wiki/Hexagonal_architecture_(software)>). Whether that's what Evan had in mind when choosing the "port" term is not certain[^portTermOrigin], but there's a lot of overlap in the mental model in any case. A port in both regards supplies _a means for "external devices" to connect to our app in a controlled manner_. Note that even with the immense care Elm takes in approaching communication with JavaScript in a safe way, you're still required to mark modules containing ports with the `port` prefix to signal clearly that they are doing so.
 
 Just as in the Ports and Adapters (or _Hexagonal_ Architecture), ports can be either _inbound_ or _outbound_:
 
@@ -556,3 +556,5 @@ The key insight: Elm treats JavaScript like any external system in Clean Archite
 For React developers, this might feel like extra ceremony compared to just importing an npm package. But that ceremony is precisely what keeps your app reliable. You're not avoiding JavaScript—you're just being intentional about where the boundaries are.
 
 With flags and ports in your toolkit, you have everything you need to build real applications. The remaining chapters focus on patterns, scale, and experience—not new fundamental concepts.
+
+[^portTermOrigin]: In [Elm Town 13: History of Ports](https://elm.town/episodes/b06499a6) Evan Czaplicki addresses this, and he says the following: "It's rooted in ideas of concurrency and client/server relationships. If you want to isolate code a way to do it is to create a communication channel so that you can run code that has certain rules and regulations and if all I send is data then I could send it to anyone who can do anything they want with different rules and they can send it back."

@@ -1,0 +1,65 @@
+html {
+  background-color: #000;
+  background-image: url(//cekrem.github.io/images/snowbg.jpg);
+  background-size: cover;
+  height: 100%;
+  background-repeat: no-repeat;
+}
+
+body {
+  &:before,
+  &:after {
+    content: "";
+    position: fixed;
+    top: -3000%;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: rgba(black, 0.01);
+    background-image: url(//cekrem.github.io/images/snow.png);
+    background-size: 30%;
+    -webkit-animation-name: MOVE-BG;
+    -webkit-animation-duration: 500s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+  }
+}
+body {
+  &:before {
+    filter: blur(6px);
+    opacity: 0.8;
+  }
+  &:after {
+    filter: blur(1px);
+    top: -1500%;
+    background-image: url(//cekrem.github.io/images/snow.png);
+    background-size: 90%;
+    animation-duration: 200s;
+  }
+}
+.more-snow {
+  &:before {
+    filter: blur(4px);
+    opacity: 0.8;
+    top: -2500%;
+    background-size: 60%;
+    animation-duration: 400s;
+  }
+  &:after {
+    filter: blur(2px);
+    opacity: 0.8;
+    top: -2000%;
+    background-image: url(//cekrem.github.io/images/snow.png);
+    background-size: 70%;
+    animation-duration: 300s;
+  }
+}
+
+@-webkit-keyframes MOVE-BG {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(70%);
+  }
+}

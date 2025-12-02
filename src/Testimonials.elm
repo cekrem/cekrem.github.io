@@ -222,11 +222,11 @@ carouselStyles visible =
 bookEntry : Bool -> Html msg
 bookEntry visible =
     Html.a
-        (Attributes.href "https://leanpub.com/elm-for-react-devs/c/blog-october"
+        (Attributes.href "https://leanpub.com/elm-for-react-devs/c/advent"
             :: Attributes.style "text-align" "center"
             :: carouselStyles visible
         )
-        [ title "Early access:"
+        [ title "Advent coupon:"
         , Html.img
             [ Attributes.src "/images/book.png"
             , Attributes.width 250
@@ -236,8 +236,8 @@ bookEntry visible =
         , Html.span
             []
             [ Html.hr [] []
-            , title "20% off until"
-            , title "end of October!"
+            , title "First 24 purchases in"
+            , title "December gets 50% off!"
             ]
         ]
 

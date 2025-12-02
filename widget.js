@@ -7602,14 +7602,14 @@ var $author$project$Testimonials$bookEntry = function (visible) {
 		$elm$html$Html$a,
 		A2(
 			$elm$core$List$cons,
-			$elm$html$Html$Attributes$href('https://leanpub.com/elm-for-react-devs/c/blog-october'),
+			$elm$html$Html$Attributes$href('https://leanpub.com/elm-for-react-devs/c/advent'),
 			A2(
 				$elm$core$List$cons,
 				A2($elm$html$Html$Attributes$style, 'text-align', 'center'),
 				$author$project$Testimonials$carouselStyles(visible))),
 		_List_fromArray(
 			[
-				$author$project$Testimonials$title('Early access:'),
+				$author$project$Testimonials$title('Advent coupon:'),
 				A2(
 				$elm$html$Html$img,
 				_List_fromArray(
@@ -7625,8 +7625,8 @@ var $author$project$Testimonials$bookEntry = function (visible) {
 				_List_fromArray(
 					[
 						A2($elm$html$Html$hr, _List_Nil, _List_Nil),
-						$author$project$Testimonials$title('20% off until'),
-						$author$project$Testimonials$title('end of October!')
+						$author$project$Testimonials$title('First 24 purchases in'),
+						$author$project$Testimonials$title('December gets 50% off!')
 					]))
 			]));
 };

@@ -6,8 +6,23 @@
     <description>Recent content on cekrem.github.io</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 01 Dec 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 03 Dec 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://cekrem.github.io/index.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>cekrem/elm-form: Type-Safe Forms That Won't Let You Mess Up</title>
+      <link>https://cekrem.github.io/posts/elm-form/</link>
+      <pubDate>Wed, 03 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>https://cekrem.github.io/posts/elm-form/</guid>
+      <description><![CDATA[<p>I just published <a href="https://package.elm-lang.org/packages/cekrem/elm-form/1.0.0/" class="external-link" target="_blank" rel="noopener">cekrem/elm-form</a> – a package for building HTML forms in Elm with type safety, validation, and a clean API. If you&rsquo;ve ever written forms in Elm (or any language, really), you know they can get messy fast. This package tries to make them less so, without including too many arbitrary batteries.</p>
+<h2 id="whats-the-deal">
+ What&rsquo;s the Deal?
+ <a class="heading-link" href="#whats-the-deal">
+ <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+ <span class="sr-only">Link to heading</span>
+ </a>
+</h2>
+<p>Forms are everywhere, and they&rsquo;re usually tedious to build. You need labels, inputs, validation, error handling, accessibility attributes, and somehow it all needs to stay in sync. <code>elm-form</code> gives you a declarative way to build forms that handles the boilerplate while keeping things type-safe.</p>]]></description>
+    </item>
     <item>
       <title>Organizing Files and Modules in Elm: Building an Advent Calendar</title>
       <link>https://cekrem.github.io/posts/elm-book-chapter-9-organizing-files-and-modules/</link>

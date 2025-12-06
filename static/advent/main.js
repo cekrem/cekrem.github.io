@@ -784,11 +784,11 @@ function _Debug_crash_UNUSED(identifier, fact1, fact2, fact3, fact4)
 
 function _Debug_regionToString(region)
 {
-	if (region.K.A === region.P.A)
+	if (region.P.A === region.W.A)
 	{
-		return 'on line ' + region.K.A;
+		return 'on line ' + region.P.A;
 	}
-	return 'on lines ' + region.K.A + ' through ' + region.P.A;
+	return 'on lines ' + region.P.A + ' through ' + region.W.A;
 }
 
 
@@ -1861,9 +1861,9 @@ var _Platform_worker = F4(function(impl, flagDecoder, debugMetadata, args)
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.av,
-		impl.aD,
-		impl.aB,
+		impl.aA,
+		impl.aI,
+		impl.aG,
 		function() { return function() {} }
 	);
 });
@@ -2728,8 +2728,8 @@ var _VirtualDom_mapEventRecord = F2(function(func, record)
 {
 	return {
 		o: func(record.o),
-		L: record.L,
-		I: record.I
+		Q: record.Q,
+		L: record.L
 	}
 });
 
@@ -2998,10 +2998,10 @@ function _VirtualDom_makeCallback(eventNode, initialHandler)
 
 		var value = result.a;
 		var message = !tag ? value : tag < 3 ? value.a : value.o;
-		var stopPropagation = tag == 1 ? value.b : tag == 3 && value.L;
+		var stopPropagation = tag == 1 ? value.b : tag == 3 && value.Q;
 		var currentEventNode = (
 			stopPropagation && event.stopPropagation(),
-			(tag == 2 ? value.b : tag == 3 && value.I) && event.preventDefault(),
+			(tag == 2 ? value.b : tag == 3 && value.L) && event.preventDefault(),
 			eventNode
 		);
 		var tagger;
@@ -3951,11 +3951,11 @@ var _Browser_element = _Debugger_element || F4(function(impl, flagDecoder, debug
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.av,
-		impl.aD,
-		impl.aB,
+		impl.aA,
+		impl.aI,
+		impl.aG,
 		function(sendToApp, initialModel) {
-			var view = impl.aE;
+			var view = impl.aJ;
 			/**/
 			var domNode = args['node'];
 			//*/
@@ -3987,12 +3987,12 @@ var _Browser_document = _Debugger_document || F4(function(impl, flagDecoder, deb
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.av,
-		impl.aD,
-		impl.aB,
+		impl.aA,
+		impl.aI,
+		impl.aG,
 		function(sendToApp, initialModel) {
-			var divertHrefToApp = impl.J && impl.J(sendToApp)
-			var view = impl.aE;
+			var divertHrefToApp = impl.O && impl.O(sendToApp)
+			var view = impl.aJ;
 			var title = _VirtualDom_doc.title;
 			var bodyNode = _VirtualDom_doc.body;
 			var currNode = _VirtualDom_virtualize(bodyNode);
@@ -4000,12 +4000,12 @@ var _Browser_document = _Debugger_document || F4(function(impl, flagDecoder, deb
 			{
 				_VirtualDom_divertHrefToApp = divertHrefToApp;
 				var doc = view(model);
-				var nextNode = _VirtualDom_node('body')(_List_Nil)(doc.ao);
+				var nextNode = _VirtualDom_node('body')(_List_Nil)(doc.at);
 				var patches = _VirtualDom_diff(currNode, nextNode);
 				bodyNode = _VirtualDom_applyPatches(bodyNode, currNode, patches, sendToApp);
 				currNode = nextNode;
 				_VirtualDom_divertHrefToApp = 0;
-				(title !== doc.aC) && (_VirtualDom_doc.title = title = doc.aC);
+				(title !== doc.aH) && (_VirtualDom_doc.title = title = doc.aH);
 			});
 		}
 	);
@@ -4061,12 +4061,12 @@ function _Browser_makeAnimator(model, draw)
 
 function _Browser_application(impl)
 {
-	var onUrlChange = impl.ax;
-	var onUrlRequest = impl.ay;
+	var onUrlChange = impl.aC;
+	var onUrlRequest = impl.aD;
 	var key = function() { key.a(onUrlChange(_Browser_getUrl())); };
 
 	return _Browser_document({
-		J: function(sendToApp)
+		O: function(sendToApp)
 		{
 			key.a = sendToApp;
 			_Browser_window.addEventListener('popstate', key);
@@ -4082,9 +4082,9 @@ function _Browser_application(impl)
 					var next = $elm$url$Url$fromString(href).a;
 					sendToApp(onUrlRequest(
 						(next
-							&& curr.ab === next.ab
-							&& curr.T === next.T
-							&& curr.Z.a === next.Z.a
+							&& curr.ai === next.ai
+							&& curr._ === next._
+							&& curr.af.a === next.af.a
 						)
 							? $elm$browser$Browser$Internal(next)
 							: $elm$browser$Browser$External(href)
@@ -4092,13 +4092,13 @@ function _Browser_application(impl)
 				}
 			});
 		},
-		av: function(flags)
+		aA: function(flags)
 		{
-			return A3(impl.av, flags, _Browser_getUrl(), key);
+			return A3(impl.aA, flags, _Browser_getUrl(), key);
 		},
-		aE: impl.aE,
-		aD: impl.aD,
-		aB: impl.aB
+		aJ: impl.aJ,
+		aI: impl.aI,
+		aG: impl.aG
 	});
 }
 
@@ -4164,17 +4164,17 @@ var _Browser_decodeEvent = F2(function(decoder, event)
 function _Browser_visibilityInfo()
 {
 	return (typeof _VirtualDom_doc.hidden !== 'undefined')
-		? { at: 'hidden', ap: 'visibilitychange' }
+		? { ay: 'hidden', au: 'visibilitychange' }
 		:
 	(typeof _VirtualDom_doc.mozHidden !== 'undefined')
-		? { at: 'mozHidden', ap: 'mozvisibilitychange' }
+		? { ay: 'mozHidden', au: 'mozvisibilitychange' }
 		:
 	(typeof _VirtualDom_doc.msHidden !== 'undefined')
-		? { at: 'msHidden', ap: 'msvisibilitychange' }
+		? { ay: 'msHidden', au: 'msvisibilitychange' }
 		:
 	(typeof _VirtualDom_doc.webkitHidden !== 'undefined')
-		? { at: 'webkitHidden', ap: 'webkitvisibilitychange' }
-		: { at: 'hidden', ap: 'visibilitychange' };
+		? { ay: 'webkitHidden', au: 'webkitvisibilitychange' }
+		: { ay: 'hidden', au: 'visibilitychange' };
 }
 
 
@@ -4255,12 +4255,12 @@ var _Browser_call = F2(function(functionName, id)
 function _Browser_getViewport()
 {
 	return {
-		af: _Browser_getScene(),
-		ai: {
-			ak: _Browser_window.pageXOffset,
-			al: _Browser_window.pageYOffset,
-			aj: _Browser_doc.documentElement.clientWidth,
-			S: _Browser_doc.documentElement.clientHeight
+		am: _Browser_getScene(),
+		ap: {
+			R: _Browser_window.pageXOffset,
+			S: _Browser_window.pageYOffset,
+			aq: _Browser_doc.documentElement.clientWidth,
+			Z: _Browser_doc.documentElement.clientHeight
 		}
 	};
 }
@@ -4270,8 +4270,8 @@ function _Browser_getScene()
 	var body = _Browser_doc.body;
 	var elem = _Browser_doc.documentElement;
 	return {
-		aj: Math.max(body.scrollWidth, body.offsetWidth, elem.scrollWidth, elem.offsetWidth, elem.clientWidth),
-		S: Math.max(body.scrollHeight, body.offsetHeight, elem.scrollHeight, elem.offsetHeight, elem.clientHeight)
+		aq: Math.max(body.scrollWidth, body.offsetWidth, elem.scrollWidth, elem.offsetWidth, elem.clientWidth),
+		Z: Math.max(body.scrollHeight, body.offsetHeight, elem.scrollHeight, elem.offsetHeight, elem.clientHeight)
 	};
 }
 
@@ -4294,15 +4294,15 @@ function _Browser_getViewportOf(id)
 	return _Browser_withNode(id, function(node)
 	{
 		return {
-			af: {
-				aj: node.scrollWidth,
-				S: node.scrollHeight
+			am: {
+				aq: node.scrollWidth,
+				Z: node.scrollHeight
 			},
-			ai: {
-				ak: node.scrollLeft,
-				al: node.scrollTop,
-				aj: node.clientWidth,
-				S: node.clientHeight
+			ap: {
+				R: node.scrollLeft,
+				S: node.scrollTop,
+				aq: node.clientWidth,
+				Z: node.clientHeight
 			}
 		};
 	});
@@ -4332,18 +4332,18 @@ function _Browser_getElement(id)
 		var x = _Browser_window.pageXOffset;
 		var y = _Browser_window.pageYOffset;
 		return {
-			af: _Browser_getScene(),
-			ai: {
-				ak: x,
-				al: y,
-				aj: _Browser_doc.documentElement.clientWidth,
-				S: _Browser_doc.documentElement.clientHeight
+			am: _Browser_getScene(),
+			ap: {
+				R: x,
+				S: y,
+				aq: _Browser_doc.documentElement.clientWidth,
+				Z: _Browser_doc.documentElement.clientHeight
 			},
-			ar: {
-				ak: x + rect.left,
-				al: y + rect.top,
-				aj: rect.width,
-				S: rect.height
+			aw: {
+				R: x + rect.left,
+				S: y + rect.top,
+				aq: rect.width,
+				Z: rect.height
 			}
 		};
 	});
@@ -4424,10 +4424,9 @@ function _Time_getZoneName()
 		callback(_Scheduler_succeed(name));
 	});
 }
-var $elm$core$Basics$always = F2(
-	function (a, _v0) {
-		return a;
-	});
+var $author$project$Main$GotSnow = function (a) {
+	return {$: 1, a: a};
+};
 var $elm$core$Basics$EQ = 1;
 var $elm$core$Basics$GT = 2;
 var $elm$core$Basics$LT = 0;
@@ -4932,7 +4931,7 @@ var $elm$url$Url$Http = 0;
 var $elm$url$Url$Https = 1;
 var $elm$url$Url$Url = F6(
 	function (protocol, host, port_, path, query, fragment) {
-		return {R: fragment, T: host, X: path, Z: port_, ab: protocol, ac: query};
+		return {Y: fragment, _: host, ad: path, af: port_, ai: protocol, aj: query};
 	});
 var $elm$core$String$contains = _String_contains;
 var $elm$core$String$length = _String_length;
@@ -5214,28 +5213,15 @@ var $elm$browser$Browser$element = _Browser_element;
 var $author$project$Main$GotDay = function (a) {
 	return {$: 0, a: a};
 };
-var $author$project$Main$Unset = {$: 3};
 var $elm$core$Set$Set_elm_builtin = $elm$core$Basics$identity;
 var $elm$core$Dict$RBEmpty_elm_builtin = {$: -2};
 var $elm$core$Dict$empty = $elm$core$Dict$RBEmpty_elm_builtin;
 var $elm$core$Set$empty = $elm$core$Dict$empty;
-var $elm$time$Time$Name = function (a) {
+var $author$project$Calendar$Advent = function (a) {
 	return {$: 0, a: a};
 };
-var $elm$time$Time$Offset = function (a) {
-	return {$: 1, a: a};
-};
-var $elm$time$Time$Zone = F2(
-	function (a, b) {
-		return {$: 0, a: a, b: b};
-	});
-var $elm$time$Time$customZone = $elm$time$Time$Zone;
-var $elm$time$Time$here = _Time_here(0);
-var $author$project$Main$Advent = function (a) {
-	return {$: 0, a: a};
-};
-var $author$project$Main$Christmas = {$: 1};
-var $author$project$Main$Other = {$: 2};
+var $author$project$Calendar$Christmas = {$: 1};
+var $author$project$Calendar$Other = {$: 2};
 var $elm$time$Time$flooredDiv = F2(
 	function (numerator, denominator) {
 		return $elm$core$Basics$floor(numerator / denominator);
@@ -5253,8 +5239,8 @@ var $elm$time$Time$toAdjustedMinutesHelp = F3(
 			} else {
 				var era = eras.a;
 				var olderEras = eras.b;
-				if (_Utils_cmp(era.K, posixMinutes) < 0) {
-					return posixMinutes + era.W;
+				if (_Utils_cmp(era.P, posixMinutes) < 0) {
+					return posixMinutes + era.ac;
 				} else {
 					var $temp$defaultOffset = defaultOffset,
 						$temp$posixMinutes = posixMinutes,
@@ -5294,15 +5280,15 @@ var $elm$time$Time$toCivil = function (minutes) {
 	var month = mp + ((mp < 10) ? 3 : (-9));
 	var year = yearOfEra + (era * 400);
 	return {
-		O: (dayOfYear - ((((153 * mp) + 2) / 5) | 0)) + 1,
-		V: month,
-		am: year + ((month <= 2) ? 1 : 0)
+		V: (dayOfYear - ((((153 * mp) + 2) / 5) | 0)) + 1,
+		ab: month,
+		ar: year + ((month <= 2) ? 1 : 0)
 	};
 };
 var $elm$time$Time$toDay = F2(
 	function (zone, time) {
 		return $elm$time$Time$toCivil(
-			A2($elm$time$Time$toAdjustedMinutes, zone, time)).O;
+			A2($elm$time$Time$toAdjustedMinutes, zone, time)).V;
 	});
 var $elm$time$Time$Apr = 3;
 var $elm$time$Time$Aug = 7;
@@ -5319,7 +5305,7 @@ var $elm$time$Time$Sep = 8;
 var $elm$time$Time$toMonth = F2(
 	function (zone, time) {
 		var _v0 = $elm$time$Time$toCivil(
-			A2($elm$time$Time$toAdjustedMinutes, zone, time)).V;
+			A2($elm$time$Time$toAdjustedMinutes, zone, time)).ab;
 		switch (_v0) {
 			case 1:
 				return 0;
@@ -5347,27 +5333,195 @@ var $elm$time$Time$toMonth = F2(
 				return 11;
 		}
 	});
-var $author$project$Main$initDay = F2(
+var $author$project$Calendar$currentDay = F2(
 	function (zone, time) {
 		var month = A2($elm$time$Time$toMonth, zone, time);
 		if (month === 11) {
 			var day = A2($elm$time$Time$toDay, zone, time);
-			return (day > 23) ? $author$project$Main$Christmas : $author$project$Main$Advent(day);
+			return (day > 24) ? $author$project$Calendar$Christmas : $author$project$Calendar$Advent(day);
 		} else {
-			return $author$project$Main$Other;
+			return $author$project$Calendar$Other;
 		}
 	});
+var $elm$time$Time$Name = function (a) {
+	return {$: 0, a: a};
+};
+var $elm$time$Time$Offset = function (a) {
+	return {$: 1, a: a};
+};
+var $elm$time$Time$Zone = F2(
+	function (a, b) {
+		return {$: 0, a: a, b: b};
+	});
+var $elm$time$Time$customZone = $elm$time$Time$Zone;
+var $elm$time$Time$here = _Time_here(0);
 var $elm$time$Time$Posix = $elm$core$Basics$identity;
 var $elm$time$Time$millisToPosix = $elm$core$Basics$identity;
 var $elm$time$Time$now = _Time_now($elm$time$Time$millisToPosix);
-var $author$project$Main$getDay = A3($elm$core$Task$map2, $author$project$Main$initDay, $elm$time$Time$here, $elm$time$Time$now);
+var $author$project$Calendar$getDayCmd = function (toMsg) {
+	return A2(
+		$elm$core$Task$perform,
+		toMsg,
+		A3($elm$core$Task$map2, $author$project$Calendar$currentDay, $elm$time$Time$here, $elm$time$Time$now));
+};
+var $author$project$Calendar$Unset = {$: 3};
+var $author$project$Calendar$initDay = $author$project$Calendar$Unset;
+var $author$project$Snow$Idle = {$: 0};
+var $author$project$Snow$initState = $author$project$Snow$Idle;
 var $author$project$Main$init = function (_v0) {
 	return _Utils_Tuple2(
-		{w: $elm$core$Set$empty, F: $author$project$Main$Unset},
-		A2($elm$core$Task$perform, $author$project$Main$GotDay, $author$project$Main$getDay));
+		{w: $elm$core$Set$empty, B: $author$project$Snow$initState, G: $author$project$Calendar$initDay},
+		$author$project$Calendar$getDayCmd($author$project$Main$GotDay));
 };
-var $elm$core$Platform$Sub$batch = _Platform_batch;
-var $elm$core$Platform$Sub$none = $elm$core$Platform$Sub$batch(_List_Nil);
+var $author$project$Snow$Snowing = function (a) {
+	return {$: 1, a: a};
+};
+var $author$project$Snow$nextState = function (state) {
+	if (state.$ === 1) {
+		var counter = state.a;
+		return $author$project$Snow$Snowing(counter + 1);
+	} else {
+		return $author$project$Snow$Snowing(0);
+	}
+};
+var $elm$browser$Browser$AnimationManager$Time = function (a) {
+	return {$: 0, a: a};
+};
+var $elm$browser$Browser$AnimationManager$State = F3(
+	function (subs, request, oldTime) {
+		return {J: oldTime, al: request, an: subs};
+	});
+var $elm$browser$Browser$AnimationManager$init = $elm$core$Task$succeed(
+	A3($elm$browser$Browser$AnimationManager$State, _List_Nil, $elm$core$Maybe$Nothing, 0));
+var $elm$core$Process$kill = _Scheduler_kill;
+var $elm$browser$Browser$AnimationManager$now = _Browser_now(0);
+var $elm$browser$Browser$AnimationManager$rAF = _Browser_rAF(0);
+var $elm$core$Platform$sendToSelf = _Platform_sendToSelf;
+var $elm$core$Process$spawn = _Scheduler_spawn;
+var $elm$browser$Browser$AnimationManager$onEffects = F3(
+	function (router, subs, _v0) {
+		var request = _v0.al;
+		var oldTime = _v0.J;
+		var _v1 = _Utils_Tuple2(request, subs);
+		if (_v1.a.$ === 1) {
+			if (!_v1.b.b) {
+				var _v2 = _v1.a;
+				return $elm$browser$Browser$AnimationManager$init;
+			} else {
+				var _v4 = _v1.a;
+				return A2(
+					$elm$core$Task$andThen,
+					function (pid) {
+						return A2(
+							$elm$core$Task$andThen,
+							function (time) {
+								return $elm$core$Task$succeed(
+									A3(
+										$elm$browser$Browser$AnimationManager$State,
+										subs,
+										$elm$core$Maybe$Just(pid),
+										time));
+							},
+							$elm$browser$Browser$AnimationManager$now);
+					},
+					$elm$core$Process$spawn(
+						A2(
+							$elm$core$Task$andThen,
+							$elm$core$Platform$sendToSelf(router),
+							$elm$browser$Browser$AnimationManager$rAF)));
+			}
+		} else {
+			if (!_v1.b.b) {
+				var pid = _v1.a.a;
+				return A2(
+					$elm$core$Task$andThen,
+					function (_v3) {
+						return $elm$browser$Browser$AnimationManager$init;
+					},
+					$elm$core$Process$kill(pid));
+			} else {
+				return $elm$core$Task$succeed(
+					A3($elm$browser$Browser$AnimationManager$State, subs, request, oldTime));
+			}
+		}
+	});
+var $elm$browser$Browser$AnimationManager$onSelfMsg = F3(
+	function (router, newTime, _v0) {
+		var subs = _v0.an;
+		var oldTime = _v0.J;
+		var send = function (sub) {
+			if (!sub.$) {
+				var tagger = sub.a;
+				return A2(
+					$elm$core$Platform$sendToApp,
+					router,
+					tagger(
+						$elm$time$Time$millisToPosix(newTime)));
+			} else {
+				var tagger = sub.a;
+				return A2(
+					$elm$core$Platform$sendToApp,
+					router,
+					tagger(newTime - oldTime));
+			}
+		};
+		return A2(
+			$elm$core$Task$andThen,
+			function (pid) {
+				return A2(
+					$elm$core$Task$andThen,
+					function (_v1) {
+						return $elm$core$Task$succeed(
+							A3(
+								$elm$browser$Browser$AnimationManager$State,
+								subs,
+								$elm$core$Maybe$Just(pid),
+								newTime));
+					},
+					$elm$core$Task$sequence(
+						A2($elm$core$List$map, send, subs)));
+			},
+			$elm$core$Process$spawn(
+				A2(
+					$elm$core$Task$andThen,
+					$elm$core$Platform$sendToSelf(router),
+					$elm$browser$Browser$AnimationManager$rAF)));
+	});
+var $elm$browser$Browser$AnimationManager$Delta = function (a) {
+	return {$: 1, a: a};
+};
+var $elm$core$Basics$composeL = F3(
+	function (g, f, x) {
+		return g(
+			f(x));
+	});
+var $elm$browser$Browser$AnimationManager$subMap = F2(
+	function (func, sub) {
+		if (!sub.$) {
+			var tagger = sub.a;
+			return $elm$browser$Browser$AnimationManager$Time(
+				A2($elm$core$Basics$composeL, func, tagger));
+		} else {
+			var tagger = sub.a;
+			return $elm$browser$Browser$AnimationManager$Delta(
+				A2($elm$core$Basics$composeL, func, tagger));
+		}
+	});
+_Platform_effectManagers['Browser.AnimationManager'] = _Platform_createManager($elm$browser$Browser$AnimationManager$init, $elm$browser$Browser$AnimationManager$onEffects, $elm$browser$Browser$AnimationManager$onSelfMsg, 0, $elm$browser$Browser$AnimationManager$subMap);
+var $elm$browser$Browser$AnimationManager$subscription = _Platform_leaf('Browser.AnimationManager');
+var $elm$browser$Browser$AnimationManager$onAnimationFrame = function (tagger) {
+	return $elm$browser$Browser$AnimationManager$subscription(
+		$elm$browser$Browser$AnimationManager$Time(tagger));
+};
+var $elm$browser$Browser$Events$onAnimationFrame = $elm$browser$Browser$AnimationManager$onAnimationFrame;
+var $author$project$Snow$subscription = F2(
+	function (toMsg, state) {
+		return $elm$browser$Browser$Events$onAnimationFrame(
+			function (_v0) {
+				return toMsg(
+					$author$project$Snow$nextState(state));
+			});
+	});
 var $elm$core$Dict$Black = 1;
 var $elm$core$Dict$RBNode_elm_builtin = F5(
 	function (a, b, c, d, e) {
@@ -5898,44 +6052,38 @@ var $elm$core$Set$remove = F2(
 	});
 var $author$project$Main$update = F2(
 	function (msg, model) {
-		if (msg.$ === 1) {
-			var num = msg.a;
-			var transform = A2($elm$core$Set$member, num, model.w) ? $elm$core$Set$remove : $elm$core$Set$insert;
-			return _Utils_Tuple2(
-				_Utils_update(
-					model,
-					{
-						w: A2(transform, num, model.w)
-					}),
-				$elm$core$Platform$Cmd$none);
-		} else {
-			var day = msg.a;
-			return _Utils_Tuple2(
-				_Utils_update(
-					model,
-					{F: day}),
-				$elm$core$Platform$Cmd$none);
+		switch (msg.$) {
+			case 2:
+				var num = msg.a;
+				var transform = A2($elm$core$Set$member, num, model.w) ? $elm$core$Set$remove : $elm$core$Set$insert;
+				return _Utils_Tuple2(
+					_Utils_update(
+						model,
+						{
+							w: A2(transform, num, model.w)
+						}),
+					$elm$core$Platform$Cmd$none);
+			case 0:
+				var day = msg.a;
+				return _Utils_Tuple2(
+					_Utils_update(
+						model,
+						{G: day}),
+					$elm$core$Platform$Cmd$none);
+			default:
+				var snow = msg.a;
+				return _Utils_Tuple2(
+					_Utils_update(
+						model,
+						{B: snow}),
+					$elm$core$Platform$Cmd$none);
 		}
 	});
-var $author$project$Main$None = {$: 2};
 var $author$project$Main$ToggleGiftSlotOpen = function (a) {
-	return {$: 1, a: a};
+	return {$: 2, a: a};
 };
-var $author$project$Main$adventDays = A2($elm$core$List$range, 1, 24);
-var $elm$json$Json$Encode$string = _Json_wrap;
-var $elm$html$Html$Attributes$stringProperty = F2(
-	function (key, string) {
-		return A2(
-			_VirtualDom_property,
-			key,
-			$elm$json$Json$Encode$string(string));
-	});
-var $elm$html$Html$Attributes$class = $elm$html$Html$Attributes$stringProperty('className');
-var $elm$html$Html$div = _VirtualDom_node('div');
-var $author$project$Main$Available = function (a) {
-	return {$: 0, a: a};
-};
-var $author$project$Main$NotYet = {$: 1};
+var $author$project$Calendar$adventDays = A2($elm$core$List$range, 1, 24);
+var $author$project$Calendar$Gifts = $elm$core$Basics$identity;
 var $elm$core$Dict$fromList = function (assocs) {
 	return A3(
 		$elm$core$List$foldl,
@@ -5948,77 +6096,330 @@ var $elm$core$Dict$fromList = function (assocs) {
 		$elm$core$Dict$empty,
 		assocs);
 };
+var $elm$core$List$takeReverse = F3(
+	function (n, list, kept) {
+		takeReverse:
+		while (true) {
+			if (n <= 0) {
+				return kept;
+			} else {
+				if (!list.b) {
+					return kept;
+				} else {
+					var x = list.a;
+					var xs = list.b;
+					var $temp$n = n - 1,
+						$temp$list = xs,
+						$temp$kept = A2($elm$core$List$cons, x, kept);
+					n = $temp$n;
+					list = $temp$list;
+					kept = $temp$kept;
+					continue takeReverse;
+				}
+			}
+		}
+	});
+var $elm$core$List$takeTailRec = F2(
+	function (n, list) {
+		return $elm$core$List$reverse(
+			A3($elm$core$List$takeReverse, n, list, _List_Nil));
+	});
+var $elm$core$List$takeFast = F3(
+	function (ctr, n, list) {
+		if (n <= 0) {
+			return _List_Nil;
+		} else {
+			var _v0 = _Utils_Tuple2(n, list);
+			_v0$1:
+			while (true) {
+				_v0$5:
+				while (true) {
+					if (!_v0.b.b) {
+						return list;
+					} else {
+						if (_v0.b.b.b) {
+							switch (_v0.a) {
+								case 1:
+									break _v0$1;
+								case 2:
+									var _v2 = _v0.b;
+									var x = _v2.a;
+									var _v3 = _v2.b;
+									var y = _v3.a;
+									return _List_fromArray(
+										[x, y]);
+								case 3:
+									if (_v0.b.b.b.b) {
+										var _v4 = _v0.b;
+										var x = _v4.a;
+										var _v5 = _v4.b;
+										var y = _v5.a;
+										var _v6 = _v5.b;
+										var z = _v6.a;
+										return _List_fromArray(
+											[x, y, z]);
+									} else {
+										break _v0$5;
+									}
+								default:
+									if (_v0.b.b.b.b && _v0.b.b.b.b.b) {
+										var _v7 = _v0.b;
+										var x = _v7.a;
+										var _v8 = _v7.b;
+										var y = _v8.a;
+										var _v9 = _v8.b;
+										var z = _v9.a;
+										var _v10 = _v9.b;
+										var w = _v10.a;
+										var tl = _v10.b;
+										return (ctr > 1000) ? A2(
+											$elm$core$List$cons,
+											x,
+											A2(
+												$elm$core$List$cons,
+												y,
+												A2(
+													$elm$core$List$cons,
+													z,
+													A2(
+														$elm$core$List$cons,
+														w,
+														A2($elm$core$List$takeTailRec, n - 4, tl))))) : A2(
+											$elm$core$List$cons,
+											x,
+											A2(
+												$elm$core$List$cons,
+												y,
+												A2(
+													$elm$core$List$cons,
+													z,
+													A2(
+														$elm$core$List$cons,
+														w,
+														A3($elm$core$List$takeFast, ctr + 1, n - 4, tl)))));
+									} else {
+										break _v0$5;
+									}
+							}
+						} else {
+							if (_v0.a === 1) {
+								break _v0$1;
+							} else {
+								break _v0$5;
+							}
+						}
+					}
+				}
+				return list;
+			}
+			var _v1 = _v0.b;
+			var x = _v1.a;
+			return _List_fromArray(
+				[x]);
+		}
+	});
+var $elm$core$List$take = F2(
+	function (n, list) {
+		return A3($elm$core$List$takeFast, 0, n, list);
+	});
 var $elm$core$String$foldr = _String_foldr;
 var $elm$core$String$toList = function (string) {
 	return A3($elm$core$String$foldr, $elm$core$List$cons, _List_Nil, string);
 };
-var $author$project$Main$allGifts = $elm$core$Dict$fromList(
-	A2(
-		$elm$core$List$indexedMap,
-		F2(
-			function (i, _char) {
-				return _Utils_Tuple2(i + 1, _char);
-			}),
-		$elm$core$String$toList('Video_fra_vårt_bryllup🥳🎄')));
-var $elm$core$Dict$map = F2(
-	function (func, dict) {
-		if (dict.$ === -2) {
-			return $elm$core$Dict$RBEmpty_elm_builtin;
-		} else {
-			var color = dict.a;
-			var key = dict.b;
-			var value = dict.c;
-			var left = dict.d;
-			var right = dict.e;
-			return A5(
-				$elm$core$Dict$RBNode_elm_builtin,
-				color,
-				key,
-				A2(func, key, value),
-				A2($elm$core$Dict$map, func, left),
-				A2($elm$core$Dict$map, func, right));
+var $author$project$Calendar$initGifts = function (phrase) {
+	return $elm$core$Dict$fromList(
+		A2(
+			$elm$core$List$take,
+			24,
+			A2(
+				$elm$core$List$indexedMap,
+				F2(
+					function (i, _char) {
+						return _Utils_Tuple2(
+							i + 1,
+							$elm$core$Char$isAlphaNum(_char) ? _char : '_');
+					}),
+				$elm$core$String$toList(phrase))));
+};
+var $author$project$Main$allGifts = $author$project$Calendar$initGifts('Video fra vårt bryllup🥳🎄');
+var $elm$core$Dict$foldl = F3(
+	function (func, acc, dict) {
+		foldl:
+		while (true) {
+			if (dict.$ === -2) {
+				return acc;
+			} else {
+				var key = dict.b;
+				var value = dict.c;
+				var left = dict.d;
+				var right = dict.e;
+				var $temp$func = func,
+					$temp$acc = A3(
+					func,
+					key,
+					value,
+					A3($elm$core$Dict$foldl, func, acc, left)),
+					$temp$dict = right;
+				func = $temp$func;
+				acc = $temp$acc;
+				dict = $temp$dict;
+				continue foldl;
+			}
 		}
 	});
-var $author$project$Main$giftsForToday = function (day) {
-	switch (day.$) {
-		case 3:
-			return A2(
-				$elm$core$Dict$map,
-				F2(
-					function (_v1, _v2) {
-						return $author$project$Main$NotYet;
-					}),
-				$author$project$Main$allGifts);
-		case 2:
-			return A2(
-				$elm$core$Dict$map,
-				F2(
-					function (_v3, _v4) {
-						return $author$project$Main$NotYet;
-					}),
-				$author$project$Main$allGifts);
-		case 0:
-			var today = day.a;
-			return A2(
-				$elm$core$Dict$map,
-				F2(
-					function (d, gift) {
-						return (_Utils_cmp(today, d) > -1) ? $author$project$Main$Available(gift) : $author$project$Main$NotYet;
-					}),
-				$author$project$Main$allGifts);
-		default:
-			return A2(
-				$elm$core$Dict$map,
-				F2(
-					function (_v5, gift) {
-						return $author$project$Main$Available(gift);
-					}),
-				$author$project$Main$allGifts);
-	}
+var $elm$core$Dict$filter = F2(
+	function (isGood, dict) {
+		return A3(
+			$elm$core$Dict$foldl,
+			F3(
+				function (k, v, d) {
+					return A2(isGood, k, v) ? A3($elm$core$Dict$insert, k, v, d) : d;
+				}),
+			$elm$core$Dict$empty,
+			dict);
+	});
+var $author$project$Calendar$availableNow = F2(
+	function (day, _v0) {
+		var gifts = _v0;
+		switch (day.$) {
+			case 0:
+				var num = day.a;
+				return A2(
+					$elm$core$Dict$filter,
+					F2(
+						function (key, _v2) {
+							return _Utils_cmp(key, num) < 1;
+						}),
+					gifts);
+			case 1:
+				return gifts;
+			case 2:
+				return $elm$core$Dict$empty;
+			default:
+				return $elm$core$Dict$empty;
+		}
+	});
+var $elm$json$Json$Encode$string = _Json_wrap;
+var $elm$html$Html$Attributes$stringProperty = F2(
+	function (key, string) {
+		return A2(
+			_VirtualDom_property,
+			key,
+			$elm$json$Json$Encode$string(string));
+	});
+var $elm$html$Html$Attributes$class = $elm$html$Html$Attributes$stringProperty('className');
+var $elm$html$Html$div = _VirtualDom_node('div');
+var $author$project$Calendar$forDay = F2(
+	function (num, _v0) {
+		var gifts = _v0;
+		return A2($elm$core$Dict$get, num, gifts);
+	});
+var $elm$core$String$fromFloat = _String_fromNumber;
+var $author$project$Snow$pct = function (value) {
+	return $elm$core$String$fromFloat(value) + '%';
 };
-var $elm$core$String$append = _String_append;
+var $author$project$Snow$loop = F2(
+	function (range, value) {
+		var cycles = $elm$core$Basics$floor(value / range);
+		return value - (cycles * range);
+	});
+var $elm$core$Basics$sin = _Basics_sin;
+var $elm$core$Basics$modBy = _Basics_modBy;
+var $author$project$Snow$vary = F2(
+	function (seed, range) {
+		return A2($elm$core$Basics$modBy, range, seed);
+	});
+var $author$project$Snow$snowFlakeConfig = F2(
+	function (counter, index) {
+		var x = (index / 24) * 100;
+		var seed = (index * 1337) + 1001;
+		var speed = 0.8 + (A2($author$project$Snow$vary, seed, 40) / 100);
+		var scale = 0.5 + ((A2($author$project$Snow$vary, seed, 500) / 500) * 0.5);
+		var phase = A2($author$project$Snow$vary, seed, 200);
+		var progress = A2($author$project$Snow$loop, 220, (counter * speed) + phase);
+		var rotation = progress * 2;
+		var y = progress - 10;
+		var opacity = (y < 0) ? (1 + (y / 10)) : ((y > 200) ? (1 - ((y - 200) / 10)) : scale);
+		var drift = $elm$core$Basics$sin(progress / 30) * (A2($author$project$Snow$vary, seed, 50) + 20);
+		return {H: drift, K: opacity, M: rotation, N: scale, R: x, S: y};
+	});
+var $elm$virtual_dom$VirtualDom$style = _VirtualDom_style;
+var $elm$html$Html$Attributes$style = $elm$virtual_dom$VirtualDom$style;
 var $elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
 var $elm$html$Html$text = $elm$virtual_dom$VirtualDom$text;
+var $author$project$Snow$transform = function (config) {
+	return 'translateX(' + ($elm$core$String$fromFloat(config.H) + ('px) rotate(' + ($elm$core$String$fromFloat(config.M) + ('deg) scale(' + ($elm$core$String$fromFloat(config.N) + ')')))));
+};
+var $author$project$Snow$vh = function (value) {
+	return $elm$core$String$fromFloat(value) + 'vh';
+};
+var $author$project$Snow$snowFlake = F2(
+	function (counter, index) {
+		var config = A2($author$project$Snow$snowFlakeConfig, counter, index);
+		return A2(
+			$elm$html$Html$div,
+			_List_fromArray(
+				[
+					$elm$html$Html$Attributes$class('absolute rounded-full h-[10vh] line-height-1 text-white text-[10vh]'),
+					A2(
+					$elm$html$Html$Attributes$style,
+					'left',
+					$author$project$Snow$pct(config.R)),
+					A2(
+					$elm$html$Html$Attributes$style,
+					'top',
+					$author$project$Snow$vh(config.S)),
+					A2(
+					$elm$html$Html$Attributes$style,
+					'transform',
+					$author$project$Snow$transform(config)),
+					A2(
+					$elm$html$Html$Attributes$style,
+					'opacity',
+					$elm$core$String$fromFloat(config.K))
+				]),
+			_List_fromArray(
+				[
+					$elm$html$Html$text('*')
+				]));
+	});
+var $author$project$Snow$view = function (state) {
+	var counter = function () {
+		if (!state.$) {
+			return 0;
+		} else {
+			var c = state.a;
+			return c;
+		}
+	}();
+	return A2(
+		$elm$html$Html$div,
+		_List_fromArray(
+			[
+				$elm$html$Html$Attributes$class('fixed top-0 left-0 size-full pointer-events-none z-99')
+			]),
+		A2(
+			$elm$core$List$map,
+			$author$project$Snow$snowFlake(counter),
+			A2($elm$core$List$range, 0, 23)));
+};
+var $elm$core$String$append = _String_append;
+var $author$project$Calendar$label = function (day) {
+	switch (day.$) {
+		case 1:
+			return 'Christmas🎄';
+		case 0:
+			var num = day.a;
+			return A2(
+				$elm$core$String$append,
+				'December ',
+				$elm$core$String$fromInt(num));
+		case 2:
+			return 'Wait until December!';
+		default:
+			return '...';
+	}
+};
 var $author$project$Main$viewDay = function (day) {
 	return A2(
 		$elm$html$Html$div,
@@ -6034,23 +6435,12 @@ var $author$project$Main$viewDay = function (day) {
 		_List_fromArray(
 			[
 				$elm$html$Html$text(
-				function () {
-					switch (day.$) {
-						case 1:
-							return 'Det er jul! 🎄';
-						case 0:
-							var num = day.a;
-							return A2(
-								$elm$core$String$append,
-								'Adventsdag: ',
-								$elm$core$String$fromInt(num));
-						case 2:
-							return 'Du må vente til desember! ☺️';
-						default:
-							return '...';
-					}
-				}())
+				$author$project$Calendar$label(day))
 			]));
+};
+var $elm$core$String$cons = _String_cons;
+var $elm$core$String$fromChar = function (_char) {
+	return A2($elm$core$String$cons, _char, '');
 };
 var $elm$virtual_dom$VirtualDom$Normal = function (a) {
 	return {$: 0, a: a};
@@ -6069,76 +6459,45 @@ var $elm$html$Html$Events$onClick = function (msg) {
 		'click',
 		$elm$json$Json$Decode$succeed(msg));
 };
-var $elm$core$String$cons = _String_cons;
-var $elm$core$String$fromChar = function (_char) {
-	return A2($elm$core$String$cons, _char, '');
-};
-var $elm$html$Html$span = _VirtualDom_node('span');
-var $author$project$Main$viewGiftContent = function (gift) {
-	switch (gift.$) {
-		case 0:
-			var content = gift.a;
-			return A2(
-				$elm$html$Html$span,
-				_List_Nil,
-				_List_fromArray(
-					[
-						$elm$html$Html$text(
-						$elm$core$String$fromChar(content))
-					]));
-		case 1:
-			return A2(
-				$elm$html$Html$span,
-				_List_fromArray(
-					[
-						$elm$html$Html$Attributes$class('opacity-30')
-					]),
-				_List_fromArray(
-					[
-						$elm$html$Html$text('?')
-					]));
-		default:
-			return A2(
-				$elm$html$Html$span,
-				_List_fromArray(
-					[
-						$elm$html$Html$Attributes$class('opacity-30')
-					]),
-				_List_fromArray(
-					[
-						$elm$html$Html$text('?!')
-					]));
-	}
-};
 var $author$project$Main$viewGiftSlot = F4(
-	function (number, open, gift, onToggle) {
+	function (number, open, maybeGift, onToggle) {
 		var clickable = _List_fromArray(
 			[
 				$elm$html$Html$Events$onClick(onToggle),
 				$elm$html$Html$Attributes$class('hover:scale-110'),
 				$elm$html$Html$Attributes$class('cursor-pointer')
 			]);
-		var dynamicAttrs = function () {
-			var _v0 = _Utils_Tuple2(open, gift);
-			if (_v0.a) {
-				return A2(
-					$elm$core$List$cons,
-					$elm$html$Html$Attributes$class('text-[#F8CAFF] bg-[#2B0A36] border-[#D23B3B]'),
-					clickable);
-			} else {
-				if (!_v0.b.$) {
-					return A2(
-						$elm$core$List$cons,
-						$elm$html$Html$Attributes$class('text-white bg-[#44134C] border-transparent'),
-						clickable);
+		var _v0 = function () {
+			var _v1 = _Utils_Tuple2(open, maybeGift);
+			if (!_v1.b.$) {
+				if (_v1.a) {
+					var gift = _v1.b.a;
+					return _Utils_Tuple2(
+						$elm$core$String$fromChar(gift),
+						A2(
+							$elm$core$List$cons,
+							$elm$html$Html$Attributes$class('text-[#F8CAFF] bg-[#2B0A36] border-[#D23B3B]'),
+							clickable));
 				} else {
-					return _List_fromArray(
+					return _Utils_Tuple2(
+						$elm$core$String$fromInt(number),
+						A2(
+							$elm$core$List$cons,
+							$elm$html$Html$Attributes$class('text-white bg-[#44134C] border-transparent'),
+							clickable));
+				}
+			} else {
+				var _v2 = _v1.b;
+				return _Utils_Tuple2(
+					$elm$core$String$fromInt(number),
+					_List_fromArray(
 						[
 							$elm$html$Html$Attributes$class('text-[#372D3B] bg-[#AC85B3] border-transparent')
-						]);
-				}
+						]));
 			}
 		}();
+		var content = _v0.a;
+		var dynamicAttrs = _v0.b;
 		return A2(
 			$elm$html$Html$div,
 			_Utils_ap(
@@ -6152,13 +6511,9 @@ var $author$project$Main$viewGiftSlot = F4(
 						$elm$html$Html$Attributes$class('transition-all')
 					]),
 				dynamicAttrs),
-			open ? _List_fromArray(
+			_List_fromArray(
 				[
-					$author$project$Main$viewGiftContent(gift)
-				]) : _List_fromArray(
-				[
-					$elm$html$Html$text(
-					$elm$core$String$fromInt(number))
+					$elm$html$Html$text(content)
 				]));
 	});
 var $author$project$Main$viewHeader = A2(
@@ -6171,27 +6526,16 @@ var $author$project$Main$viewHeader = A2(
 		[
 			$elm$html$Html$text('Advent 2025')
 		]));
-var $elm$core$Maybe$withDefault = F2(
-	function (_default, maybe) {
-		if (!maybe.$) {
-			var value = maybe.a;
-			return value;
-		} else {
-			return _default;
-		}
-	});
 var $author$project$Main$view = function (_v0) {
-	var today = _v0.F;
+	var today = _v0.G;
 	var openSlots = _v0.w;
+	var snow = _v0.B;
 	var isOpen = function (day) {
 		return A2($elm$core$Set$member, day, openSlots);
 	};
-	var gifts = $author$project$Main$giftsForToday(today);
+	var gifts = A2($author$project$Calendar$availableNow, today, $author$project$Main$allGifts);
 	var getGift = function (day) {
-		return A2(
-			$elm$core$Maybe$withDefault,
-			$author$project$Main$None,
-			A2($elm$core$Dict$get, day, gifts));
+		return A2($author$project$Calendar$forDay, day, gifts);
 	};
 	return A2(
 		$elm$html$Html$div,
@@ -6213,23 +6557,28 @@ var $author$project$Main$view = function (_v0) {
 				$elm$core$List$cons,
 				$author$project$Main$viewDay(today),
 				A2(
-					$elm$core$List$map,
-					function (num) {
-						return A4(
-							$author$project$Main$viewGiftSlot,
-							num,
-							isOpen(num),
-							getGift(num),
-							$author$project$Main$ToggleGiftSlotOpen(num));
-					},
-					$author$project$Main$adventDays))));
+					$elm$core$List$cons,
+					$author$project$Snow$view(snow),
+					A2(
+						$elm$core$List$map,
+						function (num) {
+							return A4(
+								$author$project$Main$viewGiftSlot,
+								num,
+								isOpen(num),
+								getGift(num),
+								$author$project$Main$ToggleGiftSlotOpen(num));
+						},
+						$author$project$Calendar$adventDays)))));
 };
 var $author$project$Main$main = $elm$browser$Browser$element(
 	{
-		av: $author$project$Main$init,
-		aB: $elm$core$Basics$always($elm$core$Platform$Sub$none),
-		aD: $author$project$Main$update,
-		aE: $author$project$Main$view
+		aA: $author$project$Main$init,
+		aG: function (model) {
+			return A2($author$project$Snow$subscription, $author$project$Main$GotSnow, model.B);
+		},
+		aI: $author$project$Main$update,
+		aJ: $author$project$Main$view
 	});
 _Platform_export({'Main':{'init':$author$project$Main$main(
 	$elm$json$Json$Decode$succeed(0))(0)}});}(this));

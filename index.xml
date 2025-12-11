@@ -6,8 +6,16 @@
     <description>Recent content on cekrem.github.io</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 03 Dec 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 11 Dec 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://cekrem.github.io/index.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Tailwind CSS: Targeting Child Elements (when you have to)</title>
+      <link>https://cekrem.github.io/posts/tailwind-targeting-child-elements/</link>
+      <pubDate>Thu, 11 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>https://cekrem.github.io/posts/tailwind-targeting-child-elements/</guid>
+      <description><![CDATA[<p>The whole point of Tailwind is applying utility classes directly to elements. Styling generic elements like <code>p</code> or <code>div</code> with descendant selectors goes against the grain—it&rsquo;s the kind of thing Tailwind was designed to replace.</p>
+<p>But sometimes you don&rsquo;t have a choice. Maybe it&rsquo;s content from a CMS, a third-party component, or dynamically generated HTML. You need to style elements you don&rsquo;t control. In vanilla CSS, you&rsquo;d write a selector like <code>.third-party-stuff &gt; p</code> and move on. But what about Tailwind?</p>]]></description>
+    </item>
     <item>
       <title>cekrem/elm-form: Type-Safe Forms That Won't Let You Mess Up</title>
       <link>https://cekrem.github.io/posts/elm-form/</link>

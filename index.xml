@@ -14,7 +14,8 @@
       <pubDate>Thu, 11 Dec 2025 00:00:00 +0000</pubDate>
       <guid>https://cekrem.github.io/posts/tailwind-targeting-child-elements/</guid>
       <description><![CDATA[<p>The whole point of Tailwind is applying utility classes directly to elements. Styling generic elements like <code>p</code> or <code>div</code> with descendant selectors goes against the grain—it&rsquo;s the kind of thing Tailwind was designed to replace.</p>
-<p>But sometimes you don&rsquo;t have a choice. Maybe it&rsquo;s content from a CMS, a third-party component, or dynamically generated HTML. You need to style elements you don&rsquo;t control. In vanilla CSS, you&rsquo;d write a selector like <code>.third-party-stuff &gt; p</code> and move on. But what about Tailwind?</p>]]></description>
+<p>But sometimes you don&rsquo;t have a choice. Maybe it&rsquo;s content from a CMS, a third-party component, or dynamically generated HTML. You need to style elements you don&rsquo;t control.</p>
+<p><strong>Let&rsquo;s be clear upfront:</strong> adding a small piece of vanilla CSS to handle this is often the simplest and most sensible solution. A dedicated stylesheet for CMS content is a perfectly valid approach. But if you&rsquo;re committed to staying within Tailwind&rsquo;s utility-class paradigm—or just curious about what&rsquo;s possible—this post shows how you <em>can</em> target child elements using arbitrary variants.</p>]]></description>
     </item>
     <item>
       <title>cekrem/elm-form: Type-Safe Forms That Won't Let You Mess Up</title>

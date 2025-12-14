@@ -149,6 +149,11 @@ url = "https://enso.no"
 #name = "Hire me?"
 #weight = 2
 #url = "hire/"
+#
+[[menu.main]]
+name = "Jesus!?"
+weight = 2
+url = "/posts/how-i-met-jesus/"
 
 [[menu.main]]
 name = "About"

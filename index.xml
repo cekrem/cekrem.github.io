@@ -6,8 +6,24 @@
     <description>Recent content on cekrem.github.io</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 14 Dec 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 17 Dec 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://cekrem.github.io/index.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>TypeScript Goes Go: What Does This Mean for Us?</title>
+      <link>https://cekrem.github.io/posts/typescript-goes-go/</link>
+      <pubDate>Wed, 17 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>https://cekrem.github.io/posts/typescript-goes-go/</guid>
+      <description><![CDATA[<p>Anders Hejlsberg announced that Microsoft is porting TypeScript to Go. Yes, <em>that</em> Go. Not Rust (which everyone expected), not C++ (which would be reasonable), but Go.</p>
+<p>I&rsquo;ll admit my first reaction was a grin. Go is one of those languages I genuinely enjoy working with - simple, pragmatic, fast. My second reaction was &ldquo;wait, 10x faster?&rdquo; And my third was &ldquo;okay, this makes a lot of sense actually.&rdquo;</p>
+<h2 id="the-numbers">
+ The Numbers
+ <a class="heading-link" href="#the-numbers">
+ <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+ <span class="sr-only">Link to heading</span>
+ </a>
+</h2>
+<p>Let&rsquo;s start with what matters. According to the <a href="https://devblogs.microsoft.com/typescript/typescript-native-port/" class="external-link" target="_blank" rel="noopener">official announcement</a>, we&rsquo;re looking at:</p>]]></description>
+    </item>
     <item>
       <title>How I Met Jesus</title>
       <link>https://cekrem.github.io/posts/how-i-met-jesus/</link>

@@ -6,8 +6,16 @@
     <description>Recent content on cekrem.github.io</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 17 Dec 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 19 Dec 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://cekrem.github.io/index.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Elm on the Backend with Node.js: An Experiment in Opaque Values</title>
+      <link>https://cekrem.github.io/posts/elm-on-the-backend-with-nodejs/</link>
+      <pubDate>Fri, 19 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>https://cekrem.github.io/posts/elm-on-the-backend-with-nodejs/</guid>
+      <description><![CDATA[<p>What if you could write backend logic in Elm? Not &ldquo;Elm-like&rdquo; or &ldquo;inspired by Elm&rdquo; – actual Elm, with the compiler, the types, the whole package. I&rsquo;ve been nerd-sniped by this idea for a while, and last night I finally sat down to build a proof of concept.</p>
+<p><strong>Disclaimer:</strong> This is me experimenting with a concept, not suggesting anyone <em>should</em> do this. If you actually want Elm on the backend, <a href="https://lamdera.com/" class="external-link" target="_blank" rel="noopener">Lamdera</a> does something far more sophisticated – it&rsquo;s a full platform with seamless frontend/backend Elm, automatic persistence, and real deployment story. My thing is&hellip; not that. It&rsquo;s just a hack to see what&rsquo;s possible with vanilla Node.js and vanilla Elm, nothing more.</p>]]></description>
+    </item>
     <item>
       <title>TypeScript Goes Go: What Does This Mean for Us?</title>
       <link>https://cekrem.github.io/posts/typescript-goes-go/</link>

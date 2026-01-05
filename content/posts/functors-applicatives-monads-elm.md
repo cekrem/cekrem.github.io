@@ -102,7 +102,7 @@ Just String.toUpper
 
 Not that you'd ever write code like this in practice – `map2` is usually much clearer. But it shows that the concept is there, just with different syntax.
 
-## Monad: "I Have a Value, and a Function That Returns a Wrapped Value"
+## Monad: "I Have a Wrapped Value, and a Function That Returns a Wrapped Value"
 
 Now for the big one. The M-word. The concept that has launched countless terrible tutorials.
 

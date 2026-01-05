@@ -20,7 +20,7 @@ Lo and behold, this might be the day where you finally Get It. Read on!
 
 ## What's Actually Going On
 
-Let me let you in on a secret: these three concepts are just patterns for working with "wrapped" values. That's it. Values in containers. Values in boxes. Whatever mental image helps you.
+Let me let you in on a secret: these three concepts are just patterns for working with "wrapped" values. That's it. Values in containers. Values in boxes.[^context] Whatever mental image helps you.
 
 Think about `Maybe` in Elm. It's a container that might hold a value, or might be empty:
 
@@ -243,6 +243,8 @@ You've been using these patterns all along. Elm just had the good sense not to s
 And maybe that's the real lesson here: sometimes the barrier to understanding isn't the concept – it's the name we gave it. Strip away the academic terminology, and you're left with practical patterns for handling values that might not exist, operations that might fail, and side effects that need managing.
 
 Next time someone starts going on about the monad laws or the functor hierarchy, you can smile and nod, knowing that it's really just `map` and `andThen` wearing a fancy hat.
+
+[^context]: The "container" or "box" metaphor is helpful for building intuition, but it's not _completely_ accurate. A more precise term is _computational context_. `Maybe` represents a computation that might fail. `List` represents a computation with multiple possible results. `Result` represents a computation that might fail _with an error message_. The context isn't just "holding" a value – it's describing _how the computation behaves_. This distinction matters more as you go deeper: in Haskell, even functions themselves are functors (the `(->) r` instance), and trying to imagine a function as a "box containing a value" will tie your brain in knots. But for the sake of demystifying these concepts and building initial intuition, the "box" metaphor will do just fine.
 
 ---
 

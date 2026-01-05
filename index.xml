@@ -6,8 +6,23 @@
     <description>Recent content on cekrem.github.io</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 19 Dec 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 05 Jan 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://cekrem.github.io/index.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Functors, Applicatives, and Monads: The Scary Words You Already Understand</title>
+      <link>https://cekrem.github.io/posts/functors-applicatives-monads-elm/</link>
+      <pubDate>Mon, 05 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://cekrem.github.io/posts/functors-applicatives-monads-elm/</guid>
+      <description><![CDATA[<h2 id="the-dreaded-three">
+ The Dreaded Three
+ <a class="heading-link" href="#the-dreaded-three">
+ <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+ <span class="sr-only">Link to heading</span>
+ </a>
+</h2>
+<p>Happy new year! Good to be back. What better way to kickstart this year than to scare you to death with the three most dreaded words in computer science since <code>NullPointerException</code>?</p>
+<p>If you&rsquo;ve spent any time around functional programming communities, you&rsquo;ve encountered <em>them</em>. Elodin in The Kingkiller Chronicles claims there are Seven Words to make a woman love you, and there are definitely three words that make junior developers&rsquo; eyes glaze over. The concepts that spawn a thousand Medium articles with titles like &ldquo;Monads Explained with Burritos&rdquo; (not kidding). The triforce of functional programming jargon: <strong>Functors</strong>, <strong>Applicatives</strong>, and <strong>Monads</strong>.</p>]]></description>
+    </item>
     <item>
       <title>Elm on the Backend with Node.js: An Experiment in Opaque Values</title>
       <link>https://cekrem.github.io/posts/elm-on-the-backend-with-nodejs/</link>

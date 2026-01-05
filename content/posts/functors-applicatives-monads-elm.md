@@ -36,7 +36,7 @@ userAge = Nothing
 
 The scary words are just names for different ways of working with these containers.
 
-And if you've written JavaScript? You've used these too. `[1,2,3].map(x => x * 2)` is functor territory. `fetch().then(res => res.json()).then(data => ...)` is monadic chaining – `then` flattens nested Promises just like `andThen` flattens nested Maybes. The patterns are everywhere; only the vocabulary changes.
+And if you've written JavaScript? You've used these too. `[1,2,3].map(x => x * 2)` is functor territory. `fetch().then(res => res.json()).then(data => ...)` is (roughly speaking) monadic chaining – `then` flattens nested Promises just like `andThen` flattens nested Maybes. The patterns are everywhere; only the vocabulary changes.
 
 ## Functor: "I Have a Function and a Wrapped Value"
 
@@ -64,43 +64,47 @@ fmap toUpper ["hello"]        -- ["HELLO"]
 
 Elm doesn't have this. In Elm, you explicitly say _which_ container you're mapping over: `Maybe.map`, `List.map`, `Result.map`, and so on. More typing, but also more clarity about what's actually happening.
 
-## Applicative: "I Have a Wrapped Function and a Wrapped Value"
+## Applicative: "My Function Takes Multiple Arguments"
 
-Things get more interesting when both your function _and_ your value are wrapped. What if you have a `Maybe (String -> String)` and a `Maybe String`? How do you apply one to the other?
+Functors work great when your function takes one argument. But what about two?
 
-This is what Applicatives solve. In Haskell, you'd use `<*>`:
+```elm
+-- User takes two arguments
+type alias User = { name : String, age : Int }
+
+-- We have two wrapped values
+maybeName : Maybe String
+maybeName = Just "Alice"
+
+maybeAge : Maybe Int
+maybeAge = Just 30
+
+-- Let's try mapping...
+Maybe.map User maybeName
+-- Result: Just <function>
+-- Type: Maybe (Int -> User)
+```
+
+Wait. We mapped a two-argument function, but we only gave it one argument. Now we have a _function_ stuck inside a `Maybe`. And we still have `maybeAge` sitting there, also wrapped.
+
+Regular `map` can't help us. It applies a normal function to a wrapped value—but now our function is _also_ wrapped.
+
+This is where Applicatives come in. In Haskell, you'd use `<*>` to apply a wrapped function to a wrapped value:
 
 ```haskell
--- Haskell: apply a wrapped function to a wrapped value
-Just toUpper <*> Just "hello"  -- Just "HELLO"
-Nothing <*> Just "hello"       -- Nothing
+-- Haskell: apply the wrapped function to another wrapped value
+Just (User "Alice") <*> Just 30  -- Just (User "Alice" 30)
+Nothing <*> Just 30              -- Nothing
 ```
 
-Elm doesn't expose this directly, but you use it all the time through `map2`, `map3`, etc:
+In Elm, you skip the intermediate step entirely with `map2`:
 
 ```elm
--- Elm: combining multiple Maybe values
-validateUser : Maybe String -> Maybe Int -> Maybe User
-validateUser maybeName maybeAge =
-    Maybe.map2 User maybeName maybeAge
+-- Elm: combine two wrapped values with a two-argument function
+Maybe.map2 User maybeName maybeAge  -- Just { name = "Alice", age = 30 }
 ```
 
-Here's the mental model: `map2` is applying a function that takes 2 arguments to 2 wrapped values. If any of them is `Nothing`, the whole thing fails.
-
-You can actually construct `<*>` yourself in Elm if you want:
-
-```elm
--- Elm's equivalent of applicative apply
-applicative : Maybe a -> Maybe (a -> b) -> Maybe b
-applicative =
-    Maybe.map2 (|>)
-
--- Usage (a bit unusual looking, but it works!)
-Just String.toUpper
-    |> applicative (Just "hello")  -- Just "HELLO"
-```
-
-Not that you'd ever write code like this in practice – `map2` is usually much clearer. But it shows that the concept is there, just with different syntax.
+The pattern scales: `map3` for three arguments, `map4` for four, and so on. If _any_ of the values is `Nothing`, the whole thing short-circuits to `Nothing`.
 
 ## Monad: "I Have a Wrapped Value, and a Function That Returns a Wrapped Value"
 
@@ -109,7 +113,7 @@ Now for the big one. The M-word. The concept that has launched countless terribl
 A Monad handles this situation: you have a wrapped value, and you want to apply a function that _itself_ returns a wrapped value. Without special handling, you'd end up with `Maybe (Maybe a)` – a wrapped wrapped value. Nobody wants that.
 
 Literally nobody!
-![Wrapped wrapped wrapped](https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbDd1NjBqeHZybjdqNXFvNjc4NnF2aXRzZjF4eW9zb3h6aTR1d3RmdyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/9oF7EAvaFUOEU/giphy.gif)
+![Wrapped wrapped wrapped](/images/michael-scott-cringe.gif)
 
 In Elm, this is `andThen`:
 
@@ -187,13 +191,13 @@ type alias User =
     , email : String
     }
 
--- Using applicatives (map3) to combine multiple decodings
+-- Three wrapped values, one three-argument function: applicative!
 userDecoder : Decoder User
 userDecoder =
     Json.Decode.map3 User
-        (field "name" string)
-        (field "age" int)
-        (field "email" string)
+        (field "name" string)   -- Decoder String
+        (field "age" int)       -- Decoder Int
+        (field "email" string)  -- Decoder String
 ```
 
 That `map3` is applicative functor stuff. You're applying a 3-argument function (`User`) to three wrapped values (the decoders). If any decoding fails, the whole thing fails.

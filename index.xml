@@ -6,8 +6,23 @@
     <description>Recent content on cekrem.github.io</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 05 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 16 Jan 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://cekrem.github.io/index.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Arrow's Either: The Kotlin Chapter of our Scary Words Saga</title>
+      <link>https://cekrem.github.io/posts/arrow-either-kotlin-functors-monads/</link>
+      <pubDate>Fri, 16 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://cekrem.github.io/posts/arrow-either-kotlin-functors-monads/</guid>
+      <description><![CDATA[<h2 id="previously-on-scary-words">
+ Previously, on &ldquo;Scary Words&rdquo;
+ <a class="heading-link" href="#previously-on-scary-words">
+ <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+ <span class="sr-only">Link to heading</span>
+ </a>
+</h2>
+<p>A few weeks back I wrote about <a href="https://cekrem.github.io/posts/functors-applicatives-monads-elm/" >functors, applicatives, and monads in Elm</a> – those three terrifying terms that make developers&rsquo; eyes glaze over. The punchline was simple: if you&rsquo;ve used <code>map</code>, <code>map2</code>, or <code>andThen</code>, you already know these concepts. You just didn&rsquo;t know they had fancy names.</p>
+<p>But here&rsquo;s the thing: I spend a lot of my day-to-day in Kotlin, not Elm. And Kotlin has its own functional programming story, largely thanks to a library called <a href="https://arrow-kt.io/" class="external-link" target="_blank" rel="noopener">Arrow</a>. So I thought it&rsquo;d be fun to see how the same concepts translate.</p>]]></description>
+    </item>
     <item>
       <title>Functors, Applicatives, and Monads: The Scary Words You Already Understand</title>
       <link>https://cekrem.github.io/posts/functors-applicatives-monads-elm/</link>

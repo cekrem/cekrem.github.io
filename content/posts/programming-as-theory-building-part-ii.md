@@ -52,7 +52,7 @@ Think about a good code review. It's not just checking for bugs. It's a point of
 
 AI-generated code arrives without any of this context. There's no `git blame` pointing to a human you can ask. No PR discussion explaining the trade-offs. The code exists in what I called a "theoretical vacuum"—and when it enters your codebase, it imports architectural decisions that nobody on your team actually made.
 
-The institution's decision-making process gets flattened. Rules become invisible. And when rules are invisible, they can't be questioned, iterated on, or adapted to changing circumstances. That's how institutions become rigid and eventually irrelevant.
+The institution's decision-making process gets flattened. Rules become invisible. And when rules are invisible, they can't be questioned or iterated on. That's how institutions become rigid and eventually irrelevant.
 
 ### 3. AI Isolates Humans
 
@@ -66,7 +66,7 @@ Every minute a developer spends with an AI assistant is a minute not spent pairi
 
 Hartzog and Silbey cite a study showing that co-workers who receive "workslop" (AI outputs that make more work or make no sense) start seeing their colleagues differently: less creative, less capable, less reliable, less trustworthy. That's institutional trust eroding in real-time.
 
-There's a darker psychological dimension here too. Designer Mike Monteiro recently pointed out that the AI industry's success depends on convincing people they're inadequate. Every time you open Google Docs and see those "Help me write" buttons, the message is clear: _you probably can't do this yourself_. We are not being built up by helpful tools. We're being torn down by tools that insist we can't function without them.
+There's a darker psychological dimension here too. Mike Monteiro recently pointed out that the AI industry's success depends on convincing people they're inadequate. Every time you open Google Docs and see those "Help me write" buttons, the message is clear: _you probably can't do this yourself_. We are not being built up by helpful tools. We're being torn down by tools that insist we can't function without them.
 
 ## The Theory Lives in the Institution
 
@@ -74,7 +74,7 @@ Here's where Naur's insight combines with the institutional perspective in a way
 
 Remember: the program is not the code, it's the theory. But where does the theory actually live? Not just in individual heads, but in the _relationships between those heads_. In the shared understanding built through years of working together. In the institutional memory of why we do things this way and not that way.
 
-When AI undermines expertise, short-circuits decision-making, and isolates humans, it's not just making individual developers worse. It's destroying the vessel that holds and transmits the theory itself.
+When AI undermines expertise, short-circuits decision-making, and isolates humans, it's not just making individual developers worse. It's destroying the place where theory actually lives.
 
 A junior who never struggles through a difficult problem doesn't just fail to learn—they fail to develop the relationships with seniors that would have formed during that struggle. An AI-generated PR that nobody truly reviews doesn't just introduce risky code—it skips the conversation that would have refined everyone's understanding of the domain. A developer who "pairs" with an AI instead of a colleague doesn't just miss out on connection—they miss the creative friction that produces genuinely new ideas.
 
@@ -92,7 +92,7 @@ For example: "I've written tests for these three controllers following this patt
 
 Notice what's happening here. The human has done the theory-building work: understanding the domain, making architectural decisions, establishing patterns. The AI is doing rote execution _within_ that established framework. And crucially, there's a checkpoint: "ask me whenever something doesn't translate 1:1." The human stays in the loop, ready to exercise judgment when the pattern breaks down.
 
-This is AI as a tool, subordinate to human expertise and institutional decision-making. It's not AI as a replacement for the hard intellectual work.
+This is AI as a tool that serves your expertise. It's not AI as a replacement for the hard intellectual work.
 
 The difference matters. Boilerplate generation, documentation summarization, test scaffolding within an established pattern—these don't require theory-building. They don't involve the architectural decisions and domain understanding that give a codebase its coherence. Using AI for these is like using a calculator for arithmetic: it frees up mental energy for the work that actually matters.
 
@@ -102,13 +102,13 @@ But "write me a feature" or "fix this bug" or "refactor this module"—these _do
 
 The AI boosters will tell you this is all about efficiency. "AI systems are just tools," they say. "They help us do what we were going to do anyway, only faster."
 
-But that framing misses what institutions actually _are_. They're not just machines for producing output. They're mechanisms for building expertise, making good decisions, and fostering the human connections that make it all worthwhile. Speed those things up too much and they stop working.
+But that framing misses what institutions actually _are_. They're not just machines for producing output. They're where expertise gets built, where decisions get made well, where people actually connect with each other. Speed those things up too much and they stop working.
 
-What we're fighting for isn't just our individual craft (though that matters). It's the institutions that make software development a _profession_ rather than just a job. The hierarchies of mentorship that turn juniors into seniors. The decision-making processes that keep codebases coherent over time. The human relationships that make teams more than the sum of their parts.
+What we're fighting for isn't just our individual craft (though that matters). It's the institutions that make software development a _profession_ rather than just a job. The mentorship that turns juniors into seniors. The processes that keep codebases coherent over time. The relationships that make a team actually _work_.
 
-And maybe it goes deeper than that. Human beings are _made_ to create. It's not an accident or a mere adaptation—it's fundamental to who we are, how we're designed. A child draws an orange on the first day of art class without hesitation, without permission, without worrying whether they're "good enough." That impulse to make marks on the world, to leave evidence of our existence, to build things—it's in our bones. And when we're convinced we can't create, something essential gets stolen from us.
+But maybe there's something even more fundamental at stake here. Human beings are _made_ to create. A child draws an orange on the first day of art class without hesitation, without permission, without worrying whether they're "good enough." That impulse to make marks on the world, to build things, to leave evidence that we were here—it's in our bones. And when we're convinced we can't create, something essential gets stolen from us.
 
-Monteiro puts it bluntly: once you convince people they can't express themselves, it's that much easier to convince them they can't govern themselves. The path from "let AI write your code" to "let AI make your decisions" to "you're not competent to have a say in how things work" is shorter than we think.
+This is the other half of what Monteiro was getting at: once you convince people they can't express themselves, it's that much easier to convince them they can't govern themselves. The path from "let AI write your code" to "let AI make your decisions" to "you're not competent to have a say" is shorter than we think.
 
 These institutions took decades to build. They're far more fragile than we realized.
 

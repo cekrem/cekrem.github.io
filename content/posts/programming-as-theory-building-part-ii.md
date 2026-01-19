@@ -1,7 +1,7 @@
 +++
 title = "Programming as Theory Building, Part II: When Institutions Crumble"
 description = "Software development teams are institutions. AI degrades them in ways we're only beginning to understand."
-date = 2025-01-19
+date = 2026-01-19
 author = "Christian Ekrem"
 tags = ["programming", "software-engineering", "theory", "llm", "ai", "craft", "institutions"]
 draft = false

@@ -6,8 +6,16 @@
     <description>Recent content on cekrem.github.io</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 16 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 19 Jan 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://cekrem.github.io/index.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Programming as Theory Building, Part II: When Institutions Crumble</title>
+      <link>https://cekrem.github.io/posts/programming-as-theory-building-part-ii/</link>
+      <pubDate>Mon, 19 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://cekrem.github.io/posts/programming-as-theory-building-part-ii/</guid>
+      <description><![CDATA[<p>In my <a href="https://cekrem.github.io/posts/programming-as-theory-building-naur/" >previous post on Peter Naur&rsquo;s &ldquo;Programming as Theory Building&rdquo;</a>, I argued that a program is not its source code—it&rsquo;s the shared mental model held by the people who built it. When those people leave (or never understood it in the first place), the theory dies, and you&rsquo;re left with a codebase that works but nobody truly comprehends.</p>
+<p>I&rsquo;ve been thinking about this more, and I&rsquo;ve come to believe the problem goes deeper than individual developers losing their edge. It&rsquo;s not just that <em>people</em> are losing the ability to build theories. It&rsquo;s that the <em>institutions</em> where theory-building happens—our teams, our companies, our profession—are being systematically degraded.</p>]]></description>
+    </item>
     <item>
       <title>Arrow's Either: The Kotlin Chapter of our Scary Words Saga</title>
       <link>https://cekrem.github.io/posts/arrow-either-kotlin-functors-monads/</link>
@@ -702,14 +710,6 @@
 <p>Again, kudos to Uncle Bob for reminding me about the importance of good <strong>software architecture</strong> in his classic <a href="https://amzn.to/4iAc8o1" class="external-link" target="_blank" rel="noopener">Clean Architecture</a>! That book is my primary inspiration for this series. Without clean architecture, we&rsquo;ll all be building firmware (my paraphrased summary).</p>
 <blockquote>
 <p>The Liskov Substitution Principle states that if S is a subtype of T, then objects of type T may be replaced with objects of type S without altering any of the desirable properties of the program.</p>]]></description>
-    </item>
-    <item>
-      <title>Programming as Theory Building, Part II: When Institutions Crumble</title>
-      <link>https://cekrem.github.io/posts/programming-as-theory-building-part-ii/</link>
-      <pubDate>Sun, 19 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>https://cekrem.github.io/posts/programming-as-theory-building-part-ii/</guid>
-      <description><![CDATA[<p>In my <a href="https://cekrem.github.io/posts/programming-as-theory-building-naur/" >previous post on Peter Naur&rsquo;s &ldquo;Programming as Theory Building&rdquo;</a>, I argued that a program is not its source code—it&rsquo;s the shared mental model held by the people who built it. When those people leave (or never understood it in the first place), the theory dies, and you&rsquo;re left with a codebase that works but nobody truly comprehends.</p>
-<p>I&rsquo;ve been thinking about this more, and I&rsquo;ve come to believe the problem goes deeper than individual developers losing their edge. It&rsquo;s not just that <em>people</em> are losing the ability to build theories. It&rsquo;s that the <em>institutions</em> where theory-building happens—our teams, our companies, our profession—are being systematically degraded.</p>]]></description>
     </item>
     <item>
       <title>The One Book (Besides The Bible) I Want My Future Manager to Read</title>

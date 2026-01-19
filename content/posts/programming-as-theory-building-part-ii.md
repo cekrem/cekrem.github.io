@@ -1,10 +1,10 @@
 +++
 title = "Programming as Theory Building, Part II: When Institutions Crumble"
 description = "Software development teams are institutions. AI degrades them in ways we're only beginning to understand."
-date = 2025-01-17
+date = 2025-01-19
 author = "Christian Ekrem"
 tags = ["programming", "software-engineering", "theory", "llm", "ai", "craft", "institutions"]
-draft = true
+draft = false
 +++
 
 In my [previous post on Peter Naur's "Programming as Theory Building"](/posts/programming-as-theory-building-naur/), I argued that a program is not its source code—it's the shared mental model held by the people who built it. When those people leave (or never understood it in the first place), the theory dies, and you're left with a codebase that works but nobody truly comprehends.
@@ -13,7 +13,7 @@ I've been thinking about this more, and I've come to believe the problem goes de
 
 ## Software Teams Are Institutions
 
-I recently read a draft paper by two Boston University law professors, Woodrow Hartzog and Jessica Silbey, called "How AI Destroys Institutions." Their argument hit me like a truck: AI systems aren't just tools that _can_ be misused—their core design is fundamentally incompatible with how institutions function.
+I recently read a draft paper by two Boston University law professors, Woodrow Hartzog and Jessica Silbey, called "How AI Destroys Institutions." Their argument hits like a truck: AI systems aren't just tools that _can_ be misused—their core design is fundamentally incompatible with how institutions function.
 
 Now, when they say "institutions," they're talking about universities, the legal system, journalism, democracy. Big stuff. But as I read, I kept seeing my own world reflected back at me. Because software development teams _are_ institutions, even if we don't usually think of them that way.
 
@@ -24,7 +24,7 @@ Consider what makes an institution work:
 - **Decision-making with accountability**: Code reviews, design discussions, ADRs. Points where someone can say "wait, that doesn't fit our model" and actually be heard.
 - **Human relationships and solidarity**: The trust that makes you ask a teammate for help instead of flailing alone. The camaraderie that makes you _want_ the team to succeed.
 
-These aren't just nice-to-haves. They're the machinery through which _theory gets built and transmitted_. Naur's insight was about individual understanding, but that understanding doesn't exist in a vacuum. It lives in the institution—in the conversations, the reviews, the mentoring, the shared struggle of building something together.
+These things are pretty much the machinery through which _theory gets built and transmitted_. Naur's insight was about individual understanding, but that understanding doesn't exist in a vacuum. It lives in the institution—in the conversations, the reviews, the mentoring, the shared struggle of building something together.
 
 ## The Three Ways AI Degrades Institutions
 
@@ -40,7 +40,7 @@ And here's the kicker: AI can only look backwards. It's trained on what already 
 
 As the paper puts it: when AI is "right," people become less skilled. When AI is "wrong," you need skilled people to catch and fix the errors. Either way, the institution suffers.
 
-A recent MIT Media Lab study makes this painfully concrete. Researchers had students write essays, with one group using ChatGPT and others using traditional methods. The result? 83% of the ChatGPT group couldn't quote anything they'd written. They didn't remember. They didn't feel like the work was theirs.
+A recent MIT Media Lab study makes this painfully concrete. Researchers had students write essays, with one group using ChatGPT and others using traditional methods. The result? 83% of the ChatGPT group couldn't quote anything they'd written. They didn't remember. And further, they didn't feel like the work was theirs.
 
 That's not just "they didn't learn as much." That's _they didn't build any theory at all_. The understanding never formed. And if it never formed, it can never be transferred to the next generation of the institution.
 
@@ -66,11 +66,11 @@ Every minute a developer spends with an AI assistant is a minute not spent pairi
 
 Hartzog and Silbey cite a study showing that co-workers who receive "workslop" (AI outputs that make more work or make no sense) start seeing their colleagues differently: less creative, less capable, less reliable, less trustworthy. That's institutional trust eroding in real-time.
 
-There's a darker psychological dimension here too. Mike Monteiro recently pointed out that the AI industry's success depends on convincing people they're inadequate. Every time you open Google Docs and see those "Help me write" buttons, the message is clear: _you probably can't do this yourself_. We are not being built up by helpful tools. We're being torn down by tools that insist we can't function without them.
+There's a darker psychological dimension here too. [Mike Monteiro recently pointed out](https://www.youtube.com/watch?v=zH2dFXDMwe4) that the AI industry's success depends on convincing people they're inadequate. Every time you open Google Docs and see those "Help me write" buttons, the message is clear: _you probably can't do this yourself_. We are not being built up by helpful tools. We're being torn down by tools that insist we can't function without them.
 
 ## The Theory Lives in the Institution
 
-Here's where Naur's insight combines with the institutional perspective in a way that keeps me up at night.
+Here's where Naur's insight combines with the institutional perspective in a way that's hard to shake.
 
 Remember: the program is not the code, it's the theory. But where does the theory actually live? Not just in individual heads, but in the _relationships between those heads_. In the shared understanding built through years of working together. In the institutional memory of why we do things this way and not that way.
 
@@ -122,4 +122,4 @@ Software development teams that fully embrace "reflexive AI usage" will find the
 
 In my previous post, I wrote: "When the dust of this Null-Stack Vibe Bonanza has settled, they'll once again be looking for senior developers."
 
-I still believe that. But I'm now more worried about whether there will be any institutions left to produce them.
+I still believe that. But I'm less certain there will be any institutions left to produce them.

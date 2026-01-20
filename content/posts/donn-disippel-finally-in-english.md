@@ -1,5 +1,5 @@
 +++
-date = 2025-01-20
+date = 2026-01-20
 title = "Dønn Disippel – finally in English"
 description = "For once, a podcast episode worth sharing with an international audience!"
 tags = ["podcast", "faith", "dønn disippel"]

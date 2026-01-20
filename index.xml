@@ -6,8 +6,15 @@
     <description>Recent content on cekrem.github.io</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 19 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 20 Jan 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://cekrem.github.io/index.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Dønn Disippel – finally in English</title>
+      <link>https://cekrem.github.io/posts/donn-disippel-finally-in-english/</link>
+      <pubDate>Tue, 20 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://cekrem.github.io/posts/donn-disippel-finally-in-english/</guid>
+      <description><![CDATA[<p>My podcast &ldquo;Dønn Disippel&rdquo; is usually both off topic and not least <em>wrong language</em> to mention much on this blog (though there <em>is</em> a link on top next to the Norwegian flag). Until now, that is! This latest episode is in English, which means I can finally show (and not just tell) my international audience some of what I&rsquo;m up to. Still off topic, sure, but now you at least know what it is.</p>]]></description>
+    </item>
     <item>
       <title>Programming as Theory Building, Part II: When Institutions Crumble</title>
       <link>https://cekrem.github.io/posts/programming-as-theory-building-part-ii/</link>
@@ -710,13 +717,6 @@
 <p>Again, kudos to Uncle Bob for reminding me about the importance of good <strong>software architecture</strong> in his classic <a href="https://amzn.to/4iAc8o1" class="external-link" target="_blank" rel="noopener">Clean Architecture</a>! That book is my primary inspiration for this series. Without clean architecture, we&rsquo;ll all be building firmware (my paraphrased summary).</p>
 <blockquote>
 <p>The Liskov Substitution Principle states that if S is a subtype of T, then objects of type T may be replaced with objects of type S without altering any of the desirable properties of the program.</p>]]></description>
-    </item>
-    <item>
-      <title>Dønn Disippel – finally in English</title>
-      <link>https://cekrem.github.io/posts/donn-disippel-finally-in-english/</link>
-      <pubDate>Mon, 20 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>https://cekrem.github.io/posts/donn-disippel-finally-in-english/</guid>
-      <description><![CDATA[<p>My podcast &ldquo;Dønn Disippel&rdquo; is usually both off topic and not least <em>wrong language</em> to mention much on this blog (though there <em>is</em> a link on top next to the Norwegian flag). Until now, that is! This latest episode is in English, which means I can finally show (and not just tell) my international audience some of what I&rsquo;m up to. Still off topic, sure, but now you at least know what it is.</p>]]></description>
     </item>
     <item>
       <title>The One Book (Besides The Bible) I Want My Future Manager to Read</title>

@@ -351,15 +351,9 @@
       <link>https://cekrem.github.io/posts/programming-as-theory-building-naur/</link>
       <pubDate>Thu, 26 Jun 2025 00:00:00 +0000</pubDate>
       <guid>https://cekrem.github.io/posts/programming-as-theory-building-naur/</guid>
-      <description><![CDATA[<p>In 1985, computer scientist Peter Naur wrote a prescient essay called <a href="https://pages.cs.wisc.edu/~remzi/Naur.pdf" class="external-link" target="_blank" rel="noopener">&ldquo;Programming as Theory Building&rdquo;</a> that feels more relevant today than ever. As we watch junior developers reflexively accept LLM-generated code they don&rsquo;t understand, and see codebases balloon with theoretically orphaned implementations, Naur&rsquo;s central thesis becomes crystal clear: <strong>a program is not its source code</strong>.</p>
-<h2 id="the-theory-behind-the-code">
- The Theory Behind the Code
- <a class="heading-link" href="#the-theory-behind-the-code">
- <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
- <span class="sr-only">Link to heading</span>
- </a>
-</h2>
-<p>Naur argues that programming is fundamentally about building a theory—a <strong>shared mental model</strong> of how a system works, why it works that way, and how it should evolve. The source code is merely a written representation of this theory, and like all representations, it&rsquo;s lossy. Critical knowledge about intent, design decisions, trade-offs, and the reasoning behind architectural choices exists only in the minds of the people who built the system.</p>]]></description>
+      <description><![CDATA[<p><em>Update: I&rsquo;ve written a follow-up exploring how AI degrades the institutions where theory-building happens: <a href="https://cekrem.github.io/posts/programming-as-theory-building-part-ii/" >Part II: When Institutions Crumble</a></em></p>
+<hr>
+<p>In 1985, computer scientist Peter Naur wrote a prescient essay called <a href="https://pages.cs.wisc.edu/~remzi/Naur.pdf" class="external-link" target="_blank" rel="noopener">&ldquo;Programming as Theory Building&rdquo;</a> that feels more relevant today than ever. As we watch junior developers reflexively accept LLM-generated code they don&rsquo;t understand, and see codebases balloon with theoretically orphaned implementations, Naur&rsquo;s central thesis becomes crystal clear: <strong>a program is not its source code</strong>.</p>]]></description>
     </item>
     <item>
       <title>Pragmatic Hacks: When 'Good Enough' is Actually Good Enough</title>

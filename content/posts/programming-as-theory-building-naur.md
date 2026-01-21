@@ -3,9 +3,13 @@ title = "Programming as Theory Building: Why Senior Developers Are More Valuable
 description = "Peter Naur's 1985 theory of programming explains why experience matters more in the age of AI-generated code"
 date = 2025-06-26
 author = "Christian Ekrem"
-tags = ["programming", "software-engineering", "theory", "llm", "ai", "craft"]
+tags = ["programming", "software-engineering", "theory", "llm", "ai", "craft", "programming-as-theory-building"]
 draft = false
 +++
+
+*Update: I've written a follow-up exploring how AI degrades the institutions where theory-building happens: [Part II: When Institutions Crumble](/posts/programming-as-theory-building-part-ii/)*
+
+---
 
 In 1985, computer scientist Peter Naur wrote a prescient essay called ["Programming as Theory Building"](https://pages.cs.wisc.edu/~remzi/Naur.pdf) that feels more relevant today than ever. As we watch junior developers reflexively accept LLM-generated code they don't understand, and see codebases balloon with theoretically orphaned implementations, Naur's central thesis becomes crystal clear: **a program is not its source code**.
 
@@ -73,3 +77,7 @@ The question isn't whether LLMs can write code—they obviously can. The questio
 In a world pushing for reflexive AI usage, senior developers who practice intentional collaboration (if any!) with AI while preserving the craft of programming become the guardians of software quality. They're the ones who ensure that our systems remain comprehensible to humans, true to their domains, and built upon solid theoretical foundations.
 
 When the dust of this Null-Stack Vibe Bonanza has settled, they'll once again be looking for senior developers.
+
+---
+
+*Continue reading: [Part II: When Institutions Crumble](/posts/programming-as-theory-building-part-ii/)*

@@ -9,22 +9,22 @@ draft = false
 
 In my [previous post on Peter Naur's "Programming as Theory Building"](/posts/programming-as-theory-building-naur/), I argued that a program is not its source code—it's the shared mental model held by the people who built it. When those people leave (or never understood it in the first place), the theory dies, and you're left with a codebase that works but nobody truly comprehends.
 
-I've been thinking about this more, and I've come to believe the problem goes deeper than individual developers losing their edge. It's not just that _people_ are losing the ability to build theories. It's that the _institutions_ where theory-building happens—our teams, our companies, our profession—are being systematically degraded.
+I've been thinking about this more, and I've come to believe the problem goes deeper than individual developers losing their edge. Yes, people are losing the ability to build theories. But the _institutions_ where theory-building happens are being degraded too. Our teams, our companies, our profession. The whole ecosystem.
 
 ## Software Teams Are Institutions
 
-I recently read a draft paper by two Boston University law professors, Woodrow Hartzog and Jessica Silbey, called "How AI Destroys Institutions." Their argument hits like a truck: AI systems aren't just tools that _can_ be misused—their core design is fundamentally incompatible with how institutions function.
+I recently read a draft paper by two Boston University law professors, Woodrow Hartzog and Jessica Silbey, called "How AI Destroys Institutions." Their argument stopped me cold: AI systems aren't tools that _can_ be misused. Their core design is incompatible with how institutions function.
 
 Now, when they say "institutions," they're talking about universities, the legal system, journalism, democracy. Big stuff. But as I read, I kept seeing my own world reflected back at me. Because software development teams _are_ institutions, even if we don't usually think of them that way.
 
 Consider what makes an institution work:
 
 - **Hierarchies of expertise**: Junior developers learn from seniors, who learned from principals, who learned from architects. Knowledge flows through these relationships.
-- **Shared purpose and rules**: Coding standards, architectural decisions, domain models—the "rules of the game" that let a group of individuals function as a coherent team.
+- **Shared purpose and rules**: Coding standards, architectural decisions, domain models. The "rules of the game" that let a group of individuals function as a coherent team.
 - **Decision-making with accountability**: Code reviews, design discussions, ADRs. Points where someone can say "wait, that doesn't fit our model" and actually be heard.
 - **Human relationships and solidarity**: The trust that makes you ask a teammate for help instead of flailing alone. The camaraderie that makes you _want_ the team to succeed.
 
-These things are pretty much the machinery through which _theory gets built and transmitted_. Naur's insight was about individual understanding, but that understanding doesn't exist in a vacuum. It lives in the institution—in the conversations, the reviews, the mentoring, the shared struggle of building something together.
+These are the machinery through which _theory gets built and transmitted_. Naur's insight was about individual understanding, but that understanding doesn't exist in a vacuum. It lives in the institution. In the conversations, the reviews, the mentoring, the shared struggle of building something together.
 
 ## The Three Ways AI Degrades Institutions
 
@@ -36,11 +36,11 @@ This one connects directly to what I wrote before about "reflexive AI usage" rob
 
 When juniors accept AI-generated code they don't understand, they're not building theory. Fine, we knew that. But they're _also_ not asking seniors for help, not struggling through code review, not having those hallway conversations where knowledge actually transfers. The institution's pipeline for developing expertise—which took decades to build—gets bypassed entirely.
 
-And here's the kicker: AI can only look backwards. It's trained on what already exists. The institution's ability to _evolve_—to develop new patterns, new approaches, new understanding in response to changing circumstances—depends on humans doing the hard intellectual work of figuring out what doesn't exist yet. When that atrophies, the institution ossifies.
+And here's what gets me: AI can only look backwards. It's trained on what already exists. The institution's ability to _evolve_ depends on humans doing the hard intellectual work of figuring out what doesn't exist yet. New patterns, new approaches, new understanding in response to changing circumstances. When that atrophies, the institution ossifies.
 
 As the paper puts it: when AI is "right," people become less skilled. When AI is "wrong," you need skilled people to catch and fix the errors. Either way, the institution suffers.
 
-A recent MIT Media Lab study makes this painfully concrete. Researchers had students write essays, with one group using ChatGPT and others using traditional methods. The result? 83% of the ChatGPT group couldn't quote anything they'd written. They didn't remember. And further, they didn't feel like the work was theirs.
+A recent MIT Media Lab study puts numbers to this. Researchers had students write essays, with one group using ChatGPT and others using traditional methods. The result? 83% of the ChatGPT group couldn't quote anything they'd written. They didn't remember. And they didn't feel like the work was theirs.
 
 That's not just "they didn't learn as much." That's _they didn't build any theory at all_. The understanding never formed. And if it never formed, it can never be transferred to the next generation of the institution.
 
@@ -50,7 +50,7 @@ Institutions need friction. Not bureaucratic friction for its own sake, but the 
 
 Think about a good code review. It's not just checking for bugs. It's a point of _contestation_ where the team's shared understanding gets tested and refined. "Why did you do it this way?" "Does this fit our domain model?" "Have you considered how this interacts with X?" These questions are how theory gets sharpened and transmitted.
 
-AI-generated code arrives without any of this context. There's no `git blame` pointing to a human you can ask. No PR discussion explaining the trade-offs. The code exists in what I called a "theoretical vacuum"—and when it enters your codebase, it imports architectural decisions that nobody on your team actually made.
+AI-generated code arrives without any of this context. There's no `git blame` pointing to a human you can ask. No PR discussion explaining the trade-offs. The code exists in what I called a "theoretical vacuum," and when it enters your codebase, it imports architectural decisions that nobody on your team actually made.
 
 The institution's decision-making process gets flattened. Rules become invisible. And when rules are invisible, they can't be questioned or iterated on. That's how institutions become rigid and eventually irrelevant.
 
@@ -64,7 +64,7 @@ AI offers a sycophantic alternative. It never pushes back. It never says "I don'
 
 Every minute a developer spends with an AI assistant is a minute not spent pairing with a colleague, not asking a question in Slack, not having the awkward conversation that might have revealed a fundamental misunderstanding. The paper calls this "displacing opportunities for human connection," and I think that's exactly right.
 
-Hartzog and Silbey cite a study showing that co-workers who receive "workslop" (AI outputs that make more work or make no sense) start seeing their colleagues differently: less creative, less capable, less reliable, less trustworthy. That's institutional trust eroding in real-time.
+Hartzog and Silbey cite a study showing that co-workers who receive "workslop" (AI outputs that make more work or make no sense) start seeing their colleagues differently. Less creative. Less capable. Less reliable. Less trustworthy. That's institutional trust eroding in real-time.
 
 There's a darker psychological dimension here too. [Mike Monteiro recently pointed out](https://www.youtube.com/watch?v=zH2dFXDMwe4) that the AI industry's success depends on convincing people they're inadequate. Every time you open Google Docs and see those "Help me write" buttons, the message is clear: _you probably can't do this yourself_. We are not being built up by helpful tools. We're being torn down by tools that insist we can't function without them.
 
@@ -74,9 +74,9 @@ Here's where Naur's insight combines with the institutional perspective in a way
 
 Remember: the program is not the code, it's the theory. But where does the theory actually live? Not just in individual heads, but in the _relationships between those heads_. In the shared understanding built through years of working together. In the institutional memory of why we do things this way and not that way.
 
-When AI undermines expertise, short-circuits decision-making, and isolates humans, it's not just making individual developers worse. It's destroying the place where theory actually lives.
+When AI undermines expertise, short-circuits decision-making, and isolates humans, the damage goes beyond individual developers getting worse. It's destroying the place where theory actually lives.
 
-A junior who never struggles through a difficult problem doesn't just fail to learn—they fail to develop the relationships with seniors that would have formed during that struggle. An AI-generated PR that nobody truly reviews doesn't just introduce risky code—it skips the conversation that would have refined everyone's understanding of the domain. A developer who "pairs" with an AI instead of a colleague doesn't just miss out on connection—they miss the creative friction that produces genuinely new ideas.
+A junior who never struggles through a difficult problem doesn't just fail to learn. They fail to develop the relationships with seniors that would have formed during that struggle. An AI-generated PR that nobody truly reviews doesn't just introduce risky code. It skips the conversation that would have refined everyone's understanding of the domain. A developer who "pairs" with an AI instead of a colleague doesn't just miss out on connection. They miss the creative friction that produces genuinely new ideas.
 
 The theory, in other words, doesn't just die with individuals. It dies when the institution that builds and sustains it crumbles.
 
@@ -84,7 +84,7 @@ The theory, in other words, doesn't just die with individuals. It dies when the 
 
 I'm not saying never use AI. [As I've written before](/posts/coding-as-craft-going-back-to-the-old-gym/), AI excels at automating the boring parts—and there's nothing wrong with that.
 
-But the key word is _constraints_. The successful uses I've seen share a pattern:
+But the key word is _constraints_. The successful uses I've seen have something in common:
 
 **The human sets the theory, and the AI executes within it.**
 
@@ -94,7 +94,7 @@ Notice what's happening here. The human has done the theory-building work: under
 
 This is AI as a tool that serves your expertise. It's not AI as a replacement for the hard intellectual work.
 
-The difference matters. Boilerplate generation, documentation summarization, test scaffolding within an established pattern—these don't require theory-building. They don't involve the architectural decisions and domain understanding that give a codebase its coherence. Using AI for these is like using a calculator for arithmetic: it frees up mental energy for the work that actually matters.
+The difference matters. Boilerplate generation, documentation summarization, test scaffolding within an established pattern. These don't require theory-building. They don't involve the architectural decisions and domain understanding that give a codebase its coherence. Using AI for these is like using a calculator for arithmetic: it frees up mental energy for the work that actually matters.
 
 But "write me a feature" or "fix this bug" or "refactor this module"—these _do_ involve theory. They require understanding why things are the way they are and how they should evolve. Offloading this to AI doesn't just skip the struggle. It skips the institutional processes that would have refined that theory and transmitted it to others.
 
@@ -104,11 +104,11 @@ The AI boosters will tell you this is all about efficiency. "AI systems are just
 
 But that framing misses what institutions actually _are_. They're not just machines for producing output. They're where expertise gets built, where decisions get made well, where people actually connect with each other. Speed those things up too much and they stop working.
 
-What we're fighting for isn't just our individual craft (though that matters). It's the institutions that make software development a _profession_ rather than just a job. The mentorship that turns juniors into seniors. The processes that keep codebases coherent over time. The relationships that make a team actually _work_.
+What we're fighting for isn't just our individual craft, though that matters too. It's the institutions that make software development a _profession_ rather than just a job. The mentorship that turns juniors into seniors. The processes that keep codebases coherent over time. The relationships that make a team actually _work_.
 
-But maybe there's something even more fundamental at stake here. Human beings are _made_ to create. A child draws an orange on the first day of art class without hesitation, without permission, without worrying whether they're "good enough." That impulse to make marks on the world, to build things, to leave evidence that we were here—it's in our bones. And when we're convinced we can't create, something essential gets stolen from us.
+But maybe there's something even more basic at stake. Human beings are _made_ to create. A child draws an orange on the first day of art class without hesitation, without permission, without worrying whether they're "good enough." That impulse to make marks on the world, to build things, to leave evidence that we were here. It's in our bones. And when we're convinced we can't create, something essential gets stolen from us.
 
-This is the other half of what Monteiro was getting at: once you convince people they can't express themselves, it's that much easier to convince them they can't govern themselves. The path from "let AI write your code" to "let AI make your decisions" to "you're not competent to have a say" is shorter than we think.
+This is the other half of what Monteiro was getting at. Once you convince people they can't express themselves, it's that much easier to convince them they can't govern themselves. The path from "let AI write your code" to "let AI make your decisions" to "you're not competent to have a say" is shorter than we think.
 
 These institutions took decades to build. They're far more fragile than we realized.
 
@@ -116,7 +116,7 @@ These institutions took decades to build. They're far more fragile than we reali
 
 Hartzog and Silbey end their paper with a warning: "Because AI is anathema to the well-being of our critical institutions, absent rules mitigating AI's cancerous spread, the only roads left lead to social dissolution."
 
-That sounds dramatic for a legal academic paper. But I think they're right—and I think it applies to our institutions too.
+That's strong language for a legal academic paper. But I think they're right. And I think it applies to our institutions too.
 
 Software development teams that fully embrace "reflexive AI usage" will find their expertise pipelines broken, their decision-making processes hollowed out, their human connections atrophied. The theory will die. The code will remain, but nobody will understand it. And then the institutional knowledge will be gone, and no amount of AI will bring it back.
 

@@ -23,7 +23,7 @@
  &lt;/a&gt;
 &lt;/h2&gt;
 &lt;p&gt;Consider this common scenario:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-tsx" data-lang="tsx"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#ff6ac1"&gt;const&lt;/span&gt; UserDashboard &lt;span style="color:#ff6ac1"&gt;=&lt;/span&gt; () &lt;span style="color:#ff6ac1"&gt;=&amp;gt;&lt;/span&gt; {
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-tsx" data-lang="tsx"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#ff6ac1"&gt;const&lt;/span&gt; UserDashboard &lt;span style="color:#ff6ac1"&gt;=&lt;/span&gt; () &lt;span style="color:#ff6ac1"&gt;=&amp;gt;&lt;/span&gt; {
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ff6ac1"&gt;const&lt;/span&gt; [users, setUsers] &lt;span style="color:#ff6ac1"&gt;=&lt;/span&gt; useState([]);
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ff6ac1"&gt;const&lt;/span&gt; [loading, setLoading] &lt;span style="color:#ff6ac1"&gt;=&lt;/span&gt; useState(&lt;span style="color:#ff6ac1"&gt;true&lt;/span&gt;);
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#ff6ac1"&gt;const&lt;/span&gt; [error, setError] &lt;span style="color:#ff6ac1"&gt;=&lt;/span&gt; useState(&lt;span style="color:#ff6ac1"&gt;null&lt;/span&gt;);

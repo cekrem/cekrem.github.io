@@ -14,7 +14,7 @@
 <a class=heading-link href=#the-search><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
 <span class=sr-only>Link to heading</span></a></h2><p>Out of curiosity, I checked npm for clipboard packages:</p><p><img src=/images/clipboard_npm.png alt="Over 1000 packages for clipboard operations"></p><p><strong>Over one thousand packages.</strong> For copying text to the clipboard.</p><p>Let that sink in for a moment.</p><h2 id=the-simple-solution>The &ldquo;Simple&rdquo; Solution
 <a class=heading-link href=#the-simple-solution><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><p>The modern approach looks like this:</p><div class=highlight><pre tabindex=0 style=color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=display:flex><span>navigator.clipboard
+<span class=sr-only>Link to heading</span></a></h2><p>The modern approach looks like this:</p><div class=highlight><pre tabindex=0 style=color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-javascript data-lang=javascript><span style=display:flex><span>navigator.clipboard
 </span></span><span style=display:flex><span>  .writeText(text)
 </span></span><span style=display:flex><span>  .then(() =&gt; console.log(<span style=color:#5af78e>&#34;Copied!&#34;</span>))
 </span></span><span style=display:flex><span>  .<span style=color:#ff6ac1>catch</span>((err) =&gt; console.error(<span style=color:#5af78e>&#34;Failed:&#34;</span>, err));
@@ -28,7 +28,7 @@
 <a class=heading-link href=#3-safari><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
 <span class=sr-only>Link to heading</span></a></h3><p>Safari (of course) has its own special requirements. Sometimes <code>navigator.clipboard</code> exists but doesn&rsquo;t work. Sometimes it works but throws errors. Sometimes it works perfectly. Nobody knows why.</p><h3 id=4-the-old-way-still-works-better>4. The Old Way Still Works Better
 <a class=heading-link href=#4-the-old-way-still-works-better><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h3><p>So everyone falls back to the pre-async solution:</p><div class=highlight><pre tabindex=0 style=color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=display:flex><span><span style=color:#ff5c57>function</span> copyToClipboard(text) {
+<span class=sr-only>Link to heading</span></a></h3><p>So everyone falls back to the pre-async solution:</p><div class=highlight><pre tabindex=0 style=color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-javascript data-lang=javascript><span style=display:flex><span><span style=color:#ff5c57>function</span> copyToClipboard(text) {
 </span></span><span style=display:flex><span>  <span style=color:#ff6ac1>const</span> textarea <span style=color:#ff6ac1>=</span> <span style=color:#ff5c57>document</span>.createElement(<span style=color:#5af78e>&#34;textarea&#34;</span>);
 </span></span><span style=display:flex><span>  textarea.value <span style=color:#ff6ac1>=</span> text;
 </span></span><span style=display:flex><span>  textarea.style.position <span style=color:#ff6ac1>=</span> <span style=color:#5af78e>&#34;fixed&#34;</span>;

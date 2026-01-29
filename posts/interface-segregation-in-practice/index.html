@@ -18,7 +18,7 @@
 <a class=heading-link href=#introduction><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
 <span class=sr-only>Link to heading</span></a></h2><p>In our <a href=/posts/clean-architecture-and-plugins-in-go>previous post</a>, we explored the Dependency Inversion Principle and how it enables clean, modular architectures. Today, let&rsquo;s dive into another crucial SOLID principle: Interface Segregation.</p><p>Again, kudos to Uncle Bob for reminding me about the importance of good <strong>software architecture</strong> in his classic <a href=https://amzn.to/4iAc8o1 class=external-link target=_blank rel=noopener>Clean Architecture</a>! That book is my primary inspiration for this series. Without clean architecture, we&rsquo;ll all be building firmware (my paraphrased summary).</p><blockquote><p>The Interface Segregation Principle (ISP) states that clients should not be forced to depend on interfaces they don&rsquo;t use.</p></blockquote><p>This principle might sound obvious, but its violation is surprisingly common. Let&rsquo;s explore why it matters and how to apply it effectively.</p><h2 id=the-problem-with-fat-interfaces>The Problem with &ldquo;Fat&rdquo; Interfaces
 <a class=heading-link href=#the-problem-with-fat-interfaces><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><p>Consider this common anti-pattern in many codebases:</p><div class=highlight><pre tabindex=0 style=color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#78787e>// DON&#39;T DO THIS</span>
+<span class=sr-only>Link to heading</span></a></h2><p>Consider this common anti-pattern in many codebases:</p><div class=highlight><pre tabindex=0 style=color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#78787e>// DON&#39;T DO THIS</span>
 </span></span><span style=display:flex><span><span style=color:#ff5c57>type</span> UserService <span style=color:#ff5c57>interface</span> {
 </span></span><span style=display:flex><span>    <span style=color:#57c7ff>CreateUser</span>(user User) <span style=color:#9aedfe>error</span>
 </span></span><span style=display:flex><span>    <span style=color:#57c7ff>GetUser</span>(id <span style=color:#9aedfe>string</span>) (User, <span style=color:#9aedfe>error</span>)
@@ -32,7 +32,7 @@
 </span></span><span style=display:flex><span>}
 </span></span></code></pre></div><p>This interface violates ISP because:</p><ol><li>Most clients only need a subset of these methods</li><li>Changes to any method affect all implementations</li><li>Testing becomes unnecessarily complex</li></ol><h2 id=better-small-focused-interfaces>Better: Small, Focused Interfaces
 <a class=heading-link href=#better-small-focused-interfaces><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><p>Instead, we should break this down into role-specific interfaces that each serve a single responsibility:</p><div class=highlight><pre tabindex=0 style=color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#ff5c57>type</span> UserReader <span style=color:#ff5c57>interface</span> {
+<span class=sr-only>Link to heading</span></a></h2><p>Instead, we should break this down into role-specific interfaces that each serve a single responsibility:</p><div class=highlight><pre tabindex=0 style=color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#ff5c57>type</span> UserReader <span style=color:#ff5c57>interface</span> {
 </span></span><span style=display:flex><span>    <span style=color:#57c7ff>GetUser</span>(id <span style=color:#9aedfe>string</span>) (User, <span style=color:#9aedfe>error</span>)
 </span></span><span style=display:flex><span>}
 </span></span><span style=display:flex><span>
@@ -51,7 +51,7 @@
 </span></span><span style=display:flex><span><span style=color:#ff5c57>type</span> UserNotifier <span style=color:#ff5c57>interface</span> {
 </span></span><span style=display:flex><span>    <span style=color:#57c7ff>SendWelcomeEmail</span>(user User) <span style=color:#9aedfe>error</span>
 </span></span><span style=display:flex><span>}
-</span></span></code></pre></div><p>Now clients can depend only on what they need:</p><div class=highlight><pre tabindex=0 style=color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#ff5c57>type</span> UserProfileHandler <span style=color:#ff5c57>struct</span> {
+</span></span></code></pre></div><p>Now clients can depend only on what they need:</p><div class=highlight><pre tabindex=0 style=color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#ff5c57>type</span> UserProfileHandler <span style=color:#ff5c57>struct</span> {
 </span></span><span style=display:flex><span>    reader UserReader
 </span></span><span style=display:flex><span>}
 </span></span><span style=display:flex><span>
@@ -62,7 +62,7 @@
 </span></span><span style=display:flex><span>}
 </span></span></code></pre></div><h2 id=the-power-of-composition>The Power of Composition
 <a class=heading-link href=#the-power-of-composition><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><p>Go&rsquo;s interface composition makes this pattern particularly elegant:</p><div class=highlight><pre tabindex=0 style=color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#78787e>// When you do need everything</span>
+<span class=sr-only>Link to heading</span></a></h2><p>Go&rsquo;s interface composition makes this pattern particularly elegant:</p><div class=highlight><pre tabindex=0 style=color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#78787e>// When you do need everything</span>
 </span></span><span style=display:flex><span><span style=color:#ff5c57>type</span> CompleteUserService <span style=color:#ff5c57>interface</span> {
 </span></span><span style=display:flex><span>    UserReader
 </span></span><span style=display:flex><span>    UserWriter
@@ -71,7 +71,7 @@
 </span></span><span style=display:flex><span>}
 </span></span></code></pre></div><p>This approach gives us several benefits:</p><ol><li><strong>Flexibility</strong>: Implementations can be mixed and matched</li><li><strong>Testability</strong>: Mocking becomes trivial</li><li><strong>Maintainability</strong>: Changes affect fewer components</li><li><strong>Clarity</strong>: Interfaces document their purpose through focus</li></ol><h2 id=real-world-example-http-handlers>Real-World Example: HTTP Handlers
 <a class=heading-link href=#real-world-example-http-handlers><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><p>Let&rsquo;s see how this applies to a typical web service:</p><div class=highlight><pre tabindex=0 style=color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#ff5c57>type</span> UserHandler <span style=color:#ff5c57>struct</span> {
+<span class=sr-only>Link to heading</span></a></h2><p>Let&rsquo;s see how this applies to a typical web service:</p><div class=highlight><pre tabindex=0 style=color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#ff5c57>type</span> UserHandler <span style=color:#ff5c57>struct</span> {
 </span></span><span style=display:flex><span>    reader UserReader
 </span></span><span style=display:flex><span>    writer UserWriter
 </span></span><span style=display:flex><span>}
@@ -100,7 +100,7 @@
 </span></span><span style=display:flex><span>}
 </span></span></code></pre></div><h2 id=testing-benefits>Testing Benefits
 <a class=heading-link href=#testing-benefits><i class="fa-solid fa-link" aria-hidden=true title="Link to heading"></i>
-<span class=sr-only>Link to heading</span></a></h2><p>Small interfaces make testing much simpler:</p><div class=highlight><pre tabindex=0 style=color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#ff5c57>type</span> mockUserReader <span style=color:#ff5c57>struct</span> {
+<span class=sr-only>Link to heading</span></a></h2><p>Small interfaces make testing much simpler:</p><div class=highlight><pre tabindex=0 style=color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-go data-lang=go><span style=display:flex><span><span style=color:#ff5c57>type</span> mockUserReader <span style=color:#ff5c57>struct</span> {
 </span></span><span style=display:flex><span>    users <span style=color:#ff5c57>map</span>[<span style=color:#9aedfe>string</span>]User
 </span></span><span style=display:flex><span>}
 </span></span><span style=display:flex><span>

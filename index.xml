@@ -343,7 +343,7 @@
  </a>
 </h2>
 <p>Tailwind&rsquo;s LSP doesn&rsquo;t recognize Elm&rsquo;s syntax for CSS classes. When you write:</p>
-<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-elm" data-lang="elm"><span style="display:flex;"><span><span style="color:#ff5c57">div</span> [ <span style="color:#ff5c57">class</span> <span style="color:#5af78e">&#34;bg-blue-500 text-white p-4&#34;</span> ] [ <span style="color:#ff5c57">text</span> <span style="color:#5af78e">&#34;Hello&#34;</span> ]
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-elm" data-lang="elm"><span style="display:flex;"><span><span style="color:#ff5c57">div</span> [ <span style="color:#ff5c57">class</span> <span style="color:#5af78e">&#34;bg-blue-500 text-white p-4&#34;</span> ] [ <span style="color:#ff5c57">text</span> <span style="color:#5af78e">&#34;Hello&#34;</span> ]
 </span></span></code></pre></div><p>You get no autocomplete, no validation, and no hover documentation for your Tailwind classes.</p>]]></description>
     </item>
     <item>
@@ -416,7 +416,7 @@
  </a>
 </h2>
 <p>Consider this common scenario:</p>
-<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-tsx" data-lang="tsx"><span style="display:flex;"><span><span style="color:#ff6ac1">const</span> UserDashboard <span style="color:#ff6ac1">=</span> () <span style="color:#ff6ac1">=&gt;</span> {
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-tsx" data-lang="tsx"><span style="display:flex;"><span><span style="color:#ff6ac1">const</span> UserDashboard <span style="color:#ff6ac1">=</span> () <span style="color:#ff6ac1">=&gt;</span> {
 </span></span><span style="display:flex;"><span> <span style="color:#ff6ac1">const</span> [users, setUsers] <span style="color:#ff6ac1">=</span> useState([]);
 </span></span><span style="display:flex;"><span> <span style="color:#ff6ac1">const</span> [loading, setLoading] <span style="color:#ff6ac1">=</span> useState(<span style="color:#ff6ac1">true</span>);
 </span></span><span style="display:flex;"><span> <span style="color:#ff6ac1">const</span> [error, setError] <span style="color:#ff6ac1">=</span> useState(<span style="color:#ff6ac1">null</span>);
@@ -677,6 +677,24 @@
  </a>
 </h2>
 <p>One of my responsibilities as an Android Developer in Vipps (Mobilepay) was to do tech interviews. After a while, I also made the tech assignments and changed the recruitment process a bit. But in the earlier days, we used a standard &ldquo;build X using Y&rdquo;, where &ldquo;Y&rdquo; was modern Android tools (preferably Compose), and &ldquo;X&rdquo; was some non-descript hello world-ish app that did something I can&rsquo;t for the life of me remember. During one of the tech task evaluations we did prior to an interview, I encountered a strange animal completely unknown to me. A <code>UseCase</code> class, with an <code>operator fun invoke()</code> method.</p>]]></description>
+    </item>
+    <item>
+      <title>Resume</title>
+      <link>https://cekrem.github.io/resume/</link>
+      <pubDate>Wed, 29 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>https://cekrem.github.io/resume/</guid>
+      <description><![CDATA[<p><strong>Staff Developer &amp; Senior Consultant</strong></p>
+<p>Phone: <a href="tel:&#43;4745806589" >+47 45 80 65 89</a> | Email: <a href="mailto:christian.ekrem@gmail.com" >christian.ekrem@gmail.com</a></p>
+<hr>
+<h2 id="summary">
+ Summary
+ <a class="heading-link" href="#summary">
+ <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+ <span class="sr-only">Link to heading</span>
+ </a>
+</h2>
+<p>Christian Ekrem is a software developer with over 12 years of experience in backend, frontend, and mobile development. He&rsquo;s worked extensively with cloud infrastructure, system architecture, and security across fintech, legal tech, and media.</p>
+<p>At Vipps MobilePay (Norway&rsquo;s dominant payment app), Christian worked as a Staff Software Engineer. Colleagues called him the team&rsquo;s &ldquo;Chief Problem Solver&rdquo;—the person you&rsquo;d pull into a room when something wasn&rsquo;t working and nobody knew why. He&rsquo;s equally comfortable debugging a gnarly Android issue, redesigning a backend architecture, or figuring out why the build takes 44 minutes (and then fixing it—he got it down to 8).</p>]]></description>
     </item>
     <item>
       <title>Open-Closed Principle in React: Building Extensible Components</title>

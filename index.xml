@@ -6,8 +6,23 @@
     <description>Recent content on cekrem.github.io</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 20 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 30 Jan 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://cekrem.github.io/index.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Ktor 3.4.0: HTML Fragments, HTMX, and Finally Proper SSE Cleanup</title>
+      <link>https://cekrem.github.io/posts/ktor-340-html-fragments-htmx-and-finally-proper-sse-cleanup/</link>
+      <pubDate>Fri, 30 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>https://cekrem.github.io/posts/ktor-340-html-fragments-htmx-and-finally-proper-sse-cleanup/</guid>
+      <description><![CDATA[<p>Ktor 3.4.0 just dropped, and while there&rsquo;s a laundry list of new features, a few of them made me genuinely excited. One of them even feels like a direct response to <a href="https://cekrem.github.io/posts/the-subtle-art-of-taming-flows-and-coroutines-in-kotlin/" >that SSE post I wrote</a> where we accidentally DDoS&rsquo;d ourselves. (It&rsquo;s not, of course. But let me have this.)</p>
+<h2 id="html-fragments-ktor-gets-htmx-friendly">
+ HTML Fragments: Ktor Gets HTMX-Friendly
+ <a class="heading-link" href="#html-fragments-ktor-gets-htmx-friendly">
+ <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+ <span class="sr-only">Link to heading</span>
+ </a>
+</h2>
+<p>If you&rsquo;ve been following the HTMX movement (and if you haven&rsquo;t, you&rsquo;re missing out on some delightfully old-school-yet-modern web development), you know that the whole point is to return HTML fragments from your server, not full pages. Swap out a <code>&lt;div&gt;</code>, update a table row, replace a form with a success message. Simple stuff.</p>]]></description>
+    </item>
     <item>
       <title>Dønn Disippel – finally in English</title>
       <link>https://cekrem.github.io/posts/donn-disippel-finally-in-english/</link>

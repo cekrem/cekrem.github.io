@@ -680,6 +680,21 @@
 <p>The Single Responsibility Principle states that a class should have only one reason to change.</p>]]></description>
     </item>
     <item>
+      <title>Vivaldi 7.8: A Browser That Actually Trusts You</title>
+      <link>https://cekrem.github.io/posts/vivaldi-pilots-not-passengers/</link>
+      <pubDate>Mon, 03 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>https://cekrem.github.io/posts/vivaldi-pilots-not-passengers/</guid>
+      <description><![CDATA[<h2 id="wait-a-company-actually-said-this">
+ Wait, a company actually said this?
+ <a class="heading-link" href="#wait-a-company-actually-said-this">
+ <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+ <span class="sr-only">Link to heading</span>
+ </a>
+</h2>
+<p>A few weeks ago, someone bought me three beers through the widget on my site. Their message said they were &ldquo;being very positively challenged by your writing on AI&rdquo; and that they also loved functional programming and valued the craft. So I know I&rsquo;m not alone in feeling weird about the current AI-in-everything zeitgeist.</p>
+<p>But individuals agreeing with you is one thing. A company saying it out loud? That&rsquo;s different.</p>]]></description>
+    </item>
+    <item>
       <title>A Use Case for `UseCase`s in Kotlin</title>
       <link>https://cekrem.github.io/posts/a-use-case-for-usecases-in-kotlin/</link>
       <pubDate>Fri, 31 Jan 2025 00:00:00 +0000</pubDate>

@@ -3,7 +3,7 @@ title = "Resume"
 date = "2025-01-29"
 +++
 
-**Staff Developer & Senior Consultant**
+**Staff Engineer & Senior Consultant**
 
 Phone: [+47 45 80 65 89](tel:+4745806589) | Email: [christian.ekrem@gmail.com](mailto:christian.ekrem@gmail.com)
 

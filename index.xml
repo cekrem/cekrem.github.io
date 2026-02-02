@@ -6,8 +6,22 @@
     <description>Recent content on cekrem.github.io</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 30 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 02 Feb 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://cekrem.github.io/index.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Vivaldi 7.8: A Browser That Actually Trusts You</title>
+      <link>https://cekrem.github.io/posts/vivaldi-pilots-not-passengers/</link>
+      <pubDate>Mon, 02 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>https://cekrem.github.io/posts/vivaldi-pilots-not-passengers/</guid>
+      <description><![CDATA[<h2 id="lets-try-making-better-software-like-in-the-ye-olden-days-huh">
+ Let&rsquo;s try making better software, like in the ye olden days, huh?
+ <a class="heading-link" href="#lets-try-making-better-software-like-in-the-ye-olden-days-huh">
+ <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+ <span class="sr-only">Link to heading</span>
+ </a>
+</h2>
+<p>A few weeks ago, someone bought me three beers through the widget on my site (thanks, man! &lt;3). Their message said they were &ldquo;being very positively challenged by my writing on AI&rdquo; and that they also loved functional programming and valued the craft. So I know I&rsquo;m not alone in feeling weird about the current AI-in-everything zeitgeist.</p>]]></description>
+    </item>
     <item>
       <title>Ktor 3.4.0: HTML Fragments, HTMX, and Finally Proper SSE Cleanup</title>
       <link>https://cekrem.github.io/posts/ktor-340-html-fragments-htmx-and-finally-proper-sse-cleanup/</link>
@@ -678,20 +692,6 @@
 <p>Again, kudos to Uncle Bob for reminding me about the importance of good <strong>software architecture</strong> in his classic <a href="https://amzn.to/4iAc8o1" class="external-link" target="_blank" rel="noopener">Clean Architecture</a>! That book is my primary inspiration for this series.</p>
 <blockquote>
 <p>The Single Responsibility Principle states that a class should have only one reason to change.</p>]]></description>
-    </item>
-    <item>
-      <title>Vivaldi 7.8: A Browser That Actually Trusts You</title>
-      <link>https://cekrem.github.io/posts/vivaldi-pilots-not-passengers/</link>
-      <pubDate>Sun, 02 Feb 2025 00:00:00 +0000</pubDate>
-      <guid>https://cekrem.github.io/posts/vivaldi-pilots-not-passengers/</guid>
-      <description><![CDATA[<h2 id="lets-try-making-better-software-like-in-the-ye-olden-days-huh">
- Let&rsquo;s try making better software, like in the ye olden days, huh?
- <a class="heading-link" href="#lets-try-making-better-software-like-in-the-ye-olden-days-huh">
- <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
- <span class="sr-only">Link to heading</span>
- </a>
-</h2>
-<p>A few weeks ago, someone bought me three beers through the widget on my site (thanks, man! &lt;3). Their message said they were &ldquo;being very positively challenged by my writing on AI&rdquo; and that they also loved functional programming and valued the craft. So I know I&rsquo;m not alone in feeling weird about the current AI-in-everything zeitgeist.</p>]]></description>
     </item>
     <item>
       <title>A Use Case for `UseCase`s in Kotlin</title>

@@ -128,10 +128,10 @@ weight = 3
 url = "https://www.instagram.com/christian_ekrem/"
 
 [[params.social]]
-name = "CV"
+name = "Resume"
 icon = "fa fa-file"
 weight = 4
-url = "/cv.pdf"
+url = "/resume"
 
 [[params.social]]
 name = "Website"

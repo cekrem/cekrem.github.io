@@ -76,6 +76,8 @@ new MutationObserver(dialogObserver).observe(dialog, {
 
 The observer watches for class changes. When it sees `open` but the dialog isn't actually showing, it calls `showModal()`. When it sees `closed` but the dialog is still open, it calls `close()`. The checks for `dialog.open` prevent redundant calls.
 
+**Small but important note**: As a fellow Elm enthusiast pointed out, simply using the class name "open" might be a bit brittle in a large app (because of potential collisions). A data prop, or a more unique class name will be safer!
+
 ## Handling Escape
 
 One more piece: the native dialog fires a `cancel` event when the user presses Escape. We want Elm to handle this, maybe showing a confirmation prompt before actually closing. Ports handle this nicely:

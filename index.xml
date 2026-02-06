@@ -1215,5 +1215,27 @@ specifically.</p>]]></description>
 </ul>
 <p>Then look no further. Lo and behold:</p>]]></description>
     </item>
+    <item>
+      <title>Thank you for subscribing</title>
+      <link>https://cekrem.github.io/thank-you-for-subscribing/</link>
+      <pubDate>Wed, 07 Jul 2021 00:00:00 +0000</pubDate>
+      <guid>https://cekrem.github.io/thank-you-for-subscribing/</guid>
+      <description><![CDATA[<h2 id="welcome-aboard">
+ Welcome aboard!
+ <a class="heading-link" href="#welcome-aboard">
+ <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+ <span class="sr-only">Link to heading</span>
+ </a>
+</h2>
+<p>You did it. You actually subscribed. That means you&rsquo;re now part of a small, exclusive group of people who&rsquo;ll get my posts straight to their inbox—before I share them anywhere else. I promise to only bother you when I have something worth saying. (Most of the time, anyway.)</p>
+<h2 id="a-little-thank-you-gift">
+ A little thank-you gift
+ <a class="heading-link" href="#a-little-thank-you-gift">
+ <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+ <span class="sr-only">Link to heading</span>
+ </a>
+</h2>
+<p>Since you&rsquo;re clearly a person of excellent taste, here&rsquo;s something special: I&rsquo;m working on a book called <strong>An Elm Primer for React Developers</strong>—a practical guide to learning functional programming without the academic headaches.</p>]]></description>
+    </item>
   </channel>
 </rss>

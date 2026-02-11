@@ -6,8 +6,29 @@
     <description>Recent content on cekrem.github.io</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 03 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 11 Feb 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://cekrem.github.io/index.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>elm-native – scaffold hybrid mobile apps with Elm, Vite, and Capacitor</title>
+      <link>https://cekrem.github.io/posts/elm-native/</link>
+      <pubDate>Wed, 11 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>https://cekrem.github.io/posts/elm-native/</guid>
+      <description><![CDATA[<h2 id="have-you-ever">
+ Have you ever
+ <a class="heading-link" href="#have-you-ever">
+ <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+ <span class="sr-only">Link to heading</span>
+ </a>
+</h2>
+<ul>
+<li>Wanted to write mobile apps in Elm?</li>
+<li>Spent an evening getting Elm, Vite, and Capacitor to play nice together, only to realize you&rsquo;ll forget all the steps by next week?</li>
+<li>Thought &ldquo;there&rsquo;s gotta be a one-liner for this&rdquo;?</li>
+</ul>
+<p>Well, now there is:</p>
+<div class="highlight"><pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>npx elm-native my-app
+</span></span></code></pre></div><p>That gives you a working <a href="https://elm-lang.org/" class="external-link" target="_blank" rel="noopener">Elm</a> + <a href="https://vite.dev/" class="external-link" target="_blank" rel="noopener">Vite</a> + <a href="https://capacitorjs.com/" class="external-link" target="_blank" rel="noopener">Capacitor</a> project with iOS and Android ready to go. <a href="https://github.com/cekrem/elm-native" class="external-link" target="_blank" rel="noopener">Here it is</a>.</p>]]></description>
+    </item>
     <item>
       <title>An Elm Primer: Declarative Dialogs with MutationObserver</title>
       <link>https://cekrem.github.io/posts/elm-book-declarative-dialogs-mutation-observer/</link>

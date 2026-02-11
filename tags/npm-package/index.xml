@@ -1,4 +1,18 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Npm Package on cekrem.github.io</title><link>https://cekrem.github.io/tags/npm-package/</link><description>Recent content in Npm Package on cekrem.github.io</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Tue, 12 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://cekrem.github.io/tags/npm-package/index.xml" rel="self" type="application/rss+xml"/><item><title>Exploring UIs in the terminal part 2: More ink!</title><link>https://cekrem.github.io/posts/do-more-stuff-cli-tool-part-2/</link><pubDate>Tue, 12 Sep 2023 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/do-more-stuff-cli-tool-part-2/</guid><description>&lt;h2 id="abandon-ship-all-yall"&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Npm Package on cekrem.github.io</title><link>https://cekrem.github.io/tags/npm-package/</link><description>Recent content in Npm Package on cekrem.github.io</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Wed, 11 Feb 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://cekrem.github.io/tags/npm-package/index.xml" rel="self" type="application/rss+xml"/><item><title>elm-native – scaffold hybrid mobile apps with Elm, Vite, and Capacitor</title><link>https://cekrem.github.io/posts/elm-native/</link><pubDate>Wed, 11 Feb 2026 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/elm-native/</guid><description>&lt;h2 id="have-you-ever"&gt;
+ Have you ever
+ &lt;a class="heading-link" href="#have-you-ever"&gt;
+ &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;
+ &lt;span class="sr-only"&gt;Link to heading&lt;/span&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Wanted to write mobile apps in Elm?&lt;/li&gt;
+&lt;li&gt;Spent an evening getting Elm, Vite, and Capacitor to play nice together, only to realize you&amp;rsquo;ll forget all the steps by next week?&lt;/li&gt;
+&lt;li&gt;Thought &amp;ldquo;there&amp;rsquo;s gotta be a one-liner for this&amp;rdquo;?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Well, now there is:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;npx elm-native my-app
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;That gives you a working &lt;a href="https://elm-lang.org/" class="external-link" target="_blank" rel="noopener"&gt;Elm&lt;/a&gt; + &lt;a href="https://vite.dev/" class="external-link" target="_blank" rel="noopener"&gt;Vite&lt;/a&gt; + &lt;a href="https://capacitorjs.com/" class="external-link" target="_blank" rel="noopener"&gt;Capacitor&lt;/a&gt; project with iOS and Android ready to go. &lt;a href="https://github.com/cekrem/elm-native" class="external-link" target="_blank" rel="noopener"&gt;Here it is&lt;/a&gt;.&lt;/p&gt;</description></item><item><title>Exploring UIs in the terminal part 2: More ink!</title><link>https://cekrem.github.io/posts/do-more-stuff-cli-tool-part-2/</link><pubDate>Tue, 12 Sep 2023 00:00:00 +0000</pubDate><guid>https://cekrem.github.io/posts/do-more-stuff-cli-tool-part-2/</guid><description>&lt;h2 id="abandon-ship-all-yall"&gt;
  Abandon ship, all y&amp;rsquo;all
  &lt;a class="heading-link" href="#abandon-ship-all-yall"&gt;
  &lt;i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"&gt;&lt;/i&gt;

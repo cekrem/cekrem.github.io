@@ -3,7 +3,7 @@ date = 2026-02-11
 title = "elm-native – scaffold hybrid mobile apps with Elm, Vite, and Capacitor"
 description = "npx elm-native my-app"
 tags = ["cli", "elm", "capacitor", "mobile", "npm package"]
-draft = true
+draft = false
 +++
 
 ## Have you ever

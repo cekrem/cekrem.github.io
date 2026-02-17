@@ -6,8 +6,16 @@
     <description>Recent content on cekrem.github.io</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 11 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 17 Feb 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://cekrem.github.io/index.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>SOLID in FP: Single Responsibility, or How Pure Functions Solved It Already</title>
+      <link>https://cekrem.github.io/posts/solid-in-fp-single-responsibility/</link>
+      <pubDate>Tue, 17 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>https://cekrem.github.io/posts/solid-in-fp-single-responsibility/</guid>
+      <description><![CDATA[<p>About a year ago I wrote a <a href="https://cekrem.github.io/posts/single-responsibility-principle-in-react/" >whole series on SOLID</a>. It was fun. Some people on Reddit were less than thrilled. But I learned a lot, and it sent me down a rabbit hole of software architecture that I&rsquo;m still happily stuck in.</p>
+<p>Since then I&rsquo;ve spent <em>way</em> more time in Elm. And looking back at those React (++; some where Kotlin and Go as well) examples with FP-tinted glasses, I keep having the same reaction: <strong>most of these problems just don&rsquo;t exist in functional programming.</strong></p>]]></description>
+    </item>
     <item>
       <title>elm-native – scaffold hybrid mobile apps with Elm, Vite, and Capacitor</title>
       <link>https://cekrem.github.io/posts/elm-native/</link>

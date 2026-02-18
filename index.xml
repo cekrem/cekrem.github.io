@@ -9,7 +9,7 @@
     <lastBuildDate>Tue, 17 Feb 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://cekrem.github.io/index.xml" rel="self" type="application/rss+xml"/>
     <item>
-      <title>SOLID in FP: Single Responsibility, or How Pure Functions Solved It Already</title>
+      <title>SOLID in FP: Single Responsibility, or How Pure Functions (Almost) Solved It Already</title>
       <link>https://cekrem.github.io/posts/solid-in-fp-single-responsibility/</link>
       <pubDate>Tue, 17 Feb 2026 00:00:00 +0000</pubDate>
       <guid>https://cekrem.github.io/posts/solid-in-fp-single-responsibility/</guid>

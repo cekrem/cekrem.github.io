@@ -190,4 +190,4 @@ This is the first post in what I'm calling "SOLID in FP," revisiting each princi
 
 I have no idea if I'll manage to make all five compelling. But I just might.
 
-Up next: the Open-Closed Principle, where union types and pattern matching change the game completely compared to the composition-and-props approach we used in React.
+Up next: [the Open-Closed Principle](/posts/solid-in-fp-open-closed/), where union types and pattern matching change the game completely compared to the composition-and-props approach we used in React.

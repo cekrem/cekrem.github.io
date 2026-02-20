@@ -6,8 +6,16 @@
     <description>Recent content on cekrem.github.io</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 17 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 20 Feb 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://cekrem.github.io/index.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>SOLID in FP: Open-Closed, or Why I Love When Code Won't Compile</title>
+      <link>https://cekrem.github.io/posts/solid-in-fp-open-closed/</link>
+      <pubDate>Fri, 20 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>https://cekrem.github.io/posts/solid-in-fp-open-closed/</guid>
+      <description><![CDATA[<p>In <a href="https://cekrem.github.io/posts/solid-in-fp-single-responsibility/" >the last post</a>, I promised that the Open-Closed Principle would get interesting when reframed through union types and pattern matching. I may have slightly oversold it. But only slightly.</p>
+<p>Quick definition: OCP says software entities should be <em>open for extension, closed for modification.</em> In the <a href="https://cekrem.github.io/posts/open-closed-principle-in-react/" >React version of this</a>, the answer was composition — don&rsquo;t modify your <code>Button</code>, wrap it in a <code>PrimaryButton</code>. Extend from the outside, don&rsquo;t crack open the original. Good advice. The catch: nothing actually stops you from cracking it open. That discipline lives in your head, in code review, in team conventions that erode when deadlines hit.</p>]]></description>
+    </item>
     <item>
       <title>SOLID in FP: Single Responsibility, or How Pure Functions (Almost) Solved It Already</title>
       <link>https://cekrem.github.io/posts/solid-in-fp-single-responsibility/</link>

@@ -59,7 +59,7 @@ Missing patterns! The following are not covered:
 
 Not a runtime crash. Not a failing test (if you even wrote one for this, I wouldn't...). A compile error, before anything ships.
 
-This is "closed for modification" in a different sense than OCP usually means it. Not "don't touch the type." More like: if you _do_ touch the type, the compiler walks you through every consequence. It finds every `case` expression that needs updating, across the whole codebase. You literally cannot forget one.
+Calling this OCP is a stretch, honestly. Technically it's closer to the opposite: adding a variant forces you to modify every pattern match on that type across the codebase. But if you _do_ touch the type, the compiler walks you through every consequence. It finds every `case` expression that needs updating, across the whole codebase. You literally cannot forget one.
 
 ## The open side: just write a new function
 
@@ -100,6 +100,8 @@ toLogLevel notification =
 ## The trade-off (because there's always one)
 
 Adding new variants is loud. If `Notification` is shared across ten modules and you add `Info`, you get ten compile errors to fix.
+
+OCP in OOP is about preventing accidental breakage: don't touch existing code, because you can't trust yourself to get it right at 11pm. Elm's version of that deal is different. Touch whatever you want, but you can't be incomplete about it.
 
 In OOP, adding a new subtype is quiet — existing code doesn't know or care. Adding new _operations_ is loud — you might have to update an interface and all its implementations. In FP with union types, it's flipped: new operations are free, new variants are loud (but safely loud).
 

@@ -94,6 +94,8 @@ My bot and the rogue matplotlib agent use essentially the same building blocks. 
 
 My bot can only read one RSS feed. It can only post to one platform. It can only say nice things (the LLM prompt is explicit about this). It has no ability to react to rejection or go off-script.
 
+Right? RIGHT?!
+
 The matplotlib agent had none of those constraints. And the next generation of these things will be even more capable.
 
 I don't have a neat conclusion for this. The technology is powerful, it's accessible (I built a working bot in Elm in an afternoon), and the only thing standing between "friendly blog promoter" and "autonomous harassment campaign" is the choices the developer makes.

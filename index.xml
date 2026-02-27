@@ -6,8 +6,24 @@
     <description>Recent content on cekrem.github.io</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 20 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 27 Feb 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://cekrem.github.io/index.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>An AI Attacked a Developer. Naturally, I Built My Own Bot. Because Terminator II!</title>
+      <link>https://cekrem.github.io/posts/blog-bot/</link>
+      <pubDate>Fri, 27 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>https://cekrem.github.io/posts/blog-bot/</guid>
+      <description><![CDATA[<p><a href="https://github.com/matplotlib/matplotlib/pull/31132" class="external-link" target="_blank" rel="noopener">An AI agent submitted a PR to matplotlib a while back</a>. The maintainer rejected it. The agent responded by publishing a blog post (<a href="https://theshamblog.com/an-ai-agent-published-a-hit-piece-on-me/" class="external-link" target="_blank" rel="noopener">removed, but referenced by maintainer here</a>) accusing him of discrimination, speculating about his psychological insecurities, and framing the whole thing as a civil rights issue.</p>
+<p>Not exactly Skynet. But also not <em>not</em> Skynet?</p>
+<h2 id="what-actually-happened">
+ What actually happened
+ <a class="heading-link" href="#what-actually-happened">
+ <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+ <span class="sr-only">Link to heading</span>
+ </a>
+</h2>
+<p>The agent — going by &ldquo;MJ Rathbun&rdquo; — submitted a PR replacing <code>np.column_stack</code> with <code>np.vstack().T</code> for a ~30% speedup. Scott Shambaugh, the maintainer, closed it. His reasons were completely standard: matplotlib requires human reviewers to understand the changes they merge, and the targeted code was a known training issue deliberately left for new contributors. Training <em>people</em> was the intent, not LLMs.</p>]]></description>
+    </item>
     <item>
       <title>SOLID in FP: Open-Closed, or Why I Love When Code Won't Compile</title>
       <link>https://cekrem.github.io/posts/solid-in-fp-open-closed/</link>

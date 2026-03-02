@@ -6,8 +6,25 @@
     <description>Recent content on cekrem.github.io</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 27 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 02 Mar 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://cekrem.github.io/index.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>SOLID in FP: Liskov Substitution, or The Principle That Was Never About Inheritance</title>
+      <link>https://cekrem.github.io/posts/solid-in-fp-liskov-substitution/</link>
+      <pubDate>Mon, 02 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://cekrem.github.io/posts/solid-in-fp-liskov-substitution/</guid>
+      <description><![CDATA[<p><a href="https://cekrem.github.io/posts/solid-in-fp-open-closed/" >Last time</a>, I said Liskov Substitution would require &ldquo;some even heftier reframing.&rdquo; I was bracing myself – LSP is built around inheritance, and Elm doesn&rsquo;t have inheritance. How do you reframe a principle about something that doesn&rsquo;t exist?</p>
+<p>Turns out I was worried about the wrong thing entirely.</p>
+<p><img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExem5pamQ1c3pzdDl5bmt5bTRsd2sweXEzZnFtbzI2MmVqaDNtZjh2cyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/fQorEj8vN8eqkNcy6T/giphy.gif" alt="How the turntables&hellip;"></p>
+<h2 id="it-was-never-about-inheritance">
+ It was never about inheritance
+ <a class="heading-link" href="#it-was-never-about-inheritance">
+ <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+ <span class="sr-only">Link to heading</span>
+ </a>
+</h2>
+<p>Here&rsquo;s Uncle Bob, who popularized this stuff:</p>]]></description>
+    </item>
     <item>
       <title>An AI Attacked a Developer. Naturally, I Built My Own Bot. Because Terminator II!</title>
       <link>https://cekrem.github.io/posts/blog-bot/</link>

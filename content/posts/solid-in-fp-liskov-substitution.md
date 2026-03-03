@@ -42,7 +42,7 @@ And the other greatest hits of LSP violations? Can't throw unexpected exceptions
 
 ## So it's just... free?
 
-The structural stuff, yeah. Pretty much. The part that catches 90% of real-world LSP violations in OOP codebases is handled by the language. You don't need contract tests for it. You don't need discipline. The compiler won't let you ship broken substitutions.
+The structural stuff, yeah. Pretty much. The part that catches the majority of real-world LSP violations in OOP codebases is handled by the language. You don't need contract tests for it. You don't need discipline. The compiler won't let you ship broken substitutions.
 
 But there's a catch. (There's always a catch.)
 
@@ -83,7 +83,7 @@ Still compiles. Still a valid `DiscountStrategy`. But any code expecting a value
 
 ![Kevin's chili. Everything falls apart.](https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExMnhmcHR4Y3F2cHR0cXB3ZXEyZDJxeGV6ZGd0enNpaTd0YmhjamphOCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/g0mCv3FF2XFdDShr8v/giphy.gif)
 
-## Closing the gap: make illegal values unrepresentable
+## Closing the gap: [make illegal states unrepresentable](https://functional-architecture.org/make_illegal_states_unrepresentable/)
 
 But here's the thing – Elm _does_ give you tools to push semantic contracts into the type system. The trick is to stop using `Float` and make a proper type instead:
 

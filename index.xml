@@ -6,8 +6,16 @@
     <description>Recent content on cekrem.github.io</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 02 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 06 Mar 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://cekrem.github.io/index.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>An Elm Primer: Testing Strategies</title>
+      <link>https://cekrem.github.io/posts/elm-book-testing-strategies/</link>
+      <pubDate>Fri, 06 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://cekrem.github.io/posts/elm-book-testing-strategies/</guid>
+      <description><![CDATA[<p>This chapter might be the most freeing one in the book. If you&rsquo;ve spent real time writing React tests, you know the ritual: mocks, cleanup, async wrappers, <code>act()</code> warnings. In Elm, testing is just calling pure functions and checking the output.</p>
+<p>Believe it or not, <a href="https://leanpub.com/elm-for-react-devs" class="external-link" target="_blank" rel="noopener">the book</a> is actually closing in on being finished. We&rsquo;re in Part IV now (Production Readiness), and the finish line is genuinely in sight. If you want to follow along for the final stretch, remember to subscribe.</p>]]></description>
+    </item>
     <item>
       <title>SOLID in FP: Liskov Substitution, or The Principle That Was Never About Inheritance</title>
       <link>https://cekrem.github.io/posts/solid-in-fp-liskov-substitution/</link>

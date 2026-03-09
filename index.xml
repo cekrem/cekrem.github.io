@@ -6,8 +6,16 @@
     <description>Recent content on cekrem.github.io</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 06 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 09 Mar 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://cekrem.github.io/index.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Why I Hope I Get to Write a Lot of F# in 2026</title>
+      <link>https://cekrem.github.io/posts/why-i-hope-i-get-to-write-a-lot-of-fsharp-in-2026/</link>
+      <pubDate>Mon, 09 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://cekrem.github.io/posts/why-i-hope-i-get-to-write-a-lot-of-fsharp-in-2026/</guid>
+      <description><![CDATA[<p>A year ago I wrote about <a href="https://cekrem.github.io/posts/why-i-hope-i-get-to-write-a-lot-of-elm-code-in-2025/" >why I hoped to write a lot of Elm code in 2025</a>. Then I went and wrote <a href="https://leanpub.com/elm-for-react-devs" class="external-link" target="_blank" rel="noopener">an entire book about it</a>. I spent the year <a href="https://cekrem.github.io/posts/functors-applicatives-monads-elm/" >demystifying monads</a>, exploring <a href="https://cekrem.github.io/posts/solid-in-fp-single-responsibility/" >SOLID through an FP lens</a>, arguing that <a href="https://cekrem.github.io/posts/why-typescript-wont-save-you/" >TypeScript won&rsquo;t save you</a>, and building real production software in Elm at <a href="https://lovdata.no" class="external-link" target="_blank" rel="noopener">Lovdata</a> (125,000+ lines of it).</p>
+<p>So you might expect this year&rsquo;s post to double down on Elm. Instead, I want to make a different argument: <strong>for enterprise projects, I think F# is the right functional language.</strong></p>]]></description>
+    </item>
     <item>
       <title>An Elm Primer: Testing Strategies</title>
       <link>https://cekrem.github.io/posts/elm-book-testing-strategies/</link>

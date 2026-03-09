@@ -2,15 +2,15 @@
 title = "Why I Hope I Get to Write a Lot of F# in 2026"
 description = "The FP language that does what Elm does, but on the backend, with full .NET support"
 tags = ["fsharp", "functional programming", "enterprise", "elm", "domain modeling", "clean architecture"]
-date = "2026-03-08"
-draft = true
+date = "2026-03-09"
+draft = false
 +++
 
 A year ago I wrote about [why I hoped to write a lot of Elm code in 2025](/posts/why-i-hope-i-get-to-write-a-lot-of-elm-code-in-2025/). Then I went and wrote [an entire book about it](https://leanpub.com/elm-for-react-devs). I spent the year [demystifying monads](/posts/functors-applicatives-monads-elm/), exploring [SOLID through an FP lens](/posts/solid-in-fp-single-responsibility/), arguing that [TypeScript won't save you](/posts/why-typescript-wont-save-you/), and building real production software in Elm at [Lovdata](https://lovdata.no) (125,000+ lines of it).
 
 So you might expect this year's post to double down on Elm. Instead, I want to make a different argument: **for enterprise projects, I think F# is the right functional language.**
 
-I'm not leaving Elm. Elm is still the best way to learn functional programming — I literally wrote the book on that. But learning FP and shipping enterprise software are different problems, and I've been thinking about what fills the gap.
+I'm not leaving Elm. Elm is still the best way to learn functional programming — I literally [wrote the book on that](https://leanpub.com/elm-for-react-devs). But learning FP and shipping enterprise software are different problems, and I've been thinking about what fills the gap.
 
 ## The Question I Kept Bumping Into
 
@@ -30,10 +30,10 @@ Enterprise software is a **cost center**. It's business-centric, not technology-
 
 When you run modern languages through that filter, most of them fall out (I'm paraphrasing Wlaschin here, but not by much):
 
-- **Python/Ruby/PHP** — "Maintainability goes out the window when you have more than 10K LoC"
+- **Python/Ruby/PHP** — Maintainability goes out the window when you have more than 10K LoC
 - **Haskell** — "No gradual migration path — you are thrown in the deep end"
 - **Scala** — "Too many different ways of doing things"
-- **Elm/PureScript** — Frontend only
+- **Elm/PureScript** — Frontend only, for now (Though projects like [Lamdera](https://lamdera.com/) are challenging that! And of course, if your project _is_ frontend only then this might be an excellent choice.)
 - **Go** — Weak domain modeling with types
 - **Rust/C++** — Unnecessary complexity if you don't need bare-metal performance
 - **C#/Java** — Adequate, but inferior defaults and weaker algebraic data type support
@@ -58,7 +58,7 @@ let mutable counter = 0   // you asked for it
 counter <- counter + 1    // works, but stands out
 ```
 
-Kotlin has `val` vs `var`, which is decent. But F# goes further — even collections and records are immutable by default. The language pushes you toward the right thing whether you planned for it or not.
+Kotlin has `val` vs `var`, which is decent. But F# goes further — even collections and records are immutable by default. The language pushes you toward the right thing whether you planned for it or not. In Elm mutability is impossible, and I love that, but as F# has full .Net interop a need for pragmatic solutions make sense.
 
 ### Low-Ceremony Domain Modeling
 
@@ -153,6 +153,7 @@ As I wrote in my very first Elm post: what various "best practices" encourage th
 Here's what seals it for me: F# isn't just a nice language in a vacuum. It runs on .NET — the most widely deployed enterprise runtime there is.
 
 That means:
+
 - **Azure, AWS, GCP** — first-class support
 - **NuGet** — massive package ecosystem
 - **Entity Framework, Dapper** — database tooling that works
@@ -165,7 +166,7 @@ Jet.com did exactly this. They built 700+ cloud-based microservices in F# and sc
 
 And they're not alone. Financial institutions, insurance companies, and tech companies around the world use F# in production. Simon Cousins, who built business-critical systems at a UK power company, put it bluntly: "I have now delivered three business critical projects written in F#. I am still waiting for the first bug to come in."
 
-Sure, that's a hell of a claim. But when your language enforces immutability, exhaustive pattern matching, and proper domain modeling, certain categories of bugs just... don't happen.
+Sure, that's quite a claim. But when your language enforces immutability, exhaustive pattern matching, and proper domain modeling, certain categories of bugs just... don't happen.
 
 ## The Challenges
 
@@ -192,13 +193,15 @@ But when the question is "what do I ship enterprise software in?" — when I nee
 
 I'm not leaving Elm behind. I'm taking what Elm taught me forward.
 
+And again: for an isolated _frontend_ project, Elm is still my go to, hands down.
+
 ## What's Next
 
-I'm still finishing the Elm book (it's close!). I'm still writing Elm at Lovdata. And I'm still going to argue that Elm is the best FP learning path at every opportunity.
+I'm still finishing the Elm book (it's close!). I'm still writing Elm at Lovdata. And I'm still going to argue that Elm is the best FP learning path at every opportunity. And I still prefer Elm for all things frontend.
 
-But this year, I want to go deeper with F#. Build something real. See how Wlaschin's domain modeling patterns hold up when the deadline hits and it's 11pm on a Thursday. My bet is they'll hold up just fine — because the language won't let me cut the corners I'd be tempted to cut in a less opinionated language.
+But this year, I want to go deeper with F#. Build something real. See how Wlaschin's domain modeling patterns hold up when the deadline hits and you need to ship fast rather than fancy. My bet is they'll hold up just fine — because the language won't let me cut the corners I'd be tempted to cut in a less opinionated language.
 
-I've spent years arguing that the compiler should be your strictest collaborator. F# is the first language where I feel that's true _and_ where I can ship it on Monday morning without a fight. It won't _think_ for you — no language can. But it'll make damn sure your thinking is reflected accurately in the code, and that the compiler keeps it that way.
+I've spent years arguing that the compiler should be your strictest collaborator. F# is the first language where I feel that's true _and_ where I can ship it on Monday morning without a fight. It won't _think_ for you — no language can. But it'll make sure your thinking is reflected accurately in the code, and that the compiler keeps it that way.
 
 That's all I ask of a language, really.
 

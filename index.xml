@@ -6,8 +6,17 @@
     <description>Recent content on cekrem.github.io</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 09 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 12 Mar 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://cekrem.github.io/index.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>SOLID in FP: Interface Segregation and Dependency Inversion, or The Finale Where Functions Steal the Show</title>
+      <link>https://cekrem.github.io/posts/solid-in-fp-interface-segregation/</link>
+      <pubDate>Thu, 12 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://cekrem.github.io/posts/solid-in-fp-interface-segregation/</guid>
+      <description><![CDATA[<p><a href="https://cekrem.github.io/posts/solid-in-fp-liskov-substitution/" >Last time</a>, I said Interface Segregation was up next — &ldquo;another principle that sounds very OOP, in a language with neither interfaces nor classes.&rdquo; I was gearing up for another round of reframing, maybe some clever type-level trick like the opaque types in the LSP post.</p>
+<p>Nope. This one basically solved itself.</p>
+<p>Also — you might notice the code looks different this time. I recently wrote about <a href="https://cekrem.github.io/posts/why-i-hope-i-get-to-write-a-lot-of-fsharp-in-2026/" >wanting to use more F# in 2026</a>, and this felt like a natural place to make the switch. Same ML-family DNA, same functional philosophy, just with full .NET backend support. If the concepts <em>didn&rsquo;t</em> transfer directly from Elm, this whole series would be a lot less interesting.</p>]]></description>
+    </item>
     <item>
       <title>Why I Hope I Get to Write a Lot of F# in 2026</title>
       <link>https://cekrem.github.io/posts/why-i-hope-i-get-to-write-a-lot-of-fsharp-in-2026/</link>

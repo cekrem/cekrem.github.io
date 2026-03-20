@@ -6,8 +6,16 @@
     <description>Recent content on cekrem.github.io</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 12 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 20 Mar 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://cekrem.github.io/index.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>The FP Article I Can't Seem to Finish</title>
+      <link>https://cekrem.github.io/posts/the-fp-article-i-cant-seem-to-finish/</link>
+      <pubDate>Fri, 20 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://cekrem.github.io/posts/the-fp-article-i-cant-seem-to-finish/</guid>
+      <description><![CDATA[<p>I&rsquo;ve been trying to write an article about why developers should learn functional programming. I have three drafts. In Norwegian, for some reason. None of them are good enough to publish.</p>
+<p>I believe the argument. Spent the last year proving it to myself with <a href="https://leanpub.com/elm-for-react-devs" class="external-link" target="_blank" rel="noopener">an Elm book</a>, 125,000+ lines of production Elm, <a href="https://cekrem.github.io/posts/why-i-hope-i-get-to-write-a-lot-of-fsharp-in-2026/" >a subtle mindset switch towards F#</a>, and <a href="https://cekrem.github.io/posts/solid-in-fp-interface-segregation/" >a whole SOLID-in-FP blog series</a>. But every draft I write sounds like a sales pitch, and I can&rsquo;t make myself hit publish.</p>]]></description>
+    </item>
     <item>
       <title>SOLID in FP: Interface Segregation and Dependency Inversion, or The Finale Where Functions Steal the Show</title>
       <link>https://cekrem.github.io/posts/solid-in-fp-interface-segregation/</link>

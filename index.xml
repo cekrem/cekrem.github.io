@@ -6,8 +6,16 @@
     <description>Recent content on cekrem.github.io</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 20 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 25 Mar 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://cekrem.github.io/index.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Book Update: Almost There</title>
+      <link>https://cekrem.github.io/posts/book-update-almost-there/</link>
+      <pubDate>Wed, 25 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://cekrem.github.io/posts/book-update-almost-there/</guid>
+      <description><![CDATA[<p>You might have noticed the blog has been a bit quieter than usual lately. That&rsquo;s because most of my writing energy has been going into <a href="https://leanpub.com/elm-for-react-devs" class="external-link" target="_blank" rel="noopener">the book</a>.</p>
+<p>I set myself a few deadlines a while back, the kind you don&rsquo;t tell anyone about so you can quietly pretend they never existed if you miss them. I haven&rsquo;t missed them. Which is slightly terrifying, because it means the finish line is actually real and not just something I keep pushing ahead of me.</p>]]></description>
+    </item>
     <item>
       <title>The FP Article I Can't Seem to Finish</title>
       <link>https://cekrem.github.io/posts/the-fp-article-i-cant-seem-to-finish/</link>

@@ -6,7 +6,7 @@ date = 2026-04-07
 draft = false
 +++
 
-I've been thinking about Alexis King's [Parse, don't validate](https://lexi-lambda.github.io/blogs/2019-11-05-parse-don-t-validate/) again. I do this quite regularly, actually, usually after staring at a TypeScript codebase that's been quietly accumulating `if (user.email)` checks like barnacles. The post is from 2019, and the advice (or rather principle) is way older than that. And yet most TypeScript I read — including, embarrassingly, plenty I've written — still validates instead of parsing.
+I've been thinking about Alexis King's [Parse, don't validate](https://lexi-lambda.github.io/blog/2019/11/05/parse-don-t-validate/) again. I do this quite regularly, actually, usually after staring at a TypeScript codebase that's been quietly accumulating `if (user.email)` checks like barnacles. The post is from 2019, and the advice (or rather principle) is way older than that. And yet most TypeScript I read — including, embarrassingly, plenty I've written — still validates instead of parsing.
 
 The pitch, if you haven't read it (you should): a validator says "this thing is fine, please continue." A parser says "give me a blob, and I'll either give you back a more precise type or tell you why I can't." The difference sounds academic until you realize that validators throw away information the moment they finish running, while parsers _preserve_ what they learned by encoding it in the type. Once you've parsed a string into an `EmailAddress`, the rest of your program never has to wonder again. Peace of mind and more mental capacity for the fun stuff.
 

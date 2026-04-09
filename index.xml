@@ -6,8 +6,17 @@
     <description>Recent content on cekrem.github.io</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 07 Apr 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 09 Apr 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://cekrem.github.io/index.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>ArkType: The Parse-Don't-Validate Sequel I Didn't Know I Needed</title>
+      <link>https://cekrem.github.io/posts/arktype-parse-dont-validate-sequel/</link>
+      <pubDate>Thu, 09 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>https://cekrem.github.io/posts/arktype-parse-dont-validate-sequel/</guid>
+      <description><![CDATA[<p>Two days ago I published a post about <a href="https://cekrem.github.io/posts/parse-dont-validate-typescript/" >parsing instead of validating in TypeScript</a>. I hand-rolled branded types with <code>unique symbol</code>, wrote <code>Parsed&lt;T&gt;</code> result types, and stitched together parsers with early returns. It worked. It was also kind of ugly, and I said so at the time.</p>
+<p>Then someone in the Reddit comments linked me to <a href="https://arktype.io" class="external-link" target="_blank" rel="noopener">ArkType</a>.</p>
+<p>I&rsquo;d heard the name before but never actually sat down with it. After a few hours of poking around I have opinions. Some of them are strong. A couple might even be wrong (I haven&rsquo;t used this in production yet, so grain of salt and all that). But I think ArkType is doing something interesting for TypeScript, and it lands squarely on the parse-don&rsquo;t-validate thread I&rsquo;ve been pulling at.</p>]]></description>
+    </item>
     <item>
       <title>Parse, Don't Validate — In a Language That Doesn't Want You To</title>
       <link>https://cekrem.github.io/posts/parse-dont-validate-typescript/</link>

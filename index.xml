@@ -14,8 +14,7 @@
       <pubDate>Fri, 10 Apr 2026 00:00:00 +0000</pubDate>
       <guid>https://cekrem.github.io/posts/no-ai-in-nodejs-core/</guid>
       <description><![CDATA[<p>It&rsquo;s Friday, and I just signed <a href="https://github.com/indutny/no-ai-in-nodejs-core" class="external-link" target="_blank" rel="noopener">a petition</a> asking the Node.js TSC to vote no on allowing AI-generated code in Node.js core.</p>
-<p>Someone opened a 19,000-line pull request to rewrite Node.js internals, with the disclaimer that &ldquo;a significant amount of Claude Code tokens&rdquo; were used to create it. The author reviewed the changes themselves. (That&rsquo;s the claim, anyway.)</p>
-<p>Nineteen thousand lines. I&rsquo;ve reviewed PRs a fraction of that size and still missed things. Reviewing AI output is a different kind of reading than reviewing code a human wrestled with, line by line. When someone writes code, the PR tells a story of decisions made. When an LLM generates it, you&rsquo;re reading <em>output</em>. The shape looks right. The story is missing.</p>]]></description>
+<p>Someone opened a 19,000-line pull request to rewrite Node.js internals, with the disclaimer that &ldquo;a significant amount of Claude Code tokens&rdquo; were used to create it. The author reviewed the changes themselves. (That&rsquo;s the claim, anyway. And speaking of (dis)claim(ers): I don&rsquo;t know the author of this PR or the quality of prior contributions, that&rsquo;s beside the point! Probably a brilliant software engineer!)</p>]]></description>
     </item>
     <item>
       <title>ArkType: The Parse-Don't-Validate Sequel I Didn't Know I Needed</title>

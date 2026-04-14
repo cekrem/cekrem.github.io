@@ -6,8 +6,16 @@
     <description>Recent content on cekrem.github.io</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 10 Apr 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 14 Apr 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://cekrem.github.io/index.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Effect Without Effect-TS: Algebraic Thinking in Plain TypeScript</title>
+      <link>https://cekrem.github.io/posts/effect-without-effect-ts/</link>
+      <pubDate>Tue, 14 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>https://cekrem.github.io/posts/effect-without-effect-ts/</guid>
+      <description><![CDATA[<p>A lot of people are reaching for <a href="https://effect.website" class="external-link" target="_blank" rel="noopener">Effect-TS</a>.</p>
+<p>Every few months you&rsquo;ll be three functions deep in some TypeScript service, squinting at a <code>try/catch</code> that swallows four different kinds of failure into one <code>catch (err)</code>, and you&rsquo;ll think: &ldquo;Effect would fix this.&rdquo; Then you look at the API surface, the generator syntax, the layers and services and fibers, and you quietly close the tab. Not because it&rsquo;s bad (not at all; it&rsquo;s genuinely impressive software.) But it requires some investment, and you&rsquo;re just not quite sure&hellip;</p>]]></description>
+    </item>
     <item>
       <title>I Signed the 'No AI in Node.js Core' Petition</title>
       <link>https://cekrem.github.io/posts/no-ai-in-nodejs-core/</link>

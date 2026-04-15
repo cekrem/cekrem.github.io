@@ -6,8 +6,16 @@
     <description>Recent content on cekrem.github.io</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 14 Apr 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 15 Apr 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://cekrem.github.io/index.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>The Draft Is Done. Now I Need Reviewers and Feedback!</title>
+      <link>https://cekrem.github.io/posts/the-draft-is-done-now-i-need-readers/</link>
+      <pubDate>Wed, 15 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>https://cekrem.github.io/posts/the-draft-is-done-now-i-need-readers/</guid>
+      <description><![CDATA[<p>Remember when I said the book was <a href="https://cekrem.github.io/posts/book-update-almost-there/" >almost done</a>? It&rsquo;s done. The first full draft, anyway 😅. Every chapter written, every code sample compiling, every paragraph existing in some form that I&rsquo;m not immediately embarrassed by. I think.</p>
+<p>I sat with it for a few days after finishing the last chapter, half expecting to find a gaping hole somewhere. A missing concept, a chapter that secretly makes no sense. But no. It holds together (again: I think – I&rsquo;m a bit blind at this point&hellip; And better at starting projects than finishing them). Which means I&rsquo;m now in that strange phase where the writing is done but the book isn&rsquo;t, because I don&rsquo;t have a designated editor or a team of readers giving me feedback.</p>]]></description>
+    </item>
     <item>
       <title>Effect Without Effect-TS: Algebraic Thinking in Plain TypeScript</title>
       <link>https://cekrem.github.io/posts/effect-without-effect-ts/</link>

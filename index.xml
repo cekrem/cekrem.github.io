@@ -6,8 +6,16 @@
     <description>Recent content on cekrem.github.io</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 15 Apr 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 21 Apr 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://cekrem.github.io/index.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>git history: the best thing in Git 2.54</title>
+      <link>https://cekrem.github.io/posts/git-history-git-2-54/</link>
+      <pubDate>Tue, 21 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>https://cekrem.github.io/posts/git-history-git-2-54/</guid>
+      <description><![CDATA[<p>Git 2.54 dropped yesterday. 137 contributors, 66 of them first-timers. But the thing I keep thinking about is a small experimental command called <code>git history</code>.</p>
+<p>It does two things. <code>git history reword &lt;commit&gt;</code> lets you fix a commit message and rewrites everything downstream. <code>git history split &lt;commit&gt;</code> lets you chop a commit into pieces with the same hunk-picker from <code>git add -p</code>. Neither operation touches your working tree or index.</p>]]></description>
+    </item>
     <item>
       <title>The Draft Is Done. Now I Need Reviewers and Feedback!</title>
       <link>https://cekrem.github.io/posts/the-draft-is-done-now-i-need-readers/</link>

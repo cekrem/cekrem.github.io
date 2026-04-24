@@ -6,8 +6,24 @@
     <description>Recent content on cekrem.github.io</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 21 Apr 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 24 Apr 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://cekrem.github.io/index.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>LLMs Corrupt Your Documents (and the Theory Dies Twice)</title>
+      <link>https://cekrem.github.io/posts/llms-corrupt-your-documents/</link>
+      <pubDate>Fri, 24 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>https://cekrem.github.io/posts/llms-corrupt-your-documents/</guid>
+      <description><![CDATA[<p>Last week a friend sent me a paper with a title that made me laugh out loud: <a href="https://arxiv.org/html/2604.15597v1" class="external-link" target="_blank" rel="noopener">&ldquo;LLMs Corrupt Your Documents When You Delegate.&rdquo;</a> By Philippe Laban, Tobias Schnabel, and Jennifer Neville at Microsoft Research. Not &ldquo;LLMs <em>might</em> corrupt&rdquo; or &ldquo;LLMs <em>occasionally</em> introduce errors.&rdquo; Just the blunt statement of fact.</p>
+<p>I appreciated that, and the veteran reader of my blog might guess already that I&rsquo;m not very surprised.</p>
+<h2 id="the-numbers">
+ The numbers
+ <a class="heading-link" href="#the-numbers">
+ <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+ <span class="sr-only">Link to heading</span>
+ </a>
+</h2>
+<p>The researchers built something called the DELEGATE-52 benchmark. Fifty-two documents across different domains, handed to nineteen different models (including &ldquo;frontier&rdquo; ones like Gemini 3.1 Pro, Claude 4.6 Opus, and GPT-5.4). Each model gets a document and a series of editing instructions. Twenty interactions. Just twenty. And by the end?</p>]]></description>
+    </item>
     <item>
       <title>git history: the best thing in Git 2.54</title>
       <link>https://cekrem.github.io/posts/git-history-git-2-54/</link>

@@ -13,7 +13,7 @@
       <link>https://cekrem.github.io/posts/llms-corrupt-your-documents/</link>
       <pubDate>Fri, 24 Apr 2026 00:00:00 +0000</pubDate>
       <guid>https://cekrem.github.io/posts/llms-corrupt-your-documents/</guid>
-      <description><![CDATA[<p>Last week a friend sent me a paper with a title that made me laugh out loud: <a href="https://arxiv.org/html/2604.15597v1" class="external-link" target="_blank" rel="noopener">&ldquo;LLMs Corrupt Your Documents When You Delegate.&rdquo;</a> By Philippe Laban, Tobias Schnabel, and Jennifer Neville at Microsoft Research. Not &ldquo;LLMs <em>might</em> corrupt&rdquo; or &ldquo;LLMs <em>occasionally</em> introduce errors.&rdquo; Just the blunt statement of fact.</p>
+      <description><![CDATA[<p>This week a friend sent me a paper with a title that made me laugh out loud: <a href="https://arxiv.org/html/2604.15597v1" class="external-link" target="_blank" rel="noopener">&ldquo;LLMs Corrupt Your Documents When You Delegate.&rdquo;</a> By Philippe Laban, Tobias Schnabel, and Jennifer Neville at Microsoft Research. Not &ldquo;LLMs <em>might</em> corrupt&rdquo; or &ldquo;LLMs <em>occasionally</em> introduce errors.&rdquo; Just the blunt statement of fact.</p>
 <p>I appreciated that, and the veteran reader of my blog might guess already that I&rsquo;m not very surprised.</p>
 <h2 id="the-numbers">
  The numbers

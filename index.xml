@@ -6,8 +6,15 @@
     <description>Recent content on cekrem.github.io</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 24 Apr 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 04 May 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://cekrem.github.io/index.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Architecture by Autocomplete</title>
+      <link>https://cekrem.github.io/posts/architecture-by-autocomplete/</link>
+      <pubDate>Mon, 04 May 2026 00:00:00 +0000</pubDate>
+      <guid>https://cekrem.github.io/posts/architecture-by-autocomplete/</guid>
+      <description><![CDATA[<p>There&rsquo;s a specific code smell that shows up in AI-generated code, and once you see it you can&rsquo;t un-see it: primitive obsession all the way down to the domain core. <code>string</code> for emails. <code>string</code> for IDs. <code>Map&lt;string, any&gt;</code> whenever the situation gets hairy. Working code, passing tests, ships fine. And yet a developer who&rsquo;d actually thought about the domain would not have written a single one of those types that way.</p>]]></description>
+    </item>
     <item>
       <title>LLMs Corrupt Your Documents (and the Theory Dies Twice)</title>
       <link>https://cekrem.github.io/posts/llms-corrupt-your-documents/</link>

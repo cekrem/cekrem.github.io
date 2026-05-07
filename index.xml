@@ -6,8 +6,17 @@
     <description>Recent content on cekrem.github.io</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 04 May 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 07 May 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://cekrem.github.io/index.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Book Update: RC 2 Is Out</title>
+      <link>https://cekrem.github.io/posts/elm-book-rc-2/</link>
+      <pubDate>Thu, 07 May 2026 00:00:00 +0000</pubDate>
+      <guid>https://cekrem.github.io/posts/elm-book-rc-2/</guid>
+      <description><![CDATA[<p><a href="https://leanpub.com/elm-for-react-devs" class="external-link" target="_blank" rel="noopener">RC 2 of the book</a> is out.</p>
+<p>When I <a href="https://cekrem.github.io/posts/the-draft-is-done-now-i-need-readers/" >asked for readers a few weeks ago</a>, I half expected polite &ldquo;looks great!&rdquo; replies. I got that, but also the opposite, which honestly is more helpful. Almost feels like &ldquo;crowd backed editing&rdquo;, and it&rsquo;s really cool. I&rsquo;ll wager that also in this aspect, the Elm community might be one of the most friendly and helpful of its kind.</p>
+<p>I&rsquo;m calling it <strong>RC 2</strong> in the software-release sense &ndash; release candidate, meaning I now believe the book is good enough to print, but I want one more round of eyes on it before I commit.</p>]]></description>
+    </item>
     <item>
       <title>Architecture by Autocomplete</title>
       <link>https://cekrem.github.io/posts/architecture-by-autocomplete/</link>

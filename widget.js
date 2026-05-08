@@ -6288,7 +6288,15 @@ var $elm$core$Set$fromList = function (list) {
 };
 var $author$project$Testimonials$activePaths = $elm$core$Set$fromList(
 	_List_fromArray(
-		['', '/', '/hire', '/hire/', '/posts/starting-small-with-elm-a-widget-approach', '/posts/starting-small-with-elm-a-widget-approach/']));
+		['', '/hire', '/posts/starting-small-with-elm-a-widget-approach']));
+var $elm$core$Basics$negate = function (n) {
+	return -n;
+};
+var $elm$core$String$dropRight = F2(
+	function (n, string) {
+		return (n < 1) ? string : A3($elm$core$String$slice, 0, -n, string);
+	});
+var $elm$core$String$endsWith = _String_endsWith;
 var $elm$core$Dict$member = F2(
 	function (key, dict) {
 		var _v0 = A2($elm$core$Dict$get, key, dict);
@@ -6304,7 +6312,8 @@ var $elm$core$Set$member = F2(
 		return A2($elm$core$Dict$member, key, dict);
 	});
 var $author$project$Testimonials$showForPath = function (path) {
-	return A2($elm$core$Set$member, path, $author$project$Testimonials$activePaths);
+	var normalizedPath = A2($elm$core$String$endsWith, path, '/') ? A2($elm$core$String$dropRight, 1, path) : path;
+	return A2($elm$core$Set$member, normalizedPath, $author$project$Testimonials$activePaths);
 };
 var $author$project$Main$init = function (path) {
 	var _v0 = A2(
@@ -6651,15 +6660,6 @@ var $author$project$Testimonials$Success = F2(
 	function (a, b) {
 		return {$: 2, a: a, b: b};
 	});
-var $elm$core$Basics$modBy = _Basics_modBy;
-var $author$project$Testimonials$changeOrRollover = F2(
-	function (list, targetIndex) {
-		var threshold = function (length) {
-			return length - A2($elm$core$Basics$modBy, 2, length);
-		}(
-			$elm$core$List$length(list));
-		return A2($elm$core$Basics$modBy, threshold, targetIndex);
-	});
 var $elm$random$Random$Generate = $elm$core$Basics$identity;
 var $elm$random$Random$Seed = F2(
 	function (a, b) {
@@ -6758,10 +6758,8 @@ var $elm$random$Random$generate = F2(
 		return $elm$random$Random$command(
 			A2($elm$random$Random$map, tagger, generator));
 	});
+var $elm$core$Basics$modBy = _Basics_modBy;
 var $elm$core$Bitwise$and = _Bitwise_and;
-var $elm$core$Basics$negate = function (n) {
-	return -n;
-};
 var $elm$core$Bitwise$xor = _Bitwise_xor;
 var $elm$random$Random$peel = function (_v0) {
 	var state = _v0.a;
@@ -6887,7 +6885,10 @@ var $author$project$Testimonials$update = F2(
 							A2(
 								$author$project$Testimonials$Success,
 								testimonials,
-								A2($author$project$Testimonials$changeOrRollover, testimonials, index + 1)),
+								A2(
+									$elm$core$Basics$modBy,
+									$elm$core$List$length(testimonials) - 2,
+									index) + 1),
 							$elm$core$Platform$Cmd$none);
 					} else {
 						break _v0$5;
@@ -6902,7 +6903,10 @@ var $author$project$Testimonials$update = F2(
 							A2(
 								$author$project$Testimonials$Success,
 								testimonials,
-								A2($author$project$Testimonials$changeOrRollover, testimonials, index - 1)),
+								A2(
+									$elm$core$Basics$modBy,
+									$elm$core$List$length(testimonials) - 2,
+									index) - 1),
 							$elm$core$Platform$Cmd$none);
 					} else {
 						break _v0$5;
@@ -7006,10 +7010,6 @@ var $author$project$Search$lowerCaseAndRemoveWhitespace = A2(
 	$elm$core$Basics$composeR,
 	$elm$core$String$toLower,
 	A2($elm$core$String$replace, ' ', ''));
-var $elm$core$String$dropRight = F2(
-	function (n, string) {
-		return (n < 1) ? string : A3($elm$core$String$slice, 0, -n, string);
-	});
 var $elm$core$List$head = function (list) {
 	if (list.b) {
 		var x = list.a;
@@ -7138,6 +7138,8 @@ var $author$project$Main$update = F2(
 				_List_fromArray(
 					[routeCmd, searchCmd])));
 	});
+var $elm$html$Html$a = _VirtualDom_node('a');
+var $elm$html$Html$h5 = _VirtualDom_node('h5');
 var $elm$json$Json$Encode$string = _Json_wrap;
 var $elm$html$Html$Attributes$stringProperty = F2(
 	function (key, string) {
@@ -7146,12 +7148,66 @@ var $elm$html$Html$Attributes$stringProperty = F2(
 			key,
 			$elm$json$Json$Encode$string(string));
 	});
+var $elm$html$Html$Attributes$href = function (url) {
+	return A2(
+		$elm$html$Html$Attributes$stringProperty,
+		'href',
+		_VirtualDom_noJavaScriptUri(url));
+};
+var $elm$html$Html$img = _VirtualDom_node('img');
+var $elm$html$Html$Attributes$src = function (url) {
+	return A2(
+		$elm$html$Html$Attributes$stringProperty,
+		'src',
+		_VirtualDom_noJavaScriptOrHtmlUri(url));
+};
+var $elm$virtual_dom$VirtualDom$style = _VirtualDom_style;
+var $elm$html$Html$Attributes$style = $elm$virtual_dom$VirtualDom$style;
+var $elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
+var $elm$html$Html$text = $elm$virtual_dom$VirtualDom$text;
+var $elm$html$Html$Attributes$width = function (n) {
+	return A2(
+		_VirtualDom_attribute,
+		'width',
+		$elm$core$String$fromInt(n));
+};
+var $author$project$Main$bookEntry = A2(
+	$elm$html$Html$a,
+	_List_fromArray(
+		[
+			$elm$html$Html$Attributes$href('https://leanpub.com/elm-for-react-devs'),
+			A2($elm$html$Html$Attributes$style, 'text-align', 'center'),
+			A2($elm$html$Html$Attributes$style, 'display', 'block'),
+			A2($elm$html$Html$Attributes$style, 'width', '20rem'),
+			A2($elm$html$Html$Attributes$style, 'margin', '2rem auto'),
+			A2($elm$html$Html$Attributes$style, 'padding', '1rem')
+		]),
+	_List_fromArray(
+		[
+			A2(
+			$elm$html$Html$h5,
+			_List_fromArray(
+				[
+					A2($elm$html$Html$Attributes$style, 'margin', '1rem')
+				]),
+			_List_fromArray(
+				[
+					$elm$html$Html$text('eBook early access:')
+				])),
+			A2(
+			$elm$html$Html$img,
+			_List_fromArray(
+				[
+					$elm$html$Html$Attributes$src('/images/book.png'),
+					$elm$html$Html$Attributes$width(180),
+					A2($elm$html$Html$Attributes$style, 'margin', 'auto')
+				]),
+			_List_Nil)
+		]));
 var $elm$html$Html$Attributes$class = $elm$html$Html$Attributes$stringProperty('className');
 var $elm$html$Html$div = _VirtualDom_node('div');
 var $elm$virtual_dom$VirtualDom$map = _VirtualDom_map;
 var $elm$html$Html$map = $elm$virtual_dom$VirtualDom$map;
-var $elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
-var $elm$html$Html$text = $elm$virtual_dom$VirtualDom$text;
 var $author$project$Search$ChangeTerm = function (a) {
 	return {$: 0, a: a};
 };
@@ -7216,8 +7272,6 @@ var $elm$virtual_dom$VirtualDom$lazy3 = _VirtualDom_lazy3;
 var $elm$html$Html$Lazy$lazy3 = $elm$virtual_dom$VirtualDom$lazy3;
 var $elm$core$Basics$neq = _Utils_notEqual;
 var $cekrem$html_helpers$HtmlHelpers$nothing = $elm$html$Html$text('');
-var $elm$virtual_dom$VirtualDom$style = _VirtualDom_style;
-var $elm$html$Html$Attributes$style = $elm$virtual_dom$VirtualDom$style;
 var $author$project$Search$entryStyle = _List_fromArray(
 	[
 		A2($elm$html$Html$Attributes$style, 'overflow', 'hidden'),
@@ -7242,13 +7296,6 @@ var $author$project$Search$orEmptyEntry = function (list) {
 		var nonEmpty = list;
 		return nonEmpty;
 	}
-};
-var $elm$html$Html$a = _VirtualDom_node('a');
-var $elm$html$Html$Attributes$href = function (url) {
-	return A2(
-		$elm$html$Html$Attributes$stringProperty,
-		'href',
-		_VirtualDom_noJavaScriptUri(url));
 };
 var $elm$html$Html$Attributes$tabindex = function (n) {
 	return A2(
@@ -7533,102 +7580,6 @@ var $author$project$Search$view = function (model) {
 				$author$project$Search$searchResults(model)
 			]));
 };
-var $author$project$Testimonials$carouselStyles = function (visible) {
-	return _Utils_ap(
-		_List_fromArray(
-			[
-				A2($elm$html$Html$Attributes$style, 'transition-property', 'all'),
-				A2($elm$html$Html$Attributes$style, 'transition-timing-function', 'ease-out'),
-				A2($elm$html$Html$Attributes$style, 'transition-duration', '0.4s'),
-				A2($elm$html$Html$Attributes$style, 'margin', '0.5rem'),
-				A2($elm$html$Html$Attributes$style, 'border-radius', '2rem'),
-				A2($elm$html$Html$Attributes$style, 'background', 'rgba(127,127,127,0.05)'),
-				A2($elm$html$Html$Attributes$style, 'overflow-x', 'hidden'),
-				A2($elm$html$Html$Attributes$style, 'display', 'flex'),
-				A2($elm$html$Html$Attributes$style, 'white-space', 'nowrap'),
-				A2($elm$html$Html$Attributes$style, 'flex-direction', 'column'),
-				A2($elm$html$Html$Attributes$style, 'gap', '1rem'),
-				A2($elm$html$Html$Attributes$style, 'font-size', '1.8rem')
-			]),
-		visible ? _List_fromArray(
-			[
-				A2($elm$html$Html$Attributes$style, 'width', '60rem'),
-				A2($elm$html$Html$Attributes$style, 'max-height', '60rem'),
-				A2($elm$html$Html$Attributes$style, 'padding', '2rem'),
-				A2($elm$html$Html$Attributes$style, 'margin', '0.5rem'),
-				A2($elm$html$Html$Attributes$style, 'flex', '1')
-			]) : _List_fromArray(
-			[
-				A2($elm$html$Html$Attributes$style, 'width', '0'),
-				A2($elm$html$Html$Attributes$style, 'max-height', '0'),
-				A2($elm$html$Html$Attributes$style, 'overflow-y', 'hidden'),
-				A2($elm$html$Html$Attributes$style, 'padding', '0'),
-				A2($elm$html$Html$Attributes$style, 'opacity', '0'),
-				A2($elm$html$Html$Attributes$style, 'font-size', '0'),
-				A2($elm$html$Html$Attributes$style, 'margin', '0rem'),
-				A2($elm$html$Html$Attributes$style, 'flex', '0')
-			]));
-};
-var $elm$html$Html$hr = _VirtualDom_node('hr');
-var $elm$html$Html$img = _VirtualDom_node('img');
-var $elm$html$Html$span = _VirtualDom_node('span');
-var $elm$html$Html$Attributes$src = function (url) {
-	return A2(
-		$elm$html$Html$Attributes$stringProperty,
-		'src',
-		_VirtualDom_noJavaScriptOrHtmlUri(url));
-};
-var $elm$html$Html$h6 = _VirtualDom_node('h6');
-var $author$project$Testimonials$title = function (text) {
-	return A2(
-		$elm$html$Html$h6,
-		_List_fromArray(
-			[
-				A2($elm$html$Html$Attributes$style, 'margin', '0')
-			]),
-		_List_fromArray(
-			[
-				$elm$html$Html$text(text)
-			]));
-};
-var $elm$html$Html$Attributes$width = function (n) {
-	return A2(
-		_VirtualDom_attribute,
-		'width',
-		$elm$core$String$fromInt(n));
-};
-var $author$project$Testimonials$bookEntry = function (visible) {
-	return A2(
-		$elm$html$Html$a,
-		A2(
-			$elm$core$List$cons,
-			$elm$html$Html$Attributes$href('https://leanpub.com/elm-for-react-devs'),
-			A2(
-				$elm$core$List$cons,
-				A2($elm$html$Html$Attributes$style, 'text-align', 'center'),
-				$author$project$Testimonials$carouselStyles(visible))),
-		_List_fromArray(
-			[
-				$author$project$Testimonials$title('Early access:'),
-				A2(
-				$elm$html$Html$img,
-				_List_fromArray(
-					[
-						$elm$html$Html$Attributes$src('/images/book.png'),
-						$elm$html$Html$Attributes$width(250),
-						A2($elm$html$Html$Attributes$style, 'margin', 'auto')
-					]),
-				_List_Nil),
-				A2(
-				$elm$html$Html$span,
-				_List_Nil,
-				_List_fromArray(
-					[
-						A2($elm$html$Html$hr, _List_Nil, _List_Nil),
-						$author$project$Testimonials$title('eBook available now!')
-					]))
-			]));
-};
 var $cekrem$html_helpers$HtmlHelpers$hideOnBreakpoint = F2(
 	function (breakpoint, content) {
 		var clampStyle = 'clamp(0px, calc((100vw - ' + (breakpoint + ') * 1000), 100vmax)');
@@ -7669,6 +7620,56 @@ var $author$project$Testimonials$button = function (isLeft) {
 };
 var $author$project$Testimonials$leftButton = $author$project$Testimonials$button(true);
 var $author$project$Testimonials$rightButton = $author$project$Testimonials$button(false);
+var $author$project$Testimonials$carouselStyles = function (visible) {
+	return _Utils_ap(
+		_List_fromArray(
+			[
+				A2($elm$html$Html$Attributes$style, 'transition-property', 'all'),
+				A2($elm$html$Html$Attributes$style, 'transition-timing-function', 'ease-out'),
+				A2($elm$html$Html$Attributes$style, 'transition-duration', '0.4s'),
+				A2($elm$html$Html$Attributes$style, 'margin', '0.5rem'),
+				A2($elm$html$Html$Attributes$style, 'border-radius', '2rem'),
+				A2($elm$html$Html$Attributes$style, 'background', 'rgba(127,127,127,0.05)'),
+				A2($elm$html$Html$Attributes$style, 'overflow-x', 'hidden'),
+				A2($elm$html$Html$Attributes$style, 'display', 'flex'),
+				A2($elm$html$Html$Attributes$style, 'white-space', 'nowrap'),
+				A2($elm$html$Html$Attributes$style, 'flex-direction', 'column'),
+				A2($elm$html$Html$Attributes$style, 'gap', '1rem'),
+				A2($elm$html$Html$Attributes$style, 'font-size', '1.7rem'),
+				A2($elm$html$Html$Attributes$style, 'interpolate-size', 'allow-keywords')
+			]),
+		visible ? _List_fromArray(
+			[
+				A2($elm$html$Html$Attributes$style, 'width', '60rem'),
+				A2($elm$html$Html$Attributes$style, 'height', 'min-content'),
+				A2($elm$html$Html$Attributes$style, 'padding', '2rem'),
+				A2($elm$html$Html$Attributes$style, 'margin', '0.5rem'),
+				A2($elm$html$Html$Attributes$style, 'flex', '1')
+			]) : _List_fromArray(
+			[
+				A2($elm$html$Html$Attributes$style, 'width', '0'),
+				A2($elm$html$Html$Attributes$style, 'height', '0'),
+				A2($elm$html$Html$Attributes$style, 'overflow-y', 'hidden'),
+				A2($elm$html$Html$Attributes$style, 'padding', '0'),
+				A2($elm$html$Html$Attributes$style, 'opacity', '0'),
+				A2($elm$html$Html$Attributes$style, 'font-size', '0'),
+				A2($elm$html$Html$Attributes$style, 'margin', '0rem'),
+				A2($elm$html$Html$Attributes$style, 'flex', '0')
+			]));
+};
+var $elm$html$Html$h6 = _VirtualDom_node('h6');
+var $author$project$Testimonials$title = function (text) {
+	return A2(
+		$elm$html$Html$h6,
+		_List_fromArray(
+			[
+				A2($elm$html$Html$Attributes$style, 'margin', '0')
+			]),
+		_List_fromArray(
+			[
+				$elm$html$Html$text(text)
+			]));
+};
 var $author$project$Testimonials$clickableTitle = F2(
 	function (url, text) {
 		return A2(
@@ -7708,6 +7709,7 @@ var $author$project$Testimonials$paragraph = function (text) {
 				$elm$html$Html$text(text)
 			]));
 };
+var $elm$html$Html$span = _VirtualDom_node('span');
 var $author$project$Testimonials$stars = A2(
 	$elm$html$Html$span,
 	_List_fromArray(
@@ -7807,6 +7809,7 @@ var $author$project$Testimonials$view = function (model) {
 							A2($elm$html$Html$Attributes$style, 'position', 'relative'),
 							A2($elm$html$Html$Attributes$style, 'width', '100%'),
 							A2($elm$html$Html$Attributes$style, 'min-height', '60rem'),
+							A2($elm$html$Html$Attributes$style, 'margin', 'auto'),
 							A2($elm$html$Html$Attributes$style, 'padding', '2rem 3rem'),
 							A2($elm$html$Html$Attributes$style, 'display', 'flex'),
 							A2($elm$html$Html$Attributes$style, 'align-items', 'center'),
@@ -7819,18 +7822,15 @@ var $author$project$Testimonials$view = function (model) {
 							$elm$core$List$cons,
 							$author$project$Testimonials$rightButton,
 							A2(
-								$elm$core$List$cons,
-								$author$project$Testimonials$bookEntry(!index),
-								A2(
-									$elm$core$List$indexedMap,
-									F2(
-										function (i, t) {
-											return A2(
-												$author$project$Testimonials$testimonialEntry,
-												_Utils_eq(i, index) || _Utils_eq(i + 1, index),
-												t);
-										}),
-									testimonials))))));
+								$elm$core$List$indexedMap,
+								F2(
+									function (i, t) {
+										return A2(
+											$author$project$Testimonials$testimonialEntry,
+											_Utils_eq(i, index + 1) || _Utils_eq(i, index),
+											t);
+									}),
+								testimonials)))));
 	}
 };
 var $author$project$Main$view = function (model) {
@@ -7857,7 +7857,8 @@ var $author$project$Main$view = function (model) {
 				A2(
 				$elm$html$Html$map,
 				$author$project$Main$SearchMsg,
-				$author$project$Search$view(model.x))
+				$author$project$Search$view(model.x)),
+				$author$project$Main$bookEntry
 			]));
 };
 var $author$project$Main$main = $elm$browser$Browser$element(

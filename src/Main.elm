@@ -4,7 +4,7 @@ import Browser
 import Html exposing (Html)
 import Html.Attributes as Attributes
 import Search
-import Testimonials
+import Testimonials exposing (bookEntry)
 
 
 
@@ -138,4 +138,25 @@ view model =
                 Html.text ""
         , Search.view model.searchModel
             |> Html.map SearchMsg
+        , bookEntry
+        ]
+
+
+bookEntry : Html msg
+bookEntry =
+    Html.a
+        [ Attributes.href "https://leanpub.com/elm-for-react-devs"
+        , Attributes.style "text-align" "center"
+        , Attributes.style "display" "block"
+        , Attributes.style "width" "20rem"
+        , Attributes.style "margin" "2rem auto"
+        , Attributes.style "padding" "1rem"
+        ]
+        [ Html.h5 [ Attributes.style "margin" "1rem" ] [ Html.text "eBook early access:" ]
+        , Html.img
+            [ Attributes.src "/images/book.png"
+            , Attributes.width 180
+            , Attributes.style "margin" "auto"
+            ]
+            []
         ]

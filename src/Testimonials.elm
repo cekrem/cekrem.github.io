@@ -1,4 +1,4 @@
-module Testimonials exposing (Model, Msg, init, showForPath, update, view)
+module Testimonials exposing (Model, Msg, bookEntry, init, showForPath, update, view)
 
 import Html exposing (Html)
 import Html.Attributes as Attributes
@@ -9,8 +9,6 @@ import Json.Decode
 import Random
 import Random.List exposing (shuffle)
 import Set
-import Task
-import Time
 
 
 {-| This view renders a testimonials carousel (only on wide screens, for now).
@@ -42,17 +40,22 @@ activePaths : Set.Set String
 activePaths =
     Set.fromList
         [ ""
-        , "/"
         , "/hire"
-        , "/hire/"
         , "/posts/starting-small-with-elm-a-widget-approach"
-        , "/posts/starting-small-with-elm-a-widget-approach/"
         ]
 
 
 showForPath : String -> Bool
 showForPath path =
-    activePaths |> Set.member path
+    let
+        normalizedPath =
+            if String.endsWith path "/" then
+                String.dropRight 1 path
+
+            else
+                path
+    in
+    activePaths |> Set.member normalizedPath
 
 
 type alias Testimonial =
@@ -80,10 +83,10 @@ update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case ( model, msg ) of
         ( Success testimonials index, Right ) ->
-            ( Success testimonials (changeOrRollover testimonials (index + 1)), Cmd.none )
+            ( Success testimonials (modBy (List.length testimonials - 2) index + 1), Cmd.none )
 
         ( Success testimonials index, Left ) ->
-            ( Success testimonials (changeOrRollover testimonials (index - 1)), Cmd.none )
+            ( Success testimonials (modBy (List.length testimonials - 2) index - 1), Cmd.none )
 
         ( Loading, GotShuffledTetsemonials testimonials ) ->
             ( Success testimonials 0, Cmd.none )
@@ -96,20 +99,6 @@ update msg model =
 
         _ ->
             ( model, Cmd.none )
-
-
-{-| either set to targetIndex, or rollover if it's out of bounds.
-Also: make sure never to set last index on odd numbered testimonials (ie always show two in slider!)
--}
-changeOrRollover : List a -> Int -> Int
-changeOrRollover list targetIndex =
-    let
-        threshold : Int
-        threshold =
-            List.length list
-                |> (\length -> length - modBy 2 length)
-    in
-    modBy threshold targetIndex
 
 
 
@@ -131,7 +120,10 @@ view model =
             Html.div
                 [ Attributes.style "position" "relative"
                 , Attributes.style "width" "100%"
+
+                -- , Attributes.style "max-width" "80rem"
                 , Attributes.style "min-height" "60rem"
+                , Attributes.style "margin" "auto"
                 , Attributes.style "padding" "2rem 3rem"
                 , Attributes.style "display" "flex"
                 , Attributes.style "align-items" "center"
@@ -139,11 +131,10 @@ view model =
                 ]
                 (HtmlHelpers.when (index > 0) leftButton
                     :: rightButton
-                    :: bookEntry (index == 0)
                     :: (testimonials
                             |> List.indexedMap
                                 (\i t ->
-                                    testimonialEntry (i == index || i + 1 == index) t
+                                    testimonialEntry (i == index + 1 || i == index) t
                                 )
                        )
                 )
@@ -196,11 +187,12 @@ carouselStyles visible =
     , Attributes.style "white-space" "nowrap"
     , Attributes.style "flex-direction" "column"
     , Attributes.style "gap" "1rem"
-    , Attributes.style "font-size" "1.8rem"
+    , Attributes.style "font-size" "1.7rem"
+    , Attributes.style "interpolate-size" "allow-keywords"
     ]
         ++ (if visible then
                 [ Attributes.style "width" "60rem"
-                , Attributes.style "max-height" "60rem"
+                , Attributes.style "height" "min-content"
                 , Attributes.style "padding" "2rem"
                 , Attributes.style "margin" "0.5rem"
                 , Attributes.style "flex" "1"
@@ -208,7 +200,7 @@ carouselStyles visible =
 
             else
                 [ Attributes.style "width" "0"
-                , Attributes.style "max-height" "0"
+                , Attributes.style "height" "0"
                 , Attributes.style "overflow-y" "hidden"
                 , Attributes.style "padding" "0"
                 , Attributes.style "opacity" "0"
@@ -217,28 +209,6 @@ carouselStyles visible =
                 , Attributes.style "flex" "0"
                 ]
            )
-
-
-bookEntry : Bool -> Html msg
-bookEntry visible =
-    Html.a
-        (Attributes.href "https://leanpub.com/elm-for-react-devs"
-            :: Attributes.style "text-align" "center"
-            :: carouselStyles visible
-        )
-        [ title "Early access:"
-        , Html.img
-            [ Attributes.src "/images/book.png"
-            , Attributes.width 250
-            , Attributes.style "margin" "auto"
-            ]
-            []
-        , Html.span
-            []
-            [ Html.hr [] []
-            , title "eBook available now!"
-            ]
-        ]
 
 
 testimonialEntry : Bool -> Testimonial -> Html Msg
@@ -318,6 +288,28 @@ subtitle text =
         , Attributes.style "opacity" "0.8"
         ]
         [ Html.text (text |> String.replace "@ " "@\n") ]
+
+
+bookEntry : Bool -> Html msg
+bookEntry visible =
+    Html.a
+        (Attributes.href "https://leanpub.com/elm-for-react-devs"
+            :: Attributes.style "text-align" "center"
+            :: carouselStyles visible
+        )
+        [ title "Early access:"
+        , Html.img
+            [ Attributes.src "/images/book.png"
+            , Attributes.width 200
+            , Attributes.style "margin" "auto"
+            ]
+            []
+        , Html.span
+            []
+            [ Html.hr [] []
+            , title "eBook available now!"
+            ]
+        ]
 
 
 

@@ -13,7 +13,8 @@
       <link>https://cekrem.github.io/posts/canonicalise-dont-remember-kotlin/</link>
       <pubDate>Tue, 12 May 2026 00:00:00 +0000</pubDate>
       <guid>https://cekrem.github.io/posts/canonicalise-dont-remember-kotlin/</guid>
-      <description><![CDATA[<p>Quick disclaimer up front: the bug below is <em>real</em>, the domain and the details aren&rsquo;t. I swapped the original (a private codebase I can&rsquo;t paste from) for a shopping cart, because the shape of the lesson is identical and a cart is a kinder example to read. So when I say &ldquo;I went to look at the diff&rdquo; further down, that part&rsquo;s real. The cart is a stand-in. Indulge me.</p>]]></description>
+      <description><![CDATA[<p>Story time! What follows is a slightly simplified and transposed-to-another-domain version of what I experienced this week. Ish.</p>
+<p>In our app, we had a shopping cart (not really, though, but stay with me), where adding the same product twice should collapse into one line with the quantities summed. A colleague had recently shipped <code>mergeBySku()</code> to do exactly that. The &ldquo;add to cart&rdquo; code path called it. The &ldquo;restore the user&rsquo;s cart from the server&rdquo; code path called it. Then a third construction site landed in the repo (someone&rsquo;s &ldquo;re-import items from a previous order&rdquo; feature, or some such) without first making the call to normalise the line items. Then, lo and behold: a support ticket showed a customer&rsquo;s cart with the same product appearing four times.</p>]]></description>
     </item>
     <item>
       <title>Book Update: RC 2 Is Out</title>

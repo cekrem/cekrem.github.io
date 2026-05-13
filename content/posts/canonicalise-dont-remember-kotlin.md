@@ -17,9 +17,7 @@ We could play blame game all day, or we could investigate why this happened and 
 
 Adding `mergeBySku()` to the import path as well was the obvious patch. A true hot-fix one-liner! But "remember to call merge everywhere you make a shopping cart" had already failed once, and I couldn't see why the next reminder would do any better. <sup><sup><sup>(I wonder if some consultants "fix" things this way intentionally to avoid going out of business?)</sup></sup></sup>
 
-**So I wanted a different shape of fix entirely.** The kind that doesn't need a wiki page nobody'd read. Or a thirty-minute "by the way, always remember to merge line items" meeting on a colleague's calendar. The merge has to happen because the code has no other option. That was the bar.
-
-I was kind of looking for [parse-dont-validate](/posts/parse-dont-validate-typescript/), but not quite. More like... Auto-normalize data automagically whether you remember or not? Too long for a t-shirt, though.
+**So I wanted a different shape of fix entirely.** I was kind of looking for [parse-dont-validate](/posts/parse-dont-validate-typescript/), but not quite. More like... Auto-normalize data automagically whether you remember or not? Too long for a t-shirt, though.
 
 The broken code did this: `mergeBySku()` in the add-to-cart pipeline, `mergeBySku()` in the cart-restore service; _no_ `mergeBySku()` in the new import path. The function was free-floating, public, and entirely advisory — anyone who wanted a properly merged cart just had to know to ask for one.
 
@@ -47,7 +45,7 @@ The add-to-cart pipeline did this:
 val cart = Cart(customerId, items.mergeBySku())
 ```
 
-The cart-restore service did its own thing — a little different, a little worse:
+The cart-restore service did something similar, but with `copy` (which we'll come back to!):
 
 ```kotlin
 cartStore.load(customerId).map { cart ->
@@ -55,7 +53,7 @@ cartStore.load(customerId).map { cart ->
 }
 ```
 
-Two code paths == two "rememberings". And Every™ future code path is one more chance to forget, in case you missed the first ones.
+The problem with this approach is that Every™ future code path is one more chance to forget, in case you missed the present ones. And the third call site, as the story goes, _didn't_ call `mergeBySku()` which is why we ended up with cart items that were not merged as they should be.
 
 (Again: not blaming anyone for writing it this way. The first time you need a merged list, the obvious move is the obvious move — you call `mergeBySku()` and move on with your life. The alarm should go off the _second_ time someone writes the same incantation in a different file. It usually doesn't. The shape of the code is what's wrong here, not the people working in it or the implementations themselves.)
 

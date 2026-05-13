@@ -6,8 +6,17 @@
     <description>Recent content on cekrem.github.io</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 12 May 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 13 May 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://cekrem.github.io/index.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>GreenType: a beautifully coded terrible idea</title>
+      <link>https://cekrem.github.io/posts/greentype-lamdera/</link>
+      <pubDate>Wed, 13 May 2026 00:00:00 +0000</pubDate>
+      <guid>https://cekrem.github.io/posts/greentype-lamdera/</guid>
+      <description><![CDATA[<p>I built <a href="https://greentype.lamdera.app" class="external-link" target="_blank" rel="noopener">a keyboard</a> that does basically nothing (except cool thock sounds), and it was super fun.</p>
+<p>When you start typing, you and everyone else on the page hears a Cherry MX Blue sample (a different sound per key, because I went further down that rabbit hole than I should have). A trail of recent keystrokes fades across the screen. A global counter ticks up. That&rsquo;s the app.</p>
+<p>Someone in the Elm Slack called it &ldquo;a beautifully coded terrible idea,&rdquo; which feels about right.</p>]]></description>
+    </item>
     <item>
       <title>Canonicalise, Don't Remember — Smart Constructors in Kotlin</title>
       <link>https://cekrem.github.io/posts/canonicalise-dont-remember-kotlin/</link>

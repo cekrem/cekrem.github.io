@@ -17,6 +17,15 @@
 <p>But just to summarize the why and why not of Claude Code (or whatever latest fancy tool), here&rsquo;s where I actually think it shines:</p>]]></description>
     </item>
     <item>
+      <title>The Tacit Dimension: Why Your Best Engineers Can't Tell You What They Know</title>
+      <link>https://cekrem.github.io/posts/the-tacit-dimension/</link>
+      <pubDate>Mon, 18 May 2026 00:00:00 +0000</pubDate>
+      <guid>https://cekrem.github.io/posts/the-tacit-dimension/</guid>
+      <description><![CDATA[<p>In 1966, a Hungarian chemist named Michael Polanyi published a short book called <a href="https://www.amazon.com/Tacit-Dimension-Michael-Polanyi/dp/0226672980" class="external-link" target="_blank" rel="noopener"><em>The Tacit Dimension</em></a>. Its central claim is seven words long, and it is the thing the AI coding industry needs you to forget:</p>
+<p><strong>We can know more than we can tell.</strong></p>
+<p>Polanyi was a working scientist before he became a philosopher, and the question that bothered him was simple. How does an old chemist look at an apparatus and know it&rsquo;s going to fail, before the symptoms appear? How does a surgeon&rsquo;s hand find the right pressure without anyone teaching the exact weight? How does an experienced researcher recognise a promising line of work <em>before</em> they can say what&rsquo;s promising about it?</p>]]></description>
+    </item>
+    <item>
       <title>GreenType: a beautifully coded terrible idea</title>
       <link>https://cekrem.github.io/posts/greentype-lamdera/</link>
       <pubDate>Wed, 13 May 2026 00:00:00 +0000</pubDate>

@@ -7,7 +7,7 @@ tags = ["programming", "software-engineering", "theory", "llm", "ai", "craft", "
 draft = false
 +++
 
-In 1966, a Hungarian chemist named Michael Polanyi published a short book called [_The Tacit Dimension_](https://www.amazon.com/Tacit-Dimension-Michael-Polanyi/dp/0226672980). Its central claim is seven words long, and it is the thing the AI coding industry needs you to forget:
+In 1966, a Hungarian chemist named Michael Polanyi published a short book called [_The Tacit Dimension_](https://www.amazon.com/Tacit-Dimension-Michael-Polanyi/dp/0226672980). Its central claim is eight words long, and it is the thing the AI coding industry needs you to forget:
 
 **We can know more than we can tell.**
 

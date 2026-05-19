@@ -70,6 +70,11 @@ And get this: inside the sandbox (/prison), you can actually just let it run wit
 
 In other words: Sandboxing makes it _faster_, not just safer. Took me a while to realize that.
 
+(Btw, someone replied that Claude Code has its own sandbox mode that we should rather use. Allow me to simply answer with this wonderful screenshot from a fellow Elm developer:
+![Claude's "sandbox"](/images/sandbox_much.jpg)
+
+Suffice it to say I prefer the _real_ sandbox.)
+
 ---
 
 The same nine seconds that the rogue agent spent blowing up a production db would be better spent on doing `cp -r ~/.claude/skills .claude/skills && sbx run claude` instead of `claude`. And since you're a developer, I bet you could (without asking an LLM for help) find some way to `alias` it too.

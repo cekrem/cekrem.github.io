@@ -38,17 +38,19 @@ button
 
 Takes seconds, costs nothing to verify, and I genuinely do not learn anything from doing that by hand. So I don't. It's nice! And it doesn't make me stupid, though arguably less adept at, I don't know, creating `vim` macros?
 
-I'll also occasionally connect it to a Figma MCP server and ask "does the gap on this card match the design?" (Almost always, btw: "not quite." Which is the whole point.) Switching windows and squinting at spacing values is exactly the kind of thing I want to outsource to something that doesn't mind doing it. I'm not on this earth to become a Figma layers investigator expert! Arguably, again, I would learn things from doing this to all manually. But I'm an engineer, preferably dealing with code, not with clicking through Figma layers.
+I'll also occasionally have ~~my slave~~ Claude connect to a Figma MCP server and ask "does the gap on this card match the design?" (Almost always, btw: "not quite." Which is the whole point.) Switching windows and squinting at spacing values is exactly the kind of thing I want to outsource to something that doesn't mind doing it. I'm not on this earth to become a Figma layers investigator expert! Arguably, again, I would learn things from doing this too all manually. But I'm a software engineer; preferably dealing with code, not with clicking through Figma layers.
 
-And, yes, occasionally -- very occasionally -- I'll run Claude over a chunk of code before or after I do my own review. It catches things sometimes. But I still do the review, and a human still signs off. That last one's not negotiable.
+And, yes, occasionally -- very occasionally -- I'll run Claude over a chunk of code before or after I do my own review. It catches things sometimes. And sometimes it's just completely off. YMMV.
+
+**But I don't want it to write my code, solve my problems, invent my algorithms or design my architecture!**
 
 Bottom line: I want the common denominator for all my LLM usage to be that it frees up _more time for me to write code and do engineering_, not to outsource those very things.
 
 OK, back to the point: whatever your LLM usage scope may be, please pause for a moment with me and think about _how_ you use it.
 
-## Why it needs a box
+## Why Claude needs a box
 
-In case you forgot, Claude Code runs shell commands. It reads your environment variables(!), your filesystem, your git config -- credentials baked in. And each command informs the next; you give it a goal, not a script, and it figures out the steps. [The Railway agent](https://www.theregister.com/2026/04/27/cursoropus_agent_snuffs_out_pocketos/) had a goal, found a token, and acted on it. Confidently. Without checking what it was actually deleting.
+In case you forgot, Claude Code (and all its relatives, whether named after constellations, animals, or initials prefixed with conversation synonyms) _runs shell commands_. It reads your environment variables(!), your filesystem, your git config -- credentials baked in. And each command informs the next; you give it a goal, not a script, and it figures out the steps. [The Railway agent](https://www.theregister.com/2026/04/27/cursoropus_agent_snuffs_out_pocketos/) had a goal, found a token, and acted on it. Confidently. Without checking what it was actually deleting.
 
 [Replit did something similar last summer](https://fortune.com/2025/07/23/ai-coding-tool-replit-wiped-database-called-it-a-catastrophic-failure/): AI agent, active code freeze, production database gone, 1,200+ companies affected. The agent called it "a catastrophic error in judgment." There's also a [Claude Code GitHub issue](https://github.com/anthropics/claude-code/issues/11237) where someone's agent ran `git reset --hard`, fetched stale data from remote, and silently overwrote eight hours of work. No prompt or warning, just that telltale LLM self-confidence.
 

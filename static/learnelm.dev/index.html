@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>learnelm.dev — A curated path to learning Elm</title>
+<meta name="description" content="A curated, opinionated path to learning Elm — from your first line of code to production. Free resources, sequenced and explained.">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          'elm-blue':   '#5fabdc',
+          'elm-orange': '#f0ad00',
+          'elm-green':  '#7fd13b',
+          'elm-navy':   '#34495e',
+        }
+      }
+    }
+  }
+</script>
+</head>
+<body class="bg-white text-gray-900">
+
+<div class="max-w-2xl mx-auto px-6 py-16 space-y-14">
+
+  <header class="space-y-4">
+    <div class="font-mono text-sm text-gray-500">learnelm.dev</div>
+    <h1 class="text-4xl font-bold">A sane place to start learning <span class="text-elm-blue">Elm</span>.</h1>
+    <p class="text-lg text-gray-700">There's a lot of good Elm material out there. Sadly, no obvious order to read it in. So here's the order I'd suggest, with a quick note on why each thing made the cut. For the actual pitch for the language itself, go to the <a class="text-elm-blue hover:underline" href="https://elm-lang.org">official site</a>.</p>
+  </header>
+
+  <section class="space-y-6">
+    <h2 class="text-2xl font-bold border-b-2 border-elm-orange pb-2">Start here</h2>
+    <p class="text-gray-700">Where to start depends on what you already know. Pick the line that sounds like you.</p>
+    <dl class="space-y-4">
+      <div>
+        <dt class="font-bold">"I know code, but not FP"</dt>
+        <dd class="text-gray-700">Start with the <a class="text-elm-blue hover:underline" href="https://guide.elm-lang.org">official guide</a>.</dd>
+      </div>
+      <div>
+        <dt class="font-bold">"I'm a React developer"</dt>
+        <dd class="text-gray-700">Read <a class="text-elm-blue hover:underline" href="https://leanpub.com/elm-for-react-devs/">An Elm Primer for React Developers</a>. Hands down the most efficient route for React devs: it takes the stuff you already know (components, state, effects) and shows you the Elm version of each — and sneaks the functional programming in for free along the way.</dd>
+      </div>
+      <div>
+        <dt class="font-bold">"Just show me the syntax"</dt>
+        <dd class="text-gray-700">Ten-minute skim: <a class="text-elm-blue hover:underline" href="https://learnxinyminutes.com/elm/">Learn Elm in Y Minutes</a>. Enough to read Elm code on Github.</dd>
+      </div>
+      <div>
+        <dt class="font-bold">"I learn by doing"</dt>
+        <dd class="text-gray-700">Open <a class="text-elm-blue hover:underline" href="https://github.com/robertjlooby/elm-koans">Elm Koans</a> and fix failing tests until they pass. Pairs well with the guide.</dd>
+      </div>
+    </dl>
+  </section>
+
+  <section class="space-y-8">
+    <h2 class="text-2xl font-bold border-b-2 border-elm-blue pb-2">The path</h2>
+    <p class="text-gray-700">Three stages, roughly. Each link gets a line on what it's for, so you can skip what you don't need.</p>
+
+    <div class="space-y-4">
+      <h3 class="text-lg font-bold">1. Getting started</h3>
+      <ul class="space-y-4">
+        <li>
+          <a class="text-elm-blue font-bold hover:underline" href="https://guide.elm-lang.org">The Official Guide</a>
+          <p class="text-gray-700">Where everyone should start. Short, well-paced, written by the guy who made the language. If you read one thing on this page, read this.</p>
+        </li>
+        <li>
+          <a class="text-elm-blue font-bold hover:underline" href="https://leanpub.com/elm-for-react-devs/">An Elm Primer for React Developers</a>
+          <span class="text-sm text-gray-500">paid</span>
+          <p class="text-gray-700">An excellent book, and the single most efficient way to get a React developer productive in Elm. Translates the stuff you already know instead of teaching it from zero, and quietly teaches you functional programming while it's at it.</p>
+        </li>
+        <li>
+          <a class="text-elm-blue font-bold hover:underline" href="https://elmprogramming.com">Beginning Elm</a>
+          <p class="text-gray-700">A slower, more hand-holding free book. Pick this one if the official guide moves too fast for you.</p>
+        </li>
+      </ul>
+    </div>
+
+    <div class="space-y-4">
+      <h3 class="text-lg font-bold">2. Core concepts</h3>
+      <ul class="space-y-4">
+        <li>
+          <a class="text-elm-blue font-bold hover:underline" href="https://guide.elm-lang.org/architecture/">The Elm Architecture</a>
+          <p class="text-gray-700">The single most important pattern in Elm. Model, update, view. Every Elm app you write sits on top of it, so don't skip it.</p>
+        </li>
+        <li>
+          <a class="text-elm-blue font-bold hover:underline" href="https://sporto.github.io/elm-patterns/">Elm Patterns</a>
+          <p class="text-gray-700">A catalogue of common, idiomatic solutions. Browse it once you've shipped something small and started wondering "how do people normally do this?".</p>
+        </li>
+        <li>
+          <a class="text-elm-blue font-bold hover:underline" href="https://cekrem.github.io">"Parse, Don't Validate" &amp; FP concepts</a>
+          <p class="text-gray-700">My blog posts on the deeper stuff: why Elm's types push you toward better designs almost by accident.</p>
+        </li>
+        <li>
+          <a class="text-elm-blue font-bold hover:underline" href="https://elm.enso.no">Ensō Elm Playground</a>
+          <p class="text-gray-700">An interactive playground that teaches Elm by following the compiler. Hands-on, and yes, built by us at Enso (where I work).</p>
+        </li>
+      </ul>
+    </div>
+
+    <div class="space-y-4">
+      <h3 class="text-lg font-bold">3. Going deeper</h3>
+      <ul class="space-y-4">
+        <li>
+          <a class="text-elm-blue font-bold hover:underline" href="https://www.manning.com/books/elm-in-action">Elm in Action</a>
+          <span class="text-sm text-gray-500">paid</span>
+          <p class="text-gray-700">Richard Feldman's Manning book. Builds a real app end to end. The most thorough treatment of Elm at scale I know of.</p>
+        </li>
+        <li>
+          <a class="text-elm-blue font-bold hover:underline" href="https://github.com/elm-explorations/test">elm-test</a>
+          <p class="text-gray-700">Testing in Elm. Pretty painless once the architecture has clicked. (You'll write fewer tests than you're used to. The compiler covers a lot.)</p>
+        </li>
+        <li>
+          <a class="text-elm-blue font-bold hover:underline" href="https://elm-review.com">elm-review</a>
+          <p class="text-gray-700">Custom static analysis. Don't bother on day one; reach for it once your codebase is big enough that conventions start drifting.</p>
+        </li>
+        <li>
+          <a class="text-elm-blue font-bold hover:underline" href="https://github.com/mdgriffith/elm-ui">elm-ui</a>
+          <p class="text-gray-700">Layout as Elm types instead of CSS. Very opinionated. Try it once you're comfortable in the language.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="space-y-6">
+    <h2 class="text-2xl font-bold border-b-2 border-elm-green pb-2">Essays worth your time</h2>
+    <ul class="space-y-4">
+      <li>
+        <a class="text-elm-blue font-bold hover:underline" href="https://cekrem.github.io/posts/why-i-hope-i-get-to-write-a-lot-of-elm-code-in-2025/">Why I Hope I Get to Write a Lot of Elm Code in 2025</a>
+        <p class="text-gray-700">My case for picking Elm right now (no runtime errors, every state handled) written from inside a real production codebase.</p>
+      </li>
+      <li>
+        <a class="text-elm-blue font-bold hover:underline" href="https://cekrem.github.io/posts/making-impossible-states-impossible-with-functional-dependency-injection/">Making Impossible States Impossible</a>
+        <p class="text-gray-700">How to model a domain so the compiler rejects nonsense states outright. The kind of idea you can't unsee once you've seen it.</p>
+      </li>
+      <li>
+        <a class="text-elm-blue font-bold hover:underline" href="https://elmcraft.org/lore/elm-core-development/">Elm Core Development</a>
+        <p class="text-gray-700">Why Elm hasn't shipped a release in a while, and why that's a deliberate choice rather than neglect. Read this before falling down the "is Elm dead?" rabbit hole.</p>
+      </li>
+      <li>
+        <a class="text-elm-blue font-bold hover:underline" href="https://jfmengels.net/single-out-elements-using-phantom-types/">Single Out Elements Using Phantom Types</a>
+        <p class="text-gray-700">Phantom types sound scary until someone shows you a friendly example. Jeroen does exactly that. (Written by the author of elm-review, so he's done this once or twice.)</p>
+      </li>
+    </ul>
+  </section>
+
+  <section class="space-y-4">
+    <h2 class="text-2xl font-bold border-b-2 border-elm-green pb-2">Going further</h2>
+    <p class="text-gray-700">Frameworks built on (or around) Elm. Reach for one of these when you've outgrown a single-page app.</p>
+    <ul class="space-y-4">
+      <li>
+        <a class="text-elm-blue font-bold hover:underline" href="https://lamdera.com">Lamdera</a>
+        <p class="text-gray-700">Fullstack Elm — and it's <em>amazing</em>. One codebase gives you a typed client, a typed server, and a typed wire protocol between them. Migrations are checked by the compiler, deployments are one command, and the whole thing feels like cheating. If you've ever wanted the Elm guarantees to extend across the network boundary, this is it.</p>
+      </li>
+      <li>
+        <a class="text-elm-blue font-bold hover:underline" href="https://elm-pages.com">elm-pages</a>
+        <p class="text-gray-700">Static site generator with first-class data sources. Great for content-heavy sites where you want Elm's guarantees at build time, not just at runtime.</p>
+      </li>
+      <li>
+        <a class="text-elm-blue font-bold hover:underline" href="https://elm.land">elm-land</a>
+        <p class="text-gray-700">A batteries-included framework on top of Elm. File-based routing, layouts, auth scaffolding. The fastest way to go from <code>npx</code> to a multi-page app.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section class="space-y-4">
+    <h2 class="text-2xl font-bold border-b-2 border-elm-navy pb-2">Notable forks</h2>
+    <p class="text-gray-700">Elm is conservative by design. These projects fork the compiler when they want to move faster or in a different direction.</p>
+    <ul class="space-y-4">
+      <li>
+        <a class="text-elm-blue font-bold hover:underline" href="https://gren-lang.org">Gren</a>
+        <p class="text-gray-700">A friendlier-named, more actively evolving Elm-flavoured language. Strips a few sharp edges, adds some features, runs on Node as well as the browser.</p>
+      </li>
+      <li>
+        <a class="text-elm-blue font-bold hover:underline" href="https://guida-lang.org">Guida</a>
+        <p class="text-gray-700">A community fork that keeps the Elm language as-is but moves the compiler forward — bug fixes, performance work, and modern tooling.</p>
+      </li>
+      <li>
+        <a class="text-elm-blue font-bold hover:underline" href="https://lamdera.com">Lamdera</a>
+        <p class="text-gray-700">Technically also a fork (it extends the compiler with wire codecs and migration checks), but it's the only one that ships a hosted runtime to go with it.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section class="space-y-4">
+    <h2 class="text-2xl font-bold border-b-2 border-elm-orange pb-2">Where to ask</h2>
+    <p class="text-gray-700">Small and genuinely patient community. Beginner questions are fine.</p>
+    <ul class="space-y-2 text-gray-700">
+      <li><a class="text-elm-blue font-bold hover:underline" href="https://discourse.elm-lang.org">Elm Discourse</a> — the main forum</li>
+      <li><a class="text-elm-blue font-bold hover:underline" href="https://elm-lang.org/community/slack">Elm Slack</a> — real-time help</li>
+      <li><a class="text-elm-blue font-bold hover:underline" href="https://www.reddit.com/r/elm/">r/elm</a> — news &amp; show-and-tell</li>
+    </ul>
+    <p class="text-gray-700 pt-4">
+      Want the whole pile? This page is short on purpose. For the full catalogue, head over to <a class="text-elm-blue hover:underline" href="https://github.com/sporto/awesome-elm">awesome-elm</a>.
+    </p>
+  </section>
+
+  <footer class="pt-8 border-t border-gray-200 text-sm text-gray-500 flex flex-wrap gap-x-6 gap-y-2">
+    <span>By <a class="text-elm-blue hover:underline" href="https://cekrem.github.io">Christian Ekrem</a></span>
+    <span><a class="text-elm-blue hover:underline" href="mailto:christianekrem+learnelm@gmail.com">Suggest a resource</a></span>
+    <span class="font-mono">Updated May 2026</span>
+  </footer>
+
+</div>
+
+</body>
+</html>

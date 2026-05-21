@@ -252,3 +252,9 @@
     }
   }
 }
+
+@media only screen and (max-width: 600px) {
+  div.f1-default-trigger {
+    display: none !important;
+  }
+}

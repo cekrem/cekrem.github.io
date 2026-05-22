@@ -6,8 +6,17 @@
     <description>Recent content on cekrem.github.io</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 19 May 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 22 May 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://cekrem.github.io/index.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>I made learnelm.dev</title>
+      <link>https://cekrem.github.io/posts/i-made-learnelm-dev/</link>
+      <pubDate>Fri, 22 May 2026 00:00:00 +0000</pubDate>
+      <guid>https://cekrem.github.io/posts/i-made-learnelm-dev/</guid>
+      <description><![CDATA[<p>Quick Friday post, mostly to give you this: <a href="https://learnelm.dev" class="external-link" target="_blank" rel="noopener">learnelm.dev</a>.</p>
+<p>It&rsquo;s a curated link directory. Nothing fancy. Just the stuff I&rsquo;d actually send a friend if they asked me where to start with Elm &ndash; the official guide, the blog posts I keep linking to, talks that are worth an hour of your time, the playgrounds, the books.</p>
+<p>If something&rsquo;s missing &ndash; and something is <em>definitely</em> missing, as I haven&rsquo;t spent a lot of time on this &ndash; PRs are more than welcome. I&rsquo;d much rather have your favorite Elm resource on there than not.</p>]]></description>
+    </item>
     <item>
       <title>The Tacit Dimension: Why Your Best Engineers Can't Tell You What They Know</title>
       <link>https://cekrem.github.io/posts/the-tacit-dimension/</link>

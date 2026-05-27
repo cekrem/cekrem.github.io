@@ -29,6 +29,10 @@ body {
   }
 }
 
+.content header {
+  margin-top: 3.2rem !important;
+}
+
 iframe[src*="disqus"] {
   color-scheme: light;
 }
@@ -298,18 +302,31 @@ figure {
 }
 
 .book-bar {
+  background: $bg-color;
   display: inline-block;
   padding-right: 1rem;
+  padding-top: 1rem;
   line-height: 1;
   backdrop-filter: blur(2px);
-  background: $bg-color;
-  border-radius: 0 0 1rem 0;
+  border-radius: 0.1rem 0.1rem 1rem 0.1rem;
   position: sticky !important;
-  top: 0rem;
+  top: 0;
   border-bottom: thick solid rgb(130, 215, 247);
   margin-bottom: 2rem;
   z-index: 999;
   a {
     color: rgb(130, 215, 247);
+  }
+}
+
+body.colorscheme-dark {
+  .book-bar {
+    background: $bg-color-dark;
+  }
+}
+
+body.colorscheme-auto {
+  @media (prefers-color-scheme: dark) {
+    background: $bg-color-dark;
   }
 }

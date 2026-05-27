@@ -296,3 +296,20 @@ figure {
 .fas {
   font-weight: 900;
 }
+
+.book-bar {
+  display: inline-block;
+  padding-right: 1rem;
+  line-height: 1;
+  backdrop-filter: blur(2px);
+  background: $bg-color;
+  border-radius: 0 0 1rem 0;
+  position: sticky !important;
+  top: 0rem;
+  border-bottom: thick solid rgb(130, 215, 247);
+  margin-bottom: 2rem;
+  z-index: 999;
+  a {
+    color: rgb(130, 215, 247);
+  }
+}

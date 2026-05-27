@@ -7138,8 +7138,6 @@ var $author$project$Main$update = F2(
 				_List_fromArray(
 					[routeCmd, searchCmd])));
 	});
-var $elm$html$Html$a = _VirtualDom_node('a');
-var $elm$html$Html$h5 = _VirtualDom_node('h5');
 var $elm$json$Json$Encode$string = _Json_wrap;
 var $elm$html$Html$Attributes$stringProperty = F2(
 	function (key, string) {
@@ -7148,66 +7146,12 @@ var $elm$html$Html$Attributes$stringProperty = F2(
 			key,
 			$elm$json$Json$Encode$string(string));
 	});
-var $elm$html$Html$Attributes$href = function (url) {
-	return A2(
-		$elm$html$Html$Attributes$stringProperty,
-		'href',
-		_VirtualDom_noJavaScriptUri(url));
-};
-var $elm$html$Html$img = _VirtualDom_node('img');
-var $elm$html$Html$Attributes$src = function (url) {
-	return A2(
-		$elm$html$Html$Attributes$stringProperty,
-		'src',
-		_VirtualDom_noJavaScriptOrHtmlUri(url));
-};
-var $elm$virtual_dom$VirtualDom$style = _VirtualDom_style;
-var $elm$html$Html$Attributes$style = $elm$virtual_dom$VirtualDom$style;
-var $elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
-var $elm$html$Html$text = $elm$virtual_dom$VirtualDom$text;
-var $elm$html$Html$Attributes$width = function (n) {
-	return A2(
-		_VirtualDom_attribute,
-		'width',
-		$elm$core$String$fromInt(n));
-};
-var $author$project$Main$bookEntry = A2(
-	$elm$html$Html$a,
-	_List_fromArray(
-		[
-			$elm$html$Html$Attributes$href('https://leanpub.com/elm-for-react-devs'),
-			A2($elm$html$Html$Attributes$style, 'text-align', 'center'),
-			A2($elm$html$Html$Attributes$style, 'display', 'block'),
-			A2($elm$html$Html$Attributes$style, 'width', '20rem'),
-			A2($elm$html$Html$Attributes$style, 'margin', '2rem auto'),
-			A2($elm$html$Html$Attributes$style, 'padding', '1rem')
-		]),
-	_List_fromArray(
-		[
-			A2(
-			$elm$html$Html$h5,
-			_List_fromArray(
-				[
-					A2($elm$html$Html$Attributes$style, 'margin', '1rem')
-				]),
-			_List_fromArray(
-				[
-					$elm$html$Html$text('eBook early access:')
-				])),
-			A2(
-			$elm$html$Html$img,
-			_List_fromArray(
-				[
-					$elm$html$Html$Attributes$src('/images/book.png'),
-					$elm$html$Html$Attributes$width(180),
-					A2($elm$html$Html$Attributes$style, 'margin', 'auto')
-				]),
-			_List_Nil)
-		]));
 var $elm$html$Html$Attributes$class = $elm$html$Html$Attributes$stringProperty('className');
 var $elm$html$Html$div = _VirtualDom_node('div');
 var $elm$virtual_dom$VirtualDom$map = _VirtualDom_map;
 var $elm$html$Html$map = $elm$virtual_dom$VirtualDom$map;
+var $elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
+var $elm$html$Html$text = $elm$virtual_dom$VirtualDom$text;
 var $author$project$Search$ChangeTerm = function (a) {
 	return {$: 0, a: a};
 };
@@ -7272,6 +7216,8 @@ var $elm$virtual_dom$VirtualDom$lazy3 = _VirtualDom_lazy3;
 var $elm$html$Html$Lazy$lazy3 = $elm$virtual_dom$VirtualDom$lazy3;
 var $elm$core$Basics$neq = _Utils_notEqual;
 var $cekrem$html_helpers$HtmlHelpers$nothing = $elm$html$Html$text('');
+var $elm$virtual_dom$VirtualDom$style = _VirtualDom_style;
+var $elm$html$Html$Attributes$style = $elm$virtual_dom$VirtualDom$style;
 var $author$project$Search$entryStyle = _List_fromArray(
 	[
 		A2($elm$html$Html$Attributes$style, 'overflow', 'hidden'),
@@ -7296,6 +7242,13 @@ var $author$project$Search$orEmptyEntry = function (list) {
 		var nonEmpty = list;
 		return nonEmpty;
 	}
+};
+var $elm$html$Html$a = _VirtualDom_node('a');
+var $elm$html$Html$Attributes$href = function (url) {
+	return A2(
+		$elm$html$Html$Attributes$stringProperty,
+		'href',
+		_VirtualDom_noJavaScriptUri(url));
 };
 var $elm$html$Html$Attributes$tabindex = function (n) {
 	return A2(
@@ -7695,6 +7648,7 @@ var $author$project$Testimonials$flexRow = function (content) {
 			]),
 		content);
 };
+var $elm$html$Html$img = _VirtualDom_node('img');
 var $elm$html$Html$p = _VirtualDom_node('p');
 var $author$project$Testimonials$paragraph = function (text) {
 	return A2(
@@ -7708,6 +7662,12 @@ var $author$project$Testimonials$paragraph = function (text) {
 			[
 				$elm$html$Html$text(text)
 			]));
+};
+var $elm$html$Html$Attributes$src = function (url) {
+	return A2(
+		$elm$html$Html$Attributes$stringProperty,
+		'src',
+		_VirtualDom_noJavaScriptOrHtmlUri(url));
 };
 var $elm$html$Html$span = _VirtualDom_node('span');
 var $author$project$Testimonials$stars = A2(
@@ -7857,8 +7817,7 @@ var $author$project$Main$view = function (model) {
 				A2(
 				$elm$html$Html$map,
 				$author$project$Main$SearchMsg,
-				$author$project$Search$view(model.x)),
-				$author$project$Main$bookEntry
+				$author$project$Search$view(model.x))
 			]));
 };
 var $author$project$Main$main = $elm$browser$Browser$element(

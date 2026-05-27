@@ -1,4 +1,4 @@
-module Testimonials exposing (Model, Msg, bookEntry, init, showForPath, update, view)
+module Testimonials exposing (Model, Msg, init, showForPath, update, view)
 
 import Html exposing (Html)
 import Html.Attributes as Attributes
@@ -288,28 +288,6 @@ subtitle text =
         , Attributes.style "opacity" "0.8"
         ]
         [ Html.text (text |> String.replace "@ " "@\n") ]
-
-
-bookEntry : Bool -> Html msg
-bookEntry visible =
-    Html.a
-        (Attributes.href "https://leanpub.com/elm-for-react-devs"
-            :: Attributes.style "text-align" "center"
-            :: carouselStyles visible
-        )
-        [ title "Early access:"
-        , Html.img
-            [ Attributes.src "/images/book.png"
-            , Attributes.width 200
-            , Attributes.style "margin" "auto"
-            ]
-            []
-        , Html.span
-            []
-            [ Html.hr [] []
-            , title "eBook available now!"
-            ]
-        ]
 
 
 

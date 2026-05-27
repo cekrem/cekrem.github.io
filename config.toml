@@ -151,6 +151,11 @@ url = "https://enso.no"
 #url = "hire/"
 #
 [[menu.main]]
+name = "learnelm.dev"
+weight = 1
+url = "https://learnelm.dev"
+
+[[menu.main]]
 name = "Jesus!?"
 weight = 2
 url = "/posts/how-i-met-jesus/"

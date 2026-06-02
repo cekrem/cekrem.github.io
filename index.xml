@@ -6,8 +6,15 @@
     <description>Recent content on cekrem.github.io</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 30 May 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 02 Jun 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://cekrem.github.io/index.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>codimg: the code block is the URL</title>
+      <link>https://cekrem.github.io/posts/codimg/</link>
+      <pubDate>Tue, 02 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>https://cekrem.github.io/posts/codimg/</guid>
+      <description><![CDATA[<p>Leaving my <em>general</em> dislike for Webflow aside for now, let&rsquo;s at least agree on one specific thing: it is terrible at code. We have <a href="https://markdown.enso.no" class="external-link" target="_blank" rel="noopener">markdown.enso.no</a> for the actual writing &ndash; you draft in markdown, it gives you something you can paste straight into Webflow&rsquo;s WYSIWYG editor &ndash; and that pipeline is fine, right up until there&rsquo;s a code block in it. Then it falls apart. Smart quotes where you typed straight ones, your indentation quietly flattened, the whole thing landing in the body font like it&rsquo;s a line from a brochure. There are workarounds (an embed block, or an iframe if you really hate yourself), and not one of them is nice.</p>]]></description>
+    </item>
     <item>
       <title>Hejlsberg: 'Who's Going to Make the AI?'</title>
       <link>https://cekrem.github.io/posts/hejlsberg-on-ai/</link>

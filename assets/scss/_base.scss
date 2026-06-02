@@ -313,10 +313,14 @@ figure {
   top: 0;
   border-bottom: thick solid rgb(130, 215, 247);
   margin-bottom: 2rem;
-  z-index: 999;
+  z-index: 4;
   a {
     color: rgb(130, 215, 247);
   }
+}
+
+.navigation-list {
+  z-index: 999;
 }
 
 body.colorscheme-dark {

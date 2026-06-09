@@ -187,8 +187,10 @@ So where does that leave it? The developer experience is already good today. The
 
 None of that is what I find exciting, though. The exciting part is older than this beta. Elm forbade arbitrary JavaScript and routed every effect through the runtime, and for years some people treated that as an annoying limitation to work around. Turns out it was a bet. Because the language never let you reach past the runtime, the _same source_ can retarget from "JavaScript in a browser" to "bytecode hitting libcurl" without touching a line. And if you spent those years cleverly bypassing Elm's no-JavaScript rule to sneak in native code, congratulations: you've quietly locked yourself _out_ of native Elm. The thing that used to feel like a straitjacket is the only reason any of this compiles.
 
-I built a working HTTP client in about 30 lines of the most ordinary Elm imaginable, and it ran as a native binary with no JavaScript in sight. My Node experiment was a clever workaround that needed JavaScript to exist at all. This needed nothing. Different beast, better beast.
+I built a working HTTP client in about 80 lines of the most ordinary Elm imaginable, and it ran as a native binary with no JavaScript in sight. My Node experiment was a clever workaround that needed JavaScript to exist at all. This needed nothing. Different beast, better beast.
 
 Hopefully my next project with `elm-run` will be a REST API of some sort; perhaps I can even replace some small existing app with it already?
 
 If you want learn more, check out [elm-run.dev](https://elm-run.dev), or sign up @ [elm-run.dev/beta](https://elm-run.dev/beta).
+
+[Here's the full code for my fetch PoC, btw.](https://gist.githubusercontent.com/cekrem/5742233e1be337c55c86024b98d3045f/raw/8b41245dca24d5c75de1961b828b58b94d04945c/Fetch.elm)

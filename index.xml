@@ -13,7 +13,7 @@
       <link>https://cekrem.github.io/posts/explaining-functional-programming-to-non-programmers/</link>
       <pubDate>Mon, 15 Jun 2026 00:00:00 +0000</pubDate>
       <guid>https://cekrem.github.io/posts/explaining-functional-programming-to-non-programmers/</guid>
-      <description><![CDATA[<p>A few weeks ago someone at work asked me what I actually do. Not my job title — they had that — but what <em>functional programming</em> is. I started in on the usual mumble about pure functions and immutability, watched their eyes begin the slow slide toward the exit, and then they rescued both of us with a guess:</p>
+      <description><![CDATA[<p>A few days ago someone at work asked me what I actually do. Not my job title — they had that — but what <em>functional programming</em> is. I started in on the usual mumble about pure functions and immutability, watched their eyes begin the slow slide toward the exit, and then they rescued both of us with a guess:</p>
 <p>&ldquo;Functional programming&hellip; does that mean you write the code yourself, instead of having Claude do it? Is that the thing?&rdquo;</p>]]></description>
     </item>
     <item>

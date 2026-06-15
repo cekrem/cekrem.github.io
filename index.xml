@@ -6,8 +6,16 @@
     <description>Recent content on cekrem.github.io</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 08 Jun 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 15 Jun 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://cekrem.github.io/index.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Explaining Functional Programming to Non-Programmers (It's Just Excel)</title>
+      <link>https://cekrem.github.io/posts/explaining-functional-programming-to-non-programmers/</link>
+      <pubDate>Mon, 15 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>https://cekrem.github.io/posts/explaining-functional-programming-to-non-programmers/</guid>
+      <description><![CDATA[<p>A few weeks ago someone at work asked me what I actually do. Not my job title — they had that — but what <em>functional programming</em> is. I started in on the usual mumble about pure functions and immutability, watched their eyes begin the slow slide toward the exit, and then they rescued both of us with a guess:</p>
+<p>&ldquo;Functional programming&hellip; does that mean you write the code yourself, instead of having Claude do it? Is that the thing?&rdquo;</p>]]></description>
+    </item>
     <item>
       <title>Native Elm (the real kind this time)</title>
       <link>https://cekrem.github.io/posts/native-elm/</link>

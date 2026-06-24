@@ -6,8 +6,15 @@
     <description>Recent content on cekrem.github.io</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 15 Jun 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 24 Jun 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://cekrem.github.io/index.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>A batch job, in The Elm Architecture</title>
+      <link>https://cekrem.github.io/posts/elm-run-batch-job/</link>
+      <pubDate>Wed, 24 Jun 2026 00:00:00 +0000</pubDate>
+      <guid>https://cekrem.github.io/posts/elm-run-batch-job/</guid>
+      <description><![CDATA[<p>At the end of my <a href="https://cekrem.github.io/posts/native-elm/" >native Elm post</a> I said I hoped my next <code>elm-run</code> project would be a REST API, or maybe replacing some small existing app. I lied a little. I went the other direction and grabbed something much bigger: a real batch job, inside a real (and fairly large) application I&rsquo;m actually building. The fetch PoC was 80 lines of the most ordinary Elm imaginable. This one isn&rsquo;t a toy, and that&rsquo;s the whole point &ndash; Damir (who&rsquo;s building elm-run) needs someone leaning on it at scale and reporting back what creaks, so that&rsquo;s what I&rsquo;ve been doing.</p>]]></description>
+    </item>
     <item>
       <title>Explaining Functional Programming to Non-Programmers (It's Just Excel)</title>
       <link>https://cekrem.github.io/posts/explaining-functional-programming-to-non-programmers/</link>

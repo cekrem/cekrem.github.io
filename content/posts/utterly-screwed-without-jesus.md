@@ -25,3 +25,5 @@ To hell with all that.
 I'm with Jesus. Adding to my friend's list of who I really am, I am also bought and paid for by His blood, born again as a new creation in his likeness, called and chosen by His grace before the foundation of the world was even laid. In other words: **Not ordinary**, not in any sense of the word, nor meant to blend in in any way. That's part of why being a consultant is good for me, actually. It's easier to be myself when people don't know me as that other guy, the one I was a while back. Being disruptive for the sake of it is also good for me. Like writing a blog post about Jesus on an otherwise very tech-centered blog. I don't know, but I'll do what it takes.
 
 "Kote" is not for me.
+
+<a href="https://open.spotify.com/track/5gd4569hZ70pnBixYcXObe?si=7b49aa8cb55646f1"><i class="fa fa-spotify"></i></a>

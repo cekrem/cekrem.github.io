@@ -8,7 +8,7 @@ draft = false
 
 At the end of my [native Elm post](/posts/native-elm/) I said I hoped my next `elm-run` project would be a REST API, or maybe replacing some small existing app. I lied a little. I went the other direction and grabbed something much bigger: a real batch job, inside a real (and fairly large) application I'm actually building. The fetch PoC was 80 lines of the most ordinary Elm imaginable. This one isn't a toy, and that's the whole point -- Damir (who's building elm-run) needs someone leaning on it at scale and reporting back what creaks, so that's what I've been doing.
 
-Quick confession before anything else: the batch isn't fast yet. It works, it's correct, the types are lovely, but "production-grade throughput" it is not (but closer than one might think!). I'll get there (or elm-run will, rather). What I want to talk about isn't the speed. It's the _shape_.
+Quick confession before anything else: This batch _works_, it's correct, the types are lovely, but "production-grade throughput" it is not (but closer than one might think!). I'll get there (or elm-run will, rather). What I want to talk about isn't the speed. It's the _shape_.
 
 ## I've done the CLI thing before
 

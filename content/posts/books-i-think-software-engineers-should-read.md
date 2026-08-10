@@ -23,6 +23,7 @@ Disclaimer: I have not read all of these from cover to cover. I've read most, bu
 ## Elm
 
 - [Elm in Action](https://amzn.to/4kBLTxA) – This is The Book™ on Elm, by Richard Feldman (author of [the Roc Programming language](https://www.roc-lang.org)). It's simply great. The last few chapters are a tiny bit overwhelming if you're new to Elm, but thankfully [Elm Land](https://elm.land) solves much of that stuff for you.
+- [An Elm Primer for React Developers](https://amzn.to/4q8xAVi) – Full disclosure: this one's mine, so the "people I trust" disclaimer above stretches a bit thin here. It's a practical guide for React developers who want to learn real functional programming without the Haskell detour. Available in print on [Amazon](https://amzn.to/4q8xAVi) and as an ebook on [Leanpub](https://leanpub.com/elm-for-react-devs). I can't exactly review my own book, but I can at least vouch for the author's intentions.
 - [The Elm Community](https://elm-lang.org/community) –Not a book at all, I know, but since this is my all time favorite programming community I can't help but mention it anyways. The Slack, the Discourse, Subreddit – it's all great.
 
 ## Golang

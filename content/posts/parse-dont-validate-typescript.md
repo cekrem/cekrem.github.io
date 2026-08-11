@@ -10,7 +10,7 @@ draft = false
 
 I've been thinking about Alexis King's [Parse, don't validate](https://lexi-lambda.github.io/blog/2019/11/05/parse-don-t-validate/) again. I do this quite regularly, actually, usually after staring at a TypeScript codebase that's been quietly accumulating `if (user.email)` checks like barnacles. The post is from 2019, and the advice (or rather principle) is way older than that. And yet most TypeScript I read — including, embarrassingly, plenty I've written — still validates instead of parsing.
 
-The pitch, if you haven't read it (you should): a validator says "this thing is fine, please continue." A parser says "give me a blob, and I'll either give you back a more precise type or tell you why I can't." The difference sounds academic until you realize that validators throw away information the moment they finish running, while parsers _preserve_ what they learned by encoding it in the type. Once you've parsed a string into an `EmailAddress`, the rest of your program never has to wonder again. Peace of mind and more mental capacity for the fun stuff.
+The pitch, if you haven't read it (you should): a validator says "this thing is fine, please continue." A parser says "give me a blob, and I'll either give you back a more precise type or tell you why I can't." The difference sounds academic, but it isn't: validators throw away what they learned the moment they finish running, while parsers _preserve_ it by encoding it in the type. Once you've parsed a string into an `EmailAddress`, the rest of your program never has to wonder again. Peace of mind and more mental capacity for the fun stuff.
 
 In Haskell or Elm or F# this is just how you write code. The language pulls you toward it. In TypeScript... it doesn't. TypeScript will happily let you do the right thing, but it won't insist, and it won't even gently nudge. If anything, structural typing actively undermines the whole game.
 
@@ -45,7 +45,7 @@ function sendWelcome(user: User) {
 
 Spot the lie? `User.email` is just `string`. `User.age` is just `number`. The validation happened — congrats — but the type system forgot about it the instant `isValidUser` returned. Three function calls deeper, when somebody touches `user.email`, there is _nothing_ stopping them from passing it to a function that expects a real email. Because as far as TypeScript is concerned, it's just a string. Same as `""`, same as `"hello"`, same as `"definitely not an email"`.
 
-So what do we do? We re-validate. We add another `if`. We write a unit test. We hope. (King has a much better word for this in the original post: "shotgun parsing" — validation scattered everywhere, none of it remembered.)
+So what do we do? We validate again somewhere else, add another `if`, write a unit test, and hope for the best. (King has a much better word for this in the original post: "shotgun parsing" — validation scattered everywhere, none of it remembered.)
 
 ## What we actually want
 
@@ -57,7 +57,7 @@ function sendWelcome(user: ValidUser) {
 }
 ```
 
-And we want it to be _impossible_ to call `sendWelcome` with anything that hasn't been through the parser. No re-checking or "defensive programming". The type itself serves as the proof, as it were.
+And we want it to be _impossible_ to call `sendWelcome` with anything that hasn't been through the parser. No re-checking or "defensive programming"; a `ValidUser` can only have come from one place, and the compiler knows it.
 
 In Elm I'd reach for an opaque type and a smart constructor and be done in about four lines. In TypeScript it's, well, _possible_ at least. Just less pleasant.
 
@@ -75,9 +75,9 @@ type Email = string & { readonly [EmailBrand]: true };
 type Age = number & { readonly [AgeBrand]: true };
 ```
 
-There is no brand field at runtime. It's a "phantom" — a type-level marker that makes `Email` and `string` incompatible at compile time. The only way to get an `Email` is through a function that knows how, because nothing outside this module can even name the symbol to fake one. (TS5 also lets you flirt with template literal types — `` type Email = `${string}@${string}` `` — which is fun for a demo and not enough on its own.) This is the move that lets you make illegal states unrepresentable without leaving the language.
+There is no brand field at runtime. It's a "phantom" — a type-level marker that makes `Email` and `string` incompatible at compile time. The only way to get an `Email` is through a function that knows how, because nothing outside this module can even name the symbol to fake one. (TS5 also lets you flirt with template literal types — `` type Email = `${string}@${string}` `` — which is fun for a demo and not enough on its own.) That's what lets you make illegal states unrepresentable without leaving the language.
 
-The brand is one-way, by the way: an `Email` is still assignable to `string`. Nominal _into_ the domain, structural on the way out, which is pretty much exactly what you want.
+The brand is one-way, by the way: an `Email` is still assignable to `string`, so you get nominal checking on the way into the domain and ordinary structural behavior on the way out. Which is pretty much exactly what you want.
 
 That function is your parser:
 
@@ -106,9 +106,9 @@ function parseAge(raw: unknown): Parsed<Age> {
 }
 ```
 
-(The `parseEmail` predicate is embarrassingly thin — a real one would trim, lowercase, and at least pretend to validate the domain part. I'm not, however, writing an email parser in a blog post(!).) The `as Email` hurts a little, and it should. It's the one place where we're allowed to break the rules — the parser is the trusted boundary. Everywhere else in the codebase, you cannot conjure an `Email` out of a `string`. You have to call `parseEmail` and handle both branches. (I'm using `kind: "ok" | "err"` instead of a boolean discriminant on purpose. Booleans look tidy until somebody adds a third case and exhaustiveness silently doesn't kick in. Strings narrow honestly.)
+(The `parseEmail` predicate is embarrassingly thin — a real one would trim, lowercase, and at least pretend to validate the domain part. I'm not, however, writing an email parser in a blog post(!).) The `as Email` hurts a little, and it should. It's the one place where we're allowed to break the rules — the parser is the trusted boundary. Everywhere else in the codebase, you cannot conjure an `Email` out of a `string`. You have to call `parseEmail` and handle both branches. (I'm using `kind: "ok" | "err"` instead of a `success: boolean` discriminant on purpose. A boolean can only ever hold two cases, so the day you need a third one — `"partial"`, say — you're remodeling every consumer. A string discriminant just grows another case, and the exhaustiveness check further down will point at every switch you forgot to update.)
 
-Compare this to the throw-and-pray validator we started with: its failure mode is an exception, which is invisible to the type system. The parser's signature tells you everything that can happen. There is no third option hiding in the call stack.
+Compare this to the throw-and-pray validator we started with: its failure mode is an exception, which is invisible to the type system. The parser's signature tells you everything that can happen; nothing extra is hiding in the call stack.
 
 Now the domain type. I want to name two things that usually get conflated: the raw blob that came off the wire, and the thing I've earned the right to trust.
 
@@ -171,11 +171,11 @@ function parseUser(raw: unknown): Parsed<ValidUser> {
 }
 ```
 
-Naming `UnvalidatedUser` separately from `ValidUser` is a small DDD move that pays for itself: stuff goes in raw, stuff comes out trusted, and the boundary is a function. `id` is also branded — every primitive in your domain is a missed conversation, and a `UserId` that can't be passed where an `OrderId` is expected is one of the cheapest wins in the whole technique. (No more `as Record<string, unknown>` either; if I'm writing a post about not lying to the type system, I shouldn't lie to the type system.)
+Naming `UnvalidatedUser` separately from `ValidUser` is a small DDD move that pays for itself: stuff goes in raw, stuff comes out trusted, and the boundary is a function. `id` is also branded, because a `UserId` that can't be passed where an `OrderId` is expected is one of the cheapest wins in the whole technique. (No more `as Record<string, unknown>` either; if I'm writing a post about not lying to the type system, I shouldn't lie to the type system.)
 
 This is uglier than the F# or Elm equivalent, by far. I won't pretend otherwise. The early-return-on-error pattern is the closest thing TypeScript has to a `Result` monad without dragging in a library, and it gets repetitive. (You _can_ use [Effect](https://effect.website) or [neverthrow](https://github.com/supermacro/neverthrow) or fp-ts to clean this up, and for anything bigger than a toy I would. But I want to show what the language gives you out of the box, because the principle survives even when the syntax doesn't.)
 
-The payoff is that `sendWelcome(user: ValidUser)` is now genuinely safe. There is no path through your codebase that produces a `ValidUser` without going through `parseUser`. The type _is_ the proof. The validation didn't get thrown away.
+The payoff is that `sendWelcome(user: ValidUser)` is now genuinely safe. There is no path through your codebase that produces a `ValidUser` without going through `parseUser`. The type _is_ the proof: the validation didn't get thrown away.
 
 ## Where TypeScript fights you
 
@@ -226,15 +226,15 @@ const result = ValidUserSchema.safeParse(rawInput);
 
 `safeParse` returns `{ success: true, data }` or `{ success: false, error }` — same shape as what I built above, different field names. The `.brand()` call is purely type-level, exactly like the hand-rolled symbol trick; nothing happens at runtime. What you get is the parser and the type from one definition, which structurally enforces the parser/type co-location boundary I was asking you to enforce by hand a few sections ago. That alone is worth the dependency.
 
-But — and this is the part I keep coming back to — Zod doesn't change the _mindset problem_. It just makes the right thing easier. You still have to choose to use it at every boundary. You still have to resist the temptation to type-assert your way out of an error message. You still have to remember that a `User` from the network is not a `User` until something has parsed it. The library is a tool. The discipline is yours.
+But — and this is the part I keep coming back to — Zod doesn't change the _mindset problem_. It just makes the right thing easier. You still have to choose to use it at every boundary. You still have to resist the temptation to type-assert your way out of an error message. You still have to remember that a `User` from the network is not a `User` until something has parsed it. Zod makes that discipline a lot cheaper. It doesn't make it optional.
 
 (I mentioned this briefly in [Why TypeScript Won't Save You](/posts/why-typescript-wont-save-you/), and it's the same point: the language won't enforce the boundary, so you have to.)
 
 ## The smaller principle
 
-If I had to compress King's idea into a sentence I'd actually remember at 11pm before a release: _make the type system carry the proof, not your memory_. Every time you check something and don't encode the result in a type, you're asking your future self to remember. Future you will not remember. Future you is debugging a different bug, on three hours of sleep, and is going to assume the validation already happened because of course it did, look at all these `if` statements. Validators leak. Parsers don't.
+If I had to compress King's idea into a sentence I'd actually remember at 11pm before a release: _make the type system carry the proof, not your memory_. Every time you check something and don't encode the result in a type, you're asking your future self to remember. Future you will not remember. Future you is debugging a different bug, on three hours of sleep, and is going to assume the validation already happened because of course it did, look at all these `if` statements.
 
-In TypeScript this means leaning on three things the language _does_ give you, even if it gives them grudgingly: branded types for nominal-ish identity, discriminated unions for honest error handling, and a strict boundary between `unknown` (what came from outside) and your domain types (what you've earned the right to trust). None of it is as clean as Elm. All of it is better than the alternative.
+In TypeScript this means leaning on three things the language _does_ give you, even if it gives them grudgingly: branded types for nominal-ish identity, discriminated unions for honest error handling, and a strict boundary between `unknown` (what came from outside) and your domain types (what you've earned the right to trust). It's nowhere near as clean as Elm, but it beats the alternative by a good margin.
 
 I still write validators sometimes. I'm not going to pretend I refactor every codebase I touch into a parsing pipeline — that would be a lie, and also probably bad use of my time. But when I find myself adding the third defensive `if` in three different files, all checking the same thing, I know what's happened. I validated when I should have parsed. The information is there. It just isn't in the type.
 

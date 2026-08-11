@@ -6,8 +6,15 @@
     <description>Recent content on cekrem.github.io</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 23 Jul 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 11 Aug 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://cekrem.github.io/index.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>New Season Upgrades Vol 1: from Gmail to Protonmail (again)</title>
+      <link>https://cekrem.github.io/posts/new-season-upgrades-vol-1-leaving-gmail/</link>
+      <pubDate>Tue, 11 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>https://cekrem.github.io/posts/new-season-upgrades-vol-1-leaving-gmail/</guid>
+      <description><![CDATA[<p>What a time to be alive. Elm has had numerous &ldquo;native&rdquo; versions lately (<a href="https://github.com/eco-lang/eco-compiler" class="external-link" target="_blank" rel="noopener">Eco</a> and <a href="https://elm-run.dev" class="external-link" target="_blank" rel="noopener">elm-run</a>, the latter of which I&rsquo;ve <a href="https://cekrem.github.io/posts/native-elm/" >blogged</a> <a href="https://cekrem.github.io/posts/elm-run-batch-job/" >about</a> already), and I&rsquo;m happy to say I&rsquo;m testing the more &ldquo;official&rdquo; <a href="https://acadia.engineering/" class="external-link" target="_blank" rel="noopener">Acadia</a> alpha. And there&rsquo;s a <a href="https://discourse.elm-lang.org/t/elm-0-19-2-is-live/10841" class="external-link" target="_blank" rel="noopener">new Elm version</a>, with another one coming up shortly as well. All (mostly anyway) while I was either in the middle of MOVING from Askim to Skien, and/or on my glorious and long Lofoten vacation with my family.</p>]]></description>
+    </item>
     <item>
       <title>The Light Flip: tempted to give it another go</title>
       <link>https://cekrem.github.io/posts/the-light-flip/</link>

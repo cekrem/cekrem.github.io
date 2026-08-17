@@ -1,0 +1,18 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+{{ if .Site.Params.csp }}
+{{ partial "csp.html" . }}
+{{ end }}
+
+{{ with .Site.Params.author }}
+<meta name="author" content="{{ . }}">{{ end }}
+<meta name="description" content="{{ .Description | default (.Summary | default .Site.Params.description ) }}">
+<meta name="keywords" content="{{ (delimit .Keywords ", ") | default .Site.Params.keywords }}">
+{{ with .Params.fediverseCreator }}
+<meta name="fediverse:creator" content="{{ . }}" />
+{{ end }}
+
+{{ partial "twitter_cards.html" . }}
+{{ partial "opengraph.html" . }}

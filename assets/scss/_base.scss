@@ -334,3 +334,12 @@ body.colorscheme-auto {
     background: $bg-color-dark;
   }
 }
+
+// Clean up && simplify on smaller devices
+@media screen and (max-width: 768px) {
+  feedback-one,
+  search,
+  .book-bar {
+    display: none;
+  }
+}

@@ -6,8 +6,15 @@
     <description>Recent content on cekrem.github.io</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 17 Aug 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 21 Aug 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://cekrem.github.io/index.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Bun and Elm (: r)Are Friends</title>
+      <link>https://cekrem.github.io/posts/bun-and-elm-are-friends/</link>
+      <pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>https://cekrem.github.io/posts/bun-and-elm-are-friends/</guid>
+      <description><![CDATA[<p>I have an Elm app at work that needs exactly one thing from the JavaScript ecosystem: an npm package to piggyback on some A$ure auth thing. And for that one(!) package, I was running Vite with an Elm plugin and a growing pile of config to keep the two on speaking terms. Plus a backlog of <code>bun audit</code> warnings, courtesy of said auth thing&rsquo;s dependencies, and/or build tools just bringing their own garbage.</p>]]></description>
+    </item>
     <item>
       <title>My social preview images are Elm code now. Rendered by Go. Into an Svg 😵</title>
       <link>https://cekrem.github.io/posts/og-images-as-elm-code/</link>

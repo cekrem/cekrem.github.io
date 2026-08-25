@@ -1,7 +1,7 @@
 +++
 title = "An AI Attacked a Developer. Naturally, I Built My Own Bot. Because Terminator II!"
 description = "On rogue AI agents, open source gatekeeping, and writing a Bluesky bot in Elm."
-tags = ["elm", "ai", "elm-pages", "open source", "bluesky"]
+tags = ["elm", "ai", "elm-pages", "open source", "bluesky", "coding-as-craft"]
 date = 2026-02-27
 draft = false
 +++

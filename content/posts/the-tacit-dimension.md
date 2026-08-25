@@ -3,7 +3,7 @@ title = "The Tacit Dimension: Why Your Best Engineers Can't Tell You What They K
 description = "In 1966, Michael Polanyi explained why some knowledge resists being written down. Sixty years later, that's the knowledge AI cannot touch — and the knowledge your senior engineers carry in their bones."
 date = 2026-05-19
 author = "Christian Ekrem"
-tags = ["programming", "software-engineering", "theory", "llm", "ai", "craft", "polanyi", "tacit-knowledge", "programming-as-theory-building"]
+tags = ["programming", "software-engineering", "theory", "llm", "ai", "craft", "polanyi", "tacit-knowledge", "programming-as-theory-building", "coding-as-craft"]
 draft = false
 +++
 

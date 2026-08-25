@@ -3,7 +3,7 @@ title = "Architecture by Autocomplete"
 description = "AI defaults to primitives because primitives dominate its training data. The gap between that and theorized code is something you can grep for."
 date = 2026-05-04
 author = "Christian Ekrem"
-tags = ["programming", "software-engineering", "theory", "llm", "ai", "craft", "types", "programming-as-theory-building"]
+tags = ["programming", "software-engineering", "theory", "llm", "ai", "craft", "types", "programming-as-theory-building", "coding-as-craft"]
 draft = false
 +++
 

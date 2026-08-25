@@ -3,7 +3,7 @@ title = "LLMs Corrupt Your Documents (and the Theory Dies Twice)"
 description = "Microsoft Research put numbers on it. 25% degradation over 20 interactions. No plateau."
 date = 2026-04-24
 author = "Christian Ekrem"
-tags = ["ai", "craft", "llm", "programming", "delegation", "trust", "programming-as-theory-building"]
+tags = ["ai", "craft", "llm", "programming", "delegation", "trust", "programming-as-theory-building", "coding-as-craft"]
 draft = false
 +++
 

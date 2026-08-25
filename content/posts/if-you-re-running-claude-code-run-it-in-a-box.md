@@ -3,7 +3,7 @@ title = "If You're Running Claude Code, PLEASE Run It in a Box"
 description = "I occasionally use Claude Code for genuinely tedious tasks. I always run it sandboxed. Here's why and how."
 date = 2026-05-18
 author = "Christian Ekrem"
-tags = ["ai", "claude", "tools", "security", "workflow", "craft"]
+tags = ["ai", "claude", "tools", "security", "workflow", "craft", "coding-as-craft"]
 draft = false
 +++
 

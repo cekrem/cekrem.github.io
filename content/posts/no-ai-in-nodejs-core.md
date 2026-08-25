@@ -1,7 +1,7 @@
 +++
 title = "I Signed the 'No AI in Node.js Core' Petition"
 description = "19,000 lines of AI-generated code to Node.js core. No thanks."
-tags = ["open source", "ai", "node.js", "software craftsmanship"]
+tags = ["open source", "ai", "node.js", "software craftsmanship", "coding-as-craft"]
 date = 2026-04-10
 draft = false
 +++

@@ -3,7 +3,7 @@ draft = false
 date = 2025-11-10
 title = "I'm taking a three-week LLM fast!"
 description = "Getting my brain back well before Christmas 😌"
-tags = ["passion", "AI", "lifestyle", "craft"]
+tags = ["passion", "AI", "lifestyle", "craft", "coding-as-craft"]
 +++
 
 ## I'm not that addicted. Am I?

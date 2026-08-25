@@ -2,7 +2,7 @@
 title = "Claude Code: Game Changer or Just Hype?"
 date = "2025-06-10"
 description = "Examining the role of AI coding assistants in the craft of software development - are they revolutionary tools or just shiny distractions?"
-tags = ["ai", "coding", "craft", "tools", "claude"]
+tags = ["ai", "coding", "craft", "tools", "claude", "coding-as-craft"]
 +++
 
 Last week, I watched two very different developers encounter Claude Code for the first time. The contrast in their reactions perfectly captures the tension I've been feeling about AI coding assistants lately.

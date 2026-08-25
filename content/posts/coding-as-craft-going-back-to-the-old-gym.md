@@ -1,7 +1,7 @@
 +++
 title = "Coding as Craft: Going Back to the Old Gym"
 description = "Why 'reflexive AI usage' sounds like a diagnosis I don't want next to my name"
-tags = ["ai", "coding", "craft", "clean architecture", "career", "programming"]
+tags = ["ai", "coding", "craft", "clean architecture", "career", "programming", "coding-as-craft"]
 date = "2025-04-22"
 draft = false
 +++

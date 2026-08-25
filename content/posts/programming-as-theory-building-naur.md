@@ -3,7 +3,7 @@ title = "Programming as Theory Building: Why Senior Developers Are More Valuable
 description = "Peter Naur's 1985 theory of programming explains why experience matters more in the age of AI-generated code"
 date = 2025-06-26
 author = "Christian Ekrem"
-tags = ["programming", "software-engineering", "theory", "llm", "ai", "craft", "programming-as-theory-building"]
+tags = ["programming", "software-engineering", "theory", "llm", "ai", "craft", "programming-as-theory-building", "coding-as-craft"]
 draft = false
 +++
 

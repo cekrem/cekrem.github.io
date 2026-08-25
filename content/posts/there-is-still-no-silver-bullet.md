@@ -3,7 +3,7 @@ title = "There Is Still No Silver Bullet"
 description = "Fred Brooks predicted in 1986 that no single technology would ever make software development ten times faster. He even had a section on AI. Forty years later, his essay finally has a worthy opponent."
 date = 2026-08-13
 author = "Christian Ekrem"
-tags = ["programming", "software-engineering", "theory", "llm", "ai", "craft", "brooks", "programming-as-theory-building"]
+tags = ["programming", "software-engineering", "theory", "llm", "ai", "craft", "brooks", "programming-as-theory-building", "coding-as-craft"]
 draft = false
 +++
 

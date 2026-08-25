@@ -1,7 +1,7 @@
 +++
 title = "Hejlsberg: 'Who's Going to Make the AI?'"
 description = "The creator of C# and TypeScript (not to mention TurboPascal and Delphi!) on vibe coding, fundamentals, and what AI is never going to do."
-tags = ["ai", "llm", "coding", "craft", "typescript", "vibe-coding"]
+tags = ["ai", "llm", "coding", "craft", "typescript", "vibe-coding", "coding-as-craft"]
 date = 2026-05-30
 draft = false
 +++

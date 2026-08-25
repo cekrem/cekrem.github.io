@@ -1,7 +1,7 @@
 +++
 title = "Vivaldi 7.8: A Browser That Actually Trusts You"
 description = "Big Tech thinks you need an AI babysitter. Vivaldi disagrees."
-tags = ["ai", "browsers", "craft", "autonomy", "vivaldi"]
+tags = ["ai", "browsers", "craft", "autonomy", "vivaldi", "coding-as-craft"]
 date = "2026-02-02"
 draft = false
 +++

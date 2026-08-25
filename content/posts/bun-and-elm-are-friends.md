@@ -155,4 +155,4 @@ All in all: my config is _short_, _makes sense_, and is _WRITTEN_ and _EASILY RE
 
 I'll be darned, and call me Shirley: that's more than I could say about any build && bundle setup I've had before (involving JavaScript, that is).
 
-[^1]: The astute reader will notice that this link points to a prior commit, and not the `HEAD` of this repo. If you go to `master`, you'll probably see what my next post is about and why that's even easier and cleaner! Turns out I still code faster than I blog, which is mostly a good thing :)
+[^1]: The astute reader will notice that this link points to a prior commit, and not the `HEAD` of this repo. If you go to `master`, you'll probably see what [my next post](/posts/bun-plugin-elm/) is about and why that's even easier and cleaner! Turns out I still code faster than I blog, which is mostly a good thing :)

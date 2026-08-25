@@ -6,8 +6,23 @@
     <description>Recent content on cekrem.github.io</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 21 Aug 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 25 Aug 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://cekrem.github.io/index.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>import { Elm } from "./Main.elm" (Made by Hand, btw)</title>
+      <link>https://cekrem.github.io/posts/bun-plugin-elm/</link>
+      <pubDate>Tue, 25 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>https://cekrem.github.io/posts/bun-plugin-elm/</guid>
+      <description><![CDATA[<p>Last week I <a href="https://cekrem.github.io/posts/bun-and-elm-are-friends/" >replaced Vite and all its deps and stuff with two Bun scripts</a> and felt rather pleased with myself. The footnote at the bottom hinted at something even better, and here it is. Lo and behold, the scripts are now a reusable plugin! 🥳</p>
+<h2 id="a-bun-plugin-isnt-so-hard-really">
+ A bun plugin isn&rsquo;t so hard, really
+ <a class="heading-link" href="#a-bun-plugin-isnt-so-hard-really">
+ <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+ <span class="sr-only">Link to heading</span>
+ </a>
+</h2>
+<p>The main problem to solve is as follows: Bun has no idea what a <code>.elm</code> file is. So <code>build.js</code> (in my previous iteration, before the plugin) ran <code>elm make</code>, waited for it, and only then handed <code>index.html</code> to <code>Bun.build</code>. And <code>dev.js</code> (again, previous iteration) spawned <code>elm-watch hot</code> on the side and killed it again when its time had come. A perfect fit for that particular project, yes, but if we&rsquo;re being honest it&rsquo;s quite a bit more reusable than that. The Right™ solution would be a plugin!</p>]]></description>
+    </item>
     <item>
       <title>Bun and Elm (: r)Are Friends</title>
       <link>https://cekrem.github.io/posts/bun-and-elm-are-friends/</link>

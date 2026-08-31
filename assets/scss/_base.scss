@@ -38,14 +38,16 @@ iframe[src*="disqus"] {
 }
 
 a {
+  color: $fg-color;
   font-weight: 500;
-  color: $link-color;
   text-decoration: none;
-  transition: all 0.25s ease-in;
+  transition: all 0.1s ease-in;
 
   &:focus,
   &:hover {
-    text-decoration: underline;
+    color: $link-color;
+    text-decoration: none;
+    background-color: $fg-color;
   }
 }
 
@@ -58,6 +60,15 @@ p {
   word-wrap: break-word;
   @media only screen and (max-width: 768px) {
     margin: 1.5rem 0 1.5rem 0;
+  }
+
+  a {
+    color: $link-color;
+    background-color: $fg-color;
+    border-radius: 2px;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 
@@ -85,7 +96,6 @@ h6 {
   }
 
   .title-link {
-    color: inherit;
     font-weight: inherit;
     text-decoration: none;
   }
@@ -302,20 +312,31 @@ figure {
 }
 
 .book-bar {
-  background: $bg-color;
-  display: inline-block;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 0.5em;
+  text-align: center;
   padding-right: 1rem;
   padding-top: 1rem;
   line-height: 1;
   backdrop-filter: blur(2px);
-  border-radius: 0.1rem 0.1rem 1rem 0.1rem;
   position: sticky !important;
   top: 0;
-  border-bottom: thick solid rgb(130, 215, 247);
-  margin-bottom: 2rem;
+  border: thick solid $link-color;
   z-index: 4;
+  background: $bg-color;
+
+  img {
+    width: 6em;
+    height: auto;
+  }
+
+  p {
+    width: 100%;
+  }
   a {
-    color: rgb(130, 215, 247);
+    font-size: 1.5em;
   }
 }
 

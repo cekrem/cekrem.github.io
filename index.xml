@@ -6,8 +6,16 @@
     <description>Recent content on cekrem.github.io</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 25 Aug 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 09 Sep 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://cekrem.github.io/index.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>New Season Upgrades Vol 2: New Newsletter Platform!</title>
+      <link>https://cekrem.github.io/posts/new-season-upgrades-vol-2-new-newsletter-platform/</link>
+      <pubDate>Wed, 09 Sep 2026 00:00:00 +0000</pubDate>
+      <guid>https://cekrem.github.io/posts/new-season-upgrades-vol-2-new-newsletter-platform/</guid>
+      <description><![CDATA[<p>The migration season continues! In <a href="https://cekrem.github.io/posts/new-season-upgrades-vol-1-leaving-gmail/" >Volume 1</a> I finally moved my <em>incoming</em> mail from Gmail to Protonmail. Today it&rsquo;s the outgoing kind: the newsletter (that thing that pings you whenever I post here) is moving to <a href="https://buttondown.com" class="external-link" target="_blank" rel="noopener">Buttondown</a>.</p>
+<p>The old setup was follow.it, and to be fair, it did its job. Emails went out, people got them. But it never felt like something I&rsquo;d pick twice, and rather than listing my grievances I&rsquo;ll just show you the old subscribe form that lived at the bottom of this very page:</p>]]></description>
+    </item>
     <item>
       <title>`bun-plugin-elm`: import { Elm } from "./Main.elm" (Made by Hand, btw)</title>
       <link>https://cekrem.github.io/posts/bun-plugin-elm/</link>

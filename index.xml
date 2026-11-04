@@ -6,8 +6,24 @@
     <description>Recent content on cekrem.github.io</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 02 Nov 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 04 Nov 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://cekrem.github.io/index.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>New Season Upgrades Vol 4: Fish, Ghostty and Way Too Many Fonts</title>
+      <link>https://cekrem.github.io/posts/new-season-upgrades-vol-4-terminal-makeover/</link>
+      <pubDate>Wed, 04 Nov 2026 00:00:00 +0000</pubDate>
+      <guid>https://cekrem.github.io/posts/new-season-upgrades-vol-4-terminal-makeover/</guid>
+      <description><![CDATA[<p><a href="https://cekrem.github.io/posts/new-season-upgrades-vol-3-split-keyboard-adventures/" >Volume 3</a> left me typing at the speed of a concerned grandparent. Though I probably should leave it at that, I added even more changes :D The following upgrades are not too demanding on muscle memory, though, rather they remove some clutter that has been building up.</p>
+<p>TL;DR: I replaced my shell. And my terminal. And my font. (Fonts, actually, plural. We&rsquo;ll get to that. 😅)</p>
+<h2 id="zsh---fish-again">
+ zsh -&gt; fish (again)
+ <a class="heading-link" href="#zsh---fish-again">
+ <i class="fa-solid fa-link" aria-hidden="true" title="Link to heading"></i>
+ <span class="sr-only">Link to heading</span>
+ </a>
+</h2>
+<p>Like Protonmail in <a href="https://cekrem.github.io/posts/new-season-upgrades-vol-1-leaving-gmail/" >Volume 1</a>, this one&rsquo;s a homecoming. My dotfiles still had a <code>.config/fish</code> folder full of dusty functions from last time.</p>]]></description>
+    </item>
     <item>
       <title>Designsystemet, Now in Elm</title>
       <link>https://cekrem.github.io/posts/designsystemet-elm/</link>

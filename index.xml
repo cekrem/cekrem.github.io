@@ -6,8 +6,16 @@
     <description>Recent content on cekrem.github.io</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 04 Nov 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 06 Nov 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://cekrem.github.io/index.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Go 1.27: encoding/json/v2, Stricter Defaults, and Finally [] for Nil Slices</title>
+      <link>https://cekrem.github.io/posts/go-json-v2-finally-says-no/</link>
+      <pubDate>Fri, 06 Nov 2026 00:00:00 +0000</pubDate>
+      <guid>https://cekrem.github.io/posts/go-json-v2-finally-says-no/</guid>
+      <description><![CDATA[<p>The Go team <a href="https://go.dev/blog/jsonv2" class="external-link" target="_blank" rel="noopener">just shipped <code>encoding/json/v2</code></a> as stable in Go 1.27. It&rsquo;s been available behind <code>GOEXPERIMENT=jsonv2</code> since 1.25, and I&rsquo;ve been meaning to try it ever since (I never got around to it). So now I finally did.</p>
+<p>First of all: I have some mixed feelings about <code>encoding/json</code>. It works fine most of the time, but it also accepts quite a lot of stuff it shouldn&rsquo;t, without telling you. Coming from Elm, where a decoder fails the moment something doesn&rsquo;t match, v1 always felt a bit too forgiving for my taste. v2 is a lot stricter, and I like it!</p>]]></description>
+    </item>
     <item>
       <title>New Season Upgrades Vol 4: Fish, Ghostty and Way Too Many Fonts</title>
       <link>https://cekrem.github.io/posts/new-season-upgrades-vol-4-terminal-makeover/</link>

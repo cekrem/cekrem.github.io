@@ -97,6 +97,11 @@
           a:active {
             color: $fg-color;
           }
+
+          a:hover {
+            color: $link-color;
+            text-decoration: underline;
+          }
         }
       }
     }
@@ -104,6 +109,10 @@
       a {
         background: black;
         border-radius: 4px;
+        color: $link-color;
+        &:hover {
+          text-decoration: underline;
+        }
       }
     }
   }

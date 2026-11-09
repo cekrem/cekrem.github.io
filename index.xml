@@ -6,8 +6,16 @@
     <description>Recent content on cekrem.github.io</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 06 Nov 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 09 Nov 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://cekrem.github.io/index.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>C# 15: Union Types, Closed Hierarchies, and the One Value™ That Isn't Any of Them</title>
+      <link>https://cekrem.github.io/posts/csharp-15-union-types/</link>
+      <pubDate>Mon, 09 Nov 2026 00:00:00 +0000</pubDate>
+      <guid>https://cekrem.github.io/posts/csharp-15-union-types/</guid>
+      <description><![CDATA[<p>.NET 11 launches this week at <a href="https://dotnet.microsoft.com/en-us/conf" class="external-link" target="_blank" rel="noopener">.NET Conf</a>, and with it comes C# 15. The headline feature, at least for someone like me, is <a href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/union" class="external-link" target="_blank" rel="noopener">union types</a>. People have been asking for discriminated unions in C# for years, and now there&rsquo;s a <code>union</code> keyword in the language.</p>
+<p>A disclaimer before we start: <strong>C# is not my home turf.</strong> I write Elm on the frontend, I&rsquo;ve done a fair bit of Kotlin, and I <a href="https://cekrem.github.io/posts/why-i-hope-i-get-to-write-a-lot-of-fsharp-in-2026/" >hope to write a lot more F#</a>. So this is an outsider looking at a feature I care about, in a language I don&rsquo;t use daily. If I&rsquo;ve missed some well-known C# idiom below, I&rsquo;d genuinely like to hear about it.</p>]]></description>
+    </item>
     <item>
       <title>Go 1.27: encoding/json/v2, Stricter Defaults, and Finally [] for Nil Slices</title>
       <link>https://cekrem.github.io/posts/go-json-v2-finally-says-no/</link>

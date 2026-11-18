@@ -6,8 +6,15 @@
     <description>Recent content on cekrem.github.io</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 09 Nov 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 18 Nov 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://cekrem.github.io/index.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>I'm as of now completely off the AI bandwagon (if I was ever remotely on it)</title>
+      <link>https://cekrem.github.io/posts/no-more-ai-at-all/</link>
+      <pubDate>Wed, 18 Nov 2026 00:00:00 +0000</pubDate>
+      <guid>https://cekrem.github.io/posts/no-more-ai-at-all/</guid>
+      <description><![CDATA[<p>Long time readers will know that I was never quite the AI fanboy in the first place (to put it mildly). <a href="https://cekrem.github.io/tags/ai/" >I&rsquo;ve written at length (and width)</a> about software engineering and coding being a <em>craft</em>, not a problem now solved by the latest Anthropic model. But I&rsquo;ve - of course! - experimented, and given LLMs a fair shot at being &ldquo;the right tool for the job&rdquo; in certain well-contained areas. While I don&rsquo;t regret my exploration, I&rsquo;ve come to realize I need to up my game a bit to stay sane, happy and smart. I need a clean cut that involves <em>all</em> LLM usage.</p>]]></description>
+    </item>
     <item>
       <title>C# 15: Union Types, Closed Hierarchies, and the One Value™ That Isn't Any of Them</title>
       <link>https://cekrem.github.io/posts/csharp-15-union-types/</link>

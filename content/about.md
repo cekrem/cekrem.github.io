@@ -14,7 +14,7 @@ date = "2021-07-07"
 - Music! Particularly playing drums or the guitar!
 - Staying healthy, strong and fast
 - Wilderness and adventure. In more ways than you'd expect!
-- Super Smash Bros
+- Super Smash Bros && Legend of Zelda
 
 ## Top three values as a software engineer
 

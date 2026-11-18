@@ -356,6 +356,12 @@ body.colorscheme-auto {
   }
 }
 
+#no-ai {
+  width: 160px;
+  margin: auto;
+  padding: 1rem;
+}
+
 // Clean up && simplify on smaller devices
 @media screen and (max-width: 768px) {
   feedback-one,

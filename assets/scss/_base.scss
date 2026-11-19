@@ -357,9 +357,9 @@ body.colorscheme-auto {
 }
 
 #no-ai {
-  width: 160px;
-  margin: auto;
-  padding: 1rem;
+  width: 320px;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
 // Clean up && simplify on smaller devices

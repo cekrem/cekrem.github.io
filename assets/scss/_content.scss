@@ -107,9 +107,8 @@
     }
     .post-content {
       a {
-        background: black;
-        border-radius: 4px;
         color: $link-color;
+        background-color: none;
         &:hover {
           text-decoration: underline;
         }

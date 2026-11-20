@@ -1,5 +1,13 @@
 [
   {
+    "name": "Khalil Stemner",
+    "title": "Writer of Solidbook, and founder of The Software Essentialist",
+    "text": "Frontend architecture is notoriously hard to get right. React will let you build anything, including a mess. Christian's book on Elm and functional programming gives you a guide through that chaos — a paradigm so coherent that even if you never write a line of Elm professionally, the way you think about your work will be permanently upgraded.",
+    "date": "May 27, 2026",
+    "link": "https://khalilstemmler.com",
+    "image": "https://khalilstemmler.com/static/khalil-headshot-fecbe8f1d39b9e2b0ae79cc0005e0efb.png"
+  },
+  {
     "name": "Simon Skrede",
     "title": "Head of Development @ Lovdata",
     "text": "\"Architecture!\" the man said, and you'll be glad he did.\n\nChristian Ekrem has worked with Lovdata from March 2025 until May 29, 2026, and in that time he has made a strong and lasting impression as a highly experienced full-stack developer. He combines deep technical knowledge with a genuine passion for clean code, thoughtful architecture, and building systems that are robust, maintainable, and easy for others to understand.\n\nJust as importantly, he is an excellent communicator and teacher. He has a rare ability to explain complex technical ideas clearly, bring people along in architectural discussions, and raise the quality of the whole team through patient guidance and constructive feedback. I would warmly recommend him to any organization looking for a skilled, principled, and collaborative developer.",

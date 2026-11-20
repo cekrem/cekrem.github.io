@@ -22,7 +22,7 @@ Sure. But if we can at least agree that **the code that runs our software is a n
 
 Simply "reviewing all the code Claude produced" won't quite cut it. And who are you trying to fool, after all; at this point you're not really reading half of it, are you?
 
-So I propose something that used to be a no-brainer: **Keep practicing!**
+So I propose something that used to be a no-brainer: [**Keep practicing!**](/tags/coding-as-craft/)
 
 Which brings me to my next point:
 

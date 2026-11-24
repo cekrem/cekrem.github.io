@@ -113,7 +113,7 @@ view model =
         searchPosition : String
         searchPosition =
             if not model.open then
-                "-34rem"
+                "-36rem"
 
             else
                 "0"
@@ -122,7 +122,7 @@ view model =
         [ Attributes.style "position" "fixed"
         , Attributes.style "bottom" "0"
         , Attributes.style "left" searchPosition
-        , Attributes.style "margin" "4rem 2rem"
+        , Attributes.style "margin" "2rem"
         , Attributes.style "flex-direction" "column"
         , Attributes.style "justify-content" "center"
         , Attributes.style "align-items" "center"
@@ -132,7 +132,7 @@ view model =
             [ Attributes.style "padding" "1rem"
             , Attributes.style "border" "none"
             , Attributes.style "outline" "none"
-            , Attributes.style "border-radius" "1rem"
+            , Attributes.style "border-radius" "var(--border-radius)"
             , Attributes.style "width" "32rem"
             , Attributes.id inputId
 
@@ -178,7 +178,7 @@ searchResults model =
                     [ Attributes.style "position" "absolute"
                     , Attributes.style "bottom" "5rem"
                     , Attributes.style "left" "0rem"
-                    , Attributes.style "border-radius" "1rem"
+                    , Attributes.style "border-radius" "var(--border-radius)"
                     , Attributes.style "border" "thin solid"
                     , Attributes.style "border-collapse" "collapse"
                     , Attributes.style "backdrop-filter" "blur(5rem)"

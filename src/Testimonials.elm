@@ -83,10 +83,10 @@ update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case ( model, msg ) of
         ( Success testimonials index, Right ) ->
-            ( Success testimonials (modBy (List.length testimonials - 2) index + 1), Cmd.none )
+            ( Success testimonials (modBy (List.length testimonials - 1) (index + 1)), Cmd.none )
 
         ( Success testimonials index, Left ) ->
-            ( Success testimonials (modBy (List.length testimonials - 2) index - 1), Cmd.none )
+            ( Success testimonials (modBy (List.length testimonials - 1) (index - 1)), Cmd.none )
 
         ( Loading, GotShuffledTetsemonials testimonials ) ->
             ( Success testimonials 0, Cmd.none )
@@ -118,26 +118,29 @@ view model =
 
         Success testimonials index ->
             Html.div
-                [ Attributes.style "position" "relative"
-                , Attributes.style "width" "100%"
-
-                -- , Attributes.style "max-width" "80rem"
-                , Attributes.style "min-height" "60rem"
-                , Attributes.style "margin" "auto"
-                , Attributes.style "padding" "2rem 3rem"
-                , Attributes.style "display" "flex"
-                , Attributes.style "align-items" "center"
-                , Attributes.style "justify-content" "center"
+                []
+                [ Html.hr [ Attributes.style "color" "var(--link-color)" ] []
+                , Html.h3 [ Attributes.style "text-transform" "uppercase" ] [ Html.text "Recommendations" ]
+                , Html.div
+                    [ Attributes.style "position" "relative"
+                    , Attributes.style "width" "100%"
+                    , Attributes.style "margin" "auto"
+                    , Attributes.style "display" "flex"
+                    , Attributes.style "align-items" "flex-start"
+                    , Attributes.style "justify-content" "center"
+                    , Attributes.style "height" "min-content"
+                    , Attributes.style "min-height" "28em"
+                    ]
+                    (HtmlHelpers.when (index > 0) leftButton
+                        :: rightButton
+                        :: (testimonials
+                                |> List.indexedMap
+                                    (\i t ->
+                                        testimonialEntry (i == index) t
+                                    )
+                           )
+                    )
                 ]
-                (HtmlHelpers.when (index > 0) leftButton
-                    :: rightButton
-                    :: (testimonials
-                            |> List.indexedMap
-                                (\i t ->
-                                    testimonialEntry (i == index + 1 || i == index) t
-                                )
-                       )
-                )
                 |> hideOnBreakpoint "600px"
 
 
@@ -179,23 +182,23 @@ carouselStyles visible =
     [ Attributes.style "transition-property" "all"
     , Attributes.style "transition-timing-function" "ease-out"
     , Attributes.style "transition-duration" "0.4s"
-    , Attributes.style "margin" "0.5rem"
-    , Attributes.style "border-radius" "2rem"
-    , Attributes.style "background" "rgba(127,127,127,0.05)"
+    , Attributes.style "margin" "0.5em"
+    , Attributes.style "border-radius" "1em"
     , Attributes.style "overflow-x" "hidden"
     , Attributes.style "display" "flex"
-    , Attributes.style "white-space" "nowrap"
     , Attributes.style "flex-direction" "column"
-    , Attributes.style "gap" "1rem"
-    , Attributes.style "font-size" "1.7rem"
+    , Attributes.style "justify-content" "center"
+    , Attributes.style "gap" "1em"
+    , Attributes.style "text-align" "center"
     , Attributes.style "interpolate-size" "allow-keywords"
     ]
         ++ (if visible then
-                [ Attributes.style "width" "60rem"
-                , Attributes.style "height" "min-content"
-                , Attributes.style "padding" "2rem"
-                , Attributes.style "margin" "0.5rem"
+                [ Attributes.style "width" "auto"
+                , Attributes.style "padding" "0 4em"
+                , Attributes.style "margin" "0.5em"
                 , Attributes.style "flex" "1"
+                , Attributes.style "font-size" "1em"
+                , Attributes.style "opacity" "1"
                 ]
 
             else
@@ -204,8 +207,8 @@ carouselStyles visible =
                 , Attributes.style "overflow-y" "hidden"
                 , Attributes.style "padding" "0"
                 , Attributes.style "opacity" "0"
-                , Attributes.style "font-size" "0"
-                , Attributes.style "margin" "0rem"
+                , Attributes.style "font-size" "0em"
+                , Attributes.style "margin" "0em"
                 , Attributes.style "flex" "0"
                 ]
            )
@@ -222,7 +225,9 @@ testimonialEntry visible testimonial =
                 , Attributes.style "border-radius" "50%"
                 ]
                 []
-            , Html.div []
+            ]
+        , flexRow
+            [ Html.div []
                 [ clickableTitle testimonial.link testimonial.name
                 , subtitle testimonial.title
                 ]
@@ -242,14 +247,15 @@ flexRow content =
         [ Attributes.style "display" "flex"
         , Attributes.style "flex-wrap" "nowrap"
         , Attributes.style "align-items" "center"
-        , Attributes.style "gap" "1rem"
+        , Attributes.style "justify-content" "center"
+        , Attributes.style "gap" "1em"
         ]
         content
 
 
 title : String -> Html msg
 title text =
-    Html.h6
+    Html.h3
         [ Attributes.style "margin" "0"
         ]
         [ Html.text text ]
@@ -284,7 +290,6 @@ subtitle text =
         [ Attributes.style "margin" "0"
         , Attributes.style "font-size" "1em"
         , Attributes.style "white-space" "pre"
-        , Attributes.style "font-weight" "200"
         , Attributes.style "opacity" "0.8"
         ]
         [ Html.text (text |> String.replace "@ " "@\n") ]

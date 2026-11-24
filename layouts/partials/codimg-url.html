@@ -1,0 +1,42 @@
+{{- /* Builds a codimg URL rendering this page's metadata as an Elm snippet, for og:image/twitter:image. */ -}}
+{{- $host := (urls.Parse site.BaseURL).Host -}}
+{{- $slug := strings.TrimSuffix "/" .RelPermalink -}}
+{{- $title := or .Title site.Title site.Params.title | plainify | htmlUnescape -}}
+{{- $desc := or .Description .Summary site.Params.description | plainify | truncate 320 | htmlUnescape -}}
+{{- $desc = replaceRE `\s+` " " $desc -}}
+
+{{- /* Word-wrap the description at $width runes. */ -}}
+{{- $width := 56 -}}
+{{- $lines := slice -}}
+{{- $cur := "" -}}
+{{- range split $desc " " -}}
+  {{- if eq $cur "" -}}
+    {{- $cur = . -}}
+  {{- else if le (add (strings.RuneCount $cur) (strings.RuneCount .) 1) $width -}}
+    {{- $cur = printf "%s %s" $cur . -}}
+  {{- else -}}
+    {{- $lines = $lines | append $cur -}}
+    {{- $cur = . -}}
+  {{- end -}}
+{{- end -}}
+{{- with $cur }}{{ $lines = $lines | append . }}{{ end -}}
+
+{{- /* Single line stays inline; wrapped lines become an elm-format-style ++ chain. */ -}}
+{{- $descElm := printf "description = %q" $desc -}}
+{{- if gt (len $lines) 1 -}}
+  {{- $parts := slice -}}
+  {{- $last := sub (len $lines) 1 -}}
+  {{- range $i, $line := $lines -}}
+    {{- if lt $i $last -}}{{- $line = printf "%s " $line -}}{{- end -}}
+    {{- if eq $i 0 -}}
+      {{- $parts = $parts | append (printf "    %q" $line) -}}
+    {{- else -}}
+      {{- $parts = $parts | append (printf "        ++ %q" $line) -}}
+    {{- end -}}
+  {{- end -}}
+  {{- $descElm = printf "description =\n%s" (delimit $parts "\n") -}}
+{{- end -}}
+
+{{- $banner := os.ReadFile "/assets/og-banner.txt" | chomp -}}
+{{- $code := printf "{-\n%s\n\n   %s%s\n-}\n\ntitle : String\ntitle = %q\n\ndescription : String\n%s" $banner $host $slug $title $descElm -}}
+{{- return printf "https://codimg.alwaysdata.net/code.svg?%s" (querify "lang" "elm" "input" $code) -}}

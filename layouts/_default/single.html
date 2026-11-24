@@ -1,29 +1,21 @@
 {{ define "main" }} {{ if not .Params.menu }}
 <h1>{{ .Title }}</h1>
 
-<div id="livestats"></div>
-
-<content> {{ .Content }} </content>
-
 {{ if eq .Section "posts" }}
-<hr />
 <div class="post-meta">
+  <time datetime='{{ .Date.Format "2006-01-02" }}' pubdate>
+    {{ .Date.Format (default "2006-01-02" .Site.Params.dateFormat) }}
+  </time>
   {{ range (.GetTerms "tags") }}
   <a class="blog-tag" href="{{ .RelPermalink }}">#{{ lower .LinkTitle }}</a>
   {{ end }}
-
-  <div>
-    <span class="byline">
-      {{ with .Site.Params.author.name }}{{.}}{{ end }},
-      <br />
-      <time datetime='{{ .Date.Format "2006-01-02" }}' pubdate>
-        {{ .Date.Format (default "2006-01-02" .Site.Params.dateFormat) }}
-      </time>
-    </span>
-  </div>
 </div>
-{{ end }} {{ end }} {{ if not .Params.hideReply }} {{ with
-.Site.Params.author.email }}
+{{ end }}
+
+<div id="livestats"></div>
+<content> {{ .Content }} </content>
+
+{{ end }} {{ if not .Params.hideReply }} {{ with .Site.Params.author.email }}
 <p>
   <a
     href='mailto:{{ . }}?subject={{ i18n "email-subject" }}"{{ default $.Site.Title $.Page.Title }}"'

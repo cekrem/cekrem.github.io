@@ -11,9 +11,14 @@
     --background-color: #fff;
     --heading-color: #222;
     --text-color: #444;
-    --link-color: #5cee9a;
-    --visited-color: #5cee9a;
+    --link-color: inherit;
+    --link-underline-color: #5cee9a;
+    --visited-color: inherit;
     --blockquote-color: #222;
+    --border-radius: 2px;
+    --iframe-filter: filter: invert(98%) sepia(1%) saturate(28%)
+      hue-rotate(175deg) brightness(115%) contrast(87%);
+    --transition: all 0.2s linear;
   }
 
   @media (prefers-color-scheme: dark) {
@@ -22,8 +27,11 @@
       --heading-color: #eee;
       --text-color: #dadada;
       --link-color: #5cee9a;
+      --link-underline-color: transparent;
       --visited-color: #5cee9a;
       --blockquote-color: #ccc;
+      --iframe-filter: invert(99%) sepia(10%) saturate(482%) hue-rotate(278deg)
+        brightness(114%) contrast(87%);
     }
   }
 
@@ -52,17 +60,22 @@
   }
 
   a {
+    transition: var(--transition);
     color: var(--link-color);
     cursor: pointer;
-    text-decoration: none;
+    text-decoration: underline;
+    text-decoration-thickness: 0.1em;
+    text-decoration-color: var(--link-underline-color);
   }
 
   a:hover {
-    text-decoration: underline;
+    text-decoration-color: var(--link-color);
+    background: var(--link-underline-color) !important;
   }
 
-  nav a {
-    margin-right: 8px;
+  nav {
+    display: flex;
+    gap: 1em;
   }
 
   strong,
@@ -94,8 +107,7 @@
 
   code {
     font-family: monospace;
-    padding: 2px;
-    border-radius: 3px;
+    border-radius: var(--border-radius);
   }
 
   blockquote {
@@ -124,7 +136,7 @@
 
   .highlight,
   .code {
-    border-radius: 3px;
+    border-radius: var(--border-radius);
     margin-block-start: 1em;
     margin-block-end: 1em;
     overflow-x: auto;
@@ -154,16 +166,49 @@
     color: var(--visited-color);
   }
 
+  .post-meta {
+    font-size: 0.8em;
+  }
+
+  /* profile/home */
+  .profile {
+    img {
+      margin-top: 4em;
+      border-radius: 50%;
+      width: 20em;
+    }
+    text-align: center;
+  }
+
+  /* widgets etc */
   #livestats {
-    transition: opacity linear 0.2s;
+    transition: var(--transition);
     opacity: 0;
     height: 1em;
     overflow: clip;
-    filter: invert(99%) sepia(83%) saturate(1186%) hue-rotate(66deg)
-      brightness(93%) contrast(101%);
+    iframe {
+      filter: var(--iframe-filter);
+    }
   }
 
   #livestats.loaded {
     opacity: 1;
+    border-left: solid thick var(--link-color);
+    padding-left: 0.5em;
+  }
+
+  form {
+    display: inline-block;
+    margin-top: 1rem;
+    border-bottom: thick solid var(--link-underline-color);
+    border-radius: var(--border-radius);
+    * {
+      appearance: none;
+      outline: none;
+      border: none;
+      padding: 0.5em;
+      margin: 0;
+      border-radius: var(--border-radius);
+    }
   }
 </style>

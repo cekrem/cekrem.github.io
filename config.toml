@@ -1,8 +1,10 @@
 baseURL = "https://cekrem.github.io"
 title = "cekrem.github.io"
 theme = "hugo-bearblog"
-languageCode = "en-us"
+author = "Christian Ekrem"
+languageCode = "en-US"
 defaultContentLanguage = "en"
+enableRobotsTXT = true
 #paginate = 20
 pygmentsStyle = "base16-snazzy"
 pygmentsCodeFences = true
@@ -13,6 +15,10 @@ enableEmoji = true
 #
 [pagination]
 pagerSize = 20
+
+
+[security]
+allowContent = ['! ^text/org$']
 
 [params]
 description = "A surprisingly delightful dev blog!"
@@ -191,6 +197,13 @@ url = "/posts/"
 
 [markup.goldmark.renderer]
 unsafe = true
+
+[markup]
+[markup.highlight]
+#style = 'friendly'
+lineNos = true
+lineNumbersInTable = false
+codeFences = true
 
 ##############################
 # [[languages.en.menu.main]] #

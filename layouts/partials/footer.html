@@ -1,0 +1,44 @@
+{{ if not .Site.Params.hideFooter | default false }} {{ if not
+.Site.Params.hideTestimonials | default false }}
+<form
+  action="https://buttondown.com/api/emails/embed-subscribe/cekrem"
+  method="post"
+>
+  <input
+    type="email"
+    name="email"
+    autocomplete="true"
+    required
+    placeholder="Email"
+    spellcheck="false"
+  />
+  <button type="submit">Subscribe</button>
+</form>
+
+<div id="elm-widget"></div>
+<script src="/widget.js"></script>
+<script>
+  Elm.Main.init({
+    node: document.getElementById("elm-widget"),
+    flags: window.location.pathname,
+  });
+</script>
+
+{{ end }}
+
+<script
+  data-name="BMC-Widget"
+  data-cfasync="false"
+  src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+  data-emoji="🍺"
+  data-id="cekrem"
+  data-description="Support me on Buy me a coffee!"
+  data-message=""
+  data-color="#ddd"
+  data-position="Left"
+  data-x_margin="18"
+  data-y_margin="18"
+></script>
+
+<script src="/secret-sauce-holy-oil.js" defer async></script>
+{{ end }}

@@ -3,6 +3,7 @@ module Testimonials exposing (Model, Msg, init, showForPath, update, view)
 import Html exposing (Html)
 import Html.Attributes as Attributes
 import Html.Events as Events
+import Html.Keyed as Keyed
 import HtmlHelpers exposing (hideOnBreakpoint)
 import Http
 import Json.Decode
@@ -121,7 +122,7 @@ view model =
                 []
                 [ Html.hr [ Attributes.style "color" "var(--link-color)" ] []
                 , Html.h3 [ Attributes.style "text-transform" "uppercase" ] [ Html.text "Recommendations" ]
-                , Html.div
+                , Keyed.node "div"
                     [ Attributes.style "position" "relative"
                     , Attributes.style "width" "100%"
                     , Attributes.style "margin" "auto"
@@ -131,12 +132,12 @@ view model =
                     , Attributes.style "height" "min-content"
                     , Attributes.style "min-height" "28em"
                     ]
-                    (HtmlHelpers.when (index > 0) leftButton
-                        :: rightButton
+                    (( "left", HtmlHelpers.when (index > 0) leftButton )
+                        :: ( "right", rightButton )
                         :: (testimonials
                                 |> List.indexedMap
                                     (\i t ->
-                                        testimonialEntry (i == index) t
+                                        ( t.name, testimonialEntry (i == index) t )
                                     )
                            )
                     )
@@ -184,7 +185,6 @@ carouselStyles visible =
     , Attributes.style "transition-duration" "0.4s"
     , Attributes.style "margin" "0.5em"
     , Attributes.style "border-radius" "1em"
-    , Attributes.style "overflow-x" "hidden"
     , Attributes.style "display" "flex"
     , Attributes.style "flex-direction" "column"
     , Attributes.style "justify-content" "center"

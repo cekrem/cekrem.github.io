@@ -40,13 +40,20 @@
     font-size: var(--font-scale);
     margin: auto;
     padding: 20px;
-    max-width: var(--width);
     text-align: left;
     background-color: var(--background-color);
     word-wrap: break-word;
     overflow-wrap: break-word;
-    line-height: 1.5;
+    line-height: 1.4;
     color: var(--text-color);
+  }
+
+  header,
+  content,
+  footer {
+    display: block;
+    margin: auto;
+    max-width: var(--width);
   }
 
   h1,
@@ -88,10 +95,6 @@
     cursor: pointer;
   }
 
-  main {
-    line-height: 1.6;
-  }
-
   table {
     width: 100%;
   }
@@ -118,12 +121,13 @@
   }
 
   footer {
+    font-family: var(--font-main);
     padding: 25px 0;
     text-align: center;
-  }
-
-  .title:hover {
-    text-decoration: none;
+    line-height: 1;
+    small {
+      font-size: 0.2em;
+    }
   }
 
   .title h1 {
@@ -170,14 +174,76 @@
     font-size: 0.8em;
   }
 
+  time {
+    font-family: var(--font-main);
+  }
+
+  p {
+    text-align: justify;
+  }
+
+  .center {
+    text-align: center;
+  }
+
   /* profile/home */
   .profile {
+    margin: 4em auto;
+    text-align: center;
+    * {
+      margin: 0;
+    }
     img {
-      margin-top: 4em;
       border-radius: 50%;
       width: 20em;
     }
-    text-align: center;
+  }
+
+  .testimonials {
+    font-size: 0.8em;
+
+    display: grid;
+    grid-auto-rows: 0;
+    grid-auto-columns: 0;
+    align-items: center;
+
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: auto auto;
+
+    @media (width > 960px) {
+      grid-template-rows: repeat(1, 1fr);
+      grid-template-columns: auto auto;
+    }
+
+    overflow: hidden;
+    .entry {
+      padding: 2em;
+      margin: auto;
+      width: max-content;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.2em;
+
+      img {
+        border-radius: 50%;
+        width: 5em;
+      }
+
+      .stars {
+        color: gold;
+      }
+
+      p {
+        text-align: justify;
+      }
+
+      * {
+        max-width: 48ch;
+        margin: 0;
+      }
+    }
   }
 
   /* widgets etc */

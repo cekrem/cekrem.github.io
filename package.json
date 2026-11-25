@@ -10,7 +10,7 @@
   },
   "devDependencies": {
     "concurrently": "^9.1.2",
-    "elm-tooling": "^1.15.1",
+    "elm-tooling": "^1.21.0",
     "elm-watch": "^1.2.2"
   },
   "dependencies": {

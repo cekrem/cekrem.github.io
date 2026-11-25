@@ -137,7 +137,7 @@ view model =
             , Attributes.id inputId
 
             -- update
-            , Attributes.placeholder "Search in realtime"
+            , Attributes.placeholder "Search all posts in realtime"
             , Attributes.value model.searchTerm
             , Events.onInput ChangeTerm
             ]

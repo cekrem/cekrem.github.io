@@ -1,10 +1,9 @@
-module Main exposing (Model, Msg(..), RouteModel(..), main)
+module Main exposing (main)
 
 import Browser
 import Html exposing (Html)
 import Html.Attributes as Attributes
 import Search
-import Testimonials
 
 
 
@@ -26,40 +25,20 @@ main =
 
 
 type alias Model =
-    { routeModel : RouteModel
-    , searchModel : Search.Model
+    { searchModel : Search.Model
     }
 
 
-type RouteModel
-    = Testimonials Testimonials.Model
-    | None
-
-
 init : String -> ( Model, Cmd Msg )
-init path =
+init _ =
     let
-        ( routeModel, routeCmd ) =
-            if Testimonials.showForPath path then
-                Testimonials.init ()
-                    |> Tuple.mapBoth Testimonials (Cmd.map TestimonialsMsg)
-
-            else
-                ( None
-                , Cmd.none
-                )
-
         ( searchModel, searchCmd ) =
             Search.init ()
                 |> Tuple.mapSecond (Cmd.map SearchMsg)
     in
-    ( { routeModel = routeModel
-      , searchModel = searchModel
+    ( { searchModel = searchModel
       }
-    , Cmd.batch
-        [ routeCmd
-        , searchCmd
-        ]
+    , searchCmd
     )
 
 
@@ -68,38 +47,19 @@ init path =
 
 
 type Msg
-    = TestimonialsMsg Testimonials.Msg
-    | SearchMsg Search.Msg
+    = SearchMsg Search.Msg
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     let
-        ( routeModel, routeCmd ) =
-            updateRouteModel msg model.routeModel
-
         ( searchModel, searchCmd ) =
             updateSearchModel msg model.searchModel
     in
-    ( { routeModel = routeModel
-      , searchModel = searchModel
+    ( { searchModel = searchModel
       }
-    , Cmd.batch
-        [ routeCmd
-        , searchCmd
-        ]
+    , searchCmd
     )
-
-
-updateRouteModel : Msg -> RouteModel -> ( RouteModel, Cmd Msg )
-updateRouteModel msg routeModel =
-    case ( routeModel, msg ) of
-        ( Testimonials testimonialsModel, TestimonialsMsg testimonialsMsg ) ->
-            Testimonials.update testimonialsMsg testimonialsModel
-                |> Tuple.mapBoth Testimonials (Cmd.map TestimonialsMsg)
-
-        _ ->
-            ( routeModel, Cmd.none )
 
 
 updateSearchModel : Msg -> Search.Model -> ( Search.Model, Cmd Msg )
@@ -108,9 +68,6 @@ updateSearchModel msg searchModel =
         SearchMsg searchMsg ->
             Search.update searchMsg searchModel
                 |> Tuple.mapSecond (Cmd.map SearchMsg)
-
-        _ ->
-            ( searchModel, Cmd.none )
 
 
 
@@ -128,14 +85,7 @@ subscriptions model =
 
 view : Model -> Html Msg
 view model =
-    Html.div [ Attributes.class "container" ]
-        [ case model.routeModel of
-            Testimonials testimonialsModel ->
-                Testimonials.view testimonialsModel
-                    |> Html.map TestimonialsMsg
-
-            None ->
-                Html.text ""
-        , Search.view model.searchModel
+    Html.div [ Attributes.class "elm-app" ]
+        [ Search.view model.searchModel
             |> Html.map SearchMsg
         ]

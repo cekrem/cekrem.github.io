@@ -1,0 +1,19 @@
+{{ $data := dict }} {{ $path := "testimonials.json" }} {{ with resources.Get
+$path }} {{ with . | transform.Unmarshal }} {{ $data = . }} {{ end }} {{ else }}
+{{ errorf "Unable to get global resource %q" $path }} {{ end }}
+
+<h2 class="center">Two random recommendations:</h1>
+<div class="testimonials">
+  {{ range $data }}
+  <div class="entry" style="order: random(1, 32)">
+    <img src="{{ .image }}" />
+    <h3><a href="{{ .link }}">{{ .name }}</a></h3>
+    <h4>{{ .title }}</h4>
+    <div class="stars">★ ★ ★ ★ ★</div>
+      <blockquote>
+        <p>{{ .text }}</p>
+      </blockquote>
+    <time> {{ .date }} </time>
+  </div>
+  {{ end}}
+</div>

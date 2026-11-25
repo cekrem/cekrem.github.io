@@ -8,3 +8,5 @@
 ### ...writing code [by hand](/posts/no-more-ai-at-all)
 
 </div>
+
+{{< testimonials >}}

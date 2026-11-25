@@ -2,10 +2,16 @@
 $path }} {{ with . | transform.Unmarshal }} {{ $data = . }} {{ end }} {{ else }}
 {{ errorf "Unable to get global resource %q" $path }} {{ end }}
 
-<h2 class="center">Two random recommendations:</h1>
-<div class="testimonials">
+<div class="center">
+  <h2 class="center">A 
+    <span class="button pseudo" title="onclick='document.getElementById('testimonials').style.setProperty('--seed', Math.random())'" onclick="document.getElementById('testimonials').style.setProperty('--seed', Math.random())">random</span> 
+    recommendation:
+  </h2>
+</div>
+</div>
+<div id="testimonials" style="--seed: random(0, 100)">
   {{ range $index, $_ := $data }}
-    <div class="entry" style="order: random({{ $index }}, 1000)">
+  <div class="entry" style="--index: {{$index}}">
     <img src="{{ .image }}" />
     <h3><a href="{{ .link }}">{{ .name }}</a></h3>
     <h4>{{ .title }}</h4>

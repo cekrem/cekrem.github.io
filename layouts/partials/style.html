@@ -19,6 +19,7 @@
     --iframe-filter: filter: invert(98%) sepia(1%) saturate(28%)
       hue-rotate(175deg) brightness(115%) contrast(87%);
     --transition: all 0.2s linear;
+    --always-green-color: #5cee9a;
   }
 
   @media (prefers-color-scheme: dark) {
@@ -59,7 +60,8 @@
     color: var(--heading-color);
   }
 
-  a {
+  a,
+  .button {
     transition: var(--transition);
     color: var(--link-color);
     cursor: pointer;
@@ -68,7 +70,8 @@
     text-decoration-color: var(--link-underline-color);
   }
 
-  a:hover {
+  a:hover,
+  .button:hover {
     text-decoration-color: var(--link-color);
     background: var(--link-underline-color) !important;
   }
@@ -178,12 +181,36 @@
 
   .center {
     text-align: center;
+    margin: auto;
   }
 
+  .pseudo {
+    position: relative;
+    &::before {
+      position: absolute;
+      bottom: 2em;
+      left: 0;
+      display: inline-block;
+      transition: var(--transition);
+      interpolate-size: allow-keywords;
+
+      font-size: 0.5em;
+      content: "";
+      overflow-x: hidden;
+      vertical-align: middle;
+      height: 0;
+    }
+    &:hover::before {
+      content: "(pseudo-)";
+      height: auto;
+    }
+  }
   /* profile/home */
   .profile {
-    margin: 4em auto;
+    padding: 3em 0;
+    margin-bottom: 3em;
     text-align: center;
+    border-bottom: thick solid var(--always-green-color);
     * {
       margin: 0;
     }
@@ -193,8 +220,8 @@
     }
   }
 
-  .testimonials {
-    font-size: 0.8em;
+  #testimonials {
+    transition: all 1s linear;
 
     display: grid;
     grid-auto-rows: 0;
@@ -202,24 +229,31 @@
     align-items: center;
 
     grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: auto auto;
+    grid-template-rows: auto;
 
     /* @media (width > 960px) {
-      grid-template-rows: repeat(1, 1fr);
-      grid-template-columns: auto auto;
-    }
-    */
+        grid-template-rows: repeat(1, 1fr);
+        grid-template-columns: auto auto;
+      }
+      */
 
     overflow: hidden;
     .entry {
       margin: auto;
       padding: 2em 0;
-      max-width: calc(max-content - 2em);
       text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 0.2em;
+
+      order: round(
+        mod(
+            sin(var(--index) * 12.9898 + var(--seed) * 78.233) * 43758.5453,
+            1
+          ) *
+          1000
+      );
 
       img {
         border-radius: 50%;

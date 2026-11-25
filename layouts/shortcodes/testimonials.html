@@ -4,8 +4,8 @@ $path }} {{ with . | transform.Unmarshal }} {{ $data = . }} {{ end }} {{ else }}
 
 <h2 class="center">Two random recommendations:</h1>
 <div class="testimonials">
-  {{ range $data }}
-  <div class="entry" style="order: random(1, 32)">
+  {{ range $index, $_ := $data }}
+    <div class="entry" style="order: random({{ $index }}, 1000)">
     <img src="{{ .image }}" />
     <h3><a href="{{ .link }}">{{ .name }}</a></h3>
     <h4>{{ .title }}</h4>

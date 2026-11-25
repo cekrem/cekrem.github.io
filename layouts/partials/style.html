@@ -39,6 +39,7 @@
     font-family: var(--font-secondary);
     font-size: var(--font-scale);
     margin: auto;
+    max-width: var(--width);
     padding: 20px;
     text-align: left;
     background-color: var(--background-color);
@@ -46,14 +47,6 @@
     overflow-wrap: break-word;
     line-height: 1.4;
     color: var(--text-color);
-  }
-
-  header,
-  content,
-  footer {
-    display: block;
-    margin: auto;
-    max-width: var(--width);
   }
 
   h1,
@@ -82,6 +75,7 @@
 
   nav {
     display: flex;
+    flex-wrap: wrap;
     gap: 1em;
   }
 
@@ -210,16 +204,17 @@
     grid-template-columns: repeat(1, 1fr);
     grid-template-rows: auto auto;
 
-    @media (width > 960px) {
+    /* @media (width > 960px) {
       grid-template-rows: repeat(1, 1fr);
       grid-template-columns: auto auto;
     }
+    */
 
     overflow: hidden;
     .entry {
-      padding: 2em;
       margin: auto;
-      width: max-content;
+      padding: 2em 0;
+      max-width: calc(max-content - 2em);
       text-align: center;
       display: flex;
       flex-direction: column;

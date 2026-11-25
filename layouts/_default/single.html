@@ -30,10 +30,10 @@
   const target = document.getElementById("livestats");
   const iframe = document.createElement("iframe");
 
-  console.log(target);
   iframe.frameBorder = "0";
   iframe.src = "https://livestats.lamdera.app?{{ .Permalink | safeURL }}";
   iframe.onload = () => (target.className = "loaded");
+
   target.appendChild(iframe);
 </script>
 {{ end }}

@@ -6306,7 +6306,7 @@ var $author$project$Search$searchResults = function (model) {
 		A2($elm$core$Maybe$withDefault, _List_Nil, model.K));
 };
 var $author$project$Search$view = function (model) {
-	var searchPosition = (!model.v) ? '-36rem' : '0';
+	var searchPosition = (!model.v) ? '-34rem' : '0';
 	return A3(
 		$elm$html$Html$node,
 		'search',
@@ -6315,7 +6315,7 @@ var $author$project$Search$view = function (model) {
 				A2($elm$html$Html$Attributes$style, 'position', 'fixed'),
 				A2($elm$html$Html$Attributes$style, 'bottom', '0'),
 				A2($elm$html$Html$Attributes$style, 'left', searchPosition),
-				A2($elm$html$Html$Attributes$style, 'margin', '2rem'),
+				A2($elm$html$Html$Attributes$style, 'margin', '0rem'),
 				A2($elm$html$Html$Attributes$style, 'flex-direction', 'column'),
 				A2($elm$html$Html$Attributes$style, 'justify-content', 'center'),
 				A2($elm$html$Html$Attributes$style, 'align-items', 'center'),

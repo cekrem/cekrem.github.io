@@ -1,5 +1,5 @@
 baseURL = "https://cekrem.github.io"
-title = "cekrem.github.io"
+title = "CEKREM . GITHUB . IO"
 theme = "hugo-bearblog"
 author = "Christian Ekrem"
 languageCode = "en-US"
@@ -24,7 +24,7 @@ allowContent = ['! ^text/org$']
 description = "A surprisingly delightful dev blog!"
 keywords = "developer,personal"
 info = ["Staff Engineer & Senior Consultant @ Ensō", "...writing code by hand"]
-avatarURL = "images/avatar.jpg"
+avatarURL = "images/avatar.gif"
 images = ["images/banner.jpg"]
 footerContent = ""
 #gravatar = "john.doe@example.com"

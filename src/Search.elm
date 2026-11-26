@@ -113,7 +113,7 @@ view model =
         searchPosition : String
         searchPosition =
             if not model.open then
-                "-36rem"
+                "-34rem"
 
             else
                 "0"
@@ -122,7 +122,7 @@ view model =
         [ Attributes.style "position" "fixed"
         , Attributes.style "bottom" "0"
         , Attributes.style "left" searchPosition
-        , Attributes.style "margin" "2rem"
+        , Attributes.style "margin" "0rem"
         , Attributes.style "flex-direction" "column"
         , Attributes.style "justify-content" "center"
         , Attributes.style "align-items" "center"

@@ -1,5 +1,8 @@
 <style>
   :root {
+    --main-color: #5cee9a;
+    --img-filter: grayscale(100%) sepia(100%) hue-rotate(90deg);
+
     --width: 720px;
     --font-main: "IBM Plex Mono", monospace;
     --font-secondary:
@@ -12,14 +15,14 @@
     --heading-color: #222;
     --text-color: #444;
     --link-color: inherit;
-    --link-underline-color: #5cee9a;
+    --link-underline-color: var(--main-color);
     --visited-color: inherit;
     --blockquote-color: #222;
     --border-radius: 2px;
     --iframe-filter: filter: invert(98%) sepia(1%) saturate(28%)
       hue-rotate(175deg) brightness(115%) contrast(87%);
     --transition: all 0.2s linear;
-    --always-green-color: #5cee9a;
+    --always-green-color: var(--main-color);
   }
 
   @media (prefers-color-scheme: dark) {
@@ -27,9 +30,9 @@
       --background-color: #212121;
       --heading-color: #eee;
       --text-color: #dadada;
-      --link-color: #5cee9a;
+      --link-color: var(--main-color);
       --link-underline-color: transparent;
-      --visited-color: #5cee9a;
+      --visited-color: var(--main-color);
       --blockquote-color: #ccc;
       --iframe-filter: invert(99%) sepia(10%) saturate(482%) hue-rotate(278deg)
         brightness(114%) contrast(87%);
@@ -41,7 +44,7 @@
     font-size: var(--font-scale);
     margin: auto;
     max-width: var(--width);
-    padding: 20px;
+    padding: 1.5em;
     text-align: left;
     background-color: var(--background-color);
     word-wrap: break-word;
@@ -71,15 +74,24 @@
   }
 
   a:hover,
+  a:target,
   .button:hover {
     text-decoration-color: var(--link-color);
     background: var(--link-underline-color) !important;
   }
 
+  header {
+    text-align: center;
+  }
+
   nav {
     display: flex;
     flex-wrap: wrap;
-    gap: 1em;
+    justify-content: center;
+    gap: 0 1em;
+    font-family: var(--font-main);
+
+    border-bottom: thick solid var(--always-green-color);
   }
 
   strong,
@@ -113,17 +125,23 @@
   blockquote {
     border-left: 1px solid #999;
     color: var(--blockquote-color);
-    padding-left: 20px;
+    padding-left: 1.5em;
     font-style: italic;
   }
 
   footer {
     font-family: var(--font-main);
-    padding: 25px 0;
     text-align: center;
+    padding-bottom: 2em;
     line-height: 1;
     small {
-      font-size: 0.2em;
+      font-size: 0.75em;
+      text-align: justify;
+      transition: var(--transition);
+    }
+
+    .credits {
+      margin-top: 1em;
     }
   }
 
@@ -208,20 +226,28 @@
   /* profile/home */
   .profile {
     padding: 3em 0;
-    margin-bottom: 3em;
     text-align: center;
-    border-bottom: thick solid var(--always-green-color);
     * {
       margin: 0;
     }
     img {
       border-radius: 50%;
       width: 20em;
+      aspect-ratio: 1;
+      object-fit: cover;
+      filter: var(--img-filter);
+      image-rendering: pixelated;
     }
   }
 
   #testimonials {
     transition: all 1s linear;
+    margin: 1em auto;
+    width: max-content;
+
+    box-shadow: rgba(0, 0, 0, 0.35) 0 1em 3em;
+    background: #88888811;
+    border-radius: 1em;
 
     display: grid;
     grid-auto-rows: 0;
@@ -240,7 +266,7 @@
     overflow: hidden;
     .entry {
       margin: auto;
-      padding: 2em 0;
+      padding: 1em;
       text-align: center;
       display: flex;
       flex-direction: column;
@@ -258,10 +284,13 @@
       img {
         border-radius: 50%;
         width: 5em;
+        filter: var(--img-filter);
+        image-rendering: pixelated;
       }
 
       .stars {
         color: gold;
+        margin: 0.5em;
       }
 
       p {
@@ -294,7 +323,7 @@
 
   form {
     display: inline-block;
-    margin-top: 1rem;
+    margin-top: 0.5em;
     border-bottom: thick solid var(--link-underline-color);
     border-radius: var(--border-radius);
     * {

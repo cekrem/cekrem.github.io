@@ -1,5 +1,5 @@
 <div class="profile">
-  <img src="/images/avatar.png" alt="" />
+  <img src="/images/avatar-new.jpg" alt="" />
 
 # Christian Ekrem
 

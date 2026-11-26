@@ -12,13 +12,12 @@ $path }} {{ with . | transform.Unmarshal }} {{ $data = . }} {{ end }} {{ else }}
 <div id="testimonials" style="--seed: random(0, 100)">
   {{ range $index, $_ := $data }}
   <div class="entry" style="--index: {{$index}}">
-    <img src="{{ .image }}" />
+    <img src="/images/testimonial/{{ .image }}" />
     <h3><a href="{{ .link }}">{{ .name }}</a></h3>
     <h4>{{ .title }}</h4>
     <div class="stars">★ ★ ★ ★ ★</div>
-      <blockquote>
-        <p>{{ .text }}</p>
-      </blockquote>
+    <p>{{ .text }}</p>
+    <p>—</p>
     <time> {{ .date }} </time>
   </div>
   {{ end}}

@@ -23,6 +23,8 @@
       hue-rotate(175deg) brightness(115%) contrast(87%);
     --transition: all 0.2s linear;
     --always-green-color: var(--main-color);
+
+    interpolate-size: allow-keywords;
   }
 
   @media (prefers-color-scheme: dark) {
@@ -210,7 +212,6 @@
       left: 0;
       display: inline-block;
       transition: var(--transition);
-      interpolate-size: allow-keywords;
 
       font-size: 0.5em;
       content: "";
@@ -248,7 +249,6 @@
   }
 
   #testimonials {
-    transition: all 1s linear;
     margin: 1em auto;
     width: max-content;
 
@@ -261,14 +261,17 @@
     grid-auto-columns: 0;
     align-items: center;
 
-    grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: auto;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
 
-    /* @media (width > 960px) {
-        grid-template-rows: repeat(1, 1fr);
-        grid-template-columns: auto auto;
-      }
-      */
+    height: auto;
+    transition: all 1s linear;
+    transition-behavior: allow-discrete;
+    interpolate-size: allow-keywords;
+    @starting-style {
+      height: 0;
+      opacity: 0;
+    }
 
     overflow: hidden;
     .entry {

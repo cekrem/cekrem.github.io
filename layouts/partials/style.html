@@ -250,7 +250,6 @@
 
   #testimonials {
     margin: 1em auto;
-    width: max-content;
 
     box-shadow: rgba(0, 0, 0, 0.35) 0 1em 3em;
     background: #88888811;
@@ -343,6 +342,13 @@
       padding: 0.5em;
       margin: 0;
       border-radius: var(--border-radius);
+    }
+  }
+
+  @media (width < 960px) {
+    #bmc-wbtn {
+      position: static !important;
+      margin: auto;
     }
   }
 </style>

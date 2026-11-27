@@ -1,7 +1,6 @@
 {{ $pages := where site.RegularPages "Section" "posts" }} {{ range first 1
 $pages.ByDate.Reverse }}
 <section class="center">
-  <h2>Latest post:</h2>
-  <a href="{{ .Permalink }}">{{ .Title }}</a>
+  <h3>Latest post: <a href="{{ .Permalink }}">{{ .Title }}</a></h3>
   {{ else }} {{ end }}
 </section>

@@ -48,4 +48,4 @@ Today, I'm completely healed. No allergies, no limitations – just gratitude.
 
 These are just two of many "point of no return" experiences that solidify my faith in Jesus. But even if someone took them away (how could they, though?), it'd be too late to erase years of _knowing_ him and spending time with him daily. He's the foundation on which the rest of my life rests and is built upon. He's the one I put my hope in. My only hope, really!
 
-I'm utterly screwed without Jesus.
+[I'm utterly screwed without Jesus.](/posts/utterly-screwed-without-jesus/)

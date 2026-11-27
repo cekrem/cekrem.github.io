@@ -1,5 +1,6 @@
-<div class="profile">
-  <img src="/images/avatar-new.jpg" alt="" />
+<div class="sections">
+  <section class="profile">
+    <img src="/images/avatar-new.jpg" alt="" />
 
 # Christian Ekrem
 
@@ -7,6 +8,7 @@
 
 ### ...writing code [by hand](/posts/no-more-ai-at-all)
 
-</div>
-
+  </section>
+{{< latest >}}
 {{< testimonials >}}
+</div>

@@ -2,23 +2,32 @@
 $path }} {{ with . | transform.Unmarshal }} {{ $data = . }} {{ end }} {{ else }}
 {{ errorf "Unable to get global resource %q" $path }} {{ end }}
 
-<div class="center">
-  <h2 class="center">A 
-    <span class="button pseudo" title="onclick='document.getElementById('testimonials').style.setProperty('--seed', Math.random())'" onclick="document.getElementById('testimonials').style.setProperty('--seed', Math.random())">random</span> 
+<section>
+  <h2 class="center">
+    A
+    <span
+      class="button pseudo"
+      title="onclick='document.getElementById('testimonials').style.setProperty('--seed', Math.random())'"
+      onclick="
+        document
+          .getElementById('testimonials')
+          .style.setProperty('--seed', Math.random())
+      "
+      >random</span
+    >
     recommendation:
   </h2>
-</div>
-</div>
-<div id="testimonials" style="--seed: random(0, 100)">
-  {{ range $index, $_ := $data }}
-  <div class="entry" style="--index: {{$index}}">
-    <img src="/images/testimonial/{{ .image }}" />
-    <h3><a href="{{ .link }}">{{ .name }}</a></h3>
-    <h4>{{ .title }}</h4>
-    <div class="stars">★ ★ ★ ★ ★</div>
-    <p>{{ .text }}</p>
-    <p>—</p>
-    <time> {{ .date }} </time>
+  <div id="testimonials" style="--seed: random(0, 100)">
+    {{ range $index, $_ := $data }}
+    <div class="entry" style="--index: {{$index}}">
+      <img src="/images/testimonial/{{ .image }}" />
+      <h3><a href="{{ .link }}">{{ .name }}</a></h3>
+      <h4>{{ .title }}</h4>
+      <div class="stars">★ ★ ★ ★ ★</div>
+      <p>{{ .text }}</p>
+      <p>—</p>
+      <time> {{ .date }} </time>
+    </div>
+    {{ end}}
   </div>
-  {{ end}}
-</div>
+</section>

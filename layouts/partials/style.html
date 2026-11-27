@@ -223,13 +223,9 @@
       height: auto;
     }
   }
+
   /* profile/home */
   .profile {
-    padding: 3em 0;
-    text-align: center;
-    * {
-      margin: 0;
-    }
     img {
       border-radius: 50%;
       width: 20em;
@@ -237,6 +233,17 @@
       object-fit: cover;
       filter: var(--img-filter);
       image-rendering: pixelated;
+    }
+  }
+
+  .sections {
+    text-align: center;
+    margin-top: 3em;
+    display: flex;
+    flex-direction: column;
+    gap: 3em;
+    * {
+      margin: 0;
     }
   }
 
